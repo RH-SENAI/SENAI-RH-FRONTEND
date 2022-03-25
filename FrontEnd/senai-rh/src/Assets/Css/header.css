@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+.container{
+    width: 1300px;
+    margin: 0 auto;
+}
+
+header {
+    height: 100px;
+    background-color: #f2f2f2;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+}
+
+.container_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f2f2f2;
+}
+
+.logo {
+    margin-right: 15vw;
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+
+p {
+    margin: 0;
+}
+
+.select :link {
+    color: #000000;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.img_perfil{
+    width: 100px;
+    height: 100px;
+    background-color: #f2f2f2;
+    margin-right: 10px;
+}
+
+.img_logout{
+    width: 30px;
+    height: 30px;
+    background-color: #f2f2f2;
+    margin-right: 20px;
+}
+
+
+div.select {
+    min-width: 150px;
+    padding-right: 15px;
+    margin-left: 10px;
+    display: inline-block;
+    border-radius: 2px;
+    position: relative;
+    background: #f2f2f2;
+    color: #000000;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.text_link{
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000000;
+}
+.text_link :hover{
+    background-color: red;
+}
+
+div.select p {
+    padding: 5px;
+    width: 100%;
+}
+
+/* div.select:after {
+    content: "▼";
+    position: absolute;
+    right: 6px;
+    top: 8px;
+    font-size: 9px;
+} */
+
+div.select .hidden {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: .1s;
+    background: #f2f2f2;
+    z-index: 10;
+    width: 100%;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+    padding: 30px 10px 0;
+    
+}
+
+div.select:hover .hidden {
+    visibility: visible;
+    opacity: 1;
+}
+
+div.select p:hover, div.select:hover {
+    background-color: #f2f2f2;
+}
