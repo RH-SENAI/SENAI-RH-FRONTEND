@@ -1,0 +1,14 @@
+
+.container_header{
+  width: 100vw;
+  background-color: white;
+  height: 12vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1); 
+}
+  
+.logo{
+  height: 70%; 
+}

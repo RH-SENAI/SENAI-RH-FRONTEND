@@ -4,6 +4,7 @@ import axios from "axios";
 import CadastroLight from "../../assets/img/ImgCadastroLight.png";
 import "../../assets/Css/cadastro.css"
 import "../../assets/Css/footer.css"
+import "../../assets/css/styleG3.css"
 import Footer from "../../components/Footer";
 
 

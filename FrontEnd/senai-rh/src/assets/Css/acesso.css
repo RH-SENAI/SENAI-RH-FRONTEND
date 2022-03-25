@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-wrap: normal;
+    font-family: 'Montserrat', sans-serif;
+   
+}
+.container{
+    width: 1300px;
+    margin: 0 auto;
+}
+
+.nonBold{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 70px;
+}
+
+.bold{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 70px;
+}
+
+.todosOsTextos{
+    display: flex;
+    text-align: end;
+    flex-direction: column;
+}
+
+.primeiroTexto{
+    font-style: normal;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 37px;
+ 
+}
+
+.segundoTexto{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 37px;
+}
+
+.btnRedLogin{
+color:#CB334B;
+font-weight: 1000;
+font-size: 23px;
+line-height: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
+border: none;
+background-color: #F9F9F9;
+border-radius: 20px;
+box-shadow: 12px 12px 15px rgb(166 171 189), -12px -12px 15px rgb(255 255 255);
+width: 14vw;
+}
+
+.btnRedLogin:hover {
+    background-color:#CB334B;
+    color:  #F9F9F9;
+  }
+
+.imagemAcesso{
+    width: 43vw;
+    height: 55vh;
+}
+
+.spans{
+    margin-top: 50px;
+display: flex;
+flex-direction: column;
+   
+
+}
