@@ -11,6 +11,7 @@ import {
 import reportWebVitals from './reportWebVitals';
 import HeaderFuncionario from './Components/Header/headerFuncionario';
 import HeaderAdm from './Components/Header/headerAdm';
+import CursosRapidos from './Pages/Cursos/cursosRapidos';
 
 const routing = (
   <Router>
@@ -18,6 +19,7 @@ const routing = (
       <Switch>
         <Route exact path="/" component={HeaderFuncionario} />
         <Route  path="/Adm" component={HeaderAdm} />
+        <Route  path="/CursosRapidos" component={CursosRapidos} />
       </Switch>
     </div>
   </Router>

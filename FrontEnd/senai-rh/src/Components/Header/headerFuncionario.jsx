@@ -24,12 +24,12 @@ export default function HeaderFuncionario() {
                     <input type='hidden' name='some_name_tosetaBaixosetaBaixo_form' />
                     <div class='hidden'>
                         <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Adm' > <img className='seta' src={seta} alt="Seta" /> Vantagens</Link>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='#' > <img className='seta' src={seta} alt="Seta" /> Cursos</Link>
-                        
+                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/CursosRapidos' > <img className='seta' src={seta} alt="Seta" /> Cursos</Link>
+
                     </div>
                 </div>
                 <div class='select'>
-                    <p class='input'>Acompanhar <img  src={setaBaixo} /> </p>
+                    <p class='input'>Acompanhar <img src={setaBaixo} /> </p>
                     <input type='hidden' name='some_name_to_form' />
                     <div class='hidden'>
                         <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='#' > <img className='seta' src={seta} alt="Seta" /> Carômetro</Link>
