@@ -8,7 +8,7 @@ export default function CadastrarAtividades() {
 
     return (
         <div className="container_">
-            <div className="container_cards">
+            <div className="con tainer_cards">
                 <div className="container_cadastro">
                     <div className="container_navs">
                         <nav className="nav_links">

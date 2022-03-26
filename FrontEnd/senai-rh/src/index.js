@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {Login} from './Pages/Login/login.jsx';
+import CadastrarAtividades from './Pages/CadastrarAtividades/cadastrarAtividades.jsx';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Login />
+    <CadastrarAtividades />
   </React.StrictMode>,
   document.getElementById('root')
 );
