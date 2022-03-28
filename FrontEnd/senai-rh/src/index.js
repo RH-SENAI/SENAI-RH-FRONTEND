@@ -10,7 +10,7 @@ import {
 import './assets/Css/gp1style.css';
 import reportWebVitals from './reportWebVitals';
 import CadastrarAtividades from './Pages/CadastrarAtividades/cadastrarAtividades';
-import { Login } from './Pages/Login/login';
+import Login from './Pages/Login/login';
 
 const routing = (
   <Router>

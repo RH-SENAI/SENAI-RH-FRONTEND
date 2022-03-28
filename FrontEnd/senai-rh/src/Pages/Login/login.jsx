@@ -4,7 +4,7 @@ import bannerLogin from "../../assets/img/undraw_login_re_4vu2 1.svg"
 import Footer from "../../components/Footer"
 import '../../index.css'
 
-export const Login = () =>{
+export default function Login() {
     const[emailUsuario, setEmailUsuario] = useState('');
     const[senhaUsuario, setSenhaUsuario] = useState('');
     
