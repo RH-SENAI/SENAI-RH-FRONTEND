@@ -1,6 +1,6 @@
 // import { useState, useEffect } from 'react';
 // import axios from 'axios';
-import '../../assets/Css/gp1style.css'
+import '../../Assets/Css/gp1style.css'
 import Rodape from '../../components/Footer';
 import { Link } from 'react-router-dom'
 
