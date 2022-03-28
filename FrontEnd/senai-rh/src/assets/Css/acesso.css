@@ -15,13 +15,13 @@
 .nonBold{
     font-style: normal;
     font-weight: 300;
-    font-size: 70px;
+    font-size: 50px;
 }
 
 .bold{
     font-style: normal;
     font-weight: 600;
-    font-size: 70px;
+    font-size: 40px;
 }
 
 .todosOsTextos{
@@ -33,7 +33,7 @@
 .primeiroTexto{
     font-style: normal;
     font-weight: 300;
-    font-size: 30px;
+    font-size: 20px;
     line-height: 37px;
  
 }
@@ -41,7 +41,7 @@
 .segundoTexto{
     font-style: normal;
     font-weight: 400;
-    font-size: 30px;
+    font-size: 20px;
     line-height: 37px;
 }
 
@@ -66,8 +66,8 @@ width: 14vw;
   }
 
 .imagemAcesso{
-    width: 43vw;
-    height: 55vh;
+    width: 40vw;
+    height: 30vh;
 }
 
 .spans{

@@ -1,7 +1,7 @@
 import { Redirect, useHistory } from "react-router-dom";
 import HeaderLogin from "../../components/HeaderLogin";
 import Footer from "../../components/Footer"
-import "../../assets/css/acesso.css"
+import "../../assets/Css/acesso.css"
 import imagemAcesso from "../../assets/img/telaDeAcessoLight.svg"
 
 export default function Acesso() {
@@ -9,7 +9,7 @@ export default function Acesso() {
     let history = useHistory()
     function redirecionarLogin() {
 
-        history.push('/Cadastro')
+        history.push('/Login')
     }
 
     return (

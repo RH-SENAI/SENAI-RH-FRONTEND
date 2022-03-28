@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Logo from "../assets/img/Logo.png"
-import '../assets/css/headerLogin.css'
+import '../assets/Css/headerLogin.css'
 
 export default class HeaderLogin extends Component {
     render() {
@@ -11,4 +11,3 @@ export default class HeaderLogin extends Component {
         )
     }
 }
-
