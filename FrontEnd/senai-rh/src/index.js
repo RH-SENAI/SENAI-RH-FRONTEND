@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import './index.css';
 import CadastrarAtividades from './Pages/CadastrarAtividades/cadastrarAtividades.jsx';
-import {Login} from './Pages/Login/login.jsx';
+import Login from './Pages/Login/login.jsx';
 import reportWebVitals from './reportWebVitals';
 
 const routing = (
@@ -15,7 +15,7 @@ const routing = (
     <div>
       <Switch>
         <Route exact path="/" component={CadastrarAtividades}/>
-
+        <Route path="/Login" component={Login}/>
       </Switch>
     </div>
   </Router>
