@@ -23,26 +23,23 @@ export default function CadastrarAtividades() {
                     <form className="form_cadastro">
                         {/* <div className="container_form"> */}
                             <label className="label_form">Título da Atividade</label>
-                            <input placeholder="Digite o título da atividade" className="" type="text"></input>
+                            <input placeholder="Digite o título da atividade" className="input_text" type="text"></input>
 
                             <label className="label_form">Descrição da Atividade</label>
-                            <input placeholder="Digite a descição da atividade" className="" type="text"></input>
+                            <input placeholder="Digite a descição da atividade" className="input_text" type="text"></input>
 
                             <label className="label_form">Premiação da Atividade</label>
-                            <input placeholder="Insira a premiação pela atividade" className="" type="text"></input>
+                            <input placeholder="Insira a premiação pela atividade" className="input_text" type="text"></input>
 
                             <label className="label_form">Setor da Atividade</label>
-                            <select placeholder="Selecione o setor da atividade" className="" type="text"></select>
-
+                            <select placeholder="Selecione o setor da atividade" className="input_select" type="text">
+                                <option value="0" >Selecione o setor da atividade</option>
+                            </select>
                             <label className="label_form">Precisa Validar</label>
-                            <div className="container_btn">
-                                <div className="toggle-btn acstive">
-                                    <input type="checkbox" checked class="cb-value" />
-                                    <span className="round-btn"></span>
-                                </div>
-                            </div>
                         {/* </div> */}
-                        <input type="checkbox" id="switch" /><label className='label_switch' for="switch">Toggle</label>
+                        <div className="container_btn">
+                            <input type="checkbox" id="switch" /><label className='label_switch' for="switch">Toggle</label>
+                        </div>
                         <button className="btn_cadastrar">Cadastrar</button>
                     </form>
                 </div>
