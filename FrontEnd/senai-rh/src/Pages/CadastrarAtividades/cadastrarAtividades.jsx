@@ -8,7 +8,7 @@ export default function CadastrarAtividades() {
 
     return (
         <div className="container_">
-            <div className="con tainer_cards">
+            <div className="container_cards">
                 <div className="container_cadastro">
                     <div className="container_navs">
                         <nav className="nav_links">
@@ -23,16 +23,16 @@ export default function CadastrarAtividades() {
                     <form className="form_cadastro">
                         {/* <div className="container_form"> */}
                             <label className="label_form">Título da Atividade</label>
-                            <input placeholder="Digite o título da atividade" className="" type="text"></input>
+                            <input placeholder="Digite o título da atividade" type="text"></input>
 
                             <label className="label_form">Descrição da Atividade</label>
-                            <input placeholder="Digite a descição da atividade" className="" type="text"></input>
+                            <input placeholder="Digite a descição da atividade" type="text"></input>
 
                             <label className="label_form">Premiação da Atividade</label>
-                            <input placeholder="Insira a premiação pela atividade" className="" type="text"></input>
+                            <input placeholder="Insira a premiação pela atividade" type="text"></input>
 
                             <label className="label_form">Setor da Atividade</label>
-                            <select placeholder="Selecione o setor da atividade" className="" type="text"></select>
+                            <select placeholder="Selecione o setor da atividade" type="text"></select>
 
                             <label className="label_form">Precisa Validar</label>
                             <div className="container_btn">
