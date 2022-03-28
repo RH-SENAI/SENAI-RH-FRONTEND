@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react"
 import Logo from "../../assets/img/Logo_SENAI_PRINCIPAL_VERMELHO2.png"
 import bannerLogin from "../../assets/img/undraw_login_re_4vu2 1.svg"
 import Footer from "../../components/Footer"
+import HeaderLogin from "../../components/HeaderLogin";
 
 export default function Login() {
     const[emailUsuario, setEmailUsuario] = useState('');
@@ -13,13 +14,11 @@ export default function Login() {
 
     return(
         <div className="page">
-            <header className="container_header">
-                <img src={Logo} alt="Logo do senai" className="logo"/>                
-            </header>
+            <HeaderLogin></HeaderLogin>
             <main className="container_main">
 
                     <div className="bannerNome">
-                        <p id="titulo_Senai">Senai-SP</p>                     
+                        <p id="titulo_Senai">SENAI-SP</p>                     
                         <h1 id="titulo_Login">Login</h1>
                         <img src={bannerLogin} className="bannerLogin" alt="" />
                     </div>
@@ -34,7 +33,7 @@ export default function Login() {
                             <label for="senha">Senha</label>
                             <input type="text" name="senha" placeholder="Digite sua senha"/>
                         </div>
-                        <button type="submit">Login</button>
+                        <button type="submit">LOGIN</button>
                     </form>
             </main>
             <Footer/>

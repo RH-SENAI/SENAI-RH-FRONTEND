@@ -9,7 +9,7 @@
 }
 .container{
     width: 1300px;
-    margin: 0 auto;
+	margin: auto 0;
 }
 
 .nonBold{
@@ -26,7 +26,7 @@
 
 .todosOsTextos{
     display: flex;
-    text-align: end;
+    text-align: start;
     flex-direction: column;
 }
 
@@ -46,34 +46,52 @@
 }
 
 .btnRedLogin{
-color:#CB334B;
-font-weight: 1000;
-font-size: 23px;
-line-height: 40px;
-display: flex;
-align-items: center;
-justify-content: center;
-border: none;
-background-color: #F9F9F9;
-border-radius: 20px;
-box-shadow: 12px 12px 15px rgb(166 171 189), -12px -12px 15px rgb(255 255 255);
-width: 14vw;
+    width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    border: none;
+    box-shadow: 12px 12px 15px rgb(166 171 189), -12px -12px 15px rgb(255 255 255);
+    margin-bottom: 100px;
+    color: #CB334B;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 20%;
+    
 }
 
 .btnRedLogin:hover {
     background-color:#CB334B;
-    color:  #F9F9F9;
-  }
+    color:  #F2F2F2;
 
+}
+.conteudoAcesso{
+    width: 48vw;
+}
+.imgAcesso{
+    width: 48vw;
+    display: flex;
+    align-items: flex-end;
+}
 .imagemAcesso{
-    width: 40vw;
-    height: 30vh;
+    height: 55vh;
+}
+.containerOrganizacao{
+    display: flex;
+    height: 74.6vh;
 }
 
+
 .spans{
-    margin-top: 50px;
+margin-top: 50px;
 display: flex;
 flex-direction: column;
-   
+}
 
+.textoEBotao{
+    display: flex;
+    justify-content: end;
+    align-items: center; 
+    flex-direction: column;
+  
 }
