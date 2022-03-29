@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import '../../Assets/Css/header.css'
-import logo from '../../Assets/Img/logo_senai.svg'
-import Perfil from '../../Assets/Img/Perfil.svg'
-import logout from '../../Assets/Img/logout.png'
-import setaBaixo from '../../Assets/Img/seta-para-baixo.png'
-import seta from '../../Assets/Img/seta.svg'
+import logo from '../../Assets/img/logo_senai.svg'
+import Perfil from '../../Assets/img/Perfil.svg'
+import logout from '../../Assets/img/logout.png'
+import setaBaixo from '../../Assets/img/seta-para-baixo.png'
+import seta from '../../Assets/img/seta.svg'
 import { useState } from 'react'
 
 
