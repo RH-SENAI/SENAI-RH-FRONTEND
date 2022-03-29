@@ -44,10 +44,10 @@ export default function CadastrarAtividades() {
                     </form>
                 </div>
                 <div>
-                    <div>
+                    {/* <div className="container_atividades"> */}
                         <h1>Todas Atividades</h1>
 
-                    </div>
+                    {/* </div> */}
                 </div>
             </div>
             <Rodape />
