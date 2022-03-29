@@ -12,6 +12,7 @@ import Cadastro from './Pages/CadastrarUsuario/CadastrarUsuario';
 import TelaAcesso from './Pages/Acesso/telaAcesso'
 import CadastrarAtividades from './Pages/CadastrarAtividades/cadastrarAtividades.jsx';
 import Login from './Pages/Login/login.jsx';
+import AtualizarPerfil from './Pages/atualizarUsuario/atualizarUsuario';
 import reportWebVitals from './reportWebVitals';
 import Democratizacao from './Pages/Democratização/Democratizacao';
 

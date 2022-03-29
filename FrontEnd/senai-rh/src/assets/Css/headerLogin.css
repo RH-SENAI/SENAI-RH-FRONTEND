@@ -5,10 +5,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1); 
+  box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+   
 }
   
 .logoLogin{
+<<<<<<< HEAD
   height: 70%; 
 }
 
+=======
+  height: 70%; 
+}
+
+.logo{
+  height: 70%; 
+}
+
+
+>>>>>>> c468885b452dbd46da823a85b6403b4111b76548
