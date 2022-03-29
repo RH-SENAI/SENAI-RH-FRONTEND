@@ -3,14 +3,15 @@ import "../../Assets/Css/style.css";
 import img1 from "../../Assets/img/1.png"
 import img2 from "../../Assets/img/2.png"
 import img3 from "../../Assets/img/3.png"
+import img4 from "../../Assets/img/4.png"
 import Footer from "../../Components/Footer";
-import HeaderFuncionario from "../../Components/Header/headerFuncionario";
+import HeaderAdm from "../../Components/Header/headerAdm";
 
-export const Redirecionar = () => {
+export const RedirecionarADM = () => {
 
     return (
         <main>
-            <HeaderFuncionario />
+            <HeaderAdm />
             <section className="container_total">
                 <div>
                     <h1 class="titulo">qual seu</h1>
@@ -41,6 +42,14 @@ export const Redirecionar = () => {
                             <a href="#" class="textoRedirecionar">acompanhamento</a>
                         </div>
                     </div>
+                    <div class="container_cadastroUsuario">
+                        <div class="box_numero">
+                            <img className="img_numero" src={img4} alt="3°" />
+                        </div>
+                        <div class="box_texto">
+                            <a href="#" class="textoRedirecionar">cadastro de usuário</a>
+                        </div>
+                    </div>
                 </div>
             </section>
             <Footer />
@@ -48,4 +57,4 @@ export const Redirecionar = () => {
     )
 }
 
-export default Redirecionar;
+export default RedirecionarADM;

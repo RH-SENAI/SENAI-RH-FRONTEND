@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+.caixa {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.caixa input {
+    border: none;
+    width: 500px;
+    height: 50px;
+    border-radius: 50px;
+    box-shadow: inset -4px -3px 4px #FAFBFF, inset 4px 3px 8px #A6ABBD;
+    font-size: 2rem;
+    border-color: #f2f2f2;
+    display: block;
+    padding-left: 15px;
+    outline: none;
+}
+
+.caixa input::placeholder {
+    text-align: center;
+    font-size: 20px;
+    color: #000000;
+    border: none;
+}
+
+
+.container_cursos p{
+    font-size: 2rem;
+    margin-left: 50px;
+    color: #000000;
+}
+
+.container_img {
+    display: flex;
+    justify-content: end;
+    margin-top: 90px;
+}
+
+.container_img img {
+    margin-right: 90px;
+    width: 500px;
+    height: 500px;
+}
