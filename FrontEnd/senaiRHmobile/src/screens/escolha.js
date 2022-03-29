@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     },
 
     titulo: {
-        // colocar a fonte
+        fontFamily: 'Montserrat-Regular',
         color: '#B83F52',
         fontSize: 23,
     },
@@ -101,14 +101,14 @@ const styles = StyleSheet.create({
     },
 
     frase:{
-         // colocar a fonte
+         fontFamily: 'Montserrat-Light',
          color: 'black',
          fontSize: 17,
-         paddingTop: 50,
+         paddingTop: 65,
     },
 
     boxBotão: {
-        paddingTop: 70,
+        paddingTop: 75,
     },
 
     botão1: {
@@ -124,8 +124,8 @@ const styles = StyleSheet.create({
     },
 
     tituloBotão: {
-        // colocar fonte
-        fontSize: 14, 
+        fontFamily: 'Montserrat-SemiBold',
+        fontSize: 16, 
         justifyContent: 'center',
         alignItems: 'center',
         color: '#B83F52',
@@ -143,8 +143,8 @@ const styles = StyleSheet.create({
     },
 
     tituloBotão2: {
-         // colocar fonte
-         fontSize: 14, 
+         fontFamily: 'Montserrat-SemiBold',
+         fontSize: 16, 
          justifyContent: 'center',
          alignItems: 'center',
          color: '#B83F52',
