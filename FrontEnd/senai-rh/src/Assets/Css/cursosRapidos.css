@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+.caixa {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+.caixa input {
+    border: none;
+    width: 400px;
+    height: 50px;
+    border-radius: 50px;
+    box-shadow: inset -4px -3px 4px #FAFBFF, inset 4px 3px 8px #A6ABBD;
+    font-size: 2rem;
+    border-color: #f2f2f2;
+    display: block;
+    padding-left: 15px;
+    text-align: center;
+    outline: none;
+}
+
+.caixa input::placeholder {
+    font-size: 20px;
+    color: #000000;
+    border: none;
+}
+
+.caixa::-webkit-calendar-picker-indicator {
+    color: #000000;
+}
+
+
+.container_cursos{
+    width: 100%;
+    /* height: ; */
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* flex-direction: column; */
+}
+ h1{
+    /* display: flex;
+    justify-content: center; */
+    font-size: 2rem;
+    margin-left: 50px;
+    color: #000000;
+}
+
+.box_cursos{
+    margin-left: 90px;
+    background-color: #f2f2f2;
+    width: 350px;
+    height: 350px;      
+    border-radius: 20px;
+    display: flex;
+    
+    /* justify-content: center; */
+    /* align-items: center ; */
+    flex-direction: column;
+    box-shadow: -17.1981px -17.1981px 34.3963px #FAFBFF, 17.1981px 17.1981px 34.3963px #A6ABBD;
+}
+
+.box_cursos h2{
+    display: flex;
+    justify-content: center;
+}
+
+.box_cursos p{
+    margin-top: 15px;
+    padding-left: 10px;
+}
+
+.banner{
+    width: 22.8vw;
+    height: 15vh;
+    border-radius: 20px 20px 0 0;
+}
+
+.container_img {
+        /* display: flex;
+        justify-content: end; */
+    margin-top: 30px;
+}
+
+.container_img img {
+    margin-right: 90px;
+    width: 450px;
+    height: 450px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.coracao{
+    width: 30px;
+    height: 30px;
+}
+
+.circulo_coracao{
+    display: flex;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 60px;
+    margin-left: 20px;
+    box-shadow: 8px 12px 15px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+}
