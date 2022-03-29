@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import CadastroLight from "../../assets/img/ImgCadastroLight.png";
-import "../../assets/Css/cadastro.css"
-import "../../assets/Css/footer.css"
+import "../../assets/css/cadastro.css"
+import "../../assets/css/footer.css"
 import "../../assets/css/styleG3.css"
 import Footer from "../../components/Footer";
 

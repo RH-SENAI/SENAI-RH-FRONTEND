@@ -1,21 +1,33 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
+import { useParams, Link } from "react-router-dom";
 import "../../assets/css/styleG3.css";
 import Footer from '../../components/Footer';
+import PerfilCarometro from '../../assets/img/PerfilCarometro.png'
+import setaSelectLight from '../../assets/img/SetaSelectLight.png'
+import IconLogout from '../../assets/img/IconLogout.png'
+import SetaCarometro from '../../assets/img/SetaCarometro.png'
+
+
 
 export default function Carometro() {
 
     //States 
     const idSala = useParams();
+    const [idSetor, setIdSetor] = useState(0);
     const [listaFuncionarios, setListaFuncionarios] = useState([]);
     const [showModal, setShowModal] = useState(false);
-    const [ListarSetor, setListaSetor] = useState([]);
+    const [ListaSetor, setListaSetor] = useState([]);
     const [nomeFuncionario, setNomeFuncionario] = useState('');
     const [idFuncionarioModal, setIdFuncionarioModal] = useState(0)
     const [listaFuncionariosAchados, setListaFuncionariosAchados] = useState([])
     const OpenModal = () => {
         setShowModal(prev => !prev);
+    }
+    const [active, setMode] = useState(false);
+    const ToggleMode = () => {
+        setMode(!active)
     }
 
     function BuscarFuncionario() {
@@ -33,7 +45,7 @@ export default function Carometro() {
 
                 if (resposta.status === 200) {
 
-                    setListaAlunos(resposta.data)
+                    setListaFuncionarios(resposta.data)
                     console.log(resposta)
 
                 }
@@ -56,7 +68,7 @@ export default function Carometro() {
 
             .then((resposta) => {
                 if (resposta.status === 200) {
-                    setListaSala(resposta.data)
+                    setListaSetor(resposta.data)
                     console.log(resposta)
                 }
             })
@@ -89,32 +101,57 @@ export default function Carometro() {
                 <div className="container">
                     <div className="containerCarometro">
                         <div className="sidebarCarometro">
-                            <div className="headerSidebar">
-                                <img src={iconFoto} alt="fotoPerfilCarometro" />
-                                <span className="spanSidebar">Username</span>
-                                <span className="spanSidebar">Cargo:</span>
-                            </div>
-                            <div className="bodySidebar">
-                                <span className="spanSidebar">Equipes</span>
-                                <img src={setaSelect} alt="setaSelect" />
+                            <div className='organizacaoSidebar'>
+                                <div className="headerSidebar">
+                                    <img src={PerfilCarometro} alt="fotoPerfilCarometro" />
+                                    <div className="spansSidebar">
+                                        <span className="spanSidebar">Username</span>
+                                        <span className="spanSidebar">Cargo:</span>
+                                    </div>
+
+                                </div>
+                                <div className="bodySidebar">
+                                    <div class='selectCarometro'>
+
+                                        <span className='SpanSidebar'>Equipes <img className='setaSelect' src={setaSelectLight} /></span>
+
+
+                                        <input type='hidden' />
+
+                                        <div class='hiddenCarometro'>
+
+                                            <Link onClick={ToggleMode} className={active ? "textLinkCarometro" : "text_linkCarometro"} to='#' >  Gestão</Link>
+                                            <Link onClick={ToggleMode} className={active ? "textLinkCarometro" : "text_linkCarometro"} to='#' >  Funcionarios</Link>
+
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                             <div className="footerSidebar">
                                 <span className="spanSidebar">Logout</span>
-                                <img src={iconLogout} alt="iconLogout" />
+                                <img className='iconLogout' src={IconLogout} alt="iconLogout" />
                             </div>
 
                         </div>
-                        <div className="CardsCarometro">
+
+                        <div className='conteudoCarometro'>
                             <h1 className="tituloTelas">Carômetro</h1>
-                            <div className="CardFuncionario">
-                                <img src={iconFoto} alt="fotoPerfilCarometro" />
-                                <span className="spanCarometro">Username</span>
-                                <span className="spanCarometro">Cargo:</span>
-                                <img src={seta} alt="setaCard"/>
+                            <div className="cardsCarometro">
+                                <div className="cardFuncionario">
+                                    <img className='fotoCarometro' src={PerfilCarometro} alt="fotoPerfilCarometro" />
+                                    <span className="spanCarometro">Username</span>
+                                    <span className="spanCarometro">Cargo:</span>
+                                    <a onClick={OpenModal} >
+                                        <img className='setaCarometro' src={SetaCarometro} alt="setaCard" />
+                                    </a>
+
+                                </div>
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 </div>
+
             </main>
             <Footer />
         </body>

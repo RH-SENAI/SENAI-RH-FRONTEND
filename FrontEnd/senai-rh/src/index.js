@@ -9,13 +9,15 @@ import './index.css';
 import Cadastro from './Pages/CadastrarUsuario/CadastrarUsuario';
 import TelaAcesso from './Pages/Acesso/telaAcesso'
 import reportWebVitals from './reportWebVitals';
+import Carometro from './Pages/Carometro/Carometro';
 
 const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/" component={TelaAcesso}/>
+        <Route exact path="/" component={Carometro}/>
         <Route path="/Cadastro" component={Cadastro}/> 
+        <Route path="/Acesso" component={TelaAcesso}/> 
 
       </Switch>
     </div>
