@@ -9,8 +9,8 @@ import {
   Switch
 } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import HeaderFuncionario from './Components/Header/headerFuncionario';
-import HeaderAdm from './Components/Header/headerAdm';
+import HeaderFuncionario from './components/Header/headerFuncionario';
+import HeaderAdm from './components/Header/headerAdm';
 import CursosRapidos from './Pages/Cursos/cursosRapidos';
 
 const routing = (

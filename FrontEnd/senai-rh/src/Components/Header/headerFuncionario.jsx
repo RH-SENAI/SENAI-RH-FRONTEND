@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import '../../Assets/Css/header.css'
-import logo from '../../Assets/Img/logo_senai.svg'
-import Perfil from '../../Assets/Img/Perfil.svg'
-import logout from '../../Assets/Img/logout.png'
-import setaBaixo from '../../Assets/Img/seta-para-baixo.png'
-import seta from '../../Assets/Img/seta.svg'
+import logo from '../../Assets/img/logo_senai.svg'
+import Perfil from '../../Assets/img/Perfil.svg'
+import logout from '../../Assets/img/logout.png'
+import setaBaixo from '../../Assets/img/seta-para-baixo.png'
+import seta from '../../Assets/img/seta.svg'
+import sino from '../../Assets/img/sino.svg'
 import { useState } from 'react'
 
 
@@ -16,7 +17,7 @@ export default function HeaderFuncionario() {
     return (
         <header>
             <div className='container container_header' >
-                <img className='logo' src={logo} alt="" />
+                <Link to="/"> <img className='logo' src={logo} alt="" /></Link>
 
 
                 <div class='select'>
@@ -41,6 +42,11 @@ export default function HeaderFuncionario() {
                     <Link class='input input_motivacao'>Motivações</Link>
                     <input type='hidden' name='some_name_to_form' />
                 </div>
+
+                <div className='circulo'>
+                    <img className='img_perfil' src={sino} alt="perfil" />
+                </div>
+
                 <div className='circulo'>
                     <img className='img_perfil' src={Perfil} alt="" />
                 </div>
