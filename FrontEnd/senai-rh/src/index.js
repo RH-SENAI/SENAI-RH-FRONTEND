@@ -14,23 +14,22 @@ import CadastrarAtividades from './Pages/CadastrarAtividades/cadastrarAtividades
 import Login from './Pages/Login/login.jsx';
 import reportWebVitals from './reportWebVitals';
 import Democratizacao from './Pages/Democratização/Democratizacao';
-import reportWebVitals from './reportWebVitals';
-import HeaderFuncionario from './Components/Header/headerFuncionario';
-import HeaderAdm from './Components/Header/headerAdm';
-import CursosRapidos from './Pages/Cursos/cursosRapidos';
+
+import HeaderFuncionario from './components/Header/headerFuncionario';
+import HeaderAdm from './components/Header/headerAdm';
 
 const routing = (
   <Router>
     <div>
       <Switch>
-      <Route exact path="/" component={TelaAcesso}></Route>
+      <Route  path="/telaAcesso" component={TelaAcesso}></Route>
       <Route path="/Login" component={Login}></Route>
       <Route path="/Cadastro" component={Cadastro}/> 
-      <Route exact path="/CadastrarAtividades" component={CadastrarAtividades}/>
-      {/* <Route  path="/" component={Democratizacao}/> */}
+      <Route  path="/CadastrarAtividades" component={CadastrarAtividades}/>
+      <Route exact path="/" component={Democratizacao}/>
         {/* <Route exact path="/" component={HeaderFuncionario} /> */}
         <Route  path="/Adm" component={HeaderAdm} />
-        <Route  path="/CursosRapidos" component={CursosRapidos} />
+
       </Switch>
     </div>
   </Router>

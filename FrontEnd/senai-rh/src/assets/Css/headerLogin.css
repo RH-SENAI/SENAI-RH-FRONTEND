@@ -1,4 +1,4 @@
-.container_header{
+.container_header_login{
   width: 100vw;
   background-color: #f2f2f2;
   height: 12vh;
@@ -8,6 +8,7 @@
   box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1); 
 }
   
-.logo{
+.logoLogin{
   height: 70%; 
 }
+
