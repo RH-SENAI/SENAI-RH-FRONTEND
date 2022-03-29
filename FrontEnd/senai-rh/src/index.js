@@ -17,10 +17,11 @@ const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/" component={Democratizacao}/>
-        <Route path="/Cadastro" component={Cadastro}/> 
-        <Route exact path="/CadastrarAtividades" component={CadastrarAtividades}/>
-        <Route path="/Login" component={Login}></Route>
+      <Route exact path="/" component={TelaAcesso}></Route>
+      <Route path="/Login" component={Login}></Route>
+      <Route path="/Cadastro" component={Cadastro}/> 
+      <Route exact path="/CadastrarAtividades" component={CadastrarAtividades}/>
+      {/* <Route  path="/" component={Democratizacao}/> */}
       </Switch>
     </div>
   </Router>
