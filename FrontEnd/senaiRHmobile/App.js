@@ -13,6 +13,8 @@ import MinhasAtividades from './src/screens/MinhasAtividades';
 import Perfil from './src/screens/perfil';
 import Escolha from './src/screens/escolha';
 import App from './src/screens/app';
+import Atividades from './src/screens/atividades';
+import AtividadeComum from './src/screens/atividadeComum';
 
 export default function Stack() {
   return (
@@ -23,6 +25,8 @@ export default function Stack() {
 
       <AuthStack.Navigator
         initialRouteName="MinhasAtividades"
+        // initialRouteName="Login"
+        initialRouteName="Atividades"
         screenOptions={{
           headerShown: false,
         }}>
@@ -31,6 +35,7 @@ export default function Stack() {
         <AuthStack.Screen name="Perfil" component={Perfil} />
         <AuthStack.Screen name="Escolha" component={Escolha} />
         {/* <AuthStack.Screen name="App" component={App} /> */}
+        <AuthStack.Screen name="Atividades" component={Atividades} />
       </AuthStack.Navigator>
     </NavigationContainer>
   );
