@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -13,7 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // import api from '../services/api';
 
-export default class Login extends Component {
+const Login = () => {
   // constructor(props) {
   //   super(props);
   //   this.state = {
@@ -49,7 +49,6 @@ export default class Login extends Component {
   //   //
   // };
 
-  render() {
     return( 
        <ImageBackground source={require('../../assets/img/Login-senai.png')} style={styles.image}style={StyleSheet.absoluteFillObject}>
      <View style={styles.container}>
@@ -89,7 +88,7 @@ export default class Login extends Component {
        
      )
   } 
-}
+
 
 const styles = StyleSheet.create({
 
@@ -180,3 +179,4 @@ btnText:{
 
 
 });
+export default Login;
