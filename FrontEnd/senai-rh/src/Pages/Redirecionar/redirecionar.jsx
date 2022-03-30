@@ -1,5 +1,5 @@
 import React from "react";
-import "../../Assets/Css/style.css";
+import "../../Assets/Css/redirecionar.css"
 import img1 from "../../Assets/img/1.png"
 import img2 from "../../Assets/img/2.png"
 import img3 from "../../Assets/img/3.png"
@@ -22,7 +22,7 @@ export const Redirecionar = () => {
                             <img className="img_numero" src={img1} alt="1°" />
                         </div>
                         <div class="box_texto">
-                            <a href="#" class="textoRedirecionar">minhas vantagens</a>
+                            <a href="https://www.w3schools.com" class="textoRedirecionar">minhas vantagens</a>
                         </div>
                     </div>
                     <div class="container_motivacoes">

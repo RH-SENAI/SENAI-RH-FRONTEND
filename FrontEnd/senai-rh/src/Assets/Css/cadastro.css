@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap');
-
 *{
     box-sizing: 0;
     margin: 0;
@@ -8,6 +6,7 @@
     word-wrap: normal;
     font-family: 'Montserrat', sans-serif;
 }
+
 
 body{
     background-color: #f2f2f2;
@@ -37,10 +36,14 @@ select {
 
 .formCadastro{
     width: 48%;
+    display: flex;
+    
 }
 .bodyCadastro{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .inputCadastro{
     box-sizing: border-box;
@@ -119,8 +122,8 @@ select {
 
 }
 .botaoCadastro{
-    width: 420px;
-    height: 75px;
+    width: 300px;
+    height: 55px;
     border-radius: 20px;
     background-color: #f2f2f2;
     border: none;
@@ -129,112 +132,8 @@ select {
 
     color: #CB334B;
     font-size: 30px;
-    font-weight: 900;
+    font-weight: 600;
     margin-top: 50px;
 }
 
-/* ======================== Reirecionamento ======================== */
-
-body{
-    height: 100%;
-    background-color: #F2F2F2;
-}
-
-.titulo{
-    font-size: 60px;
-    text-transform: uppercase;
-    font-weight: 300;
-    display: flex;
-    align-items: center;
-    margin-left: 32.5vw;
-    margin-top: 4vh;
-}
-
-.titulo_2{
-    font-size: 50px;
-    text-transform: uppercase;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    margin-left: 32.5vw;
-}
-
-.container_minhasVantagens{
-    display: flex;
-    align-items: center;
-    justify-content:space-evenly;
-    margin-top: 6vh;
-}
-
-.box_numero{
-    width: 5vw;
-    height: 10vh;
-    background-color: #F2F2F2;
-    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 26vw;
-    
-}
-
-.img_numero{
-    width: 3vw;
-    height: 6vh;
-}
-
-.box_texto{
-    width: 26vw;
-    height: 10vh;
-    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
-    border-radius: 26px;
-    background-color: #F2F2F2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 25vw;
-}
-
-.textoRedirecionar{
-    width: 26vw;
-    height: 10vh;
-    border-radius: 26px;
-    text-decoration: none;
-    text-transform: capitalize;
-    font-weight: bold;
-    font-size: 25px;
-    color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s;
-}
-
-.textoRedirecionar:hover {
-    box-shadow: 20px 20px 35px rgba(166, 171, 189, 1), -20px -20px 35px rgba(255, 255, 255, 1);
-    transition: all 0.5s;
-}
-
-.container_motivacoes{
-    display: flex;
-    align-items: center;
-    justify-content:space-evenly;
-    margin-top: 6vh;
-}
-
-.container_acompanhamento{
-    display: flex;
-    align-items: center;
-    justify-content:space-evenly;
-    margin-top: 6vh;
-    margin-bottom: 5.5vh;
-}
-
-.container_cadastroUsuario{
-    display: flex;
-    align-items: center;
-    justify-content:space-evenly;
-    margin-top: 6vh;
-    margin-bottom: 6vh;
-}
+/* ==============================   CADASTRO   ===============================================    */

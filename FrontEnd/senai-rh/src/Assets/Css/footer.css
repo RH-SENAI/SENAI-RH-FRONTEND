@@ -10,12 +10,12 @@
 
 footer{
     background-color:#CB334B;
-    height: 8vh;
-    width: 100%;
+    height:100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: static;
+    width: 100%;
+    position: absolute;
     bottom: 0;
 }
 

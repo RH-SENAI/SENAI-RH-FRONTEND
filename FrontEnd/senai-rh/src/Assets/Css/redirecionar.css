@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap');
+
+*{
+    box-sizing: 0;
+    margin: 0;
+    padding: 0;
+    word-wrap: normal;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    background-color: #F2F2F2;
+}
+
+.container_total{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.titulo{
+    font-size: 50px;
+    text-transform: uppercase;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    margin-top: 10vh;
+    margin-right: 22vw;
+}
+
+.titulo_2{
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.container_minhasVantagens{
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    margin-top: 4vh;
+}
+
+.box_numero{
+    width: 5vw;
+    height: 10vh;
+    background-color: #F2F2F2;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-right: 5vw; 
+}
+
+.img_numero{
+    width: 3vw;
+    height: 6vh;
+}
+
+.box_texto{
+    width: 26vw;
+    height: 10vh;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    border-radius: 26px;
+    background-color: #F2F2F2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textoRedirecionar{
+    width: 26vw;
+    height: 10vh;
+    border-radius: 26px;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 25px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
+}
+
+.textoRedirecionar:hover {
+    box-shadow: 20px 20px 35px rgba(166, 171, 189, 1), -20px -20px 35px rgba(255, 255, 255, 1);
+    transition: all 0.5s;
+}
+
+.container_motivacoes{
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    margin-top: 4vh;
+}
+
+.container_acompanhamento{
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    margin-top: 4vh;
+}
+
+.container_cadastroUsuario{
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    margin-top: 4vh;
+}
