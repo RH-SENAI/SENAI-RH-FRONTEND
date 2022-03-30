@@ -46,18 +46,44 @@ const MinhasAtividades = () => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
+
              
-            <Pressable
-              style={[styles.button, styles.buttonOpen]}
+            <Text style={styles.modalTituloAtividade}>Titulo da atividade</Text>
+            <View style={styles.boxTextos}>
+            <Text style={styles.modaldescricao}>Descrição da Atividade</Text>
+            <Text style={styles.modaldata}>Data que foi entregue</Text>
+            <Text style={styles.modalpessoa}>Nome da pessoa responsavel</Text>
+             </View>
+             <View style={styles.buttonModal}>
+            
+            <Pressable  style={[styles.button, styles.buttonFinalizar]} > 
+            <Text style={styles.TextFinalizar}>Finalizar</Text>
+            {/* <Text style={styles.TextFinalizar}>Entregar</Text> */}
+            </Pressable>
+
+             <Pressable
+              style={[styles.button, styles.buttonClose]}
              
               onPress={() => setModalVisible(!modalVisible)}
              
             >
-              
+              <View style={styles.fechar}>
+              <Image source={require('../../assets/img/fechar.png')} style={styles.Imgfechar}/>
+              <Text style={styles.Textfechar}>Fechar</Text>
+              </View>
               {/* <Text style={styles.textStyle}>Hide Modal</Text> */}
              
             </Pressable>
+
+
+     
+            
+
+             </View>
+            
+        
+            
+
           </View>
         </View>
       </Modal>
@@ -71,10 +97,16 @@ const MinhasAtividades = () => {
       </Pressable>
     </View>
 
-         </View>
+    </View>
          <View style={styles.statusImagem}>
          <Image source={require('../../assets/img/avaliando.png')} style={styles.avaliando}/>
          <Text style={styles.status}>Em avaliação </Text>
+
+         {/* <Image source={require('../../assets/img/pendente.png')} style={styles.avaliando}/>
+         <Text style={styles.status}>Pendente </Text> */}
+
+         {/* <Image source={require('../../assets/img/validado.png')} style={styles.avaliando}/>
+         <Text style={styles.status}>Validado </Text> */}
         
         
          </View>
@@ -163,13 +195,14 @@ status:{
 },
 
 avaliando:{
-  marginRight:10,
+  marginRight:9,
   marginTop:4
 },
 
 statusImagem:{
   flexDirection: 'row',
-  marginTop:5
+  marginTop:2,
+  height:20
 
 },
 
@@ -201,39 +234,116 @@ centeredView: {
 },
 modalView: {
   margin: 20,
-  backgroundColor: "white",
-  borderRadius: 20,
+  backgroundColor: "#F2F2F2",
+  borderRadius: 5,
   padding: 35,
   alignItems: "center",
   shadowColor: "#000",
   shadowOffset: {
     width: 0,
-    height: 2
+    height: 3
   },
   shadowOpacity: 0.25,
   shadowRadius: 4,
-  elevation: 5
+  elevation: 20,
+  height:350,
+  width:280
+ 
 },
 button: {
   borderRadius: 20,
   padding: 10,
-  elevation: 2
+  elevation: 2,
+  height: 40,
+  width:90,
+  elevation: 16,
+  backgroundColor: '#F2F2F2',
+  boxshadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+  borderRadius: 5,
+  // alignItems:'center'
 },
-buttonOpen: {
-  backgroundColor: "#F2F2F2",
+
+
+
+boxTextos: {
+  marginBottom: 30,
+  marginTop:20,
+
 },
-buttonClose: {
-  backgroundColor: "#2196F3",
-},
-textStyle: {
-  color: "white",
-  fontWeight: "bold",
+
+modalTituloAtividade:{
+  fontFamily:"Montserrat-SemiBold",
+  fontSize:20,
+  color:"#0E0E0E",
+  marginBottom:13,
   textAlign: "center"
+
 },
-modalText: {
-  marginBottom: 15,
-  textAlign: "center"
-}
+
+modaldescricao:{
+  fontFamily:"Montserrat-Regular",
+  fontSize:14,
+  color:"#0E0E0E",
+  marginBottom:8,
+},
+
+modaldescricao:{
+  fontFamily:"Montserrat-Regular",
+  fontSize:14,
+  color:"#0E0E0E",
+  marginBottom:25,
+},
+
+modaldata:{
+  fontFamily:"Montserrat-Regular",
+  fontSize:14,
+  color:"#0E0E0E",
+  marginBottom:25,
+},
+
+modalpessoa:{
+  fontFamily:"Montserrat-Regular",
+  fontSize:14,
+  color:"#0E0E0E",
+},
+
+fechar:{
+  flexDirection: 'row', 
+  justifyContent:'space-between',
+// alignItems:'center'
+},
+
+Textfechar:{
+color:"#B83F52",
+fontFamily:"Montserrat-Regular",
+fontSize:14
+},
+
+Imgfechar:{
+   alignItems:'center',
+   marginTop:2
+  },
+
+  buttonFinalizar:{
+   alignItems:'center',
+   marginRight:23
+  },
+
+  TextFinalizar:{
+    color:"#117913",
+    fontFamily:"Montserrat-Regular",
+    fontSize:14
+  },
+
+  buttonModal:{
+    flexDirection: 'row', 
+    justifyContent:'space-between',
+  }
+
+
+
+
+
 
 });
 

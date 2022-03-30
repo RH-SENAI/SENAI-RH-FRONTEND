@@ -24,9 +24,8 @@ export default function Stack() {
       />
 
       <AuthStack.Navigator
-        initialRouteName="MinhasAtividades"
+        initialRouteName="Perfil"
         // initialRouteName="Login"
-        initialRouteName="Atividades"
         screenOptions={{
           headerShown: false,
         }}>

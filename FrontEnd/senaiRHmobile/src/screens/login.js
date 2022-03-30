@@ -154,7 +154,7 @@ btnLogin:{
 width:130,
 height:35,
 fontSize:20,
-backgroundColor: 'pink',
+// backgroundColor: 'pink',
 borderRadius:5,
 alignItems:'center',
 justifyContent:'center',
