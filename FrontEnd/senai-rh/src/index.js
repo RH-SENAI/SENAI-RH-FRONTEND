@@ -24,7 +24,7 @@ const routing = (
     <div>
       <Switch>
       <Route exact path="/" component={AtualizarPerfil}></Route>
-      {/* <Route exact path="/" component={TelaAcesso}></Route> */}
+      <Route path="/TelaAcesso" component={TelaAcesso}></Route>
       <Route path="/Login" component={Login}></Route>
       <Route path="/Cadastro" component={Cadastro}/> 
       {/* <Route exact path="/CadastrarAtividades" component={CadastrarAtividades}/> */}
