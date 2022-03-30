@@ -2,14 +2,14 @@
 // import axios from 'axios';
 import '../../Assets/css/gp1style.css'
 import Rodape from '../../components/Footer';
-import Header from '../../components/Header/headerAdm';
+import Header from '../../components/Header/headerFuncionario';
 import { Link } from 'react-router-dom'
 import img_olho from '../../Assets/img/Olho_Atividades.png'
 
 export default function CadastrarAtividades() {
 
     return (
-        <div>
+        <div className="div_container">
             <Header />
             <div className="container_">
                 <div className="container_cards">
@@ -67,7 +67,6 @@ export default function CadastrarAtividades() {
                                     <img className='img_olho' src={img_olho} alt="Icone de um olho" />
                                 </div>
                                 <hr className='linha_atividade' />
-
                             </div>
                         </div>
                     </div>
