@@ -32,6 +32,7 @@
     height: 1400px;
     border-radius: 20px;
     box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    padding: 30px 0 40px 0;
 }
 
 .container_navs {
@@ -120,14 +121,13 @@ h1 {
     background-color: #CB334B;
     color: #ffff;
     border: none;
-    width: 117px;
-    height: 46px;
+    width: 516px;
+    height: 75px;
     border-radius: 23px;
     margin-top: 28px;
-    font-size: 17px;
+    font-size: 36px;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-	margin-bottom: 32px;
+    font-weight: 600;
 }
 
 /* ==============================   Todas Atividades   ===============================================    */
@@ -205,8 +205,8 @@ input[type=checkbox]{
 .label_switch {
     cursor: pointer;
     text-indent: -9999px;
-    width: 46px;
-    height: 32px;
+    width: 68px;
+    height: 42px;
     background: grey;
     display: block;
     border-radius: 100px;
@@ -218,8 +218,8 @@ input[type=checkbox]{
     position: absolute;
     top: 6px;
     left: 5px;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     background: #fff;
     border-radius: 90px;
     transition: 0.3s;
