@@ -23,6 +23,7 @@
 }
 
 .container_cadastro {
+    margin-top: 70px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -32,6 +33,7 @@
     height: 1400px;
     border-radius: 20px;
     box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    padding: 30px 0 40px 0;
 }
 
 .container_navs {
@@ -120,16 +122,78 @@ h1 {
     background-color: #CB334B;
     color: #ffff;
     border: none;
-    width: 117px;
-    height: 46px;
+    width: 516px;
+    height: 75px;
     border-radius: 23px;
     margin-top: 28px;
-    font-size: 17px;
+    font-size: 36px;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-	margin-bottom: 32px;
+    font-weight: 600;
 }
 
+/* ==============================   Todas Atividades   ===============================================    */
+
+.container_card_atividades {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #f2f2f2;
+    width: 1300px;
+    border-radius: 20px;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    margin: 60px 0;
+    padding: 30px 0 75px 0;
+}
+
+.container_atividades {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+    /* background-color: aqua; */
+}
+
+.box_atividade {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: yellow; */
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    margin: 30px 0;
+}
+
+.organizar_atividade {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    /* background-color: aqua; */
+}
+
+.titulo_atividade {
+    font-size: 33px;
+    font-weight: 500;
+    color: #0E0E0E;
+}
+
+.descricao_atividade {
+    font-size: 23px;
+    font-weight: 400;
+    color: #0E0E0E;
+    margin-top: 8px;
+}
+
+.img_olho {
+    height: 59;
+    width: 72px;
+}
+
+.linha_atividade {
+    width: 100%;
+    border: 2px solid #D9D9D9;
+}
 
 /* ==============================   Switch Button   ===============================================    */
 
@@ -142,8 +206,8 @@ input[type=checkbox]{
 .label_switch {
     cursor: pointer;
     text-indent: -9999px;
-    width: 46px;
-    height: 32px;
+    width: 68px;
+    height: 42px;
     background: grey;
     display: block;
     border-radius: 100px;
@@ -155,8 +219,8 @@ input[type=checkbox]{
     position: absolute;
     top: 6px;
     left: 5px;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     background: #fff;
     border-radius: 90px;
     transition: 0.3s;
@@ -174,3 +238,7 @@ input:checked + label:after {
 /* .label_switch:active:after {
 	width: 130px;
 } */
+
+/* ==============================   Validar Atividades   ===============================================    */
+
+
