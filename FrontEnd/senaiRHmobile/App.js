@@ -7,8 +7,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 const AuthStack = createStackNavigator();
+import Redirecionamento from './src/screens/redirecionamento';
 
-import Login from './src/screens/login';
+
+
 
 export default function Stack() {
   return (
@@ -18,11 +20,11 @@ export default function Stack() {
       />
 
       <AuthStack.Navigator
-        initialRouteName="Login"
+        initialRouteName="redirecionamento"
         screenOptions={{
           headerShown: false,
         }}>
-        <AuthStack.Screen name="Login" component={Login} />
+        <AuthStack.Screen name="redirecionamento" component={Redirecionamento} />
       </AuthStack.Navigator>
     </NavigationContainer>
   );
