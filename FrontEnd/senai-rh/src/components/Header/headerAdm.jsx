@@ -8,7 +8,6 @@ import seta from '../../Assets/img/seta.svg'
 import sino from '../../Assets/img/sino.svg'
 import { useState } from 'react'
 
-
 export default function HeaderAdm() {
     const [active, setMode] = useState(false);
     const ToggleMode = () => {
@@ -16,7 +15,7 @@ export default function HeaderAdm() {
     }
     return (
         <header>
-            <div className='container container_header' >
+            <div className='container container_header'>
 
                 <Link to="/"> <img className='logo' src={logo} alt="" /></Link>
 

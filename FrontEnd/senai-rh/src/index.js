@@ -9,7 +9,9 @@ import {
 import './Assets/css/gp1style.css';
 import reportWebVitals from './reportWebVitals';
 import CadastrarAtividades from './Pages/CadastrarAtividades/cadastrarAtividades';
+import ValidarAtividades from './Pages/ValidarAtividades/validarAtividades';
 import Login from './Pages/Login/login';
+
 
 const routing = (
   <Router>
@@ -17,6 +19,7 @@ const routing = (
       <Switch>
         <Route exact path="/" component = {Login} /> 
         <Route path = "/cadastrarAtividades" component = {CadastrarAtividades}/>
+        <Route path = "/validarAtividades" component = {ValidarAtividades}/>
       </Switch>
     </div>
   </Router>

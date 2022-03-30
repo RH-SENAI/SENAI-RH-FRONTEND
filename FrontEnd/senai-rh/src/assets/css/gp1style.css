@@ -187,7 +187,7 @@ h1 {
 
 .img_olho {
     height: 59;
-    width: 96px;
+    width: 72px;
 }
 
 .linha_atividade {
@@ -238,3 +238,7 @@ input:checked + label:after {
 /* .label_switch:active:after {
 	width: 130px;
 } */
+
+/* ==============================   Validar Atividades   ===============================================    */
+
+
