@@ -24,18 +24,19 @@ export default function Stack() {
       />
 
       <AuthStack.Navigator
-        initialRouteName="MinhasAtividades"
+        // initialRouteName="MinhasAtividades"
         // initialRouteName="Login"
         initialRouteName="Atividades"
         screenOptions={{
           headerShown: false,
         }}>
-        <AuthStack.Screen name="Login" component={Login} />
+        {/* {/* <AuthStack.Screen name="Login" component={Login} />
         <AuthStack.Screen name="MinhasAtividades" component={MinhasAtividades} />
         <AuthStack.Screen name="Perfil" component={Perfil} />
-        <AuthStack.Screen name="Escolha" component={Escolha} />
+        <AuthStack.Screen name="Escolha" component={Escolha} /> */}
         {/* <AuthStack.Screen name="App" component={App} /> */}
         <AuthStack.Screen name="Atividades" component={Atividades} />
+        <AuthStack.Screen name="AtividadeComum" component={AtividadeComum} /> 
       </AuthStack.Navigator>
     </NavigationContainer>
   );

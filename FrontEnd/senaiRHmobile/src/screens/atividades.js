@@ -9,6 +9,8 @@ import {
   TextInput,
 } from 'react-native';
 
+//import {TouchableOpacity} from 'react-native-gesture-handler';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // import api from '../services/api';
@@ -41,34 +43,46 @@ export default class Login extends Component{
 
                     <View style={styles.escritaEscolha}>
                         <View style={styles.itemEquipe}>
-                            <Text> Em Equipe </Text>
+                            <Text style={styles.font}> Em Equipe </Text>
                             <View style={styles.line1}></View>
                         </View>
 
                         <View style={styles.itemIndividual}>
-                            <Text> Individual </Text>
+                            <Text style={styles.font}> Individual </Text>
                             <View style={styles.line2}></View>
                         </View>
 
                     </View>
                     
                     <View style={styles.boxAtividade}>
+                        <Text style={styles.data}> Março 18, 2022 sexta-feira </Text>
                         <View style={styles.box}>
                             <View style={styles.espacoPontos}> 
-                                <Text> 20 pontos </Text>
-                                <Image source={require('../../assets/img/coins.png')}/>
+                                <Text style={styles.pontos}> 20 pontos </Text>
+                                <Image  style={styles.coins} source={require('../../assets/img/coins.png')}/>
                             </View>
-                            <Text style={styles.nomeBox}> Nome da atividade </Text>
-                            <Text style={styles.criador}> Criador da atividade.... </Text>
-                            <Text style={styles.descricao}> Descrição da atividade.... </Text>
+                            <View style={styles.conteudoBox}>
+                                <Text style={styles.nomeBox}> Nome da atividade </Text>
+                                <Text style={styles.criador}> Criador da atividade.... </Text>
+                                <Text style={styles.descricao}> Descrição da atividade.... </Text>
+                            </View>
 
                             <View style={styles.botao}>
-                                <Text style={styles.texto}> Me associar </Text>
+                                <View style={styles.corBotão}>
+                                    <Text style={styles.texto}> Me associar </Text>
+                                </View>
                             </View>
+
+
+                            <View style={styles.botaoIndisp}>
+                                <View style={styles.corIndisp}>
+                                    <Text style={styles.textoIndisp}> Indisponivel </Text>
+                                </View>
+                            </View>
+
                         </View>
                     </View>
 
-                    {/* <Text> Março 18, 2022 sexta-feira </Text> */}
 
 
                 </View>
@@ -120,18 +134,22 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
-        paddingTop: 20,
+        paddingTop: 40,
     },
-
+    
     itemEquipe:{
-        marginRight: 70,
+        marginRight: 80,
         alignItems: 'center',
+    },
+    
+    font: {
         fontFamily: 'Montserrat-SemiBold',
-        fontSize: 18,
+        fontSize: 15,
+        paddingBottom:5,
     },
 
     line1: {
-        width: 86,
+        width: 98,
         borderBottomWidth: 1,
     },
 
@@ -140,7 +158,7 @@ const styles = StyleSheet.create({
     },
 
     line2: {
-        width: 86,
+        width: 98,
         borderBottomWidth: 1,
     },
 
@@ -148,10 +166,15 @@ const styles = StyleSheet.create({
         paddingTop: 50,
     },
 
+    data: {
+        paddingBottom: 10,
+        fontSize: 15,
+        fontFamily: 'Montserrat-SemiBold',
+
+    },
+
     box: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: 164,
+        height: 190,
         width: 285,
         elevation: 20,
         backgroundColor: '#F2F2F2',
@@ -161,29 +184,86 @@ const styles = StyleSheet.create({
     },
 
     espacoPontos: {
-        // justifyContent: 'center',
-        // alignItems: ,
         flexDirection: 'row',
+        justifyContent:'flex-end',
+        paddingTop: 15,
+        paddingRight: 18,
     },
 
+    pontos: {
+        fontSize: 14,
+        fontFamily: 'Montserrat-SemiBold',
+    },
+
+    coins: {
+        width: 18,
+        height: 18,
+    },
+
+    conteudoBox: {
+        paddingTop: 7,
+        paddingLeft: 15,
+    },
+    
     nomeBox: {
         fontFamily: 'Montserrat-Regular',
         color: '#B83F52',
-        fontSize: 13,
+        fontSize: 16,
+    },
+
+    criador: {
+        fontFamily: 'Montserrat-Regular',
+        fontSize: 15,
+        paddingTop: 5,
+    },
+
+    descricao: {
+        fontFamily: 'Montserrat-Regular',
+        fontSize: 15,
+        paddingTop: 5,
     },
 
     botao: {
-        height: 28,
-        width: 79,
-        backgroundColor: '#CB334B',
-        borderRadius: 5,
-        justifyContent: 'center',
         alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: 19,
     },
-
+    
+    corBotão: {
+        borderRadius: 5,
+        height: 40,
+        width: 90,
+        backgroundColor: '#CB334B',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    
     texto: {
         fontFamily: 'Montserrat-SemiBold',
         color: '#E2E2E2',
-        fontSize: 10,
+        fontSize: 11,
+        alignItems: 'center',
     },
+
+    botaoIndisp: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingTop: 19,
+    },
+
+    corIndisp:{
+        borderRadius: 5,
+        height: 40,
+        width: 90,
+        backgroundColor: '#B1B3B6',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    textoIndisp: {
+        fontFamily: 'Montserrat-SemiBold',
+        color: '#000000',
+        fontSize: 11,
+        alignItems: 'center',
+    }
 })
