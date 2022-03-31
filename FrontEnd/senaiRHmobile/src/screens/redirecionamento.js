@@ -15,40 +15,7 @@ import { color } from 'react-native-reanimated';
 // import api from '../services/api';
 
 export default class Redireceionamento extends Component {
-    // constructor(props) {
-    //   super(props);
-    //   this.state = {
-    //     email: '',
-    //     senha: '',
-    //   };
-    // }
-    // //como vamos trabalhar com assync historage,
-    // //nossa funcao tem que ser async.
-    // realizarLogin = async () => {
-    //   //nao temos mais  console log.
-    //   //vamos utilizar console.warn.
 
-    //   //apenas para teste.
-    //   console.warn(this.state.email + ' ' + this.state.senha);
-
-    //   const resposta = await api.post('/login', {
-    //     email: this.state.email, //
-    //     senha: this.state.senha, //
-    //   });
-
-    //   //mostrar no swagger para montar.
-    //   const token = resposta.data.token;
-    //   await AsyncStorage.setItem('userToken', token);
-
-    //   //agora sim podemos descomentar.
-    //   if (resposta.status == 200) {
-    //     this.props.navigation.navigate('Main');
-    //   }
-
-    //   console.warn(token);
-
-    //   //
-    // };
 
     render() {
         return (
@@ -56,14 +23,38 @@ export default class Redireceionamento extends Component {
                 <Text style={styles.h1nonBold}> Qual seu </Text>
                 <Text style={styles.h1Bold}> Interesse </Text>
                 <View style={styles.containerAplicativos}>
-                    <View style={styles.boxAplicativo}>
-                        <Text style={styles.textAplicativo}>Minhas Vantagens</Text>
+                    <View style={styles.containerRedirecionamento}>
+                        <Image
+                            source={require('../assets/img/Redirecionamento1.png')}
+                            style={styles.imgRedirecionamento}
+                        />
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('')}>
+                            <View style={styles.boxAplicativo}>
+                                <Text style={styles.textAplicativo}>Minhas Vantagens</Text>
+                            </View>
+                        </TouchableOpacity>
                     </View>
-                    <View style={styles.boxAplicativo}>
-                        <Text style={styles.textAplicativo}>Motivações</Text>
+                    <View style={styles.containerRedirecionamento}>
+                        <Image
+                            source={require('../assets/img/Redirecionamento2.png')}
+                            style={styles.imgRedirecionamento}
+                        />
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('')}>
+                            <View style={styles.boxAplicativo}>
+                                <Text style={styles.textAplicativo}>Motivações</Text>
+                            </View>
+                        </TouchableOpacity>
                     </View>
-                    <View style={styles.boxAplicativo}>
-                        <Text style={styles.textAplicativo}>Acompanhamento</Text>
+                    <View style={styles.containerRedirecionamento}>
+                        <Image
+                            source={require('../assets/img/Redirecionamento3.png')}
+                            style={styles.imgRedirecionamento}
+                        />
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('')}>
+                            <View style={styles.boxAplicativo}>
+                                <Text style={styles.textAplicativo}>Acompanhamento</Text>
+                            </View>
+                        </TouchableOpacity>
                     </View>
                 </View>
 
@@ -79,7 +70,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#f2f2f2',
         flex: 1,
         alignItems: 'center',
-        marginTop: 100
 
 
     },
@@ -87,7 +77,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '500',
         textTransform: 'uppercase',
-        color: '#000000'
+        color: '#000000',
+        marginTop: 60
     },
     h1Bold: {
         fontSize: 20,
@@ -103,8 +94,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 60,
-        elevation: 20, 
-        boxshadow:' 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1)'
+        marginRight: 30,
+        marginLeft: 30,
+        elevation: 20,
+        boxshadow: ' 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1)'
 
 
 
@@ -120,6 +113,24 @@ const styles = StyleSheet.create({
         shadowOffset: { width: -2, height: 4 },
         shadowOpacity: 0.2,
         shadowRadius: 3,
+    },
+
+    containerRedirecionamento: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+
+    },
+    imgRedirecionamento: {
+        marginTop: 60,
+        
+
+    },
+    containerRedirecionamento: {
+
+        alignItems: 'flex-start',
+        flexDirection: 'row',
+
     },
 
 
