@@ -44,12 +44,12 @@ export default function Login() {
                     <form className="form_Login" onSubmit={FazerLogin}>
                         <div className="inputLabel">
                             <label for="email">Email</label>
-                            <input type="text" name="email" value={emailUsuario} onChange={setEmailUsuario} placeholder="Digite seu email"/>
+                            <input type="email" name="email" value={emailUsuario} onChange={(event) => setEmailUsuario(event.target.value)} placeholder="Digite seu email"/>
                         </div>
 
                         <div className="inputLabel">
                             <label for="senha">Senha</label>
-                            <input type="text" name="senha" value={senhaUsuario} onChange={setSenhaUsuario} placeholder="Digite sua senha"/>
+                            <input type="password" name="senha" value={senhaUsuario} onChange={(event) => setSenhaUsuario(event.target.value)} placeholder="Digite sua senha"/>
                         </div>
                         <button type="submit">Login</button>
                     </form>
