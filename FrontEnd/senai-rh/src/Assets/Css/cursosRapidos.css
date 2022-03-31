@@ -91,7 +91,18 @@
     margin-top: 50px;
     box-shadow: -17.1981px -17.1981px 34.3963px #FAFBFF, 17.1981px 17.1981px 34.3963px #A6ABBD;
 }
-.modal div{
+
+.box_cursos img{
+    cursor: pointer;
+}
+
+
+hr{
+    width: 1px;
+    height: 370px;
+}
+
+/* .modal div{
     margin-right: 90px;
     background-color: #f2f2f2;
     width: 350px;
@@ -103,17 +114,26 @@
     border: none;
     flex-direction: column;
     margin-top: 50px;
+    cursor: pointer;
     box-shadow: -17.1981px -17.1981px 34.3963px #FAFBFF, 17.1981px 17.1981px 34.3963px #A6ABBD;
-}
+} */
 
 .box_cursos h2{
     display: flex;
     justify-content: center;
+    cursor: pointer;
+}
+
+.test{
+    margin-right: 10px;
 }
 
 .box_cursos p{
     margin-top: 15px;
+    margin-right:10px ;
     padding-left: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .banner{
@@ -142,7 +162,7 @@
 
 .circulo_coracao{
     display: flex;
-    margin-top: 15px;
+    margin-top: 20px;
     justify-content: center;
     align-items: center;
     width: 50px;
@@ -166,10 +186,63 @@
 
 
 .ReactModal__Overlay{
-    background-color: blue;
+    background: rgba(201, 201, 201, 0.4) !important;
+    /* width: 200px; */
+    /* height: 200px; */
 }
 
 
-ReactModal__Overlay--after-open {
-  background-color: #000000;
+
+.ReactModal__Content {
+    padding: 0 !important;
+    border-radius: 30px !important;
+    background-color: #f2f2f2 !important;
+}
+
+.box_title  {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.box_title h1 {
+    font-size: 3rem;
+    margin-right: 200px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container_modal{
+    display: flex;
+    justify-content: space-around;
+}
+
+.box_title img{
+    padding: 0;
+    position: relative;
+    width: 780px;
+    height: 300px;
+    border-radius:  0 0  46px 0; 
+}
+.box_descricao{
+    width: 400px;
+    height: 10px;
+    margin-left: 50px;
+}
+.box_descricao div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.box_descricao h4{
+    margin-top: 10px;
+}
+
+.box_cometarios{
+    width: 400px;
+    height: 10px;
+}
+
+.btn_inscreva button{
+    margin-top: 340px;
 }

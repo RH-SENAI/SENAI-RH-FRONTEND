@@ -21,7 +21,6 @@ export default function CursosRapidos() {
 
     function afterOpenModal() {
         subtitle.style.color = '#f00';
-        
     }
 
     function closeModal() {
@@ -37,9 +36,8 @@ export default function CursosRapidos() {
             borderRadius: '20px',
             width: '90%',
             height: '80%',
-            
+            transition: '.2s'
         }
-
     }
 
     return (
@@ -58,72 +56,47 @@ export default function CursosRapidos() {
 
                 <div className='wrap'>
                     <div className='container_wrap'>
-
-
                         <section className='box_cursos'>
-                            <img className='banner' src={logica} alt="" />
-                            <h2>Logica de Programação</h2>
-                            <p> <img src={relogio} alt="duracao" /> 20 Horas </p>
-                            <p><img src={local} alt="local" /> EAD</p>
+                            <img onClick={openModal} className='banner' src={logica} alt="" />
+                            <h2 onClick={openModal}>Logica de Programação</h2>
+                            <p><img className='test' onClick={openModal} src={relogio} alt="duracao" /> 20 Horas </p>
+                            <p><img className='test' onClick={openModal} src={local} alt="local" /> EAD</p>
                             <div className='circulo_coracao'>
                                 <img className='coracao' src={coracao} alt="" />
                             </div>
-                            <button onClick={openModal}>Modal</button>
-
-                            <Modal
-                                style={custonModal}
-                                isOpen={modalIsOpen}
-                                onAfterOpen={afterOpenModal}
-                                onRequestClose={closeModal}
-                            >
-                                <button onClick={closeModal}>Close</button>
-                                <img src={logica} alt="" />
-                                <h3>Opa</h3>
-                            </Modal>
                         </section>
-                        <section className='box_cursos'>
-                            <img className='banner' src={logica} alt="" />
-                            <h2>Logica de Programação</h2>
-                            <p> <img src={relogio} alt="duracao" /> 20 Horas </p>
-                            <p><img src={local} alt="local" /> EAD</p>
-                            <div className='circulo_coracao'>
-                                <img className='coracao' src={coracao} alt="" />
+                        <Modal
+                            isOpen={modalIsOpen}
+                            onRequestClose={closeModal}
+                        >
+                            <div className='box_title'>
+                            <img className='modal_img' src={logica} alt="" />
+                                <h1>Lógica de Programação</h1>
                             </div>
-                            <button onClick={openModal}>Modal</button>
+                            <div className='container_modal'>
 
-                            <Modal
-                                style={custonModal}
-                                isOpen={modalIsOpen}
-                                onAfterOpen={afterOpenModal}
-                                onRequestClose={closeModal}
-                            >
-                                <button onClick={closeModal}>Close</button>
-                                <img src={logica} alt="" />
-                                <h3>Opa</h3>
-                            </Modal>
-                        </section>
-                        <section className='box_cursos'>
-                            <img className='banner' src={logica} alt="" />
-                            <h2>Logica de Programação</h2>
-                            <p> <img src={relogio} alt="duracao" /> 20 Horas </p>
-                            <p><img src={local} alt="local" /> EAD</p>
-                            <div className='circulo_coracao'>
-                                <img className='coracao' src={coracao} alt="" />
+                                <div className='box_descricao'>
+                                    <h2>Descrição:</h2>
+                                    <p>     O curso habilita profissionais técnicos de nível médio em Desenvolvimento de Sistemas, visando suprir a demanda do mercado por profissionais qualificados para atuarem em programação e desenvolvimento de software com condições técnico-tecnológicas para atender às exigências e evolução do segmento.
+                                        Com uma equipe de professores capacitados para contribuir na formação do técnico, o curso conta com uma completa infraestrutura, incluindo laboratórios de informática, necessários para o aperfeiçoamento do programador.</p>
+                                    
+                                    <h4>Empresa:</h4>
+                                    <p>Senai-Santa Cecília</p>
+                                    
+                                </div>
+                                <div className='btn_inscreva'>
+                                    <button>Inscreva-se</button>
+                                </div>
+                                <hr />
+                                <div className='box_cometarios'>
+                                    <h2>Comentario:</h2>
+                                    <p></p>
+                                </div>
+
                             </div>
-                            <button onClick={openModal}>Modal</button>
-
-                            <Modal
-                                style={custonModal}
-                                isOpen={modalIsOpen}
-                                onRequestClose={closeModal}
-                            >
-                                <button onClick={closeModal}>Close</button>
-                                <img src={logica} alt="" />
-                                <h3>Opa</h3>
-                            </Modal>
-                        </section>
-
-
+                            <div>
+                            </div>
+                        </Modal>
                     </div>
                 </div>
 
