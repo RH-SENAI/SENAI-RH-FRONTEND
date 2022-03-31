@@ -16,7 +16,7 @@ import AtualizarPerfil from './Pages/atualizarUsuario/atualizarUsuario';
 import reportWebVitals from './reportWebVitals';
 import Carometro from './Pages/Carometro/Carometro';
 import Democratizacao from './Pages/Democratização/Democratizacao';
-
+import DemocratizacaoAdm from './Pages/Democratização/democratizacaoAdm';
 import HeaderFuncionario from './components/Header/headerFuncionario';
 import HeaderAdm from './components/Header/headerAdm';
 
@@ -25,12 +25,13 @@ const routing = (
     <div>
       <Switch>
       <Route path="/Carometro" component={Carometro}/>
-      <Route exact path="/" component={TelaAcesso}/>
+      {/* <Route exact path="/" component={TelaAcesso}/> */}
       <Route path="/Login" component={Login}/>
       <Route path="/Cadastro" component={Cadastro}/> 
       <Route path ="AtualizarFuncionario" component={AtualizarPerfil}/>
       <Route  path="/CadastrarAtividades" component={CadastrarAtividades}/>
       <Route exact path="/Democratizacao" component={Democratizacao}/>
+      <Route exact path="/DemocratizacaoAdm" component={DemocratizacaoAdm}/>
         {/* <Route exact path="/" component={HeaderFuncionario} /> */}
         <Route  path="/Adm" component={HeaderAdm} />
 
