@@ -3,8 +3,9 @@ import "../../Assets/Css/redirecionar.css";
 import img1 from "../../Assets/img/1.png";
 import img2 from "../../Assets/img/2.png";
 import img3 from "../../Assets/img/3.png";
-import Footer from "../../Components/Footer";
-import HeaderFuncionario from "../../Components/Header/headerFuncionario";
+import Footer from "../../components/Footer";
+import HeaderFuncionario from "../../components/Header/headerFuncionario";
+import { Link } from "react-router-dom";
 
 export const Redirecionar = () => {
 
@@ -38,7 +39,8 @@ export const Redirecionar = () => {
                             <img className="img_numero" src={img3} alt="3°" />
                         </div>
                         <div class="box_texto">
-                            <a href="#" class="textoRedirecionar">acompanhamento</a>
+                        <Link to= "/Carometro" className="textoRedirecionar">Acompanhamento</Link>
+   
                         </div>
                     </div>
                 </div>

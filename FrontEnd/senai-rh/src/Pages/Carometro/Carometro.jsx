@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
 import { useParams, Link } from "react-router-dom";
-import "../../Assets/Css/styleG3.css";
+import "../../Assets/Css/carometro.css";
+import HeaderFuncionario from '../../components/Header/headerFuncionario';
 import Footer from '../../components/Footer';
 import PerfilCarometro from '../../Assets/img/PerfilCarometro.png'
 import setaSelectLight from '../../Assets/img/SetaSelectLight.png'
@@ -97,6 +98,7 @@ export default function Carometro() {
 
     return (
         <body>
+            <HeaderFuncionario />
             <main>
                 <div className="container">
                     <div className="containerCarometro">

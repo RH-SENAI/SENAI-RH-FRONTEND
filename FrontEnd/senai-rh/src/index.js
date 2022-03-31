@@ -17,7 +17,6 @@ import reportWebVitals from './reportWebVitals';
 import Carometro from './Pages/Carometro/Carometro';
 import Democratizacao from './Pages/Democratização/Democratizacao';
 import DemocratizacaoAdm from './Pages/Democratização/democratizacaoAdm';
-import reportWebVitals from './reportWebVitals';
 import Redirecionar from './Pages/Redirecionar/redirecionar'
 import RedirecionarADM from './Pages/Redirecionar/redirecionarADM'
 // import reportWebVitals from './reportWebVitals';
