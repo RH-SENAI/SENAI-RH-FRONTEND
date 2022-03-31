@@ -26,8 +26,19 @@ body{
     display: flex;
     align-items: center;
     margin-top: 10vh;
-    margin-right: 22vw;
+    margin-right: 19vw;
 }
+
+.tituloADM{
+    font-size: 50px;
+    text-transform: uppercase;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    margin-top: 4.5vh;
+    margin-right: 19vw;
+}
+
 
 .titulo_2{
     font-size: 40px;

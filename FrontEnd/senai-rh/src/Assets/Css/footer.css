@@ -5,12 +5,11 @@
     box-sizing: border-box;
     word-wrap: normal;
     font-family: 'Montserrat', sans-serif;
-   
 }
 
 footer{
     background-color:#CB334B;
-    height:100px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;

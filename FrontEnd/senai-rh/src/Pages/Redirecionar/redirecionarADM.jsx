@@ -13,7 +13,7 @@ export const RedirecionarADM = () => {
             <HeaderAdm />
             <section className="container_total">
                 <div>
-                    <h1 class="titulo">qual seu</h1>
+                    <h1 class="tituloADM">qual seu</h1>
                     <h2 class="titulo_2">interesse</h2>
                 </div>
                 <div>

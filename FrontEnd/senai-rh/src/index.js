@@ -19,22 +19,22 @@ import HeaderFuncionario from './Components/Header/headerFuncionario';
 import HeaderAdm from './Components/Header/headerAdm';
 import CursosRapidos from './Pages/Cursos/cursosRapidos';
 import Redirecionar from './Pages/Redirecionar/redirecionar';
-import RedirecionarADM from './Pages/Redirecionar/redirecionarADM'
+import RedirecionarADM from './Pages/Redirecionar/redirecionarADM';
+import HomeVantagens from './Pages/HomeVantagens/homeVantagens';
 
 const routing = (
   <Router>
     <div>
       <Switch>
-      <Route exact path="/" component={TelaAcesso}></Route>
-      <Route path="/Login" component={Login}></Route>
-      <Route path="/Cadastro" component={Cadastro}/> 
-      <Route path="/Redirecionar" component={Redirecionar}/> 
-      <Route path="/RedirecionarADM" component={RedirecionarADM}/> 
-      <Route exact path="/CadastrarAtividades" component={CadastrarAtividades}/>
-      {/* <Route  path="/" component={Democratizacao}/> */}
-        {/* <Route exact path="/" component={HeaderFuncionario} /> */}
-        <Route  path="/Adm" component={HeaderAdm} />
-        <Route  path="/CursosRapidos" component={CursosRapidos} />
+        <Route exact path="/" component={TelaAcesso}></Route>
+        <Route path="/Login" component={Login}></Route>
+        <Route path="/Cadastro" component={Cadastro} />
+        <Route path="/Redirecionar" component={Redirecionar} />
+        <Route path="/RedirecionarADM" component={RedirecionarADM} />
+        <Route exact path="/CadastrarAtividades" component={CadastrarAtividades} />
+        <Route path="/Adm" component={HeaderAdm} />
+        <Route path="/CursosRapidos" component={CursosRapidos} />
+        <Route path="/HomeVantagens" component={HomeVantagens} />
       </Switch>
     </div>
   </Router>
