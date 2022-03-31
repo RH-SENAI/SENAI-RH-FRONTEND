@@ -13,84 +13,111 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // import api from '../services/api';
 
-const Login = () => {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     email: '',
-  //     senha: '',
-  //   };
+export default class Login extends Component{
+  // constructor(props){
+  //     super(props);
+  //     this.state = {
+  //         email: '',
+  //         senha: '',
+  //     }
   // }
-  // //como vamos trabalhar com assync historage,
-  // //nossa funcao tem que ser async.
+
   // realizarLogin = async () => {
-  //   //nao temos mais  console log.
-  //   //vamos utilizar console.warn.
+  //     console.warn(this.state.email + ' ' + this.state.senha);
 
-  //   //apenas para teste.
-  //   console.warn(this.state.email + ' ' + this.state.senha);
+  //     try {
+          
+  //         const resposta = await api.post('/Login', {
+  //             email : this.state.email,
+  //             senha : this.state.senha,
+  //         });
+  
+  //         console.warn(resposta);
+  //         const token = resposta.data.token;
+          
+  //         console.warn(token);
+          
+  //         await AsyncStorage.setItem('userToken', token);
+  //         console.warn(resposta.data);
+          
+  //         if (resposta.status == 200) {
+              
+  //             console.warn('Login Realizado')
+  //             console.warn(jwtDecode(token).role)
 
-  //   const resposta = await api.post('/login', {
-  //     email: this.state.email, //
-  //     senha: this.state.senha, //
-  //   });
+  //             var certo = jwtDecode(token).role
+  //             console.warn('certo ' + certo)
 
-  //   //mostrar no swagger para montar.
-  //   const token = resposta.data.token;
-  //   await AsyncStorage.setItem('userToken', token);
+  //             switch (certo) {
+                  
+  //                 case '1':
+  //                     this.props.navigation.navigate('Admin');
+  //                     break;
+  //                 case '2':
+  //                     this.props.navigation.navigate('ConsultaPaciente');
+  //                     break;
+  //                 case '3':
+  //                     this.props.navigation.navigate('ConsultaMedico');
+  //                     break;
+              
+  //                 default:
+  //                     break;
+  //             } 
+              
+  //         }
 
-  //   //agora sim podemos descomentar.
-  //   if (resposta.status == 200) {
-  //     this.props.navigation.navigate('Main');
-  //   }
-
-  //   console.warn(token);
-
-  //   //
+  //     } catch (error) {
+  //         console.warn(error)
+  //     }
   // };
 
-    return( 
-       <ImageBackground source={require('../../assets/img/Login-senai.png')} style={styles.image}style={StyleSheet.absoluteFillObject}>
-     <View style={styles.container}>
+
+
+    render(){
+      return( 
+        <ImageBackground source={require('../../assets/img/Login-senai.png')} style={styles.image} style={StyleSheet.absoluteFillObject}>
+            <View style={styles.container}>
+            
+              
+            <Text  style={styles.TextEmail}>
+              Email
+              </Text>
+            <TextInput style={styles.inputLogin}
+              placeholder="Digite aqui seu email" placeholderTextColor="#A0A0A0"
+              keyboardType="email-address"
+              />
       
-       
-      <Text  style={styles.TextEmail}>
-       Email
-       </Text>
-      <TextInput style={styles.inputLogin}
-       placeholder="Digite aqui seu email" placeholderTextColor="#A0A0A0"
-       keyboardType="email-address"
-       />
-
-<Text  style={styles.TextSenha}>
-       Senha
-       </Text>
-      <TextInput style={styles.inputLogin}
-       placeholder="Digite aqui sua senha" placeholderTextColor="#A0A0A0"
-       keyboardType="default"
-       />
-
-      <TouchableOpacity
-       style={styles.btnLogin}
-      //  onPress={this.efetuarLogin}
-       > 
-       <Text  style={styles.btnText}>
-       Login
-       </Text>
-
-       </TouchableOpacity>
-
+              <Text  style={styles.TextSenha}>
+              Senha
+              </Text>
+            <TextInput style={styles.inputLogin}
+              placeholder="Digite aqui sua senha" placeholderTextColor="#A0A0A0"
+              keyboardType="default"
+              />
       
-     
-     </View>
+            <TouchableOpacity
+              style={styles.btnLogin}
+            //  onPress={this.efetuarLogin}
+              > 
+              <Text  style={styles.btnText}>
+              Login
+              </Text>
+      
+              </TouchableOpacity>
+      
+            
+            
+              </View>
+   
+        </ImageBackground>
+          
+       )
+    }
+};
 
- </ImageBackground>
-       
-     )
-  } 
 
 
-const styles = StyleSheet.create({
+const tyles = StyleSheet.create({
 
   overlay: {
     ...StyleSheet.absoluteFillObject
@@ -179,4 +206,3 @@ btnText:{
 
 
 });
-export default Login;
