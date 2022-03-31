@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import '../../Assets/Css/header.css'
-import logo from '../../Assets/Img/logo_senai.svg'
-import Perfil from '../../Assets/Img/Perfil.svg'
-import logout from '../../Assets/Img/logout.png'
-import setaBaixo from '../../Assets/Img/seta-para-baixo.png'
-import seta from '../../Assets/Img/seta.svg'
+import '../../assets/Css/header.css'
+import logo from '../../assets/img/logo_senai.svg'
+import Perfil from '../../assets/img/Perfil.svg'
+import logout from '../../assets/img/logout.png'
+import setaBaixo from '../../assets/img/seta-para-baixo.png'
+import seta from '../../assets/img/seta.svg'
 import { useState } from 'react'
 
 
@@ -16,6 +16,7 @@ export default function HeaderFuncionario() {
     return (
         <header>
             <div className='container container_header' >
+
                 <img className='logo' src={logo} alt="" />
 
 
@@ -47,6 +48,7 @@ export default function HeaderFuncionario() {
 
                 <img className='img_logout' src={logout} alt="" />
             </div>
+
         </header>
     )
 }

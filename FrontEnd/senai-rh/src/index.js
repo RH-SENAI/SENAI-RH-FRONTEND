@@ -8,6 +8,7 @@ import {
 import './index.css';
 import CadastrarAtividades from './Pages/CadastrarAtividades/cadastrarAtividades.jsx';
 import Login from './Pages/Login/login.jsx';
+import Usuario from './Pages/Usuario/usuario.jsx';
 import reportWebVitals from './reportWebVitals';
 
 const routing = (
@@ -16,6 +17,7 @@ const routing = (
       <Switch>
         <Route exact path="/" component={CadastrarAtividades}/>
         <Route path="/Login" component={Login}/>
+        <Route path="/Usuario" component={Usuario}/>
       </Switch>
     </div>
   </Router>

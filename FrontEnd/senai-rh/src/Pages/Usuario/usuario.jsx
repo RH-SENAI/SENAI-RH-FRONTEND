@@ -1,43 +1,40 @@
 import React, {useState, useEffect} from "react"
+import { Link } from "react-router-dom"
 import Logo from "../../assets/img/Logo_SENAI_PRINCIPAL_VERMELHO2.png"
 import bannerLogin from "../../assets/img/undraw_login_re_4vu2 1.svg"
 import Footer from "../../components/Footer"
+import Header from "../../components/Header/headerFuncionario"
+import "../../assets/Css/usuario.css"
 
-export default function Login() {
-    const[emailUsuario, setEmailUsuario] = useState('');
-    const[senhaUsuario, setSenhaUsuario] = useState('');
+export default function Usuario() {
     
-    const FazerLogin = (event) =>{
-        //event.preventDefault();
-    } 
 
     return(
-        <div className="page">
-            <header className="container_header">
-                <img src={Logo} alt="Logo do senai" className="logo"/>                
-            </header>
-            <main className="container_main">
-
-                    <div className="bannerNome">
-                        <p id="titulo_Senai">Senai-SP</p>                     
-                        <h1 id="titulo_Login">Login</h1>
-                        <img src={bannerLogin} className="bannerLogin" alt="" />
+        <div>
+            <Header/>
+            <main className="main_Cadastro">
+            <div className="container_cadastro">
+                    <div className="container_navs">
+                        <nav className="nav_links">
+                            <Link className="links">Cadastrar Atividades</Link>
+                            <Link className="links">Validar Atividades</Link>
+                            <Link className="links">Marketplace</Link>
+                            <Link className="links">Usuários</Link>
+                            <Link className="links">Ranking</Link>
+                        </nav>
                     </div>
+                    
+                </div>
+                <div>
+                    <div>
+                        <h1>Todas Atividades</h1>
 
-                    <form className="form_Login">
-                        <div className="inputLabel">
-                            <label for="email">Email</label>
-                            <input type="text" name="email" placeholder="Digite seu email"/>
-                        </div>
-
-                        <div className="inputLabel">
-                            <label for="senha">Senha</label>
-                            <input type="text" name="senha" placeholder="Digite sua senha"/>
-                        </div>
-                        <button type="submit">Login</button>
-                    </form>
+                    </div>
+                </div>
+                    
             </main>
             <Footer/>
         </div>
     )
 }
+
