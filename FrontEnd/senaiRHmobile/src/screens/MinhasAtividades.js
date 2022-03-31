@@ -7,7 +7,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const MinhasAtividades = () => {
+const minhasAtividades = () => {
   
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -347,4 +347,4 @@ Imgfechar:{
 
 });
 
-export default MinhasAtividades;
+export default minhasAtividades;
