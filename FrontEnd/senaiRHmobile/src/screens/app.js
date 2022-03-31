@@ -1,27 +1,50 @@
-// import React, { useState } from "react";
-// import { Button, Text, View } from "react-native";
-// import Modal from "react-native-modal";
+import React from "react";
+import { View } from "react-native";
+import { createAppContainer } from "react-navigation";
+import { createBottomTabNavigator } from "react-navigation-tabs";
 
-// function ModalTester() {
-//   const [isModalVisible, setModalVisible] = useState(false);
+import {MinhasAtividades, Escolha, Atividades, AtividadeComum, Perfil } from "../screens";
+import addButton from "../../components/addButton";
 
-//   const toggleModal = () => {
-//     setModalVisible(!isModalVisible);
-//   };
+// https://dribbble.com/shots/7046707-Nav-Bar-Animation
 
-//   return (
-//     <View style={{ flex: 1 }}>
-//       <Button title="Show modal" onPress={toggleModal} />
-
-//       <Modal isVisible={isModalVisible}>
-//         <View style={{ flex: 1 }}>
-//           <Text>Hello!</Text>
-
-//           <Button title="Hide modal" onPress={toggleModal} />
-//         </View>
-//       </Modal>
-//     </View>
-//   );
-// }
-
-// export default ModalTester;
+const TabNavigator = createBottomTabNavigator(
+    {
+        MinhasAtividades: {
+            screen: MinhasAtividades,
+            navigationOptions: {
+                tabBarIcon: () => <FontAwesome5 name="book-medical" size={24} color="#CDCCCE" />
+            }
+        },
+        Escolha: {
+            screen: Escolha,
+            navigationOptions: {
+                tabBarIcon: () => <FontAwesome5 name="heartbeat" size={24} color="#CDCCCE" />
+            }
+        },
+        Atividades: {
+            screen: Atividades,
+            //screen: () => null,
+            navigationOptions: {
+                tabBarIcon: <addButton />
+            }
+        },
+        AtividadeComum: {
+            screen: AtividadeComum,
+            navigationOptions: {
+                tabBarIcon: () => <FontAwesome5 name="band-aid" size={24} color="#CDCCCE" />
+            }
+        },
+        Perfil: {
+            screen: Perfil,
+            navigationOptions: {
+                tabBarIcon: () => <FontAwesome5 name="user" size={24} color="#CDCCCE" />
+            }
+        }
+    },
+    {
+        tabBarOptions: {
+            showLabel: false
+        }
+    }
+);

@@ -12,7 +12,7 @@ import Login from './src/screens/login';
 import MinhasAtividades from './src/screens/minhasAtividades';
 import Perfil from './src/screens/perfil';
 import Escolha from './src/screens/escolha';
-import App from './src/screens/app';
+import app from './src/screens/app';
 import Atividades from './src/screens/atividades';
 import AtividadeComum from './src/screens/atividadeComum';
 
@@ -20,13 +20,10 @@ export default function Stack() {
   return (
     <NavigationContainer>
       <StatusBar
-        hidden={true}
-      />
+        hidden={true} />
 
       <AuthStack.Navigator
-        initialRouteName="Perfil"
-        // initialRouteName="MinhasAtividades"
-        // initialRouteName="Login"
+        initialRouteName="Login"
         screenOptions={{
           headerShown: false,
         }}>
@@ -35,6 +32,7 @@ export default function Stack() {
         <AuthStack.Screen name="Perfil" component={Perfil} />
         <AuthStack.Screen name="Escolha" component={Escolha} /> 
         {/* <AuthStack.Screen name="App" component={App} />  */}
+        <AuthStack.Screen name="app" component={app} /> 
         <AuthStack.Screen name="Atividades" component={Atividades} />
         <AuthStack.Screen name="AtividadeComum" component={AtividadeComum} /> 
       </AuthStack.Navigator>
