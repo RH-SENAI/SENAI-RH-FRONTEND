@@ -1,5 +1,5 @@
-// import { useState, useEffect } from 'react';
-// import axios from 'axios';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../../Assets/css/gp1style.css'
 import Rodape from '../../components/Footer';
 import Header from '../../components/Header/headerFuncionario';
@@ -7,6 +7,25 @@ import { Link } from 'react-router-dom'
 import img_olho from '../../Assets/img/Olho_Atividades.png'
 
 export default function CadastrarAtividades() {
+    const [listaAtividades, setListaAtividades] = useState([]);
+    const [idAtividade, setIdAtividade] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+
+    function listaAtividades() {
+        axios('http://localhost:5000/api/Atividades', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    setListaAtividades(resposta.data)
+                }
+            })
+
+            .catch(erro => console.log(erro))
+    };
+
 
     return (
         <div className="div_container">
@@ -25,7 +44,6 @@ export default function CadastrarAtividades() {
                         </div>
                         <h1>Cadastrar Atividade</h1>
                         <form className="form_cadastro">
-                            {/* <div className="container_form"> */}
                             <label className="label_form">Título da Atividade</label>
                             <input placeholder="Digite o título da atividade" className="input_text" type="text"></input>
 
@@ -40,7 +58,6 @@ export default function CadastrarAtividades() {
                                 <option value="0" >Selecione o setor da atividade</option>
                             </select>
                             <label className="label_form">Precisa Validar</label>
-                            {/* </div> */}
                             <div className="container_btn">
                                 <input type="checkbox" id="switch" /><label className='label_switch' for="switch">Toggle</label>
                             </div>
