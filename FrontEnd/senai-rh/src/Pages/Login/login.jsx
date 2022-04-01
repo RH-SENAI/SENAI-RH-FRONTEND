@@ -4,6 +4,8 @@ import bannerLogin from "../../Assets/img/undraw_login_re_4vu2 1.svg"
 import Footer from "../../components/Footer"
 import HeaderLogin from "../../components/Header/HeaderLogin";
 import '../../Assets/Css/login.css'
+import { Redirect, useHistory } from "react-router-dom";
+
 
 export default function Login() {
     const[emailUsuario, setEmailUsuario] = useState('');
@@ -12,6 +14,12 @@ export default function Login() {
     const FazerLogin = (event) =>{
         //event.preventDefault();
     } 
+
+    let history = useHistory()
+    function redirecionar() {
+
+        history.push('/redirecionar')
+    }
 
     return(
         <div className="page">
@@ -34,7 +42,7 @@ export default function Login() {
                             <label for="senha">Senha</label>
                             <input type="text" name="senha" placeholder="Digite sua senha"/>
                         </div>
-                        <button type="submit">LOGIN</button>
+                        <button type="submit" onClick={redirecionar}>LOGIN</button>
                     </form>
             </main>
             <Footer/>

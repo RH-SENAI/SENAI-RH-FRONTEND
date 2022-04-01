@@ -1,0 +1,207 @@
+.tituloTelas{
+    font-size: 60px;
+
+}
+.containerCarometro{
+    margin: 100px 0;
+    display: flex;
+    
+}
+.sidebarCarometro{
+    width: 450px;
+    height: 900px;
+    margin-right: 100px;
+    background-color: #f2f2f2;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    padding: 50px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.organizacaoSidebar{
+    display: flex;
+    flex-direction: column;
+}
+.headerSidebar{
+    display: flex;
+}
+.bodySidebar{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid #000;
+    margin-top: 50px;
+}
+.footerSidebar{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid #000;
+    box-sizing: border-box;
+    padding: 0 25px;
+}
+
+.spansSidebar{
+    display: flex;
+    flex-direction: column;
+
+}
+.spanSidebar{
+    font-weight: bolder;
+    font-size: 20px;
+}
+.cardsCarometro{
+    display: flex;
+    justify-content: space-between;
+}
+.cardFuncionario{
+    height: 350px;
+    width: 320px;
+    border-radius: 20px;
+    margin-top: 50px;
+    padding-left: 50px;
+
+    background-color: #f2f2f2;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+
+    transition: all 0.5s;
+}
+
+.cardFuncionario:hover{
+    box-shadow: 20px 20px 35px rgba(166, 171, 189, 1), -20px -20px 35px rgba(255, 255, 255, 1);
+    transition: all 0.5s;;
+}
+.fotoCarometro{
+    margin: 20px 0 10px 30px ;
+}
+.spanCarometro{
+    font-weight: 700;
+    font-size: 20px;
+    color: #000;
+}
+.setaCarometro{
+    margin-bottom: 20px;
+}
+
+
+.selectCarometro :link {
+    color: #000000;
+    text-decoration: none;
+    display: flex;
+    /* flex-direction: column; */
+    
+}
+div.selectCarometro {
+    width: 100%;
+    padding-right: 15px;
+    margin-left: 10px;
+    display: inline-block;
+    border-radius: 2px;
+    position: relative;
+    background: #f2f2f2;
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.setaSelect{
+    margin-left: 200px;
+    height: 15px;
+}
+
+.text_linkCarometro{
+    margin-bottom: 30px;
+    /* border-bottom: 1px solid #000000; */
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000000;
+    display: flex;
+    height: 45px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+    box-shadow:  2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+    
+    /* justify-content: space-around; */
+}
+
+.textLinkCarometro{
+    margin-bottom: 30px;
+    /* border-bottom: 1px solid #000000; */
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000000;
+    display: flex;
+    height: 45px;
+    /* justify-content: space-around; */
+    
+}
+
+.textLinkCarometro:hover    {
+    box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+    /* background-color: #dcdcdc; */
+    border-radius: 20px;
+    width: 100%;
+    display: flex;
+    /* justify-content: center */
+    align-items: center;
+}
+.text_linkCarometro:hover    {
+    box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+    /* background-color: #dcdcdc; */
+    border-radius: 20px;
+    width: 100%;
+    display: flex;
+    /* justify-content: center */
+    align-items: center;
+}
+
+div.selectCarometro span {
+    padding: 5px;
+    width: 100%;
+    text-decoration: none;
+}
+
+/* div.select:after {
+    content: "▼";
+    position: absolute;
+    right: 6px;
+    top: 12px; 
+    font-size: 9px;
+} */
+
+div.selectCarometro .hiddenCarometro {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: .9s;
+    background: #f2f2f2;
+    z-index: 10;
+    width: 20vw;
+    box-shadow: 8px 12px 15px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+    padding: 30px 10px 0;
+    border-radius: 20px;
+    margin-top: 5px;
+    
+}
+
+div.selectCarometro:hover .hiddenCarometro {
+    visibility: visible;
+    opacity: 1;
+}
+
+div.selectCarometro span:hover, div.selectCarometro:hover {
+    background-color: #f2f2f2;
+}

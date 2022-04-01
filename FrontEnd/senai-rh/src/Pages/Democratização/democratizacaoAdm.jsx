@@ -5,7 +5,7 @@ import "../../Assets/Css/democratizacao.css";
 import Footer from '../../components/Footer';
 import FotoPerfil from '../../Assets/img/perfilVazio.svg'
 import Header from '../../components/Header/headerFuncionario'
-import ImgDemocratizacao from '../../Assets/img/ImgDemocratizacao.png'
+import ImgDemocratizacaoAdm from '../../Assets/img/democraAdm.svg'
 
 export default function Democratizacao() {
 
@@ -42,32 +42,27 @@ export default function Democratizacao() {
                 <div className='container containerOrganizador'>
                     <div className='containerDecisao'>
                         <div className='organizadorDecisao'>
-                            <span className='nonBoldDecisao'>Área de</span>
-                            <span className='boldDecisao'>Democratização</span>
+                            <span className='nonBoldDecisao'>Compartilhe suas decisões</span>
+                            <span className='boldDecisao'>com sua equipe! </span>
                             <div className='containerDecisoes'>
-                                <div className='boxDecisao'>
-                                    <span className='tituloDecisao'>Seu gerente tomou a seguinte decisão:</span>
-                                    <p className='paragrafoDecisao'>“Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...”:</p>
-
-                                </div>
                             </div>
-                            <input className='inputCadastroFeedback' type='text' placeholder='Deseja adicionar alguma sugestão de melhora ou feedback?'></input>
+                            <input className='inputCadastroFeedback' type='text' placeholder='Compartilhe aqui a sua ideia:'></input>
                             <button className='btnCadastroFeedback' type="submit">Cadastrar</button>
                         </div>
                         <div className='bannerDemocratizacao'>
-                            <img className='imgDemocratizacao' src={ImgDemocratizacao} />
+                            <img className='imgDemocratizacao' src={ImgDemocratizacaoAdm} />
                         </div>
 
                     </div>
 
                     <div className='containerFeedback'>
-                        <span className='boldFeedback'>Feedbacks</span>
+                        <span className='boldFeedback'>Suas ideias</span>
                         <div className='feedback'>
                             <div className='fotoPerfilFeedback'>
                                 <img className='imgFotoFeedback' src={FotoPerfil} />
                             </div>
                             <div className='boxFeedback'>
-                                <span className='tituloDecisao'>Seu gerente tomou a seguinte decisão:</span>
+                                <span className='tituloDecisao'>Você tomou a seguinte decisão:</span>
                                 <p className='paragrafoDecisao'>“Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...”:</p>
                             </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+// import './index.css';
 // import App from './Pages/Home/App';
 import {
   Route,
@@ -16,23 +16,28 @@ import AtualizarPerfil from './Pages/atualizarUsuario/atualizarUsuario';
 import reportWebVitals from './reportWebVitals';
 import Carometro from './Pages/Carometro/Carometro';
 import Democratizacao from './Pages/Democratização/Democratizacao';
+import DemocratizacaoAdm from './Pages/Democratização/democratizacaoAdm';
+import Redirecionar from './Pages/Redirecionar/redirecionar';
+import RedirecionarADM from './Pages/Redirecionar/redirecionarADM';
+import Perfil from './Pages/Perfil/Perfil';
+// import reportWebVitals from './reportWebVitals';
 
-import HeaderFuncionario from './components/Header/headerFuncionario';
-import HeaderAdm from './components/Header/headerAdm';
 
 const routing = (
   <Router>
     <div>
       <Switch>
-        <Route path="/Carometro" component={Carometro}/>
-      <Route  path="/telaAcesso" component={TelaAcesso}/>
+      <Route path="/Carometro" component={Carometro}/>
+      <Route exact path="/" component={TelaAcesso}/>
       <Route path="/Login" component={Login}/>
       <Route path="/Cadastro" component={Cadastro}/> 
+      <Route path ="AtualizarFuncionario" component={AtualizarPerfil}/>
       <Route  path="/CadastrarAtividades" component={CadastrarAtividades}/>
-      <Route exact path="/" component={Democratizacao}/>
-        {/* <Route exact path="/" component={HeaderFuncionario} /> */}
-        <Route  path="/Adm" component={HeaderAdm} />
-
+      <Route exact path="/Democratizacao" component={Democratizacao}/>
+      <Route exact path="/DemocratizacaoAdm" component={DemocratizacaoAdm}/>
+      <Route path="/Redirecionar" component={Redirecionar} />
+      <Route path="/Perfil" component={Perfil} />
+      <Route path="/RedirecionarADM" component={RedirecionarADM} />
       </Switch>
     </div>
   </Router>
