@@ -16,24 +16,33 @@ body{
 .container_principal{
     display: flex;
     align-items: center;
-    justify-content: center;
+    margin-top: 8vh;
 }
 
-.text_principal{
-    width: 25vw;
-    display: flex;
-    flex-wrap: wrap;
+.imgHome{
+    width: 30vw;
+    height: 25vw;
+    margin-right: 6vw;
+    margin-left: 10vw;
 }
 
 h1{
-    font-size: 48px;
+    font-size: 50px;
     font-weight: 300;
     text-transform: uppercase;
 }
 
 h2{
-    font-size: 45px;
+    font-size: 40px;
     text-transform: uppercase; 
+}
+
+.text_principal{
+    width: 35vw;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 20px;
+    margin-top: 2vh;
 }
 
 .container_empresas{
@@ -41,28 +50,59 @@ h2{
     align-items: center;
     flex-direction: row;
     justify-content: center;
+    background-color: white;
+    margin-top: 12vh;
+}
+
+.imgSetaEsq{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 10%;
+    top: 82.4%;
 }
 
 .box_empresas{
     width: 80%;
+    height: 14vh;
     display: flex;
     align-items: center;
     flex-direction: row; 
     justify-content: space-between;
 }
 
-.imgSetaEsq{
-    width: 40px;
-    height: 40px;
-    margin-right: 5vw;
+.imagemEmpresa{
+    width: 4vw;
+    height: 8vh;
+}
+
+.imagemEmpresa_casasBahia{
+    width: 3vw;
+    height: 8vh;
+}
+
+.imagemEmpresa_airline{
+    width: 6vw;
+    height: 8vh;
 }
 
 .barraDivisao{
     height: 6vh;
+    border: 0.5px solid #636466 ;
 }
 
 .imgSetaDir{
     width: 40px;
     height: 40px;
-    margin-left: 5vw;
+    position: absolute;
+    left: 87.8%;
+    top: 82.4%;
+}
+
+.styles-module_carousel-arrow__26sRw{
+    width: 2vw;
+    height: 6vh;
+    margin-top: 1.1vh;
+    opacity: 0;
+    cursor: pointer;
 }

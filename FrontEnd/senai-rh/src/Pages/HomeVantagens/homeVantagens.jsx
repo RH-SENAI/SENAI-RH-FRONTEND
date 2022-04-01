@@ -1,15 +1,17 @@
 import React from "react";
+import { Carousel } from '@trendyol-js/react-carousel';
+// import { Item } from './yourItem';
 import "../../Assets/Css/homeVantagens.css";
 import HeaderFuncionario from "../../Components/Header/headerFuncionario";
 import Footer from "../../Components/Footer";
 import imgHome from "../../Assets/img/imgHomeVantagem.png";
-import img1 from "../../Assets/img/shopee.png"
-import img2 from "../../Assets/img/casasBahia.png"
-import img3 from "../../Assets/img/mcDonalds.png"
-import img4 from "../../Assets/img/pontoFrio.png"
-import img5 from "../../Assets/img/americanAirlines.png"
-import imgSeta1 from "../../Assets/img/setaEsquerda.svg"
-import imgSeta2 from "../../Assets/img/setaDireita.svg"
+import img1 from "../../Assets/img/shopee.png";
+import img2 from "../../Assets/img/casasBahia.png";
+import img3 from "../../Assets/img/mcDonalds.png";
+import img4 from "../../Assets/img/pontoFrio.png";
+import img5 from "../../Assets/img/americanAirlines.png";
+import imgSeta1 from "../../Assets/img/setaEsquerda.svg";
+import imgSeta2 from "../../Assets/img/setaDireita.svg";
 
 export const HomeVantagens = () => {
 
@@ -28,19 +30,24 @@ export const HomeVantagens = () => {
             </section>
             <section>
                 <div className="container_empresas">
-                    <img className="imgSetaEsq" src={imgSeta1} alt="Seta para esquerda" />
                     <div className="box_empresas">
-                        <img className="imagemEmpresa" src={img1} alt="Imagem empresa" />
-                        <hr className="barraDivisao" />
-                        <img className="imagemEmpresa" src={img2} alt="Imagem empresa" />
-                        <hr className="barraDivisao" />
-                        <img className="imagemEmpresa" src={img3} alt="Imagem empresa" />
-                        <hr className="barraDivisao" />
-                        <img className="imagemEmpresa" src={img4} alt="Imagem empresa" />
-                        <hr className="barraDivisao" />
-                        <img className="imagemEmpresa" src={img5} alt="Imagem empresa" />
+                        <img className="imgSetaEsq" src={imgSeta1} alt="Seta para esquerda" />
+                        <rightArrow />
+                        <img className="imgSetaDir" src={imgSeta2} alt="Seta para direita" /> 
+                        <leftArrow /> 
+                        <Carousel show={4.5} slide={1}>
+                            <img className="imagemEmpresa" src={img1} alt="Imagem empresa" />
+                            {/* <hr className="barraDivisao" /> */}
+                            <img className="imagemEmpresa_casasBahia" src={img2} alt="Imagem empresa" />
+                            {/* <hr className="barraDivisao" /> */}
+                            <img className="imagemEmpresa" src={img3} alt="Imagem empresa" />
+                            {/* <hr className="barraDivisao" /> */}
+                            <img className="imagemEmpresa" src={img4} alt="Imagem empresa" />
+                            {/* <hr className="barraDivisao" /> */}
+                            <img className="imagemEmpresa_airline" src={img5} alt="Imagem empresa" />
+                        </Carousel>
+                                         
                     </div>
-                    <img className="imgSetaDir" src={imgSeta2} alt="Seta para direita" />
                 </div>
             </section>
             <Footer />
