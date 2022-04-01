@@ -2,12 +2,12 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
 import { useParams, Link } from "react-router-dom";
-import "../../assets/css/styleG3.css";
+import "../../Assets/Css/styleG3.css";
 import Footer from '../../components/Footer';
-import PerfilCarometro from '../../assets/img/PerfilCarometro.png'
-import setaSelectLight from '../../assets/img/SetaSelectLight.png'
-import IconLogout from '../../assets/img/IconLogout.png'
-import SetaCarometro from '../../assets/img/SetaCarometro.png'
+import PerfilCarometro from '../../Assets/img/PerfilCarometro.png'
+import setaSelectLight from '../../Assets/img/SetaSelectLight.png'
+import IconLogout from '../../Assets/img/IconLogout.png'
+import SetaCarometro from '../../Assets/img/SetaCarometro.png'
 
 
 
