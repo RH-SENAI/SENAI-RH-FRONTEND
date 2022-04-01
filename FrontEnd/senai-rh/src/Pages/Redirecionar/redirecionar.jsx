@@ -39,7 +39,7 @@ export const Redirecionar = () => {
                             <img className="img_numero" src={img3} alt="3°" />
                         </div>
                         <div class="box_texto">
-                        <Link to= "/Carometro" className="textoRedirecionar">Acompanhamento</Link>
+                        <Link to= "/Perfil" className="textoRedirecionar">Acompanhamento</Link>
    
                         </div>
                     </div>

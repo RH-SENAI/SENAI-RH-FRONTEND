@@ -17,8 +17,9 @@ import reportWebVitals from './reportWebVitals';
 import Carometro from './Pages/Carometro/Carometro';
 import Democratizacao from './Pages/Democratização/Democratizacao';
 import DemocratizacaoAdm from './Pages/Democratização/democratizacaoAdm';
-import Redirecionar from './Pages/Redirecionar/redirecionar'
-import RedirecionarADM from './Pages/Redirecionar/redirecionarADM'
+import Redirecionar from './Pages/Redirecionar/redirecionar';
+import RedirecionarADM from './Pages/Redirecionar/redirecionarADM';
+import Perfil from './Pages/Perfil/Perfil';
 // import reportWebVitals from './reportWebVitals';
 
 
@@ -34,9 +35,8 @@ const routing = (
       <Route  path="/CadastrarAtividades" component={CadastrarAtividades}/>
       <Route exact path="/Democratizacao" component={Democratizacao}/>
       <Route exact path="/DemocratizacaoAdm" component={DemocratizacaoAdm}/>
-        {/* <Route exact path="/" component={HeaderFuncionario} /> */}
-        {/* <Route  path="/Adm" component={HeaderAdm} /> */}
       <Route path="/Redirecionar" component={Redirecionar} />
+      <Route path="/Perfil" component={Perfil} />
       <Route path="/RedirecionarADM" component={RedirecionarADM} />
       </Switch>
     </div>
