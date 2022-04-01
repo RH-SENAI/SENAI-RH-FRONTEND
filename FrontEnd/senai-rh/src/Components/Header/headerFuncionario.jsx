@@ -44,10 +44,6 @@ export default function HeaderFuncionario() {
                 </div>
 
                 <div className='circulo'>
-                    <img className='img_perfil' src={sino} alt="perfil" />
-                </div>
-
-                <div className='circulo'>
                     <img className='img_perfil' src={Perfil} alt="" />
                 </div>
 

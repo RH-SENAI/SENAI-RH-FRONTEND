@@ -1,0 +1,47 @@
+
+.container_cadastroCursos{
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.container_cadastroCursos p{
+    font-size: 2rem;
+    margin-left: 30px;
+}
+
+.box_img_cadastroCurso img{
+    margin-top: 30px;
+    width: 550px;
+    height: 550px;
+}
+
+.inputCadastro_cursos input{
+    box-sizing: border-box;
+    padding:  0 20px;
+    flex-wrap: wrap;
+    /* width: 420px; */
+    /* height: 50px; */
+    background-color: transparent;
+    outline: 0;
+    border: none;
+    border-bottom: 1px solid #000000;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column;   */
+    font-size: 23px;
+    color: #000000;
+    font-weight: bold;
+    /* box-shadow: 0 3px 15px rgba(166, 171, 189, 1); */
+}
+
+.container_forms_cursos{
+    display: flex;
+    justify-content: space-between;
+}
+
+.box_forms_cursos{
+    width: 50%;
+    height: 90%;
+}

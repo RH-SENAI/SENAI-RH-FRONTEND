@@ -29,7 +29,7 @@ export default function HeaderAdm() {
                     <div class='hidden'>
 
                         <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Adm' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Vantagens</Link>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='#' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Cursos</Link>
+                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/CadastrarCursos' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Cursos</Link>
 
                     </div>
 
@@ -50,10 +50,6 @@ export default function HeaderAdm() {
                 <div class='select'>
                     <Link class='input input_motivacao'>Motivações</Link>
                     <input type='hidden' name='some_name_to_form' />
-                </div>
-
-                <div className='circulo'>
-                    <img className='img_perfil' src={sino} alt="perfil" />
                 </div>
                 
                 <div className='circulo'>
