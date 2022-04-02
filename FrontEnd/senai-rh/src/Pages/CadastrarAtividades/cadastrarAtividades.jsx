@@ -22,7 +22,8 @@ export default function CadastrarAtividades() {
     const [isLoading, setIsLoading] = useState(false);
 
     function listarAtividades() {
-        axios('http://localhost:5000/api/Atividades', {
+        axios("http://localhost:5000/api/Atividades"
+        , {
             headers: {
                 // 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -58,7 +59,7 @@ export default function CadastrarAtividades() {
     function cadastrarAtividade(evento) {
         setIsLoading(true);
 
-        evento.preventDefault()
+        // evento.preventDefault()
 
         axios
             .post('http://localhost:5000/api/Atividades', {
@@ -208,14 +209,14 @@ export default function CadastrarAtividades() {
 
 
 
-                                <div className='box_atividade'>
+                                {/* <div className='box_atividade'>
                                     <div className='organizar_atividade'>
                                         <h2 className='titulo_atividade'>Titulo da Atividade</h2>
                                         <p className='descricao_atividade'>Descrição da Atividade ....</p>
                                     </div>
                                     <img className='img_olho' src={img_olho} alt="Icone de um olho" />
                                 </div>
-                                <hr className='linha_atividade' />
+                                <hr className='linha_atividade' /> */}
                             </div>
                         </div>
                     </div>
