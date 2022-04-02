@@ -15,51 +15,51 @@ export default function HeaderAdm() {
     }
     return (
         <header>
-            <div className='container container_header'>
+            <div classNameName='container container_header'>
 
-                <Link to="/"> <img className='logo' src={logo} alt="" /></Link>
+                <Link to="/"> <img classNameName='logo' src={logo} alt="" /></Link>
 
-                <div class='select'>
+                <div className='select'>
 
-                    <p class='input'>Vantagens <img src={setaBaixo} /></p>
+                    <p className='input'>Vantagens <img src={setaBaixo} /></p>
 
                     <input type='hidden' name='some_name_tosetaBaixosetaBaixo_form' />
 
-                    <div class='hidden'>
+                    <div className='hidden'>
 
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Adm' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Vantagens</Link>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='#' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Cursos</Link>
+                        <Link onClick={ToggleMode} classNameName={active ? "textLink" : "text_link"} to='/Adm' > <img classNameName='seta' src={seta} alt="Seta" /> Cadastrar Vantagens</Link>
+                        <Link onClick={ToggleMode} classNameName={active ? "textLink" : "text_link"} to='#' > <img classNameName='seta' src={seta} alt="Seta" /> Cadastrar Cursos</Link>
 
                     </div>
 
                 </div>
 
-                <div class='select'>
-                    <p class='input'>Acompanhar <img src={setaBaixo} /> </p>
+                <div className='select'>
+                    <p className='input'>Acompanhar <img src={setaBaixo} /> </p>
                     <input type='hidden' name='some_name_to_form' />
-                    <div class='hidden'>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='#' > <img className='seta' src={seta} alt="Seta" /> Carômetro</Link>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} > <img className='seta' src={seta} alt="Seta" /> Dashboard</Link>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} > <img className='seta' src={seta} alt="Seta" /> Democratização</Link>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} > <img className='seta' src={seta} alt="Seta" /> Cadastrar Funcionário</Link>
+                    <div className='hidden'>
+                        <Link onClick={ToggleMode} classNameName={active ? "textLink" : "text_link"} to='#' > <img classNameName='seta' src={seta} alt="Seta" /> Carômetro</Link>
+                        <Link onClick={ToggleMode} classNameName={active ? "textLink" : "text_link"} > <img classNameName='seta' src={seta} alt="Seta" /> Dashboard</Link>
+                        <Link onClick={ToggleMode} classNameName={active ? "textLink" : "text_link"} > <img classNameName='seta' src={seta} alt="Seta" /> Democratização</Link>
+                        <Link onClick={ToggleMode} classNameName={active ? "textLink" : "text_link"} > <img classNameName='seta' src={seta} alt="Seta" /> Cadastrar Funcionário</Link>
                     </div>
 
                 </div>
 
-                <div class='select'>
-                    <Link class='input input_motivacao'>Motivações</Link>
+                <div className='select'>
+                    <Link className='input input_motivacao'>Motivações</Link>
                     <input type='hidden' name='some_name_to_form' />
                 </div>
 
-                <div className='circulo'>
-                    <img className='img_perfil' src={sino} alt="perfil" />
+                <div classNameName='circulo'>
+                    <img classNameName='img_perfil' src={sino} alt="perfil" />
                 </div>
                 
-                <div className='circulo'>
-                    <img className='img_perfil' src={Perfil} alt="perfil" />
+                <div classNameName='circulo'>
+                    <img classNameName='img_perfil' src={Perfil} alt="perfil" />
                 </div>
 
-                <img className='img_logout' src={logout} alt="logout" />
+                <img classNameName='img_logout' src={logout} alt="logout" />
 
             </div>
 

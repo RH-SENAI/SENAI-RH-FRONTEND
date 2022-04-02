@@ -12,14 +12,13 @@ import CadastrarAtividades from './Pages/CadastrarAtividades/cadastrarAtividades
 import ValidarAtividades from './Pages/ValidarAtividades/validarAtividades';
 import Login from './Pages/Login/login';
 
-
 const routing = (
   <Router>
     <div>
       <Switch>
         <Route exact path="/" component = {Login} /> 
-        <Route path = "/cadastrarAtividades" component = {CadastrarAtividades}/>
-        <Route path = "/validarAtividades" component = {ValidarAtividades}/>
+        <Route path = "/CadastrarAtividades" component = {CadastrarAtividades}/>
+        <Route path = "/ValidarAtividades" component = {ValidarAtividades}/>
       </Switch>
     </div>
   </Router>
