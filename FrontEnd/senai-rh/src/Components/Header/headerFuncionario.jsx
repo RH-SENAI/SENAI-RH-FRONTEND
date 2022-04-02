@@ -16,7 +16,7 @@ export default function HeaderFuncionario() {
     return (
         <header>
             <div className='container container_header' >
-                <img className='logo' src={logo} alt="" />
+                <img className='logoPrincipal' src={logo} alt="" />
 
 
                 <div class='select'>
@@ -32,9 +32,9 @@ export default function HeaderFuncionario() {
                     <p class='input'>Acompanhar <img src={setaBaixo} /> </p>
                     <input type='hidden' name='some_name_to_form' />
                     <div class='hidden'>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='#' > <img className='seta' src={seta} alt="Seta" /> Carômetro</Link>
+                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Carometro' > <img className='seta' src={seta} alt="Seta" /> Carômetro</Link>
                         <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} > <img className='seta' src={seta} alt="Seta" /> Dashboard</Link>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} > <img className='seta' src={seta} alt="Seta" /> Democratização</Link>
+                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Democratizacao'> <img className='seta' src={seta} alt="Seta" /> Democratização</Link>
                     </div>
                 </div>
                 <div class='select'>

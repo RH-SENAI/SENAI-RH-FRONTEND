@@ -11,57 +11,116 @@ import Footer from "../../components/Footer";
 export default function Cadastro() {
 
     const [listaCargo, setListaCargo] = useState([])
-    const [listaSetor, setListaSetor] = useState([])
     const [listaUnidade, setListaUnidade] = useState([])
+    const [listaTipoUsuario, setListaTipoUsuario] = useState([])
     const [idUsuario, setIdUsuario] = useState(0)
+    const [idTipoUsuario, setIdTipoUsuario] = useState(0)
     const [nomeUsuario, setNomeUsuario] = useState('');
     const [endereco, setEndereco] = useState('')
     const [email, setEmail] = useState('')
+    const [salario, setSalario] = useState(0)
+    // const [trofeu, setTrofeu] = useState(0)
+    // const [saldoMoeda, setSaldoMoeda] = useState(0)
+    // const [nivelSatisfacao, setNivelSatisfacao] = useState(0)
+    // const [vantagens, setVantagens] = useState(0)
     const [senha, setSenha] = useState('')
     const [CPF, setCPF] = useState('')
-    const [idSetor, setIdSetor] = useState(0)
     const [idCargo, setIdCargo] = useState(0)
     const [idUnidade, setIdUnidade] = useState(0)
     const [dataNascimento, setDataNascimento] = useState(new Date())
 
-
-
-    function cadastrarUsuario(event) {
-        event.preventDefault();
-
-        let cadastro = {
-            idUsuario: idUsuario,
-            nomeUsuario: nomeUsuario,
-            endereco: endereco,
-            email: email,
-            senha: senha,
-            CPF: CPF,
-            idUnidade: idUnidade,
-            idCargo: idCargo,
-            idSetor: idSetor,
-            dataNascimento: dataNascimento
-        }
-
-
-        axios.post("", cadastro, {
-
+    function BuscarCargos() {
+        axios.get('http://localhost:5000/api/', {
             headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
             }
+        }
+        )
 
-
-
-        })
-            .then(response => {
-                if (response.status === 201) {
-
-                    console.log('usuario cadastrado')
+            .then((resposta) => {
+                if (resposta.status === 200) {
+                    setListaCargo(resposta.data)
+                    console.log(resposta)
                 }
             })
-            .catch(erro => console.log(erro))
 
+            .catch(erro => console.log(erro))
+    }
+    function BuscarUnidade() {
+        axios.get('http://localhost:5000/api/', {
+            headers: {
+
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        }
+        )
+
+            .then((resposta) => {
+                if (resposta.status === 200) {
+                    setListaUnidade(resposta.data)
+                    console.log(resposta)
+                }
+            })
+
+            .catch(erro => console.log(erro))
+    }
+    function BuscarTipoUsuario() {
+        axios.get('http://localhost:5000/api/', {
+            headers: {
+
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        }
+        )
+
+            .then((resposta) => {
+                if (resposta.status === 200) {
+                    setListaTipoUsuario(resposta.data)
+                    console.log(resposta)
+                }
+            })
+
+            .catch(erro => console.log(erro))
+    }
+    
+
+    const cadastrarUsuario = (event) => {
+
+        event.preventDefault();
+
+        var formData = new FormData();
+
+        const element = document.getElementById('fotoPerfil')
+        const file = element.files[0]
+        formData.append('fotoDePerfil', file, file.name)
+
+        formData.append('idUsuario', idUsuario,);
+        formData.append('', );
+        formData.append('', );
+        formData.append('', );
+        formData.append('', );
+        formData.append('', );
+
+        axios({
+            method: "post",
+            url: "http://localhost:5000/api/Usuarios/Cadastrar",
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data" },
+        })
+            .then(function (response) {
+                console.log(response);
+                console.log('usuario cadastrado')
+              })
+              .catch(function (response) {
+                //handle error
+                console.log(response);
+              });
     }
 
+    useEffect(BuscarCargos, [])
+    useEffect(BuscarUnidade, [])
+    useEffect(BuscarTipoUsuario, [])
 
     return (
         <body>
@@ -83,22 +142,25 @@ export default function Cadastro() {
                                 <input type="text" className="inputCadastro" name="senha" placeholder="Senha" value={senha} onChange={(event) => setSenha(event.target.value)} />
 
                                 {/* <label className="labelCadastro">CPF</label> */}
-                                <input type="text" className="inputCadastro" name="CPF" placeholder="CPF" value={CPF} onChange={(event) => setCPF(event.target.value)} />
+                                <input type="text" className="inputCadastro" pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})" name="CPF" placeholder="CPF" value={CPF} onChange={(event) => setCPF(event.target.value)} />
+                                
+                                {/* <label className="labelCadastro">Salario</label> */}
+                                <input type="number" className="inputCadastro" name="salario" placeholder="Salario" value={salario} onChange={(event) => setSalario(event.target.value)} />
 
                                 {/* <label className="labelCadastro">Setor</label> */}
                                 <select
-                                    name="idSetor"
-                                    value={idSetor}
+                                    name="idTipoUsuario"
+                                    value={idTipoUsuario}
                                     className="inputCadastroSelect"
-                                    onChange={(event) => setIdSetor(event.target.value)}
+                                    onChange={(event) => setListaTipoUsuario(event.target.value)}
 
                                 >
 
-                                    <option value="#">Setor</option>
-                                    {listaSetor.map((event) => {
+                                    <option value="#">Tipo de Usuario</option>
+                                    {listaTipoUsuario.map((event) => {
                                         return (
 
-                                            <option key={event.idSetor} value={event.idSetor}>{event.idSetor}
+                                            <option key={event.idTipoUsuario} value={event.idTipoUsuario}>{event.idTipoUsuario}
                                             </option>
                                         );
                                     })}
@@ -140,7 +202,7 @@ export default function Cadastro() {
 
                                 </select>
                                 {/* <label className="labelCadastro">Data de nascimento</label> */}
-                                <input className="inputCadastroData" value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} type="datetime-local" />
+                                <input className="inputCadastroData" value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} type="date" />
                                 <button onClick={() => cadastrarUsuario} type="submit" className="botaoCadastro"
                                 >Cadastrar</button>
                             </div>

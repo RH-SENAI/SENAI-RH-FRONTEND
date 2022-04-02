@@ -17,7 +17,7 @@ export default function HeaderAdm() {
         <header>
             <div className='container container_header' >
 
-                <img className='logo' src={logo} alt="" />
+                <img className='logoPrincipal' src={logo} alt="" />
 
                 <div class='select'>
 

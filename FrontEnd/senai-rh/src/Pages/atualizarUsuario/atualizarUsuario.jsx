@@ -4,6 +4,7 @@ import '../../Assets/Css/atualizarUsuario.css'
 import Footer from '../../components/Footer';
 import Header from '../../components/Header/headerAdm'
 import { Navigate, useNavigate } from 'react-router-dom';
+import fotoAtualizar from "../../Assets/img/atualizarLight.svg"
 
 // Vai precisar da auth para puxar as informações do usuário pertencente do perfil
 // img perfil
@@ -113,7 +114,8 @@ export default function AtualizarPerfil() {
             <Header />
 
             <div className="main">
-                <div className="container">
+                <div className="container boxOrganizar">
+                    
                     <div className="textoEFoto">
                         <div className="fotoPerfilVazia">
                             <img src="/static/media/Perfil.665c6f4f69a27632e71f989e2539ea7e.svg" alt="Imagem de perfil vazia" />
@@ -121,24 +123,25 @@ export default function AtualizarPerfil() {
                         <h6>Atualizar Foto</h6>
                     </div>
 
-                    <form onSubmit={AtualizarPerfil}>
-                        <label className="labelCadastro">Nome</label>
-                        <input type="text" className="inputCadastro" name="nomeUsuario" placeholder="Digite aqui nome do funcionário" value={nomeUsuario} onChange={(event) => setNomeUsuario(event.target.value)} />
 
-                        <label className="labelCadastro">Endereço</label>
-                        <input type="text" className="inputCadastro" name="endereco" placeholder="Digite aqui o endereço do funcionário" value={endereco} onChange={(event) => setEndereco(event.target.value)} />
+                    <form className="formOrganizar" onSubmit={AtualizarPerfil}>
+                        <label className="labelAtualizar">Nome</label>
+                        <input type="text" className="inputAtualizar" name="nomeUsuario" placeholder="Digite aqui nome do funcionário" value={nomeUsuario} onChange={(event) => setNomeUsuario(event.target.value)} />
 
-                        <label className="labelCadastro">Email</label>
-                        <input type="text" className="inputCadastro" name="email" placeholder="Digite aqui o email do funcionário" value={email} onChange={(event) => setEmail(event.target.value)} />
+                        <label className="labelAtualizar">Endereço</label>
+                        <input type="text" className="inputAtualizar" name="endereco" placeholder="Digite aqui o endereço do funcionário" value={endereco} onChange={(event) => setEndereco(event.target.value)} />
 
-                        <label className="labelCadastro">Unidade</label>
+                        <label className="labelAtualizar">Email</label>
+                        <input type="text" className="inputAtualizar" name="email" placeholder="Digite aqui o email do funcionário" value={email} onChange={(event) => setEmail(event.target.value)} />
+
+                        <label className="labelAtualizar">Unidade</label>
                         <select name="Unidade"
                             value={idUnidade}
                             onChange={event => setIdCargo(event.target.value)}
-                            className="inputCadastroSelect"
+                            className="inputAtualizarSelect"
 
                         >
-                            <option value="#">Unidade</option>
+                            <option value="#">Selecione a Unidade</option>
                             {listaUnidade.map((event) => {
                                 return (
 
@@ -149,14 +152,14 @@ export default function AtualizarPerfil() {
 
                         </select>
                         <button onClick={() => AtualizarPerfil} type="submit" className="botaoAtualizar"
-                                >Atualizar</button>
+                        >Atualizar</button>
                     </form>
-
+                    <div className="boxImgAtualizar">
+                        <img className="imgAtualizar" src={fotoAtualizar} alt="" />
+                    </div>
                 </div>
             </div>
-            <footer>
-                <Footer />
-            </footer>
+            <Footer />
 
 
 

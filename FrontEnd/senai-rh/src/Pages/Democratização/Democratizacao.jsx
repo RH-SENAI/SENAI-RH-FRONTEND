@@ -42,7 +42,7 @@ export default function Democratizacao() {
                 <div className='container containerOrganizador'>
                     <div className='containerDecisao'>
                         <div className='organizadorDecisao'>
-                            <span className='nonBoldDecisao'>Area de</span>
+                            <span className='nonBoldDecisao'>Área de</span>
                             <span className='boldDecisao'>Democratização</span>
                             <div className='containerDecisoes'>
                                 <div className='boxDecisao'>
