@@ -98,20 +98,47 @@ export default function CadastrarAtividades() {
 
     function checkValidar() {
         console.log(necessarioValidar + " - Anterior")
-        // if (necessarioValidar == false) {
-        //     setNecessarioValidar(true)
-        // }else if (necessarioValidar == true) {
-        //     setNecessarioValidar(false)
-        // }
         setNecessarioValidar(!necessarioValidar)
         console.log(necessarioValidar + " - Atual")
     }
+
+    //========================== MODAL =============================//
+
+    const modal = document.querySelector('#my-modal');
+    const modalBtn = document.querySelector('#modal-btn');
+    const closeBtn = document.querySelector('.close');
+
+    // Events
+    modalBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', outsideClick);
+
+    // Open
+    function openModal() {
+        modal.style.display = 'block';
+    }
+
+    // Close
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+
+    // Close If Outside Click
+    function outsideClick(e) {
+        if (e.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    //========================== FIM MODAL ============================//
 
     return (
         <div className="div_container">
             <Header />
             <div className="container_">
                 <div className="container_cards">
+
+                    {/* CADASTRO DE ATIVIDADES */}
                     <div className="container_cadastro">
                         <div className="container_navs">
                             <nav className="nav_links">
@@ -160,23 +187,6 @@ export default function CadastrarAtividades() {
                                 value={recompensaTrofeu}
                                 onChange={(campo) => setRecompensaTrofeu(campo.target.value)}
                             />
-                            {/* <select placeholder="Selecione o setor da atividade"
-                                className="input_select"
-                                name="setor"
-                                id="setor"
-                                value={idSetor}
-                                onChange={(campo) => setIdSetor(campo.target.value)}>
-
-                                <option value="0" >Selecione o setor da atividade</option>
-
-                                {listaSetores.map((setor) => {
-                                    return (
-                                        <option key={setor.idSetor} value={setor.idSetor}>
-                                            {setor.nomeSetor}
-                                        </option>
-                                    )
-                                })}
-                            </select> */}
                             <label className="label_form">Precisa Validar</label>
                             <div className="container_btn">
                                 <input type="checkbox"
@@ -210,6 +220,8 @@ export default function CadastrarAtividades() {
                             )}
                         </form>
                     </div>
+
+                    {/* LISTAGEM DE ATIVIDADES */}
                     <div>
                         <div className="container_card_atividades">
                             <h1>Todas Atividades</h1>
@@ -219,28 +231,31 @@ export default function CadastrarAtividades() {
 
                                     return (
                                         <div key={atividade.idAtividade}>
+                                            <div id="my-modal" class="modal">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <span class="close">&times;</span>
+                                                        <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
+                                                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                                                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                                                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                                                        <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div className='box_atividade'>
                                                 <div className='organizar_atividade'>
                                                     <h2 className='titulo_atividade'>{atividade.nomeAtividade}</h2>
                                                     <p className='descricao_atividade'>{atividade.descricaoAtividade}</p>
                                                 </div>
-                                                <img className='img_olho' src={img_olho} alt="Icone de um olho" />
+                                                <button id="modal-btn" class="button">
+                                                    <img className='img_olho' src={img_olho} alt="Icone de um olho" />
+                                                </button>
                                             </div>
                                             <hr className='linha_atividade' />
                                         </div>
                                     )
                                 })}
-
-
-
-                                {/* <div className='box_atividade'>
-                                    <div className='organizar_atividade'>
-                                        <h2 className='titulo_atividade'>Titulo da Atividade</h2>
-                                        <p className='descricao_atividade'>Descrição da Atividade ....</p>
-                                    </div>
-                                    <img className='img_olho' src={img_olho} alt="Icone de um olho" />
-                                </div>
-                                <hr className='linha_atividade' /> */}
                             </div>
                         </div>
                     </div>
