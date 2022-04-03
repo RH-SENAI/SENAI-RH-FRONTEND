@@ -235,6 +235,12 @@ input:checked + label:after {
 	transform: translateX(-100%);
 }
 
+.text_switch {
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: #878787;
+}
+
 /* .label_switch:active:after {
 	width: 130px;
 } */

@@ -18,16 +18,18 @@ export default function CadastrarAtividades() {
     const [recompensaMoeda, setRecompensaMoeda] = useState('');
     const [recompensaTrofeu, setRecompensaTrofeu] = useState('');
     const [descricaoAtividade, setDescricaoAtividade] = useState('');
-    const [necessarioValidadar, setNecessarioValidar] = useState(false);
+    const [necessarioValidar, setNecessarioValidar] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
+
     function listarAtividades() {
+        console.log(necessarioValidar)
         axios("http://localhost:5000/api/Atividades"
-        , {
-            headers: {
-                // 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
+            , {
+                headers: {
+                    // 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            })
             .then(resposta => {
                 if (resposta.status === 200) {
                     setListaAtividades(resposta.data)
@@ -58,7 +60,6 @@ export default function CadastrarAtividades() {
 
     function cadastrarAtividade(evento) {
         setIsLoading(true);
-
         // evento.preventDefault()
 
         axios
@@ -69,7 +70,7 @@ export default function CadastrarAtividades() {
                 recompensaMoeda: recompensaMoeda,
                 recompensaTrofeu: recompensaTrofeu,
                 descricaoAtividade: descricaoAtividade,
-                necessarioValidadar: necessarioValidadar
+                necessarioValidar: necessarioValidar
             }, {
                 headers: {
                     // 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -95,6 +96,17 @@ export default function CadastrarAtividades() {
             }, 5000));
     }
 
+    function checkValidar() {
+        console.log(necessarioValidar + " - Anterior")
+        // if (necessarioValidar == false) {
+        //     setNecessarioValidar(true)
+        // }else if (necessarioValidar == true) {
+        //     setNecessarioValidar(false)
+        // }
+        setNecessarioValidar(!necessarioValidar)
+        console.log(necessarioValidar + " - Atual")
+    }
+
     return (
         <div className="div_container">
             <Header />
@@ -111,8 +123,8 @@ export default function CadastrarAtividades() {
                             </nav>
                         </div>
                         <h1>Cadastrar Atividade</h1>
-                        
-                        <form onSubmit={cadastrarAtividade} className="form_cadastro">  
+
+                        <form onSubmit={cadastrarAtividade} className="form_cadastro">
                             <label className="label_form">Título da Atividade</label>
                             <input placeholder="Digite o título da atividade"
                                 className="input_text"
@@ -170,9 +182,21 @@ export default function CadastrarAtividades() {
                                 <input type="checkbox"
                                     id="switch"
                                     name="validar"
-                                    value={necessarioValidadar}
-                                    onClick={() => setNecessarioValidar(true)}
+                                    value={necessarioValidar}
+                                    onClick={checkValidar}
                                 /><label className='label_switch' htmlFor="switch">Toggle</label>
+                                {necessarioValidar && (
+                                    <p className='text_switch'>
+                                        SIM
+                                    </p>
+                                )}
+                                {!necessarioValidar && (
+                                    <p className='text_switch'>
+                                        NÃO
+                                    </p>
+                                )}
+
+
                             </div>
                             {isLoading && (
                                 <button disabled className='btn_cadastrar' type='submit'>
@@ -193,18 +217,18 @@ export default function CadastrarAtividades() {
 
                                 {listaAtividades.map((atividade) => {
 
-                                        return (
-                                            <div key={atividade.idAtividade}>
-                                                <div className='box_atividade'>
-                                                    <div className='organizar_atividade'>
-                                                        <h2 className='titulo_atividade'>{atividade.nomeAtividade}</h2>
-                                                        <p className='descricao_atividade'>{atividade.descricaoAtividade}</p>
-                                                    </div>
-                                                    <img className='img_olho' src={img_olho} alt="Icone de um olho"/>
+                                    return (
+                                        <div key={atividade.idAtividade}>
+                                            <div className='box_atividade'>
+                                                <div className='organizar_atividade'>
+                                                    <h2 className='titulo_atividade'>{atividade.nomeAtividade}</h2>
+                                                    <p className='descricao_atividade'>{atividade.descricaoAtividade}</p>
                                                 </div>
-                                                <hr className='linha_atividade'/>
+                                                <img className='img_olho' src={img_olho} alt="Icone de um olho" />
                                             </div>
-                                        )
+                                            <hr className='linha_atividade' />
+                                        </div>
+                                    )
                                 })}
 
 
