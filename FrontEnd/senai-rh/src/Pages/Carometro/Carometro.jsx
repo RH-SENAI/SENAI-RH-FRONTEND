@@ -2,31 +2,25 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
 import { useParams, Link } from "react-router-dom";
-<<<<<<< HEAD
-import "../../Assets/Css/styleG3.css";
-=======
 import "../../Assets/Css/carometro.css";
-import HeaderFuncionario from '../../components/Header/headerFuncionario';
->>>>>>> e860d0b237cfd05013f8079f8f40ce73bae15247
-import Footer from '../../components/Footer';
-import PerfilCarometro from '../../Assets/img/PerfilCarometro.png'
-import setaSelectLight from '../../Assets/img/SetaSelectLight.png'
-import IconLogout from '../../Assets/img/IconLogout.png'
-import SetaCarometro from '../../Assets/img/SetaCarometro.png'
+import HeaderFuncionario from '../../Components/Header/headerFuncionario';
+import Footer from '../../Components/Footer';
+import PerfilCarometro from '../../Assets/Img/PerfilCarometro.png'
+import setaSelectLight from '../../Assets/Img/SetaSelectLight.png'
+import IconLogout from '../../Assets/Img/IconLogout.png'
+import SetaCarometro from '../../Assets/Img/SetaCarometro.png'
 
 
 
 export default function Carometro() {
 
     //States 
-    const idSala = useParams();
-    const [idSetor, setIdSetor] = useState(0);
+    const [idCargo, setIdCargo] = useState(0);
     const [listaFuncionarios, setListaFuncionarios] = useState([]);
     const [showModal, setShowModal] = useState(false);
-    const [ListaSetor, setListaSetor] = useState([]);
+    const [listaCargo, setListaCargo] = useState([]);
     const [nomeFuncionario, setNomeFuncionario] = useState('');
     const [idFuncionarioModal, setIdFuncionarioModal] = useState(0)
-    const [listaFuncionariosAchados, setListaFuncionariosAchados] = useState([])
     const OpenModal = () => {
         setShowModal(prev => !prev);
     }
@@ -36,8 +30,8 @@ export default function Carometro() {
     }
 
     function BuscarFuncionario() {
-        console.log(idSetor)
-        axios.get('', {
+        
+        axios.get('http://localhost:5000/api/Usuarios/Listar', {
 
             headers: {
 
@@ -52,6 +46,7 @@ export default function Carometro() {
 
                     setListaFuncionarios(resposta.data)
                     console.log(resposta)
+                    console.log(idCargo)
 
                 }
 
@@ -62,43 +57,27 @@ export default function Carometro() {
     }
 
 
-    function ListarSetor() {
-        axios.get('', {
-            headers: {
+    // function ListarCargo() {
+    //     axios.get('', {
+    //         headers: {
 
-                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        }
-        )
+    //             Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+    //         }
+    //     }
+    //     )
 
-            .then((resposta) => {
-                if (resposta.status === 200) {
-                    setListaSetor(resposta.data)
-                    console.log(resposta)
-                }
-            })
+    //         .then((resposta) => {
+    //             if (resposta.status === 200) {
+    //                 setListaCargo(resposta.data)
+    //                 console.log(resposta)
+    //             }
+    //         })
 
-            .catch(erro => console.log(erro))
-    }
-
-    function BuscarFuncionario(nomeFuncionario) {
-
-        axios.get('' + nomeFuncionario, {
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
-
-            .then((resposta) => {
-                if (resposta.status == 200) {
-                    setListaFuncionariosAchados(resposta.data)
-                }
-            })
-
-    }
+    //         .catch(erro => console.log(erro))
+    // }
 
     useEffect(BuscarFuncionario, [])
-    useEffect(ListarSetor, [])
+    // useEffect(ListarCargo, [])
 
     return (
         <body>
@@ -125,7 +104,7 @@ export default function Carometro() {
                                         <input type='hidden' />
 
                                         <div class='hiddenCarometro'>
-
+                                        
                                             <Link onClick={ToggleMode} className={active ? "textLinkCarometro" : "text_linkCarometro"} to='#' >  Gestão</Link>
                                             <Link onClick={ToggleMode} className={active ? "textLinkCarometro" : "text_linkCarometro"} to='#' >  Funcionarios</Link>
 
@@ -144,15 +123,23 @@ export default function Carometro() {
                         <div className='conteudoCarometro'>
                             <h1 className="tituloTelas">Carômetro</h1>
                             <div className="cardsCarometro">
-                                <div className="cardFuncionario">
-                                    <img className='fotoCarometro' src={PerfilCarometro} alt="fotoPerfilCarometro" />
-                                    <span className="spanCarometro">Username</span>
-                                    <span className="spanCarometro">Cargo:</span>
-                                    <a onClick={OpenModal} >
-                                        <img className='setaCarometro' src={SetaCarometro} alt="setaCard" />
-                                    </a>
+                                {
 
-                                </div>
+                                    listaFuncionarios.map((usuario) => {
+
+                                            return (
+                                                <div className="cardFuncionario">
+                                                    <img className='fotoCarometro' src={'https://github.com/RH-SENAI/SENAI-RH-BACKEND/tree/back-gp-3-develop/GP3/api-gp3/senai-gp3-webApi/StaticFiles/Images' + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
+                                                    <span className="spanCarometro">{usuario.nome}</span>
+                                                    <span className="spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
+                                                    <a onClick={OpenModal} >
+                                                        <img className='setaCarometro' src={SetaCarometro} alt="setaCard" />
+                                                    </a>
+
+                                                </div>
+                                            )
+                                    })
+                                }
                             </div>
                         </div>
                     </div>

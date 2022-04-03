@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react"
-import Logo from "../../Assets/img/Logo_SENAI_PRINCIPAL_VERMELHO2.png"
-import bannerLogin from "../../Assets/img/undraw_login_re_4vu2 1.svg"
-import Footer from "../../components/Footer"
-import HeaderLogin from "../../components/Header/HeaderLogin";
+import bannerLogin from "../../Assets/Img/undraw_login_re_4vu2 1.svg"
+import Footer from "../../Components/Footer"
+import HeaderLogin from "../../Components/Header/HeaderLogin";
 import '../../Assets/Css/login.css'
 import { Redirect, useHistory } from "react-router-dom";
 

@@ -43,16 +43,30 @@ margin-top: 50px;
 display: flex;
 align-items: center;
 
-padding-left: 20px;
+padding: 0 20px;
 
 border: none;
 outline: 0;
 
 
 }
+
+.inputCadastroFeedback::-webkit-calendar-picker-indicator{
+    background-image: url(../Img/IconCalendario.png);
+    
+    background-size: cover;
+    width: 26px;
+    height: 26px;
+    padding-right: 15px;
+    
+}
 .inputCadastroFeedback::placeholder{
     color: #000;
     font-weight: 600;
+}
+.formCadastroDecisao{
+    display: flex;
+    align-items: flex-start;
 }
 
 .btnCadastroFeedback{
@@ -87,7 +101,6 @@ outline: 0;
     font-size: 50px;
     margin-top: 70px;
 }
-
 .boldDecisao{
     font-style: normal;
     font-weight: 600;
@@ -154,6 +167,7 @@ outline: 0;
 }
 .feedback{
     display: flex;
+    margin-bottom: 50px;
 }
 .boldFeedback{
     font-style: normal;

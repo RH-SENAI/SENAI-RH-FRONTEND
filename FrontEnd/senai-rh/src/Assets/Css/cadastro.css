@@ -19,7 +19,7 @@ select {
     -moz-appearance: none;
     font-size: 15px;
     padding: 0 20px;
-    background: url(../img/SetaSelectLight.png) no-repeat ;
+    background: url(../Img/SetaSelectLight.png) no-repeat ;
 }
 /* ==============================   CADASTRO   ===============================================    */
 
@@ -93,7 +93,7 @@ select {
 
 
 .inputCadastroData::-webkit-calendar-picker-indicator{
-    background-image: url(../img/IconCalendario.png);
+    background-image: url(../Img/IconCalendario.png);
     
     background-size: cover;
     width: 26px;

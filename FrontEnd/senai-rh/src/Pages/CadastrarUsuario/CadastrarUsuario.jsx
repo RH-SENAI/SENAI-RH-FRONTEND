@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import CadastroLight from "../../Assets/img/ImgCadastroLight.png";
+import CadastroLight from "../../Assets/Img/ImgCadastroLight.png";
 import "../../Assets/Css/cadastro.css"
 import "../../Assets/Css/footer.css"
 import "../../Assets/Css/styleG3.css"
-import Footer from "../../components/Footer";
+import Footer from "../../Components/Footer";
 
 
 export default function Cadastro() {
@@ -13,8 +13,7 @@ export default function Cadastro() {
     const [listaCargo, setListaCargo] = useState([])
     const [listaUnidade, setListaUnidade] = useState([])
     const [listaTipoUsuario, setListaTipoUsuario] = useState([])
-    const [idUsuario, setIdUsuario] = useState(0)
-    const [idTipoUsuario, setIdTipoUsuario] = useState(0)
+    const [idTipoUsuario, setIdTipoUsuario] = useState(1)
     const [nomeUsuario, setNomeUsuario] = useState('');
     const [endereco, setEndereco] = useState('')
     const [email, setEmail] = useState('')
@@ -25,8 +24,8 @@ export default function Cadastro() {
     // const [vantagens, setVantagens] = useState(0)
     const [senha, setSenha] = useState('')
     const [CPF, setCPF] = useState('')
-    const [idCargo, setIdCargo] = useState(0)
-    const [idUnidade, setIdUnidade] = useState(0)
+    const [idCargo, setIdCargo] = useState(1)
+    const [idUnidade, setIdUnidade] = useState(1)
     const [dataNascimento, setDataNascimento] = useState(new Date())
 
     function BuscarCargos() {
@@ -91,16 +90,16 @@ export default function Cadastro() {
 
         var formData = new FormData();
 
-        const element = document.getElementById('fotoPerfil')
-        const file = element.files[0]
-        formData.append('fotoDePerfil', file, file.name)
-
-        formData.append('idUsuario', idUsuario,);
-        formData.append('', );
-        formData.append('', );
-        formData.append('', );
-        formData.append('', );
-        formData.append('', );
+        formData.append('nome', nomeUsuario );
+        formData.append('email', email );
+        formData.append('senha', senha );
+        formData.append('dataNascimento', dataNascimento );
+        formData.append('cpf', CPF);
+        formData.append('salario', salario);
+        formData.append('idCargo', idCargo);
+        formData.append('idUnidadeSenai', idUnidade);
+        formData.append('idTipoUsuario', idTipoUsuario);
+        formData.append('localizacaoUsuario', endereco);
 
         axios({
             method: "post",
@@ -152,11 +151,12 @@ export default function Cadastro() {
                                     name="idTipoUsuario"
                                     value={idTipoUsuario}
                                     className="inputCadastroSelect"
-                                    onChange={(event) => setListaTipoUsuario(event.target.value)}
+                                    onChange={(event) => setIdTipoUsuario(event.target.value)}
 
                                 >
 
                                     <option value="#">Tipo de Usuario</option>
+                                    <option value={1}>1</option>
                                     {listaTipoUsuario.map((event) => {
                                         return (
 
@@ -175,6 +175,7 @@ export default function Cadastro() {
 
                                 >
                                     <option value="#">Cargo</option>
+                                    <option value={1}>1</option>
                                     {listaCargo.map((event) => {
                                         return (
 
@@ -187,11 +188,12 @@ export default function Cadastro() {
                                 {/* <label className="labelCadastro">Unidade</label> */}
                                 <select name="Unidade"
                                     value={idUnidade}
-                                    onChange={event => setIdCargo(event.target.value)}
+                                    onChange={event => setIdUnidade(event.target.value)}
                                     className="inputCadastroSelect"
 
                                 >
                                     <option value="#">Unidade</option>
+                                    <option value={1}>1</option>
                                     {listaUnidade.map((event) => {
                                         return (
 

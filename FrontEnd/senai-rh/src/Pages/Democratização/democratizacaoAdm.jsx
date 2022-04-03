@@ -1,39 +1,76 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
+import moment from 'moment';
 import "../../Assets/Css/democratizacao.css";
-import Footer from '../../components/Footer';
-import FotoPerfil from '../../Assets/img/perfilVazio.svg'
-import Header from '../../components/Header/headerFuncionario'
-import ImgDemocratizacaoAdm from '../../Assets/img/democraAdm.svg'
+import "../../Assets/Css/democratizacaoAdm.css";
+import Footer from '../../Components/Footer';
+import FotoPerfil from '../../Assets/Img/perfilVazio.svg'
+import Header from '../../Components/Header/headerFuncionario'
+import ImgDemocratizacaoAdm from '../../Assets/Img/democraAdm.svg'
 
 export default function Democratizacao() {
 
     //States 
-    const [idFeedback, setIdFeedback] = useState(0);
     const [idDecisao, setIdDecisao] = useState(0);
-    const [listaFeedbacks, setListaFeedbacks] = useState([]);
+    const [idUsuario, setIdUsuario] = useState(1);
+    const [descricaoDecisao, setDescricaoDecisao] = useState('');
     const [listaDecisao, setListaDecisao] = useState([]);
-    const [nomeFuncionario, setNomeFuncionario] = useState('');
+    const [dataValidade, setDataValidade] = useState(new Date())
+    const [dataCadastroDecisao] = useState(moment().format("YYYY/MM/DD"));
 
-    // function ListarFeedback() {
-    //     axios.get('', {
-    //         headers: {
+    function ListarDecisao() {
+        axios.get('http://localhost:5000/api/Decisoes', {
+            headers: {
 
-    //             Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
-    //         }
-    //     }
-    //     )
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        }
+        )
 
-    //         .then((resposta) => {
-    //             if (resposta.status === 200) {
-    //                 setListaSala(resposta.data)
-    //                 console.log(resposta)
-    //             }
-    //         })
+            .then((resposta) => {
+                if (resposta.status === 200) {
+                    setListaDecisao(resposta.data)
+                    console.log(resposta)
+                }
+            })
 
-    //         .catch(erro => console.log(erro))
-    // }
+            .catch(erro => console.log(erro))
+    }
+
+    function cadastrarDecisao(event) {
+        event.preventDefault();
+
+
+        let cadastro = {
+            idUsuario: idUsuario,
+            descricaoDecisao: descricaoDecisao,
+            dataDecisao: dataCadastroDecisao,
+            prazoDeAvaliacao: dataValidade
+        }
+        console.log(dataCadastroDecisao)
+        console.log(dataValidade)
+
+        axios.post("http://localhost:5000/api/Decisoes", cadastro, {
+
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+
+
+
+        })
+            .then(response => {
+                if (response.status === 201) {
+
+                    console.log('decisao cadastrada')
+                }
+            })
+            .catch(erro => console.log(erro))
+
+    }
+    useEffect(ListarDecisao, [])
+
 
     return (
         <body>
@@ -46,8 +83,11 @@ export default function Democratizacao() {
                             <span className='boldDecisao'>com sua equipe! </span>
                             <div className='containerDecisoes'>
                             </div>
-                            <input className='inputCadastroFeedback' type='text' placeholder='Compartilhe aqui a sua ideia:'></input>
-                            <button className='btnCadastroFeedback' type="submit">Cadastrar</button>
+                            <form className='formCadastroDecisao' onSubmit={cadastrarDecisao}>
+                                <input className='inputCadastroFeedback' value={descricaoDecisao} onChange={(event) => setDescricaoDecisao(event.target.value)} type='text' placeholder='Compartilhe aqui a sua ideia:'></input>
+                                <input className="inputCadastroFeedback" value={dataValidade} onChange={(event) => setDataValidade(event.target.value)} type="date" />
+                                <button className='btnCadastroFeedback' type="submit">Cadastrar</button>
+                            </form>
                         </div>
                         <div className='bannerDemocratizacao'>
                             <img className='imgDemocratizacao' src={ImgDemocratizacaoAdm} />
@@ -57,18 +97,22 @@ export default function Democratizacao() {
 
                     <div className='containerFeedback'>
                         <span className='boldFeedback'>Suas ideias</span>
-                        <div className='feedback'>
-                            <div className='fotoPerfilFeedback'>
-                                <img className='imgFotoFeedback' src={FotoPerfil} />
-                            </div>
-                            <div className='boxFeedback'>
-                                <span className='tituloDecisao'>Você tomou a seguinte decisão:</span>
-                                <p className='paragrafoDecisao'>“Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...”:</p>
-                            </div>
+                        {
+                            listaDecisao.map((decisao) => {
+                                return (
+                                    <div className='feedback'>
+                                        <div className='fotoPerfilFeedback'>
+                                            <img className='imgFotoFeedback' src={FotoPerfil} />
+                                        </div>
+                                        <div className='boxFeedback'>
+                                            <span className='tituloDecisao'>Você tomou a seguinte decisão:</span>
+                                            <p className='paragrafoDecisao'>{decisao.descricaoDecisao}</p>
+                                        </div>
 
-                        </div>
-
-
+                                    </div>
+                                )
+                            })
+                        }
                     </div>
                 </div>
 

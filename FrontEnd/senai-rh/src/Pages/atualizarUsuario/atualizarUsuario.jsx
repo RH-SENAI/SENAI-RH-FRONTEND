@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import '../../Assets/Css/atualizarUsuario.css'
-import Footer from '../../components/Footer';
-import Header from '../../components/Header/headerAdm'
+import Footer from '../../Components/Footer';
+import Header from '../../Components/Header/headerAdm'
 import { Navigate, useNavigate } from 'react-router-dom';
-import fotoAtualizar from "../../Assets/img/atualizarLight.svg"
+import fotoAtualizar from "../../Assets/Img/atualizarLight.svg"
 
 // Vai precisar da auth para puxar as informações do usuário pertencente do perfil
 // img perfil

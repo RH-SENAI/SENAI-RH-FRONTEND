@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
 import "../../Assets/Css/democratizacao.css";
-import Footer from '../../components/Footer';
-import FotoPerfil from '../../Assets/img/perfilVazio.svg'
-import Header from '../../components/Header/headerFuncionario'
-import ImgDemocratizacao from '../../Assets/img/ImgDemocratizacao.png'
+import Footer from '../../Components/Footer';
+import FotoPerfil from '../../Assets/Img/perfilVazio.svg'
+import Header from '../../Components/Header/headerFuncionario'
+import ImgDemocratizacao from '../../Assets/Img/ImgDemocratizacao.png'
 
 export default function Democratizacao() {
 
