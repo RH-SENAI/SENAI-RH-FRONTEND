@@ -8,6 +8,7 @@ import img_olho from '../../Assets/img/Olho_Atividades.png'
 
 export default function CadastrarAtividades() {
     const [listaAtividades, setListaAtividades] = useState([]);
+    const [listaAtividadesValidar, setListaAtividadesValidar] = useState([]);
     // const [listaSetores, setListaSetores] = useState([]);
     const [idAtividade, setIdAtividade] = useState('');
     const [idSetor, setIdSetor] = useState('');
@@ -19,12 +20,32 @@ export default function CadastrarAtividades() {
     const [recompensaTrofeu, setRecompensaTrofeu] = useState('');
     const [descricaoAtividade, setDescricaoAtividade] = useState('');
     const [necessarioValidar, setNecessarioValidar] = useState(false);
+    
     const [isLoading, setIsLoading] = useState(false);
-
-
+    
+    
     function listarAtividades() {
         console.log(necessarioValidar)
         axios("http://localhost:5000/api/Atividades"
+        , {
+            headers: {
+                // 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
+        .then(resposta => {
+            if (resposta.status === 200) {
+                setListaAtividades(resposta.data)
+            }
+        })
+        
+        .catch(erro => console.log(erro))
+    };
+
+    useEffect(listarAtividades, []);
+
+    function listarAtividadesValidar() {
+        console.log(necessarioValidar)
+        axios("http://localhost:5000/api/Atividades/ListaValidar"
             , {
                 headers: {
                     // 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -32,14 +53,14 @@ export default function CadastrarAtividades() {
             })
             .then(resposta => {
                 if (resposta.status === 200) {
-                    setListaAtividades(resposta.data)
+                    setListaAtividadesValidar(resposta.data)
                 }
             })
 
             .catch(erro => console.log(erro))
     };
 
-    useEffect(listarAtividades, []);
+    useEffect(listarAtividadesValidar, []);
 
     // function listarSetores() {
     //     axios('http://localhost:5000/api/Setores', {
@@ -108,22 +129,22 @@ export default function CadastrarAtividades() {
     const modalBtn = document.querySelector('#modal-btn');
     const closeBtn = document.querySelector('.close');
 
-    // Events
+    // // Events
     modalBtn.addEventListener('click', openModal);
     closeBtn.addEventListener('click', closeModal);
     window.addEventListener('click', outsideClick);
 
-    // Open
+    // // Open
     function openModal() {
         modal.style.display = 'block';
     }
 
-    // Close
+    // // Close
     function closeModal() {
         modal.style.display = 'none';
     }
 
-    // Close If Outside Click
+    // // Close If Outside Click
     function outsideClick(e) {
         if (e.target == modal) {
             modal.style.display = 'none';
@@ -259,6 +280,46 @@ export default function CadastrarAtividades() {
                             </div>
                         </div>
                     </div>
+
+                    {/* LISTAGEM DE ATIVIDADES VALIDAR */}
+                    <div>
+                        <div className="container_card_atividades">
+                            <h1>Validar Atividades</h1>
+                            <div className='container_atividades'>
+
+                                {listaAtividadesValidar.map((atividade) => {
+
+                                    return (
+                                        <div key={atividade.idAtividade}>
+                                            <div id="my-modal" class="modal">
+                                                <div className="modal-content">
+                                                    <div className="modal-body">
+                                                        <span className="close">&times;</span>
+                                                        <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
+                                                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                                                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                                                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                                                        <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className='box_atividade'>
+                                                <div className='organizar_atividade'>
+                                                    <h2 className='titulo_atividade'>{atividade.nomeAtividade}</h2>
+                                                    <p className='descricao_atividade'>{atividade.descricaoAtividade}</p>
+                                                </div>
+                                                <button id="modal-btn" class="button">
+                                                    <img className='img_olho' src={img_olho} alt="Icone de um olho" />
+                                                </button>
+                                            </div>
+                                            <hr className='linha_atividade' />
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <Rodape />
