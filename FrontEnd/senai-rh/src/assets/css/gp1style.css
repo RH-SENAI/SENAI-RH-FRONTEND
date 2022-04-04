@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);
-*{
+
+* {
     box-sizing: 0;
     margin: 0;
     padding: 0;
 }
 
 /* ==============================   Cadastrar Atividades   ===============================================    */
-.container_{
-	width: 100%;
-	background-color: #f2f2f2;
+.container_ {
+    width: 100%;
+    background-color: #f2f2f2;
 }
 
 .container_cards {
@@ -41,12 +42,12 @@
     justify-content: center;
     align-items: center;
     width: 90%;
-	/* background-color: aqua; */
+    /* background-color: aqua; */
 }
 
 .nav_links {
-	display: flex;
-	justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
@@ -56,15 +57,15 @@
     font-family: 'Montserrat', sans-serif;
     color: #959595;
     font-weight: 400;
-	font-size: 25px;
+    font-size: 25px;
 }
 
 h1 {
-	color: #CB334B;
+    color: #CB334B;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 44px;
-	margin: 45px 0 45px 0;
+    margin: 45px 0 45px 0;
 }
 
 .form_cadastro {
@@ -79,7 +80,7 @@ h1 {
 
 .label_form {
     font-weight: 700;
-	font-size: 34px;
+    font-size: 34px;
     width: 50%;
     color: #878787;
 }
@@ -93,12 +94,12 @@ h1 {
     background-color: #f2f2f2;
     width: 50%;
     margin: 20px 0 20px 0;
-	height: 32px;
+    height: 32px;
 }
 
-.input_text::placeholder{
+.input_text::placeholder {
     color: #959595;
-	font-size: 25px;
+    font-size: 25px;
 }
 
 .input_select {
@@ -109,7 +110,7 @@ h1 {
     border-left: 0;
     background-color: #f2f2f2;
     width: 50%;
-	height: 32px;
+    height: 32px;
     /* margin: 20px 0 20px 0; */
     color: #959595;
 }
@@ -197,10 +198,10 @@ h1 {
 
 /* ==============================   Switch Button   ===============================================    */
 
-input[type=checkbox]{
-	height: 0;
-	width: 0;
-	visibility: hidden;
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
 }
 
 .label_switch {
@@ -212,6 +213,7 @@ input[type=checkbox]{
     display: block;
     border-radius: 100px;
     position: relative;
+    margin-bottom: 19px;
 }
 
 .label_switch:after {
@@ -226,13 +228,20 @@ input[type=checkbox]{
     transition: 0.3s;
 }
 
-input:checked + label {
-	background: #CB334B;
+input:checked+label {
+    background: #CB334B;
 }
 
-input:checked + label:after {
-	left: calc(100% - 5px);
-	transform: translateX(-100%);
+input:checked+label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+.text_switch {
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: #878787;
+    margin-left: 13.2px;
 }
 
 /* .label_switch:active:after {
@@ -242,3 +251,111 @@ input:checked + label:after {
 /* ==============================   Validar Atividades   ===============================================    */
 
 
+
+/* ==============================   Modal Da Atividade   ===============================================    */
+
+:root {
+    --modal-duration: 1s;
+    --modal-color: #428bca;
+}
+
+.button {
+    background-color: #f2f2f2;
+    padding: 1em 2em;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    /* background: #dbdbdb; */
+    /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.35)); */
+    box-shadow: 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.modal-content {
+    margin: 1% auto;
+    width: 60%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    height: 600px;
+    padding: 10px 90px;
+    background: #fff;
+}
+
+.close {
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: #fff;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.titulo_atividade_modal {
+    font-size: 45px;
+    font-weight: 500;
+    color: #0E0E0E;
+    margin: 20px 0;
+}
+
+.descricao_atividade_modal {
+    width: 100%;
+    margin: 20px 0;
+    font-size: 30px;
+}
+
+.btn_fechar_modal {
+    font-size: medium;
+    font-weight: 600;
+    color: #B83F52;
+    height: 60px;
+    width: 120px;
+    margin: 60px 0 30px 0;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    background-color: #fff;
+}
+
+.btn_fechar_modal:hover {
+    /* background-color: #f1f1f1; */
+    box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+}

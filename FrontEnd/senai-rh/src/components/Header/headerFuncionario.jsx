@@ -20,26 +20,26 @@ export default function HeaderFuncionario() {
                     <Link to="/"> <img className='logo' src={logo} alt="" /></Link>
 
 
-                    <div class='select'>
-                        <p class='input'>Vantagens <img src={setaBaixo} /></p>
+                    <div className='select'>
+                        <p className='input'>Vantagens <img src={setaBaixo} /></p>
                         <input type='hidden' name='some_name_tosetaBaixosetaBaixo_form' />
-                        <div class='hidden'>
-                            <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Adm' > <img className='seta' src={seta} alt="Seta" /> Vantagens</Link>
-                            <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/CursosRapidos' > <img className='seta' src={seta} alt="Seta" /> Cursos</Link>
+                        <div className='hidden'>
+                            <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/' > <img className='seta' src={seta} alt="Seta" /> Vantagens</Link>
+                            <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/' > <img className='seta' src={seta} alt="Seta" /> Cursos</Link>
 
                         </div>
                     </div>
-                    <div class='select'>
-                        <p class='input'>Acompanhar <img src={setaBaixo} /> </p>
+                    <div className='select'>
+                        <p className='input'>Acompanhar <img src={setaBaixo} /> </p>
                         <input type='hidden' name='some_name_to_form' />
-                        <div class='hidden'>
-                            <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='#' > <img className='seta' src={seta} alt="Seta" /> Carômetro</Link>
-                            <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} > <img className='seta' src={seta} alt="Seta" /> Dashboard</Link>
-                            <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} > <img className='seta' src={seta} alt="Seta" /> Democratização</Link>
+                        <div className='hidden'>
+                            <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/' > <img className='seta' src={seta} alt="Seta" /> Carômetro</Link>
+                            <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/' > <img className='seta' src={seta} alt="Seta" /> Dashboard</Link>
+                            <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/' > <img className='seta' src={seta} alt="Seta" /> Democratização</Link>
                         </div>
                     </div>
-                    <div class='select'>
-                        <Link class='input input_motivacao'>Motivações</Link>
+                    <div className='select'>
+                        <Link to='/' className='input input_motivacao'>Motivações</Link>
                         <input type='hidden' name='some_name_to_form' />
                     </div>
 

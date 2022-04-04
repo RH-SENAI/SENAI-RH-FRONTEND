@@ -3,7 +3,7 @@
 import '../../Assets/css/gp1style.css'
 import Rodape from '../../components/Footer';
 import Header from '../../components/Header/headerFuncionario';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import img_olho from '../../Assets/img/Olho_Atividades.png'
 
 export default function ValidarAtividades() {
