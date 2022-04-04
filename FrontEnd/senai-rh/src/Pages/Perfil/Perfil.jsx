@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import "../../Assets/Css/perfil.css"
-import Header from "../../Components/Header/headerFuncionario"
-import Footer from "../../Components/Footer"
-import grafico from "../../Assets/Img/grafico.png"
-import estrela from "../../Assets/Img/star.png"
-import iconPerfil from "../../Assets/Img/telaPerfil.png"
+import Header from "../../components/Header/headerFuncionario"
+import Footer from "../../components/Footer"
+import grafico from "../../Assets/img/grafico.png"
+import estrela from "../../Assets/img/star.png"
+import iconPerfil from "../../Assets/img/telaPerfil.png"
 
 export default function Perfil() {
     const [Nome, setNome] = useState('')

@@ -4,23 +4,24 @@ import { useState } from 'react';
 import moment from 'moment';
 import "../../Assets/Css/democratizacao.css";
 import "../../Assets/Css/democratizacaoAdm.css";
-import Footer from '../../Components/Footer';
-import FotoPerfil from '../../Assets/Img/perfilVazio.svg'
-import Header from '../../Components/Header/headerFuncionario'
-import ImgDemocratizacaoAdm from '../../Assets/Img/democraAdm.svg'
+import Footer from '../../components/Footer';
+import FotoPerfil from '../../Assets/img/perfilVazio.svg'
+import Header from '../../components/Header/headerFuncionario'
+import ImgDemocratizacaoAdm from '../../Assets/img/democraAdm.svg'
 
 export default function Democratizacao() {
 
     //States 
     const [idDecisao, setIdDecisao] = useState(0);
-    const [idUsuario, setIdUsuario] = useState(1);
+    const [idUsuario, setIdUsuario] = useState(0);
+    const [resultadoDecisao, setResultadodecisao] = useState(0);
     const [descricaoDecisao, setDescricaoDecisao] = useState('');
     const [listaDecisao, setListaDecisao] = useState([]);
     const [dataValidade, setDataValidade] = useState(new Date())
-    const [dataCadastroDecisao] = useState(moment().format("YYYY/MM/DD"));
+    const [dataCadastroDecisao] = useState(moment().format("YYYY-MM-DD"));
 
     function ListarDecisao() {
-        axios.get('http://localhost:5000/api/Decisoes', {
+        axios.get('http://localhost:5000/api/Decisoes/Listar', {
             headers: {
 
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
@@ -46,12 +47,15 @@ export default function Democratizacao() {
             idUsuario: idUsuario,
             descricaoDecisao: descricaoDecisao,
             dataDecisao: dataCadastroDecisao,
-            prazoDeAvaliacao: dataValidade
+            prazoDeAvaliacao: dataValidade,
+            resultadoDecisao: resultadoDecisao
         }
+        console.log(idUsuario)
         console.log(dataCadastroDecisao)
         console.log(dataValidade)
+        console.log(resultadoDecisao)
 
-        axios.post("http://localhost:5000/api/Decisoes", cadastro, {
+        axios.post("http://localhost:5000/api/Decisoes/Cadastrar", cadastro, {
 
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -96,7 +100,7 @@ export default function Democratizacao() {
                     </div>
 
                     <div className='containerFeedback'>
-                        <span className='boldFeedback'>Suas ideias</span>
+                        <span className='boldFeedback'>Ultimas Ideias</span>
                         {
                             listaDecisao.map((decisao) => {
                                 return (

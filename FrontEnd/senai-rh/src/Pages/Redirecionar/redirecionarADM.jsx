@@ -1,10 +1,10 @@
 import React from "react";
-import img1 from "../../Assets/Img/1.png"
-import img2 from "../../Assets/Img/2.png"
-import img3 from "../../Assets/Img/3.png"
-import img4 from "../../Assets/Img/4.png"
-import Footer from "../../Components/Footer";
-import HeaderAdm from "../../Components/Header/headerAdm";
+import img1 from "../../Assets/img/1.png"
+import img2 from "../../Assets/img/2.png"
+import img3 from "../../Assets/img/3.png"
+import img4 from "../../Assets/img/4.png"
+import Footer from "../../components/Footer";
+import HeaderAdm from "../../components/Header/headerAdm";
 
 export const RedirecionarADM = () => {
 

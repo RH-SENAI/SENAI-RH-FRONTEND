@@ -52,7 +52,7 @@ outline: 0;
 }
 
 .inputCadastroFeedback::-webkit-calendar-picker-indicator{
-    background-image: url(../Img/IconCalendario.png);
+    background-image: url(../img/IconCalendario.png);
     
     background-size: cover;
     width: 26px;

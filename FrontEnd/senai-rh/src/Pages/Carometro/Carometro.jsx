@@ -3,12 +3,12 @@ import axios from 'axios'
 import { useState } from 'react';
 import { useParams, Link } from "react-router-dom";
 import "../../Assets/Css/carometro.css";
-import HeaderFuncionario from '../../Components/Header/headerFuncionario';
-import Footer from '../../Components/Footer';
-import PerfilCarometro from '../../Assets/Img/PerfilCarometro.png'
-import setaSelectLight from '../../Assets/Img/SetaSelectLight.png'
-import IconLogout from '../../Assets/Img/IconLogout.png'
-import SetaCarometro from '../../Assets/Img/SetaCarometro.png'
+import HeaderFuncionario from '../../components/Header/headerFuncionario';
+import Footer from '../../components/Footer';
+import PerfilCarometro from '../../Assets/img/PerfilCarometro.png'
+import setaSelectLight from '../../Assets/img/SetaSelectLight.png'
+import IconLogout from '../../Assets/img/IconLogout.png'
+import SetaCarometro from '../../Assets/img/SetaCarometro.png'
 
 
 
@@ -47,6 +47,7 @@ export default function Carometro() {
                     setListaFuncionarios(resposta.data)
                     console.log(resposta)
                     console.log(idCargo)
+                    console.log('https://raw.githubusercontent.com/RH-SENAI/SENAI-RH-BACKEND/back-gp-3-develop/GP3/api-gp3/senai-gp3-webApi/StaticFiles/Images/ ')
 
                 }
 
@@ -129,7 +130,7 @@ export default function Carometro() {
 
                                             return (
                                                 <div className="cardFuncionario">
-                                                    <img className='fotoCarometro' src={'https://github.com/RH-SENAI/SENAI-RH-BACKEND/tree/back-gp-3-develop/GP3/api-gp3/senai-gp3-webApi/StaticFiles/Images' + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
+                                                    <img className='fotoCarometro' src={'https://raw.githubusercontent.com/RH-SENAI/SENAI-RH-BACKEND/back-gp-3-develop/GP3/api-gp3/senai-gp3-webApi/StaticFiles/Images/'+usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
                                                     <span className="spanCarometro">{usuario.nome}</span>
                                                     <span className="spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
                                                     <a onClick={OpenModal} >

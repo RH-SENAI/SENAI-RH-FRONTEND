@@ -54,6 +54,7 @@
 .cardsCarometro{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .cardFuncionario{
     height: 350px;
@@ -79,6 +80,7 @@
 }
 .fotoCarometro{
     margin: 20px 0 10px 30px ;
+    height: 150px;
 }
 .spanCarometro{
     font-weight: 700;

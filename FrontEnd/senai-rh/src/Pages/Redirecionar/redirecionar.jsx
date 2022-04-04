@@ -1,10 +1,10 @@
 import React from "react";
 import "../../Assets/Css/redirecionar.css";
-import img1 from "../../Assets/Img/1.png";
-import img2 from "../../Assets/Img/2.png";
-import img3 from "../../Assets/Img/3.png";
-import Footer from "../../Components/Footer";
-import HeaderFuncionario from "../../Components/Header/headerFuncionario";
+import img1 from "../../Assets/img/1.png";
+import img2 from "../../Assets/img/2.png";
+import img3 from "../../Assets/img/3.png";
+import Footer from "../../components/Footer";
+import HeaderFuncionario from "../../components/Header/headerFuncionario";
 import { Link } from "react-router-dom";
 
 export const Redirecionar = () => {

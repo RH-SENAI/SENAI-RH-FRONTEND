@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import CadastroLight from "../../Assets/Img/ImgCadastroLight.png";
+import CadastroLight from "../../Assets/img/ImgCadastroLight.png";
 import "../../Assets/Css/cadastro.css"
 import "../../Assets/Css/footer.css"
 import "../../Assets/Css/styleG3.css"
-import Footer from "../../Components/Footer";
+import Footer from "../../components/Footer";
 
 
 export default function Cadastro() {
@@ -13,7 +13,7 @@ export default function Cadastro() {
     const [listaCargo, setListaCargo] = useState([])
     const [listaUnidade, setListaUnidade] = useState([])
     const [listaTipoUsuario, setListaTipoUsuario] = useState([])
-    const [idTipoUsuario, setIdTipoUsuario] = useState(1)
+    const [idTipoUsuario, setIdTipoUsuario] = useState(0)
     const [nomeUsuario, setNomeUsuario] = useState('');
     const [endereco, setEndereco] = useState('')
     const [email, setEmail] = useState('')
@@ -24,12 +24,12 @@ export default function Cadastro() {
     // const [vantagens, setVantagens] = useState(0)
     const [senha, setSenha] = useState('')
     const [CPF, setCPF] = useState('')
-    const [idCargo, setIdCargo] = useState(1)
-    const [idUnidade, setIdUnidade] = useState(1)
+    const [idCargo, setIdCargo] = useState(0)
+    const [idUnidade, setIdUnidade] = useState(0)
     const [dataNascimento, setDataNascimento] = useState(new Date())
 
     function BuscarCargos() {
-        axios.get('http://localhost:5000/api/', {
+        axios.get('http://localhost:5000/api/Cargos/Listar', {
             headers: {
 
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
@@ -47,7 +47,7 @@ export default function Cadastro() {
             .catch(erro => console.log(erro))
     }
     function BuscarUnidade() {
-        axios.get('http://localhost:5000/api/', {
+        axios.get('http://localhost:5000/api/Unidadesenais/Listar', {
             headers: {
 
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
@@ -65,7 +65,7 @@ export default function Cadastro() {
             .catch(erro => console.log(erro))
     }
     function BuscarTipoUsuario() {
-        axios.get('http://localhost:5000/api/', {
+        axios.get('http://localhost:5000/api/idTipoUsuarios/Listar', {
             headers: {
 
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
@@ -156,11 +156,10 @@ export default function Cadastro() {
                                 >
 
                                     <option value="#">Tipo de Usuario</option>
-                                    <option value={1}>1</option>
                                     {listaTipoUsuario.map((event) => {
                                         return (
 
-                                            <option key={event.idTipoUsuario} value={event.idTipoUsuario}>{event.idTipoUsuario}
+                                            <option key={event.idTipoUsuario} value={event.idTipoUsuario}>{event.nomeTipoUsuario}
                                             </option>
                                         );
                                     })}
@@ -175,11 +174,11 @@ export default function Cadastro() {
 
                                 >
                                     <option value="#">Cargo</option>
-                                    <option value={1}>1</option>
-                                    {listaCargo.map((event) => {
+                                    {
+                                    listaCargo.map((event) => {
                                         return (
 
-                                            <option key={event.idCargo} value={event.idCargo}>{event.idCargo}
+                                            <option key={event.idCargo} value={event.idCargo}>{event.nomeCargo}
                                             </option>
                                         );
                                     })}
@@ -193,11 +192,11 @@ export default function Cadastro() {
 
                                 >
                                     <option value="#">Unidade</option>
-                                    <option value={1}>1</option>
-                                    {listaUnidade.map((event) => {
+                                    {
+                                    listaUnidade.map((event) => {
                                         return (
 
-                                            <option key={event.idUnidade} value={event.idUnidade}>{event.idUnidade}
+                                            <option key={event.idUnidade} value={event.idUnidade}>{event.nomeUnidadeSenai}
                                             </option>
                                         );
                                     })}
