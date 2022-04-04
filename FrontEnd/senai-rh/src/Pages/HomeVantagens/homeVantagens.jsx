@@ -22,8 +22,8 @@ export const HomeVantagens = () => {
                 <div className="container_principal">
                     <img className="imgHome" src={imgHome} alt="Imagem Home" />
                     <div className="box_conteudo">
-                        <h1>senai-sp</h1>
-                        <h2>benefício</h2>
+                        <h1 className="tituloHome">senai-sp</h1>
+                        <h2 className="tituloHome2">benefício</h2>
                         <span className="text_principal">Capacite bem os seus colaboradores para que eles possam partir. Trate-os bem para que eles prefiram ficar.</span>
                     </div>
                 </div>
@@ -35,7 +35,8 @@ export const HomeVantagens = () => {
                         <rightArrow />
                         <img className="imgSetaDir" src={imgSeta2} alt="Seta para direita" /> 
                         <leftArrow /> 
-                        <Carousel show={4.5} slide={1}>
+                        
+                        <Carousel show={3.5} slide={1} infinite={true} transition={0.5}>
                             <img className="imagemEmpresa" src={img1} alt="Imagem empresa" />
                             {/* <hr className="barraDivisao" /> */}
                             <img className="imagemEmpresa_casasBahia" src={img2} alt="Imagem empresa" />
@@ -45,14 +46,13 @@ export const HomeVantagens = () => {
                             <img className="imagemEmpresa" src={img4} alt="Imagem empresa" />
                             {/* <hr className="barraDivisao" /> */}
                             <img className="imagemEmpresa_airline" src={img5} alt="Imagem empresa" />
-                        </Carousel>
-                                         
+                        </Carousel>      
                     </div>
                 </div>
             </section>
             <Footer />
         </main>
-    )
+    );
 }
 
-export default HomeVantagens
+export default HomeVantagens;

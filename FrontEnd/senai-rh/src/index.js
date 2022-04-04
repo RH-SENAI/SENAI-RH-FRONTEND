@@ -21,6 +21,7 @@ import CursosRapidos from './Pages/Cursos/cursosRapidos';
 import Redirecionar from './Pages/Redirecionar/redirecionar';
 import RedirecionarADM from './Pages/Redirecionar/redirecionarADM';
 import HomeVantagens from './Pages/HomeVantagens/homeVantagens';
+import PerfilFavoritos from './Pages/PerfilFavoritos/perfilFavoritos';
 
 const routing = (
   <Router>
@@ -35,6 +36,7 @@ const routing = (
         <Route path="/Adm" component={HeaderAdm} />
         <Route path="/CursosRapidos" component={CursosRapidos} />
         <Route path="/HomeVantagens" component={HomeVantagens} />
+        <Route path="/PerfilFavoritos" component={PerfilFavoritos} />
       </Switch>
     </div>
   </Router>

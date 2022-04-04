@@ -18,7 +18,7 @@ export default function CursosRapidos() {
                 </form>
             </div>
 
-            <h1>Cursos</h1>
+            <h1 className='tituloCurso'>Cursos</h1>
             <section className='container_cursos'>
 
                 <section className='box_cursos'>

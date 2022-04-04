@@ -19,7 +19,7 @@ export default function CadastrarAtividades() {
                             <Link className="links">Ranking</Link>
                         </nav>
                     </div>
-                    <h1>Cadastrar Atividade</h1>
+                    <h1 className='tituloAtividades'>Cadastrar Atividade</h1>
                     <form className="form_cadastro">
                         {/* <div className="container_form"> */}
                             <label className="label_form">Título da Atividade</label>

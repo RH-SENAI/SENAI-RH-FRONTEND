@@ -26,7 +26,7 @@ body{
     margin-left: 10vw;
 }
 
-h1{
+.tituloHome{
     font-size: 50px;
     font-weight: 300;
     text-transform: uppercase;
@@ -51,19 +51,19 @@ h2{
     flex-direction: row;
     justify-content: center;
     background-color: white;
-    margin-top: 12vh;
+    margin-top: 6vh;
 }
 
 .imgSetaEsq{
     width: 40px;
     height: 40px;
     position: absolute;
-    left: 10%;
-    top: 82.4%;
+    left: 12.9%;
+    top: 80%;
 }
 
 .box_empresas{
-    width: 80%;
+    width: 75%;
     height: 14vh;
     display: flex;
     align-items: center;
@@ -74,16 +74,19 @@ h2{
 .imagemEmpresa{
     width: 4vw;
     height: 8vh;
+    margin-left: 3vw;
 }
 
 .imagemEmpresa_casasBahia{
     width: 3vw;
     height: 8vh;
+    margin-left: 3vw;
 }
 
 .imagemEmpresa_airline{
     width: 6vw;
     height: 8vh;
+    margin-left: 3vw;
 }
 
 .barraDivisao{
@@ -95,12 +98,12 @@ h2{
     width: 40px;
     height: 40px;
     position: absolute;
-    left: 87.8%;
-    top: 82.4%;
+    left: 84.4%;
+    top: 80%;
 }
 
 .styles-module_carousel-arrow__26sRw{
-    width: 2vw;
+    width: 3.5vw;
     height: 6vh;
     margin-top: 1.1vh;
     opacity: 0;
