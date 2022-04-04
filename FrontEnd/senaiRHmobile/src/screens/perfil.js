@@ -7,7 +7,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const perfil = () => {
+const Perfil = () => {
 
 
 
@@ -108,7 +108,7 @@ btnSair:{
   marginTop:20,
   elevation: 16,
   backgroundColor: '#CB334B',
-  boxshadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+  boxShadow: '19px',
   borderRadius: 5,
   flexDirection:'row',
   
@@ -162,7 +162,7 @@ btnSair:{
     marginTop:5,
     elevation: 16,
     backgroundColor: '#F2F2F2',
-    boxshadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+    boxShadow: '19px',
     borderRadius: 5,
     flexDirection:'row',
    
@@ -180,4 +180,4 @@ btnSair:{
 
 });
 
-export default perfil;
+export default Perfil;

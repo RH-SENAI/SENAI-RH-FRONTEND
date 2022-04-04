@@ -15,7 +15,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // import api from '../services/api';
 
-export default class Login extends Component{
+export default class Atividades extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
 	    height: 60,
         elevation: 16,
         backgroundColor: '#F2F2F2',
-        boxshadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
         borderRadius: 5,
     },
 
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
         width: 285,
         elevation: 20,
         backgroundColor: '#F2F2F2',
-        boxshadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
         borderRadius: 5,
         marginBottom: 70,
     },
