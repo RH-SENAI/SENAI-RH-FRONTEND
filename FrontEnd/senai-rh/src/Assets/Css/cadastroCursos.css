@@ -12,7 +12,7 @@
 .box_img_cadastroCurso img{
     margin-top: 30px;
     width: 550px;
-    height: 550px;
+    height: 350px;
 }
 
 .inputCadastro_cursos input{
@@ -26,22 +26,94 @@
     border: none;
     border-bottom: 1px solid #000000;
     margin-bottom: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* flex-direction: column;   */
     font-size: 23px;
     color: #000000;
     font-weight: bold;
     /* box-shadow: 0 3px 15px rgba(166, 171, 189, 1); */
 }
+.inputCadastro_cursos label{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
 
 .container_forms_cursos{
     display: flex;
     justify-content: space-between;
+    margin-right: 40px;
 }
 
 .box_forms_cursos{
     width: 50%;
     height: 90%;
 }
+
+.container_inputs_cadastros{
+    background-color: yellow;
+    width: 700px;
+    height: 300px;
+    margin-top: 20px;
+}
+
+
+.dis{
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex_co{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+.container_radio{
+    /* color: white; */
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+}
+
+.container_radio{
+    /* color: white; */
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 100px;
+}
+
+
+.input_file{
+    display: none;  
+}
+
+.botaoCadastro{
+    width: 300px;
+    height: 55px;
+    border-radius: 20px;
+    background-color: #f2f2f2;
+    border: none;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1); 
+    margin-bottom: 100px;
+
+    color: #CB334B;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 50px;
+}
+
+
+.label_arquivo {
+    width: 230px;
+    height: 50px;
+    /* background-color: blueviolet; */
+    border-radius: 50px;
+    margin-top: 10px;
+    box-shadow: inset -4px -3px 4px #FAFBFF, inset 4px 3px 8px #A6ABBD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
