@@ -8,6 +8,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 const AuthStack = createStackNavigator();
 import Redirecionamento from './src/screens/redirecionamento';
 import ListaFeedback from './src/screens/listaFeedback'
+import cadastroFeedback from './src/screens/cadastroFeedback'
+
 
 
 export default function Stack() {
@@ -24,7 +26,8 @@ export default function Stack() {
           headerShown: false,
         }}>
         {/* <AuthStack.Screen name="redirecionamento" component={Redirecionamento} /> */}
-        <AuthStack.Screen name="ListaFeedback" component={ListaFeedback} /> 
+        {/* <AuthStack.Screen name="ListaFeedback" component={ListaFeedback} />  */}
+        <AuthStack.Screen name="CadastroFeedback" component={cadastroFeedback} />
       </AuthStack.Navigator>
       
     </NavigationContainer>

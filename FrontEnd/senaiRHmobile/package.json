@@ -15,6 +15,7 @@
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/stack": "^6.1.1",
     "axios": "^0.26.1",
+    "moment": "^2.29.2",
     "react": "17.0.2",
     "react-native": "0.67.4",
     "react-native-gesture-handler": "^2.3.2",
@@ -32,12 +33,11 @@
     "metro-react-native-babel-preset": "^0.66.2",
     "react-test-renderer": "17.0.2"
   },
-
   "jest": {
     "preset": "react-native"
   },
-  "rnpm":{
-    "assets":[
+  "rnpm": {
+    "assets": [
       "./assets/fonts"
     ]
   }

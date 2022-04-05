@@ -2,12 +2,10 @@ import React, {Compon, Component} from 'react';
 import {
   FlatList,
   Image,
-  ImageBackground,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  TextInput,
 } from 'react-native';
 
 import api from '../services/api';
@@ -26,13 +24,13 @@ export default class ListaFeedback extends Component {
     const token = await AsyncStorage.getItem('userToken');
 
     if (token != null) {
-      const resposta = await api.get('/democratizacao', {
+      const resposta = await api.get('Feedbacks/Listar', {
         headers: {
           Authorization: 'Bearer ' + token,
         },
       });
 
-      const dadosDaApi = resposra.token;
+      const dadosDaApi = resposta.token;
       this.setState({ListaFeedback: dadosDaApi});
     }
   };
@@ -49,7 +47,7 @@ export default class ListaFeedback extends Component {
             style={styles.imgLogo}
           />
         </View>
-        <Text style={styles.h1nonBold}> Área de</Text>
+        <Text style={styles.h1nonBold}> Feedbacks da</Text>
         <Text style={styles.h1Bold}> DEMOCRATIZAÇÃO</Text>
 
         <View style={styles.containerFlatlist}>
@@ -71,11 +69,7 @@ export default class ListaFeedback extends Component {
         </Text>
       </View>
       <View style={styles.textoCard}>
-        <Text style={styles.feedback}>
-          {item.feedback}
-          “Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-          consectetur, adipisci velit...”"
-        </Text>
+        <Text style={styles.feedback}>{item.feedback}</Text>
       </View>
     </View>
   );
@@ -108,14 +102,14 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     textTransform: 'uppercase',
     color: '#000000',
-    marginTop: 60
-},
-h1Bold: {
+    marginTop: 60,
+  },
+  h1Bold: {
     fontSize: 20,
     fontWeight: '700',
     textTransform: 'uppercase',
-    color: '#000000'
-},
+    color: '#000000',
+  },
 
   mainBodyContent: {
     justifyContent: 'space-around',
@@ -132,11 +126,24 @@ h1Bold: {
     height: 33,
     justifyContent: 'center',
     alignItems: 'center',
-},
+  },
 
   tituloCard: {
     color: 'black',
     fontSize: 20,
-    fontWeight: '600'
-},
+    fontWeight: '600',
+  },
+  tituloCardWrapper: {
+    backgroundColor: '#9081A6',
+    height: 33,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  textoCard: {
+    backgroundColor: '#fff',
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    padding: 20,
+  }
 });

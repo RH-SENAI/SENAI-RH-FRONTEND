@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '',
+  baseURL: 'http://192.168.3.107:5000/api/',
 });
-git sta
+
 export default api;
