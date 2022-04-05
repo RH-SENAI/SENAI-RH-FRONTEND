@@ -10,6 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const MinhasAtividades = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
+  
 
   return (
     <View style={styles.main}>

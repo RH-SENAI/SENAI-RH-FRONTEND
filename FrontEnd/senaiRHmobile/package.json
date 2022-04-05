@@ -12,9 +12,11 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.0",
     "@react-native-community/masked-view": "^0.1.11",
-    "@react-navigation/native": "^6.0.8",
+    "@react-navigation/native": "^6.0.10",
+    "@react-navigation/native-stack": "^6.6.1",
     "@react-navigation/stack": "^6.1.1",
     "axios": "^0.26.1",
+    "intl": "^1.2.5",
     "jwt-decode": "^3.1.2",
     "react": "17.0.2",
     "react-modal": "^3.14.4",
