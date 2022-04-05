@@ -10,6 +10,7 @@ import Footer from "../../components/Footer";
 
 export default function Cadastro() {
 
+    const [idUsuario, setIdUsuario] = useState(0)
     const [listaCargo, setListaCargo] = useState([])
     const [listaUnidade, setListaUnidade] = useState([])
     const [listaTipoUsuario, setListaTipoUsuario] = useState([])
@@ -18,15 +19,20 @@ export default function Cadastro() {
     const [endereco, setEndereco] = useState('')
     const [email, setEmail] = useState('')
     const [salario, setSalario] = useState(0)
-    // const [trofeu, setTrofeu] = useState(0)
-    // const [saldoMoeda, setSaldoMoeda] = useState(0)
-    // const [nivelSatisfacao, setNivelSatisfacao] = useState(0)
-    // const [vantagens, setVantagens] = useState(0)
+    const [trofeu, setTrofeu] = useState(0)
+    const [saldoMoeda, setSaldoMoeda] = useState(0)
+    const [nivelSatisfacao, setNivelSatisfacao] = useState(0)
+    const [vantagens, setVantagens] = useState(0)
     const [senha, setSenha] = useState('')
     const [CPF, setCPF] = useState('')
     const [idCargo, setIdCargo] = useState(0)
     const [idUnidade, setIdUnidade] = useState(0)
     const [dataNascimento, setDataNascimento] = useState(new Date())
+    const [fotoPerfil, setFotoPerfil] = useState('')
+
+
+
+
 
     function BuscarCargos() {
         axios.get('http://localhost:5000/api/Cargos/Listar', {
@@ -46,6 +52,7 @@ export default function Cadastro() {
 
             .catch(erro => console.log(erro))
     }
+
     function BuscarUnidade() {
         axios.get('http://localhost:5000/api/Unidadesenais/Listar', {
             headers: {
@@ -64,6 +71,7 @@ export default function Cadastro() {
 
             .catch(erro => console.log(erro))
     }
+
     function BuscarTipoUsuario() {
         axios.get('http://localhost:5000/api/idTipoUsuarios/Listar', {
             headers: {
@@ -82,24 +90,29 @@ export default function Cadastro() {
 
             .catch(erro => console.log(erro))
     }
-    
 
-    const cadastrarUsuario = (event) => {
+
+    function CadastrarUsuario(event) {
 
         event.preventDefault();
 
         var formData = new FormData();
 
-        formData.append('nome', nomeUsuario );
-        formData.append('email', email );
-        formData.append('senha', senha );
-        formData.append('dataNascimento', dataNascimento );
+        // const element = document.getElementById('fotoPerfil')
+        // const file = element.files[0]
+        // formData.append('fotoPerfil', file, file.name)
+        formData.append('idUsuario', idUsuario);
+        formData.append('nome', nomeUsuario);
+        formData.append('email', email);
+        formData.append('senha', senha);
+        formData.append('dataNascimento', dataNascimento);
         formData.append('cpf', CPF);
-        formData.append('salario', salario);
         formData.append('idCargo', idCargo);
         formData.append('idUnidadeSenai', idUnidade);
         formData.append('idTipoUsuario', idTipoUsuario);
-        formData.append('localizacaoUsuario', endereco);
+        formData.append('idTipoUsuario', idTipoUsuario);
+
+
 
         axios({
             method: "post",
@@ -110,23 +123,65 @@ export default function Cadastro() {
             .then(function (response) {
                 console.log(response);
                 console.log('usuario cadastrado')
-              })
-              .catch(function (response) {
+            })
+            .catch(function (response) {
                 //handle error
                 console.log(response);
-              });
-    }
+            });
 
+    }
+    // function CadastrarUsuario(usuario) {
+    //     usuario.preventDefault()
+
+    //     var formData = new FormData();
+
+    //     formData.append('idUsuario', idUsuario);
+    //     formData.append('nome', nomeUsuario);
+    //     formData.append('email', email);
+    //     formData.append('senha', senha);
+    //     formData.append('dataNascimento', dataNascimento);
+    //     formData.append('cpf', CPF);
+    //     formData.append('salario', salario);
+    //     formData.append('idCargo', idCargo);
+    //     formData.append('idUnidadeSenai', idUnidade);
+    //     formData.append('idTipoUsuario', idTipoUsuario);
+    //     formData.append('localizacaoUsuario', endereco);
+    //     formData.append('caminhoFotoPerfil', "");
+    //     formData.append('fotoPerfil', null);
+    //     formData.append('trofeu', trofeu)
+    //     formData.append('saldoMoeda', saldoMoeda)
+    //     formData.append('nivelSatisfacao', nivelSatisfacao)
+    //     formData.append('vantagens', vantagens)
+
+    //     fetch(
+    //         "http://localhost:5000/api/Usuarios/"+"Cadastrar",
+    //         {
+    //             method: 'POST',
+    //             body: JSON.stringify({ formData }),
+    //             headers: { "Content-Type": "multipart/form-data" },
+    //         }
+    //     )
+    //         .then(function (response) {
+    //             console.log(response);
+    //             console.log('usuario cadastrado')
+    //         })
+    //         .catch(function (response) {
+    //             //handle error
+    //             console.log(response);
+    //         });
+    // }
+
+    useEffect(BuscarTipoUsuario, [])
     useEffect(BuscarCargos, [])
     useEffect(BuscarUnidade, [])
-    useEffect(BuscarTipoUsuario, [])
+
 
     return (
         <body>
             <main>
                 <div className="container">
                     <div className="boxCadastro">
-                        <form className="formCadastro" onSubmit={cadastrarUsuario}>
+                        <form className="formCadastro" onSubmit={CadastrarUsuario}>
                             <div className="bodyCadastro">
                                 {/* <label className="labelCadastro">Nome Do Usuario</label> */}
                                 <input type="text" className="inputCadastro" name="nomeUsuario" placeholder="Nome Do Usuario" value={nomeUsuario} onChange={(event) => setNomeUsuario(event.target.value)} />
@@ -142,7 +197,7 @@ export default function Cadastro() {
 
                                 {/* <label className="labelCadastro">CPF</label> */}
                                 <input type="text" className="inputCadastro" name="CPF" placeholder="CPF" value={CPF} onChange={(event) => setCPF(event.target.value)} />
-                                
+
                                 {/* <label className="labelCadastro">Salario</label> */}
                                 <input type="number" className="inputCadastro" name="salario" placeholder="Salario" value={salario} onChange={(event) => setSalario(event.target.value)} />
 
@@ -167,7 +222,7 @@ export default function Cadastro() {
                                 </select>
 
                                 {/* <label className="labelCadastro">Cargo</label> */}
-                                <select 
+                                <select
                                     name="Cargo"
                                     value={idCargo}
                                     onChange={(event) => setIdCargo(event.target.value)}
@@ -176,13 +231,13 @@ export default function Cadastro() {
                                 >
                                     <option value="#">Cargo</option>
                                     {
-                                    listaCargo.map((event) => {
-                                        return (
+                                        listaCargo.map((event) => {
+                                            return (
 
-                                            <option key={event.idCargo} value={event.idCargo}>{event.nomeCargo}
-                                            </option>
-                                        );
-                                    })}
+                                                <option key={event.idCargo} value={event.idCargo}>{event.nomeCargo}
+                                                </option>
+                                            );
+                                        })}
 
                                 </select>
                                 {/* <label className="labelCadastro">Unidade</label> */}
@@ -194,26 +249,26 @@ export default function Cadastro() {
                                 >
                                     <option value="#">Unidade</option>
                                     {
-                                    listaUnidade.map((event) => {
-                                        return (
+                                        listaUnidade.map((event) => {
+                                            return (
 
-                                            <option key={event.idUnidade} value={event.idUnidade}>{event.nomeUnidadeSenai}
-                                            </option>
-                                        );
-                                    })}
+                                                <option key={event.idUnidade} value={event.idUnidade}>{event.nomeUnidadeSenai}
+                                                </option>
+                                            );
+                                        })}
 
                                 </select>
                                 {/* <label className="labelCadastro">Data de nascimento</label> */}
                                 <input className="inputCadastroData" value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} type="date" />
-                                <button  type="submit" className="botaoCadastro"
-                                >Cadastrar</button>
+                                <input className="inputCadastro" value={fotoPerfil} name='fotoPerfil' id='fotoPerfil' onChange={(event) => setFotoPerfil(event.target.value)} type="file" />
+                                <button type="submit" className="botaoCadastro">Cadastrar</button>
                             </div>
                         </form>
 
                         <div className="boxImg">
                             <img className="imgCadastro" src={CadastroLight} alt="ImgCadastro" />
                         </div>
-                    </div>      
+                    </div>
                 </div>
             </main>
             <footer>
