@@ -287,6 +287,29 @@ input:checked+label:after {
     overflow-x: hidden;
 }
 
+.ReactModal__Overlay{
+    background: rgba(201, 201, 201, 0.4) !important;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.ReactModal__Content {
+    margin: 1% auto;
+    width: 60%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+}
+
+
 .modal-content {
     margin: 1% auto;
     width: 60%;

@@ -5,6 +5,8 @@ import Rodape from '../../components/Footer';
 import Header from '../../components/Header/headerFuncionario';
 import { Link } from 'react-router-dom'
 import img_olho from '../../Assets/img/Olho_Atividades.png'
+import Modal from 'react-modal';
+import React from 'react';
 
 export default function CadastrarAtividades() {
     const [listaAtividades, setListaAtividades] = useState([]);
@@ -20,25 +22,25 @@ export default function CadastrarAtividades() {
     const [recompensaTrofeu, setRecompensaTrofeu] = useState('');
     const [descricaoAtividade, setDescricaoAtividade] = useState('');
     const [necessarioValidar, setNecessarioValidar] = useState(false);
-    
+
     const [isLoading, setIsLoading] = useState(false);
-    
-    
+
+
     function listarAtividades() {
         console.log(necessarioValidar)
         axios("http://localhost:5000/api/Atividades"
-        , {
-            headers: {
-                // 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
-        .then(resposta => {
-            if (resposta.status === 200) {
-                setListaAtividades(resposta.data)
-            }
-        })
-        
-        .catch(erro => console.log(erro))
+            , {
+                headers: {
+                    // 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            })
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    setListaAtividades(resposta.data)
+                }
+            })
+
+            .catch(erro => console.log(erro))
     };
 
     useEffect(listarAtividades, []);
@@ -125,29 +127,62 @@ export default function CadastrarAtividades() {
 
     //========================== MODAL =============================//
 
-    const modal = document.querySelector('#my-modal');
-    const modalBtn = document.querySelector('#modal-btn');
-    const closeBtn = document.querySelector('.close');
+    // const modal = document.querySelector('#my-modal');
+    // const modalBtn = document.querySelector('#modal-btn');
+    // const closeBtn = document.querySelector('.close');
 
-    // // Events
-    modalBtn.addEventListener('click', openModal);
-    closeBtn.addEventListener('click', closeModal);
-    window.addEventListener('click', outsideClick);
+    // // // Events
+    // modalBtn.addEventListener('click', openModal);
+    // closeBtn.addEventListener('click', closeModal);
+    // window.addEventListener('click', outsideClick);
 
-    // // Open
+    // // // Open
+    // function openModal() {
+    //     modal.style.display = 'block';
+    // }
+
+    // // // Close
+    // function closeModal() {
+    //     modal.style.display = 'none';
+    // }
+
+    // // // Close If Outside Click
+    // function outsideClick(e) {
+    //     if (e.target == modal) {
+    //         modal.style.display = 'none';
+    //     }
+    // }
+    //========================== EDSON MODAL ============================//
+
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+    let subtitle;
+
+
     function openModal() {
-        modal.style.display = 'block';
+        setIsOpen(true);
     }
 
-    // // Close
+    function afterOpenModal() {
+        subtitle.style.color = '#f00';
+    }
+
     function closeModal() {
-        modal.style.display = 'none';
+        setIsOpen(false);
     }
 
-    // // Close If Outside Click
-    function outsideClick(e) {
-        if (e.target == modal) {
-            modal.style.display = 'none';
+    const custonModal = {
+        content: {
+            display: 'none',
+            position: 'fixed',
+            left: '0',
+            top: '0',
+            height: '100%',
+            width: '100%',
+            overflow: 'auto',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            overflowy: 'hidden',
+            overflowx: 'hidden',
+            zindex: '1'
         }
     }
 
@@ -252,7 +287,7 @@ export default function CadastrarAtividades() {
 
                                     return (
                                         <div key={atividade.idAtividade}>
-                                            <div id="my-modal" class="modal">
+                                            {/* <div id="my-modal" class="modal">
                                                 <div class="modal-content">
                                                     <div class="modal-body">
                                                         <span class="close">&times;</span>
@@ -263,13 +298,27 @@ export default function CadastrarAtividades() {
                                                         <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> */}
+                                            <Modal
+                                                isOpen={modalIsOpen}
+                                                onRequestClose={closeModal}
+                                                id={atividade.idAtividade}
+                                                
+                                            >
+                                                <div class="modal-body">
+                                                    <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
+                                                    <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                                                    <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                                                    <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                                                    <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
+                                                </div>
+                                            </Modal>
                                             <div className='box_atividade'>
                                                 <div className='organizar_atividade'>
                                                     <h2 className='titulo_atividade'>{atividade.nomeAtividade}</h2>
                                                     <p className='descricao_atividade'>{atividade.descricaoAtividade}</p>
                                                 </div>
-                                                <button id="modal-btn" class="button">
+                                                <button onClick={openModal} id={atividade.idAtividade} className="button">
                                                     <img className='img_olho' src={img_olho} alt="Icone de um olho" />
                                                 </button>
                                             </div>
@@ -299,7 +348,7 @@ export default function CadastrarAtividades() {
                                                         <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
                                                         <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
                                                         <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                                                        <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
+                                                        {/* <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button> */}
                                                     </div>
                                                 </div>
                                             </div>
