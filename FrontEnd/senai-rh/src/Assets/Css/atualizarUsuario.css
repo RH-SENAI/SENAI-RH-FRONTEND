@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-wrap: normal;
+    font-family: 'Montserrat', sans-serif;
+   
+}
+.container{
+    width: 1300px;
+	margin: auto 0;
+}
+
+.textoEFoto{
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    margin-top: 150px;
+    
+}
+
+.boxOrganizar{
+    display: flex;
+
+}
+
+.formOrganizar{
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 150px;
+}
+
+h6{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    color: #000000;
+    margin-top: 20px;
+}
+
+label{
+    display: flex;
+   justify-content: flex-start;
+}
+
+.fotoPerfilVazia{
+    width: 160px;
+    height: 140px;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 8px 12px 15px rgb(166 171 189), 0px 0px 15px rgb(242 242 242);
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.botaoAtualizar{
+    width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    border: none;
+    box-shadow: 12px 12px 15px rgb(166 171 189), -12px -12px 15px rgb(255 255 255);
+    margin-bottom: 60px;
+    color: #CB334B;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 20%;
+    margin-left: 42px;
+}
+
+.labelAtualizar{
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+
+.inputAtualizar{
+    box-sizing: border-box;
+    padding:  0 20px;
+    width: 420px;
+    height: 50px;
+    background-color: transparent;
+    outline: 0;
+    border: none;
+    border-bottom: 1px solid #000000;
+    margin-bottom: 15px;
+    font-size: 23px;
+    color: #000000;
+    font-weight: bold;
+    /* box-shadow: 0 3px 15px rgba(166, 171, 189, 1); */
+}
+.inputAtualizarSelect{
+    box-sizing: border-box;
+    padding: 0 20px;
+    width: 420px;
+    height: 50px;
+    background-color: transparent;
+    outline: 0;
+    border: none;
+    border-bottom: 1px solid #000000;
+    margin-bottom: 15px;
+    font-size: 17px;
+    font-weight: 400;
+    background-position: 350px;
+}
+
+.inputAtualizar::placeholder{
+    font-weight: 400;
+    font-size: 17px;
+}
+option{
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.imgAtualizar{
+    height: 446px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boxImgAtualizar{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+

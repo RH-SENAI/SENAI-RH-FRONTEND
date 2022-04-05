@@ -1,0 +1,10 @@
+.container_header_Login{
+  width: 100%;
+  background-color: #f2f2f2;
+  height: 12vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1); 
+}
+  
