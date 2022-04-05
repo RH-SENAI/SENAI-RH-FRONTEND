@@ -141,7 +141,7 @@ export default function Cadastro() {
                                 <input type="text" className="inputCadastro" name="senha" placeholder="Senha" value={senha} onChange={(event) => setSenha(event.target.value)} />
 
                                 {/* <label className="labelCadastro">CPF</label> */}
-                                <input type="text" className="inputCadastro" pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})" name="CPF" placeholder="CPF" value={CPF} onChange={(event) => setCPF(event.target.value)} />
+                                <input type="text" className="inputCadastro" name="CPF" placeholder="CPF" value={CPF} onChange={(event) => setCPF(event.target.value)} />
                                 
                                 {/* <label className="labelCadastro">Salario</label> */}
                                 <input type="number" className="inputCadastro" name="salario" placeholder="Salario" value={salario} onChange={(event) => setSalario(event.target.value)} />
@@ -167,9 +167,10 @@ export default function Cadastro() {
                                 </select>
 
                                 {/* <label className="labelCadastro">Cargo</label> */}
-                                <select name="Cargo"
+                                <select 
+                                    name="Cargo"
                                     value={idCargo}
-                                    onChange={event => setIdCargo(event.target.value)}
+                                    onChange={(event) => setIdCargo(event.target.value)}
                                     className="inputCadastroSelect"
 
                                 >
@@ -187,7 +188,7 @@ export default function Cadastro() {
                                 {/* <label className="labelCadastro">Unidade</label> */}
                                 <select name="Unidade"
                                     value={idUnidade}
-                                    onChange={event => setIdUnidade(event.target.value)}
+                                    onChange={(event) => setIdUnidade(event.target.value)}
                                     className="inputCadastroSelect"
 
                                 >
@@ -204,7 +205,7 @@ export default function Cadastro() {
                                 </select>
                                 {/* <label className="labelCadastro">Data de nascimento</label> */}
                                 <input className="inputCadastroData" value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} type="date" />
-                                <button onClick={() => cadastrarUsuario} type="submit" className="botaoCadastro"
+                                <button  type="submit" className="botaoCadastro"
                                 >Cadastrar</button>
                             </div>
                         </form>

@@ -151,7 +151,7 @@ export default function AtualizarPerfil() {
                             })}
 
                         </select>
-                        <button onClick={() => AtualizarPerfil} type="submit" className="botaoAtualizar"
+                        <button type="submit" className="botaoAtualizar"
                         >Atualizar</button>
                     </form>
                     <div className="boxImgAtualizar">

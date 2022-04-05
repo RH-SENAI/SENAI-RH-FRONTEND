@@ -30,7 +30,7 @@ const routing = (
       <Route exact path="/" component={TelaAcesso}/>
       <Route path="/Login" component={Login}/>
       <Route path="/Cadastro" component={Cadastro}/> 
-      <Route path ="AtualizarFuncionario" component={AtualizarPerfil}/>
+      <Route path ="Atualizar" component={AtualizarPerfil}/>
       <Route exact path="/Democratizacao" component={Democratizacao}/>
       <Route exact path="/DemocratizacaoAdm" component={DemocratizacaoAdm}/>
       <Route path="/Redirecionar" component={Redirecionar} />
