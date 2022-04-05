@@ -7,12 +7,14 @@ import coracao from '../../Assets/img/coracao.svg'
 import relogio from '../../Assets/img/relogio.svg'
 import local from '../../Assets/img/local.svg'
 import data from '../../Assets/img/data.svg'
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { useEffect, useState } from 'react';
+// import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+import api from '../../Services/api'
 
 export default function CursosRapidos() {
     const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [listaCursos, setListaCursos] = useState([]);
     let subtitle;
 
 
@@ -28,6 +30,21 @@ export default function CursosRapidos() {
         setIsOpen(false);
     }
 
+    function listarCursos() {
+        api('/Cursos')
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    console.log('Lista')
+                    console.log(resposta)
+                    setListaCursos(resposta.data)
+                }
+            })
+            .catch(erro => console.log(erro))
+    }
+
+    useEffect(listarCursos, []);
+
+
     const custonModal = {
         content: {
             left: '5%',
@@ -40,6 +57,8 @@ export default function CursosRapidos() {
             transition: '.2s'
         }
     }
+
+
 
     return (
         <div>
@@ -57,7 +76,7 @@ export default function CursosRapidos() {
 
                 <div className='wrap'>
                     <div className='container_wrap'>
-                        <section className='box_cursos'>
+                        {/* <section className='box_cursos'>
                             <img onClick={openModal} className='banner' src={logica} alt="" />
                             <h2 onClick={openModal}>Logica de Programação</h2>
                             <p><img className='test' onClick={openModal} src={relogio} alt="duracao" /> 20 Horas </p>
@@ -65,42 +84,48 @@ export default function CursosRapidos() {
                             <div className='circulo_coracao'>
                                 <img className='coracao' src={coracao} alt="" />
                             </div>
-                        </section>
-                        <section className='box_cursos'>
-                            <img onClick={openModal} className='banner' src={logica} alt="" />
+                        </section> */}
+                        {
+                            listaCursos.map((curso) => {
+                                return (
+                                    <section id='imagem' className='box_cursos'>
+                                        {<img onClick={openModal} className='banner' src={curso.caminhoImagemCurso} alt="imagem do curso" />}
+                                        {<h2 onClick={openModal}> {curso.nomeCurso} </h2>}
+                                        {<p><img className='box_dados_curso' onClick={openModal} src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
+                                        {<p><img className='box_dados_curso' onClick={openModal} src={local} alt="duracao" /> {curso.idLogradouroNavigation}  </p>}
+                                        {<div className='circulo_coracao'>
+                                            <img className='coracao' src={coracao} alt="" />
+                                        </div>}
+                                    </section>
+                                )
+                            })
+                        }
+                        {/* <img onClick={openModal} className='banner' src={logica} alt="" />
                             <h2 onClick={openModal}>Logica de Programação</h2>
                             <p><img className='test' onClick={openModal} src={relogio} alt="duracao" /> 20 Horas </p>
                             <p><img className='test' onClick={openModal} src={local} alt="local" /> EAD</p>
                             <div className='circulo_coracao'>
                                 <img className='coracao' src={coracao} alt="" />
-                            </div>
-                        </section>
-                        <section className='box_cursos'>
-                            <img onClick={openModal} className='banner' src={logica} alt="" />
-                            <h2 onClick={openModal}>Logica de Programação</h2>
-                            <p><img className='test' onClick={openModal} src={relogio} alt="duracao" /> 20 Horas </p>
-                            <p><img className='test' onClick={openModal} src={local} alt="local" /> EAD</p>
-                            <div className='circulo_coracao'>
-                                <img className='coracao' src={coracao} alt="" />
-                            </div>
-                        </section>
+                            </div> */}
+
+
                         <Modal
                             isOpen={modalIsOpen}
                             onRequestClose={closeModal}
                         >
                             <div className='box_title'>
-                                <img className='modal_img' src={logica} alt="" />
+                                <img className='modal_img' id='imagem' src={logica} alt="" />
                                 <div>
 
-                                <div className='title_modal'>
-                                <h1>Lógica de Programação</h1>
-                                </div>
+                                    <div className='title_modal'>
+                                        <h1>Lógica de Programação</h1>
+                                    </div>
 
-                                <div className='dados'>
-                                <p><img src={relogio} alt="" /> 1000 Horas</p>
-                                <p><img src={data} alt="" /> 15/01/2023 </p>
-                                </div>
-                                <p className='p'><img className='p_img' src={local} alt="" />Alameda Barão de Limeira, 539 - Santa Cecília</p>
+                                    <div className='dados'>
+                                        <p><img src={relogio} alt="" /> 1000 Horas</p>
+                                        <p><img src={data} alt="" /> 15/01/2023 </p>
+                                    </div>
+                                    <p className='p'><img className='p_img' src={local} alt="" />Alameda Barão de Limeira, 539 - Santa Cecília</p>
                                 </div>
                             </div>
                             <div className='container_modal'>
@@ -126,6 +151,7 @@ export default function CursosRapidos() {
                             <div>
                             </div>
                         </Modal>
+
                     </div>
                 </div>
 

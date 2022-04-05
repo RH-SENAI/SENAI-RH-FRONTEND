@@ -85,6 +85,8 @@
     width: 350px;
     height: 350px;      
     border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
     display: flex;
     border: none;
     flex-direction: column;
@@ -94,6 +96,7 @@
 
 .box_cursos img{
     cursor: pointer;
+    border-radius: 20px 20px 0 0;
 }
 
 
@@ -124,7 +127,7 @@ hr{
     cursor: pointer;
 }
 
-.test{
+.box_dados_curso{
     margin-right: 10px;
 }
 
