@@ -9,7 +9,6 @@
 }
 .container{
     width: 1300px;
-	margin: auto 0;
 }
 
 .textoEFoto{
@@ -56,6 +55,7 @@ label{
     align-items: center;
     border-radius: 20px;
     box-shadow: 8px 12px 15px rgb(166 171 189), 0px 0px 15px rgb(242 242 242);
+    margin-bottom: 30px;
 }
 
 form{

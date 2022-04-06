@@ -137,7 +137,7 @@ export default function Carometro() {
 
                                         return (
                                                 <div className="cardFuncionario">
-                                                    <img className='fotoCarometro' src={'https://raw.githubusercontent.com/RH-SENAI/SENAI-RH-BACKEND/back-gp-3-develop/GP3/api-gp3/senai-gp3-webApi/StaticFiles/Images/' + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
+                                                    <img className='fotoCarometro' src={'http://localhost:5000/StaticFiles/Images/' + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
                                                     <span className="spanCarometro">{usuario.nome}</span>
                                                     <span className="spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
                                                     <a onClick={openModal} onClickCapture = {() =>setIdFuncionarioModal(usuario.idUsuario)} className='seta_funcionario_carometro'>

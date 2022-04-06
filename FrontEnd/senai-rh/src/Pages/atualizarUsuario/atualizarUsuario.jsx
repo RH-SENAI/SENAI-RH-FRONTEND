@@ -16,10 +16,13 @@ export default function AtualizarPerfil() {
     const [dataNascimento, setDataNascimento] = useState(Date);
     const [endereco, setEndereco] = useState('')
     const [email, setEmail] = useState('')
+    const [salario, setSalario] = useState('')
+    const [fotoPerfil, setFotoPerfil] = useState('')
     const [idCargo, setIdCargo] = useState(0)
     const [idUnidade, setIdUnidade] = useState(0)
     const [listaUnidade, setListaUnidade] = useState([])
     const [listaCargo, setListaCargo] = useState([])
+    const [usuario] = useState([])
 
     //Função de Buscar funcionário por ID
     function BuscarFuncionarios() {
@@ -182,9 +185,10 @@ export default function AtualizarPerfil() {
 
                     <div className="textoEFoto">
                         <div className="fotoPerfilVazia">
-                            <img src="/static/media/Perfil.665c6f4f69a27632e71f989e2539ea7e.svg" alt="Imagem de perfil vazia" />
+                            <img src={"http://localhost:5000/StaticFiles/Images/" + usuario.caminhoFotoPerfil} alt="Imagem de perfil vazia" />
                         </div>
-                        <h6>Atualizar Foto</h6>
+                        <label className="labelCadastro" for="fotoPerfil">Inserir foto</label>
+                                <input className="inputCadastroFile" value={fotoPerfil} name='fotoPerfil' id='fotoPerfil' onChange={(event) => setFotoPerfil(event.target.value)} type="file" />
                     </div>
 
 
@@ -203,6 +207,9 @@ export default function AtualizarPerfil() {
 
                         <label className="labelAtualizar">Email</label>
                         <input type="text" className="inputAtualizar" name="email" placeholder="Digite aqui o email do funcionário" value={email} onChange={(event) => setEmail(event.target.value)} />
+
+                        <label className="labelAtualizar">Salario</label>
+                        <input type="number" className="inputAtualizar" name="salario" placeholder="Digite aqui o salario do funcionário" value={salario} onChange={(event) => setSalario(event.target.value)} />
 
                         <label className="labelAtualizar">Unidade</label>
                         <select name="Unidade"
