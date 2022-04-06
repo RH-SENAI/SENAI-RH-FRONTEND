@@ -13,6 +13,8 @@ export default function CadastrarAtividades() {
     const [listaAtividadesValidar, setListaAtividadesValidar] = useState([]);
     // const [listaSetores, setListaSetores] = useState([]);
     const [idAtividade, setIdAtividade] = useState('');
+    const [idUsuario, setIdUsuario] = useState('');
+    const [atividade] = useState([]);
     const [idSetor, setIdSetor] = useState('');
     const [nomeAtividade, setNomeAtividade] = useState('');
     // const [dataInicio, setDataInicio] = useState('');
@@ -28,10 +30,10 @@ export default function CadastrarAtividades() {
 
     function listarAtividades() {
         console.log(necessarioValidar)
-        axios("http://localhost:5000/api/Atividades"
+        axios.get("http://localhost:5000/api/Atividades"
             , {
                 headers: {
-                    // 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
                 }
             })
             .then(resposta => {
@@ -46,11 +48,10 @@ export default function CadastrarAtividades() {
     useEffect(listarAtividades, []);
 
     function listarAtividadesValidar() {
-        console.log(necessarioValidar)
         axios("http://localhost:5000/api/Atividades/ListaValidar"
             , {
                 headers: {
-                    // 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
                 }
             })
             .then(resposta => {
@@ -60,6 +61,7 @@ export default function CadastrarAtividades() {
             })
 
             .catch(erro => console.log(erro))
+        console.log(listaAtividadesValidar)
     };
 
     useEffect(listarAtividadesValidar, []);
@@ -96,7 +98,7 @@ export default function CadastrarAtividades() {
                 necessarioValidar: necessarioValidar
             }, {
                 headers: {
-                    // 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
                 }
             })
             .then((resposta) => {
@@ -124,6 +126,21 @@ export default function CadastrarAtividades() {
         setNecessarioValidar(!necessarioValidar)
         console.log(necessarioValidar + " - Atual")
     }
+
+    function validarAtividades(atividade) {
+        console.log("peroba =" + atividade.idAtividade)
+        // console.log(atividade.idUsuario)
+        axios.patch("http://localhost:5000/api/Atividades/ValidarAtividade/" + atividade.idAtividade + "/" + atividade.idUsuario,{
+            idAtividade: idAtividade,
+            idUsuario: idUsuario
+        }
+            , {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            })
+            .catch(erro => console.log(erro))
+    };
 
     //========================== MODAL =============================//
 
@@ -186,10 +203,13 @@ export default function CadastrarAtividades() {
         }
     }
 
+
+
     //========================== FIM MODAL ============================//
 
     return (
         <div className="div_container">
+
             <Header />
             <div className="container_">
                 <div className="container_cards">
@@ -284,7 +304,7 @@ export default function CadastrarAtividades() {
                             <div className='container_atividades'>
 
                                 {listaAtividades.map((atividade) => {
-
+                                    console.log(atividade.idAtividade)
                                     return (
                                         <div key={atividade.idAtividade}>
                                             {/* <div id="my-modal" class="modal">
@@ -299,11 +319,11 @@ export default function CadastrarAtividades() {
                                                     </div>
                                                 </div>
                                             </div> */}
+
                                             <Modal
                                                 isOpen={modalIsOpen}
                                                 onRequestClose={closeModal}
-                                                id={atividade.idAtividade}
-                                                
+                                            // atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)}
                                             >
                                                 <div class="modal-body">
                                                     <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
@@ -313,6 +333,7 @@ export default function CadastrarAtividades() {
                                                     <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
                                                 </div>
                                             </Modal>
+
                                             <div className='box_atividade'>
                                                 <div className='organizar_atividade'>
                                                     <h2 className='titulo_atividade'>{atividade.nomeAtividade}</h2>
@@ -340,24 +361,28 @@ export default function CadastrarAtividades() {
 
                                     return (
                                         <div key={atividade.idAtividade}>
-                                            <div id="my-modal" class="modal">
-                                                <div className="modal-content">
-                                                    <div className="modal-body">
-                                                        <span className="close">&times;</span>
-                                                        <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
-                                                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                                                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                                                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                                                        {/* <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button> */}
+                                            <Modal
+                                                isOpen={modalIsOpen}
+                                                onRequestClose={closeModal}
+                                            // atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)}
+                                            >
+                                                <div class="modal-body">
+                                                    <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
+                                                    <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                                                    <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                                                    <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                                                    <div className="organizar_btn">
+                                                        <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
+                                                        <button className="btn_validar_modal" onClick={validarAtividades(atividade)}>Validar</button>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </Modal>
                                             <div className='box_atividade'>
                                                 <div className='organizar_atividade'>
                                                     <h2 className='titulo_atividade'>{atividade.nomeAtividade}</h2>
                                                     <p className='descricao_atividade'>{atividade.descricaoAtividade}</p>
                                                 </div>
-                                                <button id="modal-btn" class="button">
+                                                <button onClick={openModal} id={atividade.idAtividade} className="button">
                                                     <img className='img_olho' src={img_olho} alt="Icone de um olho" />
                                                 </button>
                                             </div>

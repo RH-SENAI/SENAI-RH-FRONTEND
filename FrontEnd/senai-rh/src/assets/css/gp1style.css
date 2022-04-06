@@ -365,6 +365,13 @@ input:checked+label:after {
     font-size: 30px;
 }
 
+.organizar_btn {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    width: 100%;
+}
+
 .btn_fechar_modal {
     font-size: medium;
     font-weight: 600;
@@ -379,6 +386,24 @@ input:checked+label:after {
 }
 
 .btn_fechar_modal:hover {
+    /* background-color: #f1f1f1; */
+    box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+}
+
+.btn_validar_modal {
+    font-size: medium;
+    font-weight: 600;
+    color: #08b810;
+    height: 60px;
+    width: 120px;
+    margin: 60px 0 30px 0;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    background-color: #fff;
+}
+
+.btn_validar_modal:hover {
     /* background-color: #f1f1f1; */
     box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
 }
