@@ -6,6 +6,7 @@ import "../../Assets/Css/cadastro.css"
 import "../../Assets/Css/footer.css"
 import "../../Assets/Css/styleG3.css"
 import Footer from "../../components/Footer";
+import Perfil from '../../Assets/img/Perfil.svg'
 
 
 export default function Cadastro() {
@@ -14,6 +15,7 @@ export default function Cadastro() {
     const [listaCargo, setListaCargo] = useState([])
     const [listaUnidade, setListaUnidade] = useState([])
     const [listaTipoUsuario, setListaTipoUsuario] = useState([])
+    const [usuario, setUsuario] = useState([])
     const [idTipoUsuario, setIdTipoUsuario] = useState(0)
     const [nomeUsuario, setNomeUsuario] = useState('');
     const [endereco, setEndereco] = useState('')
@@ -92,15 +94,16 @@ export default function Cadastro() {
     }
 
 
-    function CadastrarUsuario(event) {
+    const CadastrarUsuario = (event) => {
 
         event.preventDefault();
 
         var formData = new FormData();
 
-        // const element = document.getElementById('fotoPerfil')
-        // const file = element.files[0]
-        // formData.append('fotoPerfil', file, file.name)
+        const element = document.getElementById('fotoPerfil')
+        const file = element.files[0]
+        formData.append('fotoPerfil', file, file.name)
+
         formData.append('idUsuario', idUsuario);
         formData.append('nome', nomeUsuario);
         formData.append('email', email);
@@ -108,9 +111,11 @@ export default function Cadastro() {
         formData.append('dataNascimento', dataNascimento);
         formData.append('cpf', CPF);
         formData.append('idCargo', idCargo);
+        formData.append('idTipoUsuario', idTipoUsuario);
         formData.append('idUnidadeSenai', idUnidade);
-        formData.append('idTipoUsuario', idTipoUsuario);
-        formData.append('idTipoUsuario', idTipoUsuario);
+        formData.append('localizacaoUsuario', endereco);
+        formData.append('salario', salario);
+        formData.append('fotoPerfil', fotoPerfil);
 
 
 
@@ -183,6 +188,12 @@ export default function Cadastro() {
                     <div className="boxCadastro">
                         <form className="formCadastro" onSubmit={CadastrarUsuario}>
                             <div className="bodyCadastro">
+                                <div className="boxFotoPerfilCadastro">
+                                    <img className="fotoPerfilCadastro" src={Perfil}/>
+                                </div>
+                                
+                                <label className="labelCadastro" for="fotoPerfil">Inserir foto</label>
+                                <input className="inputCadastroFile" value={fotoPerfil} name='fotoPerfil' id='fotoPerfil' onChange={(event) => setFotoPerfil(event.target.value)} type="file" />
                                 {/* <label className="labelCadastro">Nome Do Usuario</label> */}
                                 <input type="text" className="inputCadastro" name="nomeUsuario" placeholder="Nome Do Usuario" value={nomeUsuario} onChange={(event) => setNomeUsuario(event.target.value)} />
 
@@ -252,7 +263,7 @@ export default function Cadastro() {
                                         listaUnidade.map((event) => {
                                             return (
 
-                                                <option key={event.idUnidade} value={event.idUnidade}>{event.nomeUnidadeSenai}
+                                                <option key={event.idUnidade} value={event.idUnidadeSenai}>{event.nomeUnidadeSenai}
                                                 </option>
                                             );
                                         })}
@@ -260,7 +271,6 @@ export default function Cadastro() {
                                 </select>
                                 {/* <label className="labelCadastro">Data de nascimento</label> */}
                                 <input className="inputCadastroData" value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} type="date" />
-                                <input className="inputCadastro" value={fotoPerfil} name='fotoPerfil' id='fotoPerfil' onChange={(event) => setFotoPerfil(event.target.value)} type="file" />
                                 <button type="submit" className="botaoCadastro">Cadastrar</button>
                             </div>
                         </form>
