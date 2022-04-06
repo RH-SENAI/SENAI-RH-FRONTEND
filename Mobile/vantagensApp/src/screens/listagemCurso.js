@@ -104,8 +104,8 @@ export default class ListagemCurso extends Component {
         )
       }
 
-      renderItem = ({ item }) => (
-      )
+      //renderItem = ({ item }) => (
+      //)
 }
 const styles = StyleSheet.create({
     containerCursos: {
