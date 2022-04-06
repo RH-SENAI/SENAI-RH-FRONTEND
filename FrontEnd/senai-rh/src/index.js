@@ -5,7 +5,8 @@ import ReactDOM from 'react-dom';
 import {
   Route,
   BrowserRouter as Router,
-  Switch
+  Redirect,
+  Switch,
 } from 'react-router-dom';
 import './index.css';
 import Cadastro from './Pages/CadastrarUsuario/CadastrarUsuario';

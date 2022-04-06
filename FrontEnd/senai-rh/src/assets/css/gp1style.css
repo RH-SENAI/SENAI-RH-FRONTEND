@@ -1,126 +1,384 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);
-*{
+
+* {
     box-sizing: 0;
     margin: 0;
     padding: 0;
 }
 
 /* ==============================   Cadastrar Atividades   ===============================================    */
-.container_{
-	width: 100vw;
-	height: 100vh;
+.container_ {
+    width: 100%;
+    background-color: #f2f2f2;
 }
 
 .container_cards {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-	/* background-color: #3335cb; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /* background-color: #3335cb; */
 }
 
 .container_cadastro {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
-	align-items: center;
-	background-color: #EBECF0;
-	width: 80%;
-	height: 1397px;
-	border-radius: 20px;
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #f2f2f2;
+    width: 1300px;
+    height: 1400px;
+    border-radius: 20px;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    padding: 30px 0 40px 0;
 }
 
 .container_navs {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    /* background-color: aqua; */
 }
 
 .nav_links {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .links {
-	text-decoration: none;
-	font-family: 'Montserrat', sans-serif;
-	color: #959595;
-	font-weight: 700;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    color: #959595;
+    font-weight: 400;
+    font-size: 25px;
 }
 
 h1 {
-	color: #CB334B;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 700;
+    color: #CB334B;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 44px;
+    margin: 45px 0 45px 0;
 }
 
 .form_cadastro {
-	width: 80%;
-    height: 60%;
+    width: 80%;
+    height: 80%;
     /* background-color: yellow; */
     display: flex;
     flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
+    justify-content: space-between;
+    align-items: center;
 }
-
-/* .container_form {
-
-} */
 
 .label_form {
-	font-weight: 700;
-	width: 50%;
-	color: #878787;
+    font-weight: 700;
+    font-size: 34px;
+    width: 50%;
+    color: #878787;
 }
 
+.input_text {
+    outline: none;
+    border-bottom: 2px solid #959595;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    background-color: #f2f2f2;
+    width: 50%;
+    margin: 20px 0 20px 0;
+    height: 32px;
+}
+
+.input_text::placeholder {
+    color: #959595;
+    font-size: 25px;
+}
+
+.input_select {
+    outline: none;
+    border-bottom: 2px solid #959595;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    background-color: #f2f2f2;
+    width: 50%;
+    height: 32px;
+    /* margin: 20px 0 20px 0; */
+    color: #959595;
+}
+
+.container_btn {
+    width: 50%;
+}
+
+.btn_cadastrar {
+    background-color: #CB334B;
+    color: #ffff;
+    border: none;
+    width: 516px;
+    height: 75px;
+    border-radius: 23px;
+    margin-top: 28px;
+    font-size: 36px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+/* ==============================   Todas Atividades   ===============================================    */
+
+.container_card_atividades {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #f2f2f2;
+    width: 1300px;
+    border-radius: 20px;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    margin: 60px 0;
+    padding: 30px 0 75px 0;
+}
+
+.container_atividades {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+    /* background-color: aqua; */
+}
+
+.box_atividade {
+    display: flex;
+    justify-content: space-between;
+    /* background-color: yellow; */
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    margin: 30px 0;
+}
+
+.organizar_atividade {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    /* background-color: aqua; */
+}
+
+.titulo_atividade {
+    font-size: 33px;
+    font-weight: 500;
+    color: #0E0E0E;
+}
+
+.descricao_atividade {
+    font-size: 23px;
+    font-weight: 400;
+    color: #0E0E0E;
+    margin-top: 8px;
+}
+
+.img_olho {
+    height: 59;
+    width: 72px;
+}
+
+.linha_atividade {
+    width: 100%;
+    border: 2px solid #D9D9D9;
+}
 
 /* ==============================   Switch Button   ===============================================    */
 
-input[type=checkbox]{
-	height: 0;
-	width: 0;
-	visibility: hidden;
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
 }
 
 .label_switch {
-	cursor: pointer;
-	text-indent: -9999px;
-	width: 200px;
-	height: 100px;
-	background: grey;
-	display: block;
-	border-radius: 100px;
-	position: relative;
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 68px;
+    height: 42px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    margin-bottom: 19px;
 }
 
 .label_switch:after {
-	content: '';
-	position: absolute;
-	top: 5px;
-	left: 5px;
-	width: 90px;
-	height: 90px;
-	background: #fff;
-	border-radius: 90px;
-	transition: 0.3s;
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 5px;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
 }
 
-input:checked + label {
-	background: #CB334B;
+input:checked+label {
+    background: #CB334B;
 }
 
-input:checked + label:after {
-	left: calc(100% - 5px);
-	transform: translateX(-100%);
+input:checked+label:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
 }
 
-.label_switch:active:after {
+.text_switch {
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: #878787;
+    margin-left: 13.2px;
+}
+
+/* .label_switch:active:after {
 	width: 130px;
+} */
+
+/* ==============================   Validar Atividades   ===============================================    */
+
+
+
+/* ==============================   Modal Da Atividade   ===============================================    */
+
+:root {
+    --modal-duration: 1s;
+    --modal-color: #428bca;
+}
+
+.button {
+    background-color: #f2f2f2;
+    padding: 1em 2em;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    /* background: #dbdbdb; */
+    /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.35)); */
+    box-shadow: 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.ReactModal__Overlay{
+    background: rgba(201, 201, 201, 0.4) !important;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.ReactModal__Content {
+    margin: 1% auto;
+    width: 60%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+}
+
+
+.modal-content {
+    margin: 1% auto;
+    width: 60%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    height: 600px;
+    padding: 10px 90px;
+    background: #fff;
+}
+
+.close {
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: #fff;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.titulo_atividade_modal {
+    font-size: 45px;
+    font-weight: 500;
+    color: #0E0E0E;
+    margin: 20px 0;
+}
+
+.descricao_atividade_modal {
+    width: 100%;
+    margin: 20px 0;
+    font-size: 30px;
+}
+
+.btn_fechar_modal {
+    font-size: medium;
+    font-weight: 600;
+    color: #B83F52;
+    height: 60px;
+    width: 120px;
+    margin: 60px 0 30px 0;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    background-color: #fff;
+}
+
+.btn_fechar_modal:hover {
+    /* background-color: #f1f1f1; */
+    box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
 }

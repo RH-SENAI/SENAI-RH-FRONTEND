@@ -1,6 +1,5 @@
 import api from '../services/api';
 import React, {useState, useEffect} from 'react';
-import {Picker} from '@react-native-picker/picker';
 import {
   StyleSheet,
   Text,
@@ -13,7 +12,6 @@ import {
 } from 'react-native';
 import moment from 'moment';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useDerivedValue} from 'react-native-reanimated';
 
 export default function Cadastro() {
   const [idUsuario, setIdUsuario] = useState(0);
@@ -43,7 +41,7 @@ export default function Cadastro() {
 
       const resposta = await api.post('Feedbacks/Cadastrar', data, {
         headers: {
-          // Authorization: 'Bearer ' + token,
+          Authorization: 'Bearer ' + token,
         },
       });
 
@@ -53,6 +51,7 @@ export default function Cadastro() {
         console.warn('Falha ao realizar o cadastro.');
       }
 
+      setValorMoedas(0);
       setIdFeedback(0);
       setComentarioFeedback('');
     } catch (error) {
@@ -133,11 +132,20 @@ export default function Cadastro() {
       </View>
 
       <TextInput
-        placeholder="Adicione uma sugestão ou feedback!"
+        placeholder="Deseja adicionar alguma sugestão de melhora ou feedback?"
         keyboardType="default"
         onChangeText={campo => setComentarioFeedback(campo)}
         value={comentarioFeedback}
-        style={styles.inputCadastro}></TextInput>
+        style={styles.inputCadastro}>
+      </TextInput>
+
+      <TextInput
+        placeholder="Insira  uma nota para a decisão"
+        keyboardType="numeric"
+        onChangeText={campo => setNotaDecisao(campo)}
+        value={notaDecisao}
+        style={styles.inputCadastro}>
+      </TextInput>
 
       <TouchableOpacity style={styles.btnCadastro} onPress={cadastarFeedback}>
         <Text style={styles.btnCadastroText}>Enviar Feedback</Text>
@@ -240,5 +248,14 @@ const styles = StyleSheet.create({
   imgCadastro:{
     marginTop:80,
     marginLeft:180
+  },
+
+  boxFeedback:{
+    backgroundColor: '#ffffff',
+    boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+    height: 33,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection:'column'
   }
 });

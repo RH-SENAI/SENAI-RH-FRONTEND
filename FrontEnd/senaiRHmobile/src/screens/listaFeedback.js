@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   },
 
   tituloCardWrapper: {
-    backgroundColor: '#F2F2F2',
+    backgroundColor: '#000000',
     boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
     height: 33,
     justifyContent: 'center',
