@@ -68,38 +68,48 @@ export default class ListagemCurso extends Component {
 
       render() {
         return(
-           <View style={styles.containerCursos}>
+           <View style={styles.containerListagem}>
               <DropShadow style={styles.shadow}>
                    <View style={styles.header}>
                         <Image
-                        source={require('../../assets/img/logo.png')}
+                        source={require('../../assets/img/logoSENAI.png')}
                         style={styles.imgHeader}
                         />
                    </View>
               </DropShadow>
-              <View style={styles.boxTituloCurso}>
-                  <Text style={styles.tituloCurso}>Cursos</Text>
+              <View style={styles.boxTituloListagem}>
+                  <Text style={styles.tituloListagem}>Cursos</Text>
               </View>
-              <View style={styles.boxCursos}>
-                  <Image source={require()} />
-                  <View style={styles.boxTituloCard}>
-                      <Text>Logica de Programação</Text>
-                  </View>
-                  <View style={styles.boxDescricaoCard}>
-                      <Image source={require()} />
-                      <Text style={textDescricaoCard}>20 horas</Text>
-                      <Image source={require()} />
-                      <Text style={textDescricaoCard}>EAD</Text>
-
-                      <View style={styles.boxAvaliacao}>
-                          <Image source={require()} />
-                          <Image source={require()} />
-                          <Image source={require()} />
-                          <Image source={require()} />
-                          <Image source={require()} />
-                      </View>
+              <DropShadow style={styles.shadow}>
+              <View style={styles.containerCursos}>
+                  <View style={styles.boxCursos}>
+                          <Image source={require('../../assets/img/imgCurso.png')} />
+                          <View style={styles.boxTituloCard}>
+                              <Text style={styles.textTituloCurso}>Logica de Programação</Text>
+                          </View>
+                      <View style={styles.boxDescricaoCard}>
+                            <View style={styles.dadosCurso}>
+                                <Image source={require('../../assets/img/relogio.png')} />
+                                <Text style={styles.textDescricaoCard}>20 horas</Text>
+                            </View>
+                            <View style={styles.dadosCurso}>
+                                 <Image source={require('../../assets/img/localizacao.png')} />
+                                 <Text style={styles.textDescricaoCard}>EAD</Text>
+                            </View>
+                            <View style={styles.boxAvalCoracao}>
+                                <View style={styles.boxCoracao}>
+                                   <Image source={require('../../assets/img/coracao.png')} />
+                                </View>
+                                <View style={styles.boxAvaliacao}>
+                                   <Text style={styles.textAvaliacao}>
+                                   10/10
+                                   </Text>
+                                </View>
+                            </View>
+                     </View>
                   </View>
               </View>
+              </DropShadow>
            </View>
         )
       }
@@ -108,7 +118,7 @@ export default class ListagemCurso extends Component {
       //)
 }
 const styles = StyleSheet.create({
-    containerCursos: {
+    containerListagem: {
         backgroundColor: '#F2F2F2'
     },
     shadow: {
@@ -123,7 +133,7 @@ const styles = StyleSheet.create({
     header: {
         width: '100%',
         height: 50,
-        backgroundColor: '#CB334B',
+        backgroundColor: '#F2F2F2',
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
         justifyContent: 'center',
@@ -132,13 +142,70 @@ const styles = StyleSheet.create({
     imgHeader: {
 
     },
-    boxTituloCurso: {
+    boxTituloListagem: {
         alignItems: 'center'
     },
-    tituloCurso: {
+    tituloListagem: {
         fontFamily: 'Montserrat-SemiBold',
         fontSize: 30,
         color: '#000',
         marginTop: 30,
-    }
+    },
+    containerCursos: {
+        alignItems: 'center'
+    },
+    boxCursos: {
+        width: 275,
+        height: 250,
+        alignItems: 'center',
+        marginTop: 30,
+        backgroundColor: '#F2F2F2',
+        borderRadius: 50
+    },
+    textTituloCurso: {
+        fontFamily: 'Montserrat-Regular',
+        fontSize: 16,
+        color: '#000',
+        marginTop: 10,
+    },
+    boxDescricaoCard: {
+        width: 275,
+        height: 135,
+        //backgroundColor: 'blue',
+        alignItems: 'flex-start',
+        marginTop: 10,
+        marginLeft: 30,
+    },
+    dadosCurso: {
+        flexDirection: 'row',
+        marginTop: 10,
+        alignItems: 'center'
+    },
+    textDescricaoCard: {
+        marginLeft: 5
+    },
+    boxAvalCoracao:  {
+        alignItems: 'center',
+        flexDirection: 'row',
+        marginTop: 15,
+        marginLeft: 5
+    },
+    boxCoracao: {
+        width: 40,
+        height: 40,
+        backgroundColor: '#EBECF0',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 50,
+        borderWidth: 1,
+        borderColor: 'rgba(0, 0, 0, .2)',
+    },
+    boxAvaliacao: {
+        width: 180,
+        //flexDirection: 'row',
+        alignItems: 'flex-end',
+    },
+    //imgEstrela: {
+    //    width: 75
+    //}
 })
