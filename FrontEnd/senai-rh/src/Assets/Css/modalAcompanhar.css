@@ -1,0 +1,56 @@
+/* ==============================   MODAL   ===============================================    */
+
+.foto_perfil_modal {
+    width: 157px;
+    height: 157px;
+    border-radius: 78px;
+
+}
+
+.foto_modal {
+    height: 100%;
+    width: 100%;
+    border-radius: 78px;
+}
+
+.box_informações_modal {
+    display: flex;
+    flex-direction: column;
+    height: 38%;
+}
+
+.box_modal {
+    display: flex;
+    height: 78vh;
+    width: 43vw;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.box_foto_nome_modal {
+    display: flex;
+    flex-direction: column;
+    height: 66%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.box_informações_modal span {
+    font-size: 27px;
+
+
+}
+
+.box_span {
+    display: flex;
+}
+
+.box_span_key_modal {
+    font-weight: 600;
+    font-size: 27px;
+}
+
+.span_value_modal {
+    font-size: 27px;
+    margin-left: 10px;
+}

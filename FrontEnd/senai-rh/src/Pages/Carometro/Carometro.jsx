@@ -11,6 +11,7 @@ import setaSelectLight from '../../Assets/img/SetaSelectLight.png'
 import IconLogout from '../../Assets/img/IconLogout.png'
 import SetaCarometro from '../../Assets/img/SetaCarometro.png'
 import Modal from 'react-modal';
+import { ModalAcompanhar } from '../../components/Modal/ModalAcompanhar';
 
 
 
@@ -23,38 +24,15 @@ export default function Carometro() {
     const [listaCargo, setListaCargo] = useState([]);
     const [nomeFuncionario, setNomeFuncionario] = useState('');
     const [idFuncionarioModal, setIdFuncionarioModal] = useState(0);
+    const [showModal, setShowModal] = useState(false);
     const [active, setMode] = useState(false);
     const ToggleMode = () => {
         setMode(!active)
     }
-    const [modalIsOpen, setIsOpen] = React.useState(false);
-    let subtitle;
-
-
-    function openModal() {
-        setIsOpen(true);
+    const openModal = () => {
+        setShowModal(prev => !prev);
     }
 
-    function afterOpenModal() {
-        subtitle.style.color = '#f00';
-    }
-
-    function closeModal() {
-        setIsOpen(false);
-    }
-
-    const custonModal = {
-        content: {
-            left: '5%',
-            top: '10%',
-            background: 'f2f2f2',
-            bottom: 'auto',
-            borderRadius: '20px',
-            width: '90%',
-            height: '80%',
-            transition: '.2s'
-        }
-    }
 
 
 
@@ -109,8 +87,10 @@ export default function Carometro() {
 
     return (
         <body>
+            <ModalAcompanhar usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idFuncionarioModal)} showModal={showModal} setShowModal={setShowModal} /> 
             <HeaderFuncionario />
             <main>
+                
                 <div className="container">
                     <div className="containerCarometro">
                         <div className="sidebarCarometro">
@@ -160,7 +140,7 @@ export default function Carometro() {
                                                     <img className='fotoCarometro' src={'https://raw.githubusercontent.com/RH-SENAI/SENAI-RH-BACKEND/back-gp-3-develop/GP3/api-gp3/senai-gp3-webApi/StaticFiles/Images/' + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
                                                     <span className="spanCarometro">{usuario.nome}</span>
                                                     <span className="spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
-                                                    <a onClick={openModal}>
+                                                    <a onClick={openModal} onClickCapture = {() =>setIdFuncionarioModal(usuario.idUsuario)} className='seta_funcionario_carometro'>
                                                         <img className='setaCarometro' src={SetaCarometro} alt="setaCard" />
                                                     </a>
 
@@ -169,13 +149,7 @@ export default function Carometro() {
                                     })
                                 }
                             </div>
-                            <Modal isOpen={modalIsOpen}
-                            onRequestClose={closeModal}>
-                                <div>
-                                    <button className='atualizarModal' ><Link className='hrefModal' to='/atualizar'>atualizar</Link></button>
-                                    <button className='deletarModal' onClick={() => ExcluirPerfil}>deletar</button>
-                                </div>
-                            </Modal>
+
                         </div>
                     </div>
                 </div>

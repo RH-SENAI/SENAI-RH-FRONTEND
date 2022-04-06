@@ -63,7 +63,7 @@ const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `;
 
-export const Modall = ({ showModal, setShowModal, aluno }) => {
+export const ModalAcompanhar = ({ showModal, setShowModal, usuario }) => {
   const modalRef = useRef();
 
   let history = useHistory();
@@ -115,49 +115,40 @@ export const Modall = ({ showModal, setShowModal, aluno }) => {
                 <div className='box_modal'>
                   <div className='box_foto_nome_modal'>
                     <div className='foto_perfil_modal'>
-                      <img className='foto_modal' src={"data:image/png;base64," + aluno.fotoDoPerfil} />
+                      <img className='foto_modal' src={"data:image/png;base64,"} />
                     </div>
-                    <h1>{aluno.nomeAluno}</h1>
+                    <h1>{usuario.nome}</h1>
 
-  
-                    <button onClick={() => history.push(`/Perfil/${aluno.idAluno}`) }> Atualizar Dados</button>
-                
-                    
+
+                    <button > Deletar</button>
+                    <button onClick={() => history.push(`/atualizar/${usuario.idUsuario}`)}> Atualizar Dados</button>
+
+
                   </div>
 
 
 
                   <div className='box_informações_modal'>
                     <div className='box_span'>
-                      <span className='box_span_key'>RM: </span>
-                      <span className='span_value_modal'>{aluno.rm}</span>
+                      <span className='box_span_key'>CPF: </span>
+                      <span className='span_value_modal'>{usuario.cpf}</span>
                     </div>
 
                     <div className='box_span'>
-                      <span className='box_span_key_modal'>Turma: </span>
-                      <span className='span_value_modal'>{aluno.idSalaNavigation.nomeSala}</span>
+                      <span className='box_span_key_modal'>Cargo: </span>
+                      <span className='span_value_modal'>{usuario.idCargoNavigation.nomeCargo}</span>
                     </div>
 
 
                     <div className='box_span'>
-                      <span className='box_span_key'>Situacao: </span>
-                      {<span
-                        className='span_value_modal'
+                      <span className='box_span_key'>Unidade: </span>
+                      <span className='span_value_modal'>{usuario.idUnidadeNavigation.nomeUnidade}</span>
 
-                        style={{
-                          'color': aluno.situacao === true ?
-                            '#12FE0D' : '#E40A0A'
-                        }}
-                      >{
-                          aluno.situacao === true ?
-                            'Aprovado' : 'Reprovado'
-
-                        }</span>}
                     </div>
 
                     <div className='box_span'>
-                      <span className='box_span_key'>Telefone: </span>
-                      <span className='span_value_modal'>{aluno.telefone}</span>
+                      <span className='box_span_key'>Endereço: </span>
+                      <span className='span_value_modal'>{usuario.localizacaoUsuario}</span>
                     </div>
 
                   </div>

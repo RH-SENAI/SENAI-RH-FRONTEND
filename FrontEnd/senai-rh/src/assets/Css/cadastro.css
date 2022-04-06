@@ -21,6 +21,11 @@ select {
     padding: 0 20px;
     background: url(../img/SetaSelectLight.png) no-repeat ;
 }
+input[type="file"] {
+
+    display: none;
+}
+
 /* ==============================   CADASTRO   ===============================================    */
 
 .container{
@@ -37,6 +42,7 @@ select {
 .formCadastro{
     width: 48%;
     display: flex;
+    align-items: flex-start;
     
 }
 .bodyCadastro{
@@ -75,6 +81,7 @@ select {
     font-weight: bold;
 
 }
+
 .inputCadastroSelect{
     box-sizing: border-box;
     padding: 0 20px;
@@ -106,10 +113,10 @@ select {
     font-weight: bold;
 }
 .labelCadastro{
-    font-size: 28px;
+    font-size: 23px;
     font-weight: bold;
     text-transform: capitalize;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 
 }
 .boxImg{
@@ -134,6 +141,22 @@ select {
     font-size: 30px;
     font-weight: 600;
     margin-top: 50px;
+}
+.fotoPerfilCadastro{
+    
+    height: 50px;
+}
+.boxFotoPerfilCadastro{
+    background-color: #f2f2f2;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1); 
+    border-radius: 50px;
+    height: 100px;
+    width: 100px;
+    margin-bottom: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ==============================   CADASTRO   ===============================================    */
