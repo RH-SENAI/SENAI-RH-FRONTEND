@@ -50,7 +50,7 @@ export default class Login extends Component {
               var certo = jwt_decode(token).role
               console.warn('certo ' + certo)
              
-              this.props.navigation.navigate('MinhasAtividades');
+              this.props.navigation.navigate('Atividades');
 
               // switch (certo) {
 
