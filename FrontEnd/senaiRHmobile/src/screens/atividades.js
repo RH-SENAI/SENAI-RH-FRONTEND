@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     Text,
-    TouchableOpacity,
+     //Pressable,
     View,
     Image,
     ImageBackground,
@@ -10,14 +10,14 @@ import {
     FlatList,
 } from 'react-native';
 
-import 'intl';
-import 'intl/locale-data/jsonp/pt-BR';
-
-//import {TouchableOpacity} from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import api from '../services/api';
+import base64 from 'react-native-base64';
+import { parseJwt } from '../services/auth';
+import { json } from 'body-parser';
 
 export default class Atividades extends Component {
     constructor(props) {
@@ -42,15 +42,24 @@ export default class Atividades extends Component {
         try {
             const token = await AsyncStorage.getItem('userToken');
 
-            //Colocar a rota da api em se associar
+            const xambers = base64.decode(token.split('.')[1])
+            const user = JSON.parse(xambers)
+            console.warn(item)
+
             const resposta = await api.post(
-                '/Atividades/Associar/' + item,
-                {},
+                '/Atividades/Associar/' + user.jti,
+                {
+                    idAtividade: item
+                },
                 {
                     headers: {
                         Authorization: 'Bearer ' + token,
                     },
                 },
+
+                console.warn(resposta)
+
+                
             );
             if (resposta.status == 201) {
                 console.warn('Voce se associou a uma atividade');
@@ -91,7 +100,8 @@ export default class Atividades extends Component {
                     </View>
 
                     <FlatList
-                        contentContainerStyle={styles.mainBodyContent}
+                        // contentContainerStyle={styles.mainBodyContent}
+                        style={styles.boxAtividade}
                         data={this.state.listaAtividades}
                         keyExtractor={item => item.idAtividade}
                         renderItem={this.renderItem}
@@ -138,17 +148,17 @@ export default class Atividades extends Component {
     }
 
     renderItem = ({ item }) => (
-
-        //trocar nomes do item.
-
-        <View style={styles.boxAtividade}>
-            <View style={styles.box}>
-                {/* <Text style={styles.data}>
+<View>
+      <Text style={styles.data}>
                     {Intl.DateTimeFormat("pt-BR", {
-                        year: 'numeric', month: 'short', day: 'numeric',
-                        hour: 'numeric', minute: 'numeric', hour12: true
-                    }).format(new Date(item.dataAtividade))}
-                </Text> */}
+                        year: 'numeric', month: 'short', day: 'numeric'
+                    }).format(new Date(item.dataCriacao))}
+                </Text>
+        <View style={styles.boxAtividade}>
+            
+           
+            <View style={styles.box}>
+               
                 <View style={styles.espacoPontos}>
                     <Text style={styles.pontos}> {item.recompensaMoeda} pontos </Text>
                     <Image style={styles.coins} source={require('../../assets/img/coins.png')} />
@@ -162,8 +172,7 @@ export default class Atividades extends Component {
 
                 <View style={styles.botao}>
                     <TouchableOpacity
-                        onPress={() => this.associar(item.idAtividade)}
-                    >
+                        onPress={() => this.associar(item.idAtividade)}>
                         <View style={styles.corBotão}>
                             <Text style={styles.texto}> Me associar </Text>
                         </View>
@@ -175,6 +184,7 @@ export default class Atividades extends Component {
 
 
         </View>
+    </View>
     );
 };
 const styles = StyleSheet.create({
@@ -183,6 +193,11 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F2F2F2',
     },
+
+    // boxFlatList:{
+    //     height:1000
+    // },
+
 
     mainBodyContent: {
         height: 200
@@ -194,7 +209,17 @@ const styles = StyleSheet.create({
         height: 60,
         elevation: 16,
         backgroundColor: '#F2F2F2',
-        boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        //boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        // shadowColor: "#000",
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 3
+        // },
+        // shadowOpacity: 0.25,
+        // shadowRadius: 4,
+        // elevation: 20,
+        // height: 350,
+        // width: 280,
         borderRadius: 5,
     },
 
@@ -220,6 +245,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         paddingTop: 40,
+        paddingBottom:20
     },
 
     itemEquipe: {
@@ -248,7 +274,10 @@ const styles = StyleSheet.create({
     },
 
     boxAtividade: {
-        paddingTop: 50,
+        //marginTop: 10,
+        //paddingBottom:2,
+       // height: 300,
+
     },
 
     data: {
@@ -263,7 +292,17 @@ const styles = StyleSheet.create({
         width: 285,
         elevation: 20,
         backgroundColor: '#F2F2F2',
-        boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        // boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        // shadowColor: "#000",
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 3
+        // },
+        // shadowOpacity: 0.25,
+        // shadowRadius: 4,
+        // elevation: 20,
+        // height: 350,
+        // width: 280,
         borderRadius: 5,
         marginBottom: 70,
     },

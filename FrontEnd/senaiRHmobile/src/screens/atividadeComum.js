@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-  ImageBackground,
-  TextInput,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+    Image,
+    ImageBackground,
+    TextInput,
 } from 'react-native';
 
 //import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -15,13 +15,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // import api from '../services/api';
 
-export default class AtividadeComum extends Component{
+export default class AtividadeComum extends Component {
     constructor(props) {
         super(props);
         this.state = {
 
         };
-     }
+    }
 
 
 
@@ -29,24 +29,24 @@ export default class AtividadeComum extends Component{
 
 
 
-     render() {
-         return(
+    render() {
+        return (
             <View style={styles.main}>
                 <View style={styles.mainHeader}>
                     <Image source={require('../../assets/img/logoSenai.png')}
-                    style={styles.imgLogo}
+                        style={styles.imgLogo}
                     />
                 </View>
 
                 <View style={styles.titulo}>
                     <Text style={styles.tituloEfects}>{'atividade'.toUpperCase()} </Text>
-                    
+
                     <View style={styles.boxAtividade}>
                         <Text style={styles.data}> Março 18, 2022 sexta-feira </Text>
                         <View style={styles.box}>
-                            <View style={styles.espacoPontos}> 
+                            <View style={styles.espacoPontos}>
                                 <Text style={styles.pontos}> 20 pontos </Text>
-                                <Image  style={styles.coins} source={require('../../assets/img/coins.png')}/>
+                                <Image style={styles.coins} source={require('../../assets/img/coins.png')} />
                             </View>
                             <View style={styles.conteudoBox}>
                                 <Text style={styles.nomeBox}> Nome da atividade </Text>
@@ -88,10 +88,19 @@ const styles = StyleSheet.create({
     mainHeader: {
         justifyContent: 'center',
         alignItems: 'center',
-	    height: 60,
+        height: 60,
         elevation: 16,
         backgroundColor: '#F2F2F2',
-        boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 20,
+        height: 350,
+        width: 280,
         borderRadius: 5,
     },
 
@@ -105,7 +114,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingTop: 40,
     },
-    
+
     tituloEfects: {
         fontFamily: 'Montserrat-Regular',
         color: '#B83F52',
@@ -128,14 +137,24 @@ const styles = StyleSheet.create({
         width: 285,
         elevation: 20,
         backgroundColor: '#F2F2F2',
-        boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        // boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 20,
+        height: 350,
+        width: 280,
         borderRadius: 5,
         marginBottom: 70,
     },
 
     espacoPontos: {
         flexDirection: 'row',
-        justifyContent:'flex-end',
+        justifyContent: 'flex-end',
         paddingTop: 15,
         paddingRight: 18,
     },
@@ -154,7 +173,7 @@ const styles = StyleSheet.create({
         paddingTop: 7,
         paddingLeft: 15,
     },
-    
+
     nomeBox: {
         fontFamily: 'Montserrat-Regular',
         color: '#B83F52',
@@ -178,7 +197,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingTop: 19,
     },
-    
+
     corBotão: {
         borderRadius: 5,
         height: 40,
@@ -187,7 +206,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    
+
     texto: {
         fontFamily: 'Montserrat-SemiBold',
         color: '#E2E2E2',
@@ -201,7 +220,7 @@ const styles = StyleSheet.create({
         paddingTop: 19,
     },
 
-    corIndisp:{
+    corIndisp: {
         borderRadius: 5,
         height: 40,
         width: 90,

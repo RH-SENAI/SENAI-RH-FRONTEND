@@ -108,7 +108,17 @@ btnSair:{
   marginTop:20,
   elevation: 16,
   backgroundColor: '#CB334B',
-  boxShadow: '19px',
+  // boxShadow: '19px',
+  shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 20,
+    height: 350,
+    width: 280,
   borderRadius: 5,
   flexDirection:'row',
   
@@ -162,7 +172,17 @@ btnSair:{
     marginTop:5,
     elevation: 16,
     backgroundColor: '#F2F2F2',
-    boxShadow: '19px',
+    // boxShadow: '19px',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 20,
+    height: 350,
+    width: 280,
     borderRadius: 5,
     flexDirection:'row',
    

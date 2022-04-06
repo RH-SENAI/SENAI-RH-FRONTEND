@@ -23,7 +23,7 @@ export default class Escolha extends Component {
         }
     };
 
-    
+
     render() {
         return (
             <View style={styles.main}>
@@ -49,12 +49,12 @@ export default class Escolha extends Component {
                         </View>
 
                         <View style={styles.botão2}>
-                        <TouchableOpacity
+                            <TouchableOpacity
                                 onPress={this.Equipe}
                             >
                                 <Text style={styles.tituloBotão2}> Individual </Text>
-                           
-                                </TouchableOpacity>
+
+                            </TouchableOpacity>
                         </View>
 
 
@@ -79,7 +79,17 @@ const styles = StyleSheet.create({
         height: 60,
         elevation: 16,
         backgroundColor: '#F2F2F2',
-        boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        // boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 20,
+        height: 350,
+        width: 280,
         borderRadius: 5,
     },
 
@@ -125,7 +135,17 @@ const styles = StyleSheet.create({
         width: 285,
         elevation: 20,
         backgroundColor: '#F2F2F2',
-        boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        // boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 20,
+        height: 350,
+        width: 280,
         borderRadius: 5,
         marginBottom: 70,
     },
@@ -145,7 +165,17 @@ const styles = StyleSheet.create({
         width: 285,
         elevation: 16,
         backgroundColor: '#F2F2F2',
-        boxShadow: '-17.1981 -17.1981 34.3963 #FAFBFF, 17.1981 17.1981 34.3963 #A6ABBD',
+        // boxShadow: '-17.1981 -17.1981 34.3963 #FAFBFF, 17.1981 17.1981 34.3963 #A6ABBD',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 20,
+        height: 350,
+        width: 280,
         borderRadius: 5,
     },
 

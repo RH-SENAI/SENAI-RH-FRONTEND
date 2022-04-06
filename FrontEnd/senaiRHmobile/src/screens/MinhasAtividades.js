@@ -142,7 +142,17 @@ const styles = StyleSheet.create({
     height: 60,
     elevation: 16,
     backgroundColor: '#F2F2F2',
-    boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+    //boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 20,
+    height: 350,
+    width: 280,
     borderRadius: 5,
   },
 
@@ -262,6 +272,16 @@ const styles = StyleSheet.create({
     elevation: 16,
     backgroundColor: '#F2F2F2',
     boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 3
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 4,
+    // elevation: 20,
+    // height: 350,
+    // width: 280,
     borderRadius: 5,
     // alignItems:'center'
   },
