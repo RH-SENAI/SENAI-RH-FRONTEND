@@ -1,10 +1,8 @@
 import 'react-native-gesture-handler';
-
-
 import React from 'react';
 import { StatusBar } from 'react-native';
-
 import {NavigationContainer} from '@react-navigation/native';
+import {useState, useEffect} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 const AuthStack = createStackNavigator();
 
@@ -28,7 +26,7 @@ export default function Stack() {
           headerShown: false,
         }}>
         <AuthStack.Screen name="Login" component={Login} /> 
-        <AuthStack.Screen name="CadastroFeedback" component={cadastroFeedback} />
+        <AuthStack.Screen name="cadastroFeedback" component={cadastroFeedback} />
         {/* <AuthStack.Screen name="Perfil" component={Perfil} /> */}
         {/* <AuthStack.Screen name="Teste" component={Teste} />  */}
       </AuthStack.Navigator>

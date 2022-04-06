@@ -11,7 +11,6 @@ import {
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
 import jwt_decode from "jwt-decode";
 import api from '../services/api';
 
@@ -50,17 +49,7 @@ export default class Login extends Component {
               var certo = jwt_decode(token).role
               console.warn('certo ' + certo)
              
-              this.props.navigation.navigate('Atividades');
-
-              // switch (certo) {
-
-              //     case '1':
-                      
-              //         break;
-
-              //     default:
-              //         break;
-              // } 
+              this.props.navigation.navigate('cadastroFeedback');
 
           }
 

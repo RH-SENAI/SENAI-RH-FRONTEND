@@ -51,6 +51,7 @@ export default function Cadastro() {
         console.warn('Falha ao realizar o cadastro.');
       }
 
+      setIdDecisao(1);
       setValorMoedas(0);
       setIdFeedback(0);
       setComentarioFeedback('');
