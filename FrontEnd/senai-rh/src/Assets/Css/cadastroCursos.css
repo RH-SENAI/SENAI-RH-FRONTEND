@@ -58,6 +58,7 @@
 .dis{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .flex_co{
@@ -82,6 +83,11 @@
     flex-direction: column;
     width: 200px;
     height: 100px;
+}
+
+.largura{
+    width: 98%;
+    margin-top: 50px;
 }
 
 
@@ -117,3 +123,9 @@
     align-items: center;
 }
 
+.btn{
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

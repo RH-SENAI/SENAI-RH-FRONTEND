@@ -89,10 +89,10 @@ export default function CursosRapidos() {
                             listaCursos.map((curso) => {
                                 return (
                                     <section id='imagem' className='box_cursos'>
-                                        {<img onClick={openModal} className='banner' src={curso.caminhoImagemCurso} alt="imagem do curso" />}
+                                        {<img onClick={openModal} className='banner' src={ 'https://raw.githubusercontent.com/RH-SENAI/SENAI-RH-BACKEND/back-gp-2-enzzo/GP2/API_G2/SenaiRH_G2/SenaiRH_G2/StaticFiles/Images/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
                                         {<h2 onClick={openModal}> {curso.nomeCurso} </h2>}
                                         {<p><img className='box_dados_curso' onClick={openModal} src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
-                                        {<p><img className='box_dados_curso' onClick={openModal} src={local} alt="duracao" /> {curso.idLogradouroNavigation}  </p>}
+                                        {<p><img className='box_dados_curso' onClick={openModal} src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}  </p>}
                                         {<div className='circulo_coracao'>
                                             <img className='coracao' src={coracao} alt="" />
                                         </div>}
@@ -107,8 +107,6 @@ export default function CursosRapidos() {
                             <div className='circulo_coracao'>
                                 <img className='coracao' src={coracao} alt="" />
                             </div> */}
-
-
                         <Modal
                             isOpen={modalIsOpen}
                             onRequestClose={closeModal}
