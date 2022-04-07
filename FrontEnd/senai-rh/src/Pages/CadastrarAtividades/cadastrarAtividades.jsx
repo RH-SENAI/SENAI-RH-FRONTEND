@@ -6,20 +6,20 @@ import Header from '../../components/Header/headerFuncionario';
 import { Link } from 'react-router-dom'
 import img_olho from '../../Assets/img/Olho_Atividades.png'
 import Modal from 'react-modal';
+import { Modall } from '../../components/Modal'
+import { ModallValidar } from '../../components/modalValidar'
 import React from 'react';
 
 export default function CadastrarAtividades() {
     const [listaAtividades, setListaAtividades] = useState([]);
     const [listaAtividadesValidar, setListaAtividadesValidar] = useState([]);
-    // const [listaSetores, setListaSetores] = useState([]);
     const [idAtividade, setIdAtividade] = useState('');
     const [idUsuario, setIdUsuario] = useState('');
-    const [atividade] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [showModalValidar, setShowModalValidar] = useState(false);
+    const [idAtividadeModal, setIdAtividadeModal] = useState()
     const [idSetor, setIdSetor] = useState('');
     const [nomeAtividade, setNomeAtividade] = useState('');
-    // const [dataInicio, setDataInicio] = useState('');
-    // const [dataConclusao, setDataConclusao] = useState('');
-    // const [dataCriacao, setDataCriacao] = useState('');
     const [recompensaMoeda, setRecompensaMoeda] = useState('');
     const [recompensaTrofeu, setRecompensaTrofeu] = useState('');
     const [descricaoAtividade, setDescricaoAtividade] = useState('');
@@ -27,9 +27,16 @@ export default function CadastrarAtividades() {
 
     const [isLoading, setIsLoading] = useState(false);
 
+    const OpenModal = () => {
+        setShowModal(prev => !prev);
+    }
+
+    const OpenModalValidar = () => {
+        setShowModalValidar(prev => !prev);
+    }
+
 
     function listarAtividades() {
-        console.log(necessarioValidar)
         axios.get("http://localhost:5000/api/Atividades"
             , {
                 headers: {
@@ -66,26 +73,9 @@ export default function CadastrarAtividades() {
 
     useEffect(listarAtividadesValidar, []);
 
-    // function listarSetores() {
-    //     axios('http://localhost:5000/api/Setores', {
-    //         headers: {
-    //             // 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-    //         }
-    //     })
-    //         .then(resposta => {
-    //             if (resposta.status === 200) {
-    //                 setListaSetores(resposta.data)
-    //             }
-    //         })
-
-    //         .catch(erro => console.log(erro))
-    // };
-
-    // useEffect(listarSetores, []);
-
     function cadastrarAtividade(evento) {
         setIsLoading(true);
-        // evento.preventDefault()
+        evento.preventDefault()
 
         axios
             .post('http://localhost:5000/api/Atividades', {
@@ -127,50 +117,6 @@ export default function CadastrarAtividades() {
         console.log(necessarioValidar + " - Atual")
     }
 
-    function validarAtividades(atividade) {
-        console.log("peroba =" + atividade.idAtividade)
-        // console.log(atividade.idUsuario)
-        axios.patch("http://localhost:5000/api/Atividades/ValidarAtividade/" + atividade.idAtividade + "/" + atividade.idUsuario,{
-            idAtividade: idAtividade,
-            idUsuario: idUsuario
-        }
-            , {
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-                }
-            })
-            .catch(erro => console.log(erro))
-    };
-
-    //========================== MODAL =============================//
-
-    // const modal = document.querySelector('#my-modal');
-    // const modalBtn = document.querySelector('#modal-btn');
-    // const closeBtn = document.querySelector('.close');
-
-    // // // Events
-    // modalBtn.addEventListener('click', openModal);
-    // closeBtn.addEventListener('click', closeModal);
-    // window.addEventListener('click', outsideClick);
-
-    // // // Open
-    // function openModal() {
-    //     modal.style.display = 'block';
-    // }
-
-    // // // Close
-    // function closeModal() {
-    //     modal.style.display = 'none';
-    // }
-
-    // // // Close If Outside Click
-    // function outsideClick(e) {
-    //     if (e.target == modal) {
-    //         modal.style.display = 'none';
-    //     }
-    // }
-    //========================== EDSON MODAL ============================//
-
     const [modalIsOpen, setIsOpen] = React.useState(false);
     let subtitle;
 
@@ -203,12 +149,10 @@ export default function CadastrarAtividades() {
         }
     }
 
-
-
-    //========================== FIM MODAL ============================//
-
     return (
         <div className="div_container">
+            <Modall atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)} showModal={showModal} setShowModal={setShowModal} />
+            <ModallValidar atividade={listaAtividadesValidar.find(atividade => atividade.idAtividade == idAtividadeModal)} showModalValidar={showModalValidar} setShowModalValidar={setShowModalValidar} />
 
             <Header />
             <div className="container_">
@@ -304,42 +248,14 @@ export default function CadastrarAtividades() {
                             <div className='container_atividades'>
 
                                 {listaAtividades.map((atividade) => {
-                                    console.log(atividade.idAtividade)
                                     return (
                                         <div key={atividade.idAtividade}>
-                                            {/* <div id="my-modal" class="modal">
-                                                <div class="modal-content">
-                                                    <div class="modal-body">
-                                                        <span class="close">&times;</span>
-                                                        <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
-                                                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                                                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                                                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                                                        <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
-                                                    </div>
-                                                </div>
-                                            </div> */}
-
-                                            <Modal
-                                                isOpen={modalIsOpen}
-                                                onRequestClose={closeModal}
-                                            // atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)}
-                                            >
-                                                <div class="modal-body">
-                                                    <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
-                                                    <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                                                    <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                                                    <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                                                    <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
-                                                </div>
-                                            </Modal>
-
                                             <div className='box_atividade'>
                                                 <div className='organizar_atividade'>
                                                     <h2 className='titulo_atividade'>{atividade.nomeAtividade}</h2>
                                                     <p className='descricao_atividade'>{atividade.descricaoAtividade}</p>
                                                 </div>
-                                                <button onClick={openModal} id={atividade.idAtividade} className="button">
+                                                <button onClick={OpenModal} onClickCapture={() => setIdAtividadeModal(atividade.idAtividade)} className="button">
                                                     <img className='img_olho' src={img_olho} alt="Icone de um olho" />
                                                 </button>
                                             </div>
@@ -361,28 +277,14 @@ export default function CadastrarAtividades() {
 
                                     return (
                                         <div key={atividade.idAtividade}>
-                                            <Modal
-                                                isOpen={modalIsOpen}
-                                                onRequestClose={closeModal}
-                                            // atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)}
-                                            >
-                                                <div class="modal-body">
-                                                    <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
-                                                    <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                                                    <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                                                    <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                                                    <div className="organizar_btn">
-                                                        <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
-                                                        <button className="btn_validar_modal" onClick={validarAtividades(atividade)}>Validar</button>
-                                                    </div>
-                                                </div>
-                                            </Modal>
                                             <div className='box_atividade'>
                                                 <div className='organizar_atividade'>
                                                     <h2 className='titulo_atividade'>{atividade.nomeAtividade}</h2>
                                                     <p className='descricao_atividade'>{atividade.descricaoAtividade}</p>
                                                 </div>
-                                                <button onClick={openModal} id={atividade.idAtividade} className="button">
+                                                <button  type ="button" onClick={() => {OpenModalValidar();
+                                                                setIdAtividadeModal(atividade.idAtividade);
+                                                }} className="button">
                                                     <img className='img_olho' src={img_olho} alt="Icone de um olho" />
                                                 </button>
                                             </div>
