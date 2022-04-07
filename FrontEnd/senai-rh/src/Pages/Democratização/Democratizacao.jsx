@@ -1,19 +1,21 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
+import { useParams } from 'react-router';
 import "../../Assets/Css/democratizacao.css";
 import Footer from '../../components/Footer';
 import FotoPerfil from '../../Assets/img/perfilVazio.svg'
 import Header from '../../components/Header/headerFuncionario'
 import ImgDemocratizacao from '../../Assets/img/ImgDemocratizacao.png'
 import moment from 'moment';
+import { parseJwt } from '../../Services/auth';
 
 export default function Democratizacao() {
 
     //States 
-    const [idUsuario, setIdUsuario] = useState(0);
+    const idDecisao = useParams();
+    const [idUsuario, setIdUsuario] = useState();
     const [idFeedback, setIdFeedback] = useState(0);
-    const [idDecisao, setIdDecisao] = useState(1);
     const [listaFeedbacks, setListaFeedbacks] = useState([]);
     const [listaDecisao, setListaDecisao] = useState([]);
     const [descricaoDecisao, setDescricaoDecisao] = useState('');
@@ -26,22 +28,18 @@ export default function Democratizacao() {
 
     function cadastrarFeedback(event) {
         event.preventDefault();
+        
+       
 
 
         let cadastro = {
-            idUsuario: idUsuario,
-            idDecisao: idDecisao,
+            idUsuario:  parseJwt().jti,
+            idDecisao: idDecisao.idDecisao,
             comentarioFeedBack: comentarioFeedback,
             dataPublicacao: dataPublicacao,
             valorMoedas: valorMoedas,
             notaDecisao: notaDecisao,
         }
-        console.log(idUsuario)
-        console.log(idDecisao)
-        console.log(comentarioFeedback)
-        console.log(dataPublicacao)
-        console.log(valorMoedas)
-        console.log(notaDecisao)
 
 
         axios.post("http://localhost:5000/api/Feedbacks/Cadastrar", cadastro, {
@@ -55,7 +53,7 @@ export default function Democratizacao() {
         })
             .then(response => {
                 if (response.status === 201) {
-
+                    ListarFeedback();
                     console.log('feedback cadastrado')
                 }
             })
@@ -64,6 +62,7 @@ export default function Democratizacao() {
     }
 
     function ListarDecisao() {
+
         axios.get('http://localhost:5000/api/Decisoes/Listar', {
             headers: {
 
@@ -148,10 +147,10 @@ export default function Democratizacao() {
                                 return (
                                     <div className='feedback'>
                                         <div className='fotoPerfilFeedback'>
-                                            <img className='imgFotoFeedback' src={'https://raw.githubusercontent.com/RH-SENAI/SENAI-RH-BACKEND/back-gp-3-develop/GP3/api-gp3/senai-gp3-webApi/StaticFiles/Images/'+feedback.caminhoFotoPerfil} />
+                                            <img className='imgFotoFeedback' src={'http://localhost:5000/StaticFiles/Images/'+feedback.caminhoFotoPerfil} />
                                         </div>
                                         <div className='boxFeedback'>
-                                            <span className='tituloDecisao'>{feedback.idUsuario} comentou:</span>
+                                            <span className='tituloDecisao'>{feedback.idUsuarioNavigation.nome} comentou:</span>
                                             <p className='paragrafoDecisao'>{feedback.comentarioFeedBack}</p>
                                         </div>
 

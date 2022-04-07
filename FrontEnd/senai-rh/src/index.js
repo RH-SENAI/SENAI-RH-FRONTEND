@@ -19,6 +19,7 @@ import DemocratizacaoAdm from './Pages/Democratização/democratizacaoAdm';
 import Redirecionar from './Pages/Redirecionar/redirecionar';
 import RedirecionarADM from './Pages/Redirecionar/redirecionarADM';
 import Perfil from './Pages/Perfil/Perfil';
+import Decisao from './Pages/Democratização/decisoes';
 // import reportWebVitals from './reportWebVitals';
 
 
@@ -31,11 +32,12 @@ const routing = (
       <Route path="/Login" component={Login}/>
       <Route path="/Cadastro" component={Cadastro}/> 
       <Route path ="/Atualizar" component={AtualizarPerfil}/>
-      <Route exact path="/Democratizacao" component={Democratizacao}/>
+      <Route exact path="/Democratizacao/:idDecisao" component={Democratizacao}/>
       <Route exact path="/DemocratizacaoAdm" component={DemocratizacaoAdm}/>
       <Route path="/Redirecionar" component={Redirecionar} />
       <Route path="/Perfil" component={Perfil} />
       <Route path="/RedirecionarADM" component={RedirecionarADM} />
+      <Route path="/Decisao" component={Decisao} />
       </Switch>
     </div>
   </Router>

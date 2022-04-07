@@ -20,6 +20,11 @@ body{
     display: flex;
     flex-direction: column;
 }
+.containerOrganizadorDecisao{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
 .boxDecisao{
     background-color: #f2f2f2;
     box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
@@ -174,4 +179,7 @@ outline: 0;
     font-weight: 600;
     font-size: 40px;
     margin-bottom: 75px;
+}
+.btnRedirectDecisao{
+    text-decoration: none;
 }

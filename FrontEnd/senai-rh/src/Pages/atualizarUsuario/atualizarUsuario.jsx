@@ -111,6 +111,7 @@ export default function AtualizarPerfil() {
                     BuscarCargos();
                     BuscarUnidade();
                     console.log('foi')
+                    console.log(email)
                 }
             })
 

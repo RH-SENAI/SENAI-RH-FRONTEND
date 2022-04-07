@@ -4,6 +4,7 @@ import bannerLogin from "../../Assets/img/undraw_login_re_4vu2 1.svg"
 import Footer from "../../components/Footer"
 import "../../Assets/Css/login.css"
 import axios from "axios"
+import { parseJwt } from "../../Services/auth"
 
 export default function Login() {
     const[emailUsuario, setEmailUsuario] = useState('');
@@ -20,10 +21,11 @@ export default function Login() {
         .then(resposta => {
             if(resposta.status === 200){
                 localStorage.setItem('usuario-login', resposta.data.token)
-
+                localStorage.setItem('idUsuario', parseJwt().idUsuario)
+                
                 let base64 = localStorage.getItem('usuario-login');
 
-                console.log(base64)
+             console.log(base64);   
             }
         })
     } 
