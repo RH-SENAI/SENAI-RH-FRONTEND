@@ -17,12 +17,14 @@ export default function CadastrarCursos() {
     const [isLoading, setisLoading] = useState(false)
     const [erroMensagem, setErroMensagem] = useState('');
     const [msgSucesso, setMsgSucesso] = useState('');
-    
+
     const [listaEmpresa, setListaEmpresa] = useState([])
 
     const presencial = () => {
         setModalidadeCurso(false);
     }
+
+
 
     function buscarEmpresas() {
         api('/Empresas', {
@@ -112,18 +114,24 @@ export default function CadastrarCursos() {
                             <div className="flex_co">
                                 <label htmlFor="idEmpresa" >Empresa</label>
                                 <select className="inputCadastroSelect_curso" id="idEmpresa"
-                                onChange={(campo) => setIdEmpresa(campo.target.value)} 
-                                value={idEmpresa} 
+                                    onChange={(campo) => setIdEmpresa(campo.target.value)}
+                                    value={idEmpresa}
                                 >
-                                   
-                                <option value="0">Selecione a Sua Empresa</option>
 
-                                {
+                                    <option value="0">Selecione a Sua Empresa</option>
 
-                                }
+                                    {/* {
+                                        setListaEmpresa.map((empresa) => {
+                                            return (
+                                                <option key={empresa.idEmpresa} value={empresa.idEmpresa}>
+                                                    {empresa.nomeEmpresa}
+                                                </option>
+                                            )
+                                        })
+                                    } */}
 
 
-                        
+
                                 </select>
                             </div>
                         </div>
