@@ -3,7 +3,7 @@ import cadastroCurso from '../../Assets/img/cadastroCurso.svg'
 import '../../Assets/Css/cadastroCursos.css'
 
 import api from '../../Services/api'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function CadastrarCursos() {
@@ -17,10 +17,30 @@ export default function CadastrarCursos() {
     const [isLoading, setisLoading] = useState(false)
     const [erroMensagem, setErroMensagem] = useState('');
     const [msgSucesso, setMsgSucesso] = useState('');
+    
+    const [listaEmpresa, setListaEmpresa] = useState([])
 
     const presencial = () => {
         setModalidadeCurso(false);
     }
+
+    function buscarEmpresas() {
+        api('/Empresas', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
+
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    setListaEmpresa(resposta.data)
+                    console.log('Aqui resposta')
+                    console.log(resposta)
+                }
+            })
+            .catch(erro => console.log(erro))
+    }
+    useEffect(buscarEmpresas, [])
 
     const efetuarCadastro = (event) => {
 
@@ -52,9 +72,8 @@ export default function CadastrarCursos() {
                 setMsgSucesso();
             })
             .catch(function (response) {
-                //handle error
                 console.log(response);
-                setErroMensagem()
+                setErroMensagem();
             });
     }
 
@@ -92,7 +111,20 @@ export default function CadastrarCursos() {
                             </div>
                             <div className="flex_co">
                                 <label htmlFor="idEmpresa" >Empresa</label>
-                                <select className="inputCadastroSelect_curso" id="idEmpresa" onChange={(campo) => setIdEmpresa(campo.target.value)} value={idEmpresa} ></select>
+                                <select className="inputCadastroSelect_curso" id="idEmpresa"
+                                onChange={(campo) => setIdEmpresa(campo.target.value)} 
+                                value={idEmpresa} 
+                                >
+                                   
+                                <option value="0">Selecione a Sua Empresa</option>
+
+                                {
+
+                                }
+
+
+                        
+                                </select>
                             </div>
                         </div>
 
