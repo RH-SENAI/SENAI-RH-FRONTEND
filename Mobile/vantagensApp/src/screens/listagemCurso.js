@@ -81,11 +81,11 @@ export default class ListagemCurso extends Component {
                   <Text style={styles.tituloListagem}>Cursos</Text>
               </View>
               <DropShadow style={styles.shadow}>
-              <View style={styles.containerCursos}>
+                <View style={styles.containerCursos} onPress={() => this.setModalVisivel(true)} >
                   <View style={styles.boxCursos}>
                           <Image source={require('../../assets/img/imgCurso.png')} />
                           <View style={styles.boxTituloCard}>
-                              <Text style={styles.textTituloCurso}>Logica de Programação</Text>
+                              <Text style={styles.textTituloCurso}>Lógica de Programação</Text>
                           </View>
                       <View style={styles.boxDescricaoCard}>
                             <View style={styles.dadosCurso}>
@@ -108,8 +108,48 @@ export default class ListagemCurso extends Component {
                             </View>
                      </View>
                   </View>
-              </View>
+                </View>
               </DropShadow>
+              <Modal
+              animationType="fade"
+              transparent={true}
+              visible={this.state.modalVisivel}
+              onRequestClose={() => {
+                this.setModalVisivel(!this.state.modalVisivel)
+              }}>
+                <View>
+                    <View>
+                        <Image />
+                        <Text>Lógica de Programação</Text>
+                        <Text>10/10</Text>
+                    </View>
+                    <View>
+                        <Image />
+                        <Text>1000 horas</Text>
+
+                        <Image />
+                        <Text>15/01/2023</Text>
+                    </View>
+                    <Image />
+                    <Text>São Paulo, São Paulo</Text>
+
+                    <View>
+                        <Text>Descrição:</Text>
+                        <Text>
+                            O curso habilita profissionais técnicos de nível médio em
+                            Desenvolvimento de Sistemas, visando suprir a demanda do
+                            mercado por profissionais qualificados para atuarem em
+                            programação e desenvolvimento de software com condições
+                            técnico-tecnológicas para atender às exigências e evolução
+                            do segmento.
+                        </Text>
+                        <Text>Empresa:</Text>
+                        <Text>Senai - Santa Cecília</Text>
+
+
+                    </View>
+                </View>
+              </Modal>
            </View>
         )
       }
