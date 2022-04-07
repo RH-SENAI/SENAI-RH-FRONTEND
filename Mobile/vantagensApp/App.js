@@ -4,30 +4,25 @@ import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Main from './src/screens/main';
 import ListagemCurso from './src/screens/listagemCurso';
+import Main from './src/screens/main';
 
 const AuthStack = createStackNavigator();
 
-function App() {
-
-
+export default function Stack() {
   return (
     <NavigationContainer>
       <StatusBar
-      // hidden={true}
+            hidden={true}
       />
       <AuthStack.Navigator
-        initialRouteName='ListagemCurso'
+        initialRouteName='Main'
         screenOptions={{
           headerShown: false,
-        }}
-      >
-
-        <AuthStack.Screen name="listagemCurso" component={ListagemCurso}></AuthStack.Screen>
-        <AuthStack.Screen name="Main" component={Main}></AuthStack.Screen>
+        }}>
+        <AuthStack.Screen name="ListagemCurso" component={ListagemCurso} />
+        <AuthStack.Screen name="Main" component={Main} />
       </AuthStack.Navigator>
     </NavigationContainer>
   );
 }
-export default App;
