@@ -15,6 +15,7 @@ import Perfil from './src/screens/perfil';
 import Escolha from './src/screens/escolha';
 import Atividades from './src/screens/atividades';
 import AtividadeComum from './src/screens/atividadeComum';
+// import Teste from './src/screens/teste';
 
 export default function Stack() {
   return (
@@ -32,7 +33,8 @@ export default function Stack() {
         <AuthStack.Screen name="Perfil" component={Perfil} />
         <AuthStack.Screen name="Escolha" component={Escolha} /> 
         <AuthStack.Screen name="Atividades" component={Atividades} />
-        <AuthStack.Screen name="AtividadeComum" component={AtividadeComum} /> 
+        <AuthStack.Screen name="AtividadeComum" component={AtividadeComum} />
+        {/* <AuthStack.Screen name="Teste" component={Teste} />  */}
       </AuthStack.Navigator>
     </NavigationContainer>
   );

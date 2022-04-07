@@ -1,60 +1,68 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-  TextInput,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+    Image,
+    TextInput,
+
 } from 'react-native';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import Atividades from './atividades';
 
-// import api from '../services/api';
 
 export default class Escolha extends Component {
-    constructor(props) {
-          super(props);
-          this.state = {
 
-        };
-    }
+    Equipe = async () => {
 
-
-
-
-
-
+        try {
+            this.props.navigation.navigate('Atividades');
+        } catch (error) {
+            console.warn(error)
+        }
+    };
 
 
     render() {
-        return( 
-         <View style={styles.main}>
-             <View style={styles.mainHeader}>
-                <Image source={require('../../assets/img/logoSenai.png')}
-                style={styles.imgLogo}
-                />
-             </View>
-            
-            <View style={styles.boxTitulo}>
-                <Text style={styles.titulo}> {'atividade'.toUpperCase()} </Text>
-                <View style={styles.lineTitulo}></View>
-                <Text style={styles.frase}> Como você gostaria de trabalhar hoje ? </Text>
-               
-               <View  style={styles.boxBotão}>
-                    <View style={styles.botão1}>
-                        <Text style={styles.tituloBotão}> Em Equipe </Text>
+        return (
+            <View style={styles.main}>
+                <View style={styles.mainHeader}>
+                    <Image source={require('../../assets/img/logoSenai.png')}
+                        style={styles.imgLogo}
+                    />
+                </View>
+
+                <View style={styles.boxTitulo}>
+                    <Text style={styles.titulo}> {'atividade'.toUpperCase()} </Text>
+                    <View style={styles.lineTitulo}></View>
+                    <Text style={styles.frase}> Como você gostaria de trabalhar hoje ? </Text>
+
+
+                    <View style={styles.boxBotão}>
+                        <View style={styles.botão1}>
+                            <TouchableOpacity
+                                onPress={this.Equipe}
+                            >
+                                <Text style={styles.tituloBotão}> Em Equipe </Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={styles.botão2}>
+                            <TouchableOpacity
+                                onPress={this.Equipe}
+                            >
+                                <Text style={styles.tituloBotão2}> Individual </Text>
+
+                            </TouchableOpacity>
+                        </View>
+
+
                     </View>
-
-                    <View style={styles.botão2}>
-                        <Text style={styles.tituloBotão2}> Individual </Text>
-                    </View>
-
-               </View>
-            </View>
+                </View>
 
 
-         </View> )
+            </View>)
     }
 };
 
@@ -68,10 +76,20 @@ const styles = StyleSheet.create({
     mainHeader: {
         justifyContent: 'center',
         alignItems: 'center',
-	    height: 60,
+        height: 60,
         elevation: 16,
         backgroundColor: '#F2F2F2',
-        boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        // boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 20,
+        height: 350,
+        width: 280,
         borderRadius: 5,
     },
 
@@ -99,11 +117,11 @@ const styles = StyleSheet.create({
         borderBottomWidth: 3,
     },
 
-    frase:{
-         fontFamily: 'Montserrat-Light',
-         color: 'black',
-         fontSize: 17,
-         paddingTop: 65,
+    frase: {
+        fontFamily: 'Montserrat-Light',
+        color: 'black',
+        fontSize: 17,
+        paddingTop: 65,
     },
 
     boxBotão: {
@@ -117,14 +135,24 @@ const styles = StyleSheet.create({
         width: 285,
         elevation: 20,
         backgroundColor: '#F2F2F2',
-        boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        // boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 20,
+        height: 350,
+        width: 280,
         borderRadius: 5,
         marginBottom: 70,
     },
 
     tituloBotão: {
         fontFamily: 'Montserrat-SemiBold',
-        fontSize: 16, 
+        fontSize: 16,
         justifyContent: 'center',
         alignItems: 'center',
         color: '#B83F52',
@@ -137,16 +165,26 @@ const styles = StyleSheet.create({
         width: 285,
         elevation: 16,
         backgroundColor: '#F2F2F2',
-        boxShadow: '-17.1981 -17.1981 34.3963 #FAFBFF, 17.1981 17.1981 34.3963 #A6ABBD',
+        // boxShadow: '-17.1981 -17.1981 34.3963 #FAFBFF, 17.1981 17.1981 34.3963 #A6ABBD',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 20,
+        height: 350,
+        width: 280,
         borderRadius: 5,
     },
 
     tituloBotão2: {
-         fontFamily: 'Montserrat-SemiBold',
-         fontSize: 16, 
-         justifyContent: 'center',
-         alignItems: 'center',
-         color: '#B83F52',
+        fontFamily: 'Montserrat-SemiBold',
+        fontSize: 16,
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: '#B83F52',
     },
 
 })
