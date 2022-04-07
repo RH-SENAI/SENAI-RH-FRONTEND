@@ -29,7 +29,7 @@ export default function Stack() {
           headerShown: false,
         }}>
         <AuthStack.Screen name="Login" component={Login} /> 
-       <AuthStack.Screen name="MinhasAtividades" component={MinhasAtividades} />
+        <AuthStack.Screen name="MinhasAtividades" component={MinhasAtividades} />
         <AuthStack.Screen name="Perfil" component={Perfil} />
         <AuthStack.Screen name="Escolha" component={Escolha} /> 
         <AuthStack.Screen name="Atividades" component={Atividades} />

@@ -1,15 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FlatList, Image, StyleSheet, Text, View, Alert, Modal, Pressable } from 'react-native';
 
 import api from '../services/api';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+
+import axios from 'axios';
+import { parseJwt } from '../services/auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import base64 from 'react-native-base64';
 
 const MinhasAtividades = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
+  const [idUsuario, setIdUsuario] = useState(0);
+  
+  const [listaAtividades, setListaAtividades] = useState([])
+  
+   async function Atividades (){
+    try {
+      console.warn('tamo aqui')
+      const token = await AsyncStorage.getItem('userToken');
+      console.warn(token)
+      
+      const xambers = base64.decode(token.split('.')[1])
+      console.warn(xambers)
+      const userJson = JSON.parse(xambers)
+      
+      console.warn(userJson)
+      const resposta = await api.get('/Atividades/MinhasAtividade/' + xambers.jti,
+      {
+          headers: {
+            Authorization: 'Bearer ' + token,
+          },
+        },
+      );
+      if (resposta.status == 200) {
+        setListaAtividades(resposta.data)
+
+      }
+    } catch (error) {
+      console.warn(error);
+    }
+  };
+
+  useEffect(() => Atividades, [])
+
+
+
+  //axios
   
 
   return (
@@ -25,108 +65,215 @@ const MinhasAtividades = () => {
         <View style={styles.lineTitulo}></View>
 
 
-        <View style={styles.MinhaAtividade}>
+        <FlatList
+          data={listaAtividades}
+          keyExtractor={item => item.idAtividade}
+          renderItem={() => {renderItem()}}
+        />
 
-          <Text style={styles.TituloAtividade}>Titulo da Atividade </Text>
 
+        {/* <View style={styles.MinhaAtividade}>
 
-          <View style={styles.descricaoOlho}>
-            <Text style={styles.descricao}>Descricao da Atividade....... </Text>
+            <Text style={styles.TituloAtividade}>Titulo da Atividade </Text>
 
 
             <View style={styles.descricaoOlho}>
-
-              <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                  Alert.alert("Modal has been closed.");
-                  setModalVisible(!modalVisible);
-                }}
-              >
-                <View style={styles.centeredView}>
-                  <View style={styles.modalView}>
+              <Text style={styles.descricao}>Descricao da Atividade....... </Text>
 
 
-                    <Text style={styles.modalTituloAtividade}>Titulo da atividade</Text>
-                    <View style={styles.boxTextos}>
-                      <Text style={styles.modaldescricao}>Descrição da Atividade</Text>
-                      <Text style={styles.modaldata}>Data que foi entregue</Text>
-                      <Text style={styles.modalpessoa}>Nome da pessoa responsavel</Text>
+              <View style={styles.descricaoOlho}>
+
+                <Modal
+                  animationType="slide"
+                  transparent={true}
+                  visible={modalVisible}
+                  onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    setModalVisible(!modalVisible);
+                  }}
+                >
+                  <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+
+
+                      <Text style={styles.modalTituloAtividade}> Titulo da atividade</Text>
+                      <View style={styles.boxTextos}>
+                        <Text style={styles.modaldescricao}>Descrição da Atividade</Text>
+                        <Text style={styles.modaldata}>Data que foi entregue</Text>
+                        <Text style={styles.modalpessoa}>Nome da pessoa responsavel</Text>
+                      </View>
+                      <View style={styles.buttonModal}>
+
+                        <Pressable style={[styles.button, styles.buttonFinalizar]} >
+                          <Text style={styles.TextFinalizar}>Finalizar</Text>
+                          <Text style={styles.TextFinalizar}>Entregar</Text>
+                        </Pressable>
+
+                        <Pressable
+                          style={[styles.button, styles.buttonClose]}
+
+                          onPress={() => setModalVisible(!modalVisible)}
+
+                        >
+                          <View style={styles.fechar}>
+                            <Image source={require('../../assets/img/fechar.png')} style={styles.Imgfechar} />
+                            <Text style={styles.Textfechar}>Fechar</Text>
+                          </View> */}
+        {/* <Text style={styles.textStyle}>Hide Modal</Text> */}
+
+        {/* </Pressable>
+
+
+
+
+
+                      </View>
+
+
+
+
                     </View>
-                    <View style={styles.buttonModal}>
-
-                      <Pressable style={[styles.button, styles.buttonFinalizar]} >
-                        <Text style={styles.TextFinalizar}>Finalizar</Text>
-                        {/* <Text style={styles.TextFinalizar}>Entregar</Text> */}
-                      </Pressable>
-
-                      <Pressable
-                        style={[styles.button, styles.buttonClose]}
-
-                        onPress={() => setModalVisible(!modalVisible)}
-
-                      >
-                        <View style={styles.fechar}>
-                          <Image source={require('../../assets/img/fechar.png')} style={styles.Imgfechar} />
-                          <Text style={styles.Textfechar}>Fechar</Text>
-                        </View>
-                        {/* <Text style={styles.textStyle}>Hide Modal</Text> */}
-
-                      </Pressable>
-
-
-
-
-
-                    </View>
-
-
-
-
                   </View>
-                </View>
-              </Modal>
-              <Pressable
-                style={[styles.buttonOpen]}
+                </Modal>
+                <Pressable
+                  style={[styles.buttonOpen]}
 
-                onPress={() => setModalVisible(true)}
-              >
-                {/* <Image source={require('../../assets/img/olho.png')} style={styles.olho}/> */}
-                <Image style={styles.olho} source={require('../../assets/img/olho.png')}></Image>
-              </Pressable>
-            </View>
+                  onPress={() => setModalVisible(true)} 
+                >*/}
+        {/* <Image source={require('../../assets/img/olho.png')} style={styles.olho}/> */}
+        {/* <Image style={styles.olho} source={require('../../assets/img/olho.png')}></Image> */}
+        {/* </Pressable> */}
+        {/* </View> */}
 
-          </View>
-          <View style={styles.statusImagem}>
-            <Image source={require('../../assets/img/avaliando.png')} style={styles.avaliando} />
-            <Text style={styles.status}>Em avaliação </Text>
-
-            {/* <Image source={require('../../assets/img/pendente.png')} style={styles.avaliando}/>
-         <Text style={styles.status}>Pendente </Text> */}
-
-            {/* <Image source={require('../../assets/img/validado.png')} style={styles.avaliando}/>
-         <Text style={styles.status}>Validado </Text> */}
+        {/* </View> */}
+        {/* <View style={styles.statusImagem}>
+              <Image source={require('../../assets/img/avaliando.png')} style={styles.avaliando} />
+              <Text style={styles.status}>Em avaliação </Text> */}
 
 
-          </View>
+        {/* <Image source={require('../../assets/img/pendente.png')} style={styles.avaliando}/>
+          <Text style={styles.status}>Pendente </Text> */}
+
+        {/* <Image source={require('../../assets/img/validado.png')} style={styles.avaliando}/>
+          <Text style={styles.status}>Validado </Text> */}
 
 
-          <View style={styles.lineAtividade}></View>
+        {/* </View> */}
 
 
-        </View>
+        {/* <View style={styles.lineAtividade}></View> */}
+
+
+        {/* </View> */}
 
       </View>
-
 
     </View>
 
   );
 
+}
 
-};
+const renderItem = ( item ) => (
+  // <View>
+  <View style={styles.MinhaAtividade}>
+
+    <Text style={styles.TituloAtividade}>Titulo da Atividade </Text>
+
+
+    <View style={styles.descricaoOlho}>
+      <Text style={styles.descricao}>Descricao da Atividade....... </Text>
+
+
+      <View style={styles.descricaoOlho}>
+
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+
+
+              <Text style={styles.modalTituloAtividade}> Titulo da atividade</Text>
+              <View style={styles.boxTextos}>
+                <Text style={styles.modaldescricao}>Descrição da Atividade</Text>
+                <Text style={styles.modaldata}>Data que foi entregue</Text>
+                <Text style={styles.modalpessoa}>Nome da pessoa responsavel</Text>
+              </View>
+              <View style={styles.buttonModal}>
+
+                <Pressable style={[styles.button, styles.buttonFinalizar]} >
+                  <Text style={styles.TextFinalizar}>Finalizar</Text>
+                  <Text style={styles.TextFinalizar}>Entregar</Text>
+                </Pressable>
+
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+
+                  onPress={() => setModalVisible(!modalVisible)}
+
+                >
+                  <View style={styles.fechar}>
+                    <Image source={require('../../assets/img/fechar.png')} style={styles.Imgfechar} />
+                    <Text style={styles.Textfechar}>Fechar</Text>
+                  </View>
+                  {/* <Text style={styles.textStyle}>Hide Modal</Text> */}
+
+                </Pressable>
+
+
+
+
+
+              </View>
+
+
+
+
+            </View>
+          </View>
+        </Modal>
+        <Pressable
+          style={[styles.buttonOpen]}
+
+          onPress={() => setModalVisible(true)}
+        >
+          {/* <Image source={require('../../assets/img/olho.png')} style={styles.olho}/> */}
+          <Image style={styles.olho} source={require('../../assets/img/olho.png')}></Image>
+        </Pressable>
+      </View>
+
+    </View>
+    <View style={styles.statusImagem}>
+      <Image source={require('../../assets/img/avaliando.png')} style={styles.avaliando} />
+      <Text style={styles.status}>Em avaliação </Text>
+
+
+      {/* <Image source={require('../../assets/img/pendente.png')} style={styles.avaliando}/>
+              <Text style={styles.status}>Pendente </Text> */}
+
+      {/* <Image source={require('../../assets/img/validado.png')} style={styles.avaliando}/>
+              <Text style={styles.status}>Validado </Text> */}
+
+
+    </View>
+
+
+    <View style={styles.lineAtividade}></View>
+
+
+  </View>
+
+  // {/* </View> */}
+
+)
+
 
 const styles = StyleSheet.create({
 

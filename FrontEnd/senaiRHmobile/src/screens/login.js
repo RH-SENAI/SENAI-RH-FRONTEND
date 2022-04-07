@@ -45,10 +45,10 @@ export default class Login extends Component {
           if (resposta.status == 200) {
 
               console.warn('Login Realizado')
-              console.warn(jwt_decode(token).role)
+              //console.warn(jwt_decode(token).role)
 
               var certo = jwt_decode(token).role
-              console.warn('certo ' + certo)
+              //console.warn('certo ' + certo)
              
               this.props.navigation.navigate('Atividades');
 
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     color: '#D9D9D9',
     borderBottomColor: '#D9D9D9',
     borderBottomWidth: 5,
-    boxShadow: "8px 2px 5px rgba(0, 0, 0, 0.8)",
+   //s boxShadow: "8px 2px 5px rgba(0, 0, 0, 0.8)",
     alignItems: 'center',
     justifyContent: 'center',
 
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
     elevation: 16,
     backgroundColor: '#F2F2F2',
-    boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
+    //boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
     borderRadius: 5,
   },
 
