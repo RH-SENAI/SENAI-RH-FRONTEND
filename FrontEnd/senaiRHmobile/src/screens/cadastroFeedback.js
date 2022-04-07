@@ -67,7 +67,7 @@ export default function Cadastro() {
 
       const resposta = await api.get('Feedbacks/Listar', {
         headers: {
-          // Authorization: 'Bearer ' + token,
+          Authorization: 'Bearer ' + token,
         },
       });
 
@@ -86,7 +86,7 @@ export default function Cadastro() {
 
       const resposta = await api.get('Decisoes/Listar', {
         headers: {
-          // Authorization: 'Bearer ' + token,
+          Authorization: 'Bearer ' + token,
         },
       });
 
@@ -133,7 +133,7 @@ export default function Cadastro() {
       </View>
 
       <TextInput
-        placeholder="Deseja adicionar alguma sugestão de melhora ou feedback?"
+        placeholder="Deseja adicionar algum feedback?"
         keyboardType="default"
         onChangeText={campo => setComentarioFeedback(campo)}
         value={comentarioFeedback}
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
   },
 
   inputCadastro: {
-    width: '70%',
+    width: '80%',
     height: 42,
     marginBottom: 15,
     backgroundColor: 'rgba(255, 255, 255, 0.85)',

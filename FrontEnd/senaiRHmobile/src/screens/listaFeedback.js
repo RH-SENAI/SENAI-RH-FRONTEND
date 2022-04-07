@@ -1,11 +1,11 @@
 import React, {Compon, Component} from 'react';
 import {
-  FlatList,
   Image,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
+  FlatList,
 } from 'react-native';
 
 import api from '../services/api';
@@ -16,7 +16,7 @@ export default class ListaFeedback extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ListaFeedback: [],
+      listaFeedback: [],
     };
   }
 
@@ -30,30 +30,35 @@ export default class ListaFeedback extends Component {
         },
       });
 
-      const dadosDaApi = resposta.token;
-      this.setState({ListaFeedback: dadosDaApi});
+      const dadosDaApi = resposta.data;
+
+      this.setState({listaFeedback: dadosDaApi});
+      
     }
   };
 
   componentDidMount() {
     this.buscarFeedbacks();
   }
+
   render() {
     return (
       <View style={styles.container}>
+       
         <View style={styles.mainHeader}>
           <Image
             source={require('../assets/img/logoSenai.png')}
             style={styles.imgLogo}
           />
         </View>
+      
         <Text style={styles.h1nonBold}> Feedbacks da</Text>
         <Text style={styles.h1Bold}> DEMOCRATIZAÇÃO</Text>
 
         <View style={styles.containerFlatlist}>
           <FlatList
             contentContainerStyle={styles.mainBodyContent}
-            data={this.state.ListaFeedback}
+            data={this.state.listaFeedback}
             keyExtractor={item => item.idFeedback}
             renderItem={this.renderItem}
           />
@@ -65,11 +70,18 @@ export default class ListaFeedback extends Component {
     <View style={styles.card}>
       <View style={styles.tituloCardWrapper}>
         <Text style={styles.tituloCard}>
-          "Seu gerente tomou a seguinte decisão:"
+        {item.idUsuarioNavigation.nome} disse sobre a proposta "{item.idDecisaoNavigation.descricaoDecisao}"
         </Text>
       </View>
       <View style={styles.textoCard}>
-        <Text style={styles.feedback}>{item.feedback}</Text>
+        <Text style={styles.feedback}>{item.comentarioFeedBack}</Text>
+      </View>
+      <View style={styles.fotoPerfil}>
+
+        <Image
+        source={'http://192.168.3.107:5000/api/StaticFiles/Images/' + item.caminhoFotoPerfil}
+        style={styles.img_perfil}
+        />          
       </View>
     </View>
   );
@@ -80,6 +92,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#F2F2F2',
+  },
+
+  img_perfil: {
+    width: 900,
+    backgroundColor: 'blue'
   },
 
   mainHeader: {
@@ -103,12 +120,15 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color: '#000000',
     marginTop: 60,
+    
   },
+
   h1Bold: {
     fontSize: 20,
     fontWeight: '700',
     textTransform: 'uppercase',
     color: '#000000',
+    marginBottom:30
   },
 
   mainBodyContent: {
@@ -120,24 +140,19 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
 
-  tituloCardWrapper: {
-    backgroundColor: '#000000',
-    boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
-    height: 33,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
 
   tituloCard: {
     color: 'black',
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: '600',
   },
+
   tituloCardWrapper: {
-    backgroundColor: '#9081A6',
+    backgroundColor: '#f2f2f2',
+    boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
     height: 33,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start'
   },
 
   textoCard: {
@@ -145,5 +160,13 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     padding: 20,
-  }
+  },
+
+  containerFlatlist:{
+    flex:1,
+    width:"100%",
+    marginLeft:60
+  },
+
+ 
 });

@@ -49,7 +49,8 @@ export default class Login extends Component {
               var certo = jwt_decode(token).role
               console.warn('certo ' + certo)
              
-              this.props.navigation.navigate('cadastroFeedback');
+              this.props.navigation.navigate('listaFeedback');
+              // this.props.navigation.navigate('cadastroFeedback');
 
           }
 
