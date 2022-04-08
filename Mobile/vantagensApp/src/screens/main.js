@@ -11,14 +11,18 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 const Tab = createMaterialBottomTabNavigator();
 
 import ListagemCurso from './listagemCurso';
+import ListagemDescontos from './listagemDesconto';
+import Perfil from './perfil';
+import Favoritos from './favoritos';
 
 
 export default class Main extends Component {
     render() {
         return (
             <View style={styles.main}>
-                <Tab.Navigator>
-                     <Tab.Screen name="Listagem" component={ListagemCurso}></Tab.Screen>
+                <Tab.Navigator style={styles.navBar}>
+                     <Tab.Screen name="Cursos" component={ListagemCurso}></Tab.Screen>
+                     <Tab.Screen name="Descontos" component={ListagemDescontos}></Tab.Screen>
                 </Tab.Navigator>
             </View>
         )
@@ -29,6 +33,10 @@ export default class Main extends Component {
 const styles = StyleSheet.create({
     main: {
         flex: 1,
-        backgroundColor: '#48A7FA'
+        backgroundColor: '#CB334B'
     },
+    navBar: {
+        width: '100%',
+        color: '#CB334B'
+    }
 });
