@@ -4,26 +4,31 @@
     box-sizing: border-box;
 }
 
+.div_container {
+    background-color: #f2f2f2;
+}
+
 .container{
     width: 1300px;
     margin: 0 auto;
 }
 
-header {
+.header_style {
+    width: 100%;
     height: 80px;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
     background-color: #f2f2f2;
-    color: #000000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    margin-bottom: 80px;
 }
 
-.container_header {
+.container_header2{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f2f2f2;
+    /* background-color: #ffffff; */
+    width: 1300px;
+    height: 100%;
+    /* box-shadow: 0px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1); */
 }
 
 .logo {
@@ -41,7 +46,6 @@ p {
     color: #000000;
     text-decoration: none;
     display: flex;
-    /* flex-direction: column; */
 }
 
 
@@ -66,44 +70,36 @@ div.select {
 
 .text_link{
     margin-bottom: 30px;
-    /* border-bottom: 1px solid #000000; */
     font-size: 1.1rem;
     font-weight: bold;
     text-decoration: none;
     color: #000000;
     display: flex;
     height: 45px;
-    /* justify-content: space-around; */
 }
 
 .textLink{
     margin-bottom: 30px;
-    /* border-bottom: 1px solid #000000; */
     font-size: 1.1rem;
     font-weight: bold;
     text-decoration: none;
     color: #000000;
     display: flex;
     height: 45px;
-    /* justify-content: space-around; */
 }
 
 .textLink:hover    {
     box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
-    /* background-color: #dcdcdc; */
     border-radius: 20px;
     width: 100%;
     display: flex;
-    /* justify-content: center */
     align-items: center;
 }
 .text_link:hover    {
     box-shadow:  2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
-    /* background-color: #dcdcdc; */
     border-radius: 20px;
     width: 100%;
     display: flex;
-    /* justify-content: center */
     align-items: center;
 }
 
@@ -111,15 +107,8 @@ div.select p {
     padding: 5px;
     width: 100%;
     text-decoration: none;
+    background-color: #f2f2f2;
 }
-
-/* div.select:after {
-    content: "▼";
-    position: absolute;
-    right: 6px;
-    top: 12px; 
-    font-size: 9px;
-} */
 
 div.select .hidden {
     position: absolute;
@@ -132,7 +121,6 @@ div.select .hidden {
     box-shadow: 8px 12px 15px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
     padding: 30px 10px 0;
     border-radius: 20px;
-    
 }
 
 div.select:hover .hidden {
@@ -146,6 +134,7 @@ div.select p:hover, div.select:hover {
 
 .input_motivacao{
     color: #000000;
+    background-color: #f2f2f2;
 }
 
 .circulo{
