@@ -34,7 +34,7 @@ export default class Login extends Component {
           });
 
           // console.warn(resposta);
-          // const token = resposta.data.token;
+          const token = resposta.data.token;
 
           // console.warn(token);
 
