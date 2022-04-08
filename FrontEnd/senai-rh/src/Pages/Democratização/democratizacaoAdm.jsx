@@ -99,8 +99,8 @@ export default function Democratizacao() {
 
                     </div>
 
+                    <span className='boldFeedback'>Ultimas Ideias</span>
                     <div className='containerFeedback'>
-                        <span className='boldFeedback'>Ultimas Ideias</span>
                         {
                             listaDecisao.map((decisao) => {
                                 return (

@@ -142,6 +142,7 @@ outline: 0;
 }
 .imgFotoFeedback{
     height: 80px;
+    border-radius: 20px;
 
 }
 .boxFeedback{

@@ -79,13 +79,16 @@
     transition: all 0.5s;;
 }
 .fotoCarometro{
-    margin: 20px 0 10px 30px ;
+    margin: 20px 0 10px 10px ;
     height: 150px;
+    width: 200px;
+    border-radius: 20px;
 }
 .spanCarometro{
     font-weight: 700;
     font-size: 20px;
     color: #000;
+    
 }
 .setaCarometro{
     margin-bottom: 20px;

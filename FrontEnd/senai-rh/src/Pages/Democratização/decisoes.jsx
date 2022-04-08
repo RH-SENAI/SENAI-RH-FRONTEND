@@ -60,8 +60,8 @@ export default function Decisao() {
 
                     </div>
 
+                    <span className='boldFeedback'>Ultimas Decisoes</span>
                     <div className='containerFeedback'>
-                        <span className='boldFeedback'>Ultimas Decisoes</span>
                         {
                             listaDecisao.map((decisao) => {
                                 return (

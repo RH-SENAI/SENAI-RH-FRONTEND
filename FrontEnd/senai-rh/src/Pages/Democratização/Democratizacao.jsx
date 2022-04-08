@@ -147,7 +147,7 @@ export default function Democratizacao() {
                                 return (
                                     <div className='feedback'>
                                         <div className='fotoPerfilFeedback'>
-                                            <img className='imgFotoFeedback' src={'http://localhost:5000/StaticFiles/Images/' + feedback.caminhoFotoPerfil} />
+                                            <img className='imgFotoFeedback' src={'http://localhost:5000/StaticFiles/Images/' + 'imagem-padrao.png'} />
                                         </div>
                                         <div className='boxFeedback'>
                                             <span className='tituloDecisao'>{feedback.idUsuarioNavigation.nome} comentou:</span>

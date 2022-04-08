@@ -35,6 +35,7 @@ export default function HeaderFuncionario() {
                         <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Carometro' > <img className='seta' src={seta} alt="Seta" /> Carômetro</Link>
                         <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Cadastro' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Usuario</Link>
                         <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Decisao' > <img className='seta' src={seta} alt="Seta" /> Decisões</Link>
+                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/DemocratizacaoADM' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Decisão</Link>
                     </div>
                 </div>
                 <div class='select'>

@@ -134,7 +134,7 @@ export default function Carometro() {
                             <div className="cardsCarometro">
                                 {
 
-                                    listaFuncionarios.map((usuario) => {
+                                    listaFuncionarios.reverse().map((usuario) => {
 
                                         return (
                                                 <div className="cardFuncionario">

@@ -181,6 +181,8 @@ outline: 0;
     justify-content: center;
     flex-direction: column;
     text-decoration: none;
+    color: #000
+    ;
 }
 .feedback{
     display: flex;
