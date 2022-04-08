@@ -68,7 +68,7 @@ export default class ListaFeedback extends Component {
   renderItem = ({item}) => (
     <View style={styles.card}>
       <TouchableOpacity
-      onPress={'cadastroFeedback'}
+      onPress={() => this.props.navigation.navigate('cadastroFeedback')}
       >
       <View style={styles.tituloCardWrapper}>
         <Text style={styles.tituloCard}>
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2f2',
     elevation: 16,
     boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
-    height: 33,
+    height: 40,
     justifyContent: 'center',
     alignItems: 'flex-start',
   },
