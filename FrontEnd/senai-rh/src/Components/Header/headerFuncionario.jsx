@@ -16,7 +16,7 @@ export default function HeaderFuncionario() {
     return (
         <header>
             <div className='container container_header' >
-                <img className='logo' src={logo} alt="" />
+                <Link to='/Redirecionar'><img className='logo' src={logo} alt="logoHeader" /></Link>
 
 
                 <div class='select'>
@@ -33,8 +33,8 @@ export default function HeaderFuncionario() {
                     <input type='hidden' name='some_name_to_form' />
                     <div class='hidden'>
                         <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Carometro' > <img className='seta' src={seta} alt="Seta" /> Carômetro</Link>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} > <img className='seta' src={seta} alt="Seta" /> Dashboard</Link>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Democratizacao'> <img className='seta' src={seta} alt="Seta" /> Democratização</Link>
+                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Cadastro' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Usuario</Link>
+                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Decisao' > <img className='seta' src={seta} alt="Seta" /> Decisões</Link>
                     </div>
                 </div>
                 <div class='select'>

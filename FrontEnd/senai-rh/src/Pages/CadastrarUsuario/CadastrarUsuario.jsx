@@ -6,7 +6,8 @@ import "../../Assets/Css/cadastro.css"
 import "../../Assets/Css/footer.css"
 import "../../Assets/Css/styleG3.css"
 import Footer from "../../components/Footer";
-import Perfil from '../../Assets/img/Perfil.svg'
+import Perfil from '../../Assets/img/Perfil.svg';
+import HeaderFuncionario from "../../components/Header/headerFuncionario";
 
 
 export default function Cadastro() {
@@ -183,6 +184,7 @@ export default function Cadastro() {
 
     return (
         <body>
+            <HeaderFuncionario />
             <main>
                 <div className="container">
                     <div className="boxCadastro">

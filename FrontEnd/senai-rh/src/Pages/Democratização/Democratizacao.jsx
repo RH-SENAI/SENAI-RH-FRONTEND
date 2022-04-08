@@ -28,12 +28,12 @@ export default function Democratizacao() {
 
     function cadastrarFeedback(event) {
         event.preventDefault();
-        
-       
+
+
 
 
         let cadastro = {
-            idUsuario:  parseJwt().jti,
+            idUsuario: parseJwt().jti,
             idDecisao: idDecisao.idDecisao,
             comentarioFeedBack: comentarioFeedback,
             dataPublicacao: dataPublicacao,
@@ -139,15 +139,15 @@ export default function Democratizacao() {
 
                     </div>
 
+                    <span className='boldFeedback'>Feedbacks</span>
                     <div className='containerFeedback'>
-                        <span className='boldFeedback'>Feedbacks</span>
                         {
 
                             listaFeedbacks.map((feedback) => {
                                 return (
                                     <div className='feedback'>
                                         <div className='fotoPerfilFeedback'>
-                                            <img className='imgFotoFeedback' src={'http://localhost:5000/StaticFiles/Images/'+feedback.caminhoFotoPerfil} />
+                                            <img className='imgFotoFeedback' src={'http://localhost:5000/StaticFiles/Images/' + feedback.caminhoFotoPerfil} />
                                         </div>
                                         <div className='boxFeedback'>
                                             <span className='tituloDecisao'>{feedback.idUsuarioNavigation.nome} comentou:</span>

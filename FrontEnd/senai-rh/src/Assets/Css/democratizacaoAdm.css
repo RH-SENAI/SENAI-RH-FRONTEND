@@ -139,7 +139,7 @@ outline: 0;
 }
 .containerFeedback{
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     margin: 70px 0 ;
 }
 .fotoPerfilFeedback{
@@ -170,6 +170,18 @@ outline: 0;
     justify-content: center;
     flex-direction: column;
 }
+.boxDecisaoLista{
+    background-color: #f2f2f2;
+    box-shadow: 12px 12px 15px rgb(166 171 189), -12px -12px 15px rgb(255 255 255);
+    border-radius: 20px;
+    width: 100%;
+    height: 140px;
+    display: flex;
+    padding: 40px;
+    justify-content: center;
+    flex-direction: column;
+    text-decoration: none;
+}
 .feedback{
     display: flex;
     margin-bottom: 50px;
@@ -178,7 +190,6 @@ outline: 0;
     font-style: normal;
     font-weight: 600;
     font-size: 40px;
-    margin-bottom: 75px;
 }
 .btnRedirectDecisao{
     text-decoration: none;

@@ -125,7 +125,7 @@ outline: 0;
 }
 .containerFeedback{
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     margin: 70px 0 ;
 }
 .fotoPerfilFeedback{
@@ -163,5 +163,5 @@ outline: 0;
     font-style: normal;
     font-weight: 600;
     font-size: 40px;
-    margin-bottom: 75px;
+
 }

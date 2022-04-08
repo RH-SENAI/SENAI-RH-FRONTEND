@@ -70,7 +70,7 @@ export default function Decisao() {
                                             <img className='imgFotoFeedback' src={FotoPerfil} />
                                         </div>
                                         <Link to={"Democratizacao/" + decisao.idDecisao} className='btnRedirectDecisao'>
-                                            <div className='boxFeedback'>
+                                            <div className='boxDecisaoLista'>
                                                 <span className='tituloDecisao'>O gerente tomou a seguinte decisão:</span>
                                                 <p className='paragrafoDecisao'>{decisao.descricaoDecisao}</p>
                                             </div>
