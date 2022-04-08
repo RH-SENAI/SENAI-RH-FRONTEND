@@ -13,7 +13,19 @@ import { Modall } from '../../components/ModalListaCursos/modalListaCursos'
 
 export default function CursosRapidos() {
     const [listaCursos, setListaCursos] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [idCursoModal, setIdCursoModal] = useState()
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+
     let subtitle;
+
+    function closeModal() {
+        setIsOpen(false);
+    }
+
+    const OpenModal = () => {
+        setShowModal(prev => !prev);
+    }
 
     function listarCursos() {
         api('/Cursos')
@@ -32,7 +44,9 @@ export default function CursosRapidos() {
 
 
     return (
-        <div>
+        <div>=
+            <Modall curso={listaCursos.find(curso => curso.idCurso == idCursoModal)} showModal={showModal} setShowModal={setShowModal} />
+
             <HeaderFuncionario />
 
             <div className='caixa'>
@@ -55,11 +69,11 @@ export default function CursosRapidos() {
 
                                         <section key={curso.idCurso} id='imagem' className='box_cursos'>
                                             <div className='banner_img'>
-                                                {<img className='banner' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
+                                                {<img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='banner' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
                                             </div>
-                                            {<h2> {curso.nomeCurso} </h2>}
-                                            {<p><img className='box_dados_curso' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
-                                            {<p><img className='box_dados_curso' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}  </p>}
+                                            {<h2 onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso} </h2>}
+                                            {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
+                                            {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}  </p>}
                                             {<div className='circulo_coracao'>
                                                 <img className='coracao' src={coracao} alt="" />
                                             </div>}
