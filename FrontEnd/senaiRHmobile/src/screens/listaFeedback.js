@@ -12,6 +12,7 @@ import api from '../services/api';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
 export default class ListaFeedback extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +34,6 @@ export default class ListaFeedback extends Component {
       const dadosDaApi = resposta.data;
 
       this.setState({listaFeedback: dadosDaApi});
-      
     }
   };
 
@@ -44,14 +44,13 @@ export default class ListaFeedback extends Component {
   render() {
     return (
       <View style={styles.container}>
-       
         <View style={styles.mainHeader}>
           <Image
             source={require('../assets/img/logoSenai.png')}
             style={styles.imgLogo}
           />
         </View>
-      
+
         <Text style={styles.h1nonBold}> Feedbacks da</Text>
         <Text style={styles.h1Bold}> DEMOCRATIZAÇÃO</Text>
 
@@ -68,22 +67,32 @@ export default class ListaFeedback extends Component {
   }
   renderItem = ({item}) => (
     <View style={styles.card}>
+      <TouchableOpacity
+      onPress={'cadastroFeedback'}
+      >
       <View style={styles.tituloCardWrapper}>
         <Text style={styles.tituloCard}>
-        {item.idUsuarioNavigation.nome} disse sobre a proposta "{item.idDecisaoNavigation.descricaoDecisao}"
+          {item.idUsuarioNavigation.nome} disse sobre a proposta "
+          {item.idDecisaoNavigation.descricaoDecisao}"
         </Text>
+        
       </View>
+
       <View style={styles.textoCard}>
         <Text style={styles.feedback}>{item.comentarioFeedBack}</Text>
       </View>
       <View style={styles.fotoPerfil}>
-
         <Image
-        source={'http://192.168.3.107:5000/api/StaticFiles/Images/' + item.caminhoFotoPerfil}
-        style={styles.img_perfil}
-        />          
+          source={
+            'http://192.168.3.107:5000/api/StaticFiles/Images/' +
+            item.caminhoFotoPerfil
+          }
+          style={styles.img_perfil}
+        />
       </View>
-    </View>
+
+      </TouchableOpacity>
+      </View>
   );
 }
 
@@ -96,7 +105,7 @@ const styles = StyleSheet.create({
 
   img_perfil: {
     width: 900,
-    backgroundColor: 'blue'
+    backgroundColor: 'blue',
   },
 
   mainHeader: {
@@ -120,7 +129,6 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     color: '#000000',
     marginTop: 60,
-    
   },
 
   h1Bold: {
@@ -128,7 +136,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     textTransform: 'uppercase',
     color: '#000000',
-    marginBottom:30
+    marginBottom: 30,
   },
 
   mainBodyContent: {
@@ -140,10 +148,10 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
 
-
   tituloCard: {
     color: 'black',
     fontSize: 15,
+    height:50,
     fontWeight: '600',
   },
 
@@ -153,7 +161,7 @@ const styles = StyleSheet.create({
     boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
     height: 33,
     justifyContent: 'center',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
   },
 
   textoCard: {
@@ -165,11 +173,9 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 
-  containerFlatlist:{
-    flex:1,
-    width:"100%",
-    marginLeft:60
-  },
-
- 
+  containerFlatlist: {
+    flex: 1,
+    width: '100%',
+    marginLeft: 60,
+  }
 });

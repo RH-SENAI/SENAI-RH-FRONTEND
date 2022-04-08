@@ -33,10 +33,10 @@ export default class Login extends Component {
               senha : this.state.senha,
           });
 
-          console.warn(resposta);
-          const token = resposta.data.token;
+          // console.warn(resposta);
+          // const token = resposta.data.token;
 
-          console.warn(token);
+          // console.warn(token);
 
           await AsyncStorage.setItem('userToken', token);
           console.warn(resposta.data);
@@ -47,7 +47,7 @@ export default class Login extends Component {
               console.warn(jwt_decode(token).role)
 
               var certo = jwt_decode(token).role
-              console.warn('certo ' + certo)
+              // console.warn('certo ' + certo)
              
               this.props.navigation.navigate('redirecionamento');
               // this.props.navigation.navigate('cadastroFeedback');

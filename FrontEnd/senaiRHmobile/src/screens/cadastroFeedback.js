@@ -158,6 +158,7 @@ export default function Cadastro() {
           style={styles.imgCadastro}
         />
       </View>
+     
     </View>
   );
 }
