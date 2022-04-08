@@ -9,19 +9,22 @@ import Main from './src/screens/main';
 
 const AuthStack = createStackNavigator();
 
+//const SearchModule = () => { <Stack.Group> <Stack.Screen component={ListagemCurso} /> <Stack.Screen component={Main} /> </Stack.Group> }
+
 export default function Stack() {
   return (
     <NavigationContainer>
       <StatusBar
-            hidden={true}
+            hidden={false}
       />
       <AuthStack.Navigator
         initialRouteName='Main'
         screenOptions={{
           headerShown: false,
         }}>
-        <AuthStack.Screen name="ListagemCurso" component={ListagemCurso} />
-        <AuthStack.Screen name="Main" component={Main} />
+        <AuthStack.Screen name="Listagem" component={ListagemCurso}></AuthStack.Screen>
+        <AuthStack.Screen name="Main" component={Main}></AuthStack.Screen>
+
       </AuthStack.Navigator>
     </NavigationContainer>
   );

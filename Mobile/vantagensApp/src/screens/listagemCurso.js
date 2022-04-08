@@ -113,45 +113,47 @@ export default class ListagemCurso extends Component {
                 </View>
               </DropShadow>
                    <Modal
+                     //style={styles.containerModal}
                      animationType="fade"
                      transparent={false}
                      visible={this.state.modalVisivel}
                      onRequestClose={() => {
                          this.setModalVisivel(!this.state.modalVisivel)
                      }}>
-                     <View>
-                        <View>
+                     <View style={styles.containerModal}>
+                        <View style={styles.boxTituloModal}>
                            <Image />
-                               <Text>Lógica de Programação</Text>
-                               <Text>10/10</Text>
-                           </View>
-                           <View>
-                               <Image />
-                               <Text>1000 horas</Text>
+                           <Text style={styles.textTituloModal}>Lógica de Programação</Text>
+                        </View>
+                        <View style={styles.boxAvaliacaoModal}>
+                           <Text style={styles.avaliacaoModal}>10/10</Text>
+                        </View>
+                        <View style={styles.boxDadosModal}>
+                           <Image />
+                           <Text style={styles.textDadosModal}>1000 horas</Text>
 
-                               <Image />
-                               <Text>15/01/2023</Text>
-                           </View>
-                               <Image />
-                               <Text>São Paulo, São Paulo</Text>
+                           <Image />
+                           <Text style={styles.textDadosModal}>15/01/2023</Text>
+                        </View>
+                           <Image />
+                           <Text style={styles.textLocalizacaoModal}>São Paulo, São Paulo</Text>
+                        <View style={styles.boxDescricaoModal}>
+                           <Text style={styles.descricaoModal}>Descrição:</Text>
+                           <Text style={styles.textDescricaoModal}>
+                             O curso habilita profissionais técnicos de nível médio em
+                             Desenvolvimento de Sistemas, visando suprir a demanda do
+                             mercado por profissionais qualificados para atuarem em
+                             programação e desenvolvimento de software com condições
+                             técnico-tecnológicas para atender às exigências e evolução
+                             do segmento.
+                            </Text>
+                            <Text>Empresa: </Text>
+                            <Text>Senai - Santa Cecília </Text>
 
-                           <View>
-                               <Text>Descrição:</Text>
-                               <Text>
-                                   O curso habilita profissionais técnicos de nível médio em
-                                   Desenvolvimento de Sistemas, visando suprir a demanda do
-                                   mercado por profissionais qualificados para atuarem em
-                                   programação e desenvolvimento de software com condições
-                                   técnico-tecnológicas para atender às exigências e evolução
-                                   do segmento.
-                               </Text>
-                               <Text>Empresa: </Text>
-                               <Text>Senai - Santa Cecília </Text>
-
-                               <Pressable style={styles.modalAbrir} onPress={() => this.setModalVisivel(!this.state.modalVisivel)} >
-                                      <Text style={styles.textDetalhes}>Detalhes</Text>
-                               </Pressable>
-                           </View>
+                            <Pressable style={styles.modalAbrir} onPress={() => this.setModalVisivel(!this.state.modalVisivel)} >
+                                <Text style={styles.textDetalhes}>Detalhes</Text>
+                            </Pressable>
+                        </View>
                      </View>
                    </Modal>
            </View>
@@ -260,6 +262,14 @@ const styles = StyleSheet.create({
     },
     textDetalhes: {
         color: 'white'
+    },
+    containerModal: {
+        width: '80%',
+        height: '70%',
+        backgroundColor: '#F2F2F2',
+    },
+    boxTituloModal: {
+        alignItems: 'center',
     }
     //imgEstrela: {
     //    width: 75
