@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
 
   tituloCardWrapper: {
     backgroundColor: '#f2f2f2',
+    elevation: 16,
     boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
     height: 33,
     justifyContent: 'center',
@@ -156,7 +157,9 @@ const styles = StyleSheet.create({
   },
 
   textoCard: {
-    backgroundColor: '#fff',
+    backgroundColor: '#f2f2f2',
+    elevation: 16,
+    boxShadow: '-6px 0px 19px rgba(0, 0, 0, 0.24)',
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     padding: 20,

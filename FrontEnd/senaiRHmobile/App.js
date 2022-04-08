@@ -6,7 +6,7 @@ import {useState, useEffect} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 const AuthStack = createStackNavigator();
 
-import Redirecionamento from './src/screens/redirecionamento';
+import redirecionamento from './src/screens/redirecionamento';
 import listaFeedback from './src/screens/listaFeedback'
 import cadastroFeedback from './src/screens/cadastroFeedback'
 import Login from './src/screens/login';
@@ -28,6 +28,7 @@ export default function Stack() {
         <AuthStack.Screen name="Login" component={Login} /> 
         <AuthStack.Screen name="cadastroFeedback" component={cadastroFeedback} />
         <AuthStack.Screen name="listaFeedback" component={listaFeedback} />
+        <AuthStack.Screen name="redirecionamento" component={redirecionamento} />
         {/* <AuthStack.Screen name="Teste" component={Teste} />  */}
       </AuthStack.Navigator>
       
