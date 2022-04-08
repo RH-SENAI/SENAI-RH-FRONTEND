@@ -50,12 +50,12 @@ export default class ListagemCurso extends Component {
             if(resposta.status == 200){
                 const dadosCurso = resposta.data;
                 this.setState({listaCurso : dadosCurso})
+                console.warn('Bão');
             }
         }
         catch(erro){
             console.warn(erro);
         }
-
       }
 
       setModalVisivel = (visible) => {
@@ -69,49 +69,26 @@ export default class ListagemCurso extends Component {
       render() {
         return(
            <View style={styles.containerListagem}>
-              <DropShadow style={styles.shadow}>
-                   <View style={styles.header}>
-                        <Image
-                        source={require('../../assets/img/logoSENAI.png')}
-                        style={styles.imgHeader}
-                        />
-                   </View>
-              </DropShadow>
-              <View style={styles.boxTituloListagem}>
-                  <Text style={styles.tituloListagem}>Cursos</Text>
-              </View>
-              <DropShadow style={styles.shadow}>
-                <View style={styles.containerCursos} >
-                  <View style={styles.boxCursos}>
-                          <Image source={require('../../assets/img/imgCurso.png')} />
-                          <View style={styles.boxTituloCard}>
-                              <Text style={styles.textTituloCurso}>Lógica de Programação</Text>
-                          </View>
-                      <View style={styles.boxDescricaoCard}>
-                            <View style={styles.dadosCurso}>
-                                <Image source={require('../../assets/img/relogio.png')} />
-                                <Text style={styles.textDescricaoCard}>20 horas</Text>
-                            </View>
-                            <View style={styles.dadosCurso}>
-                                 <Image source={require('../../assets/img/localizacao.png')} />
-                                 <Text style={styles.textDescricaoCard}>EAD</Text>
-                            </View>
-                            <View style={styles.boxAvalCoracao}>
-                                <View style={styles.boxCoracao}>
-                                   <Image source={require('../../assets/img/coracao.png')} />
-                                </View>
-                                <View style={styles.boxAvaliacao}>
-                                   <Text style={styles.textAvaliacao}>10/10</Text>
-                                </View>
-                                <TouchableOpacity style={styles.modalAbrir} onPress={() => this.setModalVisivel(true)} >
-                                    <Text style={styles.textDetalhes}>Detalhes</Text>
-                                </TouchableOpacity>
-                            </View>
 
-                     </View>
-                  </View>
-                </View>
-              </DropShadow>
+                    <DropShadow style={styles.shadow}>
+                        <View style={styles.header}>
+                            <Image
+                            source={require('../../assets/img/logoSENAI.png')}
+                            style={styles.imgHeader}
+                            />
+                        </View>
+                    </DropShadow>
+
+                    <View style={styles.boxTituloListagem}>
+                        <Text style={styles.tituloListagem}>Cursos</Text>
+                    </View>
+
+                    <FlatList
+                    data={this.state.listaProjetos}
+                    keyExtractor={item => item.idCurso}
+                    renderItem={this.renderItem}
+                    />
+
                    <Modal
                      //style={styles.containerModal}
                      animationType="fade"
@@ -157,11 +134,46 @@ export default class ListagemCurso extends Component {
                      </View>
                    </Modal>
            </View>
-        )
+        );
       }
 
-      //renderItem = ({ item }) => (
-      //)
+      renderItem = ({ item }) => (
+
+                              <DropShadow style={styles.shadow}>
+                                <View style={styles.containerCursos} >
+                                  <View style={styles.boxCursos}>
+                                          <Image>
+                                            {item.caminhoImagemCurso}
+                                          </Image>
+                                          <View style={styles.boxTituloCard}>
+                                              <Text style={styles.textTituloCurso}>{item.nomeCurso}</Text>
+                                          </View>
+                                      <View style={styles.boxDescricaoCard}>
+                                            <View style={styles.dadosCurso}>
+                                                <Image source={require('../../assets/img/relogio.png')} />
+                                                <Text style={styles.textDescricaoCard}>{item.cargaHoraria}</Text>
+                                            </View>
+                                            <View style={styles.dadosCurso}>
+                                                 <Image source={require('../../assets/img/localizacao.png')} />
+                                                 <Text style={styles.textDescricaoCard}>{item.modalidadeCurso}</Text>
+                                            </View>
+                                            <View style={styles.boxAvalCoracao}>
+                                                <View style={styles.boxCoracao}>
+                                                   <Image source={require('../../assets/img/coracao.png')} />
+                                                </View>
+                                                <View style={styles.boxAvaliacao}>
+                                                   <Text style={styles.textAvaliacao}>{item.mediaAvaliacaoCurso}</Text>
+                                                </View>
+                                                <TouchableOpacity style={styles.modalAbrir} onPress={() => this.setModalVisivel(true)} >
+                                                    <Text style={styles.textDetalhes}>Detalhes</Text>
+                                                </TouchableOpacity>
+                                            </View>
+
+                                     </View>
+                                  </View>
+                                </View>
+                              </DropShadow>
+          )
 }
 const styles = StyleSheet.create({
     containerListagem: {

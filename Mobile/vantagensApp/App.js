@@ -9,8 +9,6 @@ import Main from './src/screens/main';
 
 const AuthStack = createStackNavigator();
 
-//const SearchModule = () => { <Stack.Group> <Stack.Screen component={ListagemCurso} /> <Stack.Screen component={Main} /> </Stack.Group> }
-
 export default function Stack() {
   return (
     <NavigationContainer>
