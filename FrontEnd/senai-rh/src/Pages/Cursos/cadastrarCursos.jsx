@@ -8,12 +8,15 @@ import axios from "axios";
 
 export default function CadastrarCursos() {
     const [idEmpresa, setIdEmpresa] = useState(0)
+    const [idCurso, setIdCurso] = useState(0)
     const [nomeCurso, setNomeCurso] = useState('')
     const [descricaoCurso, setDescricaoCurso] = useState('')
     const [siteCurso, setSiteCurso] = useState('')
-    const [modalidadeCurso, setModalidadeCurso] = useState(true)
-    const [dataFinalização, setDataFinalizacao] = useState(new Date())
-    const [caminhoImagemCurso, setCaminhoImagemCurso] = useState('')
+    const [cargaHoraria, setCargaHoraria] = useState(0)
+    const [modalidadeCurso, setModalidadeCurso] = useState(false)
+    const [dataFinalizacao, setDataFinalizacao] = useState(new Date())
+    const [fotoCurso, setFotoCurso] = useState('')
+    const [caminhoImagemCurso, seCaminhoImagemCurso] = useState('')
     const [isLoading, setisLoading] = useState(false)
     const [erroMensagem, setErroMensagem] = useState('');
     const [msgSucesso, setMsgSucesso] = useState('');
@@ -21,10 +24,15 @@ export default function CadastrarCursos() {
     const [listaEmpresa, setListaEmpresa] = useState([])
 
     const presencial = () => {
-        setModalidadeCurso(false);
+        setModalidadeCurso(true);
     }
 
 
+    function checkCurso() {
+        console.log(modalidadeCurso + " - Anterior")
+        setModalidadeCurso(!modalidadeCurso)
+        console.log(modalidadeCurso + " - Atual")
+    }
 
     function buscarEmpresas() {
         api('/Empresas', {
@@ -46,7 +54,7 @@ export default function CadastrarCursos() {
 
     const efetuarCadastro = (event) => {
 
-        event.preventDefault();
+        // event.preventDefault();
 
         var formData = new FormData();
 
@@ -54,18 +62,20 @@ export default function CadastrarCursos() {
         const file = element.files[0]
         formData.append('arquivo', file, file.name)
 
-        formData.append('id', 0);
-        formData.append('caminhoImagemCurso', caminhoImagemCurso);
-        formData.append('descricaoCurso', descricaoCurso);
+
+        
         formData.append('idEmpresa', idEmpresa);
-        formData.append('dataFinalização', dataFinalização);
-        formData.append('modalidadeCurso', modalidadeCurso);
         formData.append('nomeCurso', nomeCurso);
+        formData.append('descricaoCurso', descricaoCurso);
         formData.append('siteCurso', siteCurso);
+        formData.append('modalidadeCurso', modalidadeCurso);
+        formData.append('cargaHoraria', cargaHoraria);
+        formData.append('dataFinalizacao', dataFinalizacao);
+        formData.append('fotoCurso', fotoCurso);
 
         axios({
             method: "post",
-            url: "https://apigrupobackend.azurewebsites.net/api/Cursos",
+            url: "https://apibackgrupo2.azurewebsites.net/api/Cursos/Cadastrar",
             data: formData,
             headers: { "Content-Type": "multipart/form-data" },
         })
@@ -73,10 +83,7 @@ export default function CadastrarCursos() {
                 console.log(response);
                 setMsgSucesso();
             })
-            .catch(function (response) {
-                console.log(response);
-                setErroMensagem();
-            });
+            .catch( (erro) => console.log(erro), setErroMensagem());
     }
 
     return (
@@ -102,15 +109,19 @@ export default function CadastrarCursos() {
 
                             <div className="flex_co">
                                 <label htmlFor="dataFinalizacao">Data de finalizar</label>
-                                <input id="dataFinalizacao" onChange={(campo) => setDataFinalizacao(campo.target.value)} name="data" value={dataFinalização} type="date" />
+                                <input id="dataFinalizacao" onChange={(campo) => setDataFinalizacao(campo.target.value)} name="data" value={dataFinalizacao} type="date" />
                             </div>
                         </div>
 
                         <div className="dis">
-                            <div className="flex_co">
+                            <div className="descricao">
                                 <label>Descrição</label>
                                 <input onChange={(campo) => setDescricaoCurso(campo.target.value)} value={descricaoCurso} name="descricaoCurso" type="text" placeholder="Digite aqui a detalhes do seu curso" />
                             </div>
+
+                        </div>
+
+                        <div className="dis">
                             <div className="flex_co">
                                 <label htmlFor="idEmpresa" >Empresa</label>
                                 <select className="inputCadastroSelect_curso" id="idEmpresa"
@@ -120,19 +131,26 @@ export default function CadastrarCursos() {
 
                                     <option value="0">Selecione a Sua Empresa</option>
 
-                                    {/* {
-                                        setListaEmpresa.map((empresa) => {
+                                    {
+                                        listaEmpresa.map((empresa) => {
                                             return (
                                                 <option key={empresa.idEmpresa} value={empresa.idEmpresa}>
                                                     {empresa.nomeEmpresa}
                                                 </option>
                                             )
                                         })
-                                    } */}
+                                    }
 
 
 
                                 </select>
+                            </div>
+
+                            <div className="dis">
+                                <div className="flex_co">
+                                    <label htmlFor="cargaHoraria">Carga Horaria</label>
+                                    <input onChange={(campo) => setCargaHoraria(campo.target.value)} className="flex_co" value={cargaHoraria} id="cargaHoraria" placeholder="Digite a carga horaria do seu curso" type="number" />
+                                </div>
                             </div>
                         </div>
 
@@ -140,10 +158,13 @@ export default function CadastrarCursos() {
                             <div className="flex_co">
                                 <label>Imagem</label>
                                 <label className="label_arquivo" htmlFor="arquivo">Imagem do curso</label>
-                                <input onChange={(campo) => setCaminhoImagemCurso(campo.target.value)} value={caminhoImagemCurso} id="arquivo" name="caminhoImagemCurso" className="input_file" type="file" />
+                                <input  value={fotoCurso} onChange={(campo) => setFotoCurso(campo.target.value)}  id="arquivo" name="caminhoImagemCurso" className="input_file" type="file" />
+
+
+
                             </div>
 
-                            {/* <div className="flex_co ">
+                            <div className="flex_co ">  
                                     <label htmlFor="Presencial">Modelo</label>
                                 <div>
                                     <input id="Presencial" type="radio" name="web" />Presencial <br />
@@ -153,9 +174,10 @@ export default function CadastrarCursos() {
                                     <input type="radio" name="web" /> EAD <br />
 
                                 </div>
-                            </div> */}
+                            </div>
 
-                            <div className="container_radio">
+                            {/* <div className="container_radio">
+
                                 <h2>Modelo</h2>
                                 <label htmlFor="r1">
                                     <input type="radio" name="r1" id="radio1"
@@ -168,8 +190,31 @@ export default function CadastrarCursos() {
                                         className="ativo" value={modalidadeCurso} onChange={(e) => presencial(e.target.checked)} />
                                     EAD
                                     <span className="check"></span>
-                                </label>
-                            </div>
+                                </label>    
+
+
+
+                            </div> */}
+                            {/* <div className="container_btn">
+                                <input type="checkbox"
+                                    id="switch"
+                                    name="validar"
+                                    value={modalidadeCurso}
+                                    onClick={checkCurso}
+                                /><label className='label_switch' htmlFor="switch">Modalidade</label>
+                                {modalidadeCurso && (
+                                    <p className='text_switch'>
+                                        Presencial
+                                    </p>
+                                )}
+                                {!modalidadeCurso && (
+                                    <p className='text_switch'>
+                                        EAD
+                                    </p>
+                                )}
+
+
+                            </div> */}
 
                             {/* <div className="flex_co">
                                 <label>Modelo</label>
@@ -187,6 +232,9 @@ export default function CadastrarCursos() {
                             <input value={siteCurso} name="siteCurso" onChange={(campo) => setSiteCurso(campo.target.value)} type="text" placeholder="Coloque aqui o link para inscrever-se no seu curso " />
                         </div>
                     </div>
+
+                    <span className='green'>{msgSucesso === '' ? '' : 'Curso cadastrado!'}</span>
+
                     <div className="flex_co btn">
                         <button type="submit" className="botaoCadastro">Inscreva-se</button>
                     </div>

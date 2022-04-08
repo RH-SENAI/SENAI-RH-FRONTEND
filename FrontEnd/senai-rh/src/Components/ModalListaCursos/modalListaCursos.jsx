@@ -47,7 +47,7 @@ export const Modall = ({ showModal, setShowModal, curso }) => {
                         <div>
 
                             <div className='title_modal'>
-                                {<h1> {curso.nomeCurso} </h1>}
+                                {<h1> {curso.nomeCurso}  </h1>}
                             </div>
 
                             <div className='dados'>

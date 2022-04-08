@@ -72,6 +72,8 @@ select {
     background-position: 350px;
 }
 
+
+
 .box_forms_cursos{
     width: 50%;
     height: 90%;
@@ -91,6 +93,11 @@ select {
     justify-content: space-between;
     align-items: center;
 }
+.descricao{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
 
 .flex_co{
     width: 350px;
@@ -98,6 +105,39 @@ select {
     flex-direction: column;
     margin-right: 10px;
     margin-top: 20px;
+}
+
+.label_switch {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 68px;
+    height: 42px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    margin-bottom: 19px;
+}
+.text_switch {
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: #878787;
+    margin-left: 13.2px;
+}
+
+.label_switch:after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 5px;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+.container_btn {
+    width: 50%;
 }
 
 .container_radio{
@@ -124,6 +164,10 @@ select {
 
 .input_file{
     display: none;  
+}
+
+.green{
+    color: green;
 }
 
 .botaoCadastro{
