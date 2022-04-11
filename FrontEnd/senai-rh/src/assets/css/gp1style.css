@@ -91,10 +91,16 @@ h1 {
     border-top: 0;
     border-right: 0;
     border-left: 0;
-    background-color: #f2f2f2;
+    background-color: transparent;
     width: 50%;
     margin: 20px 0 20px 0;
     height: 32px;
+
+    outline: 0;
+    padding-bottom: 10px;
+    font-size: 25px;
+    color: #959595;
+    font-weight: bold;
 }
 
 .input_text::placeholder {
@@ -287,7 +293,7 @@ input:checked+label:after {
     overflow-x: hidden;
 }
 
-.ReactModal__Overlay{
+.ReactModal__Overlay {
     background: rgba(201, 201, 201, 0.4) !important;
     position: fixed;
     z-index: 1;
@@ -322,6 +328,7 @@ input:checked+label:after {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     border-radius: 5px;
     height: 600px;
     padding: 10px 90px;
@@ -359,8 +366,21 @@ input:checked+label:after {
     margin: 20px 0;
 }
 
+.organizar_sessao_modal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label_modal {
+    font-size: 25px;
+    font-weight: 500;
+    color: #0E0E0E;
+    margin: 20px 0;
+}
+
 .descricao_atividade_modal {
-    width: 100%;
+    /* width: 100%; */
     margin: 20px 0;
     font-size: 30px;
 }
@@ -407,3 +427,4 @@ input:checked+label:after {
     /* background-color: #f1f1f1; */
     box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
 }
+

@@ -4,9 +4,12 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import '../Assets/css/gp1style.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade }) => {
     const modalRef = useRef();
+    const notify_validar = () => toast.success("Atividade Validada!");
 
     let history = useHistory();
 
@@ -37,10 +40,23 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
                 }
             })
             .catch(erro => console.log(erro))
+
+        notify_validar()
     };
 
     return (
         <>
+            <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             {showModalValidar ? (
                 <Modal
                     isOpen={showModalValidar}
@@ -49,12 +65,15 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
                 >
                     <div class="modal-body">
                         <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
-                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                        <div className='organizar_sessao_modal'>
+                            <label className='label_modal'>Descrição</label>
+                            <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                        </div>
+                        {/* <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p> */}
                         <div className="organizar_btn">
                             <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
-                            <button  type ="button" key={atividade.idAtividade} className="btn_validar_modal" onClick={() => validarAtividades(atividade)}>Validar</button>
+                            <button type="button" key={atividade.idAtividade} className="btn_validar_modal" onClick={() => validarAtividades(atividade)}>Validar</button>
                         </div>
                     </div>
                 </Modal>

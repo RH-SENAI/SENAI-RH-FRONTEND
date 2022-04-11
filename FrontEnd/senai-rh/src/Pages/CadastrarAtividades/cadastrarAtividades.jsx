@@ -9,6 +9,8 @@ import Modal from 'react-modal';
 import { Modall } from '../../components/Modal'
 import { ModallValidar } from '../../components/modalValidar'
 import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function CadastrarAtividades() {
     const [listaAtividades, setListaAtividades] = useState([]);
@@ -24,7 +26,10 @@ export default function CadastrarAtividades() {
     const [recompensaTrofeu, setRecompensaTrofeu] = useState('');
     const [descricaoAtividade, setDescricaoAtividade] = useState('');
     const [necessarioValidar, setNecessarioValidar] = useState(false);
-
+    const notify_cadastrar = () => toast.success("Atividade Cadastrada!");
+    // const notify_validar = () => toast.success("Atividade Validada!");
+    const notify_Logar = () => toast.success("Usuario logado!");
+    
     const [isLoading, setIsLoading] = useState(false);
 
     const OpenModal = () => {
@@ -109,6 +114,8 @@ export default function CadastrarAtividades() {
             .catch(erro => console.log(erro), setIdAtividade(''), setIdSetor(''), setNomeAtividade(''), setInterval(() => {
                 setIsLoading(false)
             }, 5000));
+            notify_cadastrar();
+            listarAtividades();
     }
 
     function checkValidar() {
@@ -149,8 +156,23 @@ export default function CadastrarAtividades() {
         }
     }
 
+    // useEffect(notify_Logar, []);
+    // useEffect(listarAtividades, cadastrarAtividade);
+
     return (
         <div className="div_container">
+            <ToastContainer
+                position="bottom-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+            
             <Modall atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)} showModal={showModal} setShowModal={setShowModal} />
             <ModallValidar atividade={listaAtividadesValidar.find(atividade => atividade.idAtividade == idAtividadeModal)} showModalValidar={showModalValidar} setShowModalValidar={setShowModalValidar} />
 
@@ -282,8 +304,9 @@ export default function CadastrarAtividades() {
                                                     <h2 className='titulo_atividade'>{atividade.nomeAtividade}</h2>
                                                     <p className='descricao_atividade'>{atividade.descricaoAtividade}</p>
                                                 </div>
-                                                <button  type ="button" onClick={() => {OpenModalValidar();
-                                                                setIdAtividadeModal(atividade.idAtividade);
+                                                <button type="button" onClick={() => {
+                                                    OpenModalValidar();
+                                                    setIdAtividadeModal(atividade.idAtividade);
                                                 }} className="button">
                                                     <img className='img_olho' src={img_olho} alt="Icone de um olho" />
                                                 </button>

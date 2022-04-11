@@ -45,9 +45,12 @@ export const Modall = ({ showModal, setShowModal, atividade }) => {
                 >
                     <div class="modal-body">
                         <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
-                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                        <div className='organizar_sessao_modal'>
+                            <label className='label_modal'>Descrição</label>
+                            <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                        </div>
+                        {/* <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p> */}
                         <div className="organizar_btn">
                             <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
                             {/* {atividade.necessarioValidar && (
