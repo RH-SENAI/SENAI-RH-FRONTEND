@@ -39,6 +39,7 @@ export default class Login extends Component {
           // console.warn(token);
 
           await AsyncStorage.setItem('userToken', token);
+          await AsyncStorage.setItem('idUsuario', jwt_decode(token).jti);
           console.warn(resposta.data);
 
           if (resposta.status == 200) {
@@ -62,7 +63,7 @@ export default class Login extends Component {
 
   render() {
     return (
-      <ImageBackground source={require('../../assets/img/Login-senai.png')} style={styles.image} style={StyleSheet.absoluteFillObject}>
+      <ImageBackground source={require('../../assets/img/Login-senai.png')} style={StyleSheet.absoluteFillObject}>
         <View style={styles.container}>
 
 
@@ -130,7 +131,6 @@ const styles = StyleSheet.create({
     color: '#D9D9D9',
     borderBottomColor: '#D9D9D9',
     borderBottomWidth: 5,
-    boxShadow: "8px 2px 5px rgba(0, 0, 0, 0.8)",
     alignItems: 'center',
     justifyContent: 'center',
 

@@ -1,4 +1,5 @@
-import React, {Compon, Component} from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native'
 import {
   Image,
   StyleSheet,
@@ -13,86 +14,87 @@ import api from '../services/api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-export default class ListaFeedback extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      listaFeedback: [],
-    };
-  }
+export default function ListaFeedback() {
 
-  buscarFeedbacks = async () => {
+  const [listaFeedback, setListaFeedback] = useState([])
+ 
+
+  const navigation = useNavigation();
+
+  async function buscarFeedbacks() {
     const token = await AsyncStorage.getItem('userToken');
-
+    
+    
     if (token != null) {
       const resposta = await api.get('Feedbacks/Listar', {
         headers: {
           Authorization: 'Bearer ' + token,
         },
       });
-
-      const dadosDaApi = resposta.data;
-
-      this.setState({listaFeedback: dadosDaApi});
+      
+      const dadosDaApi = await resposta.data;
+      
+      setListaFeedback(dadosDaApi);
     }
   };
+  
+  useEffect(() => {
+    buscarFeedbacks()
+  },[])
 
-  componentDidMount() {
-    this.buscarFeedbacks();
-  }
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.mainHeader}>
-          <Image
-            source={require('../assets/img/logoSenai.png')}
-            style={styles.imgLogo}
-          />
-        </View>
-
-        <Text style={styles.h1nonBold}> Feedbacks da</Text>
-        <Text style={styles.h1Bold}> DEMOCRATIZAÇÃO</Text>
-
-        <View style={styles.containerFlatlist}>
-          <FlatList
-            contentContainerStyle={styles.mainBodyContent}
-            data={this.state.listaFeedback}
-            keyExtractor={item => item.idFeedback}
-            renderItem={this.renderItem}
-          />
-        </View>
-      </View>
-    );
-  }
-  renderItem = ({item}) => (
-    <View style={styles.card}>
+  const renderItem = ({ item }) => (
+    <View key = {item.idFeedback} style={styles.card}>
       <TouchableOpacity
-      onPress={() => this.props.navigation.navigate('cadastroFeedback')}
+         key = {item.idFeedback} onPress={() => navigation.navigate('cadastroFeedback', {idDecisao: item.idDecisao})}
       >
-      <View style={styles.tituloCardWrapper}>
-        <Text style={styles.tituloCard}>
-          {item.idUsuarioNavigation.nome} disse sobre a proposta "
-          {item.idDecisaoNavigation.descricaoDecisao}"
-        </Text>
-        
-      </View>
+        <View key = {item.idFeedback} style={styles.tituloCardWrapper}>
+          <Text key = {item.idFeedback} style={styles.tituloCard}>
+            {item.idUsuarioNavigation.nome} disse sobre a proposta "
+            {item.idDecisaoNavigation.descricaoDecisao}"
+          </Text>
 
-      <View style={styles.textoCard}>
-        <Text style={styles.feedback}>{item.comentarioFeedBack}</Text>
-      </View>
-      <View style={styles.fotoPerfil}>
+        </View>
+
+        <View key = {item.idFeedback} style={styles.textoCard}>
+          <Text key = {item.idFeedback} style={styles.feedback}>{item.comentarioFeedBack}</Text>
+        </View>
+        <View key = {item.idFeedback} style={styles.fotoPerfil}>
+          <Image key = {item.idFeedback}
+            source={{ uri:
+              'http://192.168.3.107:5000/api/StaticFiles/Images/' +
+              item.caminhoFotoPerfil}
+            }
+            style={styles.img_perfil}
+          />
+        </View>
+
+      </TouchableOpacity>
+    </View>
+  );
+
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.mainHeader}>
         <Image
-          source={
-            'http://192.168.3.107:5000/api/StaticFiles/Images/' +
-            item.caminhoFotoPerfil
-          }
-          style={styles.img_perfil}
+          source={require('../assets/img/logoSenai.png')}
+          style={styles.imgLogo}
         />
       </View>
 
-      </TouchableOpacity>
+      <Text style={styles.h1nonBold}> Feedbacks da</Text>
+      <Text style={styles.h1Bold}> DEMOCRATIZAÇÃO</Text>
+
+      <View style={styles.containerFlatlist}>
+        <FlatList
+          contentContainerStyle={styles.mainBodyContent}
+          data={listaFeedback}
+          keyExtractor={item => item.idFeedback}
+          renderItem={renderItem}
+        />
       </View>
+    </View>
   );
 }
 
@@ -151,7 +153,7 @@ const styles = StyleSheet.create({
   tituloCard: {
     color: 'black',
     fontSize: 15,
-    height:50,
+    height: 50,
     fontWeight: '600',
   },
 

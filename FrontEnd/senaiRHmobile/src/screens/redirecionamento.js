@@ -9,9 +9,6 @@ import {
   TextInput,
 } from 'react-native';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {color} from 'react-native-reanimated';
-
 // import api from '../services/api';
 
 export default class Redirecionamento extends Component {
