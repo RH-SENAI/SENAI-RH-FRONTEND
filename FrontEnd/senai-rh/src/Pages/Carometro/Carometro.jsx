@@ -25,7 +25,7 @@ export default function Carometro() {
     const [listaFuncionarios, setListaFuncionarios] = useState([]);
     const [listaCargo, setListaCargo] = useState([]);
     const [nomeFuncionario, setNomeFuncionario] = useState('');
-    const [idFuncionarioModal, setIdFuncionarioModal] = useState(0);
+    const [funcionarioModal, setFuncionarioModal] = useState(0);
     const [showModal, setShowModal] = useState(false);
     const [active, setMode] = useState(false);
     const ToggleMode = () => {
@@ -35,8 +35,12 @@ export default function Carometro() {
     //     setShowModal(prev => !prev);
     // }
 
-    const [modalShow, setModalShow] = useState(false);
-    const [funcSelecionado, setFuncionarioSelecionado] = useState('');
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    //const [funcSelecionado, setFuncionarioSelecionado] = useState({});
+
 
 
 
@@ -86,38 +90,6 @@ export default function Carometro() {
 
 
 
-    function MyVerticallyCenteredModal(props) {
-        // var usuarioSelecionado = listaFuncionarios.find(usuario => usuario.idUsuario == idFuncionarioModal)
-        setFuncionarioSelecionado(listaFuncionarios.find(usuario => usuario.idUsuario == idFuncionarioModal));
-        return (
-
-            <Modal
-                {...props}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-            >
-                <Modal.Header closeButton onClick={() => setModalShow(false)}>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        Informações pessoais
-                    </Modal.Title>
-
-                </Modal.Header>
-                <Modal.Body>
-                    {/* <h4>Nome:</h4><p>{usuarioSelecionado.nome}</p>
-                    <h4>CPF:</h4><p>{usuarioSelecionado.cpf}</p> */}
-                    <h4>{funcSelecionado.nome}</h4>
-                    <h4>{funcSelecionado.cpf}</h4>
-                    <h4>{funcSelecionado.email}</h4>
-                    <h4>{funcSelecionado.endereco}</h4>
-
-                </Modal.Body>
-                {/* <Modal.Footer>
-                    <Button onClick={props.onHide}>Close</Button>
-                </Modal.Footer> */}
-            </Modal>
-        );
-    }
 
 
 
@@ -174,23 +146,41 @@ export default function Carometro() {
                                 {
 
                                     listaFuncionarios.map((usuario) => {
-
+                                        //const usuarioSelecionado = () => {listaFuncionarios.find(usuario => usuario.idUsuario == idFuncionarioModal)}
                                         return (
                                             <div className="cardFuncionario">
                                                 <img className='fotoCarometro' src={'http://localhost:5000/StaticFiles/Images/' + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
                                                 <span className="spanCarometro">{usuario.nome}</span>
                                                 <span className="spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
                                                 {/* <a onClick={openModal} onClickCapture = {() =>setIdFuncionarioModal(usuario.idUsuario)} className='seta_funcionario_carometro'> */}
-                                                <a onClick={() => setModalShow(true)} onClickCapture={() => setIdFuncionarioModal(usuario.idUsuario)}
+                                                {/* <a onClick={handleShow} onClickCapture={() => setIdFuncionarioModal(usuario.idUsuario)}  */}
+                                                <a onClick={() => {handleShow(); }} onClickCapture={() => setFuncionarioModal(usuario)} 
+                                                    
                                                     className='seta_funcionario_carometro'>
                                                     <img className='setaCarometro' src={SetaCarometro} alt="setaCard" />
                                                 </a>
-                                                <>
-                                                    <MyVerticallyCenteredModal
-                                                        show={modalShow}
-                                                        onHide={() => setModalShow(false)}
-                                                    />
-                                                </>
+                                                <Modal show={show} onHide={handleClose} centered>
+                                                    
+                                                    <Modal.Header closeButton>
+                                                        <Modal.Title>Informações pessoais</Modal.Title>
+                                                    </Modal.Header>
+                                                    <Modal.Body>
+
+                                                        Nome:<h4>{funcionarioModal.nome}</h4>
+                                                        Email:<h4>{funcionarioModal.email}</h4>    
+                                                        CPF:<h4>{funcionarioModal.cpf}</h4>  
+
+                                                    </Modal.Body>
+                                                    <Modal.Footer>
+                                                        <Button variant="secondary" onClick={handleClose}>
+                                                            Close
+                                                        </Button>
+                                                        <Button variant="primary" onClick={handleClose}>
+                                                            Save Changes
+                                                        </Button>
+                                                    </Modal.Footer>
+                                                </Modal>
+
                                             </div>
                                         )
                                     })

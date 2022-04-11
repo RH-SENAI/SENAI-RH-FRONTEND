@@ -129,6 +129,7 @@ export default function Cadastro() {
             .then(function (response) {
                 console.log(response);
                 console.log('usuario cadastrado')
+                alert("Usuario cadastrado com sucesso!")
             })
             .catch(function (response) {
                 //handle error
