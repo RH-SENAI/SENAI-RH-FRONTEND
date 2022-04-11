@@ -82,6 +82,7 @@ export default function Carometro() {
             .then((resposta) => {
                 if (resposta.status === 200) {
                     console.log('usuario deletado')
+                    alert("usuario excluido!");
                 }
             })
 
@@ -172,12 +173,12 @@ export default function Carometro() {
 
                                                     </Modal.Body>
                                                     <Modal.Footer>
-                                                        <Button variant="secondary" onClick={handleClose}>
-                                                            Close
-                                                        </Button>
-                                                        <Button variant="primary" onClick={handleClose}>
+                                                        {/* <Button variant="danger" onClick={ExcluirPerfil(funcionarioModal.email)}>
+                                                            Excluir perfil
+                                                        </Button> */}
+                                                        {/* <Button variant="primary" onClick={handleClose}>
                                                             Save Changes
-                                                        </Button>
+                                                        </Button> */}
                                                     </Modal.Footer>
                                                 </Modal>
 
