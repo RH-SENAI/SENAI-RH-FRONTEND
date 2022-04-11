@@ -7,12 +7,13 @@ import data from '../../Assets/img/data.svg'
 import estrelaSozinha from '../../Assets/img/estrelaSozinha.svg'
 import modelo from '../../Assets/img/modelo.svg'
 import "../../Assets/Css/modalListaCursos.css"
+import "../../Assets/Css/modalListaBeneficios.css"
 import api from '../../Services/api';
 
-export const ModallCurso = ({ showModal, setShowModal, curso }) => {
+export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
 
-    const [listaComentarioCurso, setListaComentarioCurso] = useState([])
-    const [idCurso, setIdCurso] = useState(0)
+    const [listaComentarioBeneficio, setListaComentarioBeneficio] = useState([])
+    const [idDesconto, setIdDesconto] = useState(0)
 
 
     const closeModal = e => {
@@ -42,19 +43,19 @@ export const ModallCurso = ({ showModal, setShowModal, curso }) => {
         [keyPress]
     );
 
-    function listarComentarioCurso() {
-        api('http://localhost:5000/api/ComentarioCursos')
+    function listarComentarioBeneficio() {
+        api('http://localhost:5000/api/ComentarioDescontos')
             .then(resposta => {
                 if (resposta.status === 200) {
                     console.log('Lista')
                     console.log(resposta)
-                    setListaComentarioCurso(resposta.data)
+                    setListaComentarioBeneficio(resposta.data)
                 }
             })
             .catch(erro => console.log(erro))
     }
 
-    useEffect(listarComentarioCurso, []);
+    useEffect(listarComentarioBeneficio, []);
 
 
     return (
@@ -67,32 +68,31 @@ export const ModallCurso = ({ showModal, setShowModal, curso }) => {
 
                     <div className='container_modal_cima'>
                         <div className='container_img_modal'>
-                            {/* <img className='img_modal' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + curso.caminhoImagemCurso} alt="" /> */}
-                            {<img  className='img_modal' src={'http://localhost:5000/img/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
-                            <div className='media_Avaliacao'>  <img src={estrelaSozinha} alt="" /> <p> {curso.mediaAvaliacaoCurso} </p> </div>
+                            <img className='img_modal_beneficios' src={'http://localhost:5000/img/' + beneficio.caminhoImagemDesconto} alt="" />
+                            {/* <img className='img_modal' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + beneficio.caminhoImagemDesconto} alt="" /> */}
+                            <div className='media_Avaliacao'>  <img src={estrelaSozinha} alt="" /> <p> {beneficio.mediaAvaliacaoDesconto} </p> </div>
                         </div>
                         <div className='container_dados_modal'>
                             <div className='container_title_modal'>
-                                <span>{curso.nomeCurso} </span>
+                                <span>{beneficio.nomeDesconto} </span>
                             </div>
                             <div className='dados_geral'>
                                 <div className='box_dados_modal'>
-                                    <div><img src={relogio} alt="relogio" /> <p>{curso.cargaHoraria} Horas</p></div>
+
                                     <div> <img src={data} alt="data" /> <p>
                                         {/* {curso.dataFinalizacao}  */}
                                         {Intl.DateTimeFormat("pt-BR", {
-                                                    year: 'numeric', month: 'numeric', day: 'numeric'
-                                                }).format(new Date(curso.dataFinalizacao))}
-                                        </p></div>
+                                            year: 'numeric', month: 'numeric', day: 'numeric'
+                                        }).format(new Date(beneficio.validadeDesconto))}
+                                    </p></div>
                                 </div>
                                 <div className='box_dados_modal2'>
                                     <div>
-                                        <img src={local} alt="local" /> <p>{curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro} </p>
-
+                                        <img src={local} alt="local" /> <p>{beneficio.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro} </p>
                                     </div>
-                                    <div>
-                                        <img src={modelo} alt="" /> <p>{curso.modalidadeCurso === true ? 'Presencial' : 'EAD'}</p>
-                                    </div>
+                                    {/* <div>
+                                        <img src={modelo} alt="" /> <p>{beneficio.modalidadeCurso === true ? 'Presencial' : 'EAD'}</p>
+                                    </div> */}
                                 </div>
                             </div>
 
@@ -105,10 +105,10 @@ export const ModallCurso = ({ showModal, setShowModal, curso }) => {
 
                         <div className='container_descricao'>
                             <span>Descrição:</span>
-                            <p className='texto_descricao'>{curso.descricaoCurso}</p>
+                            <p className='texto_descricao'>{beneficio.descricaoDesconto}</p>
                             <div className='box_empresa_modal'>
                                 <span>Empresa:</span>
-                                <p className='texto_empresa'>{curso.idEmpresaNavigation.nomeEmpresa}<button className='btn_inscreva'><a href={curso.siteCurso}>Inscreva-se</a></button> </p>
+                                <p className='texto_empresa'>{beneficio.idEmpresaNavigation.nomeEmpresa}<button className='btn_inscreva'><a href='#'>Cupom</a></button> </p>
 
                             </div>
                         </div>
@@ -124,15 +124,15 @@ export const ModallCurso = ({ showModal, setShowModal, curso }) => {
                                 <div className='box_comentarios'>
 
                                     {
-                                        listaComentarioCurso.map((comentario) => {
+                                        listaComentarioBeneficio.map((comentario) => {
                                             return (
                                                 <div>
                                                     <div>
 
-                                                        {comentario.avaliacaoComentario}
+                                                        {comentario.avaliacaoDesconto}
                                                     </div>
                                                     {comentario.idUsuarioNavigation.nome} :
-                                                    {comentario.comentarioCurso1}
+                                                    {comentario.comentarioDesconto1}
                                                 </div>
                                             )
                                         })

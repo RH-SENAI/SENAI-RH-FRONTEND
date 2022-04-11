@@ -21,10 +21,10 @@ export default function HeaderFuncionario() {
 
 
                 <div class='select'>
-                    <p class='input'>Vantagens <img src={setaBaixo} /></p>
+                    <p class='input'>Beneficios <img src={setaBaixo} /></p>
                     <input type='hidden' name='some_name_tosetaBaixosetaBaixo_form' />
                     <div class='hidden'>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Adm' > <img className='seta' src={seta} alt="Seta" /> Vantagens</Link>
+                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Beneficios' > <img className='seta' src={seta} alt="Seta" /> Beneficios</Link>
                         <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/CursosRapidos' > <img className='seta' src={seta} alt="Seta" /> Cursos</Link>
 
                     </div>
@@ -33,7 +33,7 @@ export default function HeaderFuncionario() {
                     <p class='input'>Acompanhar <img src={setaBaixo} /> </p>
                     <input type='hidden' name='some_name_to_form' />
                     <div class='hidden'>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='#' > <img className='seta' src={seta} alt="Seta" /> Carômetro</Link>
+                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Adm' > <img className='seta' src={seta} alt="Seta" /> Carômetro</Link>
                         <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} > <img className='seta' src={seta} alt="Seta" /> Dashboard</Link>
                         <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} > <img className='seta' src={seta} alt="Seta" /> Democratização</Link>
                     </div>

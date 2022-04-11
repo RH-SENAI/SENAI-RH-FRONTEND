@@ -22,13 +22,13 @@ export default function HeaderAdm() {
 
                 <div class='select'>
 
-                    <p class='input'>Vantagens <img src={setaBaixo} /></p>
+                    <p class='input'>Beneficios <img src={setaBaixo} /></p>
 
                     <input type='hidden' name='some_name_tosetaBaixosetaBaixo_form' />
 
                     <div class='hidden'>
 
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Adm' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Vantagens</Link>
+                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/BeneficiosCadastrar' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Beneficio</Link>
                         <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/CadastrarCursos' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Cursos</Link>
 
                     </div>

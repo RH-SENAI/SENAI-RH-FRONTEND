@@ -1,0 +1,84 @@
+.container_wrap_beneficio{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    background-color: #f2f2f2;
+    margin-top: 15px;
+    height: 450px;
+    direction: ltr !important;
+    margin-left: 99px;
+}
+
+.wrap_beneficio{
+    margin-top: 20px;
+    margin-right: 50px;
+    overflow-y: auto; 
+    direction: ltr;
+}
+
+.wrap_beneficio::-webkit-scrollbar{
+    width: 4px;
+}
+
+.wrap_beneficio::-webkit-scrollbar-thumb{
+    background-color: #787878;
+    border-radius: 20px;
+    
+}
+.wrap_beneficio::-webkit-scrollbar-track  {
+    border-radius: 20px;
+    background-color: #D7D7D7;        
+}
+
+.titulo_beneficio{
+    display: flex;
+    justify-content: end;
+    margin-right: 15vw;
+}
+
+.banner_img_beneficio{
+    width: 100%;
+    height: 45%;
+    cursor: pointer;
+}
+
+.title_beneficios{
+    height: 20px !important;
+}
+
+.box_baixo_section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    margin-bottom: 500px;
+}
+.media_beneficio img{
+    margin-top: 3px;
+   width: 50px;
+   height: 50px;
+}
+
+.media_beneficio p{
+   padding-left: 10px !important;
+}
+.media_beneficio {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 70px;
+}
+
+.circulo_coracao2 {
+    display: flex;
+    margin-top: 15px !important;
+    justify-content: center;
+    align-items: center;
+    width: 50px ;
+    height: 50px ;
+    border-radius: 60px !important;
+    margin-left: 20px;
+    box-shadow: 8px 12px 15px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+}

@@ -13,6 +13,8 @@ import HeaderFuncionario from './components/Header/headerFuncionario';
 import HeaderAdm from './components/Header/headerAdm';
 import CursosRapidos from './Pages/Cursos/cursosRapidos';
 import CadastrarCursos from './Pages/Cursos/cadastrarCursos';
+import ListaBeneficios from './Pages/Beneficios/listaBeneficios';
+import CadastroBeneficios from './Pages/Beneficios/cadastroBeneficio';
 
 const routing = (
   <Router>
@@ -22,6 +24,8 @@ const routing = (
         <Route  path="/Adm" component={HeaderAdm} />
         <Route  path="/CursosRapidos" component={CursosRapidos} />
         <Route  path="/CadastrarCursos" component={CadastrarCursos} />
+        <Route  path="/Beneficios" component={ListaBeneficios} />
+        <Route  path="/BeneficiosCadastrar" component={CadastroBeneficios} />
       </Switch>
     </div>
   </Router>
