@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap');
+
+*{
+    box-sizing: 0;
+    margin: 0;
+    padding: 0;
+    word-wrap: normal;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    background-color: #F2F2F2;
+}
+
+.container_principal{
+    display: flex;
+    align-items: center;
+    margin-top: 8vh;
+}
+
+.imgHome{
+    width: 30vw;
+    height: 25vw;
+    margin-right: 6vw;
+    margin-left: 10vw;
+}
+
+.tituloHome{
+    font-size: 50px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+h2{
+    font-size: 40px;
+    text-transform: uppercase; 
+}
+
+.text_principal{
+    width: 35vw;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 20px;
+    margin-top: 2vh;
+}
+
+.container_empresas{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    background-color: white;
+    margin-top: 6vh;
+}
+
+.imgSetaEsq{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 12.9%;
+    top: 80%;
+}
+
+.box_empresas{
+    width: 75%;
+    height: 14vh;
+    display: flex;
+    align-items: center;
+    flex-direction: row; 
+    justify-content: space-between;
+}
+
+.imagemEmpresa{
+    width: 4vw;
+    height: 8vh;
+    margin-left: 3vw;
+}
+
+.imagemEmpresa_casasBahia{
+    width: 3vw;
+    height: 8vh;
+    margin-left: 3vw;
+}
+
+.imagemEmpresa_airline{
+    width: 6vw;
+    height: 8vh;
+    margin-left: 3vw;
+}
+
+.barraDivisao{
+    height: 6vh;
+    border: 0.5px solid #636466 ;
+}
+
+.imgSetaDir{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 84.4%;
+    top: 80%;
+}
+
+.styles-module_carousel-arrow__26sRw{
+    width: 3.5vw;
+    height: 6vh;
+    margin-top: 1.1vh;
+    opacity: 0;
+    cursor: pointer;
+}

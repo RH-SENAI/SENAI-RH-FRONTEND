@@ -5,7 +5,6 @@ import Perfil from '../../Assets/img/Perfil.svg'
 import logout from '../../Assets/img/logout.png'
 import setaBaixo from '../../Assets/img/seta-para-baixo.png'
 import seta from '../../Assets/img/seta.svg'
-import sino from '../../Assets/img/sino.svg'
 import { useState } from 'react'
 
 
@@ -42,7 +41,6 @@ export default function HeaderFuncionario() {
                     <Link class='input input_motivacao'>Motivações</Link>
                     <input type='hidden' name='some_name_to_form' />
                 </div>
-
                 <div className='circulo'>
                     <img className='img_perfil' src={Perfil} alt="" />
                 </div>

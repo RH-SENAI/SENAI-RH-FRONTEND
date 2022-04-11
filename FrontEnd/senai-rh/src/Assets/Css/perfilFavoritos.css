@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap');
+
+*{
+    box-sizing: 0;
+    margin: 0;
+    padding: 0;
+    word-wrap: normal;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    background-color: #F2F2F2;
+}
+
+.box_perfil{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10vh;
+}
+
+.tituloPerfil{
+    font-size: 30px;
+    text-transform: capitalize;
+    font-weight: bold;
+    margin-right: 3vw;
+    margin-bottom: 3vh;
+}
+
+.fundoImagem_perfil{
+    width: 8vw;
+    height: 15vh;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3vh;
+}
+
+.imagemPerfil{
+    width: 2.5vw;
+    height: 5vh;
+}
+
+.box_dadosPerfil{
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo_dadosPerfil{
+    text-transform: capitalize;
+}
+
+.inputGrande{
+    width: 23vw;
+    height: 4vh;
+    border-radius: 50px;
+    box-shadow: inset -4px -3px 4px #FAFBFF, inset 4px 3px 8px #A6ABBD;
+    border: none;
+    margin-bottom: 2vh;
+}
+
+.box_Ajuste{
+    display: flex;
+    flex-direction: row;
+}
+
+.box_dados{
+    display: flex;
+    flex-direction: column;
+}
+
+.inputPeqn{
+    width: 8vw;
+    height: 4vh;
+    border-radius: 50px;
+    box-shadow: inset -4px -3px 4px #FAFBFF, inset 4px 3px 8px #A6ABBD;
+    border: none; 
+    margin-right: 2vw;
+    margin-bottom: 2vh;
+}
+
+.inputMedio{
+    width: 13vw;
+    height: 4vh;
+    border-radius: 50px;
+    box-shadow: inset -4px -3px 4px #FAFBFF, inset 4px 3px 8px #A6ABBD;
+    border: none; 
+}
+
+.container_perfilFavoritos{
+    width: 1px;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.container_perfil{
+    margin-right: 6vw;
+    margin-left: 5.5vw;
+}
+
+hr{
+    height: 70vh;
+    display: flex;
+    flex-direction: row;
+    margin-top: 8vh;
+    border: 1px solid black;
+    margin-right: 10vw;
+}
+
+.container_favoritos{
+    margin-top: 12vh;
+}
