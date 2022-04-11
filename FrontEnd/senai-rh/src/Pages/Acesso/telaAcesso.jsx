@@ -1,8 +1,8 @@
 import { Redirect, useHistory } from "react-router-dom";
-import HeaderLogin from "../../components/Header/HeaderLogin";
-import Footer from "../../components/Footer"
-import "../../Assets/Css/acesso.css"
-import imagemAcesso from "../../Assets/img/telaDeAcessoLight.svg"
+import HeaderLogin from "../../components/header/headerLogin";
+import Footer from "../../components/footer"
+import "../../assets/css/acesso.css"
+import imagemAcesso from "../../assets/img/telaDeAcessoLight.svg"
 
 export default function Acesso() {
 

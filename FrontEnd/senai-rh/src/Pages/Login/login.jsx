@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react"
-import Logo from "../../Assets/img/Logo_SENAI_PRINCIPAL_VERMELHO2.png"
-import bannerLogin from "../../Assets/img/undraw_login_re_4vu2 1.svg"
-import Footer from "../../components/Footer"
-import "../../Assets/Css/login.css"
+import Logo from "../../assets/img/Logo_SENAI_PRINCIPAL_VERMELHO2.png"
+import bannerLogin from "../../assets/img/undraw_login_re_4vu2 1.svg"
+import Footer from "../../components/footer"
+import "../../assets/css/login.css"
 import axios from "axios"
-import { parseJwt } from "../../Services/auth"
+import { parseJwt } from "../../services/auth"
 import { useHistory } from "react-router-dom"
 
 export default function Login() {

@@ -3,7 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
-import { parseJwt } from '../../Services/auth';
+import { parseJwt } from '../../services/auth';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 

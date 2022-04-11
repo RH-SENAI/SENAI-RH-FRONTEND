@@ -3,16 +3,18 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
 import { useParams, Link } from "react-router-dom";
-import "../../Assets/Css/carometro.css";
-import HeaderFuncionario from '../../components/Header/headerFuncionario';
-import Footer from '../../components/Footer';
-import PerfilCarometro from '../../Assets/img/PerfilCarometro.png'
-import setaSelectLight from '../../Assets/img/SetaSelectLight.png'
-import IconLogout from '../../Assets/img/IconLogout.png'
-import SetaCarometro from '../../Assets/img/SetaCarometro.png'
-import Modal from 'react-modal';
-import { ModalAcompanhar } from '../../components/Modal/ModalAcompanhar';
+import "../../assets/css/carometro.css";
+import HeaderFuncionario from '../../components/header/headerFuncionario';
+import Footer from '../../components/footer';
+import PerfilCarometro from '../../assets/img/PerfilCarometro.png'
+import setaSelectLight from '../../assets/img/SetaSelectLight.png'
+import IconLogout from '../../assets/img/IconLogout.png'
+import SetaCarometro from '../../assets/img/SetaCarometro.png'
+//import Modal from 'react-modal';
+//import { ModalAcompanhar } from '../../components/modal/modalAcompanhar';
 
+import { Button, Modal } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -29,10 +31,12 @@ export default function Carometro() {
     const ToggleMode = () => {
         setMode(!active)
     }
-    const openModal = () => {
-        setShowModal(prev => !prev);
-    }
+    // const openModal = () => {
+    //     setShowModal(prev => !prev);
+    // }
 
+    const [modalShow, setModalShow] = useState(false);
+    const [funcSelecionado, setFuncionarioSelecionado] = useState('');
 
 
 
@@ -82,15 +86,50 @@ export default function Carometro() {
 
 
 
+    function MyVerticallyCenteredModal(props) {
+        // var usuarioSelecionado = listaFuncionarios.find(usuario => usuario.idUsuario == idFuncionarioModal)
+        setFuncionarioSelecionado(listaFuncionarios.find(usuario => usuario.idUsuario == idFuncionarioModal));
+        return (
+
+            <Modal
+                {...props}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header closeButton onClick={() => setModalShow(false)}>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        Informações pessoais
+                    </Modal.Title>
+
+                </Modal.Header>
+                <Modal.Body>
+                    {/* <h4>Nome:</h4><p>{usuarioSelecionado.nome}</p>
+                    <h4>CPF:</h4><p>{usuarioSelecionado.cpf}</p> */}
+                    <h4>{funcSelecionado.nome}</h4>
+                    <h4>{funcSelecionado.cpf}</h4>
+                    <h4>{funcSelecionado.email}</h4>
+                    <h4>{funcSelecionado.endereco}</h4>
+
+                </Modal.Body>
+                {/* <Modal.Footer>
+                    <Button onClick={props.onHide}>Close</Button>
+                </Modal.Footer> */}
+            </Modal>
+        );
+    }
+
+
+
 
     useEffect(BuscarFuncionario, [])
 
     return (
         <body>
-            <ModalAcompanhar usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idFuncionarioModal)} showModal={showModal} setShowModal={setShowModal} /> 
+            {/* <ModalAcompanhar usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idFuncionarioModal)} showModal={showModal} setShowModal={setShowModal} />  */}
             <HeaderFuncionario />
             <main>
-                
+
                 <div className="container">
                     <div className="containerCarometro">
                         <div className="sidebarCarometro">
@@ -134,18 +173,25 @@ export default function Carometro() {
                             <div className="cardsCarometro">
                                 {
 
-                                    listaFuncionarios.reverse().map((usuario) => {
+                                    listaFuncionarios.map((usuario) => {
 
                                         return (
-                                                <div className="cardFuncionario">
-                                                    <img className='fotoCarometro' src={'http://localhost:5000/StaticFiles/Images/' + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
-                                                    <span className="spanCarometro">{usuario.nome}</span>
-                                                    <span className="spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
-                                                    <a onClick={openModal} onClickCapture = {() =>setIdFuncionarioModal(usuario.idUsuario)} className='seta_funcionario_carometro'>
-                                                        <img className='setaCarometro' src={SetaCarometro} alt="setaCard" />
-                                                    </a>
-
-                                                </div>
+                                            <div className="cardFuncionario">
+                                                <img className='fotoCarometro' src={'http://localhost:5000/StaticFiles/Images/' + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
+                                                <span className="spanCarometro">{usuario.nome}</span>
+                                                <span className="spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
+                                                {/* <a onClick={openModal} onClickCapture = {() =>setIdFuncionarioModal(usuario.idUsuario)} className='seta_funcionario_carometro'> */}
+                                                <a onClick={() => setModalShow(true)} onClickCapture={() => setIdFuncionarioModal(usuario.idUsuario)}
+                                                    className='seta_funcionario_carometro'>
+                                                    <img className='setaCarometro' src={SetaCarometro} alt="setaCard" />
+                                                </a>
+                                                <>
+                                                    <MyVerticallyCenteredModal
+                                                        show={modalShow}
+                                                        onHide={() => setModalShow(false)}
+                                                    />
+                                                </>
+                                            </div>
                                         )
                                     })
                                 }

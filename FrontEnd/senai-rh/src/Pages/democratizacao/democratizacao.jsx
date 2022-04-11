@@ -2,13 +2,13 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
 import { useParams } from 'react-router';
-import "../../Assets/Css/democratizacao.css";
-import Footer from '../../components/Footer';
-import FotoPerfil from '../../Assets/img/perfilVazio.svg'
-import Header from '../../components/Header/headerFuncionario'
-import ImgDemocratizacao from '../../Assets/img/ImgDemocratizacao.png'
+import "../../assets/css/democratizacao.css";
+import Footer from '../../components/footer';
+import FotoPerfil from '../../assets/img/perfilVazio.svg'
+import Header from '../../components/header/headerFuncionario'
+import ImgDemocratizacao from '../../assets/img/ImgDemocratizacao.png'
 import moment from 'moment';
-import { parseJwt } from '../../Services/auth';
+import { parseJwt } from '../../services/auth';
 
 export default function Democratizacao() {
 

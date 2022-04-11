@@ -8,18 +8,18 @@ import {
   Switch
 } from 'react-router-dom';
 import './index.css';
-import Cadastro from './Pages/CadastrarUsuario/CadastrarUsuario';
-import TelaAcesso from './Pages/Acesso/telaAcesso'
-import Login from './Pages/Login/login.jsx';
-import AtualizarPerfil from './Pages/atualizarUsuario/atualizarUsuario';
+import cadastro from './pages/cadastrarUsuario/cadastrarUsuario';
+import TelaAcesso from './pages/acesso/telaAcesso'
+import login from './pages/login/login.jsx';
+import atualizarPerfil from './pages/atualizarUsuario/atualizarUsuario';
 import reportWebVitals from './reportWebVitals';
-import Carometro from './Pages/Carometro/Carometro';
-import Democratizacao from './Pages/Democratização/Democratizacao';
-import DemocratizacaoAdm from './Pages/Democratização/democratizacaoAdm';
-import Redirecionar from './Pages/Redirecionar/redirecionar';
-import RedirecionarADM from './Pages/Redirecionar/redirecionarADM';
-import Perfil from './Pages/Perfil/Perfil';
-import Decisao from './Pages/Democratização/decisoes';
+import carometro from './pages/carometro/carometro';
+import democratizacao from './pages/democratizacao/democratizacao';
+import democratizacaoAdm from './pages/democratizacao/democratizacaoAdm';
+import redirecionar from './pages/redirecionar/redirecionar';
+import redirecionarADM from './pages/redirecionar/redirecionarADM';
+import perfil from './pages/perfil/perfil';
+import decisao from './pages/democratizacao/decisoes';
 // import reportWebVitals from './reportWebVitals';
 
 
@@ -27,17 +27,17 @@ const routing = (
   <Router>
     <div>
       <Switch>
-      <Route path="/Carometro" component={Carometro}/>
+      <Route path="/carometro" component={carometro}/>
       <Route exact path="/" component={TelaAcesso}/>
-      <Route path="/Login" component={Login}/>
-      <Route path="/Cadastro" component={Cadastro}/> 
-      <Route path ="/Atualizar" component={AtualizarPerfil}/>
-      <Route exact path="/Democratizacao/:idDecisao" component={Democratizacao}/>
-      <Route exact path="/DemocratizacaoAdm" component={DemocratizacaoAdm}/>
-      <Route path="/Redirecionar" component={Redirecionar} />
-      <Route path="/Perfil" component={Perfil} />
-      <Route path="/RedirecionarADM" component={RedirecionarADM} />
-      <Route path="/Decisao" component={Decisao} />
+      <Route path="/login" component={login}/>
+      <Route path="/cadastro" component={cadastro}/> 
+      <Route path ="/atualizar" component={atualizarPerfil}/>
+      <Route exact path="/democratizacao/:iddecisao" component={democratizacao}/>
+      <Route exact path="/democratizacaoAdm" component={democratizacaoAdm}/>
+      <Route path="/redirecionar" component={redirecionar} />
+      <Route path="/perfil" component={perfil} />
+      <Route path="/redirecionarADM" component={redirecionarADM} />
+      <Route path="/decisao" component={decisao} />
       </Switch>
     </div>
   </Router>
