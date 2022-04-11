@@ -112,50 +112,60 @@ export default class ListagemCurso extends Component {
                   </View>
                 </View>
               </DropShadow>
+
                    <Modal
-                     //style={styles.containerModal}
+                     style={styles.containerModal}
                      animationType="fade"
-                     transparent={false}
+                     transparent={true}
                      visible={this.state.modalVisivel}
                      onRequestClose={() => {
                          this.setModalVisivel(!this.state.modalVisivel)
                      }}>
-                     <View style={styles.containerModal}>
-                        <View style={styles.boxTituloModal}>
-                           <Image />
-                           <Text style={styles.textTituloModal}>Lógica de Programação</Text>
-                        </View>
-                        <View style={styles.boxAvaliacaoModal}>
-                           <Text style={styles.avaliacaoModal}>10/10</Text>
-                        </View>
-                        <View style={styles.boxDadosModal}>
-                           <Image />
-                           <Text style={styles.textDadosModal}>1000 horas</Text>
+                      <View style={styles.totalModal}>
+                        <DropShadow style={styles.shadow}>
+                         <View style={styles.containerModal}>
+                             <View style={styles.boxTituloModal}>
+                                <Image style={styles.imgModalCurso} source={require('../../assets/img/imgCursoModal.png')} />
+                             <Text style={styles.textTituloModal}>Lógica de Programação</Text>
+                         </View>
+                         <View style={styles.boxAvaliacaoModal}>
+                            <Text style={styles.textAvaliacaoModal}>Avaliação:</Text>
+                            <Text style={styles.avaliacaoModal}>10/10</Text>
+                         </View>
+                         <View style={styles.boxDadosModal}>
+                            <Image style={styles.imgTempoHorario} source={require('../../assets/img/relogio.png')} />
+                            <Text style={styles.textDadosModal}>1000 horas</Text>
 
-                           <Image />
-                           <Text style={styles.textDadosModal}>15/01/2023</Text>
-                        </View>
-                           <Image />
-                           <Text style={styles.textLocalizacaoModal}>São Paulo, São Paulo</Text>
-                        <View style={styles.boxDescricaoModal}>
-                           <Text style={styles.descricaoModal}>Descrição:</Text>
-                           <Text style={styles.textDescricaoModal}>
-                             O curso habilita profissionais técnicos de nível médio em
-                             Desenvolvimento de Sistemas, visando suprir a demanda do
-                             mercado por profissionais qualificados para atuarem em
-                             programação e desenvolvimento de software com condições
-                             técnico-tecnológicas para atender às exigências e evolução
-                             do segmento.
+                            <Image style={styles.imgTempoHorario} source={require('../../assets/img/imgAvisoTempo.png')} />
+                            <Text style={styles.textDadosModal}>15/01/2023</Text>
+                         </View>
+                         <View style={styles.boxLocalizacaoModal}>
+                             <Image style={styles.imgLocalizacaoModal} source={require('../../assets/img/localizacao.png')} />
+                             <Text style={styles.textLocalizacaoModal}>São Paulo, São Paulo</Text>
+                         </View>
+                         <View style={styles.boxDescricaoModal}>
+                            <Text style={styles.descricaoModal}>Descrição:</Text>
+                            <Text style={styles.textDescricaoModal}>
+                              O curso habilita profissionais técnicos de nível médio em
+                              Desenvolvimento de Sistemas, visando suprir a demanda do
+                              mercado por profissionais qualificados para atuarem em
+                              programação e desenvolvimento de software com condições
+                              técnico-tecnológicas para atender às exigências e evolução
+                              do segmento.
                             </Text>
-                            <Text>Empresa: </Text>
-                            <Text>Senai - Santa Cecília </Text>
+                            <View style={styles.boxEmpresa}>
+                                <Text style={styles.tituloEmpresa}>Empresa: </Text>
+                                <Text style={styles.textEmpresa}>Senai - Santa Cecília </Text>
+                            </View>
 
-                            <Pressable style={styles.modalAbrir} onPress={() => this.setModalVisivel(!this.state.modalVisivel)} >
-                                <Text style={styles.textDetalhes}>Detalhes</Text>
+                            <Pressable style={styles.inscreverModal} onPress={() => this.setModalVisivel(!this.state.modalVisivel)} >
+                                <Text style={styles.textDetalhes}>Inscreva-se</Text>
                             </Pressable>
                         </View>
-                     </View>
-                   </Modal>
+                      </View>
+                     </DropShadow>
+                   </View>
+               </Modal>
            </View>
         )
       }
@@ -186,7 +196,6 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     imgHeader: {
-
     },
     boxTituloListagem: {
         alignItems: 'center'
@@ -263,15 +272,121 @@ const styles = StyleSheet.create({
     textDetalhes: {
         color: 'white'
     },
+    totalModal: {
+        flex: 1,
+        backgroundColor: 'rgba(255,255,255,0.5)',
+    },
     containerModal: {
         width: '80%',
-        height: '70%',
+        height: '93%',
         backgroundColor: '#F2F2F2',
+        marginLeft: 40,
+        marginTop: 20,
+        borderRadius: 25,
     },
     boxTituloModal: {
+        //alignItems: 'center',
+    },
+    imgModalCurso: {
+        width: '100%',
+        height: 150,
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
+    },
+    textTituloModal: {
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 20,
+        color: '#000',
+        marginTop: 20,
+        marginLeft: 15
+    },
+    boxAvaliacaoModal: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    textAvaliacaoModal: {
+        fontFamily: 'Montserrat-Normal',
+        fontSize: 15,
+        color: '#000',
+        marginTop: 10,
+        marginLeft: 15
+    },
+    avaliacaoModal: {
+        fontFamily: 'Montserrat-Normal',
+        fontSize: 15,
+        color: '#000',
+        marginTop: 10,
+        marginLeft: 15
+    },
+    boxDadosModal: {
+        flexDirection: 'row',
+        marginTop: 20,
         alignItems: 'center',
-    }
+        justifyContent: 'space-between'
+    },
+    imgTempoHorario: {
+        marginLeft: 15
+    },
+    textDadosModal: {
+        marginRight: 40
+    },
+    boxLocalizacaoModal: {
+        flexDirection: 'row',
+        marginTop: 20,
+        lignItems: 'center',
+        justifyContent: 'space-between'
+    },
+    imgLocalizacaoModal: {
+        marginLeft: 15
+    },
+    textLocalizacaoModal: {
+        marginRight: 153
+    },
+    boxDescricaoModal: {
+        width: 300,
+        marginLeft: 10,
+        marginTop: 20
+    },
+    descricaoModal: {
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 16,
+        color: '#000',
+    },
+    textDescricaoModal: {
+        fontFamily: 'Montserrat-Normal',
+        fontSize: 14,
+        color: '#000',
+        alignItems: 'center',
+        marginTop: 5
+    },
+    boxEmpresa: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 15
+    },
+    tituloEmpresa: {
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 12,
+        color: '#000',
+    },
+    textEmpresa: {
+        fontFamily: 'Montserrat-Normal',
+        ontSize: 14,
+        color: '#000',
+        marginLeft: 10
+    },
+    inscreverModal: {
+        width: 150,
+        height: 40,
+        backgroundColor: '#CB334B',
+        borderRadius: 12,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 80,
+        marginTop: 20
+    },
     //imgEstrela: {
-    //    width: 75
+    //    width: 75,
+    //    height: 25
     //}
 })

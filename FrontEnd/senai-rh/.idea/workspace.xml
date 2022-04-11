@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="db1c549a-b4c3-4b22-ae27-2d6e184964fd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/.buckconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/.bundle/config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/.flowconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/.prettierrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/.ruby-version" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/.watchmanconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/Gemfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/Gemfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/__tests__/App-test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/_BUCK" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/build_defs.bzl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/debug.keystore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/debug/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/debug/java/com/vantagensapp/ReactNativeFlipper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/java/com/vantagensapp/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/java/com/vantagensapp/MainApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/java/com/vantagensapp/newarchitecture/MainApplicationReactNativeHost.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/java/com/vantagensapp/newarchitecture/components/MainComponentsRegistry.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/java/com/vantagensapp/newarchitecture/modules/MainApplicationTurboModuleManagerDelegate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/jni/Android.mk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/jni/MainApplicationModuleProvider.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/jni/MainApplicationModuleProvider.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/jni/MainApplicationTurboModuleManagerDelegate.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/jni/MainApplicationTurboModuleManagerDelegate.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/jni/MainComponentsRegistry.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/jni/MainComponentsRegistry.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/jni/OnLoad.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/res/drawable/rn_edit_text_material.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/android/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/ios/Podfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/ios/vantagensApp.xcodeproj/project.pbxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/ios/vantagensApp.xcodeproj/xcshareddata/xcschemes/vantagensApp.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/ios/vantagensApp/AppDelegate.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/ios/vantagensApp/AppDelegate.mm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/ios/vantagensApp/Images.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/ios/vantagensApp/Images.xcassets/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/ios/vantagensApp/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/ios/vantagensApp/LaunchScreen.storyboard" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/ios/vantagensApp/main.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/ios/vantagensAppTests/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/ios/vantagensAppTests/vantagensAppTests.m" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/metro.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/src/screens/listagemCurso.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/src/services/api.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Mobile/vantagensApp/yarn.lock" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="27MFIibeFq11wlryx4Xw0D5VQP6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Projeto_Roman/Mobile/RomanMobile" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="db1c549a-b4c3-4b22-ae27-2d6e184964fd" name="Default Changelist" comment="" />
+      <created>1649121970786</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1649121970786</updated>
+    </task>
+    <servers />
+  </component>
+</project>
