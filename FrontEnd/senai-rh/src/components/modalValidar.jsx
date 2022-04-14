@@ -6,6 +6,7 @@ import Modal from 'react-modal';
 import '../Assets/css/gp1style.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {listarAtividadesValidar} from '../Pages/CadastrarAtividades/cadastrarAtividades'
 
 export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade }) => {
     const modalRef = useRef();
@@ -13,8 +14,9 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
 
     let history = useHistory();
 
-    const closeModal = e => {
+    const closeModal = (e) => {
         setShowModalValidar(false);
+      
     };
 
     const keyPress = useCallback(
@@ -26,11 +28,11 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
         [setShowModalValidar, showModalValidar]
     );
 
-    function validarAtividades(atividade) {
+    async function validarAtividades(atividade) {
         console.log("validarAtividades chamouuuuu")
         let idAtividade = atividade.idAtividade;
         let idUsuario = atividade.idUsuario;
-        axios.patch("http://localhost:5000/api/Atividades/ValidarAtividade/" + atividade.idAtividade + "/" + atividade.idUsuario, {
+        await axios.patch("http://localhost:5000/api/Atividades/ValidarAtividade/" + atividade.idAtividade + "/" + atividade.idUsuario, {
             idAtividade: idAtividade,
             idUsuario: idUsuario
         }
@@ -42,6 +44,7 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
             .catch(erro => console.log(erro))
 
         notify_validar()
+        // listarAtividadesValidar()
     };
 
     return (

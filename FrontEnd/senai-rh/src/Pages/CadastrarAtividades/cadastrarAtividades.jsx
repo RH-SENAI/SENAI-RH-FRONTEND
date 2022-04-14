@@ -3,7 +3,7 @@ import axios from 'axios';
 import '../../Assets/css/gp1style.css'
 import Rodape from '../../components/Footer';
 import Header from '../../components/Header/headerFuncionario';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import img_olho from '../../Assets/img/Olho_Atividades.png'
 import Modal from 'react-modal';
 import { Modall } from '../../components/Modal'
@@ -59,7 +59,7 @@ export default function CadastrarAtividades() {
 
     useEffect(listarAtividades, []);
 
-    function listarAtividadesValidar() {
+    function listarAtividadesValidar(atividade) {
         axios("http://localhost:5000/api/Atividades/ListaValidar"
             , {
                 headers: {
@@ -69,20 +69,22 @@ export default function CadastrarAtividades() {
             .then(resposta => {
                 if (resposta.status === 200) {
                     setListaAtividadesValidar(resposta.data)
+                    console.log(listaAtividades)
                 }
             })
 
             .catch(erro => console.log(erro))
         console.log(listaAtividadesValidar)
+        setListaAtividadesValidar(atividade)
     };
 
     useEffect(listarAtividadesValidar, []);
 
-    function cadastrarAtividade(evento) {
+    async function CadastrarAtividade(evento) {
         setIsLoading(true);
         evento.preventDefault()
 
-        axios
+        await axios
             .post('http://localhost:5000/api/Atividades', {
                 idAtividade: idAtividade,
                 idSetor: idSetor,
@@ -116,7 +118,9 @@ export default function CadastrarAtividades() {
             }, 5000));
             notify_cadastrar();
             listarAtividades();
-    }
+            
+            
+        }
 
     function checkValidar() {
         console.log(necessarioValidar + " - Anterior")
@@ -193,7 +197,7 @@ export default function CadastrarAtividades() {
                         </div>
                         <h1>Cadastrar Atividade</h1>
 
-                        <form onSubmit={cadastrarAtividade} className="form_cadastro">
+                        <form onSubmit={CadastrarAtividade} className="form_cadastro">
                             <label className="label_form">Título da Atividade</label>
                             <input placeholder="Digite o título da atividade"
                                 className="input_text"
@@ -325,3 +329,4 @@ export default function CadastrarAtividades() {
         </div>
     );
 }
+
