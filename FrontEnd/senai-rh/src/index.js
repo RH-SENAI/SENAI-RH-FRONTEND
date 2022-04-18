@@ -9,12 +9,12 @@ import {
   Switch
 } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import HeaderFuncionario from './components/Header/headerFuncionario';
-import HeaderAdm from './components/Header/headerAdm';
-import CursosRapidos from './Pages/Cursos/cursosRapidos';
-import CadastrarCursos from './Pages/Cursos/cadastrarCursos';
-import ListaBeneficios from './Pages/Beneficios/listaBeneficios';
-import CadastroBeneficios from './Pages/Beneficios/cadastroBeneficio';
+import HeaderFuncionario from './components/header/headerFuncionario';
+import HeaderAdm from './components/header/headerAdm';
+import CursosRapidos from './pages/cursos/cursosRapidos';
+import CadastrarCursos from './pages/cursos/cadastrarCursos';
+import ListaBeneficios from './pages/vantagens/listaBeneficios';
+import CadastroBeneficios from './pages/vantagens/cadastroBeneficio';
 
 const routing = (
   <Router>

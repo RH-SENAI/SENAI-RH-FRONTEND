@@ -1,14 +1,14 @@
-import HeaderFuncionario from '../../components/headers/headerFuncionario'
-import curso from '../../Assets/img/cursosRapidos.svg'
-import '../../Assets/Css/cursosRapidos.css'
-import '../../Assets/Css/style.css'
-import coracao from '../../Assets/img/coracao.svg'
-import relogio from '../../Assets/img/relogio.svg'
-import estrelaSozinha from '../../Assets/img/estrelaSozinha.svg'
-import local from '../../Assets/img/local.svg'
+import HeaderFuncionario from '../../components/header/headerFuncionario'
+import curso from '../../assets/img/cursosRapidos.svg'
+import '../../assets/css/cursosRapidos.css'
+import '../../assets/css/style.css'
+import coracao from '../../assets/img/coracao.svg'
+import relogio from '../../assets/img/relogio.svg'
+import estrelaSozinha from '../../assets/img/estrelaSozinha.svg'
+import local from '../../assets/img/local.svg'
 import React, { useEffect, useState } from 'react';
-import api from '../../Services/api'
-import { ModallCurso } from '../../components/modalListaCurso/modalListaCursos'
+import { ModallCurso } from '../../components/modalListaCursos/modalListaCursos'
+import api from '../../service/api'
 
 export default function CursosRapidos() {
     const [listaCursos, setListaCursos] = useState([]);

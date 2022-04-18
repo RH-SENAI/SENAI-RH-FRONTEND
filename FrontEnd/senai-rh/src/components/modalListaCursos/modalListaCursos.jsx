@@ -1,13 +1,13 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Modal from 'react-modal';
-import relogio from '../../Assets/img/relogio.svg'
-import local from '../../Assets/img/local.svg'
-import data from '../../Assets/img/data.svg'
-import estrelaSozinha from '../../Assets/img/estrelaSozinha.svg'
-import modelo from '../../Assets/img/modelo.svg'
-import "../../Assets/Css/modalListaCursos.css"
-import api from '../../servicos/api';
+import relogio from '../../assets/img/relogio.svg'
+import local from '../../assets/img/local.svg'
+import data from '../../assets/img/data.svg'
+import estrelaSozinha from '../../assets/img/estrelaSozinha.svg'
+import modelo from '../../assets/img/modelo.svg'
+import "../../assets/css/modalListaCursos.css"
+import api from '../../service/api';
 
 export const ModallCurso = ({ showModal, setShowModal, curso }) => {
 

@@ -1,28 +1,36 @@
-import HeaderAdm from "../../components/Header/headerAdm";
-import cadastroCurso from '../../Assets/img/cadastroCurso.svg'
-import telaCadastroVantagens from '../../Assets/img/telaCadastroVantagens.svg'
-import '../../Assets/Css/cadastroCursos.css'
-import api from '../../Services/api'
+import HeaderAdm from "../../components/header/headerAdm";
+import cadastroCurso from '../../assets/img/cadastroCurso.svg'
+import '../../assets/css/cadastroCursos.css'
 import { useEffect, useState } from "react";
 import axios from "axios";
+import api from "../../service/api";
 
-export default function CadastrarBeneficio() {
+export default function CadastrarCursos() {
     const [idEmpresa, setIdEmpresa] = useState(0)
-    const [nomeDesconto, setNomeDesconto] = useState('')
-    const [descricaoDesconto, setDescricaoDesconto] = useState('')
-    const [numeroCupom , setNumeroCupom ] = useState('')
-    const [valorDesconto, setValorDesconto] = useState(0)
-    const [validadeDesconto, setValidadeDesconto] = useState(new Date())
-    const [fotoDesconto, setFotoDesconto] = useState([])
+    const [nomeCurso, setNomeCurso] = useState('')
+    const [descricaoCurso, setDescricaoCurso] = useState('')
+    const [siteCurso, setSiteCurso] = useState('')
+    const [cargaHoraria, setCargaHoraria] = useState(0)
+    const [modalidadeCurso, setModalidadeCurso] = useState(false)
+    const [dataFinalizacao, setDataFinalizacao] = useState(new Date())
+    const [fotoCurso, setFotoCurso] = useState([])
     const [isLoading, setisLoading] = useState(false)
     const [erroMensagem, setErroMensagem] = useState(false);
     const [msgSucesso, setMsgSucesso] = useState(false);
-    const [caminhoImagemDesconto, setCaminhoImagemDesconto] = useState('');
+    const [caminhoImagemCurso, setCaminhoImagemCurso] = useState('');
     const [listaEmpresa, setListaEmpresa] = useState([])
 
 
 
-    
+    function presencial() {
+        setModalidadeCurso(true)
+        console.log('True')
+    }
+
+    function ead() {
+        setModalidadeCurso(false)
+        console.log('False')
+    }
 
     function buscarEmpresas() {
         api('/Empresas', {
@@ -42,35 +50,38 @@ export default function CadastrarBeneficio() {
     }
     useEffect(buscarEmpresas, [])
 
-    const efetuarCadastroBeneficio = (event) => {
+    const efetuarCadastro = (event) => {
 
         event.preventDefault();
 
         var formData = new FormData();
 
-        const element = document.getElementById('fotoDesconto')
+        const element = document.getElementById('arquivo')
         const file = element.files[0]
-        formData.append('fotoDesconto', file, file.name)
+        formData.append('fotoCurso', file, file.name)
+
+
 
         formData.append('idEmpresa', idEmpresa);
-        formData.append('nomeDesconto', nomeDesconto);
-        formData.append('descricaoDesconto', descricaoDesconto);
-        formData.append('caminhoImagemDesconto', caminhoImagemDesconto);
-        formData.append('validadeDesconto', validadeDesconto);
-        formData.append('valorDesconto', valorDesconto);
-        formData.append('numeroCupom', numeroCupom );
+        formData.append('nomeCurso', nomeCurso);
+        formData.append('descricaoCurso', descricaoCurso);
+        formData.append('siteCurso', siteCurso);
+        formData.append('modalidadeCurso', modalidadeCurso);
+        formData.append('cargaHoraria', cargaHoraria);
+        formData.append('dataFinalizacao', dataFinalizacao);
+        formData.append('caminhoImagemCurso', caminhoImagemCurso);
 
         axios({
             method: "post",
             // url: "https://apibackgrupo2.azurewebsites.net/api/Cursos/Cadastrar",
-            url: "http://localhost:5000/api/Descontos/Cadastrar",
+            url: "http://localhost:5000/api/Cursos/Cadastrar",
             data: formData,
             headers: { "Content-Type": "multipart/form-data" },
         })
             .then(function (response) {
                 console.log(response);
                 setMsgSucesso(true);
-                setFotoDesconto();
+                setFotoCurso();
             })
             .catch((erro) => console.log(erro),
                 setErroMensagem(true));
@@ -84,37 +95,37 @@ export default function CadastrarBeneficio() {
                 <div className="box_img_cadastroCurso">
                     <div className="container_cadastroCursos">
                         <p>Senai-Sp</p>
-                        <h1>Cadastro de Beneficios</h1>
+                        <h1>Cadastro de Cursos</h1>
                     </div>
-                    <img src={telaCadastroVantagens} alt="imagemCadastro" />
+                    <img src={cadastroCurso} alt="imagemCadastro" />
                 </div>
-                <form onSubmit={efetuarCadastroBeneficio} className="box_forms_cursos" action="">
+                <form onSubmit={efetuarCadastro} className="box_forms_cursos" action="">
                     <div className="inputCadastro_cursos">
 
                         <div className="dis">
                             <div className="flex_co">
-                                <label htmlFor="nomeDesconto" >Beneficio</label>
-                                <input id="nomeDesconto" onChange={(campo) => setNomeDesconto(campo.target.value)} value={nomeDesconto} type="text" name="nomeDesconto" placeholder="Digite o nome do beneficio" />
+                                <label htmlFor="nomeCurso" >Cursos</label>
+                                <input id="nomeCurso" onChange={(campo) => setNomeCurso(campo.target.value)} value={nomeCurso} type="text" name="nomeCurso" placeholder="Digite o nome do curso" />
                             </div>
 
                             <div className="flex_co">
-                                <label htmlFor="validadeDesconto">Data de Validade</label>
-                                <input id="validadeDesconto" onChange={(campo) => setValidadeDesconto(campo.target.value)} name="validadeDesconto" value={validadeDesconto} type="date" />
+                                <label htmlFor="dataFinalizacao">Data de finalizar</label>
+                                <input id="dataFinalizacao" onChange={(campo) => setDataFinalizacao(campo.target.value)} name="data" value={dataFinalizacao} type="date" />
                             </div>
                         </div>
 
                         <div className="dis">
                             <div className="descricao">
-                                <label htmlFor="descricaoDesconto" >Descrição</label>
-                                <input onChange={(campo) => setDescricaoDesconto(campo.target.value)} value={descricaoDesconto} id='descricaoDesconto' name="descricaoDesconto" type="text" placeholder="Digite aqui os detalhes do seu beneficio" />
+                                <label>Descrição</label>
+                                <input onChange={(campo) => setDescricaoCurso(campo.target.value)} value={descricaoCurso} name="descricaoCurso" type="text" placeholder="Digite aqui os detalhes do seu curso" />
                             </div>
 
                         </div>
 
                         <div className="dis">
                             <div className="flex_co">
-                                <label htmlFor="idEmpresaB" >Empresa</label>
-                                <select className="inputCadastroSelect_curso" id="idEmpresaB"
+                                <label htmlFor="idEmpresa" >Empresa</label>
+                                <select className="inputCadastroSelect_curso" id="idEmpresa"
                                     onChange={(campo) => setIdEmpresa(campo.target.value)}
                                     value={idEmpresa}
                                 >
@@ -138,8 +149,8 @@ export default function CadastrarBeneficio() {
 
                             <div className="dis">
                                 <div className="flex_co">
-                                    <label htmlFor="valorDesconto">Valor Desconto</label>
-                                    <input onChange={(campo) => setValorDesconto(campo.target.value)} className="flex_co" value={valorDesconto} id="valorDesconto" placeholder="Digite o seu desconto" type="number" />
+                                    <label htmlFor="cargaHoraria">Carga Horaria</label>
+                                    <input onChange={(campo) => setCargaHoraria(campo.target.value)} className="flex_co" value={cargaHoraria} id="cargaHoraria" placeholder="Digite a carga horaria do seu curso" type="number" />
                                 </div>
                             </div>
                         </div>
@@ -147,21 +158,33 @@ export default function CadastrarBeneficio() {
                         <div className="dis">
                             <div className="flex_co">
                                 <label>Imagem</label>
-                                <label className="label_arquivo" htmlFor="fotoDesconto">Imagem do curso</label>
-                                <input accept="image/png, image/jpeg" id="fotoDesconto" name="arquivo" className="input_file" type="file" />
+                                <label className="label_arquivo" htmlFor="arquivo">Imagem do curso</label>
+                                <input accept="image/png, image/jpeg" id="arquivo" name="arquivo" className="input_file" type="file" />
 
 
 
                             </div>
 
                             <div className="flex_co ">
-                                <label htmlFor="Cupom">Cupom</label>
-                                <input id="Cupom" value={numeroCupom} onChange={(campo) => setNumeroCupom(campo.target.value)} type="text" placeholder="Digite o seu cupom aqui!" />
+                                <label htmlFor="Presencial">Modelo</label>
+                                <div>
+                                    <input onClick={presencial} id="Presencial" type="radio" name="web" />Presencial <br />
+                                </div>
+                                <div className="radio">
+                                    <label></label>
+                                    <input onClick={ead} type="radio" name="web" /> EAD <br />
+
+                                </div>
                             </div>
 
 
+
+
                         </div>
-                        
+                        <div className="flex_co largura">
+                            <label>Site do Curso</label>
+                            <input value={siteCurso} name="siteCurso" onChange={(campo) => setSiteCurso(campo.target.value)} type="text" placeholder="Coloque aqui o link para inscrever-se no seu curso " />
+                        </div>
                     </div>
 
                     {/* {

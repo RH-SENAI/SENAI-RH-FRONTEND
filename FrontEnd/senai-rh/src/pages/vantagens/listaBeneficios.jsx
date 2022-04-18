@@ -1,16 +1,16 @@
-import HeaderFuncionario from "../../components/headers/headerFuncionario";
-import '../../Assets/Css/cursosRapidos.css'
-import '../../Assets/Css/listaBeneficios.css'
-import '../../Assets/Css/style.css'
-import telaBeneficios from '../../Assets/img/telaBeneficios.svg'
-import data from '../../Assets/img/data.svg'
-import coracao from '../../Assets/img/coracao.svg'
-import relogio from '../../Assets/img/relogio.svg'
-import local from '../../Assets/img/local.svg'
-import estrelaSozinha from '../../Assets/img/estrelaSozinha.svg'
+import HeaderFuncionario from "../../components/header/headerFuncionario";
+import '../../assets/css/cursosRapidos.css'
+import '../../assets/css/listaBeneficios.css'
+import '../../assets/css/style.css'
+import telaBeneficios from '../../assets/img/telaBeneficios.svg'
+import data from '../../assets/img/data.svg'
+import coracao from '../../assets/img/coracao.svg'
+import relogio from '../../assets/img/relogio.svg'
+import local from '../../assets/img/local.svg'
+import estrelaSozinha from '../../assets/img/estrelaSozinha.svg'
 import React, { useEffect, useState } from 'react';
-import api from '../../Services/api'
-import { ModallBeneficio } from "../../components/modalListaBeneficio/modalListaBeneficios";
+import { ModallBeneficio } from "../../components/modalListaBeneficios/modalListaBeneficios";
+import api from "../../service/api";
 
 
 export default function ListaBeneficios() {
