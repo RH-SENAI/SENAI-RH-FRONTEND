@@ -1,4 +1,4 @@
-import HeaderFuncionario from '../../components/Header/headerFuncionario'
+import HeaderFuncionario from '../../components/headers/headerFuncionario'
 import curso from '../../Assets/img/cursosRapidos.svg'
 import '../../Assets/Css/cursosRapidos.css'
 import '../../Assets/Css/style.css'
@@ -8,7 +8,7 @@ import estrelaSozinha from '../../Assets/img/estrelaSozinha.svg'
 import local from '../../Assets/img/local.svg'
 import React, { useEffect, useState } from 'react';
 import api from '../../Services/api'
-import { ModallCurso } from '../../components/ModalListaCursos/modalListaCursos'
+import { ModallCurso } from '../../components/modalListaCurso/modalListaCursos'
 
 export default function CursosRapidos() {
     const [listaCursos, setListaCursos] = useState([]);

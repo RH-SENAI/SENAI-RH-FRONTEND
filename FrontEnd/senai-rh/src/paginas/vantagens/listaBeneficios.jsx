@@ -1,4 +1,4 @@
-import HeaderFuncionario from "../../components/Header/headerFuncionario";
+import HeaderFuncionario from "../../components/headers/headerFuncionario";
 import '../../Assets/Css/cursosRapidos.css'
 import '../../Assets/Css/listaBeneficios.css'
 import '../../Assets/Css/style.css'
@@ -10,7 +10,7 @@ import local from '../../Assets/img/local.svg'
 import estrelaSozinha from '../../Assets/img/estrelaSozinha.svg'
 import React, { useEffect, useState } from 'react';
 import api from '../../Services/api'
-import { ModallBeneficio } from "../../components/ModalListaBeneficios/modalListaBeneficios";
+import { ModallBeneficio } from "../../components/modalListaBeneficio/modalListaBeneficios";
 
 
 export default function ListaBeneficios() {
