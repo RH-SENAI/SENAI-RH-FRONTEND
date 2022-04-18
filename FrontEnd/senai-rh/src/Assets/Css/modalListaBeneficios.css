@@ -1,5 +1,24 @@
-.img_modal_beneficios{
+.img_modal_beneficios_g2{
     border-radius: 0 0 20px 0;
     width: 100%;
     height: 70%;
+}
+
+.box_dados_modal2_g2 {
+    margin-right: 100px;
+    margin-top: 20px;
+    /* width: 650px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box_dados_modal2_g2 div {
+    /* width: 500px; */
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.box_dados_modal2_g2 p {
+    margin-left: 10px;
 }

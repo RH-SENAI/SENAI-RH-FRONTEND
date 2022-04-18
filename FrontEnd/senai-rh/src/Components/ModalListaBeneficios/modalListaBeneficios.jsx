@@ -66,18 +66,18 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
                     onRequestClose={closeModal}
                 >
 
-                    <div className='container_modal_cima'>
-                        <div className='container_img_modal'>
-                            <img className='img_modal_beneficios' src={'http://localhost:5000/img/' + beneficio.caminhoImagemDesconto} alt="" />
+                    <div className='container_modal_cima_g2'>
+                        <div className='container_img_modal_g2'>
+                            <img className='img_modal_beneficios_g2' src={'http://localhost:5000/img/' + beneficio.caminhoImagemDesconto} alt="" />
                             {/* <img className='img_modal' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + beneficio.caminhoImagemDesconto} alt="" /> */}
-                            <div className='media_Avaliacao'>  <img src={estrelaSozinha} alt="" /> <p> {beneficio.mediaAvaliacaoDesconto} </p> </div>
+                            <div className='media_Avaliacao_g2'>  <img src={estrelaSozinha} alt="" /> <p> {beneficio.mediaAvaliacaoDesconto} </p> </div>
                         </div>
-                        <div className='container_dados_modal'>
-                            <div className='container_title_modal'>
+                        <div className='container_dados_modal_g2'>
+                            <div className='container_title_modal_g2'>
                                 <span>{beneficio.nomeDesconto} </span>
                             </div>
-                            <div className='dados_geral'>
-                                <div className='box_dados_modal'>
+                            <div className='dados_geral_g2'>
+                                <div className='box_dados_modal_g2'>
 
                                     <div> <img src={data} alt="data" /> <p>
                                         {/* {curso.dataFinalizacao}  */}
@@ -86,7 +86,7 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
                                         }).format(new Date(beneficio.validadeDesconto))}
                                     </p></div>
                                 </div>
-                                <div className='box_dados_modal2'>
+                                <div className='box_dados_modal2_g2'>
                                     <div>
                                         <img src={local} alt="local" /> <p>{beneficio.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro} </p>
                                     </div>
@@ -100,15 +100,15 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
 
 
                     </div>
-                    <section className='container_modal_baixo'>
+                    <section className='container_modal_baixo_g2'>
 
 
-                        <div className='container_descricao'>
+                        <div className='container_descricao_g2'>
                             <span>Descrição:</span>
-                            <p className='texto_descricao'>{beneficio.descricaoDesconto}</p>
-                            <div className='box_empresa_modal'>
+                            <p className='texto_descricao_g2'>{beneficio.descricaoDesconto}</p>
+                            <div className='box_empresa_modal_g2'>
                                 <span>Empresa:</span>
-                                <p className='texto_empresa'>{beneficio.idEmpresaNavigation.nomeEmpresa}<button className='btn_inscreva'><a href='#'>Cupom</a></button> </p>
+                                <p className='texto_empresa_g2'>{beneficio.idEmpresaNavigation.nomeEmpresa}<button className='btn_inscreva_g2'><a href='#'>Cupom</a></button> </p>
 
                             </div>
                         </div>
@@ -118,10 +118,10 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
                             <hr className='vertical' />
                         </div>
 
-                        <div className='container_comentario'>
+                        <div className='container_comentario_g2'>
                             <div>
                                 <span>Comentario: </span>
-                                <div className='box_comentarios'>
+                                <div className='box_comentarios_g2'>
 
                                     {
                                         listaComentarioBeneficio.map((comentario) => {
@@ -138,17 +138,17 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
                                         })
                                     }
                                 </div>
-                                <hr className='horizontal' />
+                                <hr className='horizontal_g2' />
                                 <form action="">
                                     <div className=''>
                                         <label htmlFor=""></label>
-                                        <input className='input_comentario_avaliacao' type="number" placeholder='De 0 a 5, qual a nota para esse curso' />
+                                        <input className='input_comentario_avaliacao_g2' type="number" placeholder='De 0 a 5, qual a nota para esse curso' />
                                     </div>
-                                    <div className='container_input_modal'>
+                                    <div className='container_input_modal_g2'>
 
                                         <label htmlFor=""></label>
-                                        <input className='input_comentario_modal' type="text" placeholder='Adicione um comentario' />
-                                        <button className='btn_comentario'>Enviar</button>
+                                        <input className='input_comentario_modal_g2' type="text" placeholder='Adicione um comentario' />
+                                        <button className='btn_comentario_g2'>Enviar</button>
                                     </div>
                                 </form>
 

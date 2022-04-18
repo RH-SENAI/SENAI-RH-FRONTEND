@@ -21,10 +21,10 @@ export default function HeaderFuncionario() {
 
 
                 <div class='select'>
-                    <p class='input'>Beneficios <img src={setaBaixo} /></p>
+                    <p class='input'>Vantagens <img src={setaBaixo} /></p>
                     <input type='hidden' name='some_name_tosetaBaixosetaBaixo_form' />
                     <div class='hidden'>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Beneficios' > <img className='seta' src={seta} alt="Seta" /> Beneficios</Link>
+                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/Beneficios' > <img className='seta' src={seta} alt="Seta" /> Vantagens</Link>
                         <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/CursosRapidos' > <img className='seta' src={seta} alt="Seta" /> Cursos</Link>
 
                     </div>

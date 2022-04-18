@@ -1,7 +1,34 @@
-.container_wrap_beneficio{
+.titulo_beneficio_g2{
+    display: flex;
+    justify-content: end;
+    margin-right: 15vw;
+}
+
+.wrap_beneficio_g2  {
+    margin-top: 20px;
+    margin-right: 50px;
+    overflow-y: auto;
+    direction: ltr;
+}
+
+.wrap_beneficio_g2::-webkit-scrollbar{
+    width: 4px;
+}
+
+.wrap_beneficio_g2::-webkit-scrollbar-thumb{
+    background-color: #787878;
+    border-radius: 20px;
+    
+}
+
+.wrap_beneficio_g2  ::-webkit-scrollbar-track  {
+    border-radius: 20px;
+    background-color: #D7D7D7;        
+}
+
+.container_wrap_beneficio_g2{
     display: flex;
     flex-wrap: wrap;
-    width: 90%;
     background-color: #f2f2f2;
     margin-top: 15px;
     height: 450px;
@@ -9,44 +36,17 @@
     margin-left: 99px;
 }
 
-.wrap_beneficio{
-    margin-top: 20px;
-    margin-right: 50px;
-    overflow-y: auto; 
-    direction: ltr;
-}
-
-.wrap_beneficio::-webkit-scrollbar{
-    width: 4px;
-}
-
-.wrap_beneficio::-webkit-scrollbar-thumb{
-    background-color: #787878;
-    border-radius: 20px;
-    
-}
-.wrap_beneficio::-webkit-scrollbar-track  {
-    border-radius: 20px;
-    background-color: #D7D7D7;        
-}
-
-.titulo_beneficio{
-    display: flex;
-    justify-content: end;
-    margin-right: 15vw;
-}
-
-.banner_img_beneficio{
+.banner_img_beneficio_g2{
     width: 100%;
     height: 45%;
     cursor: pointer;
 }
 
-.title_beneficios{
+.title_beneficios_g2{
     height: 20px !important;
 }
 
-.box_baixo_section{
+.box_baixo_section_g2{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,23 +55,8 @@
     border-radius: 50px;
     margin-bottom: 500px;
 }
-.media_beneficio img{
-    margin-top: 3px;
-   width: 50px;
-   height: 50px;
-}
 
-.media_beneficio p{
-   padding-left: 10px !important;
-}
-.media_beneficio {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   border-radius: 70px;
-}
-
-.circulo_coracao2 {
+.circulo_coracao2_g2 {
     display: flex;
     margin-top: 15px !important;
     justify-content: center;
@@ -81,4 +66,21 @@
     border-radius: 60px !important;
     margin-left: 20px;
     box-shadow: 8px 12px 15px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+}
+
+.media_beneficio_g2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 70px;
+}
+
+.media_beneficio_g2 img{
+    margin-top: 3px;
+   width: 50px;
+   height: 50px;
+}
+
+.media_beneficio_g2 p{
+    padding-left: 10px !important;
 }
