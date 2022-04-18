@@ -13,8 +13,7 @@ import SetaCarometro from '../../assets/img/SetaCarometro.png'
 //import Modal from 'react-modal';
 //import { ModalAcompanhar } from '../../components/modal/modalAcompanhar';
 
-import { Button, Modal } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -35,10 +34,10 @@ export default function Carometro() {
     //     setShowModal(prev => !prev);
     // }
 
-    const [show, setShow] = useState(false);
+    // const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
     //const [funcSelecionado, setFuncionarioSelecionado] = useState({});
 
 
@@ -104,21 +103,21 @@ export default function Carometro() {
             <main>
 
                 <div className="container">
-                    <div className="containerCarometro">
-                        <div className="sidebarCarometro">
-                            <div className='organizacaoSidebar'>
-                                <div className="headerSidebar">
+                    <div className="g3_containerCarometro">
+                        <div className="g3_sidebarCarometro">
+                            <div className='g3_organizacaoSidebar'>
+                                <div className="g3_headerSidebar">
                                     <img src={PerfilCarometro} alt="fotoPerfilCarometro" />
-                                    <div className="spansSidebar">
-                                        <span className="spanSidebar">Username</span>
-                                        <span className="spanSidebar">Cargo:</span>
+                                    <div className="g3_spansSidebar">
+                                        <span className="g3_spanSidebar">Username</span>
+                                        <span className="g3_spanSidebar">Cargo:</span>
                                     </div>
 
                                 </div>
-                                <div className="bodySidebar">
-                                    <div class='selectCarometro'>
+                                <div className="g3_bodySidebar">
+                                    <div class='g3_selectCarometro'>
 
-                                        <span className='SpanSidebar'>Equipes <img className='setaSelect' src={setaSelectLight} /></span>
+                                        <span className='g3_SpanSidebar'>Equipes <img className='setaSelect' src={setaSelectLight} /></span>
 
 
                                         <input type='hidden' />
@@ -134,31 +133,31 @@ export default function Carometro() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="footerSidebar">
-                                <span className="spanSidebar">Logout</span>
-                                <img className='iconLogout' src={IconLogout} alt="iconLogout" />
+                            <div className="g3_footerSidebar">
+                                <span className="g3_spanSidebar">Logout</span>
+                                <img className='g3_iconLogout' src={IconLogout} alt="iconLogout" />
                             </div>
 
                         </div>
 
-                        <div className='conteudoCarometro'>
-                            <h1 className="tituloTelas">Carômetro</h1>
-                            <div className="cardsCarometro">
+                        <div className='g3_conteudoCarometro'>
+                            <h1 className="g3_tituloTelas">Carômetro</h1>
+                            <div className="g3_cardsCarometro">
                                 {
 
-                                    listaFuncionarios.map((usuario) => {
+                                    listaFuncionarios.reverse().map((usuario) => {
                                         //const usuarioSelecionado = () => {listaFuncionarios.find(usuario => usuario.idUsuario == idFuncionarioModal)}
                                         return (
-                                            <div className="cardFuncionario">
-                                                <img className='fotoCarometro' src={'http://localhost:5000/StaticFiles/Images/' + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
-                                                <span className="spanCarometro">{usuario.nome}</span>
-                                                <span className="spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
+                                            <div className="g3_cardFuncionario  animate__animated animate__fadeInUp">
+                                                <img className='g3_fotoCarometro' src={'http://localhost:5000/StaticFiles/Images/' + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
+                                                <span className="g3_spanCarometro">{usuario.nome}</span>
+                                                <span className="g3_spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
                                                 {/* <a onClick={openModal} onClickCapture = {() =>setIdFuncionarioModal(usuario.idUsuario)} className='seta_funcionario_carometro'> */}
                                                 {/* <a onClick={handleShow} onClickCapture={() => setIdFuncionarioModal(usuario.idUsuario)}  */}
-                                                <a onClick={() => {handleShow(); }} onClickCapture={() => setFuncionarioModal(usuario)} 
+                                                {/* <a onClick={() => {handleShow(); }} onClickCapture={() => setFuncionarioModal(usuario)} 
                                                     
-                                                    className='seta_funcionario_carometro'>
-                                                    <img className='setaCarometro' src={SetaCarometro} alt="setaCard" />
+                                                    className='g3_seta_funcionario_carometro'>
+                                                    <img className='g3_setaCarometro' src={SetaCarometro} alt="setaCard" />
                                                 </a>
                                                 <Modal show={show} onHide={handleClose} centered>
                                                     
@@ -179,8 +178,8 @@ export default function Carometro() {
                                                         {/* <Button variant="primary" onClick={handleClose}>
                                                             Save Changes
                                                         </Button> */}
-                                                    </Modal.Footer>
-                                                </Modal>
+                                                    {/* </Modal.Footer> */}
+                                                 {/* </Modal>  */}
 
                                             </div>
                                         )

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 *{
     box-sizing: 0;
     margin: 0;
@@ -27,79 +28,98 @@ input[type="file"] {
 }
 
 /* ==============================   CADASTRO   ===============================================    */
-
-.container{
-    width: 1300px;
-    margin: 0 auto;
-}
-
-.boxCadastro{
+.g3_boxCadastro{
     width: 100%;
     display: flex;
     margin-top: 100px;
 }
 
-.formCadastro{
+.g3_formCadastro{
     width: 48%;
     display: flex;
     align-items: flex-start;
     
 }
-.bodyCadastro{
+.g3_nonBoldCadastrar{
+    font-size: 2.5em;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 4rem;
+    font-family: 'Montserrat', sans-serif;
+}
+.g3_boldCadastrar{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 3.1em;
+    font-family: 'Montserrat', sans-serif;
+}
+.g3_bodyCadastro{
+    display: flex;  
+    margin-bottom: 1rem;
+}
+.g3_bodyCadastroLeft{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-right: 2em;
 }
-.inputCadastro{
+.g3_bodyCadastroRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.g3_inputCadastro{
     box-sizing: border-box;
     padding:  0 20px;
-    width: 420px;
-    height: 50px;
+    width: 13.5vw;
+    height: 6vh;
     background-color: transparent;
     outline: 0;
-    border: none;
-    border-bottom: 1px solid #000000;
-    margin-bottom: 15px;
-    font-size: 23px;
-    color: #000000;
+    border: 1px #B3B3B3 solid;
+    border-radius: 15px;
+    margin-bottom: 2em;
+    font-size: 1.1em;
+    color: #B3B3B3;
     font-weight: bold;
     /* box-shadow: 0 3px 15px rgba(166, 171, 189, 1); */
 }
-.inputCadastroData{
+.g3_inputCadastroData{
     box-sizing: border-box;
     padding: 0 20px;
-    width: 420px;
-    height: 50px;
+    width: 13.5vw;
+    height: 6vh;
     background-color: transparent;
     outline: 0;
-    border: none;
-    border-bottom: 1px solid #000000;
-    margin-bottom: 15px;
-    font-size: 23px;
-    color: #000000;
+    border: 1px #B3B3B3 solid;
+    border-radius: 15px;
+    margin-bottom: 2em;
+    font-size: 1.1em;
+    color: #B3B3B3;
     font-weight: bold;
 
 }
 
-.inputCadastroSelect{
+.g3_inputCadastroSelect{
     box-sizing: border-box;
     padding: 0 20px;
-    width: 420px;
-    height: 50px;
+    width: 13.5vw;
+    height: 6vh;
     background-color: transparent;
     outline: 0;
-    border: none;
-    border-bottom: 1px solid #000000;
-    margin-bottom: 15px;
-    font-size: 23px;
-    color: #000000;
+    border: 1px #B3B3B3 solid;
+    border-radius: 15px;
+    margin-bottom: 2em;
+    font-size: 1.1em;
+    color: #B3B3B3;
     font-weight: bold;
     background-position: 350px;
 }
 
 
-.inputCadastroData::-webkit-calendar-picker-indicator{
+.g3_inputCadastroData::-webkit-calendar-picker-indicator{
     background-image: url(../img/IconCalendario.png);
     
     background-size: cover;
@@ -108,55 +128,41 @@ input[type="file"] {
     padding-right: 15px;
     
 }
-.inputCadastro::placeholder{
-    color: #000000;
-    font-weight: bold;
+.g3_inputCadastro::placeholder{
+    color: #B3B3B3;
+    font-family: 'Quicksand', sans-serif;
+
+
 }
-.labelCadastro{
+.g3_labelCadastro{
     font-size: 23px;
     font-weight: bold;
     text-transform: capitalize;
     margin-bottom: 30px;
 
 }
-.boxImg{
+.g3_boxImg{
     width: 48%;
     display: flex;
-    align-items: end;
+    align-items: center;
 }
-.imgCadastro{
+.g3_imgCadastro{
     height: 610px;
 
 }
-.botaoCadastro{
-    width: 300px;
-    height: 55px;
-    border-radius: 20px;
-    background-color: #f2f2f2;
+.g3_botaoCadastro{
+    width: 13.5vw;
+    height: 6vh;
+    border-radius: 15px;
+    background-color: #C20004;
     border: none;
-    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1); 
-    margin-bottom: 100px;
 
-    color: #CB334B;
-    font-size: 30px;
+
+    color: #f2f2f2;
+    font-size: 1.1em;
     font-weight: 600;
-    margin-top: 50px;
+    margin-left: 9.375rem;
 }
-.fotoPerfilCadastro{
-    
-    height: 50px;
-}
-.boxFotoPerfilCadastro{
-    background-color: #f2f2f2;
-    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1); 
-    border-radius: 50px;
-    height: 100px;
-    width: 100px;
-    margin-bottom: 15px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 /* ==============================   CADASTRO   ===============================================    */

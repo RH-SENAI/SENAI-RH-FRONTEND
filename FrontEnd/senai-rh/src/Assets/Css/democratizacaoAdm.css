@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 *{
     box-sizing: 0;
     margin: 0;
@@ -12,51 +13,50 @@ body{
     background-color: #f2f2f2;
 
 }
-.container{
-    width: 1300px;
-}
 
-.containerOrganizador{
+
+.g3_containerOrganizador{
     display: flex;
     flex-direction: column;
 }
-.containerOrganizadorDecisao{
+.g3_containerOrganizadorDecisao{
     display: flex;
     flex-direction: column;
     margin-top: 50px;
 }
-.boxDecisao{
-    background-color: #f2f2f2;
-    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
-    height: 100px;
-    margin-top: 70px;
-    border-radius: 20px;
+.g3_boxDecisao{
+    background-color: transparent;
+    border: #b3b3b3 1px solid;
+
+    height: 8vh;
+    margin-bottom: 2rem;
+    border-radius: 15px;
     padding: 20px;
     
     
 }
 
 
-.inputCadastroFeedback{
-width: 70%;
-height: 75px;
-background-color: #f2f2f2;
-box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
-border-radius: 20px;
-margin-top: 50px;
-
-display: flex;
-align-items: center;
-
-padding: 0 20px;
-
-border: none;
-outline: 0;
-
+.g3_inputCadastroFeedback{
+    width: 30.2vw;
+    height: 8.5vh;
+    background-color: transparent;
+    
+    border-radius: 15px;
+    
+    display: flex;
+    align-items: center;
+    
+    padding-left: 20px;
+    margin-bottom: 1rem;
+    
+    border: 1px solid #b3b3b3;
+    outline: 0;
+    
 
 }
 
-.inputCadastroFeedback::-webkit-calendar-picker-indicator{
+.g3_inputCadastroFeedback::-webkit-calendar-picker-indicator{
     background-image: url(../img/IconCalendario.png);
     
     background-size: cover;
@@ -65,87 +65,89 @@ outline: 0;
     padding-right: 15px;
     
 }
-.inputCadastroFeedback::placeholder{
-    color: #000;
+.g3_inputCadastroFeedback::placeholder{
+    color: #b3b3b3;
     font-weight: 600;
 }
-.formCadastroDecisao{
+.g3_formCadastroDecisao{
     display: flex;
     align-items: flex-start;
 }
 
-.btnCadastroFeedback{
-    width: 300px;
-    height: 50px;
-    border-radius: 20px;
-    background-color: #ffffff;
+.g3_btnCadastroFeedback{
+    width: 13.5vw;
+    height: 6vh;
+    border-radius: 15px;
+    background-color: #C20004;
     border: none;
-    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1); 
-    margin-bottom: 100px;
-  
-    color: #CB334B;
-    font-size: 30px;
+    margin-top: 1rem;
+
+
+    color: #f2f2f2;
+    font-size: 1.1em;
     font-weight: 600;
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
 }
-.btnCadastroFeedback:hover{
-    background-color: #CB334B;
-    color: #f2f2f2;
+.g3_btnCadastroFeedback:hover{
+    background-color: transparent;
+    border: #C20004 1px solid;
+    border-radius: 15px;
+    color:  #C20004;
+    transition: 0.3s;
+    font-family: 'Montserrat', sans-serif;
 }
-.boxFeedback{
-    background-color: #f2f2f2;
-    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+.g3_boxFeedback{
+    background-color: transparent;
+
 }
-.nonBoldDecisao{
+.g3_nonBoldDecisao{
+    font-size: 2.5em;
     font-style: normal;
-    font-weight: 300;
-    font-size: 50px;
-    margin-top: 70px;
+    font-weight: 400;
+    margin-bottom: 4rem;
+    font-family: 'Montserrat', sans-serif;
 }
-.boldDecisao{
+.g3_boldDecisao{
     font-style: normal;
     font-weight: 600;
-    font-size: 40px;
+    font-size: 3.1em;
+    font-family: 'Montserrat', sans-serif;
 }
-.tituloDecisao{
+.g3_tituloDecisao{
     font-weight: 700;
     font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
 
 }
-.paragrafoDecisao{
+.g3_paragrafoDecisao{
     font-weight: 500;
     margin-top: 10px;
+    font-family: 'Quicksand', sans-serif;
 }
-.containerDecisao{
+.g3_containerDecisao{
     display: flex;
 }
-.organizadorDecisao{
+.g3_organizadorDecisao{
     display: flex;
     flex-direction: column;
     width: 60%;
+    margin-top: 4rem;
 }
-.imgDemocratizacao{
+.g3_imgDemocratizacao{
     width: 100%;
 }
-.bannerDemocratizacao{
+.g3_bannerDemocratizacao{
     display: flex;
     align-items: center;
     justify-content: right;
     width: 40%;
 }
-.containerFeedback{
+.g3_containerFeedback{
     display: flex;
     flex-direction: column-reverse;
     margin: 70px 0 ;
 }
-.fotoPerfilFeedback{
-    background-color: #f2f2f2;
-    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
-    border-radius: 20px;
+.g3_fotoPerfilFeedback{
     width: 140px;
     height: 140px;
     display: flex;
@@ -154,14 +156,17 @@ outline: 0;
     margin-right: 30px;
     
 }
-.imgFotoFeedback{
+.g3_imgFotoFeedback{
     height: 80px;
+    height: 80px;
+    background-color: transparent;    
+    border-radius: 15px;
 
 }
-.boxFeedback{
-    background-color: #f2f2f2;
-    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
-    border-radius: 20px;
+.g3_boxFeedback{
+    background-color: transparent;    
+    border-radius: 15px;
+    border: 1px solid #b3b3b3;
     width: 100%;
     height: 140px;
 
@@ -170,10 +175,10 @@ outline: 0;
     justify-content: center;
     flex-direction: column;
 }
-.boxDecisaoLista{
-    background-color: #f2f2f2;
-    box-shadow: 12px 12px 15px rgb(166 171 189), -12px -12px 15px rgb(255 255 255);
-    border-radius: 20px;
+.g3_boxDecisaoLista{
+    background-color: transparent;
+   
+    border-radius: 15px;
     width: 100%;
     height: 140px;
     display: flex;
@@ -184,15 +189,15 @@ outline: 0;
     color: #000
     ;
 }
-.feedback{
+.g3_feedback{
     display: flex;
     margin-bottom: 50px;
 }
-.boldFeedback{
+.g3_boldFeedback{
     font-style: normal;
     font-weight: 600;
     font-size: 40px;
 }
-.btnRedirectDecisao{
+.g3_btnRedirectDecisao{
     text-decoration: none;
 }

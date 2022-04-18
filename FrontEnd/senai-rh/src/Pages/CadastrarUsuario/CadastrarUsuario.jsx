@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import CadastroLight from "../../assets/img/ImgCadastroLight.png";
+import CadastroLight from "../../assets/img/ImgCadastroLight.svg";
 import "../../assets/css/cadastro.css"
 import "../../assets/css/footer.css"
 import "../../assets/css/styleG3.css"
@@ -188,105 +188,102 @@ export default function Cadastro() {
             <HeaderFuncionario />
             <main>
                 <div className="container">
-                    <div className="boxCadastro">
-                        <form className="formCadastro" onSubmit={CadastrarUsuario}>
-                            <div className="bodyCadastro">
-                                <div className="boxFotoPerfilCadastro">
-                                    <img className="fotoPerfilCadastro" src={Perfil}/>
+                    <div className="g3_boxCadastro">
+
+                        <div className="g3_boxImg">
+                            <img className="g3_imgCadastro" src={CadastroLight} alt="ImgCadastro" />
+                        </div>
+                        <form className="g3_formCadastro" onSubmit={CadastrarUsuario}>
+                            <span className="g3_boldCadastrar animate__animated animate__fadeInUp">
+                                Cadastrar
+                            </span>
+                            <span className="g3_nonBoldCadastrar  animate__animated animate__fadeInUp">
+                                Usuario
+                            </span>
+                            <div className="g3_bodyCadastro">
+                                <div className='g3_bodyCadastroLeft'>
+                                    {/* <label className="labelCadastro">Nome Do Usuario</label> */}
+                                    <input type="text" className="g3_inputCadastro" name="nomeUsuario" placeholder="Nome Do Usuario" value={nomeUsuario} onChange={(event) => setNomeUsuario(event.target.value)} />
+
+                                    {/* <label className="labelCadastro">Endereço</label> */}
+                                    <input type="text" className="g3_inputCadastro" name="endereco" placeholder="Endereço" value={endereco} onChange={(event) => setEndereco(event.target.value)} />
+
+                                    {/* <label className="labelCadastro">Email</label> */}
+                                    <input type="text" className="g3_inputCadastro" name="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} />
+
+                                    {/* <label className="labelCadastro">CPF</label> */}
+                                    <input type="text" className="g3_inputCadastro" name="CPF" placeholder="CPF" value={CPF} onChange={(event) => setCPF(event.target.value)} />
                                 </div>
-                                
-                                <label className="labelCadastro" for="fotoPerfil">Inserir foto</label>
-                                <input className="inputCadastroFile" value={fotoPerfil} name='fotoPerfil' id='fotoPerfil' onChange={(event) => setFotoPerfil(event.target.value)} type="file" />
-                                {/* <label className="labelCadastro">Nome Do Usuario</label> */}
-                                <input type="text" className="inputCadastro" name="nomeUsuario" placeholder="Nome Do Usuario" value={nomeUsuario} onChange={(event) => setNomeUsuario(event.target.value)} />
+                                <div className='g3_bodyCadastroRight'>
+                                    {/* <label className="labelCadastro">Setor</label> */}
+                                    <select
+                                        name="idTipoUsuario"
+                                        value={idTipoUsuario}
+                                        className="g3_inputCadastroSelect"
+                                        onChange={(event) => setIdTipoUsuario(event.target.value)}
 
-                                {/* <label className="labelCadastro">Endereço</label> */}
-                                <input type="text" className="inputCadastro" name="endereco" placeholder="Endereço" value={endereco} onChange={(event) => setEndereco(event.target.value)} />
+                                    >
 
-                                {/* <label className="labelCadastro">Email</label> */}
-                                <input type="text" className="inputCadastro" name="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} />
-
-                                {/* <label className="labelCadastro">Senha</label> */}
-                                <input type="text" className="inputCadastro" name="senha" placeholder="Senha" value={senha} onChange={(event) => setSenha(event.target.value)} />
-
-                                {/* <label className="labelCadastro">CPF</label> */}
-                                <input type="text" className="inputCadastro" name="CPF" placeholder="CPF" value={CPF} onChange={(event) => setCPF(event.target.value)} />
-
-                                {/* <label className="labelCadastro">Salario</label> */}
-                                <input type="number" className="inputCadastro" name="salario" placeholder="Salario" value={salario} onChange={(event) => setSalario(event.target.value)} />
-
-                                {/* <label className="labelCadastro">Setor</label> */}
-                                <select
-                                    name="idTipoUsuario"
-                                    value={idTipoUsuario}
-                                    className="inputCadastroSelect"
-                                    onChange={(event) => setIdTipoUsuario(event.target.value)}
-
-                                >
-
-                                    <option value="#">Tipo de Usuario</option>
-                                    {listaTipoUsuario.map((event) => {
-                                        return (
-
-                                            <option key={event.idTipoUsuario} value={event.idTipoUsuario}>{event.nomeTipoUsuario}
-                                            </option>
-                                        );
-                                    })}
-
-                                </select>
-
-                                {/* <label className="labelCadastro">Cargo</label> */}
-                                <select
-                                    name="Cargo"
-                                    value={idCargo}
-                                    onChange={(event) => setIdCargo(event.target.value)}
-                                    className="inputCadastroSelect"
-
-                                >
-                                    <option value="#">Cargo</option>
-                                    {
-                                        listaCargo.map((event) => {
+                                        <option value="#">Tipo de Usuario</option>
+                                        {listaTipoUsuario.map((event) => {
                                             return (
 
-                                                <option key={event.idCargo} value={event.idCargo}>{event.nomeCargo}
+                                                <option key={event.idTipoUsuario} value={event.idTipoUsuario}>{event.nomeTipoUsuario}
                                                 </option>
                                             );
                                         })}
 
-                                </select>
-                                {/* <label className="labelCadastro">Unidade</label> */}
-                                <select name="Unidade"
-                                    value={idUnidade}
-                                    onChange={(event) => setIdUnidade(event.target.value)}
-                                    className="inputCadastroSelect"
+                                    </select>
 
-                                >
-                                    <option value="#">Unidade</option>
-                                    {
-                                        listaUnidade.map((event) => {
-                                            return (
+                                    {/* <label className="labelCadastro">Cargo</label> */}
+                                    <select
+                                        name="Cargo"
+                                        value={idCargo}
+                                        onChange={(event) => setIdCargo(event.target.value)}
+                                        className="g3_inputCadastroSelect"
 
-                                                <option key={event.idUnidade} value={event.idUnidadeSenai}>{event.nomeUnidadeSenai}
-                                                </option>
-                                            );
-                                        })}
+                                    >
+                                        <option value="#">Cargo</option>
+                                        {
+                                            listaCargo.map((event) => {
+                                                return (
 
-                                </select>
-                                {/* <label className="labelCadastro">Data de nascimento</label> */}
-                                <input className="inputCadastroData" value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} type="date" />
-                                <button type="submit" className="botaoCadastro">Cadastrar</button>
+                                                    <option key={event.idCargo} value={event.idCargo}>{event.nomeCargo}
+                                                    </option>
+                                                );
+                                            })}
+
+                                    </select>
+                                    {/* <label className="labelCadastro">Unidade</label> */}
+                                    <select name="Unidade"
+                                        value={idUnidade}
+                                        onChange={(event) => setIdUnidade(event.target.value)}
+                                        className="g3_inputCadastroSelect"
+
+                                    >
+                                        <option value="#">Unidade</option>
+                                        {
+                                            listaUnidade.map((event) => {
+                                                return (
+
+                                                    <option key={event.idUnidade} value={event.idUnidadeSenai}>{event.nomeUnidadeSenai}
+                                                    </option>
+                                                );
+                                            })}
+
+                                    </select>
+                                    {/* <label className="labelCadastro">Data de nascimento</label> */}
+                                    <input className="g3_inputCadastroData" value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} type="date" />
+                                </div>
+
                             </div>
+                            <button type="submit" className="g3_botaoCadastro">Cadastrar</button>
                         </form>
 
-                        <div className="boxImg">
-                            <img className="imgCadastro" src={CadastroLight} alt="ImgCadastro" />
-                        </div>
                     </div>
                 </div>
             </main>
-            <footer>
-                <Footer />
-            </footer>
+            <Footer />
         </body>
 
     );

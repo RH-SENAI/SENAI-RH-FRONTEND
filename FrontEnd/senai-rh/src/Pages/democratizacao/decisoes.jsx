@@ -46,33 +46,33 @@ export default function Decisao() {
         <body>
             <Header />
             <main>
-                <div className='container containerOrganizadorDecisao'>
-                    <div className='containerDecisao'>
-                        <div className='organizadorDecisao'>
-                            <span className='nonBoldDecisao'>Compartilhe suas decisões</span>
-                            <span className='boldDecisao'>com sua equipe! </span>
-                            <div className='containerDecisoes'>
+                <div className='container g3_containerOrganizadorDecisao'>
+                    <div className='g3_containerDecisao'>
+                        <div className='g3_organizadorDecisao'>
+                            <span className='g3_nonBoldDecisao'>Compartilhe suas decisões</span>
+                            <span className='g3_boldDecisao'>com sua equipe! </span>
+                            <div className='g3_containerDecisoes'>
                             </div>
                         </div>
-                        <div className='bannerDemocratizacao'>
-                            <img className='imgDemocratizacao' src={ImgDemocratizacaoAdm} />
+                        <div className='g3_bannerDemocratizacao'>
+                            <img className='g3_imgDemocratizacao' src={ImgDemocratizacaoAdm} />
                         </div>
 
                     </div>
 
-                    <span className='boldFeedback'>Ultimas Decisoes</span>
-                    <div className='containerFeedback'>
+                    <span className='g3_boldFeedback'>Ultimas Decisoes</span>
+                    <div className='g3_containerFeedback'>
                         {
                             listaDecisao.map((decisao) => {
                                 return (
-                                    <div className='feedback'>
-                                        <div className='fotoPerfilFeedback'>
-                                            <img className='imgFotoFeedback' src={FotoPerfil} />
+                                    <div className='g3_feedback'>
+                                        <div className='g3_fotoPerfilFeedback'>
+                                            <img className='g3_imgFotoFeedback' src={FotoPerfil} />
                                         </div>
-                                        <Link to={"Democratizacao/" + decisao.idDecisao} className='btnRedirectDecisao'>
-                                            <div className='boxDecisaoLista'>
-                                                <span className='tituloDecisao'>O gerente tomou a seguinte decisão:</span>
-                                                <p className='paragrafoDecisao'>{decisao.descricaoDecisao}</p>
+                                        <Link to={"Democratizacao/" + decisao.idDecisao} className='g3_btnRedirectDecisao'>
+                                            <div className='g3_boxDecisaoLista'>
+                                                <span className='g3_tituloDecisao'>O gerente tomou a seguinte decisão:</span>
+                                                <p className='g3_paragrafoDecisao'>{decisao.descricaoDecisao}</p>
                                             </div>
                                         </Link>
 

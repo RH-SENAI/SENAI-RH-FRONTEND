@@ -1,98 +1,114 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     word-wrap: normal;
-    font-family: 'Montserrat', sans-serif;
    
 }
 .container{
-    width: 1300px;
+    max-width :1440px;
+    width: 100%;
+    margin: 0 auto; 
 
 }
 
-.nonBold{
+.g3_nonBold{
     font-style: normal;
     font-weight: 300;
-    font-size: 50px;
+    font-size: 3.1em;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.bold{
+.g3_bold{
     font-style: normal;
     font-weight: 600;
-    font-size: 40px;
+    font-size: 3.7em;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.todosOsTextos{
+.g3_todosOsTextos{
     display: flex;
     text-align: start;
     flex-direction: column;
+    font-family: 'Quicksand', sans-serif;
 }
 
-.primeiroTexto{
+.g3_primeiroTexto{
     font-style: normal;
     font-weight: 300;
-    font-size: 20px;
+    font-size: 1.3em;
     line-height: 37px;
+    font-family: 'Quicksand', sans-serif;
  
 }
 
-.segundoTexto{
+.g3_segundoTexto{
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 37px;
+    font-family: 'Quicksand', sans-serif;
 }
 
-.btnRedLogin{
-    width: 300px;
-    height: 50px;
-    border-radius: 20px;
-    background-color: #ffffff;
+.g3_btnRedLogin{
+    width: 8.3vw;
+    height: 6vh;
+    border-radius: 15px;
+    background-color: #C20004;
     border: none;
-    box-shadow: 12px 12px 15px rgb(166 171 189), -12px -12px 15px rgb(255 255 255);
     margin-bottom: 100px;
-    color: #CB334B;
-    font-size: 30px;
+    color: #fff;
+    font-size: 1.1em;
     font-weight: 600;
     margin-top: 20%;
     transition: 0.3s;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.btnRedLogin:hover {
-    background-color:#CB334B;
-    color:  #F2F2F2;
+.g3_btnRedLogin:hover {
+    background-color: transparent;
+    border: #C20004 1px solid;
+    border-radius: 15px;
+    color:  #C20004;
     transition: 0.3s;
+    font-family: 'Montserrat', sans-serif;
 }
-.conteudoAcesso{
+.g3_conteudoAcesso{
     width: 48vw;
     display: flex;
     align-items: center;
-    justify-content: center;
 }
-.imgAcesso{
+.g3_imgAcesso{
     width: 48vw;
     display: flex;
     align-items: flex-end;
+    justify-content: end;
 }
-.imagemAcesso{
+.g3_imagemAcesso{
     height: 55vh;
+    animation-name: fadeInUp;
+    
 }
-.containerOrganizacao{
+.g3_containerOrganizacao{
     display: flex;
     height: 74.6vh;
+    justify-content: center;
 }
 
-.spans{
+.g3_spans{
 margin-top: 50px;
 display: flex;
 flex-direction: column;
 }
 
-.textoEBotao{
+.g3_textoEBotao{
     display: flex;
     justify-content: end;
-    align-items: center; 
+    align-items: flex-start; 
     flex-direction: column;
+    margin-top: 15rem;
+    font-family: 'Quicksand', sans-serif;
 }

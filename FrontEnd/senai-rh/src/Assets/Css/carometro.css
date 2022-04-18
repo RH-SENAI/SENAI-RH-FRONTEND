@@ -1,39 +1,44 @@
-.tituloTelas{
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+.g3_tituloTelas{
     font-size: 60px;
 
 }
-.containerCarometro{
+.g3_containerCarometro{
     margin: 100px 0;
     display: flex;
     
 }
-.sidebarCarometro{
+.g3_sidebarCarometro{
     width: 450px;
     height: 900px;
     margin-right: 100px;
     background-color: #f2f2f2;
-    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    /* box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1); */
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
     padding: 50px;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.organizacaoSidebar{
+.g3_organizacaoSidebar{
     display: flex;
     flex-direction: column;
 }
-.headerSidebar{
+.g3_headerSidebar{
     display: flex;
 }
-.bodySidebar{
+.g3_bodySidebar{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     border-bottom: 1px solid #000;
     margin-top: 50px;
 }
-.footerSidebar{
+.g3_footerSidebar{
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -42,21 +47,21 @@
     padding: 0 25px;
 }
 
-.spansSidebar{
+.g3_spansSidebar{
     display: flex;
     flex-direction: column;
 
 }
-.spanSidebar{
+.g3_spanSidebar{
     font-weight: bolder;
     font-size: 20px;
 }
-.cardsCarometro{
+.g3_cardsCarometro{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.cardFuncionario{
+.g3_cardFuncionario{
     height: 350px;
     width: 320px;
     border-radius: 20px;
@@ -74,35 +79,38 @@
     transition: all 0.5s;
 }
 
-.cardFuncionario:hover{
-    box-shadow: 20px 20px 35px rgba(166, 171, 189, 1), -20px -20px 35px rgba(255, 255, 255, 1);
+.g3_cardFuncionario:hover{
+    /* box-shadow: 20px 20px 35px rgba(166, 171, 189, 1), -20px -20px 35px rgba(255, 255, 255, 1); */
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255 , 255, 0.3);
     transition: all 0.5s;;
 }
-.fotoCarometro{
+.g3_fotoCarometro{
     margin: 20px 0 10px 10px ;
     height: 150px;
     width: 200px;
     border-radius: 20px;
 }
-.spanCarometro{
+.g3_spanCarometro{
     font-weight: 700;
     font-size: 20px;
     color: #000;
     
 }
-.setaCarometro{
+.g3_setaCarometro{
     margin-bottom: 20px;
 }
 
 
-.selectCarometro :link {
+.g3_selectCarometro :link {
     color: #000000;
     text-decoration: none;
     display: flex;
     /* flex-direction: column; */
     
 }
-div.selectCarometro {
+div.g3_selectCarometro {
     width: 100%;
     padding-right: 15px;
     margin-left: 10px;
@@ -117,7 +125,7 @@ div.selectCarometro {
     justify-content: space-between;
     align-items: flex-end;
 }
-.setaSelect{
+.g3_setaSelect{
     margin-left: 200px;
     height: 15px;
 }
@@ -173,7 +181,7 @@ div.selectCarometro {
     align-items: center;
 }
 
-div.selectCarometro span {
+div.g3_selectCarometro span {
     padding: 5px;
     width: 100%;
     text-decoration: none;
@@ -187,7 +195,7 @@ div.selectCarometro span {
     font-size: 9px;
 } */
 
-div.selectCarometro .hiddenCarometro {
+div.g3_selectCarometro .hiddenCarometro {
     position: absolute;
     visibility: hidden;
     opacity: 0;
@@ -202,15 +210,15 @@ div.selectCarometro .hiddenCarometro {
     
 }
 
-div.selectCarometro:hover .hiddenCarometro {
+div.g3_selectCarometro:hover .hiddenCarometro {
     visibility: visible;
     opacity: 1;
 }
 
-div.selectCarometro span:hover, div.selectCarometro:hover {
+div.g3_selectCarometro span:hover, div.selectCarometro:hover {
     background-color: #f2f2f2;
 }
-.deletarModal{
+.g3_deletarModal{
     text-transform: uppercase;
     width: 300px;
     height: 75px;
@@ -221,7 +229,7 @@ div.selectCarometro span:hover, div.selectCarometro:hover {
     font-size: 30px;
     font-weight: bold;
 }
-.atualizarModal{
+.g3_atualizarModal{
     text-transform: uppercase;
     width: 300px;
     height: 75px;

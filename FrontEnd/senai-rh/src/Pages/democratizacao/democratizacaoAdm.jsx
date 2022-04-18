@@ -7,7 +7,7 @@ import "../../assets/css/democratizacaoAdm.css";
 import Footer from '../../components/footer';
 import FotoPerfil from '../../assets/img/perfilVazio.svg'
 import Header from '../../components/header/headerFuncionario'
-import ImgDemocratizacaoAdm from '../../assets/img/democraAdm.svg'
+import ImgDemocratizacaoAdm from '../../assets/img/ImgDemocratizacao.svg'
 
 export default function Democratizacao() {
 
@@ -80,37 +80,37 @@ export default function Democratizacao() {
         <body>
             <Header />
             <main>
-                <div className='container containerOrganizador'>
-                    <div className='containerDecisao'>
-                        <div className='organizadorDecisao'>
-                            <span className='nonBoldDecisao'>Compartilhe suas decisões</span>
-                            <span className='boldDecisao'>com sua equipe! </span>
-                            <div className='containerDecisoes'>
+                <div className='container g3_containerOrganizador'>
+                    <div className='g3_containerDecisao'>
+                        <div className='g3_organizadorDecisao'>
+                            <span className='g3_boldDecisao'>Compartilhe suas decisões </span>
+                            <span className='g3_nonBoldDecisao'>com sua equipe!</span>
+                            <div className='g3_containerDecisoes'>
                             </div>
-                            <form className='formCadastroDecisao' onSubmit={cadastrarDecisao}>
-                                <input className='inputCadastroFeedback' value={descricaoDecisao} onChange={(event) => setDescricaoDecisao(event.target.value)} type='text' placeholder='Compartilhe aqui a sua ideia:'></input>
-                                <input className="inputCadastroFeedback" value={dataValidade} onChange={(event) => setDataValidade(event.target.value)} type="date" />
-                                <button className='btnCadastroFeedback' type="submit">Cadastrar</button>
+                            <form className='g3_formCadastroDecisao' onSubmit={cadastrarDecisao}>
+                                <input className='g3_inputCadastroFeedback' value={descricaoDecisao} onChange={(event) => setDescricaoDecisao(event.target.value)} type='text' placeholder='Compartilhe aqui a sua ideia:'></input>
+                                <input className="g3_inputCadastroFeedback" value={dataValidade} onChange={(event) => setDataValidade(event.target.value)} type="date" />
+                                <button className='g3_btnCadastroFeedback' type="submit">Cadastrar</button>
                             </form>
                         </div>
-                        <div className='bannerDemocratizacao'>
-                            <img className='imgDemocratizacao' src={ImgDemocratizacaoAdm} />
+                        <div className='g3_bannerDemocratizacao'>
+                            <img className='g3_imgDemocratizacao' src={ImgDemocratizacaoAdm} />
                         </div>
 
                     </div>
 
-                    <span className='boldFeedback'>Ultimas Ideias</span>
-                    <div className='containerFeedback'>
+                    <span className='g3_boldFeedback'>Ultimas Ideias</span>
+                    <div className='g3_containerFeedback'>
                         {
                             listaDecisao.map((decisao) => {
                                 return (
-                                    <div className='feedback'>
-                                        <div className='fotoPerfilFeedback'>
-                                            <img className='imgFotoFeedback' src={FotoPerfil} />
+                                    <div className='g3_feedback'>
+                                        <div className='g3_fotoPerfilFeedback'>
+                                            <img className='g3_imgFotoFeedback' src={FotoPerfil} />
                                         </div>
-                                        <div className='boxFeedback'>
-                                            <span className='tituloDecisao'>Você tomou a seguinte decisão:</span>
-                                            <p className='paragrafoDecisao'>{decisao.descricaoDecisao}</p>
+                                        <div className='g3_boxFeedback'>
+                                            <span className='g3_tituloDecisao'>Você tomou a seguinte decisão:</span>
+                                            <p className='g3_paragrafoDecisao'>{decisao.descricaoDecisao}</p>
                                         </div>
 
                                     </div>

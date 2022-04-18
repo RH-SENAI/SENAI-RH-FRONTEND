@@ -7,7 +7,7 @@ export default class Footer extends Component {
             <footer>
                 
                     <p className="pFooter">
-                        Todos os direitos reservados.
+                    © 2022 SESI SENAI RH    
                     </p>
                 
             </footer>

@@ -6,7 +6,7 @@ import "../../assets/css/democratizacao.css";
 import Footer from '../../components/footer';
 import FotoPerfil from '../../assets/img/perfilVazio.svg'
 import Header from '../../components/header/headerFuncionario'
-import ImgDemocratizacao from '../../assets/img/ImgDemocratizacao.png'
+import ImgDemocratizacao from '../../assets/img/ImgDemocratizacao.svg'
 import moment from 'moment';
 import { parseJwt } from '../../services/auth';
 
@@ -108,55 +108,59 @@ export default function Democratizacao() {
         <body>
             <Header />
             <main>
-                <div className='container containerOrganizador'>
-                    <div className='containerDecisao'>
-                        <div className='organizadorDecisao'>
-                            <span className='nonBoldDecisao'>Área de</span>
-                            <span className='boldDecisao'>Democratização</span>
+                <div className='container g3_containerOrganizador'>
+                    <div className='g3_containerDecisao'>
+                        <div className='g3_organizadorDecisao'>
+                            <span className='g3_boldDecisao'>Área de</span>
+                            <span className='g3_nonBoldDecisao'>Democratização</span>
                             {
                                 listaDecisao.map((decisao) => {
-                                    return (
-                                        <div className='feedback'>
-                                            <div className='boxFeedback'>
-                                                <span className='tituloDecisao'>o gerente tomou a seguinte decisao:</span>
-                                                <p className='paragrafoDecisao'>{decisao.descricaoDecisao}</p>
-                                            </div>
+                                    if (decisao.idDecisao == idDecisao.idDecisao) {
+                                        return (
+                                            <div key={decisao.idDecisao} className='g3_decisao'>
+                                                <div className='g3_boxDecisao'>
+                                                    <span className='g3_tituloDecisao'>o gerente tomou a seguinte decisao:</span>
+                                                    <p className='g3_paragrafoDecisao'>{decisao.descricaoDecisao}</p>
+                                                </div>
 
-                                        </div>
-                                    )
+                                            </div>
+                                        )
+                                    }
                                 })
+
                             }
-                            <form className='formCadastroFeedback' onSubmit={cadastrarFeedback}>
-                                <input className='inputCadastroFeedback' type='text' value={comentarioFeedback} onChange={(event) => setComentarioFeedback(event.target.value)} placeholder='Deseja adicionar alguma sugestão de melhora ou feedback?'></input>
-                                <input className='inputCadastroFeedback' type='number' value={notaDecisao} onChange={(event) => setNotaDecisao(event.target.value)} placeholder='Insira uma nota para a decisão'></input>
-                                <button className='btnCadastroFeedback' type="submit">Cadastrar</button>
+                            <form className='g3_formCadastroFeedback' onSubmit={cadastrarFeedback}>
+                                <input className='g3_inputCadastroFeedback' type='text' value={comentarioFeedback} onChange={(event) => setComentarioFeedback(event.target.value)} placeholder='Deseja adicionar alguma sugestão de melhora ou feedback?'></input>
+                                <input className='g3_inputCadastroFeedback' type='number' value={notaDecisao} onChange={(event) => setNotaDecisao(event.target.value)} placeholder='Insira uma nota para a decisão'></input>
+                                <button className='g3_btnCadastroFeedback' type="submit">Cadastrar</button>
                             </form>
 
                         </div>
-                        <div className='bannerDemocratizacao'>
-                            <img className='imgDemocratizacao' src={ImgDemocratizacao} />
+                        <div className='g3_bannerDemocratizacao'>
+                            <img className='g3_imgDemocratizacao' src={ImgDemocratizacao} />
                         </div>
 
                     </div>
 
-                    <span className='boldFeedback'>Feedbacks</span>
-                    <div className='containerFeedback'>
+                    <span className='g3_boldFeedback'>Feedbacks</span>
+                    <div className='g3_containerFeedback'>
                         {
 
                             listaFeedbacks.map((feedback) => {
-                                return (
-                                    <div className='feedback'>
-                                        <div className='fotoPerfilFeedback'>
-                                            <img className='imgFotoFeedback' src={'http://localhost:5000/StaticFiles/Images/' + 'imagem-padrao.png'} />
-                                        </div>
-                                        <div className='boxFeedback'>
-                                            <span className='tituloDecisao'>{feedback.idUsuarioNavigation.nome} comentou:</span>
-                                            <p className='paragrafoDecisao'>{feedback.comentarioFeedBack}</p>
-                                        </div>
+                                if (feedback.idDecisao == idDecisao.idDecisao) {
+                                    return (
+                                        <div key={feedback.idFeedBack} className='g3_feedback'>
+                                            <div className='g3_fotoPerfilFeedback'>
+                                                <img className='g3_imgFotoFeedback' src={'http://localhost:5000/StaticFiles/Images/' + 'imagem-padrao.png'} />
+                                            </div>
+                                            <div className='g3_boxFeedback'>
+                                                <span className='g3_tituloDecisao'>{feedback.idUsuarioNavigation.nome} comentou:</span>
+                                                <p className='g3_paragrafoDecisao'>{feedback.comentarioFeedBack}</p>
+                                            </div>
 
-                                    </div>
-                                )
-
+                                        </div>
+                                    )
+                                }
                             })
                         }
 

@@ -1,25 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     word-wrap: normal;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 
 footer{
-    background-color:#CB334B;
-    height: 80px;
+    background-color:transparent;
+    border-top: #2A2E32 1px solid;
+    height: 6.4vh;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     bottom: 0;
+    margin-top: 6.4rem;
 }
 
 .pFooter{
-    color:white;
+    color:#2A2E32;
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1em;
 }
