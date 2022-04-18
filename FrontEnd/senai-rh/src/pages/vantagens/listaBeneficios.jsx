@@ -10,7 +10,7 @@ import local from '../../assets/img/local.svg'
 import estrelaSozinha from '../../assets/img/estrelaSozinha.svg'
 import React, { useEffect, useState } from 'react';
 import { ModallBeneficio } from "../../components/modalListaBeneficios/modalListaBeneficios";
-import api from "../../service/api";
+import api from "../../services/api";
 
 
 export default function ListaBeneficios() {

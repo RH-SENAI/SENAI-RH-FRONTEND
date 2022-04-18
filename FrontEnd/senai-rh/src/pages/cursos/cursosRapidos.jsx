@@ -8,7 +8,7 @@ import estrelaSozinha from '../../assets/img/estrelaSozinha.svg'
 import local from '../../assets/img/local.svg'
 import React, { useEffect, useState } from 'react';
 import { ModallCurso } from '../../components/modalListaCursos/modalListaCursos'
-import api from '../../service/api'
+import api from '../../services/api'
 
 export default function CursosRapidos() {
     const [listaCursos, setListaCursos] = useState([]);

@@ -7,7 +7,7 @@ import data from '../../assets/img/data.svg'
 import estrelaSozinha from '../../assets/img/estrelaSozinha.svg'
 import modelo from '../../assets/img/modelo.svg'
 import "../../assets/css/modalListaCursos.css"
-import api from '../../service/api';
+import api from '../../services/api';
 
 export const ModallCurso = ({ showModal, setShowModal, curso }) => {
 

@@ -4,7 +4,7 @@ import telaCadastroVantagens from '../../assets/img/telaCadastroVantagens.svg'
 import '../../assets/css/cadastroCursos.css'
 import { useEffect, useState } from "react";
 import axios from "axios";
-import api from "../../service/api";
+import api from "../../services/api";
 
 export default function CadastrarBeneficio() {
     const [idEmpresa, setIdEmpresa] = useState(0)

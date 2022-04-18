@@ -3,7 +3,7 @@ import cadastroCurso from '../../assets/img/cadastroCurso.svg'
 import '../../assets/css/cadastroCursos.css'
 import { useEffect, useState } from "react";
 import axios from "axios";
-import api from "../../service/api";
+import api from "../../services/api";
 
 export default function CadastrarCursos() {
     const [idEmpresa, setIdEmpresa] = useState(0)
