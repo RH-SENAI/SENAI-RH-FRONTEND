@@ -43,7 +43,7 @@ export default function ListaBeneficios() {
 
             .then(resposta => {
                 if (resposta.status === 204) {
-                    console.log('Beneficio Excluido')
+                    console.log('Vantagem Excluido!')
                     listarBeneficios()
 
                 }

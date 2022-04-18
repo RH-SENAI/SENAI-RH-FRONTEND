@@ -10,7 +10,7 @@ export default function CadastrarBeneficio() {
     const [idEmpresa, setIdEmpresa] = useState(0)
     const [nomeDesconto, setNomeDesconto] = useState('')
     const [descricaoDesconto, setDescricaoDesconto] = useState('')
-    const [numeroCupom , setNumeroCupom ] = useState('')
+    const [numeroCupom, setNumeroCupom] = useState('')
     const [valorDesconto, setValorDesconto] = useState(0)
     const [validadeDesconto, setValidadeDesconto] = useState(new Date())
     const [fotoDesconto, setFotoDesconto] = useState([])
@@ -22,7 +22,7 @@ export default function CadastrarBeneficio() {
 
 
 
-    
+
 
     function buscarEmpresas() {
         api('/Empresas', {
@@ -58,7 +58,7 @@ export default function CadastrarBeneficio() {
         formData.append('caminhoImagemDesconto', caminhoImagemDesconto);
         formData.append('validadeDesconto', validadeDesconto);
         formData.append('valorDesconto', valorDesconto);
-        formData.append('numeroCupom', numeroCupom );
+        formData.append('numeroCupom', numeroCupom);
 
         axios({
             method: "post",
@@ -80,41 +80,61 @@ export default function CadastrarBeneficio() {
         <div>
             <HeaderAdm />
 
-            <div className="container_forms_cursos">
-                <div className="box_img_cadastroCurso">
-                    <div className="container_cadastroCursos">
-                        <p>Senai-Sp</p>
-                        <h1>Cadastro de Beneficios</h1>
-                    </div>
+            <div className="container_forms_cursos_g2">
+                <div className="box_img_cadastroCurso_g2">
+
                     <img src={telaCadastroVantagens} alt="imagemCadastro" />
                 </div>
-                <form onSubmit={efetuarCadastroBeneficio} className="box_forms_cursos" action="">
-                    <div className="inputCadastro_cursos">
+                <form onSubmit={efetuarCadastroBeneficio} className="box_forms_cursos_g2" action="">
+                    <div className="inputCadastro_cursos_g2">
+                        <div className="title_cadastro_g2">
+                            <h1>Cadastrar Vantagens</h1>
+                        </div>
 
-                        <div className="dis">
-                            <div className="flex_co">
-                                <label htmlFor="nomeDesconto" >Beneficio</label>
-                                <input id="nomeDesconto" onChange={(campo) => setNomeDesconto(campo.target.value)} value={nomeDesconto} type="text" name="nomeDesconto" placeholder="Digite o nome do beneficio" />
+                        <div className="dis_g2">
+                            <div className="flex_co_g2">
+                                <label htmlFor="nomeDesconto" ></label>
+                                <input
+                                    id="nomeDesconto"
+                                    onChange={(campo) => setNomeDesconto(campo.target.value)}
+                                    value={nomeDesconto}
+                                    type="text"
+                                    name="nomeDesconto"
+                                    placeholder="Vantagem"
+                                />
                             </div>
 
-                            <div className="flex_co">
-                                <label htmlFor="validadeDesconto">Data de Validade</label>
-                                <input id="validadeDesconto" onChange={(campo) => setValidadeDesconto(campo.target.value)} name="validadeDesconto" value={validadeDesconto} type="date" />
+                            <div className="flex_co_g2">
+                                <label htmlFor="validadeDesconto"></label>
+                                <input
+                                    id="validadeDesconto"
+                                    onChange={(campo) => setValidadeDesconto(campo.target.value)}
+                                    name="validadeDesconto"
+                                    value={validadeDesconto}
+                                    type="date"
+                                />
                             </div>
                         </div>
 
-                        <div className="dis">
-                            <div className="descricao">
-                                <label htmlFor="descricaoDesconto" >Descrição</label>
-                                <input onChange={(campo) => setDescricaoDesconto(campo.target.value)} value={descricaoDesconto} id='descricaoDesconto' name="descricaoDesconto" type="text" placeholder="Digite aqui os detalhes do seu beneficio" />
+                        <div className="dis_g2">
+                            <div className="descricao_g2">
+                                <label htmlFor="descricaoDesconto" ></label>
+                                <input
+                                    onChange={(campo) => setDescricaoDesconto(campo.target.value)}
+                                    value={descricaoDesconto}
+                                    id='descricaoDesconto'
+                                    name="descricaoDesconto"
+                                    type="text"
+                                    placeholder="Descrição"
+                                />
                             </div>
-
                         </div>
-
-                        <div className="dis">
-                            <div className="flex_co">
-                                <label htmlFor="idEmpresaB" >Empresa</label>
-                                <select className="inputCadastroSelect_curso" id="idEmpresaB"
+                        <div className="dis_g2">
+                            <div className="flex_co_g2">
+                                <label htmlFor="idEmpresaB"></label>
+                                <select
+                                    className="inputCadastroSelect_curso_g2"
+                                    id="idEmpresaB"
                                     onChange={(campo) => setIdEmpresa(campo.target.value)}
                                     value={idEmpresa}
                                 >
@@ -130,56 +150,49 @@ export default function CadastrarBeneficio() {
                                             )
                                         })
                                     }
-
-
-
                                 </select>
                             </div>
 
-                            <div className="dis">
-                                <div className="flex_co">
-                                    <label htmlFor="valorDesconto">Valor Desconto</label>
-                                    <input onChange={(campo) => setValorDesconto(campo.target.value)} className="flex_co" value={valorDesconto} id="valorDesconto" placeholder="Digite o seu desconto" type="number" />
+                            <div className="dis_g2">
+                                <div className="flex_co_g2">
+                                    <label htmlFor="valorDesconto"></label>
+                                    <input
+                                        onChange={(campo) => setValorDesconto(campo.target.value)}
+                                        className="flex_co"
+                                        value={valorDesconto}
+                                        id="valorDesconto"
+                                        placeholder="Desconto"
+                                        type="number"
+                                    />
                                 </div>
                             </div>
                         </div>
-
-                        <div className="dis">
-                            <div className="flex_co">
-                                <label>Imagem</label>
-                                <label className="label_arquivo" htmlFor="fotoDesconto">Imagem do curso</label>
-                                <input accept="image/png, image/jpeg" id="fotoDesconto" name="arquivo" className="input_file" type="file" />
-
-
-
+                        <div className="dis_g2">
+                            <div className="flex_co_g2">
+                                <label></label>
+                                <label className="label_arquivo_g2" htmlFor="fotoDesconto">Imagem</label>
+                                <input
+                                    accept="image/png, image/jpeg"
+                                    id="fotoDesconto"
+                                    name="arquivo"
+                                    className="input_file_g2"
+                                    type="file"
+                                />
                             </div>
-
-                            <div className="flex_co ">
-                                <label htmlFor="Cupom">Cupom</label>
-                                <input id="Cupom" value={numeroCupom} onChange={(campo) => setNumeroCupom(campo.target.value)} type="text" placeholder="Digite o seu cupom aqui!" />
+                            <div className="flex_co_g2 ">
+                                <label htmlFor="Cupom"></label>
+                                <input
+                                    id="Cupom"
+                                    value={numeroCupom}
+                                    onChange={(campo) => setNumeroCupom(campo.target.value)}
+                                    type="text"
+                                    placeholder="Cupom"
+                                />
                             </div>
-
-
                         </div>
-                        
                     </div>
-
-                    {/* {
-                        msgSucesso === true & erroMensagem === false ?
-                        <span className='green'>Curso Cadastrado!</span> 
-                        
-                        :
-
-                       <span className='green'>Curso não cadastrado!</span>
-                    }
-
-                     */}
-
-
-
-
-                    <div className="flex_co btn">
-                        <button type="submit" className="botaoCadastro">Cadastrar</button>
+                    <div className="flex_co_g2 btn_g2">
+                        <button type="submit" className="botaoCadastro_g2">Cadastrar</button>
                     </div>
                 </form>
             </div>
