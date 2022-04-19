@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 *{
     box-sizing: 0;
@@ -18,8 +18,7 @@ select {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    font-size: 15px;
-    padding: 0 20px;
+
     background: url(../img/SetaSelectLight.png) no-repeat ;
 }
 input[type="file"] {
@@ -28,22 +27,33 @@ input[type="file"] {
 }
 
 /* ==============================   CADASTRO   ===============================================    */
+
+.g3_backgroundCadastro{
+    background: linear-gradient(
+        90deg,
+    #f2f2f2 50%,
+    #ffffff 50%
+    ) !important; 
+
+}
+
 .g3_boxCadastro{
-    width: 100%;
     display: flex;
-    margin-top: 100px;
+    margin-top: 4rem;
+    justify-content: space-between;
+    margin-bottom: 7.95rem;
 }
 
 .g3_formCadastro{
-    width: 48%;
     display: flex;
     align-items: flex-start;
+    flex-direction: column;
     
 }
 .g3_nonBoldCadastrar{
     font-size: 2.5em;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     margin-bottom: 4rem;
     font-family: 'Montserrat', sans-serif;
 }
@@ -51,6 +61,7 @@ input[type="file"] {
     font-style: normal;
     font-weight: 600;
     font-size: 3.1em;
+    margin-bottom: 1rem;
     font-family: 'Montserrat', sans-serif;
 }
 .g3_bodyCadastro{
@@ -141,13 +152,12 @@ input[type="file"] {
     margin-bottom: 30px;
 
 }
-.g3_boxImg{
-    width: 48%;
+.g3_boxImg{ 
     display: flex;
     align-items: center;
 }
 .g3_imgCadastro{
-    height: 610px;
+    height: 55vh;
 
 }
 .g3_botaoCadastro{
@@ -163,6 +173,13 @@ input[type="file"] {
     font-weight: 600;
     margin-left: 9.375rem;
 }
-
+.g3_botaoCadastro:hover {
+    background-color: transparent;
+    border: #C20004 1px solid;
+    border-radius: 15px;
+    color:  #C20004;
+    transition: 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
 
 /* ==============================   CADASTRO   ===============================================    */

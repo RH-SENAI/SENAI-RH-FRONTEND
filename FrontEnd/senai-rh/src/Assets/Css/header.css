@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 * {
     font-family: 'Montserrat', sans-serif;
@@ -8,7 +8,7 @@
 
 header {
     height: 6.4vh;
-    background-color: #f2f2f2;
+    background-color: transparent;
     color: #000000;
     display: flex;
     justify-content: center;
@@ -19,7 +19,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f2f2f2;
+    background-color: transparent;
 }
 
 .logo {
@@ -52,7 +52,7 @@ div.select {
     display: inline-block;
     border-radius: 2px;
     position: relative;
-    background: #f2f2f2;
+    background: transparent;
     color: #000000;
     font-size: 1.2rem;
     font-weight: bold;
@@ -138,6 +138,7 @@ div.select:hover .hidden {
 div.select p:hover, div.select:hover {
     background-color: #f2f2f2;
 }
+
 
 .input_motivacao{
     color: #000000;

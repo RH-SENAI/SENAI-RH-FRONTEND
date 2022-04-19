@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 *{
     margin: 0;
@@ -96,6 +96,7 @@
     display: flex;
     height: 74.6vh;
     justify-content: center;
+    margin-bottom: 5.5rem;  
 }
 
 .g3_spans{

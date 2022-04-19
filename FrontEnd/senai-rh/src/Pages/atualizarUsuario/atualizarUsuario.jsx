@@ -14,6 +14,8 @@ export default function AtualizarPerfil() {
     const [idUsuario, setIdUsuario] = useState(1)
     const [listaCargo, setListaCargo] = useState([])
     const [listaUnidade, setListaUnidade] = useState([])
+    const [idTipoUsuario, setIdTipoUsuario] = useState(0);
+    const [listaTipoUsuario, setListaTipoUsuario] = useState([])
     const [usuario, setUsuario] = useState([])
     const [nomeUsuario, setNomeUsuario] = useState('');
     const [endereco, setEndereco] = useState('')
@@ -42,6 +44,24 @@ export default function AtualizarPerfil() {
 
 
 
+    }
+    function BuscarTipoUsuario() {
+        axios.get('http://localhost:5000/api/idTipoUsuarios/Listar', {
+            headers: {
+
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        }
+        )
+
+            .then((resposta) => {
+                if (resposta.status === 200) {
+                    setListaTipoUsuario(resposta.data)
+                    console.log(resposta)
+                }
+            })
+
+            .catch(erro => console.log(erro))
     }
     function BuscarCargos() {
         axios.get('http://localhost:5000/api/Cargos/Listar', {
@@ -96,15 +116,15 @@ export default function AtualizarPerfil() {
             idUnidadeSenai: idUnidade,
             localizacaoUsuario: endereco,
             salario: salario,
-        }, 
-        {
-            headers: {
+        },
+            {
+                headers: {
 
-                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
-            },
+                    Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+                },
 
-        })
-        
+            })
+
             .then((resposta) => {
                 if (resposta.status === 200) {
                     BuscarFuncionarios();
@@ -115,99 +135,125 @@ export default function AtualizarPerfil() {
                 }
             })
 
-                .catch(erro => console.log(erro))
+            .catch(erro => console.log(erro))
 
-        }
+    }
 
 
 
     useEffect(BuscarFuncionarios, [])
+    useEffect(BuscarTipoUsuario, [])
     useEffect(BuscarCargos, [])
     useEffect(BuscarUnidade, [])
 
     return (
-            <div>
+        <div>
 
-                <Header />
+            <Header />
 
-                <div className="main">
-                    <div className="container boxOrganizar">
+            <div className="main">
+                <div className="container g3_boxOrganizar">
 
-                        <div className="textoEFoto">
-                            <div className="fotoPerfilVazia">
-                                <img src={"http://localhost:5000/StaticFiles/Images/" + usuario.caminhoFotoPerfil} alt="Imagem de perfil vazia" />
-                            </div>
-                            <label className="labelCadastro" for="fotoPerfil">Inserir foto</label>
-                            <input className="inputCadastroFile" value={fotoPerfil} name='fotoPerfil' id='fotoPerfil' onChange={(event) => setFotoPerfil(event.target.value)} type="file" />
+                    <div className="g3_textoEFoto">
+                        <span className="g3_boldCadastrar animate__animated animate__fadeInUp">
+                            Atualizar
+                        </span>
+                        <span className="g3_nonBoldCadastrar  animate__animated animate__fadeInUp">
+                            Usuário
+                        </span>
+                        <span className="g3_spanAtualizar" >Foto De Perfil</span>
+                        <div className="g3_fotoPerfilVazia">
+                            {/* <img src={"http://localhost:5000/StaticFiles/Images/" + usuario.caminhoFotoPerfil} alt="Imagem de perfil vazia" /> */}
                         </div>
-
-
-                        <form className="formOrganizar" onSubmit={AtualizarUsuario}>
-                            <label className="labelAtualizar">Nome</label>
-                            <input type="text" className="inputAtualizar" name="nomeUsuario" placeholder="Digite aqui nome do funcionário" value={nomeUsuario} onChange={(event) => setNomeUsuario(event.target.value)} />
-
-                            <label className="labelAtualizar">CPF</label>
-                            <input type="text" className="inputAtualizar" name="cpf" placeholder="Digite os numeros de seu CPF" value={cpf} onChange={(event) => setCPF(event.target.value)} />
-
-                            <label className="labelAtualizar">Data de nascimento</label>
-                            <input type="date" className="inputAtualizar" name="dataNascimento" value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} />
-
-                            <label className="labelAtualizar">Endereço</label>
-                            <input type="text" className="inputAtualizar" name="endereco" placeholder="Digite aqui o endereço do funcionário" value={endereco} onChange={(event) => setEndereco(event.target.value)} />
-
-                            <label className="labelAtualizar">Email</label>
-                            <input type="text" className="inputAtualizar" name="email" placeholder="Digite aqui o email do funcionário" value={email} onChange={(event) => setEmail(event.target.value)} />
-
-                            <label className="labelAtualizar">Salario</label>
-                            <input type="number" className="inputAtualizar" name="salario" placeholder="Digite aqui o salario do funcionário" value={salario} onChange={(event) => setSalario(event.target.value)} />
-
-                            <label className="labelAtualizar">Unidade</label>
-                            <select name="Unidade"
-                                value={idUnidade}
-                                onChange={event => setIdUnidade(event.target.value)}
-                                className="inputAtualizarSelect"
-
-                            >
-                                <option value="#">Selecione a Unidade</option>
-                                {listaUnidade.map((event) => {
-                                    return (
-
-                                        <option key={event.idUnidade} value={event.idUnidadeSenai}>{event.nomeUnidadeSenai}
-                                        </option>
-                                    );
-                                })}
-
-                            </select>
-                            <label className="labelAtualizar">Cargo</label>
-                            <select name="Cargo"
-                                value={idCargo}
-                                onChange={event => setIdCargo(event.target.value)}
-                                className="inputAtualizarSelect"
-
-                            >
-                                <option value="#">Selecione o Cargo</option>
-                                {listaCargo.map((event) => {
-                                    return (
-
-                                        <option key={event.idCargo} value={event.idCargo}>{event.nomeCargo}
-                                        </option>
-                                    );
-                                })}
-
-                            </select>
-                            <button type="submit" className="botaoAtualizar"
-                            >Atualizar</button>
-                        </form>
-                        <div className="boxImgAtualizar">
-                            <img className="imgAtualizar" src={fotoAtualizar} alt="" />
-                        </div>
+                        <input className="g3_inputCadastroFile" value={fotoPerfil} name='fotoPerfil' id='fotoPerfil' onChange={(event) => setFotoPerfil(event.target.value)} type="file" />
                     </div>
+
+
+                    <form className="g3_formOrganizar" onSubmit={AtualizarUsuario}>
+                        <span className="g3_spanAtualizar" >Informações Gerais</span>
+                        <div className='g3_bodyAtualizar'>
+
+                            <div className="g3_formAtualizarLeft">
+                                {/* <label className="labelAtualizar">Nome</label> */}
+                                <input type="text" className="g3_inputAtualizar" name="nomeUsuario" placeholder="Nome Do Funcionário" value={nomeUsuario} onChange={(event) => setNomeUsuario(event.target.value)} />
+                                {/* 
+                            <label className="labelAtualizar">CPF</label> */}
+                                <input type="text" className="g3_inputAtualizar" name="cpf" placeholder="CPF" value={cpf} onChange={(event) => setCPF(event.target.value)} />
+
+
+                                {/* <label className="labelAtualizar">Endereço</label> */}
+                                <input type="text" className="g3_inputAtualizar" name="endereco" placeholder="Endereço" value={endereco} onChange={(event) => setEndereco(event.target.value)} />
+
+                                {/* <label className="labelAtualizar">Email</label> */}
+                                <input type="text" className="g3_inputAtualizar" name="email" placeholder="E-mail" value={email} onChange={(event) => setEmail(event.target.value)} />
+
+                            </div>
+                            <div className='g3_formAtualizarRight'>
+                                {/* <label className="labelAtualizar">Data de nascimento</label> */}
+                                <input type="date" className="g3_inputAtualizar" name="dataNascimento" value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} />
+                                <select
+                                    name="idTipoUsuario"
+                                    value={idTipoUsuario}
+                                    className="g3_inputAtualizar"
+                                    onChange={(event) => setIdTipoUsuario(event.target.value)}
+
+                                >
+
+                                    <option value="#">Tipo de Usuario</option>
+                                    {listaTipoUsuario.map((event) => {
+                                        return (
+
+                                            <option key={event.idTipoUsuario} value={event.idTipoUsuario}>{event.nomeTipoUsuario}
+                                            </option>
+                                        );
+                                    })}
+
+                                </select>
+                                {/* <label className="labelAtualizar">Unidade</label> */}
+                                <select name="Unidade"
+                                    value={idUnidade}
+                                    onChange={event => setIdUnidade(event.target.value)}
+                                    className="g3_inputAtualizarSelect"
+
+                                >
+                                    <option value="#">Selecione a Unidade</option>
+                                    {listaUnidade.map((event) => {
+                                        return (
+
+                                            <option key={event.idUnidade} value={event.idUnidadeSenai}>{event.nomeUnidadeSenai}
+                                            </option>
+                                        );
+                                    })}
+
+                                </select>
+                                {/* <label className="labelAtualizar">Cargo</label> */}
+                                <select name="Cargo"
+                                    value={idCargo}
+                                    onChange={event => setIdCargo(event.target.value)}
+                                    className="g3_inputAtualizarSelect"
+
+                                >
+                                    <option value="#">Selecione o Cargo</option>
+                                    {listaCargo.map((event) => {
+                                        return (
+
+                                            <option key={event.idCargo} value={event.idCargo}>{event.nomeCargo}
+                                            </option>
+                                        );
+                                    })}
+
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" className="g3_botaoAtualizar">Atualizar</button>
+                    </form>
                 </div>
-                <Footer />
-
-
-
             </div>
+            <Footer />
 
-        )
-    }
+
+
+        </div>
+
+    )
+}

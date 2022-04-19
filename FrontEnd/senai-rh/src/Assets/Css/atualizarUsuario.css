@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -9,129 +9,135 @@
    
 }
 
-.textoEFoto{
+.g3_textoEFoto{
     display: flex;
     flex-direction: column;
-    width: 48%;
-    margin-top: 150px;
+    margin-right: 8rem;
+    margin-top: 4rem;
     
 }
 
-.boxOrganizar{
+.g3_boxOrganizar{
     display: flex;
 
 }
-
-.formOrganizar{
+.g3_spanAtualizar{
+    margin-bottom: 2rem;
+    font-size: 1.4em;
+}
+.g3_formOrganizar{
     display: flex;
     flex-direction: column;
-    width: 48%;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-top: 150px;
+    margin-top: 14.8rem;
+    margin-bottom: 4.2rem;
 }
-
-h6{
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    color: #000000;
-    margin-top: 20px;
+.g3_bodyAtualizar{
+    display: flex;  
+    margin-bottom: 1rem;
 }
-
-label{
+.g3_formAtualizarLeft{
     display: flex;
-   justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2em;
+
+}
+.g3_formAtualizarRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2em;
+
 }
 
-.fotoPerfilVazia{
-    width: 160px;
-    height: 140px;
-    background-color: #f2f2f2;
+.g3_fotoPerfilVazia{
+    width: 7.8vw;
+    height: 16vh;
+    background-color: transparent;
+    border: 1px solid #B3B3B3;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
-    box-shadow: 8px 12px 15px rgb(166 171 189), 0px 0px 15px rgb(242 242 242);
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
 }
 
-form{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.botaoAtualizar{
-    width: 300px;
-    height: 50px;
-    border-radius: 20px;
-    background-color: #ffffff;
+.g3_botaoAtualizar{
+    width: 13.5vw;
+    height: 6vh;
+    border-radius: 15px;
+    background-color: #C20004;
     border: none;
-    box-shadow: 12px 12px 15px rgb(166 171 189), -12px -12px 15px rgb(255 255 255);
-    margin-bottom: 60px;
-    color: #CB334B;
-    font-size: 30px;
+
+
+    color: #f2f2f2;
+    font-size: 1.1em;
     font-weight: 600;
-    margin-top: 20%;
-    margin-left: 42px;
+    margin-left: 9.375rem;
+}
+.g3_botaoAtualizar:hover {
+    background-color: transparent;
+    border: #C20004 1px solid;
+    border-radius: 15px;
+    color:  #C20004;
+    transition: 0.3s;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.labelAtualizar{
+.g3_labelAtualizar{
     font-size: 28px;
     font-weight: bold;
     text-transform: capitalize;
     margin-bottom: 10px;
 }
 
-.inputAtualizar{
+.g3_inputAtualizar{
     box-sizing: border-box;
     padding:  0 20px;
-    width: 420px;
-    height: 50px;
+    width: 13.5vw;
+    height: 6vh;
     background-color: transparent;
     outline: 0;
-    border: none;
-    border-bottom: 1px solid #000000;
-    margin-bottom: 15px;
-    font-size: 23px;
-    color: #000000;
+    border: 1px #B3B3B3 solid;
+    border-radius: 15px;
+    margin-bottom: 2em;
+    font-size: 1.1em;
+    color: #B3B3B3;
     font-weight: bold;
     /* box-shadow: 0 3px 15px rgba(166, 171, 189, 1); */
 }
-.inputAtualizarSelect{
+.g3_inputAtualizarSelect{
     box-sizing: border-box;
     padding: 0 20px;
-    width: 420px;
-    height: 50px;
+    width: 13.5vw;
+    height: 6vh;
     background-color: transparent;
     outline: 0;
-    border: none;
-    border-bottom: 1px solid #000000;
-    margin-bottom: 15px;
-    font-size: 17px;
-    font-weight: 400;
-    background-position: 350px;
+    border: 1px #B3B3B3 solid;
+    border-radius: 15px;
+    margin-bottom: 2em;
+    font-size: 1.1em;
+    color: #B3B3B3;
+    font-weight: bold;
+    background-position: 10vw;
 }
 
-.inputAtualizar::placeholder{
-    font-weight: 400;
-    font-size: 17px;
-}
-option{
-    font-weight: 400;
-    font-size: 17px;
+.g3_inputAtualizar::placeholder{
+    color: #B3B3B3;
+    font-family: 'Quicksand', sans-serif;
 }
 
-.imgAtualizar{
+
+.g3_imgAtualizar{
     height: 446px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.boxImgAtualizar{
+.g3_boxImgAtualizar{
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;

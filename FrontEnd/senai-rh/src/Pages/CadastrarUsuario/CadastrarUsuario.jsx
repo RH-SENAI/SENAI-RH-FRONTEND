@@ -184,107 +184,109 @@ export default function Cadastro() {
 
 
     return (
-        <body>
-            <HeaderFuncionario />
-            <main>
-                <div className="container">
-                    <div className="g3_boxCadastro">
+        <div className='g3_backgroundCadastro'>
+                <HeaderFuncionario />
+                <main>
+                    <div className="container ">
+                        <div className="g3_boxCadastro">
 
-                        <div className="g3_boxImg">
-                            <img className="g3_imgCadastro" src={CadastroLight} alt="ImgCadastro" />
-                        </div>
-                        <form className="g3_formCadastro" onSubmit={CadastrarUsuario}>
-                            <span className="g3_boldCadastrar animate__animated animate__fadeInUp">
-                                Cadastrar
-                            </span>
-                            <span className="g3_nonBoldCadastrar  animate__animated animate__fadeInUp">
-                                Usuario
-                            </span>
-                            <div className="g3_bodyCadastro">
-                                <div className='g3_bodyCadastroLeft'>
-                                    {/* <label className="labelCadastro">Nome Do Usuario</label> */}
-                                    <input type="text" className="g3_inputCadastro" name="nomeUsuario" placeholder="Nome Do Usuario" value={nomeUsuario} onChange={(event) => setNomeUsuario(event.target.value)} />
-
-                                    {/* <label className="labelCadastro">Endereço</label> */}
-                                    <input type="text" className="g3_inputCadastro" name="endereco" placeholder="Endereço" value={endereco} onChange={(event) => setEndereco(event.target.value)} />
-
-                                    {/* <label className="labelCadastro">Email</label> */}
-                                    <input type="text" className="g3_inputCadastro" name="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} />
-
-                                    {/* <label className="labelCadastro">CPF</label> */}
-                                    <input type="text" className="g3_inputCadastro" name="CPF" placeholder="CPF" value={CPF} onChange={(event) => setCPF(event.target.value)} />
-                                </div>
-                                <div className='g3_bodyCadastroRight'>
-                                    {/* <label className="labelCadastro">Setor</label> */}
-                                    <select
-                                        name="idTipoUsuario"
-                                        value={idTipoUsuario}
-                                        className="g3_inputCadastroSelect"
-                                        onChange={(event) => setIdTipoUsuario(event.target.value)}
-
-                                    >
-
-                                        <option value="#">Tipo de Usuario</option>
-                                        {listaTipoUsuario.map((event) => {
-                                            return (
-
-                                                <option key={event.idTipoUsuario} value={event.idTipoUsuario}>{event.nomeTipoUsuario}
-                                                </option>
-                                            );
-                                        })}
-
-                                    </select>
-
-                                    {/* <label className="labelCadastro">Cargo</label> */}
-                                    <select
-                                        name="Cargo"
-                                        value={idCargo}
-                                        onChange={(event) => setIdCargo(event.target.value)}
-                                        className="g3_inputCadastroSelect"
-
-                                    >
-                                        <option value="#">Cargo</option>
-                                        {
-                                            listaCargo.map((event) => {
-                                                return (
-
-                                                    <option key={event.idCargo} value={event.idCargo}>{event.nomeCargo}
-                                                    </option>
-                                                );
-                                            })}
-
-                                    </select>
-                                    {/* <label className="labelCadastro">Unidade</label> */}
-                                    <select name="Unidade"
-                                        value={idUnidade}
-                                        onChange={(event) => setIdUnidade(event.target.value)}
-                                        className="g3_inputCadastroSelect"
-
-                                    >
-                                        <option value="#">Unidade</option>
-                                        {
-                                            listaUnidade.map((event) => {
-                                                return (
-
-                                                    <option key={event.idUnidade} value={event.idUnidadeSenai}>{event.nomeUnidadeSenai}
-                                                    </option>
-                                                );
-                                            })}
-
-                                    </select>
-                                    {/* <label className="labelCadastro">Data de nascimento</label> */}
-                                    <input className="g3_inputCadastroData" value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} type="date" />
-                                </div>
-
+                            <div className="g3_boxImg">
+                                <img className="g3_imgCadastro" src={CadastroLight} alt="ImgCadastro" />
                             </div>
-                            <button type="submit" className="g3_botaoCadastro">Cadastrar</button>
-                        </form>
+                            <div className='g3_containerCadastro'>
+                                <form className="g3_formCadastro" onSubmit={CadastrarUsuario}>
+                                    <span className="g3_boldCadastrar animate__animated animate__fadeInUp">
+                                        CADASTRO
+                                    </span>
+                                    <span className="g3_nonBoldCadastrar  animate__animated animate__fadeInUp">
+                                        DE USUÁRIO
+                                    </span>
+                                    <div className="g3_bodyCadastro">
+                                        <div className='g3_bodyCadastroLeft'>
+                                            {/* <label className="labelCadastro">Nome Do Usuario</label> */}
+                                            <input type="text" className="g3_inputCadastro" name="nomeUsuario" placeholder="Nome Do Usuario" value={nomeUsuario} onChange={(event) => setNomeUsuario(event.target.value)} />
 
+                                            {/* <label className="labelCadastro">Endereço</label> */}
+                                            <input type="text" className="g3_inputCadastro" name="endereco" placeholder="Endereço" value={endereco} onChange={(event) => setEndereco(event.target.value)} />
+
+                                            {/* <label className="labelCadastro">Email</label> */}
+                                            <input type="text" className="g3_inputCadastro" name="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} />
+
+                                            {/* <label className="labelCadastro">CPF</label> */}
+                                            <input type="text" className="g3_inputCadastro" name="CPF" placeholder="CPF" value={CPF} onChange={(event) => setCPF(event.target.value)} />
+                                        </div>
+                                        <div className='g3_bodyCadastroRight'>
+                                            {/* <label className="labelCadastro">Setor</label> */}
+                                            <select
+                                                name="idTipoUsuario"
+                                                value={idTipoUsuario}
+                                                className="g3_inputCadastroSelect"
+                                                onChange={(event) => setIdTipoUsuario(event.target.value)}
+
+                                            >
+
+                                                <option value="#">Tipo de Usuario</option>
+                                                {listaTipoUsuario.map((event) => {
+                                                    return (
+
+                                                        <option key={event.idTipoUsuario} value={event.idTipoUsuario}>{event.nomeTipoUsuario}
+                                                        </option>
+                                                    );
+                                                })}
+
+                                            </select>
+
+                                            {/* <label className="labelCadastro">Cargo</label> */}
+                                            <select
+                                                name="Cargo"
+                                                value={idCargo}
+                                                onChange={(event) => setIdCargo(event.target.value)}
+                                                className="g3_inputCadastroSelect"
+
+                                            >
+                                                <option value="#">Cargo</option>
+                                                {
+                                                    listaCargo.map((event) => {
+                                                        return (
+
+                                                            <option key={event.idCargo} value={event.idCargo}>{event.nomeCargo}
+                                                            </option>
+                                                        );
+                                                    })}
+
+                                            </select>
+                                            {/* <label className="labelCadastro">Unidade</label> */}
+                                            <select name="Unidade"
+                                                value={idUnidade}
+                                                onChange={(event) => setIdUnidade(event.target.value)}
+                                                className="g3_inputCadastroSelect"
+
+                                            >
+                                                <option value="#">Unidade</option>
+                                                {
+                                                    listaUnidade.map((event) => {
+                                                        return (
+
+                                                            <option key={event.idUnidade} value={event.idUnidadeSenai}>{event.nomeUnidadeSenai}
+                                                            </option>
+                                                        );
+                                                    })}
+
+                                            </select>
+                                            {/* <label className="labelCadastro">Data de nascimento</label> */}
+                                            <input className="g3_inputCadastroData" value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} type="date" />
+                                        </div>
+
+                                    </div>
+                                    <button type="submit" className="g3_botaoCadastro">Cadastrar</button>
+                                </form>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
-            </main>
-            <Footer />
-        </body>
+                </main>
+                <Footer />
+        </div>
 
     );
 }
