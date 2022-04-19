@@ -2,7 +2,9 @@ import HeaderAdm from "../../components/header/headerAdm";
 import cadastroCurso from '../../assets/img/cadastroCurso.svg'
 import telaCadastroVantagens from '../../assets/img/telaCadastroVantagens.svg'
 import '../../assets/css/cadastroCursos.css'
+import '../../assets/css/cadastroBeneficio.css'
 import { useEffect, useState } from "react";
+import Footer from "../../components/footer";
 import axios from "axios";
 import api from "../../services/api";
 
@@ -80,122 +82,142 @@ export default function CadastrarBeneficio() {
         <div>
             <HeaderAdm />
 
-            <div className="container_forms_cursos_g2">
-                <div className="box_img_cadastroCurso_g2">
-
-                    <img src={telaCadastroVantagens} alt="imagemCadastro" />
+            <div className=" container container_forms_cadastroBeneficio_g2">
+                <div className="box_img_cadastroBeneficio_g2">
+                    <img src={telaCadastroVantagens} alt="imagemCadastroBeneficio" />
                 </div>
-                <form onSubmit={efetuarCadastroBeneficio} className="box_forms_cursos_g2" action="">
-                    <div className="inputCadastro_cursos_g2">
-                        <div className="title_cadastro_g2">
-                            <h1>Cadastrar Vantagens</h1>
+                <form onSubmit={efetuarCadastroBeneficio} action="">
+                    <div className="box_forms_cadastroBeneficio_g2">
+                        <div className="title_cadastroBeneficio_g2">
+                            <h1>Cadastro de  Vantagens</h1>
                         </div>
+                        <div className="box_inputs_cadastroBeneficio_g2">
+                            <div>
+                                <div className="container_cadastroBeneficio_inputs_g2">
+                                    <div>
+                                        <label htmlFor="nomeDesconto" ></label>
+                                        <input
+                                            id="nomeDesconto"
+                                            onChange={(campo) => setNomeDesconto(campo.target.value)}
+                                            value={nomeDesconto}
+                                            type="text"
+                                            name="nomeDesconto"
+                                            placeholder="Vantagem"
+                                        />
+                                    </div>
 
-                        <div className="dis_g2">
-                            <div className="flex_co_g2">
-                                <label htmlFor="nomeDesconto" ></label>
-                                <input
-                                    id="nomeDesconto"
-                                    onChange={(campo) => setNomeDesconto(campo.target.value)}
-                                    value={nomeDesconto}
-                                    type="text"
-                                    name="nomeDesconto"
-                                    placeholder="Vantagem"
-                                />
+                                    <div>
+                                        <label htmlFor="descricaoDesconto" ></label>
+                                        <input
+                                            onChange={(campo) => setDescricaoDesconto(campo.target.value)}
+                                            value={descricaoDesconto}
+                                            id='descricaoDesconto'
+                                            name="descricaoDesconto"
+                                            type="text"
+                                            placeholder="Descrição"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="valorDesconto"></label>
+                                        <input
+                                            onChange={(campo) => setValorDesconto(campo.target.value)}
+                                            className="flex_co"
+                                            value={valorDesconto}
+                                            id="valorDesconto"
+                                            placeholder="Desconto"
+                                            type="number"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label></label>
+                                        <label className="label_arquivo_cadastroBeneficio_g2" htmlFor="fotoDesconto">Enviar arquivo</label>
+                                        <input
+                                            accept="image/png, image/jpeg"
+                                            id="fotoDesconto"
+                                            name="arquivo"
+                                            className="input_file_cadastroBeneficio_g2"
+                                            type="file"
+                                        />
+                                    </div>
+
+                                </div>
                             </div>
 
-                            <div className="flex_co_g2">
-                                <label htmlFor="validadeDesconto"></label>
-                                <input
-                                    id="validadeDesconto"
-                                    onChange={(campo) => setValidadeDesconto(campo.target.value)}
-                                    name="validadeDesconto"
-                                    value={validadeDesconto}
-                                    type="date"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="dis_g2">
-                            <div className="descricao_g2">
-                                <label htmlFor="descricaoDesconto" ></label>
-                                <input
-                                    onChange={(campo) => setDescricaoDesconto(campo.target.value)}
-                                    value={descricaoDesconto}
-                                    id='descricaoDesconto'
-                                    name="descricaoDesconto"
-                                    type="text"
-                                    placeholder="Descrição"
-                                />
-                            </div>
-                        </div>
-                        <div className="dis_g2">
-                            <div className="flex_co_g2">
-                                <label htmlFor="idEmpresaB"></label>
-                                <select
-                                    className="inputCadastroSelect_curso_g2"
-                                    id="idEmpresaB"
-                                    onChange={(campo) => setIdEmpresa(campo.target.value)}
-                                    value={idEmpresa}
-                                >
-
-                                    <option value="0">Selecione a Sua Empresa</option>
-
-                                    {
-                                        listaEmpresa.map((empresa) => {
-                                            return (
-                                                <option key={empresa.idEmpresa} value={empresa.idEmpresa}>
-                                                    {empresa.nomeEmpresa}
-                                                </option>
-                                            )
-                                        })
-                                    }
-                                </select>
-                            </div>
-
-                            <div className="dis_g2">
-                                <div className="flex_co_g2">
-                                    <label htmlFor="valorDesconto"></label>
+                            <div>
+                                <div>
+                                    <label htmlFor="validadeDesconto"></label>
                                     <input
-                                        onChange={(campo) => setValorDesconto(campo.target.value)}
-                                        className="flex_co"
-                                        value={valorDesconto}
-                                        id="valorDesconto"
-                                        placeholder="Desconto"
-                                        type="number"
+                                        id="validadeDesconto"
+                                        onChange={(campo) => setValidadeDesconto(campo.target.value)}
+                                        name="validadeDesconto"
+                                        value={validadeDesconto}
+                                        type="date"
                                     />
+                                </div>
+
+
+                                <div>
+                                    <div>
+                                        <label htmlFor="idEmpresaB"></label>
+                                        <select
+                                            className="inputCadastroBeneficioSelect_g2"
+                                            id="idEmpresaB"
+                                            onChange={(campo) => setIdEmpresa(campo.target.value)}
+                                            value={idEmpresa}
+                                        >
+
+                                            <option value="0">Empresa</option>
+
+                                            {
+                                                listaEmpresa.map((empresa) => {
+                                                    return (
+                                                        <option key={empresa.idEmpresa} value={empresa.idEmpresa}>
+                                                            {empresa.nomeEmpresa}
+                                                        </option>
+                                                    )
+                                                })
+                                            }
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label htmlFor="cashes" ></label>
+                                        <input
+                                            // onChange={(campo) => setDescricaoDesconto(campo.target.value)}
+                                            // value={}
+                                            id='cashes'
+                                            name="cashes"
+                                            type="number"
+                                            placeholder="$ Cashes"
+                                        />
+                                    </div>
+
+                                </div>
+                                <div>
+
+                                    <div>
+                                        <label htmlFor="Cupom"></label>
+                                        <input
+                                            id="Cupom"
+                                            value={numeroCupom}
+                                            onChange={(campo) => setNumeroCupom(campo.target.value)}
+                                            type="text"
+                                            placeholder="Cupom"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="dis_g2">
-                            <div className="flex_co_g2">
-                                <label></label>
-                                <label className="label_arquivo_g2" htmlFor="fotoDesconto">Imagem</label>
-                                <input
-                                    accept="image/png, image/jpeg"
-                                    id="fotoDesconto"
-                                    name="arquivo"
-                                    className="input_file_g2"
-                                    type="file"
-                                />
-                            </div>
-                            <div className="flex_co_g2 ">
-                                <label htmlFor="Cupom"></label>
-                                <input
-                                    id="Cupom"
-                                    value={numeroCupom}
-                                    onChange={(campo) => setNumeroCupom(campo.target.value)}
-                                    type="text"
-                                    placeholder="Cupom"
-                                />
-                            </div>
+                        <div className="btn_cadastroBeneficio_g2">
+                            <button type="submit" className="botaoCadastroBeneficio_g2">Cadastrar</button>
                         </div>
-                    </div>
-                    <div className="flex_co_g2 btn_g2">
-                        <button type="submit" className="botaoCadastro_g2">Cadastrar</button>
                     </div>
                 </form>
             </div>
+
+            <Footer />
         </div>
     )
 }

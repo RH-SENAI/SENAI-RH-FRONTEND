@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import '../../assets/css/header.css'
-import logo from '../../assets/img/logo_senai.svg'
+import logo from '../../assets/img/logo.svg'
 import Perfil from '../../assets/img/Perfil.svg'
 import logout from '../../assets/img/logout.png'
 import setaBaixo from '../../assets/img/seta-para-baixo.png'
@@ -52,9 +52,7 @@ export default function HeaderAdm() {
                     <input type='hidden' name='some_name_to_form' />
                 </div>
                 
-                <div className='circulo'>
-                    <img className='img_perfil' src={Perfil} alt="perfil" />
-                </div>
+                
 
                 <img className='img_logout' src={logout} alt="logout" />
 

@@ -176,16 +176,22 @@
 }
 
 
-.botaoCadastro_g2 {
-    width: 300px;
-    height: 55px;
-    border-radius: 20px;
-    background-color: #f2f2f2;
+.g3_botaoCadastro{
+    width: 13.5vw;
+    height: 6vh;
+    border-radius: 15px;
+    background-color: #C20004;
     border: none;
-    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
-    margin-bottom: 100px;
-    color: #CB334B;
-    font-size: 30px;
+    color: #f2f2f2;
+    font-size: 1.1em;
     font-weight: 600;
-    margin-top: 50px;
+    margin-left: 9.375rem;
+}
+.g3_botaoCadastro:hover {
+    background-color: transparent;
+    border: #C20004 1px solid;
+    border-radius: 15px;
+    color:  #C20004;
+    transition: 0.3s;
+    font-family: 'Montserrat', sans-serif;
 }

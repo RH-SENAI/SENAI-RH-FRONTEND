@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
 * {
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
 }
 
-.container{
-    width: 1300px;
+.container {
+    max-width: 1440px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -16,7 +18,6 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
 }
 
 .container_header {
@@ -28,7 +29,6 @@ header {
 
 .logo {
     margin-right: 30vw;
-    width: 150px;
 }
 
 
@@ -45,7 +45,7 @@ p {
 }
 
 
-.img_logout{
+.img_logout {
     width: 30px;
     height: 30px;
     background-color: #f2f2f2;
@@ -64,7 +64,7 @@ div.select {
     text-decoration: none;
 }
 
-.text_link{
+.text_link {
     margin-bottom: 30px;
     /* border-bottom: 1px solid #000000; */
     font-size: 1.1rem;
@@ -76,7 +76,7 @@ div.select {
     /* justify-content: space-around; */
 }
 
-.textLink{
+.textLink {
     margin-bottom: 30px;
     /* border-bottom: 1px solid #000000; */
     font-size: 1.1rem;
@@ -88,7 +88,7 @@ div.select {
     /* justify-content: space-around; */
 }
 
-.textLink:hover    {
+.textLink:hover {
     box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
     /* background-color: #dcdcdc; */
     border-radius: 20px;
@@ -97,8 +97,9 @@ div.select {
     /* justify-content: center */
     align-items: center;
 }
-.text_link:hover    {
-    box-shadow:  2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+
+.text_link:hover {
+    box-shadow: 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
     /* background-color: #dcdcdc; */
     border-radius: 20px;
     width: 100%;
@@ -132,7 +133,7 @@ div.select .hidden {
     box-shadow: 8px 12px 15px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
     padding: 30px 10px 0;
     border-radius: 20px;
-    
+
 }
 
 div.select:hover .hidden {
@@ -144,11 +145,11 @@ div.select p:hover, div.select:hover {
     background-color: #f2f2f2;
 }
 
-.input_motivacao{
+.input_motivacao {
     color: #000000;
 }
 
-.circulo{
+.circulo {
     width: 50px;
     height: 50px;
     background-color: #f2f2f2;
@@ -157,20 +158,20 @@ div.select p:hover, div.select:hover {
     align-items: center;
     border-radius: 60px;
     box-shadow: 8px 12px 15px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
-    
+
 }
 
-.img_perfil{
+.img_perfil {
     width: 25px;
     height: 25px;
     background-color: #f2f2f2;
 }
 
-.input img{
+.input img {
     height: 15px;
 }
 
-.seta{
+.seta {
     width: 25px;
     height: 25px;
     padding: 5px;

@@ -3,6 +3,7 @@ import cadastroCurso from '../../assets/img/cadastroCurso.svg'
 import '../../assets/css/cadastroCursos.css'
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Footer from "../../components/footer";
 import api from "../../services/api";
 
 export default function CadastrarCursos() {
@@ -91,7 +92,7 @@ export default function CadastrarCursos() {
         <div>
             <HeaderAdm />
 
-            <div className="container_forms_cursos_g2">
+            <div className="container container_forms_cursos_g2">
                 <div className="box_img_cadastroCurso_g2">
                     <img src={cadastroCurso} alt="imagemCadastro" />
                 </div>
@@ -230,6 +231,7 @@ export default function CadastrarCursos() {
                     </div>
                 </form>
             </div>
+            <Footer />
         </div>
     )
 }
