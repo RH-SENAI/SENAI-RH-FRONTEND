@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');   
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
-* {
+
+*{
     box-sizing: 0;
     margin: 0;
     padding: 0;
@@ -10,8 +12,9 @@
 /* ==============================   Cadastrar Atividades   ===============================================    */
 .container_ {
     width: 100%;
-    background-color: #f2f2f2;
+    background-color: #f2f2f2;          
 }
+
 
 .container_cards {
     display: flex;
