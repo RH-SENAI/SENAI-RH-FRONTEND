@@ -27,7 +27,7 @@ export default function CadastrarAtividades() {
     const [descricaoAtividade, setDescricaoAtividade] = useState('');
     const [necessarioValidar, setNecessarioValidar] = useState(false);
     const notify_cadastrar = () => toast.success("Atividade Cadastrada!");
-    // const notify_validar = () => toast.success("Atividade Validada!");
+    const notify_validar = () => toast.success("Atividade Validada!");
     const notify_Logar = () => toast.success("Usuario logado!");
     
     const [isLoading, setIsLoading] = useState(false);
@@ -156,7 +156,7 @@ export default function CadastrarAtividades() {
         }
     }
 
-    // useEffect(notify_Logar, []);
+    useEffect(notify_Logar, []);
     // useEffect(listarAtividades, cadastrarAtividade);
 
     return (
