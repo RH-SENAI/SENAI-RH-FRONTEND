@@ -1,8 +1,7 @@
-.container_forms_cursos_g2 {
+.container_forms_cadastroCursos_g2 {
     display: flex;
     justify-content: space-between;
-    margin-right: 2.5rem;
-    margin-top: 1.625rem;
+    margin-top: 9rem;
 }
 
 .box_img_cadastroCurso_g2 {
@@ -11,23 +10,51 @@
 
 .box_img_cadastroCurso_g2 img {
     margin-top: 1.875rem;
-    width: 44vw;
-    height: 57vh;
 }
 
-.box_forms_cursos_g2 {
-    width: 50vw;
-    height: 70vh;   
-    margin-top: 5.625rem;
+.box_forms_cadastroCurso_g2 {
+    height: 70vh;
 }
 
-.inputCadastro_cursos_g2 input {
-    width: 15vw;
-    height: 8, 524590163934427vh;
-    border: 2px solid #B3B3B3;
-    border-radius: 8px;
+.box_forms_cadastroCurso_g2 input {
+    box-sizing: border-box;
+    padding: 0 20px;
+    width: 13.5vw;
+    height: 6vh;
+    background-color: transparent;
+    outline: 0;
+    border: 1px #B3B3B3 solid;
+    border-radius: 15px;
+    margin-bottom: 2em;
+    font-size: 1.1em;
+    color: #B3B3B3;
     font-weight: bold;
 }
+
+.title_cadastroCurso_g2 {
+    display: flex;
+    justify-content: center;
+}
+
+.title_cadastroCurso_g2 h1 {
+    font-size: 3.1em;
+    margin-bottom: 2rem;
+}
+
+.box_inputs_cadastroCurso_g2 {
+    display: flex;
+    justify-content: center;
+}
+
+.container_cadastroCurso_inputs_g2 {
+    margin-right: 2rem;
+}
+
+
+.input_file_cadastroCurso_g2 {
+    display: none;
+}
+
 
 .inputCadastro_cursos_g2::placeholder {
     width: 6, 753458096013019vw;
@@ -35,159 +62,55 @@
     font-weight: bold;
 }
 
-.inputCadastro_cursos_g2 label {
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.title_cadastro_g2 {
-    display: flex;
-    justify-content: center;
-}
-
-.dis_g2 {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.flex_co_g2 {
-    width: 28.478437754271766vw;
-    display: flex;
-    flex-direction: column;
-    margin-right: 0.625rem;
-    margin-top: 1.25rem;
-}
-
-.descricao_g2 {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    margin-top: 0.625rem;
-}
-
-/* select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    font-size: 15px;
-    padding: 0 20px;
-    background: url(../img/SetaSelectLight.png) no-repeat ;
-} */
-
-.inputCadastroSelect_curso_g2 {
-    width: 15vw;
-    height: 8,524590163934427vh;
-    border: 2px solid #B3B3B3;
-    border-radius: 8px;
-    font-weight: bold;
-}
-
-.container_inputs_cadastros {
-    width: 700px;
-    height: 300px;
-    margin-top: 20px;
-}
-
-.label_switch {
-    cursor: pointer;
-    text-indent: -9999px;
-    width: 68px;
-    height: 42px;
-    background: grey;
-    display: block;
-    border-radius: 100px;
-    position: relative;
-    margin-bottom: 19px;
-}
-
-.text_switch {
-    font-weight: 600;
-    font-family: 'Montserrat', sans-serif;
-    color: #878787;
-    margin-left: 13.2px;
-}
-
-.label_switch:after {
-    content: '';
-    position: absolute;
-    top: 6px;
-    left: 5px;
-    width: 30px;
-    height: 30px;
-    background: #fff;
-    border-radius: 90px;
-    transition: 0.3s;
-}
-
-.container_btn {
-    width: 50%;
-}
-
-.container_radio {
-    /* color: white; */
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 300px;
-}
-
-.container_radio {
-    /* color: white; */
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    height: 100px;
-}
-
-.largura {
-    width: 98%;
-    margin-top: 50px;
-}
-
-
-.input_file_g2 {
-    display: none;
-}
-
-.green_g2 {
-    color: green;
-    font-size: 90px;
-}
-
-
-.label_arquivo_g2 {
-    width: 15vw;
+.label_arquivo_cadastroCurso_g2 {
+    width: 13.5vw;
+    height: 6vh;
     color: white;
-    /* height: 50px; */
-    border-radius: 50px;
-    margin-top: 10px;
+    border-radius: 15px;
     background-color: #636466;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.btn_g2 {
-    width: 98%;
+.input_file_cadastroCurso_g2 {
+    display: none;
+}
+
+.inputCadastroCursoSelect_g2 {
+    box-sizing: border-box;
+    padding: 0 20px;
+    width: 13.5vw;
+    height: 6vh;
+    background-color: transparent;
+    outline: 0;
+    border: 1px #B3B3B3 solid;
+    border-radius: 15px;
+    margin-bottom: 2em;
+    font-size: 1.1em;
+    color: #B3B3B3;
+    font-weight: bold;
+}
+
+.btn_cadastroCurso_g2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 20vh;
 }
 
-
-.g3_botaoCadastro{
+.botaoCadastroCurso_g2{
     width: 13.5vw;
     height: 6vh;
     border-radius: 15px;
     background-color: #C20004;
     border: none;
+    cursor: pointer;
     color: #f2f2f2;
     font-size: 1.1em;
     font-weight: 600;
-    margin-left: 9.375rem;
 }
-.g3_botaoCadastro:hover {
+.botaoCadastroCurso_g2:hover {
     background-color: transparent;
     border: #C20004 1px solid;
     border-radius: 15px;

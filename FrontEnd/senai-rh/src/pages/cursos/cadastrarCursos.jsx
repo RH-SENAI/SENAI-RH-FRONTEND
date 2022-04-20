@@ -92,142 +92,151 @@ export default function CadastrarCursos() {
         <div>
             <HeaderAdm />
 
-            <div className="container container_forms_cursos_g2">
+            <div className="container container_forms_cadastroCursos_g2">
+
                 <div className="box_img_cadastroCurso_g2">
-                    <img src={cadastroCurso} alt="imagemCadastro" />
+                    <img src={cadastroCurso} alt="imagemCadastroCurso" />
                 </div>
-                <form onSubmit={efetuarCadastro} className="box_forms_cursos_g2" >
-                    <div className="inputCadastro_cursos_g2">
-                        <div className="title_cadastro_g2">
-                            <h1>Cadastro de Cursos</h1>
+
+
+                <form onSubmit={efetuarCadastro}>
+
+                    <div className="box_forms_cadastroCurso_g2">
+
+                        <div className="title_cadastroCurso_g2">
+                            <h1>Cadastro de Cursos</h1  >
                         </div>
 
-                        <div className="dis">
-                            <div className="flex_co">
-                                <label htmlFor="nomeCurso" >Cursos</label>
-                                <input
-                                    id="nomeCurso"
-                                    onChange={(campo) => setNomeCurso(campo.target.value)}
-                                    value={nomeCurso}
-                                    type="text"
-                                    name="nomeCurso"
-                                />
-                            </div>
+                        <div className="box_inputs_cadastroCurso_g2">
+                                <div className="container_cadastroCurso_inputs_g2">
+                                    <div>
+                                        <label htmlFor="nomeCurso" ></label>
+                                        <input
+                                            id="nomeCurso"
+                                            onChange={(campo) => setNomeCurso(campo.target.value)}
+                                            value={nomeCurso}
+                                            type="text"
+                                            name="nomeCurso"
+                                            placeholder="Curso"
+                                        />
+                                    </div>
 
-                            <div className="flex_co">
-                                <label htmlFor="dataFinalizacao"></label>
-                                <input
-                                    id="dataFinalizacao"
-                                    onChange={(campo) => setDataFinalizacao(campo.target.value)}
-                                    name="data" value={dataFinalizacao}
-                                    type="date"
-                                />
-                            </div>
-                        </div>
+                                    <div>
+                                        <label></label>
+                                        <input
+                                            onChange={(campo) => setDescricaoCurso(campo.target.value)}
+                                            value={descricaoCurso} name="descricaoCurso"
+                                            type="text"
+                                            placeholder="Descrição"
+                                        />
+                                    </div>
 
-                        <div className="dis">
-                            <div className="descricao">
-                                <label></label>
-                                <input
-                                    onChange={(campo) => setDescricaoCurso(campo.target.value)}
-                                    value={descricaoCurso} name="descricaoCurso"
-                                    type="text"
-                                    placeholder="Descrição" />
-                            </div>
+                                    <div>
+                                        <label></label>
+                                        <input
+                                            value={siteCurso}
+                                            name="siteCurso"
+                                            onChange={(campo) => setSiteCurso(campo.target.value)}
+                                            type="text"
+                                            placeholder="Site do Curso"
+                                        />
+                                    </div>
 
-                        </div>
+                                    <div>
+                                        <label htmlFor="cargaHoraria"></label>
+                                        <input
+                                            onChange={(campo) => setCargaHoraria(campo.target.value)}
+                                            className="flex_co"
+                                            value={cargaHoraria}
+                                            id="cargaHoraria"
+                                            placeholder="Carga horária"
+                                            type="number"
+                                        />
+                                    </div>
 
-                        <div className="dis">
-                            <div className="flex_co">
-                                <label htmlFor="idEmpresa" ></label>
-                                <select
-                                    className="inputCadastroSelect_curso" id="idEmpresa"
-                                    onChange={(campo) => setIdEmpresa(campo.target.value)}
-                                    value={idEmpresa}
-                                >
-
-                                    <option value="0">Empresa</option>
-
-                                    {
-                                        listaEmpresa.map((empresa) => {
-                                            return (
-                                                <option key={empresa.idEmpresa} value={empresa.idEmpresa}>
-                                                    {empresa.nomeEmpresa}
-                                                </option>
-                                            )
-                                        })
-                                    }
-
-
-
-                                </select>
-                            </div>
-
-                            <div className="dis">
-                                <div className="flex_co">
-                                    <label htmlFor="cargaHoraria"></label>
-                                    <input
-                                        onChange={(campo) => setCargaHoraria(campo.target.value)}
-                                        className="flex_co"
-                                        value={cargaHoraria}
-                                        id="cargaHoraria"
-                                        placeholder="Carga horária"
-                                        type="number"
-                                    />
                                 </div>
-                            </div>
-                        </div>
 
-                        <div className="dis">
-                            <div className="flex_co">
-                                <label>Imagem</label>
-                                <label className="label_arquivo" htmlFor="arquivo">Imagem do curso</label>
-                                <input
-                                    accept="image/png, image/jpeg"
-                                    id="arquivo"
-                                    name="arquivo"
-                                    className="input_file"
-                                    type="file"
-                                />
-                            </div>
-                            <div className="flex_co ">
-                                <label htmlFor="Presencial">Modelo</label>
+
                                 <div>
-                                    <input
-                                        onClick={presencial}
-                                        id="Presencial"
-                                        type="radio"
-                                        name="web"
-                                    />Presencial <br />
-                                </div>
-                                <div className="radio">
-                                    <label></label>
-                                    <input
-                                        onClick={ead}
-                                        type="radio"
-                                        name="web"
-                                    /> EAD <br />
+                                    <div>
+                                        <label htmlFor="dataFinalizacao"></label>
+                                        <input
+                                            id="dataFinalizacao"
+                                            onChange={(campo) => setDataFinalizacao(campo.target.value)}
+                                            name="data" value={dataFinalizacao}
+                                            type="date"
+                                        />
+                                    </div>
+                                   
+{/* 
+                                    <div>
+                                        <label htmlFor="idEmpresa" ></label>
+                                        <select
+                                            className="inputCadastroCursoSelect_g2"
+                                            id="idEmpresa"
+                                            onChange={(campo) => setIdEmpresa(campo.target.value)}
+                                            value={idEmpresa}
+                                        >
+
+                                            <option value="0">Empresa</option>
+
+                                            {
+                                                listaEmpresa.map((empresa) => {
+                                                    return (
+                                                        <option key={empresa.idEmpresa} value={empresa.idEmpresa}>
+                                                            {empresa.nomeEmpresa}
+                                                        </option>
+                                                    )
+                                                })
+                                            }
+                                        </select>
+                                    </div> */}
+
+                                    <div>
+                                        <label htmlFor="idEmpresa" ></label>
+                                        <select
+                                            className="inputCadastroCursoSelect_g2"
+                                            id="idEmpresa"
+                                            onChange={(campo) => setIdEmpresa(campo.target.value)}
+                                            value={idEmpresa}
+                                        >
+
+                                            <option value="0">Empresa</option>
+
+                                            {
+                                                listaEmpresa.map((empresa) => {
+                                                    return (
+                                                        <option key={empresa.idEmpresa} value={empresa.idEmpresa}>
+                                                            {empresa.nomeEmpresa}
+                                                        </option>
+                                                    )
+                                                })
+                                            }
+                                        </select>
+                                    </div>
+
+
+                                    <div>
+                                        <label className="label_arquivo_cadastroCurso_g2" htmlFor="arquivo">Enviar arquivo</label>
+                                        <input
+                                            accept="image/png, image/jpeg"
+                                            id="arquivo"
+                                            name="arquivo"
+                                            className="input_file_cadastroCurso_g2"
+                                            type="file"
+                                        />
+                                    </div>
+
 
                                 </div>
+
+                            
+
+
+                        </div>
+                            <div className="btn_cadastroCurso_g2">
+                                <button type="submit" className="botaoCadastroCurso_g2">Cadastrar</button>
                             </div>
-
-
-
-
-                        </div>
-                        <div className="flex_co largura">
-                            <label></label>
-                            <input
-                                value={siteCurso}
-                                name="siteCurso"
-                                onChange={(campo) => setSiteCurso(campo.target.value)}
-                                type="text"
-                                placeholder="Site do Curso"
-                            />
-                        </div>
-                    </div>
-                    <div className="flex_co btn">
-                        <button type="submit" className="botaoCadastro">Cadastrar</button>
                     </div>
                 </form>
             </div>
