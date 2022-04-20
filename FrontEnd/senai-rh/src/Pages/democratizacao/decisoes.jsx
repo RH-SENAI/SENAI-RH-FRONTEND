@@ -8,7 +8,7 @@ import "../../assets/css/democratizacaoAdm.css";
 import Footer from '../../components/footer';
 import FotoPerfil from '../../assets/img/perfilVazio.svg'
 import Header from '../../components/header/headerFuncionario'
-import ImgDemocratizacaoAdm from '../../assets/img/democraAdm.svg'
+import ImgDemocratizacaoAdm from '../../assets/img/imgDecisao.svg'
 
 export default function Decisao() {
 
@@ -49,38 +49,37 @@ export default function Decisao() {
                 <div className='container g3_containerOrganizadorDecisao'>
                     <div className='g3_containerDecisao'>
                         <div className='g3_organizadorDecisao'>
-                            <span className='g3_nonBoldDecisao'>Compartilhe suas decisões</span>
-                            <span className='g3_boldDecisao'>com sua equipe! </span>
+                            <span className='g3_boldDecisao'>Últimas</span>
+                            <span className='g3_nonBoldDecisao'>Decisões</span>
                             <div className='g3_containerDecisoes'>
+                                <div className='g3_boxCardsDecisao'>
+                                    {
+                                        listaDecisao.map((decisao) => {
+                                            return (
+                                                <div className='g3_feedback'>
+                                                    <div className='g3_fotoPerfilFeedback'>
+                                                        <img className='g3_imgFotoFeedback' src={FotoPerfil} />
+                                                    </div>
+                                                    <Link to={"Democratizacao/" + decisao.idDecisao} className='g3_btnRedirectDecisao'>
+                                                        <div className='g3_boxDecisaoLista'>
+                                                            <span className='g3_tituloDecisao'>O gerente tomou a seguinte decisão:</span>
+                                                            <p className='g3_paragrafoDecisao'>{decisao.descricaoDecisao}</p>
+                                                        </div>
+                                                    </Link>
+
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
                             </div>
                         </div>
                         <div className='g3_bannerDemocratizacao'>
-                            <img className='g3_imgDemocratizacao' src={ImgDemocratizacaoAdm} />
+                            <img className='g3_imgDecisao' src={ImgDemocratizacaoAdm} />
                         </div>
 
                     </div>
 
-                    <span className='g3_boldFeedback'>Ultimas Decisoes</span>
-                    <div className='g3_containerFeedback'>
-                        {
-                            listaDecisao.map((decisao) => {
-                                return (
-                                    <div className='g3_feedback'>
-                                        <div className='g3_fotoPerfilFeedback'>
-                                            <img className='g3_imgFotoFeedback' src={FotoPerfil} />
-                                        </div>
-                                        <Link to={"Democratizacao/" + decisao.idDecisao} className='g3_btnRedirectDecisao'>
-                                            <div className='g3_boxDecisaoLista'>
-                                                <span className='g3_tituloDecisao'>O gerente tomou a seguinte decisão:</span>
-                                                <p className='g3_paragrafoDecisao'>{decisao.descricaoDecisao}</p>
-                                            </div>
-                                        </Link>
-
-                                    </div>
-                                )
-                            })
-                        }
-                    </div>
                 </div>
 
             </main>

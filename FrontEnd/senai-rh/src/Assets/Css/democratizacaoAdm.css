@@ -137,6 +137,9 @@ body{
 .g3_imgDemocratizacao{
     height: 55vh;
 }
+.g3_imgDemocratizacao{
+    height: 40vh;
+}
 .g3_bannerDemocratizacao{
     display: flex;
     align-items: center;
@@ -147,6 +150,11 @@ body{
     display: flex;
     flex-direction: column-reverse;
     margin: 70px 0 ;
+}
+.g3_boxCardsDecisao{
+    display: flex;
+    flex-direction: column-reverse;
+
 }
 .g3_fotoPerfilFeedback{
     width: 140px;
@@ -178,9 +186,10 @@ body{
 }
 .g3_boxDecisaoLista{
     background-color: transparent;
+    border: 1px solid #b3b3b3;
    
     border-radius: 15px;
-    width: 100%;
+    width: 32vw;
     height: 140px;
     display: flex;
     padding: 40px;

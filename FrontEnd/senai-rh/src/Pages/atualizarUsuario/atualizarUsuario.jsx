@@ -11,7 +11,7 @@ import fotoAtualizar from "../../assets/img/atualizarLight.svg"
 
 export default function AtualizarPerfil() {
 
-    const [idUsuario, setIdUsuario] = useState(1)
+    const [idUsuario, setIdUsuario] = useState(78)
     const [listaCargo, setListaCargo] = useState([])
     const [listaUnidade, setListaUnidade] = useState([])
     const [idTipoUsuario, setIdTipoUsuario] = useState(0);
@@ -103,39 +103,53 @@ export default function AtualizarPerfil() {
 
     function AtualizarUsuario(event) {
 
-        event.preventDefault()
+        event.preventDefault();
 
-        axios.put(`http://localhost:5000/api/Usuarios/Atualizar/${idUsuario}`, {
+        var formData = new FormData();
 
-            idUsuario: idUsuario,
-            nome: nomeUsuario,
-            email: email,
-            dataNascimento: dataNascimento,
-            cpf: cpf,
-            idCargo: idCargo,
-            idUnidadeSenai: idUnidade,
-            localizacaoUsuario: endereco,
-            salario: salario,
-        },
-            {
-                headers: {
 
-                    Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
-                },
+        const element = document.getElementById('fotoPerfil')
+        const file = element.files[0]
 
+        // if(file.name == undefined)
+        // {
+        //     formData.append('fotoPerfil', null)
+
+        // } else {
+        //     formData.append('fotoPerfil', file, file.name)
+
+        // }
+
+        formData.append('fotoPerfil', file, file.name)
+
+        formData.append('idUsuario', idUsuario);
+        formData.append('nome', nomeUsuario);
+        formData.append('email', email);
+        formData.append('dataNascimento', dataNascimento);
+        formData.append('cpf', cpf);
+        formData.append('idCargo', idCargo);
+        formData.append('idTipoUsuario', idTipoUsuario);
+        formData.append('idUnidadeSenai', idUnidade);
+        formData.append('localizacaoUsuario', endereco);
+        formData.append('fotoPerfil', fotoPerfil);
+
+
+
+        axios({
+            method: "post",
+            url: `http://localhost:5000/api/Usuarios/Atualizar/Gestor/${idUsuario}`,
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data" },
+        })
+            .then(function (response) {
+                console.log(response);
+                console.log('usuario atualizado')
+                alert("Usuario atualizado com sucesso!")
             })
-
-            .then((resposta) => {
-                if (resposta.status === 200) {
-                    BuscarFuncionarios();
-                    BuscarCargos();
-                    BuscarUnidade();
-                    console.log('foi')
-                    console.log(email)
-                }
-            })
-
-            .catch(erro => console.log(erro))
+            .catch(function (response) {
+                //handle error
+                console.log(response);
+            });
 
     }
 

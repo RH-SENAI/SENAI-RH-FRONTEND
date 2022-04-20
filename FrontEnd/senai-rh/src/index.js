@@ -20,6 +20,7 @@ import redirecionar from './pages/redirecionar/redirecionar';
 import redirecionarADM from './pages/redirecionar/redirecionarADM';
 import perfil from './pages/perfil/perfil';
 import decisao from './pages/democratizacao/decisoes';
+import rankingAcompanhar from './pages/ranking/rankingAcompanhar';
 // import reportWebVitals from './reportWebVitals';
 
 
@@ -38,6 +39,7 @@ const routing = (
       <Route path="/perfil" component={perfil} />
       <Route path="/redirecionarADM" component={redirecionarADM} />
       <Route path="/decisao" component={decisao} />
+      <Route path="/rankingAcompanhar" component={rankingAcompanhar} />
       </Switch>
     </div>
   </Router>

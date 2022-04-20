@@ -4,7 +4,7 @@ import Footer from "../../components/footer"
 import "../../assets/css/acesso.css"
 import imagemAcesso from "../../assets/img/telaDeAcessoLight.svg"
 import 'animate.css';
-
+    
 export default function Acesso() {
 
     let history = useHistory()
@@ -30,12 +30,12 @@ export default function Acesso() {
                                     </span>
                                 </div>
                                 <div>
-                                    <p className="g3_primeiroTexto">Desenvolvido para facilitar o trabalho de todos na rede, o <br />SENAI RH tem o objetivo de deixar o ambiente de trabalho<br /> mais confortável de trabalhar!</p>
+                                    <p className="g3_primeiroTexto animate__animated animate__fadeInUp">Desenvolvido para facilitar o trabalho de todos na rede, o <br />SENAI RH tem o objetivo de deixar o ambiente de trabalho<br /> mais confortável de trabalhar!</p>
                                     {/* <p className="g3_segundoTexto">Acesse sua conta e veja todo seu Dashboard e o da sua equipe!</p> */}
                                 </div>
                             </div>
                             <div className="g3_botao">
-                                <button type="submit" className='g3_btnRedLogin' onClick={redirecionarLogin}>FAZER LOGIN</button>
+                                <button type="submit" className='g3_btnRedLogin' onClick={redirecionarLogin}>Fazer Login</button>
                             </div>
                         </div>
                     </div>
