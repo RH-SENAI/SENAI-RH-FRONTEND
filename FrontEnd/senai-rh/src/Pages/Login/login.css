@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    max-width :1440px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container_main{
+    display: flex;
+    height: 100vh;
+}
+
+.G1_Left{
+    background-color: #F2F2F2;
+    width: 50vw;
+    height: 100vh;
+}
+.G1_Right{
+    background-color: #FFFFFF;
+    width: 50vw;
+}
+
+.G1_banner{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 10vw;
+    height: 100%;
+}
+
+.G1_logo{
+    width: 15vw;
+    
+}
+
+.G1_bannerLogin{
+    width: 35vw;
+    
+}
+
+.G1_banner p{
+    color: #636466
+}
+
+.G1_textLogin h1{
+    text-transform: uppercase;
+    color: #2A2E32;
+    font-weight: 600;
+}
+
+.G1_textLogin p{
+    color: #000;
+}

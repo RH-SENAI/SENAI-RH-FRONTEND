@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
-import Logo from "../../Assets/img/Logo_SENAI_PRINCIPAL_VERMELHO2.png"
-import bannerLogin from "../../Assets/img/undraw_login_re_4vu2 1.svg"
+import Logo from "../../Assets/img/logo1.svg"
+import bannerLogin from "../../Assets/img/bannerLogin.svg"
 import Footer from "../../components/Footer"
 import axios from 'axios';
-import '../../Assets/css/login.css'
+import '../../Pages/Login/login.css'
 import { Link, Redirect, useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -61,33 +61,39 @@ export default function Login() {
                 draggable
                 pauseOnHover
             />
-            <header className="container_header">
-                <img src={Logo} alt="Logo do senai" className="logo" />
-            </header>
             <main className="container_main">
-
-                <div className="bannerNome">
-                    <p id="titulo_Senai">Senai-SP</p>
-                    <h1 id="titulo_Login">Login</h1>
-                    <img src={bannerLogin} className="bannerLogin" alt="" />
+                <div className="G1_Left">
+                    <div className="G1_banner">
+                        <img src={Logo} alt="Logo do senai" className="G1_logo" />
+                        <img src={bannerLogin} className="G1_bannerLogin" alt="" />
+                        <p className="G1_p_senai">© 2022 Sesi Senai RH</p>
+                    </div>
                 </div>
+                <div className="G1_Right">
+                    <div className="G1_formText"> 
+                        <div className="G1_textLogin">  
+                            <h1>Login</h1>
+                            <p>Acesse sua conta e veja todo seu Dashboard e o da sua equipe!</p> 
+                        </div>  
+                        <form className="form_Login" onSubmit={(event) => FazerLogin(event)}>
+                            <div className="inputLabel">
+                                <label for="email">Email</label>
+                                <input type="text" name="email" placeholder="Digite seu email" value={emailUsuario} onChange={(evt) => setEmailUsuario(evt.target.value)} />
+                            </div>
 
-                <form className="form_Login" onSubmit={(event) => FazerLogin(event)}>
-                    <div className="inputLabel">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" placeholder="Digite seu email" value={emailUsuario} onChange={(evt) => setEmailUsuario(evt.target.value)} />
-                    </div>
-
-                    <div className="inputLabel">
-                        <label for="senha">Senha</label>
-                        <input type="password" name="senha" placeholder="Digite sua senha" value={senhaUsuario} onChange={(evt) => setSenhaUsuario(evt.target.value)} />
+                            <div className="inputLabel">
+                                <label for="senha">Senha</label>
+                                <input type="password" name="senha" placeholder="Digite sua senha" value={senhaUsuario} onChange={(evt) => setSenhaUsuario(evt.target.value)} />
+                            </div>
+                            
+                            <button type="submit">Login</button>
+                            
+                        </form>
                     </div>
                     
-                        <button type="submit">Login</button>
-                    
-                </form>
+                </div>   
             </main>
-            <Footer />
+            
         </div>
     )
 }
