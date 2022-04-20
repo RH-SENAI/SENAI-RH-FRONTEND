@@ -10,22 +10,21 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Login() {
-    const [emailUsuario, setEmailUsuario] = useState('');
+    const [cpfUsuario, setCPFUsuario] = useState('');
     const [senhaUsuario, setSenhaUsuario] = useState('');
     const notify_Logar_Success = () => toast.success("Usuario Logado!");
     const notify_Logar_Failed = () => toast.error("Email ou Senha inválidos!")
     const history = useHistory();
     
-    const notify_Logar = () => toast.success("Usuario logado!");
+    
 
 
     const FazerLogin = (event) => {
-        console.log(emailUsuario)
         event.preventDefault();
 
 
         axios.post('http://localhost:5000/api/Login', {
-            email: emailUsuario,
+            CPF: cpfUsuario,
             senha: senhaUsuario
         }
         )
@@ -33,7 +32,7 @@ export default function Login() {
                 if (resposta.status === 200) {
                     notify_Logar_Success()
                     localStorage.setItem('usuario-login', resposta.data.token)
-
+                    console.log(resposta.status)
                     let base64 = localStorage.getItem('usuario-login').split('.')[1];
 
                     console.log(base64)
@@ -41,9 +40,9 @@ export default function Login() {
                     history.push('/CadastrarAtividades')
                 }
 
-                if (resposta.status === 400){
-                    notify_Logar_Failed()
-                }
+            })
+            .catch(resposta => {
+                notify_Logar_Failed()
             })
         
     }
@@ -51,7 +50,7 @@ export default function Login() {
     return (
         <div className="page">
             <ToastContainer
-                position="bottom-center"
+                position="top-right"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
@@ -77,8 +76,8 @@ export default function Login() {
                         </div>  
                         <form className="G1_form_Login" onSubmit={(event) => FazerLogin(event)}>
                             <div className="G1_inputLabel">
-                                <input type="text" name="email" placeholder="Digite seu email" value={emailUsuario} onChange={(evt) => setEmailUsuario(evt.target.value)} />
-                                <label for="email">Email</label>
+                                <input type="text" name="CPF" placeholder="Digite seu CPF" value={cpfUsuario} onChange={(evt) => setCPFUsuario(evt.target.value)} />
+                                <label for="CPF">CPF</label>
                             </div>
 
                             <div className="G1_inputLabel">

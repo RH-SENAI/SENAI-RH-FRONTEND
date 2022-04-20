@@ -74,6 +74,13 @@ font-family:'Quicksand', sans-serif;;
 max-width: 350px;
 }
 
+.G1_form_Login{
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .G1_inputLabel {
 position: relative;
 padding-top: 13px;
@@ -85,7 +92,7 @@ border-radius:15px;
 outline: none;
 min-width: 250px;
 width: 25vw;
-height: 5vh;
+height: 52px;
 padding: 15px 20px;
 font-size: 16px;
 transition: all .1s linear;
@@ -135,10 +142,11 @@ top: 0;
 .G1_form_Login button{
     min-width: 250px;
     width: 25vw;
-    height: 5vh;
+    height: 52px;
     border-radius: 15px;
-    background-color: red;
+    background-color: #C20004;
     padding: 15 25;
+    cursor: pointer;
     border: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
@@ -148,12 +156,12 @@ top: 0;
 .G1_buttonsLogin{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: flex-end;
     height: 15vh;
 }
 .G1_buttonsLogin a{
     width: fit-content;
     text-decoration: none;
-    color: red;
+    color: #C20004;
 }
