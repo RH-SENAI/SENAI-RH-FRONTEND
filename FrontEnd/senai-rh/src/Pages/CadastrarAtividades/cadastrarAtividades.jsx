@@ -1,16 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../Assets/css/gp1style.css'
-import Rodape from '../../components/Footer';
-import Header from '../../components/Header/headerFuncionario';
-import { Link, useHistory } from 'react-router-dom'
-import img_olho from '../../Assets/img/Olho_Atividades.png'
-import Modal from 'react-modal';
-import { Modall } from '../../components/Modal'
-import { ModallValidar } from '../../components/modalValidar'
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Logo from "../../Assets/img/logo1.svg"
+import bannerCadastrarAtividade from "../../Assets/img/bannerCadastrarAtividade.svg"
+
 
 export default function CadastrarAtividades() {
     const [listaAtividades, setListaAtividades] = useState([]);
@@ -28,7 +24,7 @@ export default function CadastrarAtividades() {
     const [necessarioValidar, setNecessarioValidar] = useState(false);
     const notify_cadastrar = () => toast.success("Atividade Cadastrada!");
     // const notify_validar = () => toast.success("Atividade Validada!");
-    const notify_Logar = () => toast.success("Usuario logado!");
+    const notify_erroCadastrar = () => toast.error("Preencha todos os campos!");
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -63,12 +59,10 @@ export default function CadastrarAtividades() {
                     setNecessarioValidar(false);
                     setIsLoading(false);
                     // setListaSetores([]);
+                    notify_cadastrar();
                 }
             })
-            .catch(erro => console.log(erro), setIdAtividade(''), setIdSetor(''), setNomeAtividade(''), setInterval(() => {
-                setIsLoading(false)
-            }, 5000));
-        notify_cadastrar();
+            .catch(erro => console.log(erro), setIsLoading(false), notify_erroCadastrar());
 
 
     }
@@ -95,11 +89,77 @@ export default function CadastrarAtividades() {
                 draggable
                 pauseOnHover
             />
-            <Header />
-            <div className="container_"> 
-
-            </div>
-            <Rodape />
+            <main className="container_">
+                <div className="G1_Left_CadastroAtividade">
+                    <div className="G1_banner_CadastroAtividade">
+                        <img src={Logo} alt="Logo do senai" className="G1_logo_CadastroAtividade" />
+                        <img src={bannerCadastrarAtividade} className="G1_bannerCadastroAtividade" alt="" />
+                        <p className="G1_p_senai">© 2022 Sesi Senai RH</p>
+                    </div>
+                </div>
+                <div className="G1_Right_CadastroAtividade">
+                    <div className="G1_textCadastrar">
+                        <h1>CADASTRO</h1>
+                        <h2>DE ATIVIDADE</h2>
+                    </div>
+                    <form className="G1_form_Cadastrar" onSubmit={CadastrarAtividade} >
+                        <div className='G1_organizar_form'>
+                            <div className='G1_organizar_inputs'>
+                                <div className="G1_inputLabel_Cadastrar">
+                                    <input value={nomeAtividade}
+                                        onChange={(campo) => setNomeAtividade(campo.target.value)} type="text" name="titulo" placeholder="Digite o título da atividade" />
+                                    <label for="titulo">Título da atividade</label>
+                                </div>
+                                <div className="G1_inputLabel_Cadastrar">
+                                    <input value={recompensaMoeda}
+                                        onChange={(campo) => setRecompensaMoeda(campo.target.value)} type="number" name="moedas" placeholder="Digite a premiação em moedas" />
+                                    <label for="moedas">Prêmio em moedas</label>
+                                </div>
+                            </div>
+                            <div className='G1_organizar_inputs'>
+                                <div className="G1_inputLabel_Cadastrar">
+                                    <input value={descricaoAtividade}
+                                        onChange={(campo) => setDescricaoAtividade(campo.target.value)} type="text" name="titulo" placeholder="Digite seu email" />
+                                    <label for="titulo">Descrição da atividade</label>
+                                </div>
+                                <div className="G1_inputLabel_Cadastrar">
+                                    <input value={recompensaTrofeu}
+                                        onChange={(campo) => setRecompensaTrofeu(campo.target.value)} type="number" name="moedas" placeholder="Digite sua senha" />
+                                    <label for="moedas">Prêmio em troféus</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='G1_div_ToggleValidar'>
+                            <label classname="G1_label_precisaValidar">Precisa Validar</label>
+                            <div className='G1_organizar_switchBtn'>
+                                <input type="checkbox"
+                                    id="switch"
+                                    name="validar"
+                                    value={necessarioValidar}
+                                    onClick={checkValidar}
+                                />
+                                <label className='label_switch' htmlFor="switch">Toggle</label>
+                                {necessarioValidar && (
+                                    <p className='text_switch'>
+                                        SIM
+                                    </p>
+                                )}
+                                {!necessarioValidar && (
+                                    <p className='text_switch'>
+                                        NÃO
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                        {isLoading && (
+                            <button className='G1_btn_Cadastrar' type="submit">Carregando...</button>
+                        )}
+                        {!isLoading && (
+                            <button className='G1_btn_Cadastrar' type="submit">Cadastrar</button>
+                        )}
+                    </form>
+                </div>
+            </main>
         </div>
     );
 }

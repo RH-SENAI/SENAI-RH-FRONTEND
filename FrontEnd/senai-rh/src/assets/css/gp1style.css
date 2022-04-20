@@ -1,145 +1,186 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');   
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 @import url(https://fonts.googleapis.com/css?family=Ubuntu);
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 
 
-*{
+* {
     box-sizing: 0;
     margin: 0;
     padding: 0;
 }
 
 /* ==============================   Cadastrar Atividades   ===============================================    */
+
 .container_ {
-    width: 100%;
-    background-color: #f2f2f2;          
+    display: flex;
+    height: 100vh;
 }
 
+.G1_Left_CadastroAtividade {
+    background-color: #F2F2F2;
+    width: 50vw;
+    height: 100vh;
+}
 
-.container_cards {
+.G1_Right_CadastroAtividade {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    /* background-color: #3335cb; */
-}
-
-.container_cadastro {
-    margin-top: 70px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #f2f2f2;
-    width: 1300px;
-    height: 1400px;
-    border-radius: 20px;
-    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
-    padding: 30px 0 40px 0;
-}
-
-.container_navs {
-    display: flex;
+    background-color: #FFFFFF;
+    width: 50vw;
     justify-content: center;
     align-items: center;
-    width: 90%;
-    /* background-color: aqua; */
+    
 }
 
-.nav_links {
+.G1_banner_CadastroAtividade {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 10vw;
+    height: 100%;
 }
 
-.links {
-    text-decoration: none;
+.G1_logo_CadastroAtividade {
+    width: 15vw;
+
+}
+
+.G1_bannerCadastroAtividade {
+    width: 35vw;
+
+}
+
+.G1_banner_text {
+    color: #636466
+}
+
+
+.G1_textCadastrar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 33vw;
+    margin-bottom: 5vh;
+}
+
+.G1_textCadastrar h1 {
+    text-transform: uppercase;
+    color: #2A2E32;
     font-family: 'Montserrat', sans-serif;
-    color: #959595;
-    font-weight: 400;
-    font-size: 25px;
+    font-weight: 600;
+    font-size: 50px;
+    margin: 0;
 }
 
-h1 {
-    color: #CB334B;
+.G1_textCadastrar h2 {
+    color: #000;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 44px;
-    margin: 45px 0 45px 0;
+    max-width: 350px;
+    font-weight: 300;
+    font-size: 40px;
 }
 
-.form_cadastro {
-    width: 80%;
-    height: 80%;
-    /* background-color: yellow; */
+.G1_form_Cadastrar{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    height: 40vh;
+    width: 33vw;
 }
 
-.label_form {
-    font-weight: 700;
-    font-size: 34px;
-    width: 50%;
-    color: #878787;
+.G1_organizar_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
 }
 
-.input_text {
+.G1_organizar_inputs{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.G1_inputLabel_Cadastrar {
+    position: relative;
+    padding-top: 13px;
+}
+
+.G1_inputLabel_Cadastrar input {
+    border: 1px solid lightgrey;
+    border-radius: 15px;
     outline: none;
-    border-bottom: 2px solid #959595;
-    border-top: 0;
-    border-right: 0;
-    border-left: 0;
-    background-color: transparent;
-    width: 50%;
-    margin: 20px 0 20px 0;
-    height: 32px;
-
-    outline: 0;
-    padding-bottom: 10px;
-    font-size: 25px;
-    color: #959595;
-    font-weight: bold;
+    /* min-width: 250px; */
+    width: 16vw;
+    height: 6vh;
+    padding: 15px 20px;
+    font-size: 16px;
+    transition: all .1s linear;
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    -webkit-appearance: none;
 }
 
-.input_text::placeholder {
-    color: #959595;
-    font-size: 25px;
+.G1_inputLabel_Cadastrar input::placeholder {
+    color: transparent;
 }
 
-.input_select {
-    outline: none;
-    border-bottom: 2px solid #959595;
-    border-top: 0;
-    border-right: 0;
-    border-left: 0;
-    background-color: #f2f2f2;
-    width: 50%;
-    height: 32px;
-    /* margin: 20px 0 20px 0; */
-    color: #959595;
+.G1_inputLabel_Cadastrar label {
+    pointer-events: none;
+    position: absolute;
+    top: calc(50% - 8px);
+    left: 15px;
+    transition: all .1s linear;
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    background-color: white;
+    padding: 5px;
+    box-sizing: border-box;
 }
 
-.container_btn {
-    width: 50%;
+.G1_inputLabel_Cadastrar input:required:invalid+label {
+    color: red;
 }
 
-.btn_cadastrar {
-    background-color: #CB334B;
-    color: #ffff;
+.G1_inputLabel_Cadastrar input:focus:required:invalid {
+    border: 2px solid red;
+}
+
+.G1_inputLabel_Cadastrar input:required:invalid+label:before {
+    content: '*';
+}
+
+.G1_inputLabel_Cadastrar input:focus+label,
+.G1_inputLabel_Cadastrar input:not(:placeholder-shown)+label {
+    font-size: 13px;
+    top: 0;
+
+}
+
+.G1_div_ToggleValidar{
+    width: 100%;
+    padding-left: 1.5vw;
+}
+
+.G1_label_precisaValidar{
+    width: 100%;
+}
+
+.G1_btn_Cadastrar{
+    min-width: 250px;
+    width: 25vw;
+    height: 5vh;
+    border-radius: 15px;
+    background-color: #c20004;
+    padding: 15 25;
     border: none;
-    width: 516px;
-    height: 75px;
-    border-radius: 23px;
-    margin-top: 28px;
-    font-size: 36px;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
+    color: white;
 }
+
+
 
 /* ==============================   Todas Atividades   ===============================================    */
 
@@ -216,13 +257,13 @@ input[type=checkbox] {
 .label_switch {
     cursor: pointer;
     text-indent: -9999px;
-    width: 68px;
-    height: 42px;
+    width: 40px;
+    height: 26px;
     background: grey;
     display: block;
     border-radius: 100px;
     position: relative;
-    margin-bottom: 19px;
+    /* margin-bottom: 19px; */
 }
 
 .label_switch:after {
@@ -230,8 +271,8 @@ input[type=checkbox] {
     position: absolute;
     top: 6px;
     left: 5px;
-    width: 30px;
-    height: 30px;
+    width: 15px;
+    height: 15px;
     background: #fff;
     border-radius: 90px;
     transition: 0.3s;
@@ -247,10 +288,23 @@ input:checked+label:after {
 }
 
 .text_switch {
-    font-weight: 600;
+    margin-top: 5px;
+    font-weight: 500;
     font-family: 'Montserrat', sans-serif;
-    color: #878787;
-    margin-left: 13.2px;
+    color: #000000;
+    font-size: 10px;
+    /* margin-left: 6px; */
+}
+
+.G1_organizar_switchBtn{
+    /* background-color: #08b810; */
+    /* height: 100%; */
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
 }
 
 /* .label_switch:active:after {
@@ -369,7 +423,7 @@ input:checked+label:after {
     margin: 20px 0;
 }
 
-.organizar_sessao_modal{
+.organizar_sessao_modal {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -430,4 +484,3 @@ input:checked+label:after {
     /* background-color: #f1f1f1; */
     box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
 }
-
