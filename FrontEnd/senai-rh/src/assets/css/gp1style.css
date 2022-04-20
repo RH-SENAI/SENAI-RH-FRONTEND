@@ -143,6 +143,7 @@
     color: red;
 }
 
+
 .G1_inputLabel_Cadastrar input:focus:required:invalid {
     border: 2px solid red;
 }
