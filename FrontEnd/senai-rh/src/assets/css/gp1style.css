@@ -139,6 +139,7 @@
     box-sizing: border-box;
 }
 
+
 .G1_inputLabel_Cadastrar input:required:invalid+label {
     color: red;
 }

@@ -61,6 +61,7 @@ export default function CadastrarAtividades() {
                     // setListaSetores([]);
                     notify_cadastrar();
                 }
+                
             })
             .catch(erro => console.log(erro), setIsLoading(false), notify_erroCadastrar());
 
