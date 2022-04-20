@@ -75,18 +75,20 @@ export default function Login() {
                             <h1>Login</h1>
                             <p>Acesse sua conta e veja todo seu Dashboard e o da sua equipe!</p> 
                         </div>  
-                        <form className="form_Login" onSubmit={(event) => FazerLogin(event)}>
-                            <div className="inputLabel">
-                                <label for="email">Email</label>
+                        <form className="G1_form_Login" onSubmit={(event) => FazerLogin(event)}>
+                            <div className="G1_inputLabel">
                                 <input type="text" name="email" placeholder="Digite seu email" value={emailUsuario} onChange={(evt) => setEmailUsuario(evt.target.value)} />
+                                <label for="email">Email</label>
                             </div>
 
-                            <div className="inputLabel">
-                                <label for="senha">Senha</label>
+                            <div className="G1_inputLabel">
                                 <input type="password" name="senha" placeholder="Digite sua senha" value={senhaUsuario} onChange={(evt) => setSenhaUsuario(evt.target.value)} />
+                                <label for="senha">Senha</label>
                             </div>
-                            
-                            <button type="submit">Login</button>
+                            <div  className="G1_buttonsLogin">
+                                <a href="#">Esqueci a senha</a>
+                                <button type="submit">Entrar</button>
+                            </div>
                             
                         </form>
                     </div>
