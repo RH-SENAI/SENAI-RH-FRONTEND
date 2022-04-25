@@ -65,7 +65,7 @@ export default function ListaBeneficios() {
             </div>
 
             <div className='titulo_beneficio_g2'>
-                <h1>Beneficios</h1>
+                <h1>Vantagens</h1>
             </div>
             <section className="container_cursos_g2">
                 <div className="container_img_g2">

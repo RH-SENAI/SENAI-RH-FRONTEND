@@ -17,6 +17,16 @@
     height: 70vh;
 }
 
+.title_cadastroBeneficio_g2 {
+    display: flex;
+    justify-content: center;
+}
+
+.title_cadastroBeneficio_g2 h1 {
+    font-size: 3.1em;
+    margin-bottom: 2rem;
+}
+
 .box_forms_cadastroBeneficio_g2 input {
     box-sizing: border-box;
     padding: 0 20px;
@@ -32,6 +42,10 @@
     font-weight: bold;
 }
 
+.box_forms_cadastroBeneficio_g2 input[type="date"]::-webkit-calendar-picker-indicator {
+    background-image: url("../img/iconeCalendario.svg");
+}
+
 .box_forms_cadastroBeneficio_g2::placeholder {
     width: 6, 753458096013019vw;
     height: 3, 8442622950819674vh;
@@ -43,15 +57,6 @@
     font-size: 1.2em;
 }
 
-.title_cadastroBeneficio_g2 {
-    display: flex;
-    justify-content: center;
-}
-
-.title_cadastroBeneficio_g2 h1 {
-    font-size: 3.1em;
-    margin-bottom: 2rem;
-}
 
 .box_inputs_cadastroBeneficio_g2 {
     display: flex;
@@ -60,6 +65,11 @@
 
 .container_cadastroBeneficio_inputs_g2 {
     margin-right: 2rem;
+}
+
+.img_file_cadastro_beneficio_g2{
+    background-color: #636466;
+    margin-right: 1rem;
 }
 
 .label_arquivo_cadastroBeneficio_g2 {
@@ -71,6 +81,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .inputCadastroBeneficioSelect_g2 {

@@ -1,5 +1,6 @@
 import HeaderAdm from "../../components/header/headerAdm";
 import cadastroCurso from '../../assets/img/cadastroCurso.svg'
+import iconeEnviarArquivo from '../../assets/img/iconeEnviarArquivo.png'
 import '../../assets/css/cadastroCursos.css'
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -108,135 +109,139 @@ export default function CadastrarCursos() {
                         </div>
 
                         <div className="box_inputs_cadastroCurso_g2">
-                                <div className="container_cadastroCurso_inputs_g2">
-                                    <div>
-                                        <label htmlFor="nomeCurso" ></label>
-                                        <input
-                                            id="nomeCurso"
-                                            onChange={(campo) => setNomeCurso(campo.target.value)}
-                                            value={nomeCurso}
-                                            type="text"
-                                            name="nomeCurso"
-                                            placeholder="Curso"
-                                        />
-                                    </div>
+                            <div className="container_cadastroCurso_inputs_g2">
 
-                                    <div>
-                                        <label></label>
-                                        <input
-                                            onChange={(campo) => setDescricaoCurso(campo.target.value)}
-                                            value={descricaoCurso} name="descricaoCurso"
-                                            type="text"
-                                            placeholder="Descrição"
-                                        />
-                                    </div>
+                                <div>
+                                    <label htmlFor="nomeCurso" ></label>
+                                    <input
+                                        id="nomeCurso"
+                                        onChange={(campo) => setNomeCurso(campo.target.value)}
+                                        value={nomeCurso}
+                                        type="text"
+                                        name="nomeCurso"
+                                        placeholder="Curso"
+                                    />
+                                </div>
 
-                                    <div>
-                                        <label></label>
-                                        <input
-                                            value={siteCurso}
-                                            name="siteCurso"
-                                            onChange={(campo) => setSiteCurso(campo.target.value)}
-                                            type="text"
-                                            placeholder="Site do Curso"
-                                        />
-                                    </div>
+                                <div>
+                                    <label></label>
+                                    <input
+                                        onChange={(campo) => setDescricaoCurso(campo.target.value)}
+                                        value={descricaoCurso} name="descricaoCurso"
+                                        type="text"
+                                        placeholder="Descrição"
+                                    />
+                                </div>
 
-                                    <div>
-                                        <label htmlFor="cargaHoraria"></label>
-                                        <input
-                                            onChange={(campo) => setCargaHoraria(campo.target.value)}
-                                            className="flex_co"
-                                            value={cargaHoraria}
-                                            id="cargaHoraria"
-                                            placeholder="Carga horária"
-                                            type="number"
-                                        />
-                                    </div>
+                                <div>
+                                    <label></label>
+                                    <input
+                                        value={siteCurso}
+                                        name="siteCurso"
+                                        onChange={(campo) => setSiteCurso(campo.target.value)}
+                                        type="text"
+                                        placeholder="Site do Curso"
+                                    />
+                                </div>
 
+
+
+                                <div>
+                                    <label className="label_arquivo_cadastroCurso_g2" htmlFor="arquivo"> <img  className="img_file_cadastro_curso_g2" src={iconeEnviarArquivo} alt="" /> Enviar arquivo</label>
+                                    <input
+                                        accept="image/png, image/jpeg"
+                                        id="arquivo"
+                                        name="arquivo"
+                                        className="input_file_cadastroCurso_g2 "
+                                        type="file"
+                                    />
+                                </div>
+
+                            </div>
+
+
+                            <div>
+                                <div>
+                                    <label htmlFor="dataFinalizacao"></label>
+                                    <input
+                                        id="dataFinalizacao"
+                                        onChange={(campo) => setDataFinalizacao(campo.target.value)}
+                                        name="data"
+                                        value={dataFinalizacao}
+                                        type="date"
+                                        placeholder="Data de Finalização"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="idEmpresa" ></label>
+                                    <select
+                                        className="inputCadastroCursoSelect_g2"
+                                        id="idEmpresa"
+                                        onChange={(campo) => setIdEmpresa(campo.target.value)}
+                                        value={idEmpresa}
+                                    >
+
+                                        <option value="0">Empresa</option>
+
+                                        {
+                                            listaEmpresa.map((empresa) => {
+                                                return (
+                                                    <option key={empresa.idEmpresa} value={empresa.idEmpresa}>
+                                                        {empresa.nomeEmpresa}
+                                                    </option>
+                                                )
+                                            })
+                                        }
+                                    </select>
                                 </div>
 
 
                                 <div>
-                                    <div>
-                                        <label htmlFor="dataFinalizacao"></label>
-                                        <input
-                                            id="dataFinalizacao"
-                                            onChange={(campo) => setDataFinalizacao(campo.target.value)}
-                                            name="data" value={dataFinalizacao}
-                                            type="date"
-                                        />
-                                    </div>
-                                   
-{/* 
-                                    <div>
-                                        <label htmlFor="idEmpresa" ></label>
-                                        <select
-                                            className="inputCadastroCursoSelect_g2"
-                                            id="idEmpresa"
-                                            onChange={(campo) => setIdEmpresa(campo.target.value)}
-                                            value={idEmpresa}
-                                        >
+                                    <label htmlFor="modalidade"></label>
+                                    <select
+                                        className="inputCadastroCursoSelect_g2"
+                                        id="modalidade"
+                                        onChange={(campo) => setModalidadeCurso(campo.target.value)}
+                                    >
 
-                                            <option value="0">Empresa</option>
-
-                                            {
-                                                listaEmpresa.map((empresa) => {
-                                                    return (
-                                                        <option key={empresa.idEmpresa} value={empresa.idEmpresa}>
-                                                            {empresa.nomeEmpresa}
-                                                        </option>
-                                                    )
-                                                })
-                                            }
-                                        </select>
-                                    </div> */}
-
-                                    <div>
-                                        <label htmlFor="idEmpresa" ></label>
-                                        <select
-                                            className="inputCadastroCursoSelect_g2"
-                                            id="idEmpresa"
-                                            onChange={(campo) => setIdEmpresa(campo.target.value)}
-                                            value={idEmpresa}
-                                        >
-
-                                            <option value="0">Empresa</option>
-
-                                            {
-                                                listaEmpresa.map((empresa) => {
-                                                    return (
-                                                        <option key={empresa.idEmpresa} value={empresa.idEmpresa}>
-                                                            {empresa.nomeEmpresa}
-                                                        </option>
-                                                    )
-                                                })
-                                            }
-                                        </select>
-                                    </div>
-
-
-                                    <div>
-                                        <label className="label_arquivo_cadastroCurso_g2" htmlFor="arquivo">Enviar arquivo</label>
-                                        <input
-                                            accept="image/png, image/jpeg"
-                                            id="arquivo"
-                                            name="arquivo"
-                                            className="input_file_cadastroCurso_g2"
-                                            type="file"
-                                        />
-                                    </div>
-
-
+                                        <option value={presencial}>Presencial</option>
+                                        <option value={modalidadeCurso}>EAD</option>
+                                    </select>
                                 </div>
 
-                            
 
+                                {/* <div>
+                                    <label htmlFor="cashes" ></label>
+                                    <input
+                                        // onChange={(campo) => setDescricaoDesconto(campo.target.value)}
+                                        // value={}
+                                        id='cashes'
+                                        name="cashes"
+                                        type="number"
+                                        placeholder="$ Cashes"
+                                    />
+                                </div> */}
+
+                                <div>
+                                    <label htmlFor="cargaHoraria"></label>
+                                    <input
+                                        onChange={(campo) => setCargaHoraria(campo.target.value)}
+                                        className="flex_co"
+                                        value={cargaHoraria}
+                                        id="cargaHoraria"
+                                        placeholder="Carga horária"
+                                        type="number"
+                                    />
+                                </div>
+
+
+                            </div>
 
                         </div>
-                            <div className="btn_cadastroCurso_g2">
-                                <button type="submit" className="botaoCadastroCurso_g2">Cadastrar</button>
-                            </div>
+                        <div className="btn_cadastroCurso_g2">
+                            <button type="submit" className="botaoCadastroCurso_g2">Cadastrar</button>
+                        </div>
                     </div>
                 </form>
             </div>

@@ -31,6 +31,12 @@
     font-weight: bold;
 }
 
+.box_forms_cadastroCurso_g2 input[type="date"]::-webkit-calendar-picker-indicator {
+    background-image: url("../img/iconeCalendario.svg");
+}
+
+
+
 .title_cadastroCurso_g2 {
     display: flex;
     justify-content: center;
@@ -62,6 +68,11 @@
     font-weight: bold;
 }
 
+.box_forms_cadastroCurso_g2 label {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
 .label_arquivo_cadastroCurso_g2 {
     width: 13.5vw;
     height: 6vh;
@@ -71,6 +82,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;   
+}
+
+.img_file_cadastro_curso_g2{
+    background-color: #636466;
+    margin-right: 1rem;
+}
+
+.label_arquivo_cadastroCurso_g2 {
+    width: 13.5vw;
+    height: 6vh;
+    color: white;
+    border-radius: 15px;
+    background-color: #636466;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .input_file_cadastroCurso_g2 {
@@ -99,7 +128,7 @@
     height: 20vh;
 }
 
-.botaoCadastroCurso_g2{
+.botaoCadastroCurso_g2 {
     width: 13.5vw;
     height: 6vh;
     border-radius: 15px;
@@ -110,11 +139,12 @@
     font-size: 1.1em;
     font-weight: 600;
 }
+
 .botaoCadastroCurso_g2:hover {
     background-color: transparent;
     border: #C20004 1px solid;
     border-radius: 15px;
-    color:  #C20004;
+    color: #C20004;
     transition: 0.3s;
     font-family: 'Montserrat', sans-serif;
 }

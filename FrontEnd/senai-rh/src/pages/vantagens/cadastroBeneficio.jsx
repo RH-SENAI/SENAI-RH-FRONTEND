@@ -1,6 +1,7 @@
 import HeaderAdm from "../../components/header/headerAdm";
 import cadastroCurso from '../../assets/img/cadastroCurso.svg'
 import telaCadastroVantagens from '../../assets/img/telaCadastroVantagens.svg'
+import iconeEnviarArquivo from '../../assets/img/iconeEnviarArquivo.png'
 import '../../assets/css/cadastroCursos.css'
 import '../../assets/css/cadastroBeneficio.css'
 import { useEffect, useState } from "react";
@@ -132,7 +133,7 @@ export default function CadastrarBeneficio() {
 
                                     <div>
                                         <label></label>
-                                        <label className="label_arquivo_cadastroBeneficio_g2" htmlFor="fotoDesconto">Enviar arquivo</label>
+                                        <label className="label_arquivo_cadastroBeneficio_g2" htmlFor="fotoDesconto">  <img className="img_file_cadastro_empresa_g2" src={iconeEnviarArquivo} alt="" />Enviar arquivo</label>
                                         <input
                                             accept="image/png, image/jpeg"
                                             id="fotoDesconto"
