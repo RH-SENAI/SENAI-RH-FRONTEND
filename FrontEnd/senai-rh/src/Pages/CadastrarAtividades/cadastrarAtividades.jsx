@@ -6,16 +6,18 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Logo from "../../Assets/img/logo1.svg"
 import bannerCadastrarAtividade from "../../Assets/img/bannerCadastrarAtividade.svg"
+import { Modall } from '../../components/modalUsuarios'
 
 
 export default function CadastrarAtividades() {
     const [listaAtividades, setListaAtividades] = useState([]);
+    const [listaUsuarios, setListaUsuarios] = useState([]);
     const [listaAtividadesValidar, setListaAtividadesValidar] = useState([]);
     const [idAtividade, setIdAtividade] = useState('');
     const [idUsuario, setIdUsuario] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [showModalValidar, setShowModalValidar] = useState(false);
-    const [idAtividadeModal, setIdAtividadeModal] = useState()
+    const [idUsuarioModal, setIdUsuarioModal] = useState()
     const [idSetor, setIdSetor] = useState('');
     const [nomeAtividade, setNomeAtividade] = useState('');
     const [recompensaMoeda, setRecompensaMoeda] = useState('');
@@ -27,6 +29,29 @@ export default function CadastrarAtividades() {
     const notify_erroCadastrar = () => toast.error("Preencha todos os campos!");
 
     const [isLoading, setIsLoading] = useState(false);
+
+    const OpenModal = () => {
+        setShowModal(prev => !prev);
+        console.log('abriuuu')
+    }
+
+    function listarUsuarios() {
+        axios("http://localhost:5000/api/Usuarios"
+            , {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            })
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    setListaUsuarios(resposta.data)
+                }
+            })
+
+            .catch(erro => console.log(erro))
+    };
+
+    useEffect(listarUsuarios, []);
 
     async function CadastrarAtividade(evento) {
         setIsLoading(true);
@@ -61,7 +86,7 @@ export default function CadastrarAtividades() {
                     // setListaSetores([]);
                     notify_cadastrar();
                 }
-                
+
             })
             .catch(erro => console.log(erro), setIsLoading(false), notify_erroCadastrar());
 
@@ -79,6 +104,7 @@ export default function CadastrarAtividades() {
 
     return (
         <div className="div_container">
+            <Modall usuarios={listaUsuarios} showModal={showModal} setShowModal={setShowModal}/>
             <ToastContainer
                 position="bottom-center"
                 autoClose={5000}
@@ -128,6 +154,9 @@ export default function CadastrarAtividades() {
                                         onChange={(campo) => setRecompensaTrofeu(campo.target.value)} type="number" name="moedas" placeholder="Digite sua senha" />
                                     <label for="moedas">Prêmio em troféus</label>
                                 </div>
+                            </div>
+                            <div className='G1_organizar_inputs'>
+                                <button className='G1_btn_modal' onClick={OpenModal} type="submit">Selecione um Usuário</button>
                             </div>
                         </div>
                         <div className='G1_div_ToggleValidar'>

@@ -5,7 +5,6 @@ import Rodape from '../../components/Footer';
 import Header from '../../components/Header/headerFuncionario';
 import { Link, useHistory } from 'react-router-dom'
 import img_olho from '../../Assets/img/Olho_Atividades.png'
-import Modal from 'react-modal';
 import { Modall } from '../../components/Modal'
 import { ModallValidar } from '../../components/modalValidar'
 import React from 'react';

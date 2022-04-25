@@ -102,6 +102,20 @@
     width: 100%;
 }
 
+.G1_btn_modal{
+    min-width: 250px;
+    width: 16vw;
+    height: 5vh;
+    margin-top: 2vh;
+    border-radius: 15px;
+    background-color: #c20004;
+    padding: 15 25;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: white;
+}
+
 .G1_inputLabel_Cadastrar {
     position: relative;
     padding-top: 13px;
