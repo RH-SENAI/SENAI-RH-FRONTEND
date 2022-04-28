@@ -4,7 +4,7 @@ import bannerLogin from "../../Assets/img/undraw_login_re_4vu2 1.svg"
 import Footer from "../../components/Footer"
 import axios from 'axios';
 import '../../Assets/css/login.css'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, Redirect, useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -12,8 +12,12 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Login() {
     const [emailUsuario, setEmailUsuario] = useState('');
     const [senhaUsuario, setSenhaUsuario] = useState('');
-    const notify_Logar = () => toast.success("Usuario Logado!");
-    let history = useHistory();
+    const notify_Logar_Success = () => toast.success("Usuario Logado!");
+    const notify_Logar_Failed = () => toast.error("Email ou Senha inválidos!")
+    const history = useHistory();
+
+    // const notify_Logar = () => toast.success("Usuario logado!");
+
 
     const FazerLogin = (event) => {
         console.log(emailUsuario)
@@ -27,15 +31,21 @@ export default function Login() {
         )
             .then(resposta => {
                 if (resposta.status === 200) {
+                    notify_Logar_Success()
                     localStorage.setItem('usuario-login', resposta.data.token)
 
                     let base64 = localStorage.getItem('usuario-login').split('.')[1];
 
                     console.log(base64)
+
+                    history.push('/CadastrarAtividades')
+                }
+
+                if (resposta.status === 400) {
+                    notify_Logar_Failed()
                 }
             })
-        notify_Logar()
-        history.push("/CadastrarAtividades")
+
     }
 
     return (
@@ -72,7 +82,9 @@ export default function Login() {
                         <label for="senha">Senha</label>
                         <input type="password" name="senha" placeholder="Digite sua senha" value={senhaUsuario} onChange={(evt) => setSenhaUsuario(evt.target.value)} />
                     </div>
+
                     <button type="submit">Login</button>
+
                 </form>
             </main>
             <Footer />
