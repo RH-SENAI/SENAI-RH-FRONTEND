@@ -30,6 +30,7 @@ export default function HeaderAdm() {
 
                         <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/BeneficiosCadastrar' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Vantagem</Link>
                         <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/CadastrarCursos' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Cursos</Link>
+                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/cadastrarEmpresa' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Empresa</Link>
 
                     </div>
 

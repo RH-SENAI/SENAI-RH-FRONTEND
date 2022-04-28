@@ -16,6 +16,7 @@ import CadastrarCursos from './pages/cursos/cadastrarCursos';
 import ListaBeneficios from './pages/vantagens/listaBeneficios';
 import CadastroBeneficios from './pages/vantagens/cadastroBeneficio';
 import CadastrarEmpresa from './pages/empresas/cadastrarEmpresas';
+import Perfil from './pages/perfil/perfil';
 
 const routing = (
   <Router>
@@ -27,6 +28,7 @@ const routing = (
         <Route  path="/cadastrarCursos" component={CadastrarCursos} />
         <Route  path="/beneficios" component={ListaBeneficios} />
         <Route  path="/cadastrarEmpresa" component={CadastrarEmpresa} />
+        <Route  path="/perfil" component={Perfil} />
         <Route  path="/beneficiosCadastrar" component={CadastroBeneficios} />
       </Switch>
     </div>

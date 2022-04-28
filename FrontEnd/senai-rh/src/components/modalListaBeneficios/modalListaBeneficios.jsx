@@ -68,8 +68,12 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
 
                     <div className='container_modal_cima_g2'>
                         <div className='container_img_modal_g2'>
-                            <img className='img_modal_beneficios_g2' src={'http://localhost:5000/img/' + beneficio.caminhoImagemDesconto} alt="" />
-                            {/* <img className='img_modal' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + beneficio.caminhoImagemDesconto} alt="" /> */}
+                            <div className='img_modal_beneficios_g2'>
+                                <div className='img_modal_beneficios_g2'>
+                                    <img src={'http://localhost:5000/img/' + beneficio.caminhoImagemDesconto} alt="" />
+                                    {/* <img className='img_modal' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + beneficio.caminhoImagemDesconto} alt="" /> */}
+                                </div>
+                            </div>
                             <div className='media_Avaliacao_g2'>  <img src={estrelaSozinha} alt="" /> <p> {beneficio.mediaAvaliacaoDesconto} </p> </div>
                         </div>
                         <div className='container_dados_modal_g2'>
