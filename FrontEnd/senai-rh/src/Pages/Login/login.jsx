@@ -7,6 +7,7 @@ import '../../Pages/Login/login.css'
 import { Link, Redirect, useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { parseJwt } from "../../services/auth";
 
 
 export default function Login() {
@@ -30,19 +31,19 @@ export default function Login() {
         )
             .then(resposta => {
                 if (resposta.status === 200) {
-                    notify_Logar_Success()
                     localStorage.setItem('usuario-login', resposta.data.token)
-                    console.log(resposta.status)
-                    let base64 = localStorage.getItem('usuario-login').split('.')[1];
-
-                    console.log(base64)
-
+                    
+                    if(parseJwt().isActive === "False"){
+                        history.push('/AlterarSenha')
+                    }
+                    else                      
                     history.push('/CadastrarAtividades')
                 }
 
             })
             .catch(resposta => {
-                notify_Logar_Failed()
+            
+            notify_Logar_Failed()
             })
         
     }
