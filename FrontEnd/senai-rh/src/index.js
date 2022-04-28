@@ -18,9 +18,14 @@ const routing = (
     <div>
       <Switch>
         <Route exact path="/" component = {Login} /> 
+<<<<<<< HEAD
         <Route path = "/CadastrarAtividades" component = {CadastrarAtividades}/>
         <Route path = "/ValidarAtividades" component = {ValidarAtividades}/>
         <Route path = "/AlterarSenha" component = {AlterarSenha}/>
+=======
+        <Route path = "/cadastrarAtividades" component = {CadastrarAtividades}/>
+        <Route path = "/validarAtividades" component = {ValidarAtividades}/>
+>>>>>>> f135817fef555cec21b1f9e24ec39c01587f47b0
       </Switch>
     </div>
   </Router>
