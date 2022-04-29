@@ -56,12 +56,18 @@
     width: 7.8vw;
     height: 16vh;
     background-color: transparent;
-    border: 1px solid #B3B3B3;
+
     border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
+}
+.g3_tamanhoFoto{
+    height: 16vh;
+    width: 7.8vw;
+    border-radius: 15px;
+    border: 3px solid #B3B3B3;
 }
 
 .g3_botaoAtualizar{

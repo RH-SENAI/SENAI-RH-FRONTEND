@@ -37,11 +37,28 @@ input[type="file"] {
 
 }
 
+.g3_containerFotoCadastro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
+    
+
+}
+
+.g3_boxFotoCadastro{
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    background-color: #B3B3B3;
+    margin: 0.5rem;
+}
 .g3_boxCadastro{
     display: flex;
-    margin-top: 4rem;
+    margin-top: 1.5rem;
     justify-content: space-between;
-    margin-bottom: 7.95rem;
+    margin-bottom: 2rem;
 }
 
 .g3_formCadastro{
@@ -54,7 +71,7 @@ input[type="file"] {
     font-size: 2.5em;
     font-style: normal;
     font-weight: 300;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     font-family: 'Montserrat', sans-serif;
 }
 .g3_boldCadastrar{
@@ -66,7 +83,6 @@ input[type="file"] {
 }
 .g3_bodyCadastro{
     display: flex;  
-    margin-bottom: 1rem;
 }
 .g3_bodyCadastroLeft{
     display: flex;

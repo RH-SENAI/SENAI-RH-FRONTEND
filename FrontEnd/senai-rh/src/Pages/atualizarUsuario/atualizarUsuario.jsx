@@ -11,7 +11,7 @@ import fotoAtualizar from "../../assets/img/atualizarLight.svg"
 
 export default function AtualizarPerfil() {
 
-    const [idUsuario, setIdUsuario] = useState(78)
+    const [idUsuario, setIdUsuario] = useState(89)
     const [listaCargo, setListaCargo] = useState([])
     const [listaUnidade, setListaUnidade] = useState([])
     const [idTipoUsuario, setIdTipoUsuario] = useState(0);
@@ -33,7 +33,7 @@ export default function AtualizarPerfil() {
 
     //Função de Buscar funcionário por ID
     function BuscarFuncionarios() {
-        axios.get('http://localhost:5000/api/Usuarios/Listar', {
+        axios.get(`http://localhost:5000/api/Usuarios/Listar/${idUsuario}`, {
 
             headers: {
 
@@ -42,9 +42,23 @@ export default function AtualizarPerfil() {
 
         })
 
+            .then((resposta) => {
+                console.log(resposta.data)
+
+                if (resposta.status === 200) {
+                    setUsuario([resposta.data])
+                }
+
+
+
+            })
+
+            .catch(erro => console.log(erro))
 
 
     }
+
+
     function BuscarTipoUsuario() {
         axios.get('http://localhost:5000/api/idTipoUsuarios/Listar', {
             headers: {
@@ -111,17 +125,14 @@ export default function AtualizarPerfil() {
         const element = document.getElementById('fotoPerfil')
         const file = element.files[0]
 
-        // if(file.name == undefined)
-        // {
-        //     formData.append('fotoPerfil', null)
 
-        // } else {
-        //     formData.append('fotoPerfil', file, file.name)
+        if (element.value == "") {
+            formData.append('novaFotoPerfil', null)
 
-        // }
+        } else {
+            formData.append('novaFotoPerfil', file, file.name)
 
-        formData.append('fotoPerfil', file, file.name)
-
+        }
         formData.append('idUsuario', idUsuario);
         formData.append('nome', nomeUsuario);
         formData.append('email', email);
@@ -131,13 +142,13 @@ export default function AtualizarPerfil() {
         formData.append('idTipoUsuario', idTipoUsuario);
         formData.append('idUnidadeSenai', idUnidade);
         formData.append('localizacaoUsuario', endereco);
-        formData.append('fotoPerfil', fotoPerfil);
+
 
 
 
         axios({
-            method: "post",
-            url: `http://localhost:5000/api/Usuarios/Atualizar/Gestor/${idUsuario}`,
+            method: "put",
+            url: `http://localhost:5000/api/Usuarios/Atualizar/Funcionario/${idUsuario}`,
             data: formData,
             headers: { "Content-Type": "multipart/form-data" },
         })
@@ -177,9 +188,17 @@ export default function AtualizarPerfil() {
                         </span>
                         <span className="g3_spanAtualizar" >Foto De Perfil</span>
                         <div className="g3_fotoPerfilVazia">
-                            {/* <img src={"http://localhost:5000/StaticFiles/Images/" + usuario.caminhoFotoPerfil} alt="Imagem de perfil vazia" /> */}
+                            {usuario.map((usuario) => {
+                                return (
+                                    <img className='g3_tamanhoFoto' src={"https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples/" + usuario.caminhoFotoPerfil} alt="Imagem de perfil vazia" />
+                                )
+                            }
+
+                            )}
+
                         </div>
                         <input className="g3_inputCadastroFile" value={fotoPerfil} name='fotoPerfil' id='fotoPerfil' onChange={(event) => setFotoPerfil(event.target.value)} type="file" />
+                        <label htmlFor="fotoPerfil" className="labelCadastroFoto">Inserir Foto</label>
                     </div>
 
 
