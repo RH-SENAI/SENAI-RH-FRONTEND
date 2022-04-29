@@ -64,8 +64,8 @@ export default function CadastrarAtividades() {
         setIsLoading(true);
         evento.preventDefault()
 
-        let base64 = localStorage.getItem('usuario-login').split('.')[1]; 
-        console.log("Olha a base64 ae =>" + base64);
+        let idGestorCadastro = parseJwt().jti;
+        console.log(parseJwt().jti);
 
         await axios
             .post('http://localhost:5000/api/Atividades', {
@@ -168,13 +168,14 @@ export default function CadastrarAtividades() {
                                 </div>
                             </div>
                             <div className='G1_organizar_inputs'>
-                                <button className='G1_btn_modal' onClick={OpenModal} >Selecione um Usuário</button>
+                                <button className='G1_btn_modal' onClick={OpenModal} type="button" >Selecione um Usuário</button>
                             </div>
                         </div>
                         <div className='G1_div_ToggleValidar'>
                             <label classname="G1_label_precisaValidar">Precisa Validar</label>
                             <div className='G1_organizar_switchBtn'>
-                                <input type="checkbox"
+                                <input className="checkbox_switch"
+                                    type="checkbox"
                                     id="switch"
                                     name="validar"
                                     value={necessarioValidar}
