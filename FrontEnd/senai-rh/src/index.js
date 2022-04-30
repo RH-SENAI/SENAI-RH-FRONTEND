@@ -11,6 +11,7 @@ import reportWebVitals from './reportWebVitals';
 import CadastrarAtividades from './Pages/CadastrarAtividades/cadastrarAtividades';
 import ValidarAtividades from './Pages/ValidarAtividades/validarAtividades';
 import AlterarSenha from './Pages/AlterarSenha/alterarSenha';
+import esqueciMinhaSenha from './Pages/EsqueciMinhaSenha/esqueciMinhaSenha'
 import Login from './Pages/Login/login';
 
 const routing = (
@@ -20,6 +21,8 @@ const routing = (
         <Route exact path="/" component = {Login} /> 
         <Route path = "/cadastrarAtividades" component = {CadastrarAtividades}/>
         <Route path = "/validarAtividades" component = {ValidarAtividades}/>
+        <Route path = "/AlterarSenha" component = {AlterarSenha}/>
+        <Route path = "/EsqueciMinhaSenha" component={ esqueciMinhaSenha}/>
       </Switch>
     </div>
   </Router>

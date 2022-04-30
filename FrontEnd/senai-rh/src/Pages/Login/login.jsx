@@ -86,7 +86,7 @@ export default function Login() {
                                 <label for="senha">Senha</label>
                             </div>
                             <div  className="G1_buttonsLogin">
-                                <a href="#">Esqueci a senha</a>
+                                <a href="/EsqueciMinhaSenha">Esqueci a senha</a>
                                 <button type="submit">Entrar</button>
                             </div>
                             

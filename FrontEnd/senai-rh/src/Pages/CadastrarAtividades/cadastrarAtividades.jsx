@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Logo from "../../Assets/img/logo1.svg"
 import bannerCadastrarAtividade from "../../Assets/img/bannerCadastrarAtividade.svg"
 import { Modall } from '../../components/modalUsuarios'
+import { parseJwt } from "../../services/auth";
 
 
 export default function CadastrarAtividades() {
