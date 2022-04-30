@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import Logo from "../../Assets/img/logo1.svg"
 import bannerLogin from "../../Assets/img/bannerLogin.svg"
-import Footer from "../../components/Footer"
 import axios from 'axios';
 import '../../Pages/EsqueciMinhaSenha/esqueciMinhaSenha.css'
-import { Link, Redirect, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { parseJwt } from "../../services/auth";
-import { parse } from "json5";
+
 
 
 export default function EsqueciSenha() {
@@ -16,8 +14,7 @@ export default function EsqueciSenha() {
     const [codigo, setCodigo] = useState('');  
     const [isActiveCodigo, setIsActiveCodigo] = useState(false);
     const isRec = true;  
-    const notify_Logar_Failed = () => toast.error("Email ou Senha inválidos!")
-    const notify_Logar_Failed_unmatched = () => toast.error("As senhas não coincidem!")
+    const notify_Logar_Failed = () => toast.error("Algo deu errado! Tente novamente mais tarde!")
     const history = useHistory();
     
     
@@ -42,6 +39,7 @@ export default function EsqueciSenha() {
         })
         .catch(response =>{
             console.log(response)
+            notify_Logar_Failed()
         })
         
     }
@@ -68,6 +66,7 @@ export default function EsqueciSenha() {
         })
         .catch(response=>{
             console.log(response)
+            notify_Logar_Failed()
         })
     }
 
