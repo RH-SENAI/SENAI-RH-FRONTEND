@@ -53,6 +53,24 @@ export default function ListaBeneficios() {
             })
     }
 
+
+    const [searchInput, setSearchInput] = useState([]);
+    const [filteredResults, setFilteredResults] = useState([]);
+
+    const searchItems = (searchValue) => {
+        setSearchInput(searchValue)
+        if (searchInput !== '') {
+            const filteredData = listaBeneficios.filter((item) => {
+                return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+            })
+            setFilteredResults(filteredData)
+        } else {
+            setFilteredResults(listaBeneficios)
+        }
+    }
+
+
+
     return (
         <div>
             <ModallBeneficio beneficio={listaBeneficios.find(beneficio => beneficio.idDesconto == idDescontoModal)} showModal={showModal} setShowModal={setShowModal} />
@@ -62,7 +80,13 @@ export default function ListaBeneficios() {
                 <div className='caixa_g2'>
                     <form>
                         <label ></label>
-                        <input type="search" placeholder='Pesquisar' />
+                        <input
+                            type="search"
+                            placeholder='Pesquisar'
+                            autoComplete='off'
+                            list='curso'
+                            onChange={(e) => searchItems(e.target.value)}
+                        />
                     </form>
                 </div>
 
@@ -75,6 +99,42 @@ export default function ListaBeneficios() {
                     <div className='wrap_beneficio_g2'>
                         <div className='container_wrap_beneficio_g2'>
                             {
+                                searchInput.length > 0 ?
+
+                                filteredResults.map((beneficio) => {
+                                    return (
+                                        <div className='espacamento_g2'>
+
+
+                                            <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_cursos_g2'>
+                                                <div className='banner_img_beneficio_g2'>
+                                                    {<img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='banner_g2' src={'http://localhost:5000/img/' + beneficio.caminhoImagemDesconto} alt="imagem do curso" />}
+                                                    {/* {<img  onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idCurso)} className='banner' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + beneficio.caminhoImagemCurso} alt="imagem do curso" />} */}
+                                                </div>
+                                                {<span className="title_beneficios_g2" onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
+
+                                                {<p><img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='box_dados_curso_g2' src={data} alt="duracao" /> {Intl.DateTimeFormat("pt-BR", {
+                                                    year: 'numeric', month: 'numeric', day: 'numeric'
+                                                }).format(new Date(beneficio.validadeDesconto))} </p>}
+                                                {<p><img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='box_dados_curso_g2' src={local} alt="duracao" /> {beneficio.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}  </p>}
+
+                                                <div className="box_baixo_section_g2">
+
+                                                    {<div className='circulo_coracao2_g2'>
+                                                        <img className='coracao_g2' src={coracao} alt="favorito" />
+                                                    </div>}
+                                                    <div className="media_beneficio_g2">
+                                                        <img src={estrelaSozinha} alt="" /> <p>{beneficio.mediaAvaliacaoDesconto}</p>
+                                                    </div>
+                                                    {/* <div> <button onClick={ () => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
+                                                </div>
+                                            </section>
+                                        </div>
+                                    )
+                                })
+
+                                :
+
                                 listaBeneficios.map((beneficio) => {
                                     return (
                                         <div className='espacamento_g2'>
