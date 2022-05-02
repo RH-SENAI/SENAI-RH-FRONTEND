@@ -33,7 +33,12 @@
     margin-top: 15px;
     height: 450px;
     direction: ltr !important;
-    margin-left: 99px;
+}
+
+.dados_beneficio_gp2{
+    border: 3px solid #B3B3B3;
+    border-top: none;
+    height: 30vh;
 }
 
 .banner_img_beneficio_g2{
@@ -51,9 +56,8 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     border-radius: 50px;
-    margin-bottom: 500px;
 }
 
 .circulo_coracao2_g2 {

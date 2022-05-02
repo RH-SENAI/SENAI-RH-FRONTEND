@@ -68,7 +68,7 @@ export default function CursosRapidos() {
         setSearchInput(searchValue)
         if (searchInput !== '') {
             const filteredData = listaCursos.filter((item) => {
-                return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+                return Object.values(item.nomeCurso).join('').toLowerCase().includes(searchInput.toLowerCase())
             })
             setFilteredResults(filteredData)
         } else {
