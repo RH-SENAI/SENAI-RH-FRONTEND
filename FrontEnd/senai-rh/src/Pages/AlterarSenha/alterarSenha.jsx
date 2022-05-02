@@ -1,45 +1,59 @@
 import React, { useState, useEffect } from "react"
 import Logo from "../../Assets/img/logo1.svg"
 import bannerLogin from "../../Assets/img/bannerLogin.svg"
-import Footer from "../../components/Footer"
 import axios from 'axios';
 import '../../Pages/AlterarSenha/alterarSenha.css'
-import { Link, Redirect, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { parseJwt } from "../../services/auth";
-import { parse } from "json5";
 
 
-export default function AlterarSenha() {
+
+export default function AlterarSenha(props) {
     const [senhaAtual, setSenhaAtualUsuario] = useState('');
     const [senhaNova, setSenhaNovaUsuario] = useState('');
     const [senhaConfirmacao, setSenhaConfirmacaoUsuario] = useState('');
-    const notify_Logar_Success = () => toast.success("Usuario Logado!");
-    const notify_Logar_Failed = () => toast.error("Email ou Senha inválidos!")
+    const [isRec, setIsRec] = useState(false);
+    const [email, setEmail] = useState('');
     const notify_Logar_Failed_unmatched = () => toast.error("As senhas não coincidem!")
     const history = useHistory();
     
+    useEffect(() => {
+         setIsRec(props.location.state.isRec)
+         setEmail(props.location.state.email)       
+    }, [props])
+    
+   
     
 
 
     const VerificaSenha = (event) => {
         event.preventDefault();
-        let idUsuario = parseJwt().jti
-        
-        axios.post('http://localhost:5000/api/Usuarios/VerificaSenha/' + idUsuario,{
-           
-        },{
-            headers:{
-                'Content-Type': 'application/json',
-                'senhaUser' : senhaAtual
-            }
-        })      
-        .then(response => {
-            if(response.status === 200){
-                AlteraSenha();
-            }
-        })
+
+        if(isRec === false){
+
+            let idUsuario = parseJwt().jti
+            axios.post('http://localhost:5000/api/Usuarios/VerificaSenha/' + idUsuario,{
+               
+            },{
+                headers:{
+                    'Content-Type': 'application/json',
+                    'senhaUser' : senhaAtual
+                }
+            })      
+            .then(response => {
+                if(response.status === 200){
+                    AlteraSenha();
+                }
+            })
+            .catch(response => {
+                console.log(response)
+            })
+        }
+        else{
+            AlteraSenha()
+        }
         
     }
 
@@ -47,24 +61,50 @@ export default function AlterarSenha() {
         if (senhaNova !== senhaConfirmacao) {
             notify_Logar_Failed_unmatched()
         }
-        let idUsuario = parseJwt().jti
-        axios.post('http://localhost:5000/api/Usuarios/AlteraSenha/' + idUsuario,{},{
-            headers:{
-                'Content-Type': 'application/json',
-                'senhaUser' : senhaAtual,
-                'senhaNova' : senhaNova,
-                'senhaConfirmacao' : senhaConfirmacao 
-            }
-        })
-        .then(response => {
-            localStorage.removeItem('usuario-login')
-            history.push('/')
-            console.log(response)
-            console.log('senha alterada')
-        })
-        .catch(response=>{
-            console.log(response)
-        })
+
+        if(isRec === false){
+
+            let idUsuario = parseJwt().jti
+    
+    
+    
+            axios.patch('http://localhost:5000/api/Usuarios/AlteraSenha/' + idUsuario,{},{
+                headers:{
+                    'Content-Type': 'application/json',
+                    'senhaUser' : senhaAtual,
+                    'senhaNova' : senhaNova,
+                    'senhaConfirmacao' : senhaConfirmacao 
+                }
+            })
+            .then(response => {
+                localStorage.removeItem('usuario-login')
+                history.push('/')
+                console.log(response)
+                console.log('senha alterada')
+            })
+            .catch(response=>{
+                console.log(response)
+            })
+        }
+        else{
+            axios.patch('http://localhost:5000/api/Usuarios/AlteraSenhaRec/' + email,{},{
+                headers:{
+                    'Content-Type': 'application/json',
+                    'senhaNova' : senhaNova,
+                    'senhaConfirmacao' : senhaConfirmacao 
+                }
+            })
+            .then(response => {
+                
+                history.push('/')
+                console.log(response)
+                console.log('senha alterada')
+            })
+            .catch(response=>{
+                console.log(response)
+            })
+        }
+        
     }
 
     return (
@@ -92,12 +132,24 @@ export default function AlterarSenha() {
                     <div className="G1_formText"> 
                         <div className="G1_textLogin">  
                             <h1>Alterar Senha</h1>
-                            {/* <p>Acesse sua conta e veja todo seu Dashboard e o da sua equipe!</p>  */}
+                            <p>Altere aqui sua senha de acesso!</p> 
                         </div>  
-                        <form className="G1_form_Login" onSubmit={(event) => VerificaSenha(event)}>
+                        <form className="G1_form_Alterar G1_form_Login" onSubmit={(event) => VerificaSenha(event)}>
                             <div className="G1_inputLabel">
-                                <input type="password" name="SenhaAtual" placeholder="Digite sua senha atual" value={senhaAtual} onChange={(evt) => setSenhaAtualUsuario(evt.target.value)} />
-                                <label for="SenhaAtual">Senha Atual</label>
+                                {
+                                    isRec === false ? 
+                                    <input type="password" name="SenhaAtual" placeholder="Digite sua senha atual" value={senhaAtual} onChange={(evt) => setSenhaAtualUsuario(evt.target.value)} />
+                                    : 
+                                    <input disabled type="password" name="SenhaAtual" placeholder="Digite sua senha atual" value={senhaAtual} onChange={(evt) => setSenhaAtualUsuario(evt.target.value)} />
+                                
+                                }
+                                {
+                                    isRec === false ?
+                                    <label className="G1_inputLabel label" for="SenhaAtual">Senha Atual</label>
+                                    :
+                                    <label className="G1_inputLabel label" disabled for="SenhaAtual"></label>
+                                    
+                                }
                             </div>
 
                             <div className="G1_inputLabel">

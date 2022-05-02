@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState} from "react"
 import Logo from "../../Assets/img/logo1.svg"
 import bannerLogin from "../../Assets/img/bannerLogin.svg"
-import Footer from "../../components/Footer"
 import axios from 'axios';
 import '../../Pages/Login/login.css'
-import { Link, Redirect, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { parseJwt } from "../../services/auth";
@@ -13,7 +12,6 @@ import { parseJwt } from "../../services/auth";
 export default function Login() {
     const [cpfUsuario, setCPFUsuario] = useState('');
     const [senhaUsuario, setSenhaUsuario] = useState('');
-    const notify_Logar_Success = () => toast.success("Usuario Logado!");
     const notify_Logar_Failed = () => toast.error("Email ou Senha inválidos!")
     const history = useHistory();
     
@@ -86,7 +84,7 @@ export default function Login() {
                                 <label for="senha">Senha</label>
                             </div>
                             <div  className="G1_buttonsLogin">
-                                <a href="#">Esqueci a senha</a>
+                                <a href="/EsqueciMinhaSenha">Esqueci a senha</a>
                                 <button type="submit">Entrar</button>
                             </div>
                             

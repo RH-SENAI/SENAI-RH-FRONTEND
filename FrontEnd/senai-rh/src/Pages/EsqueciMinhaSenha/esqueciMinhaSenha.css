@@ -74,8 +74,8 @@ font-family:'Quicksand', sans-serif;;
 max-width: 350px;
 }
 
-.G1_form_Alterar{
-    height: 50vh !important;
+.G1_form_Esqueci{
+    height: 27vh !important;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -139,6 +139,13 @@ top: 0;
 
 }
 
+.G1_inputLabel input:disabled{
+    display: none;
+}
+.G1_inputLabel label:disabled{
+    display: none;
+}
+
 .G1_form_Login button{
     min-width: 250px;
     width: 25vw;
@@ -153,6 +160,10 @@ top: 0;
     color: white;
 }
 
+.G1_form_Login button:disabled{
+    background-color: #000;
+    cursor: not-allowed;
+}
 .G1_buttonsLogin{
     display: flex;
     flex-direction: column;

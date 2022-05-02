@@ -11,6 +11,7 @@ import {
     parseJwt
     // usuarioAutenticado
 } from '../../services/auth';
+import { parseJwt } from "../../services/auth";
 
 
 export default function CadastrarAtividades() {
