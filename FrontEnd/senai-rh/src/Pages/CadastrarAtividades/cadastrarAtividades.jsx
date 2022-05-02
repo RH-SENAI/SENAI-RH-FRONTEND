@@ -7,11 +7,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import Logo from "../../Assets/img/logo1.svg"
 import bannerCadastrarAtividade from "../../Assets/img/bannerCadastrarAtividade.svg"
 import { Modall } from '../../components/modalUsuarios'
+import {
+    parseJwt
+    // usuarioAutenticado
+} from '../../services/auth';
 
 
 export default function CadastrarAtividades() {
     const [listaAtividades, setListaAtividades] = useState([]);
     const [listaUsuarios, setListaUsuarios] = useState([]);
+    const [listaUsuarioSelecionados, setListaUsuarioSelecionados] = useState([]);
     const [listaAtividadesValidar, setListaAtividadesValidar] = useState([]);
     const [idAtividade, setIdAtividade] = useState('');
     const [idUsuario, setIdUsuario] = useState('');
@@ -24,7 +29,7 @@ export default function CadastrarAtividades() {
     const [recompensaTrofeu, setRecompensaTrofeu] = useState('');
     const [descricaoAtividade, setDescricaoAtividade] = useState('');
     const [necessarioValidar, setNecessarioValidar] = useState(false);
-    const [idGestorCadastro, setIdGestorCadastro] = useState();
+    
     const notify_cadastrar = () => toast.success("Atividade Cadastrada!");
     // const notify_validar = () => toast.success("Atividade Validada!");
     const notify_erroCadastrar = () => toast.error("Preencha todos os campos!");
@@ -36,14 +41,8 @@ export default function CadastrarAtividades() {
         console.log('abriuuu')
     }
 
-    function BuscarIdGestor() {
-
-
-
-    }
-
     function listarUsuarios() {
-        axios("http://localhost:5000/api/Usuarios"
+        axios("http://localhost:5000/api/Usuarios/Funcionarios"
             , {
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -52,6 +51,7 @@ export default function CadastrarAtividades() {
             .then(resposta => {
                 if (resposta.status === 200) {
                     setListaUsuarios(resposta.data)
+                    console.log(resposta.data)
                 }
             })
 
@@ -65,7 +65,9 @@ export default function CadastrarAtividades() {
         evento.preventDefault()
 
         let idGestorCadastro = parseJwt().jti;
-        console.log(parseJwt().jti);
+        console.log("id do gestor aqui em baixo");
+
+        console.log(idGestorCadastro);
 
         await axios
             .post('http://localhost:5000/api/Atividades', {
@@ -116,7 +118,7 @@ export default function CadastrarAtividades() {
 
     return (
         <div className="div_container">
-            <Modall usuarios={listaUsuarios} showModal={showModal} setShowModal={setShowModal}/>
+            <Modall usuarios={listaUsuarios} showModal={showModal} setShowModal={setShowModal} />
             <ToastContainer
                 position="bottom-center"
                 autoClose={5000}

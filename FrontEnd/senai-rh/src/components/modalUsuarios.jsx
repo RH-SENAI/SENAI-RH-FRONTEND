@@ -6,6 +6,8 @@ import Modal from 'react-modal';
 import '../Assets/css/gp1style.css'
 
 export const Modall = ({ showModal, setShowModal, usuarios }) => {
+
+    const [listaUsuarios, setListaUsuarios] = useState([{}]);
     const modalRef = useRef();
 
     let history = useHistory();
@@ -35,6 +37,11 @@ export const Modall = ({ showModal, setShowModal, usuarios }) => {
         [keyPress]
     );
 
+    async function setValue(value){
+        setListaUsuarios(value)
+        console.log(listaUsuarios)
+    }   
+
     return (
         <>
             {showModal ? (
@@ -51,7 +58,12 @@ export const Modall = ({ showModal, setShowModal, usuarios }) => {
                                         <div className='box_atividade'>
                                             <div className='organizar_atividade'>
                                                 <h2 className='titulo_atividade'>{usuario.nome}</h2>
-                                                <input className="checkbox_usuario" type="checkbox" />
+                                                <input className="checkbox_usuario" 
+                                                    type="checkbox"
+                                                    value={listaUsuarios}
+                                                    onChange={(e) => setValue(e.target.value)}
+                                                />
+
                                             </div>
                                         </div>
                                         <hr className='linha_atividade' />
