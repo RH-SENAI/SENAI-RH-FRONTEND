@@ -5,8 +5,9 @@ import '../../assets/css/style.css'
 import telaBeneficios from '../../assets/img/telaBeneficios.svg'
 import data from '../../assets/img/data.svg'
 import coracao from '../../assets/img/coracao.svg'
-import relogio from '../../assets/img/relogio.svg'
-import local from '../../assets/img/local.svg'
+import coin from '../../assets/img/coin 1.png'
+import relogio from '../../assets/img/relogio.png'
+import local from '../../assets/img/local.png'
 import estrelaSozinha from '../../assets/img/estrelaSozinha.svg'
 import React, { useEffect, useState } from 'react';
 import { ModallBeneficio } from "../../components/modalListaBeneficios/modalListaBeneficios";
@@ -105,31 +106,26 @@ export default function ListaBeneficios() {
                                     filteredResults.map((beneficio) => {
                                         return (
                                             <div className='espacamento_g2'>
-
-
                                                 <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_cursos_g2'>
                                                     <div className='banner_img_beneficio_g2'>
-                                                        {<img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='banner_g2' src={'http://localhost:5000/img/' + beneficio.caminhoImagemDesconto} alt="imagem do curso" />}
+                                                        {<img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
                                                         {/* {<img  onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idCurso)} className='banner' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + beneficio.caminhoImagemCurso} alt="imagem do curso" />} */}
                                                     </div>
-                                                    <div className="">
+
+                                                    <div className="dados_beneficio_gp2">
                                                         {<span className="title_beneficios_g2" onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
 
-                                                        {<p><img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='box_dados_curso_g2' src={data} alt="duracao" /> {Intl.DateTimeFormat("pt-BR", {
-                                                            year: 'numeric', month: 'numeric', day: 'numeric'
-                                                        }).format(new Date(beneficio.validadeDesconto))} </p>}
-                                                        {<p><img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='box_dados_curso_g2' src={local} alt="duracao" /> {beneficio.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}  </p>}
+                                                        <div>avaliacao</div>
 
                                                         <div className="box_baixo_section_g2">
-
                                                             {<div className='circulo_coracao2_g2'>
-                                                                <img className='coracao_g2' src={coracao} alt="favorito" />
+                                                                <img className='coracao_g2' src={coin} alt="favorito" />  1200
                                                             </div>}
                                                             <div className="media_beneficio_g2">
-                                                                <img src={estrelaSozinha} alt="" /> <p>{beneficio.mediaAvaliacaoDesconto}</p>
+                                                                <img src={coracao} alt="" />
                                                             </div>
+                                                            {/* <div> <button onClick={() => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
                                                         </div>
-                                                        {/* <div> <button onClick={() => Excluir(beneficio.idDesconto)}> {beneficio.idDesconto} Excluir</button></div> */}
                                                     </div>
                                                 </section>
                                             </div>
@@ -145,25 +141,21 @@ export default function ListaBeneficios() {
 
                                                 <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_cursos_g2'>
                                                     <div className='banner_img_beneficio_g2'>
-                                                        {<img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='banner_g2' src={'http://localhost:5000/img/' + beneficio.caminhoImagemDesconto} alt="imagem do curso" />}
+                                                        {<img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
                                                         {/* {<img  onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idCurso)} className='banner' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + beneficio.caminhoImagemCurso} alt="imagem do curso" />} */}
                                                     </div>
 
                                                     <div className="dados_beneficio_gp2">
                                                         {<span className="title_beneficios_g2" onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
 
-                                                        {<p><img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='box_dados_curso_g2' src={data} alt="duracao" /> {Intl.DateTimeFormat("pt-BR", {
-                                                            year: 'numeric', month: 'numeric', day: 'numeric'
-                                                        }).format(new Date(beneficio.validadeDesconto))} </p>}
-                                                        {<p><img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='box_dados_curso_g2' src={local} alt="duracao" /> {beneficio.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}  </p>}
+                                                        <div>avaliacao</div>
 
                                                         <div className="box_baixo_section_g2">
-
                                                             {<div className='circulo_coracao2_g2'>
-                                                                <img className='coracao_g2' src={coracao} alt="favorito" />
+                                                                <img className='coracao_g2' src={coin} alt="favorito" />  1200
                                                             </div>}
                                                             <div className="media_beneficio_g2">
-                                                                <img src={estrelaSozinha} alt="" /> <p>{beneficio.mediaAvaliacaoDesconto}</p>
+                                                                <img src={coracao} alt="" />
                                                             </div>
                                                             {/* <div> <button onClick={() => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
                                                         </div>
