@@ -18,37 +18,7 @@ export default function AlterarSenha(props) {
     const [email, setEmail] = useState('');
     const notify_Logar_Failed_unmatched = () => toast.error("As senhas não coincidem!")
     const history = useHistory();
-      
-   
     
-
-
-    const VerificaSenha = (event) => {
-        event.preventDefault();
-
-        
-
-            let idUsuario = parseJwt().jti
-            axios.post('http://localhost:5000/api/Usuarios/VerificaSenha/' + idUsuario,{
-               
-            },{
-                headers:{
-                    'Content-Type': 'application/json',
-                    'senhaUser' : senhaAtual
-                }
-            })      
-            .then(response => {
-                if(response.status === 200){
-                    AlteraSenha();
-                }
-            })
-            .catch(response => {
-                console.log(response)
-            })
-        
-        
-        
-    }
 
     const AlteraSenha = () =>{
         if (senhaNova !== senhaConfirmacao) {
@@ -56,21 +26,15 @@ export default function AlterarSenha(props) {
         }
 
         
-
-            let idUsuario = parseJwt().jti
-    
-    
-    
-            axios.patch('http://localhost:5000/api/Usuarios/AlteraSenha/' + idUsuario,{},{
+            axios.patch('http://localhost:5000/api/Usuarios/AlteraSenhaRec/' + email,{},{
                 headers:{
                     'Content-Type': 'application/json',
-                    'senhaUser' : senhaAtual,
                     'senhaNova' : senhaNova,
                     'senhaConfirmacao' : senhaConfirmacao 
                 }
             })
             .then(response => {
-                localStorage.removeItem('usuario-login')
+                
                 history.push('/')
                 console.log(response)
                 console.log('senha alterada')
@@ -109,15 +73,15 @@ export default function AlterarSenha(props) {
                             <h1>Alterar Senha</h1>
                             <p>Altere aqui sua senha de acesso!</p> 
                         </div>  
-                        <form className="G1_form_Alterar G1_form_Login" onSubmit={(event) => VerificaSenha(event)}>
-                            <div className="G1_inputLabel">
-                                 
+                        <form className="G1_form_Alterar G1_form_Login" onSubmit={(event) => AlteraSenha(event)}>
+                            {/* <div className="G1_inputLabel">
+                                
                                     <input type="password" name="SenhaAtual" placeholder="Digite sua senha atual" value={senhaAtual} onChange={(evt) => setSenhaAtualUsuario(evt.target.value)} />
-                              
+                                    
                                 
                                     <label className="G1_inputLabel label" for="SenhaAtual">Senha Atual</label>
-                                
-                            </div>
+                                    
+                            </div> */}
 
                             <div className="G1_inputLabel">
                                 <input type="password" name="senhaNova" placeholder="Digite sua senha nova" value={senhaNova} onChange={(evt) => setSenhaNovaUsuario(evt.target.value)} />

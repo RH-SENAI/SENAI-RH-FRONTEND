@@ -14,7 +14,7 @@ export default function EsqueciSenha() {
     const [codigo, setCodigo] = useState('');  
     const [isActiveCodigo, setIsActiveCodigo] = useState(false);
     const isRec = true;  
-    const notify_Logar_Failed = () => toast.error("Algo deu errado! Tente novamente mais tarde!")
+    const notify_Logar_Failed = () => toast.error("Código Incorreto!")
     const history = useHistory();
     
     
@@ -56,11 +56,7 @@ export default function EsqueciSenha() {
         .then(response => {
             if(response.status === 200){
                 history.push({
-                    pathname: '/AlterarSenha/',
-                    state: {
-                        isRec : isRec,
-                        emailUser : email
-                    }
+                    pathname: '/AlterarSenhaRec/'                    
                 })
             }
         })
