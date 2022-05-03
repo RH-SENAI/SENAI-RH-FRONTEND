@@ -11,7 +11,6 @@ import {
     parseJwt
     // usuarioAutenticado
 } from '../../services/auth';
-import { parseJwt } from "../../services/auth";
 
 
 export default function CadastrarAtividades() {
@@ -121,7 +120,7 @@ export default function CadastrarAtividades() {
         <div className="div_container">
             <Modall usuarios={listaUsuarios} showModal={showModal} setShowModal={setShowModal} />
             <ToastContainer
-                position="bottom-center"
+                position="top-right"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
