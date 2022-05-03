@@ -70,6 +70,25 @@ export default function Carometro() {
             .catch(erro => console.log(erro))
 
     }
+    // function BuscarCargos() {
+    //     axios.get('http://localhost:5000/api/Cargos/Listar', {
+    //         headers: {
+
+    //             Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+    //         }
+    //     }
+    //     )
+
+    //         .then((resposta) => {
+    //             if (resposta.status === 200) {
+    //                 setListaCargo(resposta.data)
+    //                 console.log(resposta)
+    //             }
+    //         })
+
+    //         .catch(erro => console.log(erro))
+    // }
+
     function ExcluirPerfil(idUsuario) {
         axios.delete('http://localhost:5000/api//Excluir/' + idUsuario, {
             headers: {
@@ -89,6 +108,37 @@ export default function Carometro() {
             .catch(erro => console.log(erro))
     }
 
+    const [procurarUsuarios, setProcurarUsuarios] = useState([]);
+    const [filteredResults, setFilteredResults] = useState([]);
+
+
+    const searchItems = (searchValue) => {
+        setProcurarUsuarios(searchValue)
+        if (procurarUsuarios !== '') {
+            const filteredData = listaFuncionarios.filter((item) => {
+                return Object.values(item.nome).join('').toLowerCase().includes(procurarUsuarios.toLowerCase())
+            })
+            setFilteredResults(filteredData)
+        } else {
+            setFilteredResults(listaFuncionarios)
+        }
+    }
+
+    // const [procurarCargo, setProcurarCargo] = useState([]);
+
+    // const searchCargo = (searchValue) => {
+    //     setProcurarCargo(searchValue)
+    //     if (procurarCargo !== 0) {
+    //         const filteredData = listaCargo.filter((item) => {
+    //             return Object.values(item.idCargoNavigation.idCargo).join().includes(procurarCargo)
+    //         })
+    //         setFilteredResults(filteredData)
+    //     } else {
+    //         setFilteredResults(listaCargo)
+    //     }
+    // }
+
+
 
 
 
@@ -96,6 +146,7 @@ export default function Carometro() {
 
 
     useEffect(BuscarFuncionario, [])
+    // useEffect(BuscarCargos, [])
 
     return (
         <body>
@@ -113,23 +164,70 @@ export default function Carometro() {
                                     <img className="g3_topImgCarometro  animate__animated animate__fadeInUp" src={topCarometro} />
                                 </div>
                                 <div className='g3_navBarCarometro  animate__animated animate__fadeInUp'>
+                                    <label ></label>
+                                    <input
+                                        className='g3_inputPesquisaCarometro'
+                                        type="search"
+                                        placeholder='Pesquisar'
+                                        // autoComplete='off'
+                                        list='usuario'
+                                        onChange={(e) => searchItems(e.target.value)}
+                                    />
 
+                                    {/* <select
+                                            name="Cargo"
+                                            value={idCargo}
+                                            onChange={(e) => searchCargo(e.target.value)}
+                                            list='cargo'
+                                            className="g3_inputCadastroSelect"
+
+                                        >
+                                            <option value="#">Cargo</option>
+                                            {
+                                                listaCargo.map((event) => {
+                                                    return (
+
+                                                        <option key={event.idCargo} value={event.idCargo}>{event.nomeCargo}
+                                                        </option>
+                                                    );
+                                                })}
+
+                                        </select> */}
                                 </div>
                             </div>
                             <div className='g3_cardsCarometro animate__animated animate__fadeInUp'>
                                 {
-                                    listaFuncionarios.reverse().map((usuario) =>{
-                                        return(
-                                            <div className='g3_cardUsuario'>
-                                                <img className='g3_fotoCarometro' src={'http://localhost:5000/StaticFiles/Images/' + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
-                                                <span className="g3_spanCarometro">{usuario.nome}</span>
-                                                <span className="g3_spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
-                                            </div>
+                                        
+                                    procurarUsuarios.length > 0 ?
+
+
+
+                                        filteredResults.reverse().map((usuario) => {
+                                            return (
+                                                <div>
+                                                    <div className='g3_cardUsuario'>
+                                                        <img className='g3_fotoCarometro' src={"https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples/" + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
+                                                        <span className="g3_spanCarometro">{usuario.nome}</span>
+                                                        <span className="g3_spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                        
+                                        :
+                                        listaFuncionarios.reverse().map((usuario) => {
+                                            return (
+                                                <div className='g3_cardUsuario'>
+                                                    <img className='g3_fotoCarometro' src={"https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples/" + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
+                                                    <span className="g3_spanCarometro">{usuario.nome}</span>
+                                                    <span className="g3_spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
+                                                </div>
+
+                                            )
+                                        }
 
                                         )
-                                    }
-
-                                    )
+   
                                 }
                             </div>
 
@@ -139,7 +237,7 @@ export default function Carometro() {
                     </div>
 
                 </main>
-            <Footer />
+                <Footer />
             </div>
         </body>
     )
