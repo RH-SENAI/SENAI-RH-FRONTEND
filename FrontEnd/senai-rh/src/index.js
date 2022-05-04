@@ -17,6 +17,8 @@ import ListaBeneficios from './pages/vantagens/listaBeneficios';
 import CadastroBeneficios from './pages/vantagens/cadastroBeneficio';
 import CadastrarEmpresa from './pages/empresas/cadastrarEmpresas';
 import Perfil from './pages/perfil/perfil';
+import MeusFavoritos from './pages/favorito/favorito';
+import RequisicaoFuncionario from './pages/requisicaoFuncionarios/requisicaoFuncionario';
 
 const routing = (
   <Router>
@@ -29,6 +31,8 @@ const routing = (
         <Route  path="/beneficios" component={ListaBeneficios} />
         <Route  path="/cadastrarEmpresa" component={CadastrarEmpresa} />
         <Route  path="/perfil" component={Perfil} />
+        <Route  path="/meusFavoritos" component={MeusFavoritos} />
+        <Route  path="/requisicaoFuncionario" component={RequisicaoFuncionario} />
         <Route  path="/beneficiosCadastrar" component={CadastroBeneficios} />
       </Switch>
     </div>

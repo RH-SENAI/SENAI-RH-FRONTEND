@@ -80,9 +80,9 @@ export default function ListaBeneficios() {
             <HeaderFuncionario />
 
             <div className="container">
-            <div className='title_caixa_g2'>
-                    <h1 className='h1_g2'>Vantagens</h1>
-                    <div className='caixa_g2'>
+                <div className='title_caixa_beneficio_g2'>
+                    <h1 className='h1_beneficio_g2'>Vantagens</h1>
+                    <div className='caixa_beneficio_g2'>
                         <label ></label>
                         <input
                             type="search"
@@ -95,7 +95,7 @@ export default function ListaBeneficios() {
                 </div>
 
 
-                <section className="container_cursos_g2">
+                <section className="container_beneficio_g2">
 
 
                     <div className='wrap_beneficio_g2'>
@@ -105,11 +105,10 @@ export default function ListaBeneficios() {
 
                                     filteredResults.map((beneficio) => {
                                         return (
-                                            <div className='espacamento_g2'>
-                                                <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_cursos_g2'>
+                                            <div className='espacamento_beneficio_g2'>
+                                                <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_beneficio_g2'>
                                                     <div className='banner_img_beneficio_g2'>
-                                                        {<img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
-                                                        {/* {<img  onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idCurso)} className='banner' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + beneficio.caminhoImagemCurso} alt="imagem do curso" />} */}
+                                                        {<img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
                                                     </div>
 
                                                     <div className="dados_beneficio_gp2">
@@ -117,14 +116,14 @@ export default function ListaBeneficios() {
 
                                                         <div>avaliacao</div>
 
-                                                        <div className="box_baixo_section_g2">
-                                                            {<div className='circulo_coracao2_g2'>
-                                                                <img className='coracao_g2' src={coin} alt="favorito" />  1200
+                                                        <div className="box_baixo_section_beneficio_g2">
+                                                            {<div className='circulo_moeda_beneficio_g2'>
+                                                                <img className='coin_beneficio_g2' src={coin} alt="coin" />  1200
                                                             </div>}
-                                                            <div className="media_beneficio_g2">
-                                                                <img src={coracao} alt="" />
+                                                            <div>
+                                                                <img src={coracao} alt="favorito" />
                                                             </div>
-                                                            {/* <div> <button onClick={() => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
+                                                            {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
                                                         </div>
                                                     </div>
                                                 </section>
@@ -136,12 +135,12 @@ export default function ListaBeneficios() {
 
                                     listaBeneficios.map((beneficio) => {
                                         return (
-                                            <div className='espacamento_g2'>
+                                            <div className='espacamento_beneficio_g2'>
 
 
-                                                <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_cursos_g2'>
+                                                <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_beneficio_g2'>
                                                     <div className='banner_img_beneficio_g2'>
-                                                        {<img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
+                                                        {<img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
                                                         {/* {<img  onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idCurso)} className='banner' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + beneficio.caminhoImagemCurso} alt="imagem do curso" />} */}
                                                     </div>
 
@@ -150,9 +149,9 @@ export default function ListaBeneficios() {
 
                                                         <div>avaliacao</div>
 
-                                                        <div className="box_baixo_section_g2">
-                                                            {<div className='circulo_coracao2_g2'>
-                                                                <img className='coracao_g2' src={coin} alt="favorito" />  1200
+                                                        <div className="box_baixo_section_beneficio_g2">
+                                                            {<div className='circulo_moeda_beneficio_g2'>
+                                                                <img className='coin_g2' src={coin} alt="favorito" />  1200
                                                             </div>}
                                                             <div className="media_beneficio_g2">
                                                                 <img src={coracao} alt="" />

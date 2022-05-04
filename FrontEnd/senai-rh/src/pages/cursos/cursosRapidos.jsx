@@ -85,9 +85,9 @@ export default function CursosRapidos() {
 
 
             <div className='container'>
-                <div className='title_caixa_g2'>
-                    <h1 className='h1_g2'>Cursos</h1>
-                    <div className='caixa_g2'>
+                <div className='title_caixa_curso_g2'>
+                    <h1 className='h1_curso_g2'>Cursos</h1>
+                    <div className='caixa_curso_g2'>
                         <label ></label>
                         <input
                             type="search"
@@ -99,38 +99,37 @@ export default function CursosRapidos() {
                     </div>
                 </div>
 
-                <section className='container_cursos_g2'>
+                <section className='container_curso_g2'>
 
-                    <div className='wrap_g2'>
-                        <ul className='container_wrap_g2'>
+                    <div className='wrap_curso_g2'>
+                        <ul className='container_wrap_curso_g2'>
                             {
 
                                 searchInput.length > 0 ?
 
                                     filteredResults.map((curso) => {
                                         return (
-                                            <div className='espacamento_g2'>
-                                                <section alt={curso.idCurso} key={curso.idCurso} id='imagem' className='box_cursos_g2'>
-                                                    <div className='banner_img_g2'>
-                                                        {<img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='banner_g2' src={'http://localhost:5000/img/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
-                                                        {/* {<img  onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='banner_g2' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + curso.caminhoImagemCurso} alt="imagem do curso" />} */}
+                                            <div className='espacamento_curso_g2'>
+                                                <section alt={curso.idCurso} key={curso.idCurso} id='imagem' className='box_curso_g2'>
+                                                    <div className='banner_img_curso_g2'>
+                                                        {<img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
                                                     </div>
-                                                    {<span onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
-                                                    {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
-                                                    {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}  </p>}
-                                                    {/* {<div className='circulo_coracao'>
-                                                <img className='coracao' src={coracao} alt="" />
-                                            </div>} */}
-                                                    {/* <div> <button onClick={ () => Excluir(curso.idCurso)} >Excluir</button></div> */}
-                                                    <div className="box_baixo_section_g2">
 
-                                                        {<div className='circulo_coracao_g2'>
-                                                            <img className='coracao_g2' src={coin} alt="favorito" />
-                                                        </div>}
-                                                        <div className="media_beneficio_g2">
-                                                            <img src={estrelaSozinha} alt="" /> <p>{curso.mediaAvaliacaoCurso}</p>
+                                                    <div className='dados_curso_gp2'>   
+
+                                                        {<span onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso} ID:{curso.idCurso}</span>}
+                                                        {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
+                                                        {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}  </p>}
+                                                        <div className="box_baixo_section_curso_g2">
+
+                                                            {<div className='circulo_moeda_curso_g2'>
+                                                                <img className='coin_curso_g2' src={coin} alt="favorito" /> 1200
+                                                            </div>}
+                                                            <div className="media_beneficio_g2">
+                                                                <img src={coracao} alt="favoritar" />
+                                                            </div>
+                                                            {/* <div> <button onClick={ () => Excluir(curso.idCurso)} >Excluir</button></div> */}
                                                         </div>
-                                                        {/* <div> <button onClick={ () => Excluir(curso.idCurso)} >Excluir</button></div> */}
                                                     </div>
                                                 </section>
                                             </div>
@@ -139,28 +138,27 @@ export default function CursosRapidos() {
                                     :
                                     listaCursos.map((curso) => {
                                         return (
-                                            <div className='espacamento_g2'>
-                                                <section alt={curso.idCurso} key={curso.idCurso} id='imagem' className='box_cursos_g2'>
-                                                    <div className='banner_img_g2'>
-                                                        {<img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='banner_g2' src={'http://localhost:5000/img/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
-                                                        {/* {<img  onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='banner_g2' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + curso.caminhoImagemCurso} alt="imagem do curso" />} */}
+                                            <div className='espacamento_curso_g2'>
+                                                <section alt={curso.idCurso} key={curso.idCurso} id='imagem' className='box_curso_g2'>
+                                                    <div className='banner_img_curso_g2'>
+                                                        {<img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
                                                     </div>
-                                                    {<span onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
-                                                    {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
-                                                    {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}  </p>}
-                                                    {/* {<div className='circulo_coracao'>
-                                                <img className='coracao' src={coracao} alt="" />
-                                            </div>} */}
-                                                    {/* <div> <button onClick={ () => Excluir(curso.idCurso)} >Excluir</button></div> */}
-                                                    <div className="box_baixo_section_g2">
 
-                                                        {<div className='circulo_coracao_g2'>
-                                                            <img className='coracao_g2' src={coin} alt="favorito" />
-                                                        </div>}
-                                                        <div className="media_beneficio_g2">
-                                                            <img src={estrelaSozinha} alt="" /> <p>{curso.mediaAvaliacaoCurso}</p>
+                                                    <div className='dados_curso_gp2'>   
+
+                                                        {<span onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso} ID:{curso.idCurso}</span>}
+                                                        {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
+                                                        {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}  </p>}
+                                                        <div className="box_baixo_section_curso_g2">
+
+                                                            {<div className='circulo_moeda_curso_g2'>
+                                                                <img className='coin_curso_g2' src={coin} alt="favorito" /> 1200
+                                                            </div>}
+                                                            <div className="media_beneficio_g2">
+                                                                <img src={coracao} alt="favoritar" />
+                                                            </div>
+                                                            {/* <div> <button onClick={ () => Excluir(curso.idCurso)} >Excluir</button></div> */}
                                                         </div>
-                                                        {/* <div> <button onClick={ () => Excluir(curso.idCurso)} >Excluir</button></div> */}
                                                     </div>
                                                 </section>
                                             </div>

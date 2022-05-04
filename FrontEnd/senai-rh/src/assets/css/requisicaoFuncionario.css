@@ -1,0 +1,14 @@
+.title_caixa_requisicaoFuncionario_g2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 65%;
+    height: 15vh;
+}
+
+.h1_requisicaoFuncionario_g2 {
+    font-size: 3em;
+    /* margin-left:  99px; */
+    color: #000000;
+    font-weight: bold;
+}
