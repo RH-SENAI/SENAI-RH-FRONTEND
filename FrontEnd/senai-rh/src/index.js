@@ -10,17 +10,17 @@ import {
 import './index.css';
 import cadastro from './pages/cadastrarUsuario/cadastrarUsuario';
 import TelaAcesso from './pages/acesso/telaAcesso'
-import login from './pages/login/login.jsx';
 import atualizarPerfil from './pages/atualizarUsuario/atualizarUsuario';
 import reportWebVitals from './reportWebVitals';
-import carometro from './pages/carometro/carometro';
 import democratizacao from './pages/democratizacao/democratizacao';
 import democratizacaoAdm from './pages/democratizacao/democratizacaoAdm';
 import redirecionar from './pages/redirecionar/redirecionar';
 import redirecionarADM from './pages/redirecionar/redirecionarADM';
-import perfil from './pages/perfil/perfil';
 import decisao from './pages/democratizacao/decisoes';
 import rankingAcompanhar from './pages/ranking/rankingAcompanhar';
+import Carometro from './pages/carometro/carometro';
+import Login from './pages/login/login.jsx';
+import Dashboard from './pages/dashboard/dashboardFuncionario';
 // import reportWebVitals from './reportWebVitals';
 
 
@@ -28,15 +28,15 @@ const routing = (
   <Router>
     <div>
       <Switch>
-      <Route path="/carometro" component={carometro}/>
+      <Route path="/carometro" component={Carometro}/>
       <Route exact path="/" component={TelaAcesso}/>
-      <Route path="/login" component={login}/>
+      <Route path="/login" component={Login}/>
       <Route path="/cadastro" component={cadastro}/> 
       <Route path ="/atualizar" component={atualizarPerfil}/>
       <Route exact path="/democratizacao/:iddecisao" component={democratizacao}/>
       <Route exact path="/democratizacaoAdm" component={democratizacaoAdm}/>
       <Route path="/redirecionar" component={redirecionar} />
-      <Route path="/perfil" component={perfil} />
+      <Route path="/dashboard" component={Dashboard} />
       <Route path="/redirecionarADM" component={redirecionarADM} />
       <Route path="/decisao" component={decisao} />
       <Route path="/rankingAcompanhar" component={rankingAcompanhar} />
