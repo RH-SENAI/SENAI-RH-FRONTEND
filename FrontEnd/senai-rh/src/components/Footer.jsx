@@ -1,14 +1,16 @@
-import React from "react"
+import React, { Component } from "react"
 import '../Assets/css/footer.css'
 
-export default function Footer() {
-    return (
-        <div>
+export default class Footer extends Component {
+    render() {
+        return (
             <footer>
-                <p className="pFooter">
-                    Todos os direitos reservados.
-                </p>
+                
+                    <p className="pFooter">
+                    © 2022 SESI SENAI RH    
+                    </p>
+                
             </footer>
-        </div>
-    )
+        )
+    }
 }

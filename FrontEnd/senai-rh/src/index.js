@@ -13,13 +13,15 @@ import AlterarSenha from './Pages/AlterarSenha/alterarSenha';
 import AlterarSenhaRec from './Pages/AlterarSenha/alterarSenhaRec';
 import esqueciMinhaSenha from './Pages/EsqueciMinhaSenha/esqueciMinhaSenha'
 import Login from './Pages/Login/login';
-import Atividades from './Pages/TodasAtividades/todasAtividades'
+import Atividades from './Pages/TodasAtividades/todasAtividades';
+import Redirect from './Pages/Redirecionamento/redirecionamento';
 
 const routing = (
   <Router>
     <div>
       <Switch>
         <Route exact path="/" component = {Login} /> 
+        <Route path="/Redirecionamento" component = {Redirect} /> 
         <Route path = "/cadastrarAtividades" component = {CadastrarAtividades}/>
         <Route path = "/validarAtividades" component = {ValidarAtividades}/>
         <Route path = "/AlterarSenha" component = {AlterarSenha}/>
