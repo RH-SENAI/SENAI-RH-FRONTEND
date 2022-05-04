@@ -1,5 +1,5 @@
 /* ==============================   MODAL   ===============================================    */
-
+/* 
 .foto_perfil_modal {
     width: 157px;
     height: 157px;
@@ -53,4 +53,171 @@
 .span_value_modal {
     font-size: 27px;
     margin-left: 10px;
+} */
+:root {
+    --modal-duration: 1s;
+    --modal-color: #428bca;
+}
+
+.button {
+    background-color: #f2f2f2;
+    padding: 1em 2em;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    /* background: #dbdbdb; */
+    /* filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.35)); */
+    box-shadow: 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.ReactModal__Overlay {
+    background: rgba(201, 201, 201, 0.4) !important;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.ReactModal__Content {
+    margin: 1% auto;
+    width: 60%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+}
+
+
+.modal-content {
+    margin: 1% auto;
+    width: 60%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    height: 600px;
+    padding: 10px 90px;
+    background: #fff;
+}
+
+.close {
+    color: #ccc;
+    float: right;
+    font-size: 30px;
+    color: #fff;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes modalopen {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.titulo_atividade_modal {
+    font-size: 45px;
+    font-weight: 500;
+    color: #0E0E0E;
+    margin: 20px 0;
+}
+
+.organizar_sessao_modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label_modal {
+    font-size: 25px;
+    font-weight: 500;
+    color: #0E0E0E;
+    margin: 20px 0;
+}
+
+.descricao_atividade_modal {
+    /* width: 100%; */
+    margin: 20px 0;
+    font-size: 30px;
+}
+
+.organizar_btn {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.btn_fechar_modal {
+    font-size: medium;
+    font-weight: 600;
+    color: #B83F52;
+    height: 60px;
+    width: 120px;
+    margin: 60px 0 30px 0;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    background-color: #fff;
+}
+
+.btn_fechar_modal:hover {
+    /* background-color: #f1f1f1; */
+    box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+}
+
+.btn_validar_modal {
+    font-size: medium;
+    font-weight: 600;
+    color: #08b810;
+    height: 60px;
+    width: 120px;
+    margin: 60px 0 30px 0;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
+    background-color: #fff;
+}
+
+.btn_validar_modal:hover {
+    /* background-color: #f1f1f1; */
+    box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
 }

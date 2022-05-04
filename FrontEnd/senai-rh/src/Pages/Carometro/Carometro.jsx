@@ -90,7 +90,7 @@ export default function Carometro() {
     // }
 
     function ExcluirPerfil(idUsuario) {
-        axios.delete('http://localhost:5000/api//Excluir/' + idUsuario, {
+        axios.delete('http://localhost:5000/api/Excluir/' + idUsuario, {
             headers: {
 
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
