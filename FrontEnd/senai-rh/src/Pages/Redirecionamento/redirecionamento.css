@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.G1_Redirect_Body{
+    background-color: #e4e4e4;
+}
+
+.G1_box_titulo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 33vw;
+    margin-bottom: 5vh;
+}
+
+.G1_titulo_redirecionamento{
+    text-transform: uppercase;
+    color: #2A2E32;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 50px;
+    margin: 0;
+}
+
+.G1_titulo2_redirecionamento{
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 350px;
+    font-weight: 300;
+    font-size: 40px; 
+}
+
+.G1_box_Acompanhar{
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+}
