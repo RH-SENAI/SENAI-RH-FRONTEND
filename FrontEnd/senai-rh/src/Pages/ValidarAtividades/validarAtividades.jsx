@@ -1,44 +1,78 @@
-// import { useState, useEffect } from 'react';
-// import axios from 'axios';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../../Assets/css/gp1style.css'
-import Rodape from '../../components/Footer';
-import Header from '../../components/Header/headerFuncionario';
-// import { Link } from 'react-router-dom'
-import img_olho from '../../Assets/img/Olho_Atividades.png'
+import { Link, useHistory } from 'react-router-dom'
+import { Modall } from '../../components/Modal'
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Header from '../../components/Header/headerAdm'
+import moedas from '../../Assets/img/moedinha.svg'
 
-export default function ValidarAtividades() {
+
+export default function TodasAtividades() {
+    const [listaAtividades, setListaAtividades] = useState([]);
+    const [idAtividade, setIdAtividade] = useState('');
+    const [showModal, setShowModal] = useState(false);
+    const [showModalValidar, setShowModalValidar] = useState(false);
+    const [idAtividadeModal, setIdAtividadeModal] = useState()
+    const [isLoading, setIsLoading] = useState(false);
+
+    const OpenModal = () => {
+        setShowModal(prev => !prev);
+    }
+
+    function listarAtividades() {
+        axios.get("http://localhost:5000/api/Atividades"
+            , {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            })
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    setListaAtividades(resposta.data)
+                    console.log(resposta.data)
+                }
+            })
+
+            .catch(erro => console.log(erro))
+    };
+
+
+    useEffect(listarAtividades, []);
 
     return (
-        <div className="div_container">
+        <div className="G1_tela_atividades_container">
+            <Modall atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)} showModal={showModal} setShowModal={setShowModal} />
             <Header />
-            <div className="container_">
-                <div className="container_cards">
-                    <div>
-                        <div className="container_card_atividades">
-                            <h1>Validar Atividades</h1>
-                            <div className='container_atividades'>
-                                <div className='box_atividade'>
-                                    <div className='organizar_atividade'>
-                                        <h2 className='titulo_atividade'>Titulo da Atividade</h2>
-                                        <p className='descricao_atividade'>Descrição da Atividade ....</p>
+            <main className="container_atividades">
+                <div className="G1_organizar_main">
+                    <h1 className="G1_titulo_atividades">Validar Atividades</h1>
+                    <div className="G1_container_atividades">
+                        {listaAtividades.map((atividade) => {
+                            return (
+                                <div key={atividade.idAtividade}>
+                                    <div className="G1_atividade_box">
+                                        <div className="G1_header_atividade"></div>
+                                        <div className="G1_box_container">
+                                            <div className="G1_organizar_spams">
+                                                <span className="G1_titulo_atividade_box">{atividade.nomeAtividade}</span>
+                                                <span className="G1_recompensa_box">{atividade.recompensaMoeda} CashS <img src={moedas} alt="moedas" /></span>
+                                            </div>
+                                            <p className="G1_descricao_atividade">{atividade.descricaoAtividade}</p>
+                                            <div className="G1_organizar_btn">
+                                                <button onClick={OpenModal} onClickCapture={() => setIdAtividadeModal(atividade.idAtividade)} className="G1_btn_vizualizar">Visualizar</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <img className='img_olho' src={img_olho} alt="Icone de um olho" />
                                 </div>
-                                <hr className='linha_atividade' />
-                                <div className='box_atividade'>
-                                    <div className='organizar_atividade'>
-                                        <h2 className='titulo_atividade'>Titulo da Atividade</h2>
-                                        <p className='descricao_atividade'>Descrição da Atividade ....</p>
-                                    </div>
-                                    <img className='img_olho' src={img_olho} alt="Icone de um olho" />
-                                </div>
-                                <hr className='linha_atividade' />
-                            </div>
-                        </div>
+                            )
+                        })}
                     </div>
                 </div>
-                <Rodape />
-            </div>
+            </main>
         </div>
     );
+
 }

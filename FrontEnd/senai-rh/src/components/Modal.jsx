@@ -7,8 +7,27 @@ import '../Assets/css/gp1style.css'
 
 export const Modall = ({ showModal, setShowModal, atividade }) => {
     const modalRef = useRef();
+    // const [nomeGestor, setNomeGestor] = useState('');    
 
-    let history = useHistory();
+    // function listarGestor() {
+    //     let idGestor = atividade.idGestorCadastro
+    //     axios.get("http://localhost:5000/api/Usuarios/BuscarUsuario/" + idGestor
+    //         , {
+    //             headers: {
+    //                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+    //             }
+    //         })
+    //         .then(resposta => {
+    //             if (resposta.status === 200) {
+    //                 setNomeGestor(resposta.data.nome)
+    //                 console.log(resposta.data.nome)
+    //             }
+    //         })
+
+    //         .catch(erro => console.log(erro))
+    // };
+
+    // useEffect( () => {listarGestor()}, []);
 
     const closeModal = e => {
         setShowModal(false);
@@ -35,7 +54,6 @@ export const Modall = ({ showModal, setShowModal, atividade }) => {
         [keyPress]
     );
 
-
     return (
         <>
             {showModal ? (
@@ -43,16 +61,23 @@ export const Modall = ({ showModal, setShowModal, atividade }) => {
                     isOpen={showModal}
                     onRequestClose={closeModal}
                 >
+                        <div className="G1_header_atividade"></div>
                     <div class="modal-body">
                         <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
                         <div className='organizar_sessao_modal'>
-                            <label className='label_modal'>Descrição</label>
-                            <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                            <div>
+                                <label className='label_modal'>Descrição</label>
+                                <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                            </div>
+                            <div>
+                                <label className='label_modal'>Gestor Criador</label>
+                                <p className="descricao_atividade_modal">{atividade.idGestorCadastro}</p>
+                            </div>
                         </div>
                         {/* <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
                         <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p> */}
                         <div className="organizar_btn">
-                            <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
+                            <button className="G1_btn_vizualizar" onClick={closeModal}>Fechar</button>
                             {/* {atividade.necessarioValidar && (
                                 <button className="btn_validar_modal" onClick={validarAtividades(atividade)}>Validar</button>
                             )} */}

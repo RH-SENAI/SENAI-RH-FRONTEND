@@ -32,17 +32,19 @@ export default function TodasAtividades() {
             .then(resposta => {
                 if (resposta.status === 200) {
                     setListaAtividades(resposta.data)
-                    console.log(listaAtividades)
+                    console.log(resposta.data)
                 }
             })
 
             .catch(erro => console.log(erro))
     };
 
+
     useEffect(listarAtividades, []);
 
     return (
         <div className="G1_tela_atividades_container">
+            <Modall atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)} showModal={showModal} setShowModal={setShowModal} />
             <Header />
             <main className="container_atividades">
                 <div className="G1_organizar_main">
@@ -60,7 +62,7 @@ export default function TodasAtividades() {
                                             </div>
                                             <p className="G1_descricao_atividade">{atividade.descricaoAtividade}</p>
                                             <div className="G1_organizar_btn">
-                                                <button className="G1_btn_vizualizar">Visualizar</button>
+                                                <button onClick={OpenModal} onClickCapture={() => setIdAtividadeModal(atividade.idAtividade)} className="G1_btn_vizualizar">Visualizar</button>
                                             </div>
                                         </div>
                                     </div>

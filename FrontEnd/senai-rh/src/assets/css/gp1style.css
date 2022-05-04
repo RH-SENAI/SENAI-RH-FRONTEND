@@ -493,7 +493,6 @@ input:checked+label:after {
     animation-duration: var(--modal-duration);
 }
 
-
 .modal-content {
     margin: 1% auto;
     width: 60%;
@@ -508,9 +507,9 @@ input:checked+label:after {
     align-items: center;
     justify-content: space-between;
     border-radius: 5px;
-    height: 600px;
+    height: 90%;
     padding: 10px 90px;
-    background: #fff;
+    background: rgb(255, 255, 255);
 }
 
 .close {
@@ -547,7 +546,11 @@ input:checked+label:after {
 .organizar_sessao_modal {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-around;
+    /* align-items: center; */
+    /* background-color: #08b810; */
+    width: 35vw;
+    height: 40vh;
 }
 
 .label_modal {
@@ -587,7 +590,7 @@ input:checked+label:after {
     /* background-color: #f1f1f1; */
     box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
 }
-
+/* 
 .btn_validar_modal {
     font-size: medium;
     font-weight: 600;
@@ -602,6 +605,6 @@ input:checked+label:after {
 }
 
 .btn_validar_modal:hover {
-    /* background-color: #f1f1f1; */
+    background-color: #f1f1f1;
     box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
-}
+} */
