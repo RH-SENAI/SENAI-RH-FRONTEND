@@ -92,6 +92,7 @@ header{
     min-width: 100px;
     width: 100px !important;
     height: 52px;
+    cursor: pointer;
 }
 
 .G1_ArticleText{

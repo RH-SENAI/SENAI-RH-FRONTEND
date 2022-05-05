@@ -5,6 +5,7 @@ import laptop from '../../Assets/img/Laptop.png'
 import pig from '../../Assets/img/Pig.png'
 import tag from '../../Assets/img/tag.png'
 import "../../Pages/Redirecionamento/redirecionamento.css"
+import { Link } from 'react-router-dom';
 
 export default function Redirect() {
 
@@ -33,7 +34,7 @@ export default function Redirect() {
                             <div className='G1_ArticleText'>
                                 <h3> Acompanhamento </h3>
                                 <p>Acesse aqui para acompanhar seus funcionários, vizualizando seus respectivos níveis de satifação e muito mais!</p>
-                                <button className='G1_btn_Cadastrar' type="submit"> Entrar </button>
+                                <Link to='/'><button className='G1_btn_Cadastrar' type="button"> Entrar </button></Link>
                             </div>
                         </article>
                         <article className="G1_box_Article">
@@ -41,7 +42,7 @@ export default function Redirect() {
                             <div className='G1_ArticleText'>
                                 <h3> Motivações </h3>
                                 <p> Acesse aqui para vizualizar as atividades do sistema e gerenciar seus pontos!</p>
-                                <button className='G1_btn_Cadastrar' type="submit"> Entrar </button>
+                                <Link to='/TodasAtividades'><button className='G1_btn_Cadastrar' type="button"> Entrar </button></Link>
                             </div>
                         </article>
                         <article className="G1_box_Article">
@@ -49,7 +50,7 @@ export default function Redirect() {
                             <div className='G1_ArticleText'>
                                 <h3> Minhas Vantagens </h3>
                                 <p> Acesse aqui para vizualizar suas vantagens disponíveis e garantir seus descotnos e vantagens!</p>
-                                <button className='G1_btn_Cadastrar' type="submit"> Entrar </button>
+                                <Link to='/'><button className='G1_btn_Cadastrar' type="button"> Entrar </button></Link>
                             </div>
                         </article>
                     </div>
