@@ -5,13 +5,8 @@
     box-sizing: border-box;
 }
 
-.container {
-    max-width: 1440px;
-    width: 100%;
-    margin: 0 auto;
-}
 
-header {
+.header_g2 {
     height: 80px;
     background-color: #f2f2f2;
     color: #000000;
@@ -20,40 +15,40 @@ header {
     align-items: center;
 }
 
-.container_header {
+.container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container_header_g2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #f2f2f2;
 }
 
-.logo {
+.logo_header_g2 {
     margin-right: 30vw;
 }
 
 
 
-p {
+.header_g2 p {
     margin: 0;
 }
 
-.select :link {
+.select_header_g2:link {
     color: #000000;
     text-decoration: none;
     display: flex;
-    /* flex-direction: column; */
 }
 
 
-.img_logout {
-    width: 30px;
-    height: 30px;
-    background-color: #f2f2f2;
-    margin-right: 20px;
-}
 
 
-div.select {
+
+div.select_header_g2 {
     display: inline-block;
     border-radius: 2px;
     position: relative;
@@ -64,117 +59,94 @@ div.select {
     text-decoration: none;
 }
 
-.text_link {
-    margin-bottom: 30px;
-    /* border-bottom: 1px solid #000000; */
+.text_link_header_g2 {
     font-size: 1.1rem;
     font-weight: bold;
     text-decoration: none;
     color: #000000;
     display: flex;
     height: 45px;
-    /* justify-content: space-around; */
+    background-color: #fff !important;
+}
+.text_link_header_g2 span {
+    background-color: #fff !important;
+}
+.text_link_header_g2:hover {
+    border-radius: 10px;
+    
 }
 
-.textLink {
-    margin-bottom: 30px;
-    /* border-bottom: 1px solid #000000; */
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: #000000;
-    display: flex;
-    height: 45px;
-    /* justify-content: space-around; */
+
+.text_link_header_g2 span:hover{
+    color: #c20004;
+    transform: scale(1.05);
+    background-color: #fff !important;
 }
 
-.textLink:hover {
-    box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
-    /* background-color: #dcdcdc; */
-    border-radius: 20px;
-    width: 100%;
-    display: flex;
-    /* justify-content: center */
-    align-items: center;
-}
-
-/* .text_link:hover {
-    box-shadow: 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
-    background-color: #dcdcdc;
-    border-radius: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
-div.select p {
+div.select_header_g2 p {
     padding: 5px;
     width: 100%;
     text-decoration: none;
 }
 
-/* div.select:after {
-    content: "▼";
+div.select_header_g2 .hidden_header_g2::before{
+    content: "";
     position: absolute;
-    right: 6px;
-    top: 12px; 
-    font-size: 9px;
-} */
+    top: -20px;
+    left: 48px;
+    border: 10px solid;
+    border-color: transparent transparent #fff transparent;
+}
 
-div.select .hidden {
+div.select_header_g2 .hidden_header_g2 {
     position: absolute;
     visibility: hidden;
     opacity: 0;
     transition: .2s;
-    background: #f2f2f2;
+    background: #fff !important;
     z-index: 10;
     width: 30vw;
-    padding: 30px 10px 0;
-    border-radius: 10px;
-    border: 3px solid #b3b3b3;
-    border-top: none;
-
+    padding: 30px 0 0 20px;
+    border-radius:10px;
+    margin-top: 20px;
 }
 
-div.select:hover .hidden {
+.hidden_header_g2{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+div.select_header_g2:hover .hidden_header_g2 {
     visibility: visible;
     opacity: 1;
 }
 
-div.select p:hover, div.select:hover {
-    background-color: #f2f2f2;
+div.select_header_g2 p:hover, div.select_header_g2:hover {
+    background-color: #f2f2f2 ;
 }
 
-.input_motivacao {
+.input_motivacao_header_g2 {
     color: #000000;
+    text-decoration: none;
 }
 
-.circulo {
-    width: 50px;
-    height: 50px;
-    background-color: #f2f2f2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 60px;
-    box-shadow: 8px 12px 15px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
-
-}
-
-.img_perfil {
-    width: 25px;
-    height: 25px;
+.img_perfil_g2 {
     background-color: #f2f2f2;
 }
 
-.input img {
+.img_perfil_g2 img{
+    width: 3vw;
+    height: 3vh;
+}
+
+.input_header_g2 img {
     height: 15px;
 }
 
-.seta {
-    width: 25px;
-    height: 25px;
-    padding: 5px;
-    background-color: transparent;
+.img_logout_header_g2 {
+    width: 30px;
+    height: 30px;
+    background-color: #f2f2f2;
+    margin-right: 20px;
 }

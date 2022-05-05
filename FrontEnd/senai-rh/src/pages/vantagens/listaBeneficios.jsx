@@ -151,10 +151,10 @@ export default function ListaBeneficios() {
 
                                                         <div className="box_baixo_section_beneficio_g2">
                                                             {<div className='circulo_moeda_beneficio_g2'>
-                                                                <img className='coin_g2' src={coin} alt="favorito" />  1200
+                                                                <img className='coin_beneficio_g2' src={coin} alt="favorito" />  1200
                                                             </div>}
                                                             <div className="media_beneficio_g2">
-                                                                <img src={coracao} alt="" />
+                                                                <img src={coracao} alt="favoritar" />
                                                             </div>
                                                             {/* <div> <button onClick={() => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
                                                         </div>

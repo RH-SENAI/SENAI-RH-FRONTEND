@@ -10,55 +10,52 @@ import { useState } from 'react'
 
 
 export default function HeaderAdm() {
-    const [active, setMode] = useState(false);
-    const ToggleMode = () => {
-        setMode(!active)
-    }
+    // const [active, setMode] = useState(false);
+    // const ToggleMode = () => {
+    //     setMode(!active)
+    // }
     return (
-        <header>
-            <div className='container container_header' >
+        <header className='header_g2'>
+            <div className='container container_header_g2' >
+                <div className='logo_header_g2'>
+                    <Link to="/"> <img src={logo} alt="" /></Link>
+                </div>
 
-                <Link to="/"> <img className='logo' src={logo} alt="" /></Link>
-
-                <div class='select'>
-
-                    <p class='input'>Vantagens <img src={setaBaixo} /></p>
-
+                <div class='select_header_g2'>
+                    <p class='input_header_g2'>Vantagens <img src={setaBaixo} /></p>
                     <input type='hidden' name='some_name_tosetaBaixosetaBaixo_form' />
+                    <div class='hidden_header_g2'>
+                        <Link className="text_link_header_g2" to='/BeneficiosCadastrar' >  <span> Cadastrar Vantagem </span> </Link>
+                        <Link className="text_link_header_g2" to='/CadastrarCursos' > <span> Cadastrar Cursos </span>  </Link>
+                        <Link className="text_link_header_g2" to='/cadastrarEmpresa' > <span> Cadastrar Empresa </span>  </Link>
+                    </div>
+                </div>
 
-                    <div class='hidden'>
-
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/BeneficiosCadastrar' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Vantagem</Link>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/CadastrarCursos' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Cursos</Link>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='/cadastrarEmpresa' > <img className='seta' src={seta} alt="Seta" /> Cadastrar Empresa</Link>
-
+                <div class='select_header_g2'>
+                    <p class='input_header_g2'>Acompanhar<img src={setaBaixo} /> </p>
+                    <input type='hidden' name='some_name_to_form' />
+                    <div class='hidden_header_g2'>
+                        <Link className="text_link_header_g2" to='#' ><span>Carômetro</span> </Link>
+                        <Link className="text_link_header_g2" ><span>Dashboard</span> </Link>
+                        <Link className="text_link_header_g2" ><span>Democratização</span> </Link>
+                        <Link className="text_link_header_g2" ><span>Cadastrar Funcionário</span> </Link>
                     </div>
 
                 </div>
 
-                <div class='select'>
-                    <p class='input'>Acompanhar <img src={setaBaixo} /> </p>
-                    <input type='hidden' name='some_name_to_form' />
-                    <div class='hidden'>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} to='#' > <img className='seta' src={seta} alt="Seta" /> Carômetro</Link>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} > <img className='seta' src={seta} alt="Seta" /> Dashboard</Link>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} > <img className='seta' src={seta} alt="Seta" /> Democratização</Link>
-                        <Link onClick={ToggleMode} className={active ? "textLink" : "text_link"} > <img className='seta' src={seta} alt="Seta" /> Cadastrar Funcionário</Link>
-                    </div>
-
-                </div>
-
-                <div class='select'>
-                    <Link class='input input_motivacao'>Motivações</Link>
+                <div class='select_header_g2'>
+                    <Link class='input_header_g2 input_motivacao_header_g2'>Motivações</Link>
                     <input type='hidden' name='some_name_to_form' />
                 </div>
-                
-                
+
+                <div className="img_perfil_g2" >
+                    <Link to="/perfil"> <img src={Perfil} alt="Meu Perfil" /> </Link>
+                </div>
 
                 <img className='img_logout' src={logout} alt="logout" />
 
             </div>
 
-        </header>
+        </header >
     )
 }
