@@ -2,13 +2,32 @@ import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
 import '../Assets/css/gp1style.css'
 
 export const Modall = ({ showModal, setShowModal, atividade }) => {
     const modalRef = useRef();
+    // const [nomeGestor, setNomeGestor] = useState('');    
 
-    let history = useHistory();
+    // function listarGestor() {
+    //     let idGestor = atividade.idGestorCadastro
+    //     axios.get("http://localhost:5000/api/Usuarios/BuscarUsuario/" + idGestor
+    //         , {
+    //             headers: {
+    //                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+    //             }
+    //         })
+    //         .then(resposta => {
+    //             if (resposta.status === 200) {
+    //                 setNomeGestor(resposta.data.nome)
+    //                 console.log(resposta.data.nome)
+    //             }
+    //         })
+
+    //         .catch(erro => console.log(erro))
+    // };
+
+    // useEffect( () => {listarGestor()}, []);
 
     const closeModal = e => {
         setShowModal(false);
@@ -35,19 +54,25 @@ export const Modall = ({ showModal, setShowModal, atividade }) => {
         [keyPress]
     );
 
-
     return (
         <>
             {showModal ? (
-                <Modal
-                    isOpen={showModal}
-                    onRequestClose={closeModal}
+                <div
                 >
-                    <div class="modal-body">
-                        <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
+                    <div className="modal-body">
+                        <div className='G1_organizar_modal_titulo'>
+                            <div className="G1_header_atividade"></div>
+                            <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
+                        </div>
                         <div className='organizar_sessao_modal'>
-                            <label className='label_modal'>Descrição</label>
-                            <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                            <div>
+                                <label className='label_modal'>Descrição</label>
+                                <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                            </div>
+                            <div>
+                                <label className='label_modal'>Gestor Criador</label>
+                                <p className="descricao_atividade_modal">{atividade.idGestorCadastro}</p>
+                            </div>
                         </div>
                         {/* <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
                         <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p> */}
@@ -58,7 +83,7 @@ export const Modall = ({ showModal, setShowModal, atividade }) => {
                             )} */}
                         </div>
                     </div>
-                </Modal>
+                </div>
             ) : null}
         </>
     );

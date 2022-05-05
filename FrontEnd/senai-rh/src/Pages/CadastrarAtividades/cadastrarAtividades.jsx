@@ -7,11 +7,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import Logo from "../../Assets/img/logo1.svg"
 import bannerCadastrarAtividade from "../../Assets/img/bannerCadastrarAtividade.svg"
 import { Modall } from '../../components/modalUsuarios'
+import {
+    parseJwt
+    // usuarioAutenticado
+} from '../../services/auth';
 
 
 export default function CadastrarAtividades() {
     const [listaAtividades, setListaAtividades] = useState([]);
     const [listaUsuarios, setListaUsuarios] = useState([]);
+    const [listaUsuarioSelecionados, setListaUsuarioSelecionados] = useState([]);
     const [listaAtividadesValidar, setListaAtividadesValidar] = useState([]);
     const [idAtividade, setIdAtividade] = useState('');
     const [idUsuario, setIdUsuario] = useState('');
@@ -24,6 +29,7 @@ export default function CadastrarAtividades() {
     const [recompensaTrofeu, setRecompensaTrofeu] = useState('');
     const [descricaoAtividade, setDescricaoAtividade] = useState('');
     const [necessarioValidar, setNecessarioValidar] = useState(false);
+    
     const notify_cadastrar = () => toast.success("Atividade Cadastrada!");
     // const notify_validar = () => toast.success("Atividade Validada!");
     const notify_erroCadastrar = () => toast.error("Preencha todos os campos!");
@@ -36,19 +42,19 @@ export default function CadastrarAtividades() {
     }
     
     function listarUsuarios() {
-        axios("http://localhost:5000/api/Usuarios"
-        , {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
-        .then(resposta => {
-            if (resposta.status === 200) {
-                setListaUsuarios(resposta.data)
-                console.log(listaUsuarios)
-            }
-        })
-        
+        axios("http://localhost:5000/api/Usuarios/Funcionarios"
+            , {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            })
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    setListaUsuarios(resposta.data)
+                    console.log(resposta.data)
+                }
+            })
+
             .catch(erro => console.log(erro))
     };
 
@@ -58,6 +64,11 @@ export default function CadastrarAtividades() {
         setIsLoading(true);
         evento.preventDefault()
 
+        let idGestorCadastro = parseJwt().jti;
+        console.log("id do gestor aqui em baixo");
+
+        console.log(idGestorCadastro);
+
         await axios
             .post('http://localhost:5000/api/Atividades', {
                 idAtividade: idAtividade,
@@ -66,7 +77,9 @@ export default function CadastrarAtividades() {
                 recompensaMoeda: recompensaMoeda,
                 recompensaTrofeu: recompensaTrofeu,
                 descricaoAtividade: descricaoAtividade,
-                necessarioValidar: necessarioValidar
+                necessarioValidar: necessarioValidar,
+                idGestorCadastro: idGestorCadastro
+
             }, {
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -105,9 +118,9 @@ export default function CadastrarAtividades() {
 
     return (
         <div className="div_container">
-            <Modall usuarios={listaUsuarios} showModal={showModal} setShowModal={setShowModal}/>
+            <Modall usuarios={listaUsuarios} showModal={showModal} setShowModal={setShowModal} />
             <ToastContainer
-                position="bottom-center"
+                position="top-right"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
@@ -157,13 +170,14 @@ export default function CadastrarAtividades() {
                                 </div>
                             </div>
                             <div className='G1_organizar_inputs'>
-                                <button className='G1_btn_modal' onClick={OpenModal} type="submit">Selecione um Usuário</button>
+                                <button className='G1_btn_modal' onClick={OpenModal} type="button" >Selecione um Usuário</button>
                             </div>
                         </div>
                         <div className='G1_div_ToggleValidar'>
                             <label classname="G1_label_precisaValidar">Precisa Validar</label>
                             <div className='G1_organizar_switchBtn'>
-                                <input type="checkbox"
+                                <input className="checkbox_switch"
+                                    type="checkbox"
                                     id="switch"
                                     name="validar"
                                     value={necessarioValidar}

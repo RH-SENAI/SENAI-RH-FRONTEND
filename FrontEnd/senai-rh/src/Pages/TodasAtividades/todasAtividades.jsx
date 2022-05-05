@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../Assets/css/gp1style.css'
 import { Link, useHistory } from 'react-router-dom'
-import {ModallValidar} from '../../components/modalValidar'
+import { Modall } from '../../components/Modal'
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,16 +17,13 @@ export default function TodasAtividades() {
     const [showModalValidar, setShowModalValidar] = useState(false);
     const [idAtividadeModal, setIdAtividadeModal] = useState()
     const [isLoading, setIsLoading] = useState(false);
-    const [listaAtividadesValidar, setListaAtividadesValidar] = useState([]);
 
-    
-    const OpenModalValidar = () => {
-        setShowModalValidar(prev => !prev);
+    const OpenModal = () => {
+        setShowModal(prev => !prev);
     }
-    
 
-    function listarAtividadesValidar() {
-        axios("http://localhost:5000/api/Atividades/ListaValidar"
+    function listarAtividades() {
+        axios.get("http://localhost:5000/api/Atividades"
             , {
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -34,26 +31,26 @@ export default function TodasAtividades() {
             })
             .then(resposta => {
                 if (resposta.status === 200) {
-                    setListaAtividadesValidar(resposta.data)
-                    console.log(listaAtividadesValidar)
+                    setListaAtividades(resposta.data)
+                    console.log(resposta.data)
                 }
             })
 
             .catch(erro => console.log(erro))
-        console.log(listaAtividadesValidar)
     };
 
-    useEffect(listarAtividadesValidar, []);
+
+    useEffect(listarAtividades, []);
 
     return (
         <div className="G1_tela_atividades_container">
-            <ModallValidar atividade={listaAtividadesValidar.find(atividade => atividade.idAtividade == idAtividadeModal)} showModalValidar={showModalValidar} setShowModalValidar={setShowModalValidar} />
+            <Modall atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)} showModal={showModal} setShowModal={setShowModal} />
             <Header />
             <main className="container_atividades">
                 <div className="G1_organizar_main">
-                    <h1 className="G1_titulo_atividades">Validar Atividades</h1>
+                    <h1 className="G1_titulo_atividades">Todas Atividades</h1>
                     <div className="G1_container_atividades">
-                        {listaAtividadesValidar.map((atividade) => {
+                        {listaAtividades.map((atividade) => {
                             return (
                                 <div key={atividade.idAtividade}>
                                     <div className="G1_atividade_box">
@@ -65,10 +62,8 @@ export default function TodasAtividades() {
                                             </div>
                                             <p className="G1_descricao_atividade">{atividade.descricaoAtividade}</p>
                                             <div className="G1_organizar_btn">
-                                                <button type="button" onClick={() => {
-                                                    OpenModalValidar();
-                                                    setIdAtividadeModal(atividade.idAtividade);
-                                                }} className="G1_btn_vizualizar">Vizualizar</button>                                            </div>
+                                                <button onClick={OpenModal} onClickCapture={() => setIdAtividadeModal(atividade.idAtividade)} className="G1_btn_vizualizar">Visualizar</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

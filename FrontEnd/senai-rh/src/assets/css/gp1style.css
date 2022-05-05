@@ -29,7 +29,7 @@
     width: 50vw;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .G1_banner_CadastroAtividade {
@@ -80,7 +80,7 @@
     font-size: 40px;
 }
 
-.G1_form_Cadastrar{
+.G1_form_Cadastrar {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -89,20 +89,20 @@
     width: 33vw;
 }
 
-.G1_organizar_form{
+.G1_organizar_form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
 }
 
-.G1_organizar_inputs{
+.G1_organizar_inputs {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-.G1_btn_modal{
+.G1_btn_modal {
     min-width: 250px;
     width: 16vw;
     height: 5vh;
@@ -174,16 +174,16 @@
 
 }
 
-.G1_div_ToggleValidar{
+.G1_div_ToggleValidar {
     width: 100%;
     padding-left: 1.5vw;
 }
 
-.G1_label_precisaValidar{
+.G1_label_precisaValidar {
     width: 100%;
 }
 
-.G1_btn_Cadastrar{
+.G1_btn_Cadastrar {
     min-width: 250px;
     width: 25vw;
     height: 5vh;
@@ -200,6 +200,113 @@
 
 /* ==============================   Todas Atividades   ===============================================    */
 
+
+.G1_tela_atividades_container {
+    background-color: #f2f2f2;
+}
+
+.container_atividades {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.G1_organizar_main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 75vw;
+    /* background-color: #08b810;     */
+}
+
+.G1_titulo_atividades {
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 50px;
+    color: #2A2E32;
+}
+
+.G1_container_atividades {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    min-height: 28vh;
+}
+
+.G1_atividade_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 33vh;
+    width: 30vw;
+    background-color: #FFFFFF;
+    margin-bottom: 4vh;
+    border: 1px solid #B3B3B3;
+    border-radius: 10px;
+}
+
+.G1_header_atividade {
+    background-color: #2A2E32;
+    width: 100%;
+    height: 3.5vh;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.G1_box_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+}
+
+.G1_organizar_spams {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.G1_titulo_atividade_box {
+    font-family: 'Quicksand', sans-serif;
+    ;
+    color: #2A2E32;
+    font-size: 1.563rem;
+    font-weight: 600;
+}
+
+.G1_recompensa_box {
+    font-family: 'Quicksand', sans-serif;
+    ;
+    color: #2A2E32;
+    font-size: 1.563rem;
+    font-weight: 600;
+}
+
+.G1_descricao_atividade {
+    width: 100%;
+}
+
+.G1_organizar_btn {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+}
+
+.G1_btn_vizualizar {
+    background-color: #C20004;
+    color: #ffffff;
+    width: 7vw;
+    height: 4vh;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
 .container_card_atividades {
     display: flex;
     flex-direction: column;
@@ -213,30 +320,30 @@
     padding: 30px 0 75px 0;
 }
 
-.container_atividades {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 80%;
-    /* background-color: aqua; */
+.div_map {
+    width: 100%;
 }
 
 .box_atividade {
     display: flex;
     justify-content: space-between;
-    /* background-color: yellow; */
     align-items: center;
     width: 100%;
     height: 70px;
     margin: 30px 0;
 }
 
+.checkbox_usuario {
+    width: 20px;
+    height: 20px;
+}
+
 .organizar_atividade {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    width: 100%;
     height: 100%;
-    /* background-color: aqua; */
+    align-items: center;
 }
 
 .titulo_atividade {
@@ -264,7 +371,7 @@
 
 /* ==============================   Switch Button   ===============================================    */
 
-input[type=checkbox] {
+.checkbox_switch {
     height: 0;
     width: 0;
     visibility: hidden;
@@ -312,7 +419,7 @@ input:checked+label:after {
     /* margin-left: 6px; */
 }
 
-.G1_organizar_switchBtn{
+.G1_organizar_switchBtn {
     /* background-color: #08b810; */
     /* height: 100%; */
     width: 10%;
@@ -352,6 +459,29 @@ input:checked+label:after {
     box-shadow: 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
 }
 
+.G1_modal_window {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.25);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    height: 50vh;
+    width: 50vw;
+}
+
+.G1_close_modal {
+    z-index: 998;
+    background-color: rgb(87, 87, 87);
+    height: 100vh;
+    width: 100vw;
+}
+
 .modal {
     display: none;
     position: fixed;
@@ -388,7 +518,6 @@ input:checked+label:after {
     animation-duration: var(--modal-duration);
 }
 
-
 .modal-content {
     margin: 1% auto;
     width: 60%;
@@ -397,15 +526,56 @@ input:checked+label:after {
     animation-duration: var(--modal-duration);
 }
 
+/* .divona{
+    padding: 0px;
+} */
+
 .modal-body {
     display: flex;
+    right: 0;
+    left: 25%;
+    bottom: 0;
     flex-direction: column;
+    position: fixed;
     align-items: center;
     justify-content: space-between;
+    top: 12%;
     border-radius: 5px;
-    height: 600px;
-    padding: 10px 90px;
-    background: #fff;
+    height: 70vh;
+    width: 50vw;
+    /* padding: 10px 90px; */
+    background: rgb(255, 255, 255);
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.modal_body_validar {
+    display: flex;
+    right: 0;
+    left: 25%;
+    bottom: 0;
+    flex-direction: column;
+    position: fixed;
+    align-items: center;
+    justify-content: space-between;
+    top: 12%;
+    border-radius: 5px;
+    height: 70vh;
+    width: 50vw;
+    /* padding: 10px 90px; */
+    background: rgb(255, 255, 255);
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.G1_organizar_modal_titulo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: #B83F52; */
+    width: 100%;
+    height: 15vh;
 }
 
 .close {
@@ -442,7 +612,8 @@ input:checked+label:after {
 .organizar_sessao_modal {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+    height: 29vh;
 }
 
 .label_modal {
@@ -466,23 +637,39 @@ input:checked+label:after {
 }
 
 .btn_fechar_modal {
-    font-size: medium;
-    font-weight: 600;
-    color: #B83F52;
-    height: 60px;
-    width: 120px;
-    margin: 60px 0 30px 0;
+    background-color: #C20004;
+    color: #ffffff;
+    width: 10vw;
+    height: 6vh;
+    border-radius: 10px;
     border: none;
-    border-radius: 5px;
-    box-shadow: 12px 12px 15px rgba(166, 171, 189, 1), -12px -12px 15px rgba(255, 255, 255, 1);
-    background-color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-bottom: 5vh;
+    cursor: pointer;
+}
+
+.btn_validar_atividades{
+    background-color: #17d320;
+    color: #ffffff;
+    width: 10vw;
+    height: 6vh;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-bottom: 5vh;
+    cursor: pointer;
 }
 
 .btn_fechar_modal:hover {
     /* background-color: #f1f1f1; */
-    box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
+    /* box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1); */
 }
 
+/* 
 .btn_validar_modal {
     font-size: medium;
     font-weight: 600;
@@ -497,6 +684,6 @@ input:checked+label:after {
 }
 
 .btn_validar_modal:hover {
-    /* background-color: #f1f1f1; */
+    background-color: #f1f1f1;
     box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1);
-}
+} */

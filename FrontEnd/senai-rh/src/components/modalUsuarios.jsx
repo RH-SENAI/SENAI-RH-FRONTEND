@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import '../Assets/css/gp1style.css'
 
-export const Modall = ({ showModal, setShowModal, atividade }) => {
+export const Modall = ({ showModal, setShowModal, usuarios }) => {
+
+    const [listaUsuarios, setListaUsuarios] = useState([{}]);
     const modalRef = useRef();
 
     let history = useHistory();
@@ -35,6 +37,11 @@ export const Modall = ({ showModal, setShowModal, atividade }) => {
         [keyPress]
     );
 
+    async function setValue(value){
+        setListaUsuarios(value)
+        console.log(listaUsuarios)
+    }   
+
     return (
         <>
             {showModal ? (
@@ -43,18 +50,29 @@ export const Modall = ({ showModal, setShowModal, atividade }) => {
                     onRequestClose={closeModal}
                 >
                     <div class="modal-body">
-                        <h2 className="titulo_atividade_modal">{}</h2>
+                        <h2 className="titulo_atividade_modal">Selecionar Usuário</h2>
                         <div className='organizar_sessao_modal'>
-                            <label className='label_modal'>Descrição</label>
-                            <p className="descricao_atividade_modal">{}</p>
+                            {usuarios.map((usuario) => {
+                                return (
+                                    <div key={usuario.idUsuario} className="div_map">
+                                        <div className='box_atividade'>
+                                            <div className='organizar_atividade'>
+                                                <h2 className='titulo_atividade'>{usuario.nome}</h2>
+                                                <input className="checkbox_usuario" 
+                                                    type="checkbox"
+                                                    value={listaUsuarios}
+                                                    onChange={(e) => setValue(e.target.value)}
+                                                />
+
+                                            </div>
+                                        </div>
+                                        <hr className='linha_atividade' />
+                                    </div>
+                                )
+                            })}
                         </div>
-                        {/* <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p> */}
                         <div className="organizar_btn">
                             <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
-                            {/* {atividade.necessarioValidar && (
-                                <button className="btn_validar_modal" onClick={validarAtividades(atividade)}>Validar</button>
-                            )} */}
                         </div>
                     </div>
                 </Modal>

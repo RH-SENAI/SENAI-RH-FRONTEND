@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from "react"
+import React, { useState} from "react"
 import Logo from "../../Assets/img/logo1.svg"
 import bannerLogin from "../../Assets/img/bannerLogin.svg"
-import Footer from "../../components/Footer"
 import axios from 'axios';
 import '../../Pages/Login/login.css'
-import { Link, Redirect, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { parseJwt } from "../../services/auth";
 
 
 export default function Login() {
     const [cpfUsuario, setCPFUsuario] = useState('');
     const [senhaUsuario, setSenhaUsuario] = useState('');
-    const notify_Logar_Success = () => toast.success("Usuario Logado!");
     const notify_Logar_Failed = () => toast.error("Email ou Senha inválidos!")
     const history = useHistory();
     
@@ -30,21 +29,21 @@ export default function Login() {
         )
             .then(resposta => {
                 if (resposta.status === 200) {
-                    notify_Logar_Success()
                     localStorage.setItem('usuario-login', resposta.data.token)
-                    console.log(resposta.status)
-                    let base64 = localStorage.getItem('usuario-login').split('.')[1];
-
-                    console.log(base64)
-
+                    
+                    if(parseJwt().isActive === "False"){
+                        history.push('/AlterarSenha')
+                    }
+                    else                      
                     history.push('/CadastrarAtividades')
                 }
 
             })
             .catch(resposta => {
-                notify_Logar_Failed()
+            
+            notify_Logar_Failed()
             })
-        
+
     }
 
     return (
@@ -85,7 +84,7 @@ export default function Login() {
                                 <label for="senha">Senha</label>
                             </div>
                             <div  className="G1_buttonsLogin">
-                                <a href="#">Esqueci a senha</a>
+                                <a href="/EsqueciMinhaSenha">Esqueci a senha</a>
                                 <button type="submit">Entrar</button>
                             </div>
                             
