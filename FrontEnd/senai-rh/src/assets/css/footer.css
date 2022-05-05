@@ -25,3 +25,13 @@ footer{
     font-weight: 700;
     font-size: 1em;
 }
+@media screen and (max-width: 480px) {
+    footer {
+        
+        height: 5vh;
+        bottom: 0;
+    }
+    .pFooter{
+        font-size: 0.8em;
+    }
+}

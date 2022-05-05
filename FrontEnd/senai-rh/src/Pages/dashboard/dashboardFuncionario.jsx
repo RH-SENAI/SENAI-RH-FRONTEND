@@ -14,6 +14,7 @@ import {
 export default function Dashboard() {
     const [idUsuario, setIdUsuario] = useState(1);
     const [nivelSatisfacao, setNivelSatisfacao] = useState(0);
+    const [listaUsuarios, setListaUsuarios] = useState([]);
     const [usuario, setUsuario] = useState([])
     const [notaProdutividade, setNotaProdutividade] = useState(0);
 
@@ -32,7 +33,7 @@ export default function Dashboard() {
             .then((resposta) => {
 
                 if (resposta.status === 200) {
-                    setUsuario([resposta.data])
+                    setListaUsuarios([resposta.data])
 
                     console.log(resposta)
 
@@ -63,78 +64,90 @@ export default function Dashboard() {
                         <span className="g3_tituloDashboard">DASHBOARD</span>
                     </div>
                     <div className="g3_containerGraficos">
-                        <div className="g3_boxGraficosLeft">
-                            <div className="g3_graficoProdutividade">
+                        {
+                            listaUsuarios.map((usuario) => {
+                                return (
+                                    <div>
+                                        <div className="g3_boxGraficosLeft">
+                                            <div className="g3_graficoProdutividade">
 
-                                <VictoryChart
+                                                <VictoryChart
 
-                                >
-                                    <VictoryLine
-                                        style={{
-                                            data: { stroke: "#C20004" },
-                                            parent: { border: "3px solid #b3b3b3" },
+                                                >
+                                                    <VictoryLine
+                                                        style={{
+                                                            data: { stroke: "#C20004" },
+                                                            parent: { border: "3px solid #b3b3b3" },
 
 
-                                        }}
-                                        interpolation="natural"
+                                                        }}
+                                                        interpolation="natural"
 
-                                        data={[
-                                            { x: 1, y: 2 },
-                                            { x: 2, y: 3 },
-                                            { x: 3, y: 5 },
-                                            { x: 4, y: 4 },
-                                            { x: 5, y: 7 },
-                                        ]}
-                                    />
-                                </VictoryChart>
-                            </div>
-                            <span>Produtividade Pessoal</span>
-                            <div className="g3_boxGraficosBaixo">
-                                <div className="g3_containerGraficoLeft">
-                                    <div className="g3_graficoSatisfacaoPessoal">
-                                        <VictoryPie
-                                            events={[{
-                                                target: "data",
-                                                eventHandlers: {
-                                                    onClick: () => {
-                                                        return [
-                                                            {
+                                                        data={[
+                                                            { x: 1, y: usuario.nivelSatisfacao * 100 },
+                                                            { x: 2, y:  usuario.nivelSatisfacao * 102 },
+                                                            { x: 3, y:  usuario.nivelSatisfacao + 100 },
+                                                            { x: 4, y:  usuario.nivelSatisfacao * 100 },
+                                                            { x: 5, y:  usuario.nivelSatisfacao * 101 },
+                                                        ]}
+                                                    />
+                                                </VictoryChart>
+                                            </div>
+                                            <span>Produtividade Pessoal</span>
+                                            <div className="g3_boxGraficosBaixo">
+                                                <div className="g3_containerGraficoLeft">
+                                                    <div className="g3_graficoSatisfacaoPessoal">
+                                                        <VictoryPie
+                                                            events={[{
                                                                 target: "data",
-                                                                mutation: ({ style }) => {
-                                                                    return style.fill === "#2A2E32" ? null : { style: { fill: "#C20004" } };
+                                                                eventHandlers: {
+                                                                    onClick: () => {
+                                                                        return [
+                                                                            {
+                                                                                target: "data",
+                                                                                mutation: ({ style }) => {
+                                                                                    return style.fill === "#2A2E32" ? null : { style: { fill: "#C20004" } };
+                                                                                }
+                                                                            }, {
+                                                                                target: "labels",
+                                                                                mutation: ({ text }) => {
+                                                                                    return text === "clicked" ? null : { text: "satisfação" };
+                                                                                }
+                                                                            }
+                                                                        ];
+                                                                    }
                                                                 }
-                                                            }, {
-                                                                target: "labels",
-                                                                mutation: ({ text }) => {
-                                                                    return text === "clicked" ? null : { text: "satisfação" };
-                                                                }
-                                                            }
-                                                        ];
-                                                    }
-                                                }
-                                            }]}
+                                                            }]}
 
-                                            data={[
-                                                { x: 1, y: usuario.nivelSatisfacao},
+                                                            data={[
+                                                                { x: 1, y: usuario.nivelSatisfacao * 100 },
+                                                                { x: 2, y: 100 - usuario.nivelSatisfacao * 100 },
 
- 
-                                            ]}
-                                        />
+
+                                                            ]}
+                                                        />
+                                                    </div>
+                                                    <span>Satisfação Pessoal</span>
+                                                </div>
+                                                <div className="g3_containerGraficoRight">
+                                                    <div className="g3_graficoProdutividadeUnidade">
+
+                                                    </div>
+                                                    <span>Produtividade Pessoal</span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div className="g3_boxGraficosRight">
+
+                                        </div>
                                     </div>
-                                    <span>Satisfação Pessoal</span>
-                                </div>
-                                <div className="g3_containerGraficoRight">
-                                    <div className="g3_graficoProdutividadeUnidade">
+                                )
+                            }
 
-                                    </div>
-                                    <span>Produtividade Pessoal</span>
-                                </div>
+                            )
+                        }
 
-                            </div>
-                        </div>
-                        <div className="g3_boxGraficosRight">
-
-                        </div>
                     </div>
                 </div>
             </main>
@@ -142,4 +155,5 @@ export default function Dashboard() {
             <Footer />
         </div >
     )
+
 }

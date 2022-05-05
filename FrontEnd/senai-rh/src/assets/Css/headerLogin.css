@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  word-wrap: normal;
+ 
+}
 
 .container_header_Login{
   width: 100%;
@@ -18,3 +25,12 @@
     
 }
   
+@media screen and (max-width: 480px) {
+  .container_header_Login{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0 4rem 0;
+  }
+}
