@@ -54,7 +54,7 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
     return (
         <>
             <ToastContainer
-                position="bottom-center"
+                position="top-rigth"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
@@ -75,16 +75,12 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
                             <label className='label_modal'>Descrição</label>
                             <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
                         </div>
-                        <div>
-                            <label className='label_modal'>Gestor Criador</label>
-                            <p className="descricao_atividade_modal">{atividade.idGestorCadastro}</p>
-                        </div>
                     </div>
                     {/* <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
                 <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p> */}
                     <div className="organizar_btn">
                         <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
-                        <button className="btn_validar_atividades" onClick={validarAtividades(atividade)}>Validar</button>
+                        <button className="btn_validar_atividades" onClick={() => {validarAtividades(atividade)}}>Validar</button>
                         {/* {atividade.necessarioValidar && (
                         <button className="btn_validar_modal" onClick={validarAtividades(atividade)}>Validar</button>
                     )} */}

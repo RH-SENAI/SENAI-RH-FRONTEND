@@ -530,7 +530,15 @@ input:checked+label:after {
     padding: 0px;
 } */
 
-.modal-body {
+.background_modal{
+    position: fixed;
+    z-index: 998;
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    height: 100vh;
+    width: 100vw;
+}
+
+.modal-body {    
     display: flex;
     right: 0;
     left: 25%;
@@ -664,10 +672,11 @@ input:checked+label:after {
     cursor: pointer;
 }
 
-.btn_fechar_modal:hover {
+/* .btn_fechar_modal:hover { */
     /* background-color: #f1f1f1; */
     /* box-shadow: inset 2px 2px 7px rgba(166, 171, 189, 1), 0px 0px 15px rgba(242, 242, 242, 1); */
-}
+/* } */
+
 
 /* 
 .btn_validar_modal {

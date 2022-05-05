@@ -57,7 +57,7 @@ export const Modall = ({ showModal, setShowModal, atividade }) => {
     return (
         <>
             {showModal ? (
-                <div
+                <button className="background_modal" onClick={closeModal}
                 >
                     <div className="modal-body">
                         <div className='G1_organizar_modal_titulo'>
@@ -71,7 +71,7 @@ export const Modall = ({ showModal, setShowModal, atividade }) => {
                             </div>
                             <div>
                                 <label className='label_modal'>Gestor Criador</label>
-                                <p className="descricao_atividade_modal">{atividade.idGestorCadastro}</p>
+                                <p className="descricao_atividade_modal">{atividade.idGestorCadastroNavigation.nome}</p>
                             </div>
                         </div>
                         {/* <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
@@ -83,7 +83,7 @@ export const Modall = ({ showModal, setShowModal, atividade }) => {
                             )} */}
                         </div>
                     </div>
-                </div>
+                </button>
             ) : null}
         </>
     );

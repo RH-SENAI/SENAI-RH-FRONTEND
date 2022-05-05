@@ -68,7 +68,7 @@ export default function TodasAtividades() {
                                                 <button type="button" onClick={() => {
                                                     OpenModalValidar();
                                                     setIdAtividadeModal(atividade.idAtividade);
-                                                }} className="G1_btn_vizualizar">Vizualizar</button>                                            </div>
+                                                }} className="G1_btn_vizualizar">Visualizar</button>                                            </div>
                                         </div>
                                     </div>
                                 </div>
