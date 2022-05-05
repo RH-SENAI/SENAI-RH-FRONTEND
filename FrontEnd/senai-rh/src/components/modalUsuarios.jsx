@@ -43,10 +43,10 @@ export const Modall = ({ showModal, setShowModal, atividade }) => {
                     onRequestClose={closeModal}
                 >
                     <div class="modal-body">
-                        <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
+                        <h2 className="titulo_atividade_modal">{}</h2>
                         <div className='organizar_sessao_modal'>
                             <label className='label_modal'>Descrição</label>
-                            <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                            <p className="descricao_atividade_modal">{}</p>
                         </div>
                         {/* <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
                         <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p> */}

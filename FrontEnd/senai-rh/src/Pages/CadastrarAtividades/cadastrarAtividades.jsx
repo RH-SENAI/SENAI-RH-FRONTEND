@@ -34,20 +34,21 @@ export default function CadastrarAtividades() {
         setShowModal(prev => !prev);
         console.log('abriuuu')
     }
-
+    
     function listarUsuarios() {
         axios("http://localhost:5000/api/Usuarios"
-            , {
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-                }
-            })
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    setListaUsuarios(resposta.data)
-                }
-            })
-
+        , {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
+        .then(resposta => {
+            if (resposta.status === 200) {
+                setListaUsuarios(resposta.data)
+                console.log(listaUsuarios)
+            }
+        })
+        
             .catch(erro => console.log(erro))
     };
 
@@ -135,24 +136,24 @@ export default function CadastrarAtividades() {
                                 <div className="G1_inputLabel_Cadastrar">
                                     <input value={nomeAtividade}
                                         onChange={(campo) => setNomeAtividade(campo.target.value)} type="text" name="titulo" placeholder="Digite o título da atividade" />
-                                    <label for="titulo">Título da atividade</label>
+                                    <label htmlFor="titulo">Título da atividade</label>
                                 </div>
                                 <div className="G1_inputLabel_Cadastrar">
                                     <input value={recompensaMoeda}
                                         onChange={(campo) => setRecompensaMoeda(campo.target.value)} type="number" name="moedas" placeholder="Digite a premiação em moedas" />
-                                    <label for="moedas">Prêmio em moedas</label>
+                                    <label htmlFor="moedas">Prêmio em moedas</label>
                                 </div>
                             </div>
                             <div className='G1_organizar_inputs'>
                                 <div className="G1_inputLabel_Cadastrar">
                                     <input value={descricaoAtividade}
                                         onChange={(campo) => setDescricaoAtividade(campo.target.value)} type="text" name="titulo" placeholder="Digite seu email" />
-                                    <label for="titulo">Descrição da atividade</label>
+                                    <label htmlFor="titulo">Descrição da atividade</label>
                                 </div>
                                 <div className="G1_inputLabel_Cadastrar">
                                     <input value={recompensaTrofeu}
                                         onChange={(campo) => setRecompensaTrofeu(campo.target.value)} type="number" name="moedas" placeholder="Digite sua senha" />
-                                    <label for="moedas">Prêmio em troféus</label>
+                                    <label htmlFor="moedas">Prêmio em troféus</label>
                                 </div>
                             </div>
                             <div className='G1_organizar_inputs'>
