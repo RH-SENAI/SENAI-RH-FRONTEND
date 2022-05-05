@@ -12,7 +12,7 @@ export default function Redirect() {
 
     return (
         <div className="G1_Redirect_Body">
-            <header className='G1_Redirect_Header'>
+            <header className='G1_Redirect_Header header_redirect'>
                 <div className='G1_Redirect_containerHeader'>   
 
                     <img src={logo} className="G1_Redirect_Logo" alt="Logo Sesi Senai" />

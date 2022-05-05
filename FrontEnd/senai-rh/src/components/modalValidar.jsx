@@ -6,17 +6,21 @@ import Modal from 'react-modal';
 import '../Assets/css/gp1style.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {listarAtividadesValidar} from '../Pages/CadastrarAtividades/cadastrarAtividades'
+import { listarAtividadesValidar } from '../Pages/CadastrarAtividades/cadastrarAtividades'
 
 export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade }) => {
     const modalRef = useRef();
     const notify_validar = () => toast.success("Atividade Validada!");
 
+    console.log(atividade)
+
     let history = useHistory();
 
-    const closeModal = (e) => {
+    const closeModal = e => {
         setShowModalValidar(false);
-      
+        console.log('showModal antes:' + showModalValidar)
+
+        console.log('showModal depois:' + showModalValidar)
     };
 
     const keyPress = useCallback(
@@ -61,25 +65,31 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
                 pauseOnHover
             />
             {showModalValidar ? (
-                <Modal
-                    isOpen={showModalValidar}
-                    onRequestClose={closeModal}
-                    ariaHideApp={false}
-                >
-                    <div class="modal-body">
+                <div className="modal-body">
+                    <div className='G1_organizar_modal_titulo'>
+                        <div className="G1_header_atividade"></div>
                         <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
-                        <div className='organizar_sessao_modal'>
+                    </div>
+                    <div className='organizar_sessao_modal'>
+                        <div>
                             <label className='label_modal'>Descrição</label>
                             <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
                         </div>
-                        {/* <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
-                        <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p> */}
-                        <div className="organizar_btn">
-                            <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
-                            <button type="button" key={atividade.idAtividade} className="btn_validar_modal" onClick={() => validarAtividades(atividade)}>Validar</button>
+                        <div>
+                            <label className='label_modal'>Gestor Criador</label>
+                            <p className="descricao_atividade_modal">{atividade.idGestorCadastro}</p>
                         </div>
                     </div>
-                </Modal>
+                    {/* <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p> */}
+                    <div className="organizar_btn">
+                        <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
+                        <button className="btn_validar_atividades" onClick={validarAtividades(atividade)}>Validar</button>
+                        {/* {atividade.necessarioValidar && (
+                        <button className="btn_validar_modal" onClick={validarAtividades(atividade)}>Validar</button>
+                    )} */}
+                    </div>
+                </div>
             ) : null}
         </>
     );

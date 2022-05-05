@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
 import '../Assets/css/gp1style.css'
 
 export const Modall = ({ showModal, setShowModal, atividade }) => {
@@ -57,13 +57,13 @@ export const Modall = ({ showModal, setShowModal, atividade }) => {
     return (
         <>
             {showModal ? (
-                <Modal
-                    isOpen={showModal}
-                    onRequestClose={closeModal}
+                <div
                 >
-                        <div className="G1_header_atividade"></div>
-                    <div class="modal-body">
-                        <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
+                    <div className="modal-body">
+                        <div className='G1_organizar_modal_titulo'>
+                            <div className="G1_header_atividade"></div>
+                            <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
+                        </div>
                         <div className='organizar_sessao_modal'>
                             <div>
                                 <label className='label_modal'>Descrição</label>
@@ -77,13 +77,13 @@ export const Modall = ({ showModal, setShowModal, atividade }) => {
                         {/* <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
                         <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p> */}
                         <div className="organizar_btn">
-                            <button className="G1_btn_vizualizar" onClick={closeModal}>Fechar</button>
+                            <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
                             {/* {atividade.necessarioValidar && (
                                 <button className="btn_validar_modal" onClick={validarAtividades(atividade)}>Validar</button>
                             )} */}
                         </div>
                     </div>
-                </Modal>
+                </div>
             ) : null}
         </>
     );
