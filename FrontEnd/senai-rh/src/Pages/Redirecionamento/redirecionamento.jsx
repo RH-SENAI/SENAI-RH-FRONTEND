@@ -1,15 +1,22 @@
 import logout from '../../Assets/img/logout.png'
 import logo from "../../Assets/img/logo1.svg"
 import Footer from "../../components/Footer.jsx";
+import laptop from '../../Assets/img/Laptop.png'
+import pig from '../../Assets/img/Pig.png'
+import tag from '../../Assets/img/tag.png'
+import "../../Pages/Redirecionamento/redirecionamento.css"
 
 export default function Redirect() {
 
 
     return (
         <div className="G1_Redirect_Body">
-            <header>
-                <img src={logo} alt="ícone de logout" />
-                <img src={logout} alt="ícone de logout" />
+            <header className='G1_Redirect_Header'>
+                <div className='G1_Redirect_containerHeader'>   
+
+                    <img src={logo} className="G1_Redirect_Logo" alt="Logo Sesi Senai" />
+                    <img src={logout} alt="ícone de logout" />
+                </div>
             </header>
 
             <main>
@@ -18,22 +25,34 @@ export default function Redirect() {
                     <h2 className="G1_titulo2_redirecionamento">Interesse </h2>
                 </div>
 
-                <div className="G1_box_Acompanhar">
-                    <span> Acompanhamento </span>
-                    <p> Desenvolvido para facilitar o trabalho de todos na rede, o SENAI RH tem o objetivo de deixar o ambiente de trabalho mais confortável de trabalhar!</p>
-                    <button className='G1_btn_Cadastrar' type="submit"> Entrar </button>
-                </div>
+                <div className='G1_containerContentMain'>
 
-                <div className="G1_box_Motivar">
-                    <span> Motivações </span>
-                    <p> Desenvolvido para facilitar o trabalho de todos na rede, o SENAI RH tem o objetivo de deixar o ambiente de trabalho mais confortável de trabalhar!</p>
-                    <button className='G1_btn_Cadastrar' type="submit"> Entrar </button>
-                </div>
-
-                <div className="G1_box_Vantagens">
-                    <span> Minhas Vantagens  </span>
-                    <p> Desenvolvido para facilitar o trabalho de todos na rede, o SENAI RH tem o objetivo de deixar o ambiente de trabalho mais confortável de trabalhar!</p>
-                    <button className='G1_btn_Cadastrar' type="submit"> Entrar </button>
+                    <div className='G1_containerRedirects'>
+                        <article className="G1_box_Article">
+                            <img src={laptop} alt="Icone de laptop" />
+                            <div className='G1_ArticleText'>
+                                <h3> Acompanhamento </h3>
+                                <p>Acesse aqui para acompanhar seus funcionários, vizualizando seus respectivos níveis de satifação e muito mais!</p>
+                                <button className='G1_btn_Cadastrar' type="submit"> Entrar </button>
+                            </div>
+                        </article>
+                        <article className="G1_box_Article">
+                        <img src={pig} alt="Icone de cofre em formato de porco" />
+                            <div className='G1_ArticleText'>
+                                <h3> Motivações </h3>
+                                <p> Acesse aqui para vizualizar as atividades do sistema e gerenciar seus pontos!</p>
+                                <button className='G1_btn_Cadastrar' type="submit"> Entrar </button>
+                            </div>
+                        </article>
+                        <article className="G1_box_Article">
+                            <img src={tag} alt="Icone de etiqueta de desconto" />
+                            <div className='G1_ArticleText'>
+                                <h3> Minhas Vantagens </h3>
+                                <p> Acesse aqui para vizualizar suas vantagens disponíveis e garantir seus descotnos e vantagens!</p>
+                                <button className='G1_btn_Cadastrar' type="submit"> Entrar </button>
+                            </div>
+                        </article>
+                    </div>
                 </div>
 
             </main>
