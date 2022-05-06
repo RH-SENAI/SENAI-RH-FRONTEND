@@ -10,6 +10,8 @@ import PerfilCarometro from '../../assets/img/PerfilCarometro.png'
 import setaSelectLight from '../../assets/img/SetaSelectLight.png'
 import IconLogout from '../../assets/img/IconLogout.png'
 import topCarometro from '../../assets/img/topCarometro.png'
+import { ModalAcompanhar } from '../../components/modal/ModalAcompanhar';
+
 
 //import Modal from 'react-modal';
 //import { ModalAcompanhar } from '../../components/modal/modalAcompanhar';
@@ -22,12 +24,22 @@ export default function Carometro() {
 
     //States
     const [idCargo, setIdCargo] = useState(0);
+    const [idUsuario, setIdUsuario] = useState(0);
     const [listaFuncionarios, setListaFuncionarios] = useState([]);
     const [listaCargo, setListaCargo] = useState([]);
     const [nomeFuncionario, setNomeFuncionario] = useState('');
     const [funcionarioModal, setFuncionarioModal] = useState(0);
-    const [showModal, setShowModal] = useState(false);
     const [active, setMode] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [idUsuarioModal, setIdUsuarioModal] = useState()
+    const OpenModal = () => {
+        setShowModal(prev => !prev);
+        console.log('abriuuu')
+        console.log(idUsuarioModal)
+        console.log(idUsuario)
+
+        
+    }
     const ToggleMode = () => {
         setMode(!active)
     }
@@ -150,6 +162,19 @@ export default function Carometro() {
 
     return (
         <body>
+            {/* <Modall atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)} showModal={showModal} setShowModal={setShowModal} /> */}
+            <ModalAcompanhar usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idUsuarioModal)} showModal={showModal} setShowModal={setShowModal} />
+            {/* <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            /> */}
             {/* <ModalAcompanhar usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idFuncionarioModal)} showModal={showModal} setShowModal={setShowModal} />  */}
             <div className='g3_whiteBackgroundCarometro'>
                 <HeaderFuncionario />
@@ -197,37 +222,39 @@ export default function Carometro() {
                             </div>
                             <div className='g3_cardsCarometro animate__animated animate__fadeInUp'>
                                 {
-                                        
+
                                     procurarUsuarios.length > 0 ?
 
 
 
-                                        filteredResults.reverse().map((usuario) => {
+                                        filteredResults.map((usuario) => {
                                             return (
-                                                <div>
+                                                <button className='g3_abrirModal' onClick={OpenModal} onClickCapture = {() =>setIdUsuarioModal(usuario.idUsuario)} type="button">
                                                     <div className='g3_cardUsuario'>
                                                         <img className='g3_fotoCarometro' src={"https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples/" + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
                                                         <span className="g3_spanCarometro">{usuario.nome}</span>
                                                         <span className="g3_spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
                                                     </div>
-                                                </div>
+                                                </button>
                                             )
                                         })
-                                        
+
                                         :
-                                        listaFuncionarios.reverse().map((usuario) => {
+                                        listaFuncionarios.map((usuario) => {
                                             return (
-                                                <div className='g3_cardUsuario'>
-                                                    <img className='g3_fotoCarometro' src={"https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples/" + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
-                                                    <span className="g3_spanCarometro">{usuario.nome}</span>
-                                                    <span className="g3_spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
-                                                </div>
+                                                <button className='g3_abrirModal' onClick={OpenModal} onClickCapture = {() =>setIdUsuarioModal(usuario.idUsuario)} type="button">
+                                                    <div className='g3_cardUsuario'>
+                                                        <img className='g3_fotoCarometro' src={"https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples/" + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
+                                                        <span className="g3_spanCarometro">{usuario.nome}</span>
+                                                        <span className="g3_spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
+                                                    </div>
+                                                </button>
 
                                             )
                                         }
 
                                         )
-   
+
                                 }
                             </div>
 

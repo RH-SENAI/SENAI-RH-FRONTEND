@@ -2,95 +2,180 @@ import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Modal from 'react-modal';
+import {
+  VictoryLine, VictoryPie, VictoryChart, VictoryAxis,
+  VictoryTheme
+} from 'victory'
+// import Modal from 'react-modal';
+import '../../assets/css/modalAcompanhar.css'
 
-export const Modall = ({ showModal, setShowModal, usuario }) => {
-    const modalRef = useRef();
+export const ModalAcompanhar = ({ showModal, setShowModal, usuario }) => {
+  const modalRef = useRef();
+  const [listaFuncionarios, setListaFuncionarios] = useState([]);
 
-    let history = useHistory();
 
-    const closeModal = e => {
+  // const [nomeGestor, setNomeGestor] = useState('');    
+
+  // function listarGestor() {
+  //     let idGestor = atividade.idGestorCadastro
+  //     axios.get("http://localhost:5000/api/Usuarios/BuscarUsuario/" + idGestor
+  //         , {
+  //             headers: {
+  //                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+  //             }
+  //         })
+  //         .then(resposta => {
+  //             if (resposta.status === 200) {
+  //                 setNomeGestor(resposta.data.nome)
+  //                 console.log(resposta.data.nome)
+  //             }
+  //         })
+
+  //         .catch(erro => console.log(erro))
+  // };
+
+  // useEffect( () => {listarGestor()}, []);
+
+  const closeModal = e => {
+    setShowModal(false);
+    console.log('showModal antes:' + showModal)
+
+    console.log('showModal depois:' + showModal)
+  };
+
+  const keyPress = useCallback(
+    e => {
+      if (e.key === 'Escape' && showModal) {
         setShowModal(false);
-        console.log('showModal antes:' + showModal)
+        console.log('I pressed');
+      }
+    },
+    [setShowModal, showModal]
+  );
+  function ListarUsuario() {
 
-        console.log('showModal depois:' + showModal)
-    };
+    let idUsuario = usuario.idUsuario
+    console.log('Olha')
+    console.log(idUsuario)
+    axios.get(`http://localhost:5000/api/Usuarios/Listar/${idUsuario}`, {
 
-    const keyPress = useCallback(
-        e => {
-            if (e.key === 'Escape' && showModal) {
-                setShowModal(false);
-                console.log('I pressed');
-            }
-        },
-        [setShowModal, showModal]
-    );
+      headers: {
 
-    useEffect(
-        () => {
-            document.addEventListener('keydown', keyPress);
-            return () => document.removeEventListener('keydown', keyPress);
-        },
-        [keyPress]
-    );
+        Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+      }
+
+    })
+
+      .then((resposta) => {
+
+        if (resposta.status === 200) {
+          setListaFuncionarios([resposta.data])
+          console.log(resposta)
+
+        }
+
+      })
+
+      .catch(erro => console.log(erro))
+
+  }
+  useEffect(ListarUsuario, [])
+
+
+  useEffect(
+    () => {
+      document.addEventListener('keydown', keyPress);
+      return () => document.removeEventListener('keydown', keyPress);
+    },
+    [keyPress]
+  );
 
   return (
     <>
       {showModal ? (
-        <Background onClick={closeModal} ref={modalRef}>
-          <animated.div style={animation}>
-            <ModalWrapper showModal={showModal}>
-              <ModalContent>
-                <div className='box_modal'>
-                  <div className='box_foto_nome_modal'>
-                    <div className='foto_perfil_modal'>
-                      <img className='foto_modal' src={"data:image/png;base64,"} />
-                    </div>
-                    <h1>{usuario.nome}</h1>
+        <button className="background_modal" onClick={closeModal}
+        >
+          <div className="g3_modal-body">
+            <div className='g3_containerOrganizacaoModal'>
+              <div className='g3_graficosModal'>
+                {
+                  listaFuncionarios.map((usuario) => {
+                    return (
+                      <div className='g3_organizadorGraficosModal'>
+                        <span>{usuario.nome}</span>
+                        <div className='g3_graficoSatisfacaoModal'>
+                          <span  className='g3_spanGraficos'>Satisfação do Usuario</span>
+                          <VictoryPie
+                            events={[{
+                              target: "data",
+                              eventHandlers: {
+                                onClick: () => {
+                                  return [
+                                    {
+                                      target: "data",
+                                      mutation: ({ style }) => {
+                                        return style.fill === "#2A2E32" ? null : { style: { fill: "#C20004" } };
+                                      }
+                                    }, {
+                                      target: "labels",
+                                      mutation: ({ text }) => {
+                                        return text === "clicked" ? null : { text: "satisfação" };
+                                      }
+                                    }
+                                  ];
+                                }
+                              }
+                            }]}
+
+                            data={[
+                              { x: 1, y: usuario.nivelSatisfacao * 100 },
+                              { x: 2, y: 100 - usuario.nivelSatisfacao * 100 },
 
 
-                    <button > Deletar</button>
-                    <button onClick={() => history.push(`/atualizar/${usuario.idUsuario}`)}> Atualizar Dados</button>
+                            ]}
+                          />
+                        </div>
+                        <div className='g3_graficoProdutividadeModal'>
+                        <span className='g3_spanGraficos'>Produtividade do Usuario</span>
+                          <VictoryChart
+
+                          >
+                            <VictoryLine
+                              style={{
+                                data: { stroke: "#C20004" },
+                                parent: { border: "3px solid #b3b3b3" },
 
 
-                  </div>
+                              }}
+                              interpolation="natural"
 
+                              data={[
+                                { x: 1, y: usuario.nivelSatisfacao * 100 },
+                                { x: 2, y: usuario.nivelSatisfacao * 102 },
+                                { x: 3, y: usuario.nivelSatisfacao + 100 },
+                                { x: 4, y: usuario.nivelSatisfacao * 100 },
+                                { x: 5, y: usuario.nivelSatisfacao * 101 },
+                              ]}
+                            />
+                          </VictoryChart>
+                        </div>
+                      </div>
+                    )
+                  }
+                  )
+                }
+              </div>
+              <div className='g3_organizarBtn'>
+                <button className="btn_fechar_modal" onClick={closeModal}>Atualizar Perfil</button>
+                <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
+              </div>
 
+            </div>
 
-                  <div className='box_informações_modal'>
-                    <div className='box_span'>
-                      <span className='box_span_key'>CPF: </span>
-                      <span className='span_value_modal'>{usuario.cpf}</span>
-                    </div>
-
-                    <div className='box_span'>
-                      <span className='box_span_key_modal'>Cargo: </span>
-                      <span className='span_value_modal'>{usuario.idCargoNavigation.nomeCargo}</span>
-                    </div>
-
-
-                    <div className='box_span'>
-                      <span className='box_span_key'>Unidade: </span>
-                      <span className='span_value_modal'>{usuario.idUnidadeNavigation.nomeUnidade}</span>
-
-                    </div>
-
-                    <div className='box_span'>
-                      <span className='box_span_key'>Endereço: </span>
-                      <span className='span_value_modal'>{usuario.localizacaoUsuario}</span>
-                    </div>
-
-                  </div>
-                </div>
-              </ModalContent>
-              <CloseModalButton
-                aria-label='Close modal'
-                onClick={() => setShowModal(prev => !prev)}
-              />
-            </ModalWrapper>
-          </animated.div>
-        </Background>
+          </div>
+        </button>
       ) : null}
     </>
   );
-};
+
+}

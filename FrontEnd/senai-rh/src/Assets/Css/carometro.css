@@ -81,6 +81,9 @@
     font-size: 1.2em;
     font-weight: 400;
     font-family: 'Quicksand', sans-serif;
+    display: flex;
+    justify-content: left;
+    text-align: center;
     
 }
 .g3_inputPesquisaCarometro{
@@ -98,5 +101,10 @@
 .g3_navBarCarometro{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+}
+.g3_abrirModal{
+    outline: 0;
+    background-color: transparent;
+    border: none;
 }
