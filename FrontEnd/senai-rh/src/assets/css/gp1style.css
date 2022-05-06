@@ -304,6 +304,7 @@
     border-radius: 10px;
     border: none;
     font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
     font-weight: 500;
 }
 
@@ -434,7 +435,21 @@ input:checked+label:after {
 	width: 130px;
 } */
 
-/* ==============================   Validar Atividades   ===============================================    */
+/* ==============================   Ranking Usuarios   ===============================================    */
+
+.G1_usuario_card{
+    display: flex;
+    padding: 0 20px 0 20px;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    max-width: 1440px;
+    width: 100%;
+    border: 3px solid #dfdfdf;
+    margin-bottom: 2.5vh;
+    border-radius: 10px;
+}
+
 
 
 

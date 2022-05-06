@@ -12,6 +12,7 @@ import ValidarAtividades from './Pages/ValidarAtividades/validarAtividades';
 import AlterarSenha from './Pages/AlterarSenha/alterarSenha';
 import AlterarSenhaRec from './Pages/AlterarSenha/alterarSenhaRec';
 import esqueciMinhaSenha from './Pages/EsqueciMinhaSenha/esqueciMinhaSenha'
+import Ranking from './Pages/Ranking/rankingUsuarios'
 import Login from './Pages/Login/login';
 import Atividades from './Pages/TodasAtividades/todasAtividades';
 import Redirect from './Pages/Redirecionamento/redirecionamento';
@@ -29,6 +30,7 @@ const routing = (
         <Route path = "/EsqueciMinhaSenha" component={ esqueciMinhaSenha}/>
         <Route path = "/EsqueciMinhaSenha" component={ esqueciMinhaSenha}/>
         <Route path = "/TodasAtividades" component={Atividades}/>
+        <Route path = "/RankingUsuarios" component={Ranking}/>
       </Switch>
     </div>
   </Router>
