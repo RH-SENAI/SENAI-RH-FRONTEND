@@ -2,13 +2,17 @@
     margin-top: 12vh;
 }
 
-
+.container_meuPerfil {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+}
 
 .box_perfil_g2 {
     display: flex;
     justify-content: space-evenly;
     margin-top: 70px;
-    height: 62vh;
+    height: 74.3vh;
 }
 
 .p_perfil_g2{

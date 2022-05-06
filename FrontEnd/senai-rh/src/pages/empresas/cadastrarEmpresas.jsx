@@ -7,7 +7,7 @@ import Footer from "../../components/footer";
 export default function CadastrarEmpresa() {
     return (
 
-        <div>
+        <div className="geral_g2">
             <HeaderAdm />
 
             <div className="container container_forms_cadastroEmpresa_g2">

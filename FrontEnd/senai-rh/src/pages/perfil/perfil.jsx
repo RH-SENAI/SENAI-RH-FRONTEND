@@ -1,15 +1,42 @@
 import HeaderFuncionario from "../../components/header/headerFuncionario"
 import Footer from "../../components/footer"
 import "../../assets/css/perfil.css"
+import { useEffect, useState } from "react"
+import api from "../../services/api"
 
 
 export default function Perfil() {
+    const [listaUsuarios, setListaUsuario] = useState([])
+    const [idUsuario, setIdUsuario]=useState(0)
+
+
+    
+
+    // function listarUsuario() {
+    //     api('http://apirhsenaigp1.azurewebsites.net/api/Usuarios/BuscarUsuario', {
+    //         headers: {
+    //             Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+    //         },
+    //     }
+    //     )
+    //         .then(resposta => {
+    //             if (resposta.status === 200) {
+    //                 // console.log('Lista')
+    //                 console.log(resposta)
+    //                 setListaUsuario(resposta.data)
+    //                 // console.log('aqui' + resposta.data)
+    //             }
+    //         })
+    //         .catch(erro => console.log(erro))
+    // }
+    // useEffect(listarUsuario, [])
+
     return (
-        <div>
+        <div className="geral_g2">
 
             <HeaderFuncionario />
 
-            <div className="container container_perfil_g2">
+            <div className="container_meuPerfil container_perfil_g2">
                 <div>
                     <h1>Perfil</h1>
                 </div>
@@ -32,15 +59,12 @@ export default function Perfil() {
 
                         <div className="box_dados_perfil_g2">
 
-                            <span>Nome do Usuário</span>
+                            <span></span>
                             <span>Email </span>
                             <span> CPF </span>
                             <span>Endereço</span>
                         </div>
                     </div>
-
-
-
                 </div>
             </div>
 

@@ -62,11 +62,12 @@ export default function CadastrarBeneficio() {
         formData.append('validadeDesconto', validadeDesconto);
         formData.append('valorDesconto', valorDesconto);
         formData.append('numeroCupom', numeroCupom);
+        formData.append('valorDesconto', valorDesconto );
 
-        axios({
+        api({
             method: "post",
             // url: "https://apibackgrupo2.azurewebsites.net/api/Cursos/Cadastrar",
-            url: "http://localhost:5000/api/Descontos/Cadastrar",
+            url: "/Descontos/Cadastrar",
             data: formData,
             headers: { "Content-Type": "multipart/form-data" },
         })
@@ -80,10 +81,10 @@ export default function CadastrarBeneficio() {
     }
 
     return (
-        <div>
+        <div className="geral_g2">
             <HeaderAdm />
 
-            <div className=" container container_forms_cadastroBeneficio_g2">
+            <div className=" container_cadastrarBeneficio container_forms_cadastroBeneficio_g2">
                 <div className="box_img_cadastroBeneficio_g2">
                     <img src={telaCadastroVantagens} alt="imagemCadastroBeneficio" />
                 </div>

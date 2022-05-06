@@ -33,7 +33,7 @@ export default function HeaderFuncionario() {
                     <p class='input_header_g2'>Acompanhar<img src={setaBaixo} /></p>
                     <input type='hidden' name='some_name_to_form' />
                     <div class='hidden_header_g2'>
-                        <Link className="text_link_header_g2" to='/Adm' ><span>Carômetro</span></Link>
+                        <Link className="text_link_header_g2" to='/cadastrarCursos' ><span>Carômetro</span></Link>
                         <Link className="text_link_header_g2" > <span>Dashboard</span></Link>
                         <Link className="text_link_header_g2" > <span>Democratização</span></Link>
                     </div>

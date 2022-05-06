@@ -22,7 +22,7 @@ export default function MeusFavoritos() {
 
 
     return (
-        <div>
+        <div className="geral_g2">
             <HeaderFuncionario />
 
 

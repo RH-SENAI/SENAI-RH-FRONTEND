@@ -114,7 +114,7 @@
     display: flex;
     justify-content: center;
     cursor: pointer;
-    height: 35px;
+    height: 15px;
     margin-top: 15px;
     font-size: 1.4rem;
     margin-bottom: 30px;
@@ -127,6 +127,8 @@
     display: flex;
     align-items: center;
 }
+
+
 
 .banner_img_curso_g2 {
     width: 100%;

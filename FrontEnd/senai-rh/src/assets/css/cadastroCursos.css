@@ -1,3 +1,13 @@
+.container_lista_curso {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.geral_g2 {
+    background-color: #f2f2f2;
+}
+
 .container_forms_cadastroCursos_g2 {
     display: flex;
     justify-content: space-between;
@@ -82,10 +92,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;   
+    cursor: pointer;
 }
 
-.img_file_cadastro_curso_g2{
+.img_file_cadastro_curso_g2 {
     background-color: #636466;
     margin-right: 1rem;
 }

@@ -3,7 +3,7 @@ import HeaderAdm from "../../components/header/headerAdm";
 
 export default function RequisicaoFuncionario() {
     return (
-        <div>
+        <div className="geral_g2">
 
             <HeaderAdm />
 

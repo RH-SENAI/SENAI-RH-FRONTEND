@@ -1,3 +1,9 @@
+.container_cadastrarBeneficio {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .container_forms_cadastroBeneficio_g2 {
     display: flex;
     justify-content: space-between;

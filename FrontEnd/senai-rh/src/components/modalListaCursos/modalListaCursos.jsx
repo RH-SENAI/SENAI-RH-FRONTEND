@@ -43,7 +43,7 @@ export const ModallCurso = ({ showModal, setShowModal, curso }) => {
     );
 
     function listarComentarioCurso() {
-        api('http://localhost:5000/api/ComentarioCursos')
+        api('/ComentarioCursos')
             .then(resposta => {
                 if (resposta.status === 200) {
                     // console.log('Lista')
@@ -67,8 +67,7 @@ export const ModallCurso = ({ showModal, setShowModal, curso }) => {
 
                     <div className='container_modal_cima_g2'>
                         <div className='container_img_modal_g2'>
-                            {/* <img className='img_modal' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + curso.caminhoImagemCurso} alt="" /> */}
-                            {<img  className='img_modal_g2' src={'http://localhost:5000/img/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
+                            {<img  className='img_modal_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do desconto" />}
                             <div className='media_Avaliacao_g2'>  <img src={estrelaSozinha} alt="" /> <p> {curso.mediaAvaliacaoCurso} </p> </div>
                         </div>
                         <div className='container_dados_modal_g2'>

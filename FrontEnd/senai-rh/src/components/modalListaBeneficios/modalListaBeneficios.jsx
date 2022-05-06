@@ -70,8 +70,7 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
                         <div className='container_img_modal_g2'>
                             <div className='img_modal_beneficios_g2'>
                                 <div className='img_modal_beneficios_g2'>
-                                    <img src={'http://localhost:5000/img/' + beneficio.caminhoImagemDesconto} alt="" />
-                                    {/* <img className='img_modal' src={'https://raw.githubusercontent.com/RH-SENAI/Senai_Rh_Api_G2/back-end-g2/StaticFiles/Images/' + beneficio.caminhoImagemDesconto} alt="" /> */}
+                                    <img src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />
                                 </div>
                             </div>
                             <div className='media_Avaliacao_g2'>  <img src={estrelaSozinha} alt="" /> <p> {beneficio.mediaAvaliacaoDesconto} </p> </div>

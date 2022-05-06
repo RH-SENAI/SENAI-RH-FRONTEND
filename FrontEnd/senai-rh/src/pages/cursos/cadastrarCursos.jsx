@@ -20,6 +20,7 @@ export default function CadastrarCursos() {
     const [erroMensagem, setErroMensagem] = useState(false);
     const [msgSucesso, setMsgSucesso] = useState(false);
     const [caminhoImagemCurso, setCaminhoImagemCurso] = useState('');
+    const [valorCurso, setValorCurso] = useState('');
     const [listaEmpresa, setListaEmpresa] = useState([])
 
 
@@ -72,11 +73,11 @@ export default function CadastrarCursos() {
         formData.append('cargaHoraria', cargaHoraria);
         formData.append('dataFinalizacao', dataFinalizacao);
         formData.append('caminhoImagemCurso', caminhoImagemCurso);
+        formData.append('valorCurso', valorCurso);
 
-        axios({
+        api({
             method: "post",
-            // url: "https://apibackgrupo2.azurewebsites.net/api/Cursos/Cadastrar",
-            url: "http://localhost:5000/api/Cursos/Cadastrar",
+            url: "/Descontos/Cadastrar",
             data: formData,
             headers: { "Content-Type": "multipart/form-data" },
         })
@@ -90,10 +91,10 @@ export default function CadastrarCursos() {
     }
 
     return (
-        <div>
+        <div className="geral_g2">
             <HeaderAdm />
 
-            <div className="container container_forms_cadastroCursos_g2">
+            <div className="container_lista_curso container_forms_cadastroCursos_g2">
 
                 <div className="box_img_cadastroCurso_g2">
                     <img src={cadastroCurso} alt="imagemCadastroCurso" />

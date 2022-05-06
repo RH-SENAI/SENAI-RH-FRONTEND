@@ -2,7 +2,6 @@ import HeaderFuncionario from '../../components/header/headerFuncionario'
 import curso from '../../assets/img/cursosRapidos.svg'
 import Footer from '../../components/footer'
 import '../../assets/css/cursosRapidos.css'
-import '../../assets/css/style.css'
 import coracao from '../../assets/img/coracao.svg'
 import relogio from '../../assets/img/relogio.svg'
 import estrelaSozinha from '../../assets/img/estrelaSozinha.svg'
@@ -78,7 +77,7 @@ export default function CursosRapidos() {
 
 
     return (
-        <div >
+        <div className="geral_g2">
 
             <ModallCurso curso={listaCursos.find(curso => curso.idCurso == idCursoModal)} showModal={showModal} setShowModal={setShowModal} />
             <HeaderFuncionario />
@@ -117,13 +116,13 @@ export default function CursosRapidos() {
 
                                                     <div className='dados_curso_gp2'>   
 
-                                                        {<span onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso} ID:{curso.idCurso}</span>}
+                                                        {<span onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
                                                         {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
                                                         {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}  </p>}
                                                         <div className="box_baixo_section_curso_g2">
 
                                                             {<div className='circulo_moeda_curso_g2'>
-                                                                <img className='coin_curso_g2' src={coin} alt="favorito" /> 1200
+                                                                <img className='coin_curso_g2' src={coin} alt="favorito" /> {curso.valorCurso}
                                                             </div>}
                                                             <div className="media_beneficio_g2">
                                                                 <img src={coracao} alt="favoritar" />
@@ -146,13 +145,13 @@ export default function CursosRapidos() {
 
                                                     <div className='dados_curso_gp2'>   
 
-                                                        {<span onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso} ID:{curso.idCurso}</span>}
+                                                        {<span onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
                                                         {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
-                                                        {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}  </p>}
+                                                        {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}   </p>}
                                                         <div className="box_baixo_section_curso_g2">
 
                                                             {<div className='circulo_moeda_curso_g2'>
-                                                                <img className='coin_curso_g2' src={coin} alt="favorito" /> 1200
+                                                                <img className='coin_curso_g2' src={coin} alt="favorito" /> {curso.valorCurso}
                                                             </div>}
                                                             <div className="media_beneficio_g2">
                                                                 <img src={coracao} alt="favoritar" />
