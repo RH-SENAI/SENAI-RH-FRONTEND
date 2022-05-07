@@ -37,45 +37,40 @@ export const Modall = ({ showModal, setShowModal, usuarios }) => {
         [keyPress]
     );
 
-    async function setValue(value){
+    async function setValue(value) {
         setListaUsuarios(value)
         console.log(listaUsuarios)
-    }   
+    }
 
     return (
         <>
             {showModal ? (
-                <Modal
-                    isOpen={showModal}
-                    onRequestClose={closeModal}
-                >
-                    <div class="modal-body">
-                        <h2 className="titulo_atividade_modal">Selecionar Usuário</h2>
-                        <div className='organizar_sessao_modal'>
-                            {usuarios.map((usuario) => {
-                                return (
-                                    <div key={usuario.idUsuario} className="div_map">
-                                        <div className='box_atividade'>
-                                            <div className='organizar_atividade'>
-                                                <h2 className='titulo_atividade'>{usuario.nome}</h2>
-                                                <input className="checkbox_usuario" 
-                                                    type="checkbox"
-                                                    value={listaUsuarios}
-                                                    onChange={(e) => setValue(e.target.value)}
-                                                />
+                <div class="modal_body_usuarios">
+                    <h2 className="titulo_atividade_modal">Selecionar Usuário</h2>
+                    <div className='organizar_sessao_modalUser style-gp1'>
+                        {usuarios.map((usuario) => {
+                            return (
+                                <div key={usuario.idUsuario} className="div_map">
+                                    <div className='box_atividade'>
+                                        <div className='organizar_atividade'>
+                                            <h2 className='titulo_atividade'>{usuario.nome}</h2>
+                                            <input className="checkbox_usuario"
+                                                type="checkbox"
+                                                value={listaUsuarios}
+                                                onChange={(e) => setValue(e.target.value)}
+                                            />
 
-                                            </div>
                                         </div>
-                                        <hr className='linha_atividade' />
                                     </div>
-                                )
-                            })}
-                        </div>
-                        <div className="organizar_btn">
-                            <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
-                        </div>
+                                    <hr className='linha_atividade' />
+                                </div>
+                            )
+                        })}
                     </div>
-                </Modal>
+                    <div className="organizar_btn">
+                        <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
+                    </div>
+                </div>
             ) : null}
         </>
     );

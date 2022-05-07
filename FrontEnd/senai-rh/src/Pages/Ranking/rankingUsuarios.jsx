@@ -56,9 +56,9 @@ export default function TodasAtividades() {
                             return (
                                 <div key={usuario.idUsuario}>
                                     <div className="G1_usuario_card">
-                                        <p className="G1_posicao">1</p>
-                                        <img className="" src={FotoRank} alt="Foto do Usuario" />
-                                        <p className="G1_nome_usuario">{usuario.nome}</p>
+                                        <p className="G1_posicao G1_container_card">1</p>
+                                        <img className="G1_container_card" src={FotoRank} alt="Foto do Usuario" />
+                                        <p className="G1_nome_usuario G1_container_card">{usuario.nome}</p>
                                         <div className="G1_organizar_trofeus">
                                             <img src={Trofeu} alt="Trofeu" />
                                             <p className="G1_num_trofeu" >{usuario.trofeus}</p>
