@@ -3,6 +3,7 @@ import Footer from "../../components/footer"
 import "../../assets/css/perfil.css"
 import { useEffect, useState } from "react"
 import api from "../../services/api"
+import axios from "axios"
 
 
 export default function Perfil() {
@@ -12,24 +13,25 @@ export default function Perfil() {
 
     
 
-    // function listarUsuario() {
-    //     api('http://apirhsenaigp1.azurewebsites.net/api/Usuarios/BuscarUsuario', {
-    //         headers: {
-    //             Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
-    //         },
-    //     }
-    //     )
-    //         .then(resposta => {
-    //             if (resposta.status === 200) {
-    //                 // console.log('Lista')
-    //                 console.log(resposta)
-    //                 setListaUsuario(resposta.data)
-    //                 // console.log('aqui' + resposta.data)
-    //             }
-    //         })
-    //         .catch(erro => console.log(erro))
-    // }
-    // useEffect(listarUsuario, [])
+    function listarUsuario() {
+        axios('http://apirhsenaigp1.azurewebsites.net/api/Usuarios/BuscarUsuario', {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+            },
+        }
+        )
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    // console.log('Lista')
+                    console.log(resposta)
+                    setListaUsuario(resposta.data.nome)
+                    // console.log('aqui' + resposta.data)
+                    
+                }
+            })
+            .catch(erro => console.log(erro))
+    }
+    useEffect(listarUsuario, [])
 
     return (
         <div className="geral_g2">

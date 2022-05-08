@@ -63,8 +63,17 @@
     font-size: 1.2em;
 }
 
+.descricao_g2{
+    width: 27vw !important;
+}
+
 
 .box_inputs_cadastroBeneficio_g2 {
+    display: flex;
+    justify-content: center;
+}
+
+.div_input_1_g2{
     display: flex;
     justify-content: center;
 }
@@ -99,7 +108,8 @@
     outline: 0;
     border: 1px #B3B3B3 solid;
     border-radius: 15px;
-    margin-bottom: 2em;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5em;
     font-size: 1.1em;
     color: #B3B3B3;
     font-weight: bold;

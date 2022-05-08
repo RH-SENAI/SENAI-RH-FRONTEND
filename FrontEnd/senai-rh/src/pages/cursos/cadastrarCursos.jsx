@@ -112,8 +112,7 @@ export default function CadastrarCursos() {
                         <div className="box_inputs_cadastroCurso_g2">
                             <div className="container_cadastroCurso_inputs_g2">
 
-                                <div>
-                                    <label htmlFor="nomeCurso" ></label>
+                                <div className="input_g2_cadastro">
                                     <input
                                         id="nomeCurso"
                                         onChange={(campo) => setNomeCurso(campo.target.value)}
@@ -122,20 +121,21 @@ export default function CadastrarCursos() {
                                         name="nomeCurso"
                                         placeholder="Curso"
                                     />
+                                    <label for="nomeCurso">Curso</label>
                                 </div>
 
-                                <div>
-                                    <label></label>
+                                <div className="input_g2_cadastro">
                                     <input
                                         onChange={(campo) => setDescricaoCurso(campo.target.value)}
-                                        value={descricaoCurso} name="descricaoCurso"
+                                        value={descricaoCurso}
                                         type="text"
+                                        name='descricao'
                                         placeholder="Descrição"
                                     />
+                                    <label for='descricao'>Descrição</label>
                                 </div>
 
-                                <div>
-                                    <label></label>
+                                <div className="input_g2_cadastro">
                                     <input
                                         value={siteCurso}
                                         name="siteCurso"
@@ -143,12 +143,13 @@ export default function CadastrarCursos() {
                                         type="text"
                                         placeholder="Site do Curso"
                                     />
+                                    <label for="siteCurso">Site do Curso</label>
                                 </div>
 
 
 
                                 <div>
-                                    <label className="label_arquivo_cadastroCurso_g2" htmlFor="arquivo"> <img  className="img_file_cadastro_curso_g2" src={iconeEnviarArquivo} alt="" /> Enviar arquivo</label>
+                                    <label className="label_arquivo_cadastroCurso_g2" htmlFor="arquivo"> <img className="img_file_cadastro_curso_g2" src={iconeEnviarArquivo} alt="" /> Enviar arquivo</label>
                                     <input
                                         accept="image/png, image/jpeg"
                                         id="arquivo"
@@ -162,20 +163,19 @@ export default function CadastrarCursos() {
 
 
                             <div>
-                                <div>
-                                    <label htmlFor="dataFinalizacao"></label>
+                                <div className="input_g2_cadastro">
                                     <input
-                                        id="dataFinalizacao"
                                         onChange={(campo) => setDataFinalizacao(campo.target.value)}
                                         name="data"
                                         value={dataFinalizacao}
                                         type="date"
                                         placeholder="Data de Finalização"
                                     />
+                                    <label for="data">Data de Finalização</label>
                                 </div>
 
-                                <div>
-                                    <label htmlFor="idEmpresa" ></label>
+                                <div className="input_g2_cadastro">
+                                    <label for="idEmpresa" ></label>
                                     <select
                                         className="inputCadastroCursoSelect_g2"
                                         id="idEmpresa"
@@ -198,11 +198,11 @@ export default function CadastrarCursos() {
                                 </div>
 
 
-                                <div>
-                                    <label htmlFor="modalidade"></label>
+                                <div >
+                                    <label for="modalidade"></label>
                                     <select
                                         className="inputCadastroCursoSelect_g2"
-                                        id="modalidade"
+                                        name="modalidade"
                                         onChange={(campo) => setModalidadeCurso(campo.target.value)}
                                     >
 
@@ -224,16 +224,16 @@ export default function CadastrarCursos() {
                                     />
                                 </div> */}
 
-                                <div>
-                                    <label htmlFor="cargaHoraria"></label>
+                                <div className="input_g2_cadastro">
                                     <input
                                         onChange={(campo) => setCargaHoraria(campo.target.value)}
                                         className="flex_co"
                                         value={cargaHoraria}
-                                        id="cargaHoraria"
+                                        name="cargaHoraria"
                                         placeholder="Carga horária"
                                         type="number"
                                     />
+                                    <label for="cargaHoraria">Carga Horária</label>
                                 </div>
 
 

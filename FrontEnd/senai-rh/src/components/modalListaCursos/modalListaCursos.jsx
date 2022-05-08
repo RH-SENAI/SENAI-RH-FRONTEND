@@ -8,6 +8,10 @@ import estrelaSozinha from '../../assets/img/estrelaSozinha.svg'
 import modelo from '../../assets/img/modelo.svg'
 import "../../assets/css/modalListaCursos.css"
 import api from '../../services/api';
+import coin from "../../assets/img/coin 1.png"
+import calendar from '../../assets/img/calendar.svg'
+import map from '../../assets/img/map.svg'
+import coracao from '../../assets/img/coracao.svg'
 
 export const ModallCurso = ({ showModal, setShowModal, curso }) => {
 
@@ -65,96 +69,118 @@ export const ModallCurso = ({ showModal, setShowModal, curso }) => {
                     onRequestClose={closeModal}
                 >
 
-                    <div className='container_modal_cima_g2'>
-                        <div className='container_img_modal_g2'>
-                            {<img  className='img_modal_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do desconto" />}
-                            <div className='media_Avaliacao_g2'>  <img src={estrelaSozinha} alt="" /> <p> {curso.mediaAvaliacaoCurso} </p> </div>
-                        </div>
-                        <div className='container_dados_modal_g2'>
-                            <div className='container_title_modal_g2'>
-                                <span>{curso.nomeCurso} </span>
+                    <div>
+                        <div className='container_modal_curso_g2'>
+                            <div className='box_img_modal_curso_g2'>
+                                <img src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="Foto do Desconto" />
                             </div>
-                            <div className='dados_geral_g2'>
-                                <div className='box_dados_modal_g2'>
-                                    <div><img src={relogio} alt="relogio" /> <p>{curso.cargaHoraria} Horas</p></div>
-                                    <div> <img src={data} alt="data" /> <p>
-                                        {/* {curso.dataFinalizacao}  */}
-                                        {Intl.DateTimeFormat("pt-BR", {
-                                                    year: 'numeric', month: 'numeric', day: 'numeric'
-                                                }).format(new Date(curso.dataFinalizacao))}
-                                        </p></div>
+
+                            <div className='box_cima_modal_curso_g2'>
+                                <div className='title_modal_curso_g2'>
+                                    <h1>{curso.nomeCurso}</h1>
                                 </div>
-                                <div className='box_dados_modal2_g2'>
-                                    <div>
-                                        <img src={local} alt="local" /> <p>{curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro} </p>
+
+                                <div>
+                                    {curso.mediaAvaliacaoCurso}
+                                </div>
+
+                                <div className='dados_modal_curso_g2'>
+
+                                    <div className='icone_center_modal_curso_g2'>
+                                        <img src={calendar} alt="calendário" /> <p>
+
+                                            {Intl.DateTimeFormat("pt-BR", {
+                                                year: 'numeric', month: 'numeric', day: 'numeric',
+                                            }).format(new Date(curso.dataFinalizacao))}
+
+                                        </p>
+
 
                                     </div>
-                                    <div>
-                                        <img src={modelo} alt="" /> <p>{curso.modalidadeCurso === true ? 'Presencial' : 'EAD'}</p>
+
+                                    <div className='icone_center_modal_curso_g2'>
+                                        <img src={map} alt="mapa" /> <p> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro} </p>
+                                    </div>
+
+                                </div>
+
+                                <div className='container_registro_curso_g2'>
+                                    <div className='box_dados_registro_curso_g2'>
+                                        <span> Adicionado por: </span> <p>{curso.idEmpresaNavigation.nomeEmpresa}</p>
+                                    </div>
+                                    <div className='box_dados_registro_curso_g2'>
+                                        <span>Empresa:</span> <p>{curso.idEmpresaNavigation.nomeEmpresa}</p>
                                     </div>
                                 </div>
                             </div>
 
-                        </div>
-
-
-                    </div>
-                    <section className='container_modal_baixo_g2'>
-
-
-                        <div className='container_descricao_g2'>
-                            <span>Descrição:</span>
-                            <p className='texto_descricao_g2'>{curso.descricaoCurso}</p>
-                            <div className='box_empresa_modal_g2'>
-                                <span>Empresa:</span>
-                                <p className='texto_empresa_g2'>{curso.idEmpresaNavigation.nomeEmpresa}<button className='btn_inscreva_g2'><a href={curso.siteCurso}>Inscreva-se</a></button> </p>
-
-                            </div>
-                        </div>
-
-                        <div>
-
-                            <hr className='vertical_g2' />
-                        </div>
-
-                        <div className='container_comentario_g2'>
                             <div>
-                                <span>Comentario: </span>
-                                <div className='box_comentarios_g2'>
+                                <div className='circulo_icone_coin_curso_g2'>
+                                    <img className='icone_modal_coin_curso_g2' src={coin} alt="preço da vantagem" /> <p> {curso.valorCurso} </p>
+                                </div>
+                            </div>
+                        </div>
 
-                                    {
-                                        listaComentarioCurso.map((comentario) => {
+                        {/* parte 2 */}
+
+                        <div className='modal_baixo_curso_g2'>
+                            <div className='container_lista_comentario_curso_g2'>
+                                <h2>Comentários:</h2>
+                                <div className='wrap_modal_comentario_curso_g2'>
+                                    {/* {
+                                        listaComentarioBeneficio.map((comentario) => {
                                             return (
-                                                <div>
-                                                    <div>
-
-                                                        {comentario.avaliacaoComentario}
+                                                <div className='container_curso_lista_comentario_g2'>
+                                                    <div className='box_lista_curso_comentario_g2'>
+                                                        <span>{comentario.idUsuarioNavigation.nome}:</span>
+                                                        <p>{comentario.comentarioDesconto1}</p>
+                                                        <p>{comentario.avaliacaoDesconto}</p>
                                                     </div>
-                                                    {comentario.idUsuarioNavigation.nome} :
-                                                    {comentario.comentarioCurso1}
                                                 </div>
                                             )
                                         })
-                                    }
+                                    } */}
+
+                                    {/* {beneficio.comentariodescontos} */}
                                 </div>
-                                <hr className='horizontal_g2' />
-                                <form action="">
-                                    <div className=''>
-                                        <label htmlFor=""></label>
-                                        <input className='input_comentario_avaliacao_g2' type="number" placeholder='De 0 a 5, qual a nota para esse curso' />
-                                    </div>
-                                    <div className='container_input_modal_g2'>
 
-                                        <label htmlFor=""></label>
-                                        <input className='input_comentario_modal_g2' type="text" placeholder='Adicione um comentario' />
-                                        <button className='btn_comentario_g2'>Enviar</button>
-                                    </div>
-                                </form>
+                                <div>
+                                    <form  className='input_modal_comentario_curso_g2'>
+                                        <input
+                                            type="number"
+                                            placeholder='Avaliação 0 a 5'
+                                            // value={avaliacaoDesconto}
+                                            // onChange={(e) => setAvaliacaoDesconto(e.target.value)}
+                                        />
 
+                                        <input
+                                            type="text"
+                                            placeholder='Comente'
+                                            // value={comentarioDesconto1}
+                                            // onChange={(e) => setComentarioDesconto1(e.target.value)}
+                                        />
+                                        <button type="submit" className="botaoCadastroComentarioCurso_g2">Enviar</button>
+
+                                    </form>
+                                </div>
+                            </div>
+                            <hr className='hr_modal_curso_g2' />
+                            <div className='container_descricao_curso_g2'>
+                                <h2>Descrição</h2>
+
+                                <div className='lista_descricao_curso_g2'>
+                                    {curso.descricaoCurso}
+                                </div>
+
+                                <div className='btn_cadastrarComentario_Curso_g2'>
+                                    <img src={coracao} alt="" />
+                                    <button type="submit" className="botaoCadastroComentarioCurso_g2">Inscrever-se</button>
+                                </div>
                             </div>
                         </div>
 
-                    </section>
+                    </div>
+
                 </Modal>
             ) : null
             }

@@ -13,250 +13,233 @@
     font-weight: bold;
 }
 
-.container_modal_cima_g2 {
+.container_modal_curso_g2 {
     display: flex;
     justify-content: space-between;
-    height: 50%;
+    width: 95%;
 }
 
-.container_img_modal_g2 {
-    width: 640px;
+.box_img_modal_curso_g2 {
+    width: 27vw;
+    height: 27vh;
 }
 
-.img_modal_g2 {
-    border-radius: 0 0 20px 0;
+.box_img_modal_curso_g2 img {
     width: 100%;
-    height: 80%;
-}
-
-.media_Avaliacao_g2 {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-}
-
-.media_Avaliacao_g2 p {
-    margin-top: 5px;
-    margin-left: 10px;
-    font-size: 1.8rem;
-}
-
-.media_Avaliacao_g2 img {
-    width: 50px;
-}
-
-.container_dados_modal_g2 {
-    justify-content: center;
-    margin-left: 80px;
-    width: 80%;
     height: 100%;
 }
 
-.container_title_modal_g2 {
+.box_cima_modal_curso_g2 {
+    margin-top: 3rem;
+}
+
+.title_modal_curso_g2 {
+    font-size: 2em;
+}
+
+.dados_modal_curso_g2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20vw;
+    height: 10vh;
+}
+
+.dados_modal_curso_g2 img {
+    margin-right: 0.4rem;
+}
+
+.icone_center_modal_curso_g2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
-    margin-bottom: 60px;
 }
 
-.container_title_modal_g2 span {
-    font-size: 4rem;
+.icone_center_modal_curso_g2 p {
+    font-size: 1.5em;
 }
 
-.dados_geral_g2{
-    margin-left: 70px;
+.container_registro_curso_g2 {
+    border: 3px solid #B3B3B3;
+    border-radius: 10px;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.dados_geral_g2 img{
-    width: 30px;
-    height: 30px;
+.box_dados_registro_curso_g2 {
+    display: flex;
+    padding-left: 3rem;
 }
 
-.box_dados_modal_g2 {
-    margin-right: 100px;
+.box_dados_registro_curso_g2 span {
+    font-weight: bolder;
+    font-size: 2em;
+}
+
+.box_dados_registro_curso_g2 p {
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.circulo_icone_coin_curso_g2 {
+    display: flex;
+    margin-top: 3rem !important;
+    justify-content: center;
+    align-items: center;
+    width: 5vw;
+    height: 4vh;
+    border-radius: 15px;
+    border: 2px solid #B3B3B3;
+}
+
+.circulo_icone_coin_curso_g2 p {
+    font-size: 1.5em;
+}
+
+.icone_modal_coin_curso_g2 {
+    width: 1vw !important;
+    height: 2vh !important;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.modal_baixo_curso_g2 {
     display: flex;
     justify-content: space-between;
 }
 
-.box_dados_modal_g2 div {
-    display: flex;
-    align-items: center;
+.container_lista_comentario_curso_g2 {
+    width: 27vw;
+    margin-left: 3rem;
 }
 
-.box_dados_modal_g2 p {
-    margin-left: 10px;
+.container_lista_comentario_curso_g2 h2 {
+    margin-top: 1.5rem;
+    font-weight: bolder;
+    font-size: 3em;
 }
 
-.box_dados_modal2_g2 {
-    margin-right: 100px;
-    margin-top: 20px;
-    /* width: 650px; */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.box_dados_modal2_g2 div {
-    /* width: 500px; */
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.box_dados_modal2_g2 p {
-    margin-left: 10px;
-}
-
-.container_modal_baixo_g2 {
-    /* background-color: blue; */
-    display: flex;
-    margin-left: 10px;
-    justify-content: space-around;
-}
-
-.container_modal_baixo_g2 span {
-    font-size: 2rem;
-}
-
-.container_descricao_g2 {
-    margin-left: 20px;
-    width: 700px;
-}
-
-.texto_descricao_g2 {
-    margin-top: 10px;
-    /* margin-left: 10px; */
-    width: 80%;
-    font-size: 17px;
-    height: 5%;
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 190px;
-}
-
-.box_empresa_modal_g2{
-    height: 0;
-}
-
-.texto_empresa_g2 {
-    /* margin-left: 20px; */
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.btn_inscreva_g2 {
-    margin-left: 170px;
-    background-color: #CB334B;
-    color: white;
-    width: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    border-radius: 10px;
-    font-size: 20px;
-    border: none;
-    cursor: pointer;
-    /* margin-bottom: 10px; */
-}
-
-.btn_inscreva_g2 a {
-    text-decoration: none;
-    margin-left: 10px;
-    background-color: #CB334B;
-    color: white;
-    width: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    border-radius: 10px;
-    /* font-size: 30px; */
-    border: none;
-    cursor: pointer;
-}
-
-.vertical_g2 {
-    width: 1px;
-    height: 334px;
-}
-
-.container_comentario_g2 {
-    width: 700px;
-    margin-left: 50px;
-    display: flex;
-    justify-content: start;
-}
-
-
-.box_comentarios_g2 {
-    width: 60%;
-    height: 50%;
-    margin-top: 20px;
+.wrap_modal_comentario_curso_g2 {
+    margin-right: 50px;
     overflow-y: auto;
+    direction: ltr;
+    height: 32vh;
 }
 
-.horizontal_g2 {
-    width: 500px;
-    height: 1px;
+.wrap_modal_comentario_curso_g2::-webkit-scrollbar {
+    width: 4px;
 }
 
-.input_comentario_avaliacao_g2 {
-    border: none;
+.wrap_modal_comentario_curso_g2::-webkit-scrollbar-thumb {
+    background-color: #787878;
     border-radius: 20px;
-    box-shadow: inset -4px -3px 4px #FAFBFF, inset 4px 3px 8px #A6ABBD;
-    font-size: 2rem;
-    border-color: #f2f2f2;
-    display: block;
-    padding-left: 15px;
-    outline: none;
-    font-weight: bold;
+
 }
 
-
-.input_comentario_modal_g2 {
-    border: none;
-    width: 300px;
-    height: 40px;
-    border-radius: 50px;
-    box-shadow: inset -4px -3px 4px #FAFBFF, inset 4px 3px 8px #A6ABBD;
-    font-size: 2rem;
-    border-color: #f2f2f2;
-    display: block;
-    padding-left: 15px;
-    outline: none;
-    font-weight: bold;
+.wrap_modal_comentario_curso_g2 ::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background-color: #D7D7D7;
 }
 
-
-
-.input_comentario_modal_g2::placeholder {
-    font-size: 20px;
-    color: #000000;
-    border: none;
-    /* font-weight: bold; */
-}
-
-.container_input_modal_g2 {
+.container_curso_lista_comentario_g2 {
     display: flex;
-    /* justify-content: center; */
-    margin-top: 15px;
-    align-items: center;
-
+    margin-top: 5rem;
 }
 
-.btn_comentario_g2 {
-    margin-left: 10px;
-    background-color: #CB334B;
-    color: white;
-    width: 150px;
+.box_lista_curso_comentario_g2 {
     display: flex;
-    align-items: center;
     justify-content: center;
-    height: 40px;
-    border-radius: 10px;
-    font-size: 30px;
+    align-items: center;
+}
+
+.box_lista_curso_comentario_g2 span {
+    font-weight: bolder;
+    font-size: 2em;
+    text-transform: capitalize;
+    margin-right: 1rem;
+}
+
+.box_lista_curso_comentario_g2 p {
+    font-size: 1.5em;
+}
+
+.input_modal_comentario_curso_g2 input {
+    box-sizing: border-box;
+    padding: 0 20px;
+    width: 13.5vw;
+    height: 6vh;
+    background-color: transparent;
+    outline: 0;
+    border: 1px #B3B3B3 solid;
+    border-radius: 15px;
+    margin-bottom: 2em;
+    font-size: 1.1em;
+    color: #B3B3B3;
+    font-weight: bold;
+}
+
+
+.input_modal_comentario_curso_g2 button {
+    margin-left: 5rem;
+}
+
+.botaoCadastroComentarioCurso_g2 {
+    width: 8vw;
+    height: 6vh;
+    border-radius: 15px;
+    background-color: #C20004;
     border: none;
     cursor: pointer;
+    color: #f2f2f2;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.botaoCadastroComentarioCurso_g2:hover {
+    background-color: transparent;
+    border: #C20004 1px solid;
+    border-radius: 15px;
+    color: #C20004;
+    transition: 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.hr_modal_curso_g2 {
+    height: 52.8vh;
+}
+
+.container_descricao_curso_g2 {
+    width: 34.7vw;
+    padding-left: 4rem;
+}
+
+.container_descricao_curso_g2 h2 {
+    margin-top: 1rem;
+    font-weight: bolder;
+    font-size: 3em;
+    margin-left: 1rem;
+}
+
+.lista_descricao_curso_g2 {
+    margin-top: 2rem;
+    /* background-color: yellow; */
+    width: 90%;
+    height: 40vh;
+    font-size: 3em;
+    margin-left: 1rem;
+    font-weight: 400;
+}
+
+.btn_cadastrarComentario_Curso_g2 {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 6rem;
+}
+
+.btn_cadastrarComentario_Curso_g2 img {
+    margin-right: 1rem;
 }

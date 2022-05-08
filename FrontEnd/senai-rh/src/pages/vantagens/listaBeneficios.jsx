@@ -47,7 +47,7 @@ export default function ListaBeneficios() {
 
     function Excluir(idDesconto) {
 
-        api.delete('http://localhost:5000/api/Descontos/Deletar/' + idDesconto)
+        api.delete('/Descontos/Deletar/' + idDesconto)
 
             .then(resposta => {
                 if (resposta.status === 204) {
@@ -149,7 +149,7 @@ export default function ListaBeneficios() {
                                                             <div>
                                                                 <img src={coracao} alt="favorito" />
                                                             </div>
-                                                            {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
+                                                            ={/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
                                                         </div>
                                                     </div>
                                                 </section>
@@ -207,7 +207,7 @@ export default function ListaBeneficios() {
                                                                 <img src={coracao} alt="favorito" />
                                                             </div>
                                                             {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
-                                                        </div>
+                                                        </div> 
                                                     </div>
                                                 </section>
                                             </div>

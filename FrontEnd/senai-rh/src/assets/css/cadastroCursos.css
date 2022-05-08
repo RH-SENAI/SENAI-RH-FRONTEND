@@ -45,7 +45,64 @@
     background-image: url("../img/iconeCalendario.svg");
 }
 
+.input_g2_cadastro {
+    position: relative;
+    padding-top: 13px;
+    margin-right: 1rem;
+}
 
+.input_g2_cadastro input {
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    outline: none;
+    /* min-width: 250px; */
+    width: 13.5vw;
+    height: 6vh;
+    padding: 15px 20px;
+    /* font-size: 16px; */
+    transition: all .1s linear;
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    -webkit-appearance: none;
+}
+
+
+
+.input_g2_cadastro input::placeholder {
+    color: transparent;
+}
+
+.input_g2_cadastro label {
+    pointer-events: none;
+    position: absolute;
+    top: calc(50% - 8px);
+    left: 15px;
+    transition: all .1s linear;
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    background-color: #f2f2f2;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.input_g2_cadastro input:required:invalid+label {
+    color: red;
+}
+
+.input_g2_cadastro input:focus:required:invalid {
+    border: 2px solid red;
+}
+
+.input_g2_cadastro input:required:invalid+label:before {
+    content: '*';
+}
+
+.input_g2_cadastro input:focus+label,
+.input_g2_cadastro input:not(:placeholder-shown)+label {
+    font-size: 13px;
+    top: 0;
+
+}
 
 .title_cadastroCurso_g2 {
     display: flex;
