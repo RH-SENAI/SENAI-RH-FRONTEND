@@ -6,7 +6,7 @@
 
 .box_img_modal_beneficio_g2 {
     width: 27vw;
-    height: 27vh;
+    height: 32.8vh;
 }
 
 .box_img_modal_beneficio_g2 img {
@@ -15,11 +15,11 @@
 }
 
 .box_cima_modal_beneficio_g2 {
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
 .title_modal_beneficio_g2 {
-    font-size: 2em;
+    font-size: 1.7em;
 }
 
 .dados_modal_beneficio_g2 {
@@ -41,7 +41,8 @@
 }
 
 .icone_center_modal_beneficio_g2 p {
-    font-size: 1.5em;
+    font-size: 1em;
+    margin-right: 1rem;
 }
 
 .container_registro_beneficio_g2 {
@@ -55,16 +56,16 @@
 
 .box_dados_registro_beneficio_g2 {
     display: flex;
-    padding-left: 3rem;
+    padding-left: 1rem;
 }
 
 .box_dados_registro_beneficio_g2 span {
     font-weight: bolder;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .box_dados_registro_beneficio_g2 p {
-    font-size: 1.5em;
+    font-size: 1em;
     display: flex;
     align-items: center;
     margin-left: 1rem;
@@ -105,14 +106,14 @@
 .container_lista_comentario_beneficio_g2 h2 {
     margin-top: 1.5rem;
     font-weight: bolder;
-    font-size: 3em;
+    font-size: 1.9em;
 }
 
 .wrap_modal_comentario_beneficio_g2 {
     margin-right: 50px;
     overflow-y: auto;
     direction: ltr;
-    height: 32vh;
+    height: 21.6vh;
 }
 
 .wrap_modal_comentario_beneficio_g2::-webkit-scrollbar {
@@ -132,7 +133,7 @@
 
 .container_lista_comentario_g2 {
     display: flex;
-    margin-top: 5rem;
+    margin-top: 0.7rem;
 }
 
 .box_lista_comentario_g2 {
@@ -143,13 +144,13 @@
 
 .box_lista_comentario_g2 span {
     font-weight: bolder;
-    font-size: 2em;
+    font-size: 1.5em;
     text-transform: capitalize;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 }
 
 .box_lista_comentario_g2 p {
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 .input_modal_comentario_beneficio_g2 input {
@@ -169,7 +170,7 @@
 
 
 .input_modal_comentario_beneficio_g2 button {
-    margin-left: 5rem;
+    margin-left: 1.5rem;
 }
 
 .botaoCadastroComentarioBeneficio_g2 {
@@ -194,28 +195,27 @@
 }
 
 .hr_modal_beneficio_g2 {
-    height: 52.8vh;
+    height: 46.8vh;
 }
 
 .container_descricao_beneficio_g2 {
-    width: 34.7vw;
+    width: 36vw;
     padding-left: 4rem;
 }
 
 .container_descricao_beneficio_g2 h2 {
     margin-top: 1rem;
     font-weight: bolder;
-    font-size: 3em;
-    margin-left: 1rem;
+    font-size: 1.9em;
+    /* margin-left: 1rem; */
 }
 
 .lista_descricao_beneficio_g2 {
     margin-top: 2rem;
-    /* background-color: yellow; */
     width: 90%;
-    height: 40vh;
-    font-size: 3em;
-    margin-left: 1rem;
+    height: 28.5vh;
+    font-size: 1.5em;
+    /* margin-left: 1rem; */
     font-weight: 400;
 }
 

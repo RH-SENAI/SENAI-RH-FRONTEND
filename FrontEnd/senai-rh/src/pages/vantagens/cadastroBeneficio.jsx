@@ -65,7 +65,6 @@ export default function CadastrarBeneficio() {
 
         api({
             method: "post",
-            // url: "https://apibackgrupo2.azurewebsites.net/api/Cursos/Cadastrar",
             url: "/Descontos/Cadastrar",
             data: formData,
             headers: { "Content-Type": "multipart/form-data" },
@@ -153,14 +152,14 @@ export default function CadastrarBeneficio() {
 
                                         <div className="input_g2_cadastro">
                                             <input
-                                                onChange={(campo) => setValorDesconto(campo.target.value)}
+                                                // onChange={(campo) => setValorDesconto(campo.target.value)}
                                                 className="flex_co"
-                                                value={valorDesconto}
+                                                // value={valorDesconto}
                                                 id="valorDesconto"
                                                 placeholder="Desconto"
                                                 type="number"
                                             />
-                                            <label htmlFor="valorDesconto">Valor do Desconto</label>
+                                            <label htmlFor="valorDesconto">Desconto</label>
                                         </div>
 
 
@@ -206,8 +205,8 @@ export default function CadastrarBeneficio() {
 
                                         <div className="input_g2_cadastro">
                                             <input
-                                                // onChange={(campo) => setDescricaoDesconto(campo.target.value)}
-                                                // value={}
+                                                onChange={(campo) => setValorDesconto(campo.target.value)}
+                                                value={valorDesconto}
                                                 id='cashes'
                                                 name="cashes"
                                                 type="number"

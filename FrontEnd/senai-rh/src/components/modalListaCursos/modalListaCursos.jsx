@@ -46,19 +46,19 @@ export const ModallCurso = ({ showModal, setShowModal, curso }) => {
         [keyPress]
     );
 
-    function listarComentarioCurso() {
-        api('/ComentarioCursos')
+    function listarComentarioCurso(cursoss) {
+        api('/ComentarioCursos/Comentario/' + cursoss.idCurso)
             .then(resposta => {
                 if (resposta.status === 200) {
-                    // console.log('Lista')
-                    // console.log(resposta)
+                    console.log('Lista cursos comen')
+                    console.log(resposta)
                     setListaComentarioCurso(resposta.data)
                 }
             })
             .catch(erro => console.log(erro))
     }
 
-    useEffect(listarComentarioCurso, []);
+    // useEffect(listarComentarioCurso, []);
 
 
     return (
@@ -127,8 +127,8 @@ export const ModallCurso = ({ showModal, setShowModal, curso }) => {
                             <div className='container_lista_comentario_curso_g2'>
                                 <h2>Comentários:</h2>
                                 <div className='wrap_modal_comentario_curso_g2'>
-                                    {/* {
-                                        listaComentarioBeneficio.map((comentario) => {
+                                    {
+                                        listaComentarioCurso.map((comentario) => {
                                             return (
                                                 <div className='container_curso_lista_comentario_g2'>
                                                     <div className='box_lista_curso_comentario_g2'>
@@ -139,7 +139,7 @@ export const ModallCurso = ({ showModal, setShowModal, curso }) => {
                                                 </div>
                                             )
                                         })
-                                    } */}
+                                    }
 
                                     {/* {beneficio.comentariodescontos} */}
                                 </div>

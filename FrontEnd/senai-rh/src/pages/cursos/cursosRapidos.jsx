@@ -103,7 +103,6 @@ export default function CursosRapidos() {
                     <div className='wrap_curso_g2'>
                         <ul className='container_wrap_curso_g2'>
                             {
-
                                 searchInput.length > 0 ?
 
                                     filteredResults.map((curso) => {

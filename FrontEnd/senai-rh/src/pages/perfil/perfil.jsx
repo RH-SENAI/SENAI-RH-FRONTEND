@@ -4,17 +4,18 @@ import "../../assets/css/perfil.css"
 import { useEffect, useState } from "react"
 import api from "../../services/api"
 import axios from "axios"
+import { parseJwt } from "../../services/auth";
 
 
 export default function Perfil() {
     const [listaUsuarios, setListaUsuario] = useState([])
-    const [idUsuario, setIdUsuario]=useState(0)
+    const [idUsuario, setIdUsuario] = useState(0)
 
 
-    
+
 
     function listarUsuario() {
-        axios('http://apirhsenaigp1.azurewebsites.net/api/Usuarios/BuscarUsuario', {
+        axios('http://apirhsenaigp1.azurewebsites.net/api/Usuarios/BuscarUsuario/' + parseJwt().jti, {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             },
@@ -24,9 +25,10 @@ export default function Perfil() {
                 if (resposta.status === 200) {
                     // console.log('Lista')
                     console.log(resposta)
-                    setListaUsuario(resposta.data.nome)
+                    setListaUsuario(resposta.data)
+                    // setNome(resposta.data.nome)
                     // console.log('aqui' + resposta.data)
-                    
+
                 }
             })
             .catch(erro => console.log(erro))
@@ -50,6 +52,7 @@ export default function Perfil() {
                             <p className="p_perfil_g2">Foto Perfil</p>
 
                             <div className="foto_perfil_g2">
+                                <img src={"" + listaUsuarios.caminhoFotoPerfil} alt="" />
                             </div>
                         </div>
                     </div>
@@ -60,11 +63,10 @@ export default function Perfil() {
                         </div>
 
                         <div className="box_dados_perfil_g2">
-
-                            <span></span>
-                            <span>Email </span>
-                            <span> CPF </span>
-                            <span>Endereço</span>
+                            <span>{listaUsuarios.nome}</span>
+                            <span>{listaUsuarios.email} </span>
+                            <span> {listaUsuarios.cpf} </span>
+                            <span>{listaUsuarios.localizacaoUsuario}</span>
                         </div>
                     </div>
                 </div>

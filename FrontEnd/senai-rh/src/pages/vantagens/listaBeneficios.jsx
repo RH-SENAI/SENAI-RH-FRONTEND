@@ -17,6 +17,8 @@ import { useStars } from 'stars-rating-react-hooks'
 
 
 export default function ListaBeneficios() {
+    const [listaComentarioBeneficio, setListaComentarioBeneficio] = useState([])
+
     const [listaBeneficios, setListaBeneficios] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [idDescontoModal, setIdDescontoModal] = useState()
@@ -29,6 +31,21 @@ export default function ListaBeneficios() {
 
     const OpenModal = () => {
         setShowModal(prev => !prev);
+
+        function listarComentarioBeneficio(beneficio) {
+            console.log(beneficio.idDesconto)
+            api('/ComentarioDescontos/Comentario/' + beneficio.idDesconto)
+                .then(resposta => {
+                    if (resposta.status === 200) {
+                        console.log('Lista comentario')
+                        console.log(resposta)
+                        setListaComentarioBeneficio(resposta.data)
+                    }
+                })
+                .catch(erro => console.log(erro))
+        }
+
+        useEffect(listarComentarioBeneficio, []);
     }
 
     function listarBeneficios() {
@@ -134,7 +151,7 @@ export default function ListaBeneficios() {
                                             <div className='espacamento_beneficio_g2'>
                                                 <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_beneficio_g2'>
                                                     <div className='banner_img_beneficio_g2'>
-                                                        {<img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
+                                                        {<img onClick={OpenModal()} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
                                                     </div>
 
                                                     <div className="dados_beneficio_gp2">
@@ -207,7 +224,7 @@ export default function ListaBeneficios() {
                                                                 <img src={coracao} alt="favorito" />
                                                             </div>
                                                             {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
-                                                        </div> 
+                                                        </div>
                                                     </div>
                                                 </section>
                                             </div>

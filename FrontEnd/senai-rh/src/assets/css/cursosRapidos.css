@@ -146,6 +146,7 @@
     border: 3px solid #B3B3B3;
     border-top: none;
     height: 30vh;
+    border-radius: 0 0 10px 10px;
 }
 
 .box_dados_curso_g2 {

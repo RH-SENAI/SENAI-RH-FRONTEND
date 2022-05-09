@@ -14,6 +14,7 @@ import "../../assets/css/modalListaBeneficios.css"
 import api from '../../services/api';
 import { parseJwt } from '../../services/auth';
 import coin from "../../assets/img/coin 1.png"
+import axios from 'axios';
 
 export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
 
@@ -61,7 +62,7 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
             idDesconto: idDesconto
         }
 
-        api('/ComentarioDescontos/' + beneficio.idDesconto , comentarios, {
+        api.post('/ComentarioDescontos/Comentario/' + idDesconto , comentarios, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -77,10 +78,11 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
     }
 
     function listarComentarioBeneficio() {
-        api('/ComentarioDescontos')
+        console.log(beneficio.idDesconto)
+        api('/ComentarioDescontos/Comentario/' + beneficio.idDesconto)   
             .then(resposta => {
                 if (resposta.status === 200) {
-                    console.log('Lista')
+                    console.log('Lista comentario')
                     console.log(resposta)
                     setListaComentarioBeneficio(resposta.data)
                 }
@@ -88,7 +90,7 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
             .catch(erro => console.log(erro))
     }
 
-    useEffect(listarComentarioBeneficio, []);
+    // useEffect(listarComentarioBeneficio, []);
 
 
     return (
@@ -159,13 +161,13 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
                                 <h2>Comentários:</h2>
                                 <div className='wrap_modal_comentario_beneficio_g2'>
                                     {
-                                        listaComentarioBeneficio.map((comentario) => {
+                                        listaComentarioBeneficio.map((c) => {
                                             return (
                                                 <div className='container_lista_comentario_g2'>
                                                     <div className='box_lista_comentario_g2'>
-                                                        <span>{comentario.idUsuarioNavigation.nome}:</span>
-                                                        <p>{comentario.comentarioDesconto1}</p>
-                                                        <p>{comentario.avaliacaoDesconto}</p>
+                                                        {/* <span>{c.idUsuarioNavigation.nome}:</span> */}
+                                                        <p>{c.comentarioDesconto1}</p>
+                                                        <p>{c.avaliacaoDesconto}</p>
                                                     </div>
                                                 </div>
                                             )
