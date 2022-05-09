@@ -42,7 +42,7 @@ export default function Democratizacao() {
         }
 
 
-        axios.post("http://localhost:5000/api/Feedbacks/Cadastrar", cadastro, {
+        axios.post("https://apigrupo3.azurewebsites.net/api/Feedbacks/Cadastrar", cadastro, {
 
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -63,7 +63,7 @@ export default function Democratizacao() {
 
     function ListarDecisao() {
 
-        axios.get('http://localhost:5000/api/Decisoes/Listar', {
+        axios.get('https://apigrupo3.azurewebsites.net/api/Decisoes/Listar', {
             headers: {
 
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
@@ -82,7 +82,7 @@ export default function Democratizacao() {
     }
 
     function ListarFeedback() {
-        axios.get('http://localhost:5000/api/Feedbacks/Listar', {
+        axios.get('https://apigrupo3.azurewebsites.net/api/Feedbacks/Listar', {
             headers: {
 
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login')

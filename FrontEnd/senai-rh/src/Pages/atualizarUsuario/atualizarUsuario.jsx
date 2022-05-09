@@ -148,7 +148,7 @@ export default function AtualizarPerfil() {
 
         axios({
             method: "put",
-            url: `http://localhost:5000/api/Usuarios/Atualizar/Funcionario/${idUsuario}`,
+            url: `https://apigrupo3.azurewebsites.net/api/Usuarios/Atualizar/Funcionario/${idUsuario}`,
             data: formData,
             headers: { "Content-Type": "multipart/form-data" },
         })
@@ -177,7 +177,7 @@ export default function AtualizarPerfil() {
             <Header />
 
             <div className="main">
-                <div className="container g3_boxOrganizar">
+                <div className="container containerResponsivo g3_boxOrganizar">
 
                     <div className="g3_textoEFoto">
                         <span className="g3_boldCadastrar animate__animated animate__fadeInUp">
@@ -227,7 +227,7 @@ export default function AtualizarPerfil() {
                                 <select
                                     name="idTipoUsuario"
                                     value={idTipoUsuario}
-                                    className="g3_inputAtualizar"
+                                    className="g3_inputAtualizarSelect"
                                     onChange={(event) => setIdTipoUsuario(event.target.value)}
 
                                 >
@@ -249,7 +249,7 @@ export default function AtualizarPerfil() {
                                     className="g3_inputAtualizarSelect"
 
                                 >
-                                    <option value="#">Selecione a Unidade</option>
+                                    <option value="#">Unidade</option>
                                     {listaUnidade.map((event) => {
                                         return (
 
@@ -266,7 +266,7 @@ export default function AtualizarPerfil() {
                                     className="g3_inputAtualizarSelect"
 
                                 >
-                                    <option value="#">Selecione o Cargo</option>
+                                    <option value="#">Cargo</option>
                                     {listaCargo.map((event) => {
                                         return (
 

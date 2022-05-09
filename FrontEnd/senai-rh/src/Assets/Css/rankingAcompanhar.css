@@ -43,3 +43,25 @@
     border: 1px solid #b3b3b3;
     margin-bottom: 2rem;
 }
+@media screen and (max-width: 980px) {
+    .g3_boxOrganizadoraRanking{
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+    .g3_boldRanking{
+        font-size: 2.1em;
+        text-align: center;
+    }
+    .g3_navRanking{
+        padding: 1rem;
+        margin-bottom: 3rem;
+        
+    }
+    .g3_spanNavRanking{
+        font-size: 1em;
+    }
+    .g3_cardsRanking{
+        padding: 1rem;
+        margin-bottom: 3rem;
+    }
+}

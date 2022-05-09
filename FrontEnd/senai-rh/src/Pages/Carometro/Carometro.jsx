@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+ import React, { useEffect } from 'react'
 
 import axios from 'axios'
 import { useState } from 'react';
@@ -10,11 +10,10 @@ import PerfilCarometro from '../../assets/img/PerfilCarometro.png'
 import setaSelectLight from '../../assets/img/SetaSelectLight.png'
 import IconLogout from '../../assets/img/IconLogout.png'
 import topCarometro from '../../assets/img/topCarometro.png'
-import { ModalAcompanhar } from '../../components/modal/ModalAcompanhar';
+import { ModalAcompanhar } from '../../components/modal/modalAcompanhar';
 
 
 //import Modal from 'react-modal';
-//import { ModalAcompanhar } from '../../components/modal/modalAcompanhar';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -24,6 +23,7 @@ export default function Carometro() {
 
     //States
     const [idCargo, setIdCargo] = useState(0);
+
     const [idUsuario, setIdUsuario] = useState(0);
     const [listaFuncionarios, setListaFuncionarios] = useState([]);
     const [listaCargo, setListaCargo] = useState([]);
@@ -36,7 +36,7 @@ export default function Carometro() {
         setShowModal(prev => !prev);
         console.log('abriuuu')
         console.log(idUsuarioModal)
-        console.log(idUsuario)
+        // console.log(idUsuario)
 
         
     }
@@ -58,7 +58,7 @@ export default function Carometro() {
 
     function BuscarFuncionario() {
 
-        axios.get('http://localhost:5000/api/Usuarios/Listar', {
+        axios.get('https://apigrupo3.azurewebsites.net/api/Usuarios/Listar', {
 
             headers: {
 
@@ -163,7 +163,7 @@ export default function Carometro() {
     return (
         <body>
             {/* <Modall atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)} showModal={showModal} setShowModal={setShowModal} /> */}
-            <ModalAcompanhar usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idUsuarioModal)} showModal={showModal} setShowModal={setShowModal} />
+            {/* <ModalAcompanhar usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idUsuarioModal)} showModal={showModal} setShowModal={setShowModal} /> */}
             {/* <ToastContainer
                 position="top-right"
                 autoClose={5000}

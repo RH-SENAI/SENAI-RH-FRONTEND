@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import "../../assets/css/democratizacao.css";
 import "../../assets/css/democratizacaoAdm.css";
+import "../../assets/css/decisao.css";
 import Footer from '../../components/footer';
 import FotoPerfil from '../../assets/img/perfilVazio.svg'
 import Header from '../../components/header/headerFuncionario'
@@ -22,7 +23,7 @@ export default function Decisao() {
     const [dataCadastroDecisao] = useState(moment().format("YYYY-MM-DD"));
 
     function ListarDecisao() {
-        axios.get('http://localhost:5000/api/Decisoes/Listar', {
+        axios.get('https://apigrupo3.azurewebsites.net/api/Decisoes/Listar', {
             headers: {
 
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
@@ -58,7 +59,7 @@ export default function Decisao() {
                                             return (
                                                 <div className='g3_feedback'>
                                                     <div className='g3_fotoPerfilFeedback'>
-                                                        <img className='g3_imgFotoFeedback' src={FotoPerfil} />
+                                                        <img className='g3_imgFotoFeedback' src={"https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples/" + decisao.caminhoFotoPerfil} />
                                                     </div>
                                                     <Link to={"Democratizacao/" + decisao.idDecisao} className='g3_btnRedirectDecisao'>
                                                         <div className='g3_boxDecisaoLista'>

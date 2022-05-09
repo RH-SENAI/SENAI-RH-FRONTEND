@@ -56,6 +56,7 @@
     width: 7.8vw;
     height: 16vh;
     background-color: transparent;
+    border: 1px #B3B3B3 solid;
 
     border-radius: 15px;
     display: flex;
@@ -147,5 +148,113 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+}
+.containerResponsivo{
+    display: none;
+}
+@media screen and (max-width: 480px) {
+    .containerResponsivo {
+        display: block;
+        margin: 0 1.9rem 0 1.9rem;
+        max-width: 420px;
+        width: 100%;
+      }
+    .container{
+        display: none;
+    }
+      .g3_boldCadastrar{
+        font-size: 2.1em;
+        margin-bottom: 0;
+        text-align: center;
+      }
+      .g3_nonBoldCadastrar{
+        font-size: 1.9em;
+        margin-bottom: 4rem;
+        text-align: center;
+      }
+      .g3_boxOrganizar{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+      }
+      .g3_formOrganizar{
+          margin-top: 3rem;
+      }
+      .g3_fotoPerfilVazia{
+          width: 100%;
+          height: 20vh;
+          display: flex;
+          justify-content: center;
+      }
+      .g3_textoEFoto{
+          margin-right: 0px;
+          margin-top: 2rem;
+      }
+      .g3_formAtualizarLeft{
+          margin: 0;
+          width: 50%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+      }
+      .g3_formAtualizarRight{
+          margin: 0;
+          width: 50%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+      }
+      .g3_inputAtualizar{
+          width: 90%;
+          padding: 0px 10px;
+          height: 6vh;
+          background-color: transparent;
+          outline: 0;
+          border: 1px #B3B3B3 solid;
+          border-radius: 10px;
+          margin-bottom: 2em;
+          font-size: 0.7em;
+          color: #B3B3B3;
+          font-weight: bold;
+          /* box-shadow: 0 3px 15px rgb(166 171 189); */
+      }
+      .g3_fotoPerfilVazia{
+          margin-bottom: 1rem;
+      }
+      .g3_inputAtualizarSelect{
+        width: 90%;
+        padding: 0px 10px;
+        height: 6vh;
+        background-color: transparent;
+        outline: 0;
+        border: 1px #B3B3B3 solid;
+        border-radius: 10px;
+        margin-bottom: 2em;
+        font-size: 0.7em;
+        color: #B3B3B3;
+        font-weight: bold;
+        background-position: 31vw;
+        background-size: 3vh;
+        /* box-shadow: 0 3px 15px rgb(166 171 189); */
+      }
+      .labelCadastroFoto{
+          text-align: center;
+
+      }
+      .g3_botaoAtualizar{
+        width: 35vw;
+        font-size: 0.8em;
+        margin-top: 0;
+        margin-left: 110px;
+      }
+      .g3_spanAtualizar{
+          font-size: 1.1em;
+          margin-bottom: 1rem;
+          font-family: 'Quicksand', sans-serif;
+      }
+    
+
+
 }
 

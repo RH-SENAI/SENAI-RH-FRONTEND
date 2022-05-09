@@ -211,3 +211,36 @@ body{
 .g3_btnRedirectDecisao{
     text-decoration: none;
 }
+@media screen and (max-width: 980px) {
+    .g3_inputCadastroFeedback{
+        width: 100%;
+
+    }
+    .g3_btnCadastroFeedback{
+        width: 35vw;
+        font-size: 0.8em;
+        margin: 0;
+        margin-bottom: 3rem;
+    }
+    .g3_boldFeedback{
+        font-size: 2.1em
+    }
+    .g3_boxFeedback{
+        width: 70vw;
+        padding: 1rem 1rem;
+        height: 100%;
+    }
+    .g3_feedback{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    .g3_fotoPerfilFeedback{
+        margin-right: 1rem;
+        width: 10vw;
+    }
+    .g3_containerFeedback{
+        margin-bottom: 2rem;
+    }
+}

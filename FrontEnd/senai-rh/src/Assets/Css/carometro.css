@@ -1,59 +1,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
 
-.g3_whiteBackgroundCarometro{
+.g3_whiteBackgroundCarometro {
     background-color: white;
-    height: 375px;
+    height: 37vh;
     box-shadow: 0 0 50px -10px #f8f8f8;
 
 }
-.g3_conteudoCarometro{
+
+.g3_conteudoCarometro {
     margin-top: 4rem;
 }
-.g3_topCarometro{
+
+.g3_topCarometro {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.g3_headerCarometro{
+
+.g3_headerCarometro {
     display: flex;
     justify-content: space-between;
 }
-.g3_tituloCarometro{
+
+.g3_tituloCarometro {
     font-style: normal;
     font-weight: 600;
     font-size: 3.1em;
     margin-bottom: 1rem;
     font-family: 'Montserrat', sans-serif;
 }
-.g3_navBarCarometro{
+
+.g3_navBarCarometro {
     border: 2px #b3b3b3 solid;
     border-radius: 10px;
     width: 100%;
     height: 8.2vh;
     background-color: #f2f2f2;
 }
-.g3_cardsCarometro{
+
+.g3_cardsCarometro {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     min-height: 49.3vh;
     font-family: 'Quicksand', sans-serif;
 }
-.g3_cardUsuario{
+
+.g3_cardUsuario {
     height: 35vh;
-    
+
     width: 12.6vw;
     justify-content: center;
     border-radius: 20px;
     margin-top: 4rem;
     margin-bottom: 2rem;
     padding-left: 3rem;
+    padding-right: 1rem;
 
     border: 2px #b3b3b3 solid;
 
     background-color: transparent;
-    
+
 
     display: flex;
     flex-direction: column;
@@ -62,12 +70,15 @@
     transition: all 0.5s;
     font-family: 'Quicksand', sans-serif;
 }
-.g3_cardUsuario:hover{
+
+.g3_cardUsuario:hover {
     /* box-shadow: 20px 20px 35px rgba(166, 171, 189, 1), -20px -20px 35px rgba(255, 255, 255, 1); */
     transform: scale(1.02);
-    transition: all 0.5s;;
+    transition: all 0.5s;
+    ;
 }
-.g3_fotoCarometro{
+
+.g3_fotoCarometro {
     height: 15.4vh;
     max-width: 7.8vw;
     margin-bottom: 3rem;
@@ -76,17 +87,19 @@
     object-fit: cover;
 
 }
-.g3_spanCarometro{
+
+.g3_spanCarometro {
     margin-bottom: 2rem;
     font-size: 1.2em;
     font-weight: 400;
     font-family: 'Quicksand', sans-serif;
     display: flex;
     justify-content: left;
-    text-align: center;
-    
+    text-align: start;
+
 }
-.g3_inputPesquisaCarometro{
+
+.g3_inputPesquisaCarometro {
     background-color: transparent;
     outline: 0;
     border: none;
@@ -96,15 +109,58 @@
     background-size: 16px;
     padding-left: 20px;
     padding-bottom: 5px;
-    
+
 }
-.g3_navBarCarometro{
+
+.g3_navBarCarometro {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.g3_abrirModal{
+
+.g3_abrirModal {
     outline: 0;
     background-color: transparent;
     border: none;
+}
+
+@media screen and (max-width: 980px) {
+    .container {
+        padding: 0 1.9rem;
+    }
+    .g3_whiteBackgroundCarometro {
+        background-color: white;
+        height: 34vh;
+        box-shadow: 0 0 50px -10px #f8f8f8;
+    
+    }
+
+    .g3_tituloCarometro {
+        font-size: 2.1em;
+    }
+
+    .g3_topImgCarometro {
+        display: none;
+    }
+
+    .g3_cardUsuario {
+        width: 30vw;
+        height: 30vh;
+        padding-left: 1rem;
+    }
+
+    .g3_navBarCarometro {
+        margin-top: 4rem;
+        height: 6vh;
+        border-radius: 10px;
+    }
+
+    .g3_fotoCarometro {
+        height: 11vh;
+        max-width: 25vw;
+    }
+    .g3_spanCarometro{
+        font-size: 1em;
+        text-align: start;
+    }
 }
