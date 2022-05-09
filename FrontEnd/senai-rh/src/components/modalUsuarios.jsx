@@ -7,7 +7,8 @@ import '../Assets/css/gp1style.css'
 
 export const Modall = ({ showModal, setShowModal, usuarios }) => {
 
-    const [listaUsuarios, setListaUsuarios] = useState([{}]);
+    const [listaUsuarios, setListaUsuarios] = useState([]);
+    const [lastAtividade, setLastAtividade] = useState();
     const modalRef = useRef();
 
     let history = useHistory();
@@ -37,14 +38,43 @@ export const Modall = ({ showModal, setShowModal, usuarios }) => {
         [keyPress]
     );
 
-    async function setValue(value) {
-        setListaUsuarios(value)
+    async function AssociarArray() {
+        await axios("http://localhost:5000/api/Atividades/ListarUltima"
+            , {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            })
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    setLastAtividade(resposta.data)
+                    console.log(resposta.data)
+                }
+            })
+            .catch(erro => console.log(erro))
+
+        listaUsuarios.map((usuario) => {
+            axios("http://apirhsenaigp1.azurewebsites.net/api/Atividades/Associar/" + 
+            usuario.idUsuario + '/' + lastAtividade 
+            , {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            })
+            .catch(erro => console.log(erro))
+        })   
+    }
+
+    function AlimentarArray(id) {
+        listaUsuarios.push( id)
+        console.log(id)
         console.log(listaUsuarios)
     }
 
     return (
         <>
             {showModal ? (
+                // <button className="background_modal" onClick={closeModal}>
                 <div class="modal_body_usuarios">
                     <h2 className="titulo_atividade_modal">Selecionar Usuário</h2>
                     <div className='organizar_sessao_modalUser style-gp1'>
@@ -56,10 +86,9 @@ export const Modall = ({ showModal, setShowModal, usuarios }) => {
                                             <h2 className='titulo_atividade'>{usuario.nome}</h2>
                                             <input className="checkbox_usuario"
                                                 type="checkbox"
-                                                value={listaUsuarios}
-                                                onChange={(e) => setValue(e.target.value)}
+                                                value={usuario.idUsuario}
+                                                onChange={() => AlimentarArray(usuario.idUsuario)}
                                             />
-
                                         </div>
                                     </div>
                                     <hr className='linha_atividade' />
@@ -71,6 +100,7 @@ export const Modall = ({ showModal, setShowModal, usuarios }) => {
                         <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
                     </div>
                 </div>
+                // </button>
             ) : null}
         </>
     );

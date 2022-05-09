@@ -686,6 +686,7 @@ input:checked+label:after {
     flex-direction: column;
     justify-content: space-between;
     overflow-y: scroll;
+    padding: 0 1vw;
     /* height: 29vh; */
 }
 
@@ -721,7 +722,7 @@ input:checked+label:after {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 1.3rem;
-    margin-bottom: 5vh;
+    margin: 3vh 0;
     cursor: pointer;
 }
 
