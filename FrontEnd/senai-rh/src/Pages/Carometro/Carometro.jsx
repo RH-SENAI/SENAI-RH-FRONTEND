@@ -23,19 +23,21 @@ export default function Carometro() {
 
     //States
     const [idCargo, setIdCargo] = useState(0);
-
-    const [idUsuario, setIdUsuario] = useState(0);
+    const [nivelSatisfacao, setNivelSatisfacao] = useState(0);
     const [listaFuncionarios, setListaFuncionarios] = useState([]);
     const [listaCargo, setListaCargo] = useState([]);
     const [nomeFuncionario, setNomeFuncionario] = useState('');
-    const [funcionarioModal, setFuncionarioModal] = useState(0);
+    const [idUsuarioModal, setIdUsuarioModal] = useState([]);
     const [active, setMode] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const [idUsuarioModal, setIdUsuarioModal] = useState()
     const OpenModal = () => {
+
         setShowModal(prev => !prev);
         console.log('abriuuu')
+        console.log('abriuuu')
+        
         console.log(idUsuarioModal)
+
         // console.log(idUsuario)
 
         
@@ -74,6 +76,7 @@ export default function Carometro() {
                     setListaFuncionarios(resposta.data)
                     console.log(resposta)
                     console.log(idCargo)
+                    
 
                 }
 
@@ -163,7 +166,8 @@ export default function Carometro() {
     return (
         <body>
             {/* <Modall atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)} showModal={showModal} setShowModal={setShowModal} /> */}
-            {/* <ModalAcompanhar usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idUsuarioModal)} showModal={showModal} setShowModal={setShowModal} /> */}
+            {/* <ModalAcompanhar usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idFuncionarioModal)} showModal={showModal} setShowModal={setShowModal} />  */}
+            <ModalAcompanhar usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idUsuarioModal)} showModal={showModal} setShowModal={setShowModal} /> 
             {/* <ToastContainer
                 position="top-right"
                 autoClose={5000}
@@ -175,7 +179,7 @@ export default function Carometro() {
                 draggable
                 pauseOnHover
             /> */}
-            {/* <ModalAcompanhar usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idFuncionarioModal)} showModal={showModal} setShowModal={setShowModal} />  */}
+            
             <div className='g3_whiteBackgroundCarometro'>
                 <HeaderFuncionario />
                 <main>

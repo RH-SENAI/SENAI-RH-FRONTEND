@@ -11,6 +11,11 @@
     margin: 0 auto; 
 
 }
+.g3_organizadorDashboard{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
 .g3_boxTituloDashboard{
     margin-top: 4rem;
 }

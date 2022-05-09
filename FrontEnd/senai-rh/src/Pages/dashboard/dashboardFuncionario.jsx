@@ -10,9 +10,10 @@ import {
     VictoryLine, VictoryPie, VictoryChart, VictoryAxis,
     VictoryTheme
 } from 'victory';
+import ImgDashboard from '../../assets/img/telaDeAcessoLight.svg'
 
 export default function Dashboard() {
-    const [idUsuario, setIdUsuario] = useState(1);
+    const [idUsuario, setIdUsuario] = useState(96);
     const [nivelSatisfacao, setNivelSatisfacao] = useState(0);
     const [listaUsuarios, setListaUsuarios] = useState([]);
     const [usuario, setUsuario] = useState([])
@@ -67,10 +68,36 @@ export default function Dashboard() {
                         {
                             listaUsuarios.map((usuario) => {
                                 return (
-                                    <div>
+                                    <div className='g3_organizadorDashboard'>
                                         <div className="g3_boxGraficosLeft">
                                             <div className="g3_graficoProdutividade">
 
+                                                {/* <VictoryPie
+                                                    events={[{
+                                                        target: "data",
+                                                        eventHandlers: {
+                                                            onClick: () => {
+                                                                return [
+                                                                    {
+                                                                        target: "data",
+                                                                        mutation: ({ style }) => {
+                                                                            return style.fill === "#C20004" ? null : { style: { fill: "#C20004" } };
+                                                                        }
+                                                                    }, {
+                                                                        target: "labels",
+                                                                    }
+                                                                ];
+                                                            }
+                                                        }
+                                                    }]}
+                                                    colorScale={["#c20004", "#b3b3b3", "#000000", "#F2F2F2"]}     
+                                                    data={[
+                                                        { x: usuario.nivelSatisfacao * 100 + '%', y: usuario.nivelSatisfacao * 100 },
+                                                        { x: 100 - usuario.nivelSatisfacao * 100 + '%', y: 100 - usuario.nivelSatisfacao * 100 },
+
+
+                                                    ]}
+                                                /> */}
                                                 <VictoryChart
 
                                                 >
@@ -85,15 +112,15 @@ export default function Dashboard() {
 
                                                         data={[
                                                             { x: 1, y: usuario.nivelSatisfacao * 100 },
-                                                            { x: 2, y:  usuario.nivelSatisfacao * 102 },
-                                                            { x: 3, y:  usuario.nivelSatisfacao + 100 },
-                                                            { x: 4, y:  usuario.nivelSatisfacao * 100 },
-                                                            { x: 5, y:  usuario.nivelSatisfacao * 101 },
+                                                            { x: 2, y: usuario.nivelSatisfacao * 102 },
+                                                            { x: 3, y: usuario.nivelSatisfacao + 100 },
+                                                            { x: 4, y: usuario.nivelSatisfacao * 100 },
+                                                            { x: 5, y: usuario.nivelSatisfacao * 101 },
                                                         ]}
                                                     />
                                                 </VictoryChart>
                                             </div>
-                                            <span>Produtividade Pessoal</span>
+                                            <span>Tarefas Pessoais</span>
                                             <div className="g3_boxGraficosBaixo">
                                                 <div className="g3_containerGraficoLeft">
                                                     <div className="g3_graficoSatisfacaoPessoal">
@@ -106,25 +133,24 @@ export default function Dashboard() {
                                                                             {
                                                                                 target: "data",
                                                                                 mutation: ({ style }) => {
-                                                                                    return style.fill === "#2A2E32" ? null : { style: { fill: "#C20004" } };
+                                                                                    return style.fill === "#C20004" ? null : { style: { fill: "#C20004" } };
                                                                                 }
                                                                             }, {
                                                                                 target: "labels",
-                                                                                mutation: ({ text }) => {
-                                                                                    return text === "clicked" ? null : { text: "satisfação" };
-                                                                                }
                                                                             }
                                                                         ];
                                                                     }
                                                                 }
                                                             }]}
-
+                                                            colorScale={["#c20004", "#b3b3b3"]}
                                                             data={[
-                                                                { x: 1, y: usuario.nivelSatisfacao * 100 },
-                                                                { x: 2, y: 100 - usuario.nivelSatisfacao * 100 },
+                                                                { x: usuario.nivelSatisfacao * 100 + '%', y: usuario.nivelSatisfacao * 100 },
+                                                                { x: 100 - usuario.nivelSatisfacao * 100 + '%', y: 100 - usuario.nivelSatisfacao * 100 },
 
 
                                                             ]}
+
+
                                                         />
                                                     </div>
                                                     <span>Satisfação Pessoal</span>
@@ -133,13 +159,13 @@ export default function Dashboard() {
                                                     <div className="g3_graficoProdutividadeUnidade">
 
                                                     </div>
-                                                    <span>Produtividade Pessoal</span>
+                                                    <span>Avaliação Pessoal</span>
                                                 </div>
 
                                             </div>
                                         </div>
-                                        <div className="g3_boxGraficosRight">
-
+                                        <div className="g3_boxImg">
+                                            <img src={ImgDashboard} className='g3_imgDashboard' />
                                         </div>
                                     </div>
                                 )

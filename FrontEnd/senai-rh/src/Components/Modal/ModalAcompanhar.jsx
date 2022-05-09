@@ -12,7 +12,9 @@ import '../../assets/css/modalAcompanhar.css'
 export const ModalAcompanhar = ({ showModal, setShowModal, usuario }) => {
   const modalRef = useRef();
   const [listaFuncionarios, setListaFuncionarios] = useState([]);
-
+  // const [nivelSatisfacao, setNivelSatisfacao] = useState(usuario.nivelSatisfacao);
+ 
+ 
 
   // const [nomeGestor, setNomeGestor] = useState('');    
 
@@ -52,39 +54,42 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario }) => {
     },
     [setShowModal, showModal]
   );
-  function ListarUsuario() {
+    
+  // function ListarUsuario() {
 
-    let idUsuario = usuario.idUsuario
-    console.log('Olha')
-    console.log(idUsuario)
-    axios.get(`http://localhost:5000/api/Usuarios/Listar/${idUsuario}`, {
+  //     let idUsuario = usuario.idUsuario
+  //     console.log('Olha')
+  //     console.log(idUsuario)
+  //     axios.get(`http://localhost:5000/api/Usuarios/Listar/${idUsuario}`, {
 
-      headers: {
+  //       headers: {
 
-        Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
-      }
+  //         Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+  //       }
 
-    })
+  //     })
 
-      .then((resposta) => {
+  //       .then((resposta) => {
 
-        if (resposta.status === 200) {
-          setListaFuncionarios([resposta.data])
-          console.log(resposta)
+  //         if (resposta.status === 200) {
+  //           setListaFuncionarios(resposta.data)
+  //           console.log(resposta.data)
 
-        }
 
-      })
+  //         }
 
-      .catch(erro => console.log(erro))
+  //       })
 
-  }
-  useEffect(ListarUsuario, [])
+  //       .catch(erro => console.log(erro))
 
+  //   }
+
+  // useEffect(() => ListarUsuario(), [])
 
   useEffect(
     () => {
       document.addEventListener('keydown', keyPress);
+      console.log(usuario)
       return () => document.removeEventListener('keydown', keyPress);
     },
     [keyPress]
@@ -98,12 +103,12 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario }) => {
           <div className="g3_modal-body">
             <div className='g3_containerOrganizacaoModal'>
               <div className='g3_graficosModal'>
-                {
+                {/* {
                   listaFuncionarios.map((usuario) => {
-                    return (
+                    return ( */}
                       <div className='g3_organizadorGraficosModal'>
-                        <span>{usuario.nome}</span>
                         <div className='g3_graficoSatisfacaoModal'>
+                          <span>{usuario.nivelSatisfacao}</span>
                           <span  className='g3_spanGraficos'>Satisfação do Usuario</span>
                           <VictoryPie
                             events={[{
@@ -114,7 +119,7 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario }) => {
                                     {
                                       target: "data",
                                       mutation: ({ style }) => {
-                                        return style.fill === "#2A2E32" ? null : { style: { fill: "#C20004" } };
+                                        return style.fill === "#b3b3b3" ? null : { style: { fill: "#b3b3b3" } };
                                       }
                                     }, {
                                       target: "labels",
@@ -160,10 +165,10 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario }) => {
                           </VictoryChart>
                         </div>
                       </div>
-                    )
+                     {/* )
                   }
                   )
-                }
+                }  */}
               </div>
               <div className='g3_organizarBtn'>
                 <button className="btn_fechar_modal" onClick={closeModal}>Atualizar Perfil</button>

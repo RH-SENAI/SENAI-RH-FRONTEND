@@ -11,7 +11,7 @@ import fotoAtualizar from "../../assets/img/atualizarLight.svg"
 
 export default function AtualizarPerfil() {
 
-    const [idUsuario, setIdUsuario] = useState(89)
+    const [idUsuario, setIdUsuario] = useState(1)
     const [listaCargo, setListaCargo] = useState([])
     const [listaUnidade, setListaUnidade] = useState([])
     const [idTipoUsuario, setIdTipoUsuario] = useState(0);
