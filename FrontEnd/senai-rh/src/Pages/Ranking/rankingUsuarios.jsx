@@ -13,6 +13,8 @@ import moedas from '../../Assets/img/moedinha.svg'
 
 
 export default function TodasAtividades() {
+
+    const [posicao, setPosicao] = useState(1);
     const [listaUsuariosRank, setListaUsuariosRank] = useState([]);
     const [idAtividade, setIdAtividade] = useState('');
     const [showModal, setShowModal] = useState(false);
@@ -25,7 +27,7 @@ export default function TodasAtividades() {
     }
 
     function listarUsuariosRank() {
-        axios.get("http://apirhsenaigp1.azurewebsites.net/api/Usuarios/Ranking"
+        axios.get("http://localhost:5000/api/Usuarios/Ranking"
             , {
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -44,6 +46,10 @@ export default function TodasAtividades() {
 
     useEffect(listarUsuariosRank, []);
 
+    function AumentaPosicao(posicao) {
+        setPosicao(posicao)
+    }
+
     return (
         <div className="G1_tela_atividades_container">
             {/* <Modall atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)} showModal={showModal} setShowModal={setShowModal} /> */}
@@ -53,10 +59,14 @@ export default function TodasAtividades() {
                     <h1 className="G1_titulo_atividades">Ranking</h1>
                     <div className="G1_">
                         {listaUsuariosRank.map((usuario) => {
+                            // setPosicao(posicao++)
+                            let posicaso = posicao + 1
+                            // setPosicao(posicaso)
+                            // AumentaPosicao(posicaso)
                             return (
                                 <div key={usuario.idUsuario}>
                                     <div className="G1_usuario_card">
-                                        <p className="G1_posicao G1_container_card">1</p>
+                                        <p className="G1_posicao G1_container_card">{posicaso}</p>
                                         <img className="G1_container_card" src={FotoRank} alt="Foto do Usuario" />
                                         <p className="G1_nome_usuario G1_container_card">{usuario.nome}</p>
                                         <div className="G1_organizar_trofeus">

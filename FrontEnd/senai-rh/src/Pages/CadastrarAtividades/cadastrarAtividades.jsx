@@ -14,6 +14,7 @@ import {
 
 
 export default function CadastrarAtividades() {
+    const [lastAtividade, setLastAtividade] = useState();
     const [listaAtividades, setListaAtividades] = useState([]);
     const [listaUsuarios, setListaUsuarios] = useState([]);
     const [listaUsuarioSelecionados, setListaUsuarioSelecionados] = useState([]);
@@ -29,18 +30,20 @@ export default function CadastrarAtividades() {
     const [recompensaTrofeu, setRecompensaTrofeu] = useState('');
     const [descricaoAtividade, setDescricaoAtividade] = useState('');
     const [necessarioValidar, setNecessarioValidar] = useState(false);
-    
+    const [equipe, setEquipe] = useState(false);
+    const [obrigatorio, setObrigatorio] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
     const notify_cadastrar = () => toast.success("Atividade Cadastrada!");
     // const notify_validar = () => toast.success("Atividade Validada!");
     const notify_erroCadastrar = () => toast.error("Preencha todos os campos!");
 
-    const [isLoading, setIsLoading] = useState(false);
 
     const OpenModal = () => {
         setShowModal(prev => !prev);
         console.log('abriuuu')
     }
-    
+
     function listarUsuarios() {
         axios("http://localhost:5000/api/Usuarios/Funcionarios"
             , {
@@ -60,7 +63,36 @@ export default function CadastrarAtividades() {
 
     useEffect(listarUsuarios, []);
 
+    // function AssociarArray() {
+    //     axios("http://localhost:5000/api/Atividades/ListarUltima"
+    //         , {
+    //             headers: {
+    //                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+    //             }
+    //         })
+    //         .then(resposta => {
+    //             if (resposta.status === 200) {
+    //                 setLastAtividade(resposta.data)
+    //                 console.log(resposta.data)
+    //             }
+    //         })
+    //         .catch(erro => console.log(erro))
+
+    //     listaUsuarios.map((usuario) => {
+    //         axios("http://localhost:5000/api/Atividades/Associar/" +
+    //             usuario.idUsuario + '/' + lastAtividade.idAtividade
+    //             , {
+    //                 headers: {
+    //                     'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+    //                 }
+    //             })
+    //             .catch(erro => console.log(erro))
+    //     })
+    // }
+
     async function CadastrarAtividade(evento) {
+        console.log("chegastes")
+        debugger;
         setIsLoading(true);
         evento.preventDefault()
 
@@ -78,8 +110,9 @@ export default function CadastrarAtividades() {
                 recompensaTrofeu: recompensaTrofeu,
                 descricaoAtividade: descricaoAtividade,
                 necessarioValidar: necessarioValidar,
-                idGestorCadastro: idGestorCadastro
-
+                idGestorCadastro: idGestorCadastro,
+                obrigatorio: obrigatorio,
+                equipe: equipe
             }, {
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -102,15 +135,69 @@ export default function CadastrarAtividades() {
                 }
 
             })
-            .catch(erro => console.log(erro), setIsLoading(false), notify_erroCadastrar());
+            .catch(erro => console.log(erro), setIsLoading(false));
 
+        axios("http://localhost:5000/api/Atividades/ListarUltima"
+            , {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            })
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    setLastAtividade(resposta.data.idAtividade)
+                    console.log(resposta.data.idAtividade)
+                    console.log(lastAtividade)
+                    let id = lastAtividade
+
+                    listaUsuarioSelecionados.map((usuario) => {
+
+                        console.log("id da atividade")
+                        console.log(id)
+                        console.log("usuario")
+                        console.log(usuario)
+                        axios.post("http://localhost:5000/api/Atividades/Associar/" +
+                            usuario + '/' + id
+                            , {
+                                headers: {
+                                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                                }
+                            })
+                            .catch(erro => console.log(erro))
+                    })
+                }
+            })
+            .catch(erro => console.log(erro))
+
+        listaUsuarioSelecionados.map((usuario) => {
+            let id = lastAtividade
+
+            console.log("id da atividade")
+            console.log(id)
+            console.log("usuario")
+            console.log(usuario)
+            axios.post("http://localhost:5000/api/Atividades/Associar/" +
+                usuario + '/' + id
+                , {
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                    }
+                })
+                .catch(erro => console.log(erro))
+        })
 
     }
 
     function checkValidar() {
-        console.log(necessarioValidar + " - Anterior")
         setNecessarioValidar(!necessarioValidar)
-        console.log(necessarioValidar + " - Atual")
+    }
+
+    function checkObrigatorio() {
+        setObrigatorio(!obrigatorio)
+    }
+
+    function checkEquipe() {
+        setEquipe(!equipe)
     }
 
     // useEffect(notify_Logar, []);
@@ -118,7 +205,7 @@ export default function CadastrarAtividades() {
 
     return (
         <div className="div_container">
-            <Modall usuarios={listaUsuarios} showModal={showModal} setShowModal={setShowModal} />
+            <Modall usuarios={listaUsuarios} showModal={showModal} setShowModal={setShowModal} setProps={setListaUsuarioSelecionados} value={listaUsuarioSelecionados} />
             <ToastContainer
                 position="top-right"
                 autoClose={5000}
@@ -170,37 +257,85 @@ export default function CadastrarAtividades() {
                                 </div>
                             </div>
                             <div className='G1_organizar_inputs'>
-                                <button className='G1_btn_modal' onClick={OpenModal} type="button" >Selecione um Usuário</button>
+                                <button className='G1_btn_modal' onClick={() => { OpenModal(); console.log(listaUsuarioSelecionados) }} type="button" >Selecione um Usuário</button>
                             </div>
                         </div>
                         <div className='G1_div_ToggleValidar'>
-                            <label classname="G1_label_precisaValidar">Precisa Validar</label>
-                            <div className='G1_organizar_switchBtn'>
-                                <input className="checkbox_switch"
-                                    type="checkbox"
-                                    id="switch"
-                                    name="validar"
-                                    value={necessarioValidar}
-                                    onClick={checkValidar}
-                                />
-                                <label className='label_switch' htmlFor="switch">Toggle</label>
-                                {necessarioValidar && (
-                                    <p className='text_switch'>
-                                        SIM
-                                    </p>
-                                )}
-                                {!necessarioValidar && (
-                                    <p className='text_switch'>
-                                        NÃO
-                                    </p>
-                                )}
+                            <div className="G1_organizar_toggle">
+                                <label classname="G1_label_precisaValidar">Precisa Validar</label>
+                                <div className='G1_organizar_switchBtn'>
+                                    <input className="checkbox_switch"
+                                        type="checkbox"
+                                        id="switch"
+                                        name="validar"
+                                        value={necessarioValidar}
+                                        onClick={checkValidar}
+                                    />
+                                    <label className='label_switch' htmlFor="switch">Toggle</label>
+                                    {necessarioValidar && (
+                                        <p className='text_switch'>
+                                            SIM
+                                        </p>
+                                    )}
+                                    {!necessarioValidar && (
+                                        <p className='text_switch'>
+                                            NÃO
+                                        </p>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="G1_organizar_toggle">
+                                <label classname="G1_label_precisaValidar">Obrigatória</label>
+                                <div className='G1_organizar_switchBtn'>
+                                    <input className="checkbox_switch"
+                                        type="checkbox"
+                                        id="switch2"
+                                        name="obrigatorio"
+                                        value={obrigatorio}
+                                        onClick={checkObrigatorio}
+                                    />
+                                    <label className='label_switch' htmlFor="switch2">Toggle</label>
+                                    {obrigatorio && (
+                                        <p className='text_switch'>
+                                            SIM
+                                        </p>
+                                    )}
+                                    {!obrigatorio && (
+                                        <p className='text_switch'>
+                                            NÃO
+                                        </p>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="G1_organizar_toggle">
+                                <label classname="G1_label_precisaValidar">Em equipe</label>
+                                <div className='G1_organizar_switchBtn'>
+                                    <input className="checkbox_switch"
+                                        type="checkbox"
+                                        id="switch3"
+                                        name="equipe"
+                                        value={equipe}
+                                        onClick={checkEquipe}
+                                    />
+                                    <label className='label_switch' htmlFor="switch3">Toggle</label>
+                                    {equipe && (
+                                        <p className='text_switch'>
+                                            SIM
+                                        </p>
+                                    )}
+                                    {!equipe && (
+                                        <p className='text_switch'>
+                                            NÃO
+                                        </p>
+                                    )}
+                                </div>
                             </div>
                         </div>
                         {isLoading && (
-                            <button className='G1_btn_Cadastrar' type="submit">Carregando...</button>
+                            <button className='G1_btn_Cadastrar' type="submit" >Carregando...</button>
                         )}
                         {!isLoading && (
-                            <button className='G1_btn_Cadastrar' type="submit">Cadastrar</button>
+                            <button className='G1_btn_Cadastrar' type="submit" >Cadastrar</button>
                         )}
                     </form>
                 </div>

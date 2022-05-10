@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import '../Assets/css/gp1style.css'
 
-export const Modall = ({ showModal, setShowModal, usuarios }) => {
+export const Modall = ({ showModal, setShowModal, usuarios, setProps, value }) => {
 
     const [listaUsuarios, setListaUsuarios] = useState([]);
     const [lastAtividade, setLastAtividade] = useState();
@@ -38,37 +38,38 @@ export const Modall = ({ showModal, setShowModal, usuarios }) => {
         [keyPress]
     );
 
-    async function AssociarArray() {
-        await axios("http://localhost:5000/api/Atividades/ListarUltima"
-            , {
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-                }
-            })
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    setLastAtividade(resposta.data)
-                    console.log(resposta.data)
-                }
-            })
-            .catch(erro => console.log(erro))
+    // function AssociarArray() {
+    //     axios("http://localhost:5000/api/Atividades/ListarUltima"
+    //         , {
+    //             headers: {
+    //                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+    //             }
+    //         })
+    //         .then(resposta => {
+    //             if (resposta.status === 200) {
+    //                 setLastAtividade(resposta.data)
+    //                 console.log(resposta.data)
+    //             }
+    //         })
+    //         .catch(erro => console.log(erro))
 
-        listaUsuarios.map((usuario) => {
-            axios("http://apirhsenaigp1.azurewebsites.net/api/Atividades/Associar/" + 
-            usuario.idUsuario + '/' + lastAtividade 
-            , {
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-                }
-            })
-            .catch(erro => console.log(erro))
-        })   
-    }
+    //     listaUsuarios.map((usuario) => {
+    //         axios("http://apirhsenaigp1.azurewebsites.net/api/Atividades/Associar/" +
+    //             usuario.idUsuario + '/' + lastAtividade.idAtividade
+    //             , {
+    //                 headers: {
+    //                     'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+    //                 }
+    //             })
+    //             .catch(erro => console.log(erro))
+    //     })
+    // }
 
     function AlimentarArray(id) {
-        listaUsuarios.push( id)
+        listaUsuarios.push(id)
         console.log(id)
         console.log(listaUsuarios)
+        setProps(listaUsuarios)
     }
 
     return (
@@ -87,12 +88,13 @@ export const Modall = ({ showModal, setShowModal, usuarios }) => {
                                             <input className="checkbox_usuario"
                                                 type="checkbox"
                                                 value={usuario.idUsuario}
-                                                onChange={() => AlimentarArray(usuario.idUsuario)}
+                                                onClick={() => AlimentarArray(usuario.idUsuario)}
                                             />
                                         </div>
                                     </div>
                                     <hr className='linha_atividade' />
                                 </div>
+                                
                             )
                         })}
                     </div>
