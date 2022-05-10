@@ -13,7 +13,7 @@ import {
 import ImgDashboard from '../../assets/img/telaDeAcessoLight.svg'
 
 export default function Dashboard() {
-    const [idUsuario, setIdUsuario] = useState(96);
+    const [idUsuario, setIdUsuario] = useState(98);
     const [nivelSatisfacao, setNivelSatisfacao] = useState(0);
     const [listaUsuarios, setListaUsuarios] = useState([]);
     const [usuario, setUsuario] = useState([])

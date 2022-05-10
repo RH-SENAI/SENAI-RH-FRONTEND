@@ -12,6 +12,7 @@ import '../../assets/css/modalAcompanhar.css'
 export const ModalAcompanhar = ({ showModal, setShowModal, usuario }) => {
   const modalRef = useRef();
   const [listaFuncionarios, setListaFuncionarios] = useState([]);
+  let history = useHistory();
   // const [nivelSatisfacao, setNivelSatisfacao] = useState(usuario.nivelSatisfacao);
  
  
@@ -169,9 +170,9 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario }) => {
                   }
                   )
                 }  */}
-              </div>
+              </div>  
               <div className='g3_organizarBtn'>
-                <button className="btn_fechar_modal" onClick={closeModal}>Atualizar Perfil</button>
+                <button className="btn_fechar_modal" onClick={() => history.push(`/atualizar/${usuario.idUsuario}`) }>Atualizar Perfil</button>
                 <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
               </div>
 

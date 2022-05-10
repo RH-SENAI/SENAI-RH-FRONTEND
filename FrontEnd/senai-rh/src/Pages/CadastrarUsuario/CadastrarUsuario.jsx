@@ -1,4 +1,4 @@
- import { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom';
 import axios from "axios";
 import CadastroLight from "../../assets/img/ImgCadastroLight.svg";
@@ -8,6 +8,8 @@ import "../../assets/css/styleG3.css"
 import Footer from "../../components/footer";
 import Perfil from '../../assets/img/Perfil.svg';
 import HeaderFuncionario from "../../components/header/headerFuncionario";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Cadastro() {
@@ -26,6 +28,8 @@ export default function Cadastro() {
     const [dataNascimento, setDataNascimento] = useState(new Date())
     const [fotoPerfil, setFotoPerfil] = useState('')
     const [senha, setSenha] = useState('12345678')
+    const notify_cadastrar = () => toast.success("Usuario Cadastrado!");
+    const notify_erroCadastrar = () => toast.error("Preencha todos os campos!");
 
 
 
@@ -107,7 +111,11 @@ export default function Cadastro() {
         formData.append('idTipoUsuario', idTipoUsuario);
         formData.append('idUnidadeSenai', idUnidade);
         formData.append('localizacaoUsuario', endereco);
-        formData.append('senha', senha)
+        formData.append('senha', senha);
+
+        
+
+
 
 
 
@@ -120,13 +128,10 @@ export default function Cadastro() {
             .then(function (response) {
                 console.log(response);
                 console.log('usuario cadastrado')
-                alert("Usuario cadastrado com sucesso!")
+                notify_cadastrar();
             })
-            .catch(function (response) {
-                //handle error
-                console.log(response);
-            });
-
+            .catch(erro => console.log(erro), notify_erroCadastrar())
+            
     }
     // function CadastrarUsuario(usuario) {
     //     usuario.preventDefault()
@@ -176,6 +181,17 @@ export default function Cadastro() {
 
     return (
         <div className='g3_backgroundCadastro'>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <HeaderFuncionario />
             <main>
                 <div className="container ">

@@ -5,13 +5,16 @@ import Footer from '../../components/footer';
 import Header from '../../components/header/headerAdm'
 import { Navigate, useNavigate } from 'react-router-dom';
 import fotoAtualizar from "../../assets/img/atualizarLight.svg"
+import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // Vai precisar da auth para puxar as informações do usuário pertencente do perfil
 // img perfil
 
 export default function AtualizarPerfil() {
 
-    const [idUsuario, setIdUsuario] = useState(1)
+    const idUsuario = useParams();
+    const history = useHistory();
     const [listaCargo, setListaCargo] = useState([])
     const [listaUnidade, setListaUnidade] = useState([])
     const [idTipoUsuario, setIdTipoUsuario] = useState(0);
@@ -33,7 +36,7 @@ export default function AtualizarPerfil() {
 
     //Função de Buscar funcionário por ID
     function BuscarFuncionarios() {
-        axios.get(`http://localhost:5000/api/Usuarios/Listar/${idUsuario}`, {
+        axios.get(`http://localhost:5000/api/Usuarios/Listar/`, {
 
             headers: {
 
@@ -148,7 +151,7 @@ export default function AtualizarPerfil() {
 
         axios({
             method: "put",
-            url: `https://apigrupo3.azurewebsites.net/api/Usuarios/Atualizar/Funcionario/${idUsuario}`,
+            url: `http://localhost:5000/api/Usuarios/Atualizar/Funcionario/${idUsuario}`,
             data: formData,
             headers: { "Content-Type": "multipart/form-data" },
         })

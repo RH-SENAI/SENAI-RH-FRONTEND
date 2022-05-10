@@ -60,7 +60,7 @@ export default function Carometro() {
 
     function BuscarFuncionario() {
 
-        axios.get('https://apigrupo3.azurewebsites.net/api/Usuarios/Listar', {
+        axios.get('http://localhost:5000/api/Usuarios/Listar', {
 
             headers: {
 
