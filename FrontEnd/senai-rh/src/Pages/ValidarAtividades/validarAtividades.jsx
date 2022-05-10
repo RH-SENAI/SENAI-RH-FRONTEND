@@ -26,7 +26,7 @@ export default function TodasAtividades() {
     
 
     function listarAtividadesValidar() {
-        axios("http://localhost:5000/api/Atividades/ListaValidar"
+        axios("http://apirhsenaigp1.azurewebsites.net/api/Atividades/ListaValidar"
             , {
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -49,7 +49,7 @@ export default function TodasAtividades() {
         <div className="G1_tela_atividades_container">
             <ModallValidar atividade={listaAtividadesValidar.find(atividade => atividade.idAtividade == idAtividadeModal)} showModalValidar={showModalValidar} setShowModalValidar={setShowModalValidar} />
             <Header />
-            <main className="container_atividades">
+            <main className="container_validatividades">
                 <div className="G1_organizar_main">
                     <h1 className="G1_titulo_atividades">Validar Atividades</h1>
                     <div className="G1_container_atividades">

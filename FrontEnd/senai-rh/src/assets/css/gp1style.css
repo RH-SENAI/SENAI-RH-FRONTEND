@@ -25,7 +25,7 @@
 .G1_Right_CadastroAtividade {
     display: flex;
     flex-direction: column;
-    background-color: #FFFFFF;
+    background-color: #f2f2f2;
     width: 50vw;
     justify-content: center;
     align-items: center;
@@ -35,7 +35,7 @@
 .G1_banner_CadastroAtividade {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin-left: 10vw;
     height: 100%;
 }
@@ -108,7 +108,7 @@
     height: 5vh;
     margin-top: 2vh;
     border-radius: 15px;
-    background-color: #c20004;
+    background-color: #636466;
     padding: 15 25;
     border: none;
     font-family: 'Montserrat', sans-serif;
@@ -124,6 +124,7 @@
 .G1_inputLabel_Cadastrar input {
     border: 1px solid lightgrey;
     border-radius: 15px;
+    background-color: #f2f2f2;
     outline: none;
     /* min-width: 250px; */
     width: 16vw;
@@ -148,7 +149,7 @@
     transition: all .1s linear;
     -webkit-transition: all .1s linear;
     -moz-transition: all .1s linear;
-    background-color: white;
+    background-color: #f2f2f2;
     padding: 5px;
     box-sizing: border-box;
 }
@@ -205,21 +206,35 @@
 
 .G1_tela_atividades_container {
     background-color: #f2f2f2;
+    /* height: 100vh; */
+
 }
 
 .container_atividades {
     display: flex;
     justify-content: center;
+    /* height: 100vh; */
+
+}
+
+.container_validatividades {
+    display: flex;
+    justify-content: center;
     height: 100vh;
+
 }
 
 .G1_organizar_main {
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 75vw;
     /* background-color: #08b810;     */
+}
+
+.G1_container_ranking{
+    height: 100%;
 }
 
 .G1_titulo_atividades {
@@ -228,6 +243,7 @@
     font-weight: 600;
     font-size: 50px;
     color: #2A2E32;
+    margin: 5vh 0;
 }
 
 .G1_container_atividades {
@@ -712,7 +728,7 @@ input:checked+label:after {
 .organizar_btn {
     display: flex;
     justify-content: space-evenly;
-    align-items: flex-end;
+    align-items: center;
     width: 100%;
 }
 
@@ -740,7 +756,7 @@ input:checked+label:after {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 1.3rem;
-    margin-bottom: 5vh;
+    /* margin-bottom: 5vh; */
     cursor: pointer;
 }
 

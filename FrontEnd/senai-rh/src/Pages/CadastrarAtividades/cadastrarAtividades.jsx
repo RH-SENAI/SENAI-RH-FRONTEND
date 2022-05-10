@@ -11,6 +11,8 @@ import {
     parseJwt
     // usuarioAutenticado
 } from '../../services/auth';
+import Header from '../../components/Header/headerAdm'
+
 
 
 export default function CadastrarAtividades() {
@@ -45,7 +47,7 @@ export default function CadastrarAtividades() {
     }
 
     function listarUsuarios() {
-        axios("http://localhost:5000/api/Usuarios/Funcionarios"
+        axios("http://apirhsenaigp1.azurewebsites.net/api/Usuarios/Funcionarios"
             , {
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -102,7 +104,7 @@ export default function CadastrarAtividades() {
         console.log(idGestorCadastro);
 
         await axios
-            .post('http://localhost:5000/api/Atividades', {
+            .post('http://apirhsenaigp1.azurewebsites.net/api/Atividades', {
                 idAtividade: idAtividade,
                 idSetor: idSetor,
                 nomeAtividade: nomeAtividade,
@@ -137,7 +139,7 @@ export default function CadastrarAtividades() {
             })
             .catch(erro => console.log(erro), setIsLoading(false));
 
-        axios("http://localhost:5000/api/Atividades/ListarUltima"
+        axios("http://apirhsenaigp1.azurewebsites.net/api/Atividades/ListarUltima"
             , {
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -156,7 +158,7 @@ export default function CadastrarAtividades() {
                         console.log(id)
                         console.log("usuario")
                         console.log(usuario)
-                        axios.post("http://localhost:5000/api/Atividades/Associar/" +
+                        axios.post("http://apirhsenaigp1.azurewebsites.net/api/Atividades/Associar/" +
                             usuario + '/' + id
                             , {
                                 headers: {
@@ -176,7 +178,7 @@ export default function CadastrarAtividades() {
             console.log(id)
             console.log("usuario")
             console.log(usuario)
-            axios.post("http://localhost:5000/api/Atividades/Associar/" +
+            axios.post("http://apirhsenaigp1.azurewebsites.net/api/Atividades/Associar/" +
                 usuario + '/' + id
                 , {
                     headers: {
@@ -205,6 +207,7 @@ export default function CadastrarAtividades() {
 
     return (
         <div className="div_container">
+            <Header />
             <Modall usuarios={listaUsuarios} showModal={showModal} setShowModal={setShowModal} setProps={setListaUsuarioSelecionados} value={listaUsuarioSelecionados} />
             <ToastContainer
                 position="top-right"
@@ -220,7 +223,7 @@ export default function CadastrarAtividades() {
             <main className="container_">
                 <div className="G1_Left_CadastroAtividade">
                     <div className="G1_banner_CadastroAtividade">
-                        <img src={Logo} alt="Logo do senai" className="G1_logo_CadastroAtividade" />
+                        {/* <img src={Logo} alt="Logo do senai" className="G1_logo_CadastroAtividade" /> */}
                         <img src={bannerCadastrarAtividade} className="G1_bannerCadastroAtividade" alt="" />
                         <p className="G1_p_senai">© 2022 Sesi Senai RH</p>
                     </div>

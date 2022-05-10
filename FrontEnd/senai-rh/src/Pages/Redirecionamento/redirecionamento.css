@@ -5,7 +5,11 @@
 }
 
 .G1_Redirect_Body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #e4e4e4;
+    height: 100vh;
 }
 
 .header_redirect{

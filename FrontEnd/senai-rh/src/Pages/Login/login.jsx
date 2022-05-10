@@ -22,7 +22,7 @@ export default function Login() {
         event.preventDefault();
 
 
-        axios.post('http://localhost:5000/api/Login', {
+        axios.post('http://apirhsenaigp1.azurewebsites.net/api/Login', {
             CPF: cpfUsuario,
             senha: senhaUsuario
         }
