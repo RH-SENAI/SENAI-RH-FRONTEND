@@ -14,7 +14,7 @@ export default function Democratizacao() {
 
     //States 
     const idDecisao = useParams();
-    const [idUsuario, setIdUsuario] = useState();
+    const [idUsuario, setIdUsuario] = useState(103);
     const [idFeedback, setIdFeedback] = useState(0);
     const [listaFeedbacks, setListaFeedbacks] = useState([]);
     const [listaDecisao, setListaDecisao] = useState([]);

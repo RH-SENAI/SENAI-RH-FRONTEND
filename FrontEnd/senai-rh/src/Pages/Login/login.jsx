@@ -1,57 +1,55 @@
-import React, { useState, useEffect } from "react"
-import Logo from "../../assets/img/Logo.png"
+import React, { useState} from "react"
+import Logo from "../../assets/img/logo.svg"
 import bannerLogin from "../../assets/img/bannerLogin.svg"
-import Footer from "../../components/footer";
 import axios from 'axios';
 import '../../assets/css/login.css'
-import { Link, Redirect, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { parseJwt } from "../../services/auth";
 
 
 export default function Login() {
-    const [emailUsuario, setEmailUsuario] = useState('');
+    const [cpfUsuario, setCPFUsuario] = useState('');
     const [senhaUsuario, setSenhaUsuario] = useState('');
-    const notify_Logar_Success = () => toast.success("Usuario Logado!");
     const notify_Logar_Failed = () => toast.error("Email ou Senha inválidos!")
     const history = useHistory();
     
-    const notify_Logar = () => toast.success("Usuario logado!");
+    
 
 
     const FazerLogin = (event) => {
-        console.log(emailUsuario)
         event.preventDefault();
 
 
         axios.post('http://localhost:5000/api/Login', {
-            email: emailUsuario,
+            CPF: cpfUsuario,
             senha: senhaUsuario
         }
         )
             .then(resposta => {
                 if (resposta.status === 200) {
-                    notify_Logar_Success()
                     localStorage.setItem('usuario-login', resposta.data.token)
-
-                    let base64 = localStorage.getItem('usuario-login').split('.')[1];
-
-                    console.log(base64)
-
+                    
+                    if(parseJwt().isActive === "False"){
+                        history.push('/AlterarSenha')
+                    }
+                    else                      
                     history.push('/CadastrarAtividades')
                 }
 
-                if (resposta.status === 400){
-                    notify_Logar_Failed()
-                }
             })
-        
+            .catch(resposta => {
+            
+            notify_Logar_Failed()
+            })
+
     }
 
     return (
         <div className="page">
             <ToastContainer
-                position="bottom-center"
+                position="top-right"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
@@ -77,8 +75,8 @@ export default function Login() {
                         </div>  
                         <form className="G1_form_Login" onSubmit={(event) => FazerLogin(event)}>
                             <div className="G1_inputLabel">
-                                <input type="text" name="email" placeholder="Digite seu email" value={emailUsuario} onChange={(evt) => setEmailUsuario(evt.target.value)} />
-                                <label for="email">Email</label>
+                                <input type="text" name="CPF" placeholder="Digite seu CPF" value={cpfUsuario} onChange={(evt) => setCPFUsuario(evt.target.value)} />
+                                <label for="CPF">CPF</label>
                             </div>
 
                             <div className="G1_inputLabel">
@@ -86,7 +84,7 @@ export default function Login() {
                                 <label for="senha">Senha</label>
                             </div>
                             <div  className="G1_buttonsLogin">
-                                <a href="#">Esqueci a senha</a>
+                                <a href="/EsqueciMinhaSenha">Esqueci a senha</a>
                                 <button type="submit">Entrar</button>
                             </div>
                             

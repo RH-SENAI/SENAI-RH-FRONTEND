@@ -64,15 +64,21 @@
     color: #2A2E32;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    font-size: 3.1em;
+    font-size: 60;
     margin: 0;
 }
 
 .G1_textLogin p{
 color: #000;
-font-family:'Quicksand', sans-serif;
-font-size: 1.2em;
+font-family:'Quicksand', sans-serif;;
 max-width: 350px;
+}
+
+.G1_form_Login{
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .G1_inputLabel {
@@ -86,7 +92,7 @@ border-radius:15px;
 outline: none;
 min-width: 250px;
 width: 25vw;
-height: 5vh;
+height: 52px;
 padding: 15px 20px;
 font-size: 16px;
 transition: all .1s linear;
@@ -115,11 +121,11 @@ box-sizing: border-box;
 }
 
 .G1_inputLabel input:required:invalid+label {
-color: #C20004;
+color: red;
 }
 
 .G1_inputLabel input:focus:required:invalid {
-border: 2px solid #C20004;
+border: 2px solid red;
 }
 
 .G1_inputLabel input:required:invalid+label:before {
@@ -136,28 +142,21 @@ top: 0;
 .G1_form_Login button{
     min-width: 250px;
     width: 25vw;
-    height: 5vh;
+    height: 52px;
     border-radius: 15px;
     background-color: #C20004;
     padding: 15 25;
+    cursor: pointer;
     border: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    color: #f2f2f2;
-    transition: 0.3s;
-}
-.G1_form_Login button:hover{
-  background-color: transparent;
-  border: #C20004 1px solid;
-  border-radius: 15px;
-  color:  #C20004;
-  font-family: 'Montserrat', sans-serif;
+    color: white;
 }
 
 .G1_buttonsLogin{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: flex-end;
     height: 15vh;
 }

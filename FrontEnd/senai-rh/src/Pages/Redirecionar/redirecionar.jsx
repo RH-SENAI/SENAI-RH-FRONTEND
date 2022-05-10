@@ -1,53 +1,59 @@
-import React from "react";
-import "../../assets/css/redirecionar.css";
-import img1 from "../../assets/img/1.png";
-import img2 from "../../assets/img/2.png";
-import img3 from "../../assets/img/3.png";
-import Footer from "../../components/footer";
-import HeaderFuncionario from "../../components/header/headerFuncionario";
-import { Link } from "react-router-dom";
+import logout from '../../assets/img/logout.png'
+import logo from "../../assets/img/logo.svg"
+import Footer from "../../components/footer.jsx";
+import laptop from '../../assets/img/Laptop.png'
+import pig from '../../assets/img/Pig.png'
+import tag from '../../assets/img/tag.png'
+import '../../assets/css/redirecionar.css'
+import { Link } from 'react-router-dom';
+import HeaderFuncionario from '../../components/header/headerFuncionario';
 
-export const Redirecionar = () => {
+export default function Redirect() {
+
 
     return (
-        <main>
-            <HeaderFuncionario />
-            <section className="container_total">
-                <div>
-                    <h1 class="titulo">qual seu</h1>
-                    <h2 class="titulo_2">interesse</h2>
+        <div className="G1_Redirect_Body">
+        <HeaderFuncionario/>
+
+            <main>
+                <div className="G1_box_titulo">
+                    <h1 className="G1_titulo_redirecionamento">Qual seu </h1>
+                    <h2 className="G1_titulo2_redirecionamento">Interesse </h2>
                 </div>
-                <div>
-                    <div class="container_minhasVantagens">
-                        <div class="box_numero">
-                            <img className="img_numero" src={img1} alt="1°" />
-                        </div>
-                        <div class="box_texto">
-                            <a href="https://www.w3schools.com" class="textoRedirecionar">minhas vantagens</a>
-                        </div>
-                    </div>
-                    <div class="container_motivacoes">
-                        <div class="box_numero">
-                            <img className="img_numero" src={img2} alt="2°" />
-                        </div>
-                        <div class="box_texto">
-                            <a href="#" class="textoRedirecionar">motivações</a>
-                        </div>
-                    </div>
-                    <div class="container_acompanhamento">
-                        <div class="box_numero">
-                            <img className="img_numero" src={img3} alt="3°" />
-                        </div>
-                        <div class="box_texto">
-                        <Link to= "/Carometro" className="textoRedirecionar">Acompanhamento</Link>
-   
-                        </div>
+
+                <div className='G1_containerContentMain'>
+
+                    <div className='G1_containerRedirects'>
+                        <article className="G1_box_Article">
+                            <img src={laptop} alt="Icone de laptop" />
+                            <div className='G1_ArticleText'>
+                                <h3> Acompanhamento </h3>
+                                <p>Acesse aqui para acompanhar seus funcionários, vizualizando seus respectivos níveis de satifação e muito mais!</p>
+                                <Link to='/'><button className='G1_btn_Cadastrar' type="button"> Entrar </button></Link>
+                            </div>
+                        </article>
+                        <article className="G1_box_Article">
+                        <img src={pig} alt="Icone de cofre em formato de porco" />
+                            <div className='G1_ArticleText'>
+                                <h3> Motivações </h3>
+                                <p> Acesse aqui para vizualizar as atividades do sistema e gerenciar seus pontos!</p>
+                                <Link to='/TodasAtividades'><button className='G1_btn_Cadastrar' type="button"> Entrar </button></Link>
+                            </div>
+                        </article>
+                        <article className="G1_box_Article">
+                            <img src={tag} alt="Icone de etiqueta de desconto" />
+                            <div className='G1_ArticleText'>
+                                <h3> Minhas Vantagens </h3>
+                                <p> Acesse aqui para vizualizar suas vantagens disponíveis e garantir seus descotnos e vantagens!</p>
+                                <Link to='/'><button className='G1_btn_Cadastrar' type="button"> Entrar </button></Link>
+                            </div>
+                        </article>
                     </div>
                 </div>
-            </section>
-            <Footer />
-        </main>
+
+            </main>
+
+            <Footer></Footer>
+        </div>
     )
 }
-
-export default Redirecionar;

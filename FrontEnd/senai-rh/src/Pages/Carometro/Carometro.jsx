@@ -11,7 +11,10 @@ import setaSelectLight from '../../assets/img/SetaSelectLight.png'
 import IconLogout from '../../assets/img/IconLogout.png'
 import topCarometro from '../../assets/img/topCarometro.png'
 import { ModalAcompanhar } from '../../components/modal/modalAcompanhar';
-
+import {
+    parseJwt
+    // usuarioAutenticado
+} from '../../services/auth';
 
 //import Modal from 'react-modal';
 
@@ -22,6 +25,8 @@ import { ModalAcompanhar } from '../../components/modal/modalAcompanhar';
 export default function Carometro() {
 
     //States
+
+    const [idUsuarioAvaliador, setIdUsuarioAvaliador] = useState(parseJwt.jti);
     const [idCargo, setIdCargo] = useState(0);
     const [nivelSatisfacao, setNivelSatisfacao] = useState(0);
     const [listaFuncionarios, setListaFuncionarios] = useState([]);
@@ -167,7 +172,7 @@ export default function Carometro() {
         <body>
             {/* <Modall atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)} showModal={showModal} setShowModal={setShowModal} /> */}
             {/* <ModalAcompanhar usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idFuncionarioModal)} showModal={showModal} setShowModal={setShowModal} />  */}
-            <ModalAcompanhar usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idUsuarioModal)} showModal={showModal} setShowModal={setShowModal} /> 
+            <ModalAcompanhar idUsuarioAvaliador={idUsuarioAvaliador} usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idUsuarioModal)} showModal={showModal} setShowModal={setShowModal} /> 
             {/* <ToastContainer
                 position="top-right"
                 autoClose={5000}

@@ -13,16 +13,17 @@ import {
 import ImgDashboard from '../../assets/img/telaDeAcessoLight.svg'
 
 export default function Dashboard() {
-    const [idUsuario, setIdUsuario] = useState(98);
+    const [idUsuario, setIdUsuario] = useState(44);
     const [nivelSatisfacao, setNivelSatisfacao] = useState(0);
     const [listaUsuarios, setListaUsuarios] = useState([]);
+    const [listaAtividades, setListaAtividades] = useState([]);
     const [usuario, setUsuario] = useState([])
     const [notaProdutividade, setNotaProdutividade] = useState(0);
 
 
     function ListarUsuario() {
 
-        axios.get(`http://localhost:5000/api/Usuarios/Listar/${idUsuario}`, {
+        axios.get(`http://apirhsenaigp1.azurewebsites.net/api/Usuarios/BuscarUsuario/${idUsuario}`, {
 
             headers: {
 
@@ -45,8 +46,60 @@ export default function Dashboard() {
             .catch(erro => console.log(erro))
 
     }
+    function ListarMinhasAtividades() {
+
+        axios.get(`http://apirhsenaigp1.azurewebsites.net/api/Atividades/MinhasAtividade/${idUsuario}`, {
+
+            headers: {
+
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+
+        })
+
+            .then((resposta) => {
+
+                if (resposta.status === 200) {
+                    setListaAtividades([resposta.data])
+
+                    console.log(resposta)
+
+                }
+
+            })
+
+            .catch(erro => console.log(erro))
+
+    }
+    function ListarMinhasAtividadesExtra() {
+
+        axios.get(`http://apirhsenaigp1.azurewebsites.net/api/Atividades/MinhasAtividadeExtra/${idUsuario}`, {
+
+            headers: {
+
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+
+        })
+
+            .then((resposta) => {
+
+                if (resposta.status === 200) {
+                    setListaAtividades([resposta.data])
+
+                    console.log(resposta)
+
+                }
+
+            })
+
+            .catch(erro => console.log(erro))
+
+    }
 
     useEffect(ListarUsuario, [])
+    useEffect(ListarMinhasAtividades, [])
+    useEffect(ListarMinhasAtividadesExtra, [])
 
     // const sampleData = [
     //     { x: 'satisfacao', y: nivelSatisfacao },
@@ -71,54 +124,40 @@ export default function Dashboard() {
                                     <div className='g3_organizadorDashboard'>
                                         <div className="g3_boxGraficosLeft">
                                             <div className="g3_graficoProdutividade">
-
-                                                {/* <VictoryPie
-                                                    events={[{
-                                                        target: "data",
-                                                        eventHandlers: {
-                                                            onClick: () => {
-                                                                return [
-                                                                    {
-                                                                        target: "data",
-                                                                        mutation: ({ style }) => {
-                                                                            return style.fill === "#C20004" ? null : { style: { fill: "#C20004" } };
+                                                {
+                                                    listaAtividades.map((atividade) => {
+                                                        return (
+                                                            <VictoryPie
+                                                                events={[{
+                                                                    target: "data",
+                                                                    eventHandlers: {
+                                                                        onClick: () => {
+                                                                            return [
+                                                                                {
+                                                                                    target: "data",
+                                                                                    mutation: ({ style }) => {
+                                                                                        return style.fill === "#C20004" ? null : { style: { fill: "#C20004" } };
+                                                                                    }
+                                                                                }, {
+                                                                                    target: "labels",
+                                                                                }
+                                                                            ];
                                                                         }
-                                                                    }, {
-                                                                        target: "labels",
                                                                     }
-                                                                ];
-                                                            }
-                                                        }
-                                                    }]}
-                                                    colorScale={["#c20004", "#b3b3b3", "#000000", "#F2F2F2"]}     
-                                                    data={[
-                                                        { x: usuario.nivelSatisfacao * 100 + '%', y: usuario.nivelSatisfacao * 100 },
-                                                        { x: 100 - usuario.nivelSatisfacao * 100 + '%', y: 100 - usuario.nivelSatisfacao * 100 },
+                                                                }]}
+                                                                colorScale={["#c20004", "#b3b3b3", "#000000", "#F2F2F2"]}
+                                                                data={[
+                                                                    { x: usuario.nivelSatisfacao * 100 + '%', y: usuario.nivelSatisfacao * 100 },
+                                                                    { x: 100 - usuario.nivelSatisfacao * 100 + '%', y: 100 - usuario.nivelSatisfacao * 100 },
 
 
-                                                    ]}
-                                                /> */}
-                                                <VictoryChart
-
-                                                >
-                                                    <VictoryLine
-                                                        style={{
-                                                            data: { stroke: "#C20004" },
-                                                            parent: { border: "3px solid #b3b3b3" },
+                                                                ]}
+                                                            />
+                                                        )
+                                                    })
+                                                }
 
 
-                                                        }}
-                                                        interpolation="natural"
-
-                                                        data={[
-                                                            { x: 1, y: usuario.nivelSatisfacao * 100 },
-                                                            { x: 2, y: usuario.nivelSatisfacao * 102 },
-                                                            { x: 3, y: usuario.nivelSatisfacao + 100 },
-                                                            { x: 4, y: usuario.nivelSatisfacao * 100 },
-                                                            { x: 5, y: usuario.nivelSatisfacao * 101 },
-                                                        ]}
-                                                    />
-                                                </VictoryChart>
                                             </div>
                                             <span>Tarefas Pessoais</span>
                                             <div className="g3_boxGraficosBaixo">
@@ -173,6 +212,7 @@ export default function Dashboard() {
 
                             )
                         }
+
 
                     </div>
                 </div>
