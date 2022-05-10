@@ -16,7 +16,7 @@ import { parseJwt } from '../../services/auth';
 import coin from "../../assets/img/coin 1.png"
 import axios from 'axios';
 
-export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
+export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario }) => {
 
     const [listaComentarioBeneficio, setListaComentarioBeneficio] = useState([])
     const [idDesconto, setIdDesconto] = useState(0)
@@ -53,16 +53,18 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
     );
 
     function cadastrarComentario(event) {
-        // event.preventDefault();
+        event.preventDefault();
 
         let comentarios = {
             idUsuario: parseJwt.jti,
             avaliacaoDesconto: avaliacaoDesconto,
             comentarioDesconto1: comentarioDesconto1,
-            idDesconto: idDesconto
+            idDesconto: comentario.idDesconto
         }
+        console.log('Comentario idDesconto')
+        console.log(comentario)
 
-        api.post('/ComentarioDescontos/Comentario/' + idDesconto , comentarios, {
+        api.post('/ComentarioDescontos/Comentario', comentarios, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -72,25 +74,9 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
             .then(function (response) {
                 console.log(response);
                 setListaComentarioBeneficio(response.data)
-
             })
             .catch(erro => console.log(erro))
     }
-
-    function listarComentarioBeneficio() {
-        console.log(beneficio.idDesconto)
-        api('/ComentarioDescontos/Comentario/' + beneficio.idDesconto)   
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    console.log('Lista comentario')
-                    console.log(resposta)
-                    setListaComentarioBeneficio(resposta.data)
-                }
-            })
-            .catch(erro => console.log(erro))
-    }
-
-    // useEffect(listarComentarioBeneficio, []);
 
 
     return (
@@ -100,9 +86,9 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
                     isOpen={showModal}
                     onRequestClose={closeModal}
                 >
-                    {/* Parte 1 */}
 
                     <div>
+                        {/* Parte 1 */}
                         <div className='container_modal_beneficio_g2'>
                             <div className='box_img_modal_beneficio_g2'>
                                 <img src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="Foto do Desconto" />
@@ -114,7 +100,20 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
                                 </div>
 
                                 <div>
-                                    {beneficio.mediaAvaliacaoDesconto}
+                                    <div class="rating_g2">
+
+                                        <input type="radio" name="rating" id="rating-5" />
+                                        <label for="rating-5"></label>
+                                        <input type="radio" name="rating" id="rating-4" />
+                                        <label for="rating-4"></label>
+                                        <input type="radio" name="rating" id="rating-3" />
+                                        <label for="rating-3"></label>
+                                        <input type="radio" name="rating" id="rating-2" />
+                                        <label for="rating-2"></label>
+                                        <input type="radio" name="rating" id="rating-1" />
+                                        <label for="rating-1"></label>
+                                    </div>
+                                    {/* {beneficio.mediaAvaliacaoDesconto} */}
                                 </div>
 
                                 <div className='dados_modal_beneficio_g2'>
@@ -125,7 +124,6 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
                                             {Intl.DateTimeFormat("pt-BR", {
                                                 year: 'numeric', month: 'numeric', day: 'numeric',
                                             }).format(new Date(beneficio.validadeDesconto))}
-
                                         </p>
 
 
@@ -139,7 +137,7 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
 
                                 <div className='container_registro_beneficio_g2'>
                                     <div className='box_dados_registro_beneficio_g2'>
-                                        <span> Adicionado por: </span> <p>{beneficio.idEmpresaNavigation.nomeEmpresa}</p>
+                                        <span> Adicionado: </span> <p>{beneficio.idEmpresaNavigation.nomeEmpresa}</p>
                                     </div>
                                     <div className='box_dados_registro_beneficio_g2'>
                                         <span>Empresa:</span> <p>{beneficio.idEmpresaNavigation.nomeEmpresa}</p>
@@ -161,11 +159,11 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
                                 <h2>Comentários:</h2>
                                 <div className='wrap_modal_comentario_beneficio_g2'>
                                     {
-                                        listaComentarioBeneficio.map((c) => {
+                                        comentario.map((c) => {
                                             return (
                                                 <div className='container_lista_comentario_g2'>
                                                     <div className='box_lista_comentario_g2'>
-                                                        {/* <span>{c.idUsuarioNavigation.nome}:</span> */}
+                                                        <span>{c.idUsuarioNavigation.nome}:</span>
                                                         <p>{c.comentarioDesconto1}</p>
                                                         <p>{c.avaliacaoDesconto}</p>
                                                     </div>
@@ -179,12 +177,19 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio }) => {
 
                                 <div>
                                     <form onSubmit={cadastrarComentario} className='input_modal_comentario_beneficio_g2'>
-                                        <input
-                                            type="number"
-                                            placeholder='Avaliação 0 a 5'
-                                            value={avaliacaoDesconto}
-                                            onChange={(e) => setAvaliacaoDesconto(e.target.value)}
-                                        />
+                                        <div class="rating_g2">
+
+                                            <input type="radio" name="rating" id="rating-5" />
+                                            <label for="rating-5"></label>
+                                            <input type="radio" name="rating" id="rating-4" />
+                                            <label for="rating-4"></label>
+                                            <input type="radio" name="rating" id="rating-3" />
+                                            <label for="rating-3"></label>
+                                            <input type="radio" name="rating" id="rating-2" />
+                                            <label for="rating-2"></label>
+                                            <input type="radio" name="rating" id="rating-1" />
+                                            <label for="rating-1"></label>
+                                        </div>
 
                                         <input
                                             type="text"

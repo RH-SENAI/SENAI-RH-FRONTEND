@@ -52,7 +52,8 @@ export default function Perfil() {
                             <p className="p_perfil_g2">Foto Perfil</p>
 
                             <div className="foto_perfil_g2">
-                                <img src={"" + listaUsuarios.caminhoFotoPerfil} alt="" />
+                                {/* <img src={"" + listaUsuarios.caminhoFotoPerfil} alt="" /> */}
+                                {listaUsuarios.idUsuario}
                             </div>
                         </div>
                     </div>

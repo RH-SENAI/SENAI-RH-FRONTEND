@@ -10,15 +10,34 @@ import coin from '../../assets/img/coin 1.png'
 import React, { useEffect, useMemo, useState } from 'react';
 import { ModallCurso } from '../../components/modalListaCursos/modalListaCursos'
 import api from '../../services/api'
+import axios from 'axios'
+import { parseJwt } from "../../services/auth";
 
 
 export default function CursosRapidos() {
+    const [listaUsuario, setListaUsuario] = useState([]);
+    const [listaComentarioCurso, setListaComentarioCurso] = useState([])
     const [listaCursos, setListaCursos] = useState([]);
     const [initialRepos, seInitialRepos] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [idCursoModal, setIdCursoModal] = useState()
     const [modalIsOpen, setIsOpen] = React.useState(false);
     let subtitle;
+
+    function listarComentarioCurso() {
+        console.log(idCursoModal)
+        api('/ComentarioCursos/Comentario/' + idCursoModal)
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    console.log('Lista comentario')
+                    console.log(resposta)
+                    setListaComentarioCurso(resposta.data)
+                }
+            })
+            .catch(erro => console.log(erro))
+    }
+
+    useEffect(listarComentarioCurso, []);
 
     function closeModal() {
         setIsOpen(false);
@@ -35,7 +54,6 @@ export default function CursosRapidos() {
                     console.log('Lista')
                     console.log(resposta)
                     setListaCursos(resposta.data)
-                    // seInitialRepos(resposta.data)
                 }
             })
             .catch(erro => console.log(erro))
@@ -75,11 +93,32 @@ export default function CursosRapidos() {
         }
     }
 
+    function listarUsuario() {
+        axios('http://apirhsenaigp1.azurewebsites.net/api/Usuarios/BuscarUsuario/' + parseJwt().jti, {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+            },
+        }
+        )
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    console.log('listarUsuario')
+                    console.log(resposta)
+                    setListaUsuario(resposta.data)
+                    // setNome(resposta.data.nome)
+                    // console.log('aqui' + resposta.data)
+
+                }
+            })
+            .catch(erro => console.log(erro))
+    }
+    useEffect(listarUsuario, [])
+
 
     return (
         <div className="geral_g2">
 
-            <ModallCurso curso={listaCursos.find(curso => curso.idCurso == idCursoModal)} showModal={showModal} setShowModal={setShowModal} />
+            <ModallCurso comentarios={listaComentarioCurso} curso={listaCursos.find(curso => curso.idCurso == idCursoModal)} showModal={showModal} setShowModal={setShowModal} />
             <HeaderFuncionario />
 
 
@@ -96,6 +135,10 @@ export default function CursosRapidos() {
                             onChange={(e) => searchItems(e.target.value)}
                         />
                     </div>
+
+                    <div className=' moeda_cima_g2'>
+                        <p>Minhas moedas:</p> <img className='coin_beneficio_cima_g2' src={coin} alt="coin" /> <p>{listaUsuario.saldoMoeda}</p>
+                    </div>
                 </div>
 
                 <section className='container_curso_g2'>
@@ -110,14 +153,14 @@ export default function CursosRapidos() {
                                             <div className='espacamento_curso_g2'>
                                                 <section alt={curso.idCurso} key={curso.idCurso} id='imagem' className='box_curso_g2'>
                                                     <div className='banner_img_curso_g2'>
-                                                        {<img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
+                                                        {<img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
                                                     </div>
 
-                                                    <div className='dados_curso_gp2'>   
+                                                    <div className='dados_curso_gp2'>
 
-                                                        {<span onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
-                                                        {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
-                                                        {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}  </p>}
+                                                        {<span onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
+                                                        {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
+                                                        {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}  </p>}
                                                         <div className="box_baixo_section_curso_g2">
 
                                                             {<div className='circulo_moeda_curso_g2'>
@@ -139,14 +182,14 @@ export default function CursosRapidos() {
                                             <div className='espacamento_curso_g2'>
                                                 <section alt={curso.idCurso} key={curso.idCurso} id='imagem' className='box_curso_g2'>
                                                     <div className='banner_img_curso_g2'>
-                                                        {<img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
+                                                        {<img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
                                                     </div>
 
-                                                    <div className='dados_curso_gp2'>   
+                                                    <div className='dados_curso_gp2'>
 
-                                                        {<span onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
-                                                        {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
-                                                        {<p><img onClick={OpenModal} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}   </p>}
+                                                        {<span onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
+                                                        {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
+                                                        {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}   </p>}
                                                         <div className="box_baixo_section_curso_g2">
 
                                                             {<div className='circulo_moeda_curso_g2'>

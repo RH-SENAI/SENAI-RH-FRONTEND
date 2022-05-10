@@ -21,7 +21,7 @@
 
 .box_img_modal_curso_g2 {
     width: 27vw;
-    height: 27vh;
+    height: 32.8vh;
 }
 
 .box_img_modal_curso_g2 img {
@@ -30,11 +30,11 @@
 }
 
 .box_cima_modal_curso_g2 {
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
 .title_modal_curso_g2 {
-    font-size: 2em;
+    font-size: 1.7em;
 }
 
 .dados_modal_curso_g2 {
@@ -56,7 +56,8 @@
 }
 
 .icone_center_modal_curso_g2 p {
-    font-size: 1.5em;
+    font-size: 1em;
+    margin-right: 1rem;
 }
 
 .container_registro_curso_g2 {
@@ -70,16 +71,16 @@
 
 .box_dados_registro_curso_g2 {
     display: flex;
-    padding-left: 3rem;
+    padding-left: 1rem;
 }
 
 .box_dados_registro_curso_g2 span {
     font-weight: bolder;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .box_dados_registro_curso_g2 p {
-    font-size: 1.5em;
+    font-size: 1em;
     display: flex;
     align-items: center;
     margin-left: 1rem;
@@ -100,7 +101,7 @@
     font-size: 1.5em;
 }
 
-.icone_modal_coin_curso_g2 {
+.icone_modal_coin_g2 {
     width: 1vw !important;
     height: 2vh !important;
     cursor: pointer;
@@ -120,14 +121,14 @@
 .container_lista_comentario_curso_g2 h2 {
     margin-top: 1.5rem;
     font-weight: bolder;
-    font-size: 3em;
+    font-size: 1.9em;
 }
 
 .wrap_modal_comentario_curso_g2 {
     margin-right: 50px;
     overflow-y: auto;
-    direction: ltr;
-    height: 32vh;
+    /* direction: ltr; */
+    height: 21.6vh;
 }
 
 .wrap_modal_comentario_curso_g2::-webkit-scrollbar {
@@ -145,26 +146,26 @@
     background-color: #D7D7D7;
 }
 
-.container_curso_lista_comentario_g2 {
+.container_lista_comentario_curso_g2 {
     display: flex;
-    margin-top: 5rem;
+    margin-top: 0.7rem;
 }
 
-.box_lista_curso_comentario_g2 {
+.box_lista_comentario_curso_g2 {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.box_lista_curso_comentario_g2 span {
+.box_lista_comentario_curso_g2 span {
     font-weight: bolder;
-    font-size: 2em;
+    font-size: 1.5em;
     text-transform: capitalize;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 }
 
-.box_lista_curso_comentario_g2 p {
-    font-size: 1.5em;
+.box_lista_comentario_curso_g2 p {
+    font-size: 1em;
 }
 
 .input_modal_comentario_curso_g2 input {
@@ -184,7 +185,7 @@
 
 
 .input_modal_comentario_curso_g2 button {
-    margin-left: 5rem;
+    margin-left: 1.5rem;
 }
 
 .botaoCadastroComentarioCurso_g2 {
@@ -209,37 +210,35 @@
 }
 
 .hr_modal_curso_g2 {
-    height: 52.8vh;
+    height: 46.8vh;
 }
 
 .container_descricao_curso_g2 {
-    width: 34.7vw;
+    width: 36vw;
     padding-left: 4rem;
 }
 
 .container_descricao_curso_g2 h2 {
     margin-top: 1rem;
     font-weight: bolder;
-    font-size: 3em;
-    margin-left: 1rem;
+    font-size: 1.9em;
 }
 
 .lista_descricao_curso_g2 {
     margin-top: 2rem;
-    /* background-color: yellow; */
     width: 90%;
-    height: 40vh;
-    font-size: 3em;
-    margin-left: 1rem;
+    height: 28.5vh;
+    font-size: 1.5em;
+    /* margin-left: 1rem; */
     font-weight: 400;
 }
 
-.btn_cadastrarComentario_Curso_g2 {
+.btn_cadastrarComentario_curso_g2 {
     display: flex;
     justify-content: flex-end;
     margin-right: 6rem;
 }
 
-.btn_cadastrarComentario_Curso_g2 img {
+.btn_cadastrarComentario_curso_g2 img {
     margin-right: 1rem;
 }

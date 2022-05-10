@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom'
 import '../../assets/css/header.css'
 import logo from '../../assets/img/logo.svg'
 import Perfil from '../../assets/img/Perfil.svg'
+import { useHistory } from "react-router-dom";
 import logout from '../../assets/img/logout.png'
 import setaBaixo from '../../assets/img/seta-para-baixo.png'
-import { useState } from 'react'
 
 
 export default function HeaderFuncionario() {
@@ -12,6 +12,14 @@ export default function HeaderFuncionario() {
     // const ToggleMode = () => {
     //     setMode(!active)
     // }
+
+    let history = useHistory();
+    function logOut() {
+        localStorage.removeItem("usuario-login");
+    
+        history.push("/");
+      }
+
     return (
         <header className="header_g2">
             <div className='container container_header_g2' >
@@ -26,7 +34,6 @@ export default function HeaderFuncionario() {
                     <div class='hidden_header_g2'>
                         <Link className="text_link_header_g2" to='/Beneficios'> <span>Vantagens</span></Link>
                         <Link className="text_link_header_g2" to='/CursosRapidos'> <span> Cursos</span></Link>
-
                     </div>
                 </div>
                 <div class='select_header_g2'>
@@ -49,7 +56,7 @@ export default function HeaderFuncionario() {
                 </div>
 
 
-                <img className='img_logout_header_g2' src={logout} alt="" />
+                <img className='img_logout_header_g2' onClick={logOut} src={logout} alt="" />
             </div>
         </header>
     )

@@ -5,15 +5,18 @@ import Perfil from '../../assets/img/Perfil.svg'
 import logout from '../../assets/img/logout.png'
 import setaBaixo from '../../assets/img/seta-para-baixo.png'
 import seta from '../../assets/img/seta.svg'
+import { useHistory } from "react-router-dom";
 import sino from '../../assets/img/sino.svg'
 import { useState } from 'react'
 
 
 export default function HeaderAdm() {
-    // const [active, setMode] = useState(false);
-    // const ToggleMode = () => {
-    //     setMode(!active)
-    // }
+    let history = useHistory();
+    function logOut() {
+        localStorage.removeItem("usuario-login");
+    
+        history.push("/");
+      }
     return (
         <header className='header_g2'>
             <div className='container container_header_g2' >
@@ -52,7 +55,7 @@ export default function HeaderAdm() {
                     <Link to="/perfil"> <img src={Perfil} alt="Meu Perfil" /> </Link>
                 </div>
 
-                <img className='img_logout' src={logout} alt="logout" />
+                <img className='img_logout' onClick={logOut} src={logout} alt="logout" />
 
             </div>
 

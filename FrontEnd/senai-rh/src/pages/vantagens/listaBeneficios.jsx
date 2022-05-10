@@ -1,6 +1,5 @@
 import HeaderFuncionario from "../../components/header/headerFuncionario";
 import '../../assets/css/cursosRapidos.css'
-// import StarRatings from './react-star-ratings';
 import '../../assets/css/listaBeneficios.css'
 import telaBeneficios from '../../assets/img/telaBeneficios.svg'
 import data from '../../assets/img/data.svg'
@@ -13,17 +12,17 @@ import React, { useEffect, useState } from 'react';
 import { ModallBeneficio } from "../../components/modalListaBeneficios/modalListaBeneficios";
 import api from "../../services/api";
 import Footer from "../../components/footer";
-import { useStars } from 'stars-rating-react-hooks'
-
+import axios from "axios";
+import { parseJwt } from "../../services/auth";
 
 export default function ListaBeneficios() {
     const [listaComentarioBeneficio, setListaComentarioBeneficio] = useState([])
 
     const [listaBeneficios, setListaBeneficios] = useState([]);
+    const [listaUsuario, setListaUsuario] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [idDescontoModal, setIdDescontoModal] = useState()
     const [modalIsOpen, setIsOpen] = React.useState(false);
-
     const [value, setValue] = useState(0);
 
 
@@ -32,21 +31,23 @@ export default function ListaBeneficios() {
     const OpenModal = () => {
         setShowModal(prev => !prev);
 
-        function listarComentarioBeneficio(beneficio) {
-            console.log(beneficio.idDesconto)
-            api('/ComentarioDescontos/Comentario/' + beneficio.idDesconto)
-                .then(resposta => {
-                    if (resposta.status === 200) {
-                        console.log('Lista comentario')
-                        console.log(resposta)
-                        setListaComentarioBeneficio(resposta.data)
-                    }
-                })
-                .catch(erro => console.log(erro))
-        }
-
-        useEffect(listarComentarioBeneficio, []);
     }
+
+
+    function listarComentarioBeneficio() {
+        console.log(idDescontoModal)
+        api('/ComentarioDescontos/Comentario/' + idDescontoModal)
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    console.log('Lista comentario')
+                    console.log(resposta)
+                    setListaComentarioBeneficio(resposta.data)
+                }
+            })
+            .catch(erro => console.log(erro))
+    }
+
+    useEffect(listarComentarioBeneficio, []);
 
     function listarBeneficios() {
         api('/Descontos')
@@ -61,6 +62,28 @@ export default function ListaBeneficios() {
     }
 
     useEffect(listarBeneficios, []);
+
+
+    function listarUsuario() {
+        axios('http://apirhsenaigp1.azurewebsites.net/api/Usuarios/BuscarUsuario/' + parseJwt().jti, {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+            },
+        }
+        )
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    console.log('listarUsuario')
+                    console.log(resposta)
+                    setListaUsuario(resposta.data)
+                    // setNome(resposta.data.nome)
+                    // console.log('aqui' + resposta.data)
+
+                }
+            })
+            .catch(erro => console.log(erro))
+    }
+    useEffect(listarUsuario, [])
 
     function Excluir(idDesconto) {
 
@@ -78,11 +101,6 @@ export default function ListaBeneficios() {
             })
     }
 
-
-
-
-
-
     const [searchInput, setSearchInput] = useState([]);
     const [filteredResults, setFilteredResults] = useState([]);
 
@@ -99,27 +117,12 @@ export default function ListaBeneficios() {
         }
     }
 
-    const config = {
-        totalStars: 5,
-        initialSelectedValue: 2,
-        renderFull: '★',
-        renderEmpty: '☆',
-    };
-
-    const {
-        stars,
-        getStarProps,
-        getStarWrapperProps,
-        isSelecting,
-        selectingValue,
-        selectedValue,
-    } = useStars(config);
 
 
 
     return (
         <div className="geral_g2">
-            <ModallBeneficio beneficio={listaBeneficios.find(beneficio => beneficio.idDesconto == idDescontoModal)} showModal={showModal} setShowModal={setShowModal} />
+            <ModallBeneficio comentario={listaComentarioBeneficio} beneficio={listaBeneficios.find(beneficio => beneficio.idDesconto == idDescontoModal)} showModal={showModal} setShowModal={setShowModal} />
             <HeaderFuncionario />
 
             <div className="container">
@@ -134,6 +137,13 @@ export default function ListaBeneficios() {
                             list='curso'
                             onChange={(e) => searchItems(e.target.value)}
                         />
+
+
+
+                    </div>
+
+                    <div className=' moeda_cima_g2'>
+                        <p>Minhas moedas:</p> <img className='coin_beneficio_cima_g2' src={coin} alt="coin" /> <p>{listaUsuario.saldoMoeda}</p>
                     </div>
                 </div>
 
@@ -151,11 +161,11 @@ export default function ListaBeneficios() {
                                             <div className='espacamento_beneficio_g2'>
                                                 <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_beneficio_g2'>
                                                     <div className='banner_img_beneficio_g2'>
-                                                        {<img onClick={OpenModal()} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
+                                                        {<img onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
                                                     </div>
 
                                                     <div className="dados_beneficio_gp2">
-                                                        {<span className="title_beneficios_g2" onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
+                                                        {<span className="title_beneficios_g2" onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
 
                                                         <div>avaliacao</div>
 
@@ -166,7 +176,7 @@ export default function ListaBeneficios() {
                                                             <div>
                                                                 <img src={coracao} alt="favorito" />
                                                             </div>
-                                                            ={/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
+                                                            {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
                                                         </div>
                                                     </div>
                                                 </section>
@@ -181,39 +191,26 @@ export default function ListaBeneficios() {
                                             <div className='espacamento_beneficio_g2'>
                                                 <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_beneficio_g2'>
                                                     <div className='banner_img_beneficio_g2'>
-                                                        {<img onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
+                                                        {<img onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
                                                     </div>
 
                                                     <div className="dados_beneficio_gp2">
-                                                        {<span className="title_beneficios_g2" onClick={OpenModal} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
+                                                        {<span className="title_beneficios_g2" onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
 
                                                         <div>
-                                                            {/* <span
-                                                                {...getStarWrapperProps({
-                                                                    style: {
-                                                                        cursor: 'pointer',
-                                                                        display: 'inline-block'
-                                                                    },
-                                                                })}
-                                                            >
-                                                                {stars?.map((star, i) => (
-                                                                    <span
-                                                                        key={i}
-                                                                        {...getStarProps(i, {
-                                                                            style: {
-                                                                                fontSize: '40px',
-                                                                                display: 'inline-block'
-                                                                            },
-                                                                            onClick: (event, ratedValue) => {
-                                                                                console.log(`You just rated ${ratedValue} Stars!!`);
-                                                                            },
-                                                                        })}
-                                                                    >
-                                                                        {star}
-                                                                    </span>
-                                                                ))}
-                                                            </span> */}
-                                                            avaliacao
+                                                            <div class="rating_g2">
+
+                                                                <input type="radio" name="rating" id="rating-5" />
+                                                                <label for="rating-5"></label>
+                                                                <input type="radio" name="rating" id="rating-4" />
+                                                                <label for="rating-4"></label>
+                                                                <input type="radio" name="rating" id="rating-3" />
+                                                                <label for="rating-3"></label>
+                                                                <input type="radio" name="rating" id="rating-2" />
+                                                                <label for="rating-2"></label>
+                                                                <input type="radio" name="rating" id="rating-1" />
+                                                                <label for="rating-1"></label>
+                                                            </div>
                                                         </div>
 
                                                         <div className="box_baixo_section_beneficio_g2">

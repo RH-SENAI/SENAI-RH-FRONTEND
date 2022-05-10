@@ -77,7 +77,7 @@ export default function CadastrarCursos() {
 
         api({
             method: "post",
-            url: "/Descontos/Cadastrar",
+            url: "/Cursos/Cadastrar",
             data: formData,
             headers: { "Content-Type": "multipart/form-data" },
         })

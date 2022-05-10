@@ -9,7 +9,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 65%;
+    /* width: 65%; */
     height: 15vh;
 }
 
@@ -23,7 +23,7 @@
 .caixa_curso_g2 {
     display: flex;
     justify-content: center;
-    margin-top: 35px;
+    /* margin-top: 35px; */
 }
 
 .caixa_curso_g2 input {
@@ -32,10 +32,11 @@
     height: 5vh;
     /* font-size: 2rem; */
     border: 2px solid #B3B3B3;
+    background-color: #f2f2f2;
     /* display: block; */
     text-align: center;
     outline: none;
-    border-radius: 15px;
+    border-radius: 10px;
     font-weight: bold;
 }
 
@@ -100,7 +101,7 @@
     margin-right: 20px;
     background-color: #f2f2f2;
     width: 17vw;
-    height: 50vh;
+    height: 40vh;
     border-radius: 10px;
     font-weight: bold;
     text-align: center;
@@ -158,7 +159,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50%;
+    /* height: 50%;  */
     border-radius: 50px;
     margin-top: 1rem;
     background: transparent;
@@ -171,15 +172,14 @@
     align-items: center;
     width: 5vw;
     height: 4vh;
-    border-radius: 15px;    
+    border-radius: 10px;
     margin-right: 8rem;
     border: 2px solid #B3B3B3;
 }
 
 .coin_curso_g2 {
-    width: 30px !important;
-    height: 30px !important;
-    cursor: pointer;
+    width: 20px !important;
+    height: 20px !important;
     margin-right: 0.5rem;
 }
 
@@ -189,6 +189,7 @@
 
 .container_img_g2 img {
     margin-right: 50px;
+    cursor: pointer;
     /* margin-left: 100px; */
     width: 450px;
     height: 450px;
