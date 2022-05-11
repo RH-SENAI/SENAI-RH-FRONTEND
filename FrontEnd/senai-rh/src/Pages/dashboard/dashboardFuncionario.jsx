@@ -7,7 +7,7 @@ import estrela from "../../assets/img/star.png"
 import iconPerfil from "../../assets/img/telaPerfil.png"
 import axios from "axios";
 import {
-    VictoryLine, VictoryPie, VictoryChart, VictoryAxis,
+    VictoryBar, VictoryPie, VictoryChart, VictoryAxis,
     VictoryTheme
 } from 'victory';
 import ImgDashboard from '../../assets/img/telaDeAcessoLight.svg'
@@ -64,7 +64,7 @@ export default function Dashboard() {
             .then((resposta) => {
 
                 if (resposta.status === 200) {
-                    setListaAtividades([resposta.data])
+                    setListaAtividades(resposta.data)
 
                     console.log(resposta)
 
@@ -75,35 +75,35 @@ export default function Dashboard() {
             .catch(erro => console.log(erro))
 
     }
-    function ListarMinhasAtividadesExtra() {
+    // function ListarMinhasAtividadesExtra() {
 
-        axios.get(`http://apirhsenaigp1.azurewebsites.net/api/Atividades/MinhasAtividadeExtra/${idUsuario}`, {
+    //     axios.get(`http://apirhsenaigp1.azurewebsites.net/api/Atividades/MinhasAtividadeExtra/${idUsuario}`, {
 
-            headers: {
+    //         headers: {
 
-                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
-            }
+    //             Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+    //         }
 
-        })
+    //     })
 
-            .then((resposta) => {
+    //         .then((resposta) => {
 
-                if (resposta.status === 200) {
-                    setListaAtividades([resposta.data])
+    //             if (resposta.status === 200) {
+    //                 setListaAtividades([resposta.data])
 
-                    console.log(resposta)
+    //                 console.log(resposta)
 
-                }
+    //             }
 
-            })
+    //         })
 
-            .catch(erro => console.log(erro))
+    //         .catch(erro => console.log(erro))
 
-    }
+    // }
 
     useEffect(ListarUsuario, [])
     useEffect(ListarMinhasAtividades, [])
-    useEffect(ListarMinhasAtividadesExtra, [])
+    // useEffect(ListarMinhasAtividadesExtra, [])
 
     // const sampleData = [
     //     { x: 'satisfacao', y: nivelSatisfacao },
@@ -128,30 +128,52 @@ export default function Dashboard() {
                                     <div className='g3_organizadorDashboard'>
                                         <div className="g3_boxGraficosLeft">
                                             <div className="g3_graficoProdutividade">
-                                                {
+                                                {/* {
                                                     listaAtividades.map((atividade) => {
                                                         return (
                                                             <VictoryChart
                                                             >
                                                                 <VictoryLine
-                                                                    // style={{
-                                                                    //     data: { stroke: "#c20004" },
-                                                                    //     parent: { border: "1px solid #c20004" }
-                                                                    // }}
-                                                                    data={[
-                                                                        { x: 1, y: 2 },
-                                                                        { x: 2, y: 3 },
+                                                                    style={{
+                                                                        data: { stroke: "#c20004" },
+                                                                        parent: { border: "1px solid #c20004" }
+                                                                    }}
 
-                                                                    ]}
+                                                                    data=
+                                                                    {
+                                                                        listaAtividades.filter(a => a.idSituacaoAtividade === 3).map((atividade) => {
+                                                                            return (
+
+                                                                                { x: 1, y: atividade.dataConclusao.split('-')[1] }
+
+                                                                            )
+                                                                        })}
+
+
                                                                 />
                                                             </VictoryChart>
                                                         )
-                                                    })
-                                                }
+                                                    })} */}
+                                                <VictoryChart
+                                                    domainPadding={{ x: 30 }}
+                                                >
+                                                    <VictoryBar
+                                                        barRatio={0.8}
+                                                        style={{
+                                                            data: { fill: "#c20004" }
+                                                        }}
+                                                        data={[
+                                                            { x: 1, y: 2},
+                                                            { x: 2, y: 3},
+                                                            { x: 3, y: 5},
+                                                            { x: 4, y: 4},
+                                                          ]}
+                                                    />
+                                                </VictoryChart>
 
 
                                             </div>
-                                            <span>Produtividade Pessoal</span>
+                                            <span>Tarefas Pessoais</span>
                                             <div className="g3_boxGraficosBaixo">
                                                 <div className="g3_containerGraficoLeft">
                                                     <div className="g3_graficoSatisfacaoPessoal">
