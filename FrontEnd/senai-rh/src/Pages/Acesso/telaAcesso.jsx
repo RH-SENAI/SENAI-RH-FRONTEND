@@ -22,20 +22,20 @@ export default function Acesso() {
                         <div className="g3_textoEBotao">
                             <div className="g3_todosOsTextos">
                                 <div className="g3_spans">
-                                    <span className="g3_bold animate__animated animate__fadeInUp">
+                                    <span className="g3_bold">
                                         RECURSOS HUMANOS
                                     </span>
-                                    <span className="g3_nonBold  animate__animated animate__fadeInUp">
+                                    <span className="g3_nonBold">
                                         SENAI-SP
                                     </span>
                                 </div>
                                 <div className='g3_imgAcessoResponsiva'>
-                                    <img className="g3_imagemAcessoResponsiva animate__animated animate__fadeInUp" src={imagemAcesso} alt="Imagem de acesso" />
+                                    <img className="g3_imagemAcessoResponsiva" src={imagemAcesso} alt="Imagem de acesso" />
                                 </div>
                                 <div>
-                                    <p className="g3_primeiroTexto animate__animated animate__fadeInUp">Desenvolvido para facilitar o trabalho de todos na rede, o <br />SENAI RH tem o objetivo de deixar o ambiente de trabalho<br /> mais confortável de trabalhar!</p>
-                                    <p className="g3_primeiroTextoResponsivo animate__animated animate__fadeInUp">Pensando sempre no conforto dos funcionários!</p>
-                                    <p className="g3_segundoTextoResponsivo animate__animated animate__fadeInUp">Faça seu login para começar</p>
+                                    <p className="g3_primeiroTexto ">Desenvolvido para facilitar o trabalho de todos na rede, o <br />SENAI RH tem o objetivo de deixar o ambiente de trabalho<br /> mais confortável de trabalhar!</p>
+                                    <p className="g3_primeiroTextoResponsivo ">Pensando sempre no conforto dos funcionários!</p>
+                                    <p className="g3_segundoTextoResponsivo ">Faça seu login para começar</p>
                                     {/* <p className="g3_segundoTexto">Acesse sua conta e veja todo seu Dashboard e o da sua equipe!</p> */}
                                 </div>
                             </div>
@@ -45,7 +45,7 @@ export default function Acesso() {
                         </div>
                     </div>
                     <div className='g3_imgAcesso'>
-                        <img className="g3_imagemAcesso animate__animated animate__fadeInUp" src={imagemAcesso} alt="Imagem de acesso" />
+                        <img className="g3_imagemAcesso" src={imagemAcesso} alt="Imagem de acesso" />
                     </div>
 
 

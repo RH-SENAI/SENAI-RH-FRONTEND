@@ -184,10 +184,10 @@ export default function AtualizarPerfil() {
                 <div className="container containerResponsivo g3_boxOrganizar">
 
                     <div className="g3_textoEFoto">
-                        <span className="g3_boldCadastrar animate__animated animate__fadeInUp">
+                        <span className="g3_boldCadastrar">
                             Atualizar
                         </span>
-                        <span className="g3_nonBoldCadastrar  animate__animated animate__fadeInUp">
+                        <span className="g3_nonBoldCadastrar">
                             Usuário
                         </span>
                         <span className="g3_spanAtualizar" >Foto De Perfil</span>

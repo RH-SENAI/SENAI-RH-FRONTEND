@@ -7,7 +7,7 @@ import estrela from "../../assets/img/star.png"
 import iconPerfil from "../../assets/img/telaPerfil.png"
 import axios from "axios";
 import {
-    VictoryBar, VictoryPie, VictoryChart, VictoryAxis,
+    VictoryBar, VictoryPie, VictoryChart, VictoryAxis, VictoryLabel,
     VictoryTheme
 } from 'victory';
 import ImgDashboard from '../../assets/img/telaDeAcessoLight.svg'
@@ -23,6 +23,7 @@ export default function Dashboard() {
     const [listaAtividades, setListaAtividades] = useState([]);
     const [usuario, setUsuario] = useState([])
     const [notaProdutividade, setNotaProdutividade] = useState(0);
+    const [sampleData, setSampleData] = useState([])
 
 
     function ListarUsuario() {
@@ -52,7 +53,7 @@ export default function Dashboard() {
     }
     function ListarMinhasAtividades() {
 
-        axios.get(`http://apirhsenaigp1.azurewebsites.net/api/Atividades/MinhasAtividade/${idUsuario}`, {
+        axios.get(`http://apirhsenaigp1.azurewebsites.net/api/Atividades/MinhasAtividade/${parseJwt().jti}`, {
 
             headers: {
 
@@ -68,8 +69,30 @@ export default function Dashboard() {
 
                     console.log(resposta)
 
-                }
+                    const dataFinalizacao = resposta.data.filter(atividades => atividades.idSituacaoAtividade === 3)
+                        .map((p) => {
 
+                            return parseInt(p.dataConclusao.split('-')[2]);
+                        });
+
+                    const d1_5 = dataFinalizacao.filter(d => d <= 5).length
+                    // const d6_10 = dataFinalizacao.filter(d => d > 5 && d <= 10).length
+                    // const d11_15 = dataFinalizacao.filter(d => d > 10 && d <= 15).length
+                    // const d16_20 = dataFinalizacao.filter(d => d > 15 && d <= 20).length
+                    // const d21_25 = dataFinalizacao.filter(d => d > 20 && d <= 25).length
+                    // const d26_31 = dataFinalizacao.filter(d => d > 25 && d <= 31).length
+                    setSampleData(
+                        [
+                            { x: 1, y: d1_5 },
+                            { x: 2, y: 2 },
+                            { x: 3, y: 4 },
+                            { x: 4, y: 5 },
+                            { x: 5, y: 10 },
+                            { x: 6, y: 11 }
+                        ])
+
+
+                }
             })
 
             .catch(erro => console.log(erro))
@@ -112,6 +135,13 @@ export default function Dashboard() {
 
 
     // ];
+
+    const data = [
+        { quarter: 1, earnings: 13000 },
+        { quarter: 2, earnings: 16500 },
+        { quarter: 3, earnings: 14250 },
+        { quarter: 4, earnings: 19000 }
+    ];
 
     return (
         <div>
@@ -158,16 +188,13 @@ export default function Dashboard() {
                                                     domainPadding={{ x: 30 }}
                                                 >
                                                     <VictoryBar
-                                                        barRatio={0.8}
+                                                        data={sampleData}
+                                                        labels={({ datum }) => datum.y}
+
                                                         style={{
-                                                            data: { fill: "#c20004" }
+                                                                data: { fill: "#c20004", width: 50 }, labels: {fill: 'white'}
                                                         }}
-                                                        data={[
-                                                            { x: 1, y: 2},
-                                                            { x: 2, y: 3},
-                                                            { x: 3, y: 5},
-                                                            { x: 4, y: 4},
-                                                          ]}
+                                                        labelComponent={<VictoryLabel dy={20} />}
                                                     />
                                                 </VictoryChart>
 

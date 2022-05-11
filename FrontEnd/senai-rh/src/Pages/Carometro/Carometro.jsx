@@ -72,7 +72,7 @@ export default function Carometro() {
         setId(idRonaldo)
         console.log(id)
         
-        axios.get('http://localhost:5000/api/Usuarios/Listar', {
+        axios.get('https://apigrupo3.azurewebsites.net//api/Usuarios/Listar', {
 
             headers: {
 
@@ -202,10 +202,10 @@ export default function Carometro() {
                         <div className='g3_conteudoCarometro'>
                             <div className='g3_topCarometro'>
                                 <div className='g3_headerCarometro'>
-                                    <h1 className="g3_tituloCarometro  animate__animated animate__fadeInUp">Carômetro</h1>
-                                    <img className="g3_topImgCarometro  animate__animated animate__fadeInUp" src={topCarometro} />
+                                    <h1 className="g3_tituloCarometro  ">Carômetro</h1>
+                                    <img className="g3_topImgCarometro  " src={topCarometro} />
                                 </div>
-                                <div className='g3_navBarCarometro  animate__animated animate__fadeInUp'>
+                                <div className='g3_navBarCarometro'>
                                     <label ></label>
                                     <input
                                         className='g3_inputPesquisaCarometro'
@@ -237,7 +237,7 @@ export default function Carometro() {
                                         </select> */}
                                 </div>
                             </div>
-                            <div className='g3_cardsCarometro animate__animated animate__fadeInUp'>
+                            <div className='g3_cardsCarometro'>
                                 {
 
                                     procurarUsuarios.length > 0 ?
