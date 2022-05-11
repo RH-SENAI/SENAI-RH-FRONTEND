@@ -7,7 +7,7 @@ import '../Assets/css/gp1style.css'
 
 export const Modall = ({ showModal, setShowModal, usuarios, setProps, value }) => {
 
-    const [listaUsuarios, setListaUsuarios] = useState([]);
+    const [listaUsuarioSelecionados, setListaUsuarioSelecionados] = useState([]);
     const [lastAtividade, setLastAtividade] = useState();
     const modalRef = useRef();
 
@@ -53,7 +53,7 @@ export const Modall = ({ showModal, setShowModal, usuarios, setProps, value }) =
     //         })
     //         .catch(erro => console.log(erro))
 
-    //     listaUsuarios.map((usuario) => {
+    //     listaUsuarioSelecionados.map((usuario) => {
     //         axios("http://apirhsenaigp1.azurewebsites.net/api/Atividades/Associar/" +
     //             usuario.idUsuario + '/' + lastAtividade.idAtividade
     //             , {
@@ -66,10 +66,10 @@ export const Modall = ({ showModal, setShowModal, usuarios, setProps, value }) =
     // }
 
     function AlimentarArray(id) {
-        listaUsuarios.push(id)
+        listaUsuarioSelecionados.push(id)
         console.log(id)
-        console.log(listaUsuarios)
-        setProps(listaUsuarios)
+        console.log(listaUsuarioSelecionados)
+        setProps(listaUsuarioSelecionados)
     }
 
     return (

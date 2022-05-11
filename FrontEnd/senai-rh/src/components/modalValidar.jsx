@@ -36,7 +36,7 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
         console.log("validarAtividades chamouuuuu")
         let idAtividade = atividade.idAtividade;
         let idUsuario = atividade.idUsuario;
-        await axios.patch("http://localhost:5000/api/Atividades/ValidarAtividade/" + atividade.idAtividade + "/" + atividade.idUsuario, {
+        await axios.patch("http://apirhsenaigp1.azurewebsites.net/api/Atividades/ValidarAtividade/" + atividade.idAtividade + "/" + atividade.idUsuario, {
             idAtividade: idAtividade,
             idUsuario: idUsuario
         }

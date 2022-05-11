@@ -12,6 +12,7 @@ import {
     // usuarioAutenticado
 } from '../../services/auth';
 import Header from '../../components/Header/headerAdm'
+import { useHistory } from 'react-router-dom'
 
 
 
@@ -35,6 +36,8 @@ export default function CadastrarAtividades() {
     const [equipe, setEquipe] = useState(false);
     const [obrigatorio, setObrigatorio] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+
+    const history = useHistory();
 
     const notify_cadastrar = () => toast.success("Atividade Cadastrada!");
     // const notify_validar = () => toast.success("Atividade Validada!");
