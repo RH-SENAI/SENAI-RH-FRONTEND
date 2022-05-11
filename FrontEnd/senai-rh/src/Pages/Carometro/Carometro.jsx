@@ -26,7 +26,8 @@ export default function Carometro() {
 
     //States
 
-    const [idUsuarioAvaliador, setIdUsuarioAvaliador] = useState(parseJwt.jti);
+    const [idUsuarioAvaliador, setIdUsuarioAvaliador] = useState();
+    const [id, setId] = useState();
     const [idCargo, setIdCargo] = useState(0);
     const [nivelSatisfacao, setNivelSatisfacao] = useState(0);
     const [listaFuncionarios, setListaFuncionarios] = useState([]);
@@ -35,17 +36,18 @@ export default function Carometro() {
     const [idUsuarioModal, setIdUsuarioModal] = useState([]);
     const [active, setMode] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    // console.log(parseJwt.jti)
     const OpenModal = () => {
 
         setShowModal(prev => !prev);
         console.log('abriuuu')
         console.log('abriuuu')
-        
+
         console.log(idUsuarioModal)
 
         // console.log(idUsuario)
 
-        
+
     }
     const ToggleMode = () => {
         setMode(!active)
@@ -64,7 +66,12 @@ export default function Carometro() {
 
 
     function BuscarFuncionario() {
-
+        console.log(parseJwt().jti)
+        let idRonaldo = parseJwt().jti
+        console.log(idRonaldo)
+        setId(idRonaldo)
+        console.log(id)
+        
         axios.get('http://localhost:5000/api/Usuarios/Listar', {
 
             headers: {
@@ -81,7 +88,7 @@ export default function Carometro() {
                     setListaFuncionarios(resposta.data)
                     console.log(resposta)
                     console.log(idCargo)
-                    
+
 
                 }
 
@@ -166,13 +173,14 @@ export default function Carometro() {
 
 
     useEffect(BuscarFuncionario, [])
+    // useEffect(console.log(parseJwt.jti), [])
     // useEffect(BuscarCargos, [])
 
     return (
         <body>
             {/* <Modall atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)} showModal={showModal} setShowModal={setShowModal} /> */}
             {/* <ModalAcompanhar usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idFuncionarioModal)} showModal={showModal} setShowModal={setShowModal} />  */}
-            <ModalAcompanhar idUsuarioAvaliador={idUsuarioAvaliador} usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idUsuarioModal)} showModal={showModal} setShowModal={setShowModal} /> 
+            <ModalAcompanhar  idUsuarioAvaliador={id} usuario={listaFuncionarios.find(usuario => usuario.idUsuario == idUsuarioModal)} showModal={showModal} setShowModal={setShowModal} />
             {/* <ToastContainer
                 position="top-right"
                 autoClose={5000}
@@ -184,7 +192,7 @@ export default function Carometro() {
                 draggable
                 pauseOnHover
             /> */}
-            
+
             <div className='g3_whiteBackgroundCarometro'>
                 <HeaderFuncionario />
                 <main>

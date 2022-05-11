@@ -174,7 +174,8 @@
 }
 .g3_organizarBtn{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 .g3_graficosModal{
     display: flex;
@@ -188,10 +189,27 @@
 .g3_organizadorGraficosModal{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 6rem;
+    margin-bottom: 4rem;
 }
 .g3_spanGraficos{
     font-family: 'Quicksand', sans-serif;
     font-size: 1.8em;
     font-weight: 500;
+}
+.g3_formModal{
+    width: 30%;
+}
+.g3_inputCadastroModal{
+    box-sizing: border-box;
+    padding:  0 20px;
+    width: 13.5vw;
+    height: 6vh;
+    background-color: transparent;
+    outline: 0;
+    border: 1px #B3B3B3 solid;
+    border-radius: 15px;
+    margin-bottom: 2em;
+    font-size: 1.1em;
+    color: #B3B3B3;
+    font-weight: bold;
 }

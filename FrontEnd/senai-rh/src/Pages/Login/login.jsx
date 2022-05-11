@@ -35,7 +35,7 @@ export default function Login() {
                         history.push('/AlterarSenha')
                     }
                     else                      
-                    history.push('/CadastrarAtividades')
+                    history.push('/dashboard')
                 }
 
             })

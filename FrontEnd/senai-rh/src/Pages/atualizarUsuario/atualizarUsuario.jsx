@@ -7,6 +7,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import fotoAtualizar from "../../assets/img/atualizarLight.svg"
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import HeaderFuncionario from "../../components/header/headerFuncionario";
 
 // Vai precisar da auth para puxar as informações do usuário pertencente do perfil
 // img perfil
@@ -177,7 +178,7 @@ export default function AtualizarPerfil() {
     return (
         <div>
 
-            <Header />
+            <HeaderFuncionario/>
 
             <div className="main">
                 <div className="container containerResponsivo g3_boxOrganizar">

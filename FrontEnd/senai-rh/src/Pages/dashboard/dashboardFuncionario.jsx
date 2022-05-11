@@ -11,9 +11,13 @@ import {
     VictoryTheme
 } from 'victory';
 import ImgDashboard from '../../assets/img/telaDeAcessoLight.svg'
+import {
+    parseJwt
+    // usuarioAutenticado
+} from '../../services/auth';
 
 export default function Dashboard() {
-    const [idUsuario, setIdUsuario] = useState(44);
+    const [idUsuario, setIdUsuario] = useState(0);
     const [nivelSatisfacao, setNivelSatisfacao] = useState(0);
     const [listaUsuarios, setListaUsuarios] = useState([]);
     const [listaAtividades, setListaAtividades] = useState([]);
@@ -23,7 +27,7 @@ export default function Dashboard() {
 
     function ListarUsuario() {
 
-        axios.get(`http://apirhsenaigp1.azurewebsites.net/api/Usuarios/BuscarUsuario/${idUsuario}`, {
+        axios.get(`http://apirhsenaigp1.azurewebsites.net/api/Usuarios/BuscarUsuario/${parseJwt().jti}`, {
 
             headers: {
 
@@ -127,39 +131,27 @@ export default function Dashboard() {
                                                 {
                                                     listaAtividades.map((atividade) => {
                                                         return (
-                                                            <VictoryPie
-                                                                events={[{
-                                                                    target: "data",
-                                                                    eventHandlers: {
-                                                                        onClick: () => {
-                                                                            return [
-                                                                                {
-                                                                                    target: "data",
-                                                                                    mutation: ({ style }) => {
-                                                                                        return style.fill === "#C20004" ? null : { style: { fill: "#C20004" } };
-                                                                                    }
-                                                                                }, {
-                                                                                    target: "labels",
-                                                                                }
-                                                                            ];
-                                                                        }
-                                                                    }
-                                                                }]}
-                                                                colorScale={["#c20004", "#b3b3b3", "#000000", "#F2F2F2"]}
-                                                                data={[
-                                                                    { x: usuario.nivelSatisfacao * 100 + '%', y: usuario.nivelSatisfacao * 100 },
-                                                                    { x: 100 - usuario.nivelSatisfacao * 100 + '%', y: 100 - usuario.nivelSatisfacao * 100 },
+                                                            <VictoryChart
+                                                            >
+                                                                <VictoryLine
+                                                                    // style={{
+                                                                    //     data: { stroke: "#c20004" },
+                                                                    //     parent: { border: "1px solid #c20004" }
+                                                                    // }}
+                                                                    data={[
+                                                                        { x: 1, y: 2 },
+                                                                        { x: 2, y: 3 },
 
-
-                                                                ]}
-                                                            />
+                                                                    ]}
+                                                                />
+                                                            </VictoryChart>
                                                         )
                                                     })
                                                 }
 
 
                                             </div>
-                                            <span>Tarefas Pessoais</span>
+                                            <span>Produtividade Pessoal</span>
                                             <div className="g3_boxGraficosBaixo">
                                                 <div className="g3_containerGraficoLeft">
                                                     <div className="g3_graficoSatisfacaoPessoal">
@@ -172,7 +164,7 @@ export default function Dashboard() {
                                                                             {
                                                                                 target: "data",
                                                                                 mutation: ({ style }) => {
-                                                                                    return style.fill === "#C20004" ? null : { style: { fill: "#C20004" } };
+                                                                                    return style.fill === "#000000" ? null : { style: { fill: "#000000" } };
                                                                                 }
                                                                             }, {
                                                                                 target: "labels",
@@ -181,6 +173,7 @@ export default function Dashboard() {
                                                                     }
                                                                 }
                                                             }]}
+                                                            innerRadius={100}
                                                             colorScale={["#c20004", "#b3b3b3"]}
                                                             data={[
                                                                 { x: usuario.nivelSatisfacao * 100 + '%', y: usuario.nivelSatisfacao * 100 },
@@ -196,7 +189,35 @@ export default function Dashboard() {
                                                 </div>
                                                 <div className="g3_containerGraficoRight">
                                                     <div className="g3_graficoProdutividadeUnidade">
+                                                        <VictoryPie
+                                                            events={[{
+                                                                target: "data",
+                                                                eventHandlers: {
+                                                                    onClick: () => {
+                                                                        return [
+                                                                            {
+                                                                                target: "data",
+                                                                                mutation: ({ style }) => {
+                                                                                    return style.fill === "#000000" ? null : { style: { fill: "#000000" } };
+                                                                                }
+                                                                            }, {
+                                                                                target: "labels",
+                                                                            }
+                                                                        ];
+                                                                    }
+                                                                }
+                                                            }]}
+                                                            innerRadius={100}
+                                                            colorScale={["#c20004", "#b3b3b3"]}
+                                                            data={[
+                                                                { x: usuario.mediaAvaliacao, y: usuario.mediaAvaliacao * 10 },
+                                                                { x: 10 - usuario.mediaAvaliacao, y: 100 - usuario.mediaAvaliacao * 10 },
 
+
+                                                            ]}
+
+
+                                                        />
                                                     </div>
                                                     <span>Avaliação Pessoal</span>
                                                 </div>

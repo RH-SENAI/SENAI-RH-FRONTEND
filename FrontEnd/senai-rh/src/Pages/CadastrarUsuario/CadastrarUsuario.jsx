@@ -27,7 +27,7 @@ export default function Cadastro() {
     const [idUnidade, setIdUnidade] = useState(0)
     const [dataNascimento, setDataNascimento] = useState(new Date())
     const [fotoPerfil, setFotoPerfil] = useState('')
-    const [senha, setSenha] = useState('12345678')
+    const [senha, setSenha] = useState('SesiSenai@2022')
     const notify_cadastrar = () => toast.success("Usuario Cadastrado!");
     const notify_erroCadastrar = () => toast.error("Preencha todos os campos!");
 
