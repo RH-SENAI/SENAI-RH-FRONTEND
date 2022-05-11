@@ -4,14 +4,16 @@ import Footer from '../../components/footer'
 import '../../assets/css/cursosRapidos.css'
 import coracao from '../../assets/img/coracao.svg'
 import relogio from '../../assets/img/relogio.svg'
-import estrelaSozinha from '../../assets/img/estrelaSozinha.svg'
 import local from '../../assets/img/local.svg'
 import coin from '../../assets/img/coin 1.png'
+import estrelaSozinha from '../../assets/img/estrelaSozinha.svg'
 import React, { useEffect, useMemo, useState } from 'react';
 import { ModallCurso } from '../../components/modalListaCursos/modalListaCursos'
 import api from '../../services/api'
 import axios from 'axios'
 import { parseJwt } from "../../services/auth";
+import ReactStars from "react-rating-stars-component";
+
 
 
 export default function CursosRapidos() {
@@ -51,8 +53,8 @@ export default function CursosRapidos() {
         api('/Cursos')
             .then(resposta => {
                 if (resposta.status === 200) {
-                    console.log('Lista')
-                    console.log(resposta)
+                    // console.log('Lista')
+                    // console.log(resposta)
                     setListaCursos(resposta.data)
                 }
             })
@@ -159,6 +161,14 @@ export default function CursosRapidos() {
                                                     <div className='dados_curso_gp2'>
 
                                                         {<span onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
+                                                        <ReactStars
+                                                            count={5}
+                                                            // onChange={ratingChanged}
+                                                            size={10}
+                                                            edit={false}
+                                                            value={curso.mediaAvaliacaoCurso}
+                                                            activeColor="#C20004"
+                                                        />
                                                         {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
                                                         {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}  </p>}
                                                         <div className="box_baixo_section_curso_g2">
@@ -188,6 +198,14 @@ export default function CursosRapidos() {
                                                     <div className='dados_curso_gp2'>
 
                                                         {<span onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
+                                                        <ReactStars
+                                                            count={5}
+                                                            // onChange={ratingChanged}
+                                                            size={10}
+                                                            edit={false}
+                                                            value={curso.mediaAvaliacaoCurso}
+                                                            activeColor="#C20004"
+                                                        />
                                                         {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
                                                         {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}   </p>}
                                                         <div className="box_baixo_section_curso_g2">

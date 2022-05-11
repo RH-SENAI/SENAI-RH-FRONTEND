@@ -3,8 +3,8 @@ import Footer from "../../components/footer"
 import "../../assets/css/perfil.css"
 import { useEffect, useState } from "react"
 import api from "../../services/api"
-import axios from "axios"
 import { parseJwt } from "../../services/auth";
+import axios from "axios"
 
 
 export default function Perfil() {

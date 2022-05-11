@@ -7,9 +7,12 @@ import '../../assets/css/cadastroBeneficio.css'
 import { useEffect, useState } from "react";
 import Footer from "../../components/footer";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
 import api from "../../services/api";
 
 export default function CadastrarBeneficio() {
+    const notify_Logar_Failed = () => toast.error("Você esqueceu de algum campo, por favor tente novamente!")
+    const notify_cadastro_sucess = () => toast.success("Cadastro realizado com sucesso!")
     const [idEmpresa, setIdEmpresa] = useState(0)
     const [nomeDesconto, setNomeDesconto] = useState('')
     const [descricaoDesconto, setDescricaoDesconto] = useState('')
@@ -73,14 +76,26 @@ export default function CadastrarBeneficio() {
                 console.log(response);
                 setMsgSucesso(true);
                 setFotoDesconto();
+                notify_cadastro_sucess();
             })
-            .catch((erro) => console.log(erro),
-                setErroMensagem(true));
+            .catch(resposta => notify_Logar_Failed())
     }
 
     return (
         <div className="geral_g2">
             <HeaderAdm />
+            
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
 
             <div className=" container_cadastrarBeneficio container_forms_cadastroBeneficio_g2">
                 <div className="box_img_cadastroBeneficio_g2">

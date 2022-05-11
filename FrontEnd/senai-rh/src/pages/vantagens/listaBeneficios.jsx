@@ -14,6 +14,8 @@ import api from "../../services/api";
 import Footer from "../../components/footer";
 import axios from "axios";
 import { parseJwt } from "../../services/auth";
+import ReactStars from "react-rating-stars-component";
+
 
 export default function ListaBeneficios() {
     const [listaComentarioBeneficio, setListaComentarioBeneficio] = useState([])
@@ -167,7 +169,16 @@ export default function ListaBeneficios() {
                                                     <div className="dados_beneficio_gp2">
                                                         {<span className="title_beneficios_g2" onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
 
-                                                        <div>avaliacao</div>
+                                                        <div>
+                                                            <ReactStars
+                                                                count={5}
+                                                                // onChange={ratingChanged}
+                                                                size={10}
+                                                                edit={false}
+                                                                value={beneficio.mediaAvaliacaoDesconto}
+                                                                activeColor="#C20004"
+                                                            />
+                                                        </div>
 
                                                         <div className="box_baixo_section_beneficio_g2">
                                                             {<div className='circulo_moeda_beneficio_g2'>
@@ -198,19 +209,14 @@ export default function ListaBeneficios() {
                                                         {<span className="title_beneficios_g2" onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
 
                                                         <div>
-                                                            <div class="rating_g2">
-
-                                                                <input type="radio" name="rating" id="rating-5" />
-                                                                <label for="rating-5"></label>
-                                                                <input type="radio" name="rating" id="rating-4" />
-                                                                <label for="rating-4"></label>
-                                                                <input type="radio" name="rating" id="rating-3" />
-                                                                <label for="rating-3"></label>
-                                                                <input type="radio" name="rating" id="rating-2" />
-                                                                <label for="rating-2"></label>
-                                                                <input type="radio" name="rating" id="rating-1" />
-                                                                <label for="rating-1"></label>
-                                                            </div>
+                                                            <ReactStars
+                                                                count={5}
+                                                                // onChange={ratingChanged}
+                                                                size={10}
+                                                                edit={false}
+                                                                value={beneficio.mediaAvaliacaoDesconto}
+                                                                activeColor="#C20004"
+                                                            />
                                                         </div>
 
                                                         <div className="box_baixo_section_beneficio_g2">

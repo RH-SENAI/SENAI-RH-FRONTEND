@@ -3,8 +3,12 @@ import cadastroEmpresa from '../../assets/img/cadastroEmpresa.svg'
 import '../../assets/css/cadastroEmpresa.css'
 import iconeEnviarArquivo from '../../assets/img/iconeEnviarArquivo.png'
 import Footer from "../../components/footer";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 export default function CadastrarEmpresa() {
+    const notify_Logar_Failed = () => toast.error("Você esqueceu de algum campo, por favor tente novamente!")
+    const notify_cadastro_sucess = () => toast.success("Cadastro realizado com sucesso!")
     return (
 
         <div className="geral_g2">

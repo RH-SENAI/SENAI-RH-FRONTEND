@@ -17,7 +17,8 @@ import coin from "../../assets/img/coin 1.png"
 import axios from 'axios';
 import ReactStars from "react-rating-stars-component";
 
-export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario }) => {
+
+export const ModallBeneficioFavoritos = ({ showModal, setShowModal, beneficios, comentario }) => {
 
     const [listaComentarioBeneficio, setListaComentarioBeneficio] = useState([])
     const [idDesconto, setIdDesconto] = useState(0)
@@ -59,6 +60,7 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
 
 
 
+
     useEffect(
         () => {
             document.addEventListener('keydown', keyPress);
@@ -68,22 +70,26 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
     );
 
     function cadastrarComentario(event) {
-        event.preventDefault();
+        // event.preventDefault();
+        console.log('beneficios.idDesconto')
+        console.log(beneficios.idDesconto)
+        console.log(parseJwt().jti)
 
         let comentarios = {
             idUsuario: parseJwt().jti,
             avaliacaoDesconto: valorAvalicao,
             comentarioDesconto1: comentarioDesconto1,
-            idDesconto: beneficio.idDesconto
+            idDesconto: beneficios.idDesconto
         }
         console.log('Comentario idDesconto')
-        console.log(beneficio.idDesconto)
+        console.log(comentario)
 
         api.post('/ComentarioDescontos', comentarios, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
         }
+
         )
             .then(function (response) {
                 console.log(response);
@@ -105,12 +111,12 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                         {/* Parte 1 */}
                         <div className='container_modal_beneficio_g2'>
                             <div className='box_img_modal_beneficio_g2'>
-                                <img src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="Foto do Desconto" />
+                                <img src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficios.idDescontoNavigation.caminhoImagemDesconto} alt="Foto do Desconto" />
                             </div>
 
                             <div className='box_cima_modal_beneficio_g2'>
                                 <div className='title_modal_beneficio_g2'>
-                                    <h1>{beneficio.nomeDesconto}</h1>
+                                    <h1>{beneficios.idDescontoNavigation.nomeDesconto}</h1>
                                 </div>
 
                                 <div>
@@ -119,9 +125,10 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                                         // onChange={ratingChanged}
                                         size={10}
                                         edit={false}
-                                        value={beneficio.mediaAvaliacaoDesconto}
+                                        value={beneficios.idDescontoNavigation.mediaAvaliacaoDesconto}
                                         activeColor="#C20004"
                                     />
+                                    {/* {beneficio.mediaAvaliacaoDesconto} */}
                                 </div>
 
                                 <div className='dados_modal_beneficio_g2'>
@@ -131,31 +138,31 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
 
                                             {Intl.DateTimeFormat("pt-BR", {
                                                 year: 'numeric', month: 'numeric', day: 'numeric',
-                                            }).format(new Date(beneficio.validadeDesconto))}
+                                            }).format(new Date(beneficios.idDescontoNavigation.validadeDesconto))}
                                         </p>
 
 
                                     </div>
 
                                     <div className='icone_center_modal_beneficio_g2'>
-                                        <img src={map} alt="mapa" /> <p> {beneficio.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro} </p>
+                                        <img src={map} alt="mapa" /> <p> {beneficios.idDescontoNavigation.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro} </p>
                                     </div>
 
                                 </div>
 
                                 <div className='container_registro_beneficio_g2'>
                                     <div className='box_dados_registro_beneficio_g2'>
-                                        <span> Adicionado: </span> <p>{beneficio.idEmpresaNavigation.nomeEmpresa}</p>
+                                        <span> Adicionado: </span> <p>{beneficios.idDescontoNavigation.idEmpresaNavigation.nomeEmpresa}</p>
                                     </div>
                                     <div className='box_dados_registro_beneficio_g2'>
-                                        <span>Empresa:</span> <p>{beneficio.idEmpresaNavigation.nomeEmpresa}</p>
+                                        <span>Empresa:</span> <p>{beneficios.idDescontoNavigation.idEmpresaNavigation.nomeEmpresa}</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div>
                                 <div className='circulo_icone_coin_beneficio_g2'>
-                                    <img className='icone_modal_coin_g2' src={coin} alt="preço da vantagem" /> <p> {beneficio.valorDesconto} </p>
+                                    <img className='icone_modal_coin_g2' src={coin} alt="preço da vantagem" /> <p> {beneficios.idDescontoNavigation.valorDesconto} </p>
                                 </div>
                             </div>
                         </div>
@@ -174,14 +181,14 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                                                         <span>{c.idUsuarioNavigation.nome}:</span>
                                                         <p>{c.comentarioDesconto1}</p>
                                                         <p>
-                                                            <ReactStars
-                                                                count={5}
-                                                                // onChange={ratingChanged}
-                                                                size={10}
-                                                                edit={false}
-                                                                value={c.avaliacaoDesconto}
-                                                                activeColor="#C20004"
-                                                            />
+                                                        <ReactStars
+                                                            count={5}
+                                                            // onChange={ratingChanged}
+                                                            size={10}
+                                                            edit={false}
+                                                            value={c.avaliacaoDesconto}
+                                                            activeColor="#C20004"
+                                                        />
                                                             {/* {c.avaliacaoDesconto} */}
                                                         </p>
                                                     </div>
@@ -189,6 +196,8 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                                             )
                                         })
                                     }
+
+                                    {/* {beneficio.comentariodescontos} */}
                                 </div>
 
                                 <div>
@@ -228,7 +237,7 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                                 <h2>Descrição</h2>
 
                                 <div className='lista_descricao_beneficio_g2'>
-                                    {beneficio.descricaoDesconto}
+                                    {beneficios.idDescontoNavigation.descricaoDesconto}
                                 </div>
 
                                 <div className='btn_cadastrarComentario_beneficio_g2'>

@@ -6,8 +6,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "../../components/footer";
 import api from "../../services/api";
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function CadastrarCursos() {
+    const notify_Logar_Failed = () => toast.error("Você esqueceu de algum campo, por favor tente novamente!")
+    const notify_cadastro_sucess = () => toast.success("Cadastro realizado com sucesso!")
     const [idEmpresa, setIdEmpresa] = useState(0)
     const [nomeCurso, setNomeCurso] = useState('')
     const [descricaoCurso, setDescricaoCurso] = useState('')
@@ -62,9 +65,6 @@ export default function CadastrarCursos() {
         const element = document.getElementById('arquivo')
         const file = element.files[0]
         formData.append('fotoCurso', file, file.name)
-
-
-
         formData.append('idEmpresa', idEmpresa);
         formData.append('nomeCurso', nomeCurso);
         formData.append('descricaoCurso', descricaoCurso);
@@ -85,14 +85,26 @@ export default function CadastrarCursos() {
                 console.log(response);
                 setMsgSucesso(true);
                 setFotoCurso();
+                notify_cadastro_sucess();
             })
-            .catch((erro) => console.log(erro),
-                setErroMensagem(true));
+            .catch(resposta => notify_Logar_Failed())
     }
 
     return (
         <div className="geral_g2">
             <HeaderAdm />
+
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
 
             <div className="container_lista_curso container_forms_cadastroCursos_g2">
 
