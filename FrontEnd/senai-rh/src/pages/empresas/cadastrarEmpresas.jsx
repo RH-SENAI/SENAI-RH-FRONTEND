@@ -14,7 +14,7 @@ export default function CadastrarEmpresa() {
         <div className="geral_g2">
             <HeaderAdm />
 
-            <div className="container container_forms_cadastroEmpresa_g2">
+            <div className="container_empresa_g2 container_forms_cadastroEmpresa_g2">
                 <div className="box_img_cadastroEmpresa_g2">
                     <img src={cadastroEmpresa} alt="imagemCadastroEmpresa" />
                 </div>

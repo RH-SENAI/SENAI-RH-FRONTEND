@@ -75,13 +75,14 @@
 .input_g2_cadastro label {
     pointer-events: none;
     position: absolute;
-    top: calc(50% - 8px);
+    top: calc(50% - 20px);
     left: 15px;
     transition: all .1s linear;
     -webkit-transition: all .1s linear;
     -moz-transition: all .1s linear;
     background-color: #f2f2f2;
-    padding: 5px;
+    /* padding-left: 1px;
+    padding-bottom: 5px; */
     box-sizing: border-box;
 }
 

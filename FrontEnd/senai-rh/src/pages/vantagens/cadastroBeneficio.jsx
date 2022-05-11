@@ -84,7 +84,7 @@ export default function CadastrarBeneficio() {
     return (
         <div className="geral_g2">
             <HeaderAdm />
-            
+
             <ToastContainer
                 position="top-right"
                 autoClose={5000}
@@ -112,7 +112,7 @@ export default function CadastrarBeneficio() {
                             <div className="container_cadastroBeneficio_inputs_g2 ">
 
                                 <div className="div_input_1_g2">
-                                    <div className="input_g2_cadastro">
+                                    {/* <div className="input_g2_cadastro">
                                         <input
                                             id="nomeDesconto"
                                             onChange={(campo) => setNomeDesconto(campo.target.value)}
@@ -122,11 +122,11 @@ export default function CadastrarBeneficio() {
                                             placeholder="Vantagem"
                                         />
                                         <label htmlFor="nomeDesconto" >Vantagem</label>
-                                    </div>
+                                    </div> */}
 
 
 
-                                    <div className="input_g2_cadastro">
+                                    {/* <dv className="input_g2_cadastro">
 
                                         <input
                                             id="validadeDesconto"
@@ -137,7 +137,7 @@ export default function CadastrarBeneficio() {
                                         />
                                         <label htmlFor="validadeDesconto">Validade</label>
 
-                                    </div>
+                                    </dv> */}
 
                                 </div>
 
@@ -148,7 +148,7 @@ export default function CadastrarBeneficio() {
 
                                 </div>
 
-                                <div className="input_g2_cadastro">
+                                {/* <div className="input_g2_cadastro">
                                     <input
                                         className="descricao_g2"
                                         onChange={(campo) => setDescricaoDesconto(campo.target.value)}
@@ -159,13 +159,13 @@ export default function CadastrarBeneficio() {
                                         placeholder="Descrição"
                                     />
                                     <label htmlFor="descricaoDesconto" >Descrição</label>
-                                </div>
+                                </div> */}
 
                                 <div className="div_input_1_g2">
                                     <div>
 
 
-                                        <div className="input_g2_cadastro">
+                                        {/* <div className="input_g2_cadastro">
                                             <input
                                                 // onChange={(campo) => setValorDesconto(campo.target.value)}
                                                 className="flex_co"
@@ -175,6 +175,30 @@ export default function CadastrarBeneficio() {
                                                 type="number"
                                             />
                                             <label htmlFor="valorDesconto">Desconto</label>
+                                        </div> */}
+
+
+                                        <div className="input_g2_cadastro">
+                                            <input
+                                                id="nomeDesconto"
+                                                onChange={(campo) => setNomeDesconto(campo.target.value)}
+                                                value={nomeDesconto}
+                                                type="text"
+                                                name="nomeDesconto"
+                                                placeholder="Vantagem"
+                                            />
+                                            <label htmlFor="nomeDesconto" >Vantagem</label>
+                                        </div>
+                                        <div className="input_g2_cadastro">
+                                            <input
+                                                onChange={(campo) => setDescricaoDesconto(campo.target.value)}
+                                                value={descricaoDesconto}
+                                                id='descricaoDesconto'
+                                                name="descricaoDesconto"
+                                                type="text"
+                                                placeholder="Descrição"
+                                            />
+                                            <label htmlFor="descricaoDesconto" >Descrição</label>
                                         </div>
 
 
@@ -195,6 +219,20 @@ export default function CadastrarBeneficio() {
 
 
                                     <div>
+
+                                        <div className="input_g2_cadastro">
+
+                                            <input
+                                                id="validadeDesconto"
+                                                onChange={(campo) => setValidadeDesconto(campo.target.value)}
+                                                name="validadeDesconto"
+                                                value={validadeDesconto}
+                                                type="date"
+                                            />
+                                            <label htmlFor="validadeDesconto">Validade</label>
+
+                                        </div>
+
                                         <div>
                                             <label htmlFor="idEmpresaB"></label>
                                             <select
@@ -217,6 +255,8 @@ export default function CadastrarBeneficio() {
                                                 }
                                             </select>
                                         </div>
+
+
 
                                         <div className="input_g2_cadastro">
                                             <input

@@ -167,18 +167,23 @@ export default function ListaBeneficios() {
                                                     </div>
 
                                                     <div className="dados_beneficio_gp2">
-                                                        {<span className="title_beneficios_g2" onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
 
-                                                        <div>
-                                                            <ReactStars
-                                                                count={5}
-                                                                // onChange={ratingChanged}
-                                                                size={10}
-                                                                edit={false}
-                                                                value={beneficio.mediaAvaliacaoDesconto}
-                                                                activeColor="#C20004"
-                                                            />
+                                                        <div className="title_estrelas_g2">
+                                                            {<span className="title_beneficios_g2" onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
+
+                                                            <div>
+                                                                <ReactStars
+                                                                    count={5}
+                                                                    // onChange={ratingChanged}
+                                                                    size={30}
+                                                                    edit={false}
+                                                                    value={beneficio.mediaAvaliacaoDesconto}
+                                                                    activeColor="#C20004"
+                                                                />
+                                                            </div>
                                                         </div>
+
+
 
                                                         <div className="box_baixo_section_beneficio_g2">
                                                             {<div className='circulo_moeda_beneficio_g2'>
@@ -206,18 +211,23 @@ export default function ListaBeneficios() {
                                                     </div>
 
                                                     <div className="dados_beneficio_gp2">
-                                                        {<span className="title_beneficios_g2" onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
 
-                                                        <div>
-                                                            <ReactStars
-                                                                count={5}
-                                                                // onChange={ratingChanged}
-                                                                size={10}
-                                                                edit={false}
-                                                                value={beneficio.mediaAvaliacaoDesconto}
-                                                                activeColor="#C20004"
-                                                            />
+                                                        <div className="title_estrelas_g2">
+                                                            {<span className="title_beneficios_g2" onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
+
+                                                            <div>
+                                                                <ReactStars
+                                                                    count={5}
+                                                                    // onChange={ratingChanged}
+                                                                    size={30}
+                                                                    edit={false}
+                                                                    value={beneficio.mediaAvaliacaoDesconto}
+                                                                    activeColor="#C20004"
+                                                                />
+                                                            </div>
                                                         </div>
+
+
 
                                                         <div className="box_baixo_section_beneficio_g2">
                                                             {<div className='circulo_moeda_beneficio_g2'>

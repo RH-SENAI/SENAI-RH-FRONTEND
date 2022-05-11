@@ -13,6 +13,10 @@
     font-weight: bold;
 }
 
+.title_estrelas_g2{
+    margin-left: 1rem;
+}
+
 .caixa_meusFavoritos_g2 {
     display: flex;
     justify-content: center;

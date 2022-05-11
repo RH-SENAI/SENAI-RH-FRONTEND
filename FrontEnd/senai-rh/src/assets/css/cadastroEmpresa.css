@@ -5,6 +5,14 @@
     margin-top: 9rem;
 }
 
+.container_empresa_g2{
+    width: 100%;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .box_img_cadastroEmpresa_g2 {
     margin-top: 1.875rem;
 }

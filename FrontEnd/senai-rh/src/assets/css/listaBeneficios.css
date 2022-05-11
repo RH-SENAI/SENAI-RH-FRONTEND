@@ -105,12 +105,12 @@
 
 .box_beneficio_g2 span {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     cursor: pointer;
     height: 35px;
-    margin-top: 15px;
+    margin-top: 1rem;
     font-size: 1.4rem;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
 }
 
 .box_beneficio_g2 p {

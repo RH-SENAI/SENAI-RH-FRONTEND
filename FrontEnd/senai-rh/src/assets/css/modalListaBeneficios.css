@@ -152,6 +152,14 @@
 
 .box_lista_comentario_g2 p {
     font-size: 0.8em;
+    /* margin-left: 0.3rem; */
+    /* margin-right: 1rem; */
+
+}
+.box_lista_comentario_g2 ul {
+    /* font-size: 0.8em; */
+    margin-left: 1rem;
+    /* margin-right: 1rem; */
 
 }
 

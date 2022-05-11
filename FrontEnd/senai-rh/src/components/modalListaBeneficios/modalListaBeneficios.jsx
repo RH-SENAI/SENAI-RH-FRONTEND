@@ -117,7 +117,7 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                                     <ReactStars
                                         count={5}
                                         // onChange={ratingChanged}
-                                        size={10}
+                                        size={30}
                                         edit={false}
                                         value={beneficio.mediaAvaliacaoDesconto}
                                         activeColor="#C20004"
@@ -173,17 +173,15 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                                                     <div className='box_lista_comentario_g2'>
                                                         <span>{c.idUsuarioNavigation.nome}:</span>
                                                         <p>{c.comentarioDesconto1}</p>
-                                                        <p>
+                                                        <ul>
                                                             <ReactStars
                                                                 count={5}
-                                                                // onChange={ratingChanged}
-                                                                size={10}
+                                                                size={15}
                                                                 edit={false}
                                                                 value={c.avaliacaoDesconto}
                                                                 activeColor="#C20004"
                                                             />
-                                                            {/* {c.avaliacaoDesconto} */}
-                                                        </p>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             )

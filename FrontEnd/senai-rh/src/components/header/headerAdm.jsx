@@ -31,6 +31,8 @@ export default function HeaderAdm() {
                         <Link className="text_link_header_g2" to='/BeneficiosCadastrar' >  <span> Cadastrar Vantagem </span> </Link>
                         <Link className="text_link_header_g2" to='/CadastrarCursos' > <span> Cadastrar Cursos </span>  </Link>
                         <Link className="text_link_header_g2" to='/cadastrarEmpresa' > <span> Cadastrar Empresa </span>  </Link>
+                        <Link className="text_link_header_g2" to='/Beneficios'> <span>Vantagens</span></Link>
+                        <Link className="text_link_header_g2" to='/CursosRapidos'> <span> Cursos</span></Link>
                     </div>
                 </div>
 

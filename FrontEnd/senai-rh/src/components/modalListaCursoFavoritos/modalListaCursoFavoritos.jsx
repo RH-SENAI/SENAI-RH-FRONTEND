@@ -116,7 +116,7 @@ export const ModallCursoFavorito = ({ showModal, setShowModal, cursos, comentari
                                 <ReactStars
                                     count={5}
                                     // onChange={ratingChanged}
-                                    size={10}
+                                    size={30}
                                     edit={false}
                                     value={cursos.idCursoNavigation.mediaAvaliacaoCurso}
                                     activeColor="#C20004"
@@ -173,17 +173,15 @@ export const ModallCursoFavorito = ({ showModal, setShowModal, cursos, comentari
                                                 <div className='box_lista_comentario_g2'>
                                                     <span>{c.idUsuarioNavigation.nome}:</span>
                                                     <p>{c.comentarioCurso1}</p>
-                                                    <p>
+                                                    {/* <p>
                                                     <ReactStars
                                                             count={5}
-                                                            // onChange={ratingChanged}
-                                                            size={10}
+                                                            size={15}
                                                             edit={false}
                                                             value={c.avaliacaoComentario}
                                                             activeColor="#C20004"
                                                         />
-                                                        {/* {c.avaliacaoComentario} */}
-                                                    </p>
+                                                    </p> */}
                                                 </div>
                                             </div>
                                         )

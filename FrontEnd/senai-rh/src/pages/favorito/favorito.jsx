@@ -159,16 +159,16 @@ export default function MeusFavoritos() {
 
                                                 {<span onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)}  > {curso.idCursoNavigation.nomeCurso}</span>}
 
-                                                
 
-                                                <ReactStars
+
+                                                {/* <ReactStars
                                                     count={5}
                                                     // onChange={ratingChanged}
-                                                    size={10}
+                                                    size={20}
                                                     edit={false}
                                                     value={curso.idCursoNavigation.mediaAvaliacaoCurso}
                                                     activeColor="#C20004"
-                                                />
+                                                /> */}
 
 
                                                 {<p><img className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.idCursoNavigation.cargaHoraria} Horas </p>}
@@ -204,15 +204,19 @@ export default function MeusFavoritos() {
                                                 </div>
 
                                                 <div className="dados_beneficio_gp2">
-                                                    {<span onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className="title_beneficios_g2" > {beneficio.idDescontoNavigation.nomeDesconto}</span>}
 
-                                                    <ReactStars
-                                                    count={5}
-                                                    size={10}
-                                                    edit={false}
-                                                    value={beneficio.idDescontoNavigation.mediaAvaliacaoDesconto}
-                                                    activeColor="#C20004"
-                                                />
+                                                    <div className='title_estrelas_g2'>
+                                                        {<span onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className="title_beneficios_g2" > {beneficio.idDescontoNavigation.nomeDesconto}</span>}
+
+                                                        <ReactStars
+                                                            count={5}
+                                                            size={30}
+                                                            edit={false}
+                                                            value={beneficio.idDescontoNavigation.mediaAvaliacaoDesconto}
+                                                            activeColor="#C20004"
+                                                        />
+                                                    </div>
+
 
                                                     <div className="box_baixo_section_beneficio_g2">
                                                         {<div className='circulo_moeda_beneficio_g2'>

@@ -10,8 +10,8 @@ import { parseJwt } from "../../services/auth";
 
 
 export default function Login() {
-    const [cpfUsuario, setCPFUsuario] = useState('string');
-    const [senhaUsuario, setSenhaUsuario] = useState('string');
+    const [cpfUsuario, setCPFUsuario] = useState('0009886654');
+    const [senhaUsuario, setSenhaUsuario] = useState('AGORAVAI');
     const notify_Logar_Failed = () => toast.error("Email ou Senha inválidos!")
     const history = useHistory();
     
@@ -32,10 +32,10 @@ export default function Login() {
                     localStorage.setItem('usuario-login', resposta.data.token)
                     
                     if(parseJwt().isActive === "False"){
-                        history.push('/beneficios')
+                        history.push('/meusFavoritos')
                     }
                     else                      
-                    history.push('/beneficios')
+                    history.push('/meusFavoritos')
                 }
 
             })
