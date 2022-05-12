@@ -104,93 +104,103 @@ export default function CadastrarAtividades() {
         let idGestorCadastro = parseJwt().jti;
         console.log("id do gestor aqui em baixo");
 
-        console.log(idGestorCadastro);
-        await axios
-            .post('http://apirhsenaigp1.azurewebsites.net/api/Atividades', {
-                idAtividade: idAtividade,
-                idSetor: idSetor,
-                nomeAtividade: nomeAtividade,
-                recompensaMoeda: recompensaMoeda,
-                recompensaTrofeu: recompensaTrofeu,
-                descricaoAtividade: descricaoAtividade,
-                necessarioValidar: necessarioValidar,
-                idGestorCadastro: idGestorCadastro,
-                obrigatorio: obrigatorio,
-                equipe: equipe
-            }, {
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-                }
-            })
-            .then((resposta) => {
-                if (resposta.status === 201) {
-                    console.log('Atividade cadastrada');
-                    setIdAtividade('');
-                    setIdSetor('');
-                    setNomeAtividade('');
-                    setRecompensaMoeda('');
-                    setRecompensaTrofeu('');
-                    setRecompensaTrofeu('');
-                    setDescricaoAtividade('');
-                    setNecessarioValidar(false);
-                    setIsLoading(false);
-                    setEquipe(false);
-                    setObrigatorio(false);
-                    // setListaSetores([]);
-                    notify_cadastrar();
-                }
 
-            })
-            .catch(erro => console.log(erro), setIsLoading(false));
+        if (nomeAtividade != "" && recompensaMoeda != "" && recompensaTrofeu != "" && descricaoAtividade != "") {
 
-        axios("http://apirhsenaigp1.azurewebsites.net/api/Atividades/ListarUltima"
-            , {
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-                }
-            })
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    setLastAtividade(resposta.data.idAtividade)
-                    console.log(resposta.data.idAtividade)
-                    console.log(lastAtividade)
-                    let id = lastAtividade
+            console.log(idGestorCadastro);
+            await axios
+                .post('http://apirhsenaigp1.azurewebsites.net/api/Atividades', {
+                    idAtividade: idAtividade,
+                    idSetor: idSetor,
+                    nomeAtividade: nomeAtividade,
+                    recompensaMoeda: recompensaMoeda,
+                    recompensaTrofeu: recompensaTrofeu,
+                    descricaoAtividade: descricaoAtividade,
+                    necessarioValidar: necessarioValidar,
+                    idGestorCadastro: idGestorCadastro,
+                    obrigatorio: obrigatorio,
+                    equipe: equipe
+                }, {
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                    }
+                })
+                .then((resposta) => {
+                    if (resposta.status === 201) {
+                        console.log('Atividade cadastrada');
+                        setIdAtividade('');
+                        setIdSetor('');
+                        setNomeAtividade('');
+                        setRecompensaMoeda('');
+                        setRecompensaTrofeu('');
+                        setRecompensaTrofeu('');
+                        setDescricaoAtividade('');
+                        setNecessarioValidar(false);
+                        setIsLoading(false);
+                        setEquipe(false);
+                        setObrigatorio(false);
+                        // setListaSetores([]);
+                        notify_cadastrar();
+                    }
 
-                    listaUsuarioSelecionados.map((usuario) => {
+                })
+                .catch(erro => console.log(erro), setIsLoading(false));
 
-                        console.log("id da atividade")
-                        console.log(id)
-                        console.log("usuario")
-                        console.log(usuario)
-                        axios.post("http://apirhsenaigp1.azurewebsites.net/api/Atividades/Associar/" +
-                            usuario + '/' + id
-                            , {
-                                headers: {
-                                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-                                }
-                            })
-                            .catch(erro => console.log(erro))
-                    })
-                }
-            })
-            .catch(erro => console.log(erro))
-
-        listaUsuarioSelecionados.map((usuario) => {
-            let id = lastAtividade
-
-            console.log("id da atividade")
-            console.log(id)
-            console.log("usuario")
-            console.log(usuario)
-            axios.post("http://apirhsenaigp1.azurewebsites.net/api/Atividades/Associar/" +
-                usuario + '/' + id
+            axios("http://apirhsenaigp1.azurewebsites.net/api/Atividades/ListarUltima"
                 , {
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
                     }
                 })
+                .then(resposta => {
+                    if (resposta.status === 200) {
+                        setLastAtividade(resposta.data.idAtividade)
+                        console.log(resposta.data.idAtividade)
+                        console.log(lastAtividade)
+                        let id = lastAtividade
+
+                        listaUsuarioSelecionados.map((usuario) => {
+
+                            console.log("id da atividade")
+                            console.log(id)
+                            console.log("usuario")
+                            console.log(usuario)
+                            axios.post("http://apirhsenaigp1.azurewebsites.net/api/Atividades/Associar/" +
+                                usuario + '/' + id
+                                , {
+                                    headers: {
+                                        'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                                    }
+                                })
+                                .catch(erro => console.log(erro))
+                        })
+                    }
+                })
                 .catch(erro => console.log(erro))
-        })
+
+            listaUsuarioSelecionados.map((usuario) => {
+                let id = lastAtividade
+
+                console.log("id da atividade")
+                console.log(id)
+                console.log("usuario")
+                console.log(usuario)
+                axios.post("http://apirhsenaigp1.azurewebsites.net/api/Atividades/Associar/" +
+                    usuario + '/' + id
+                    , {
+                        headers: {
+                            'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                        }
+                    })
+                    .catch(erro => console.log(erro))
+            })
+        }
+        else
+        {
+            setIsLoading(false);
+
+            notify_erroCadastrar()
+        }
     }
 
     function checkValidar() {
