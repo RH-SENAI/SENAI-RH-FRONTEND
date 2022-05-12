@@ -55,13 +55,8 @@ export default function HeaderAdm() {
                         <Link to='/RankingUsuarios' className="text_link_header_g2" ><span>Ranking</span> </Link>
                         <Link to='/CadastrarAtividades' className="text_link_header_g2" ><span>Cadastrar Atividades</span> </Link>
                         <div class='select'>
-                </div>
+                        </div>
                     </div>
-
-                </div>
-
-                <div className="img_perfil_g2" >
-                    <Link to="/perfil"> <img src={Perfil} alt="Meu Perfil" /> </Link>
                 </div>
 
                 <img className='img_logout' onClick={logOut} src={logout} alt="logout" />

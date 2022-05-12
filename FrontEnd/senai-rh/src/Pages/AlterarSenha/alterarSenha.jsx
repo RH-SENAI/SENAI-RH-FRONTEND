@@ -29,7 +29,7 @@ export default function AlterarSenha(props) {
         
 
             let idUsuario = parseJwt().jti
-            axios.post('http://localhost:5000/api/Usuarios/VerificaSenha/' + idUsuario,{
+            axios.post('http://apirhsenaigp1.azurewebsites.net/api/Usuarios/VerificaSenha/' + idUsuario,{
                
             },{
                 headers:{
@@ -61,7 +61,7 @@ export default function AlterarSenha(props) {
     
     
     
-            axios.patch('http://localhost:5000/api/Usuarios/AlteraSenha/' + idUsuario,{},{
+            axios.patch('http://apirhsenaigp1.azurewebsites.net/api/Usuarios/AlteraSenha/' + idUsuario,{},{
                 headers:{
                     'Content-Type': 'application/json',
                     'senhaUser' : senhaAtual,

@@ -43,7 +43,7 @@ export default function TodasAtividades() {
     useEffect(listarAtividades, []);
 
     return (
-        <div className="G1_tela_atividades_container">
+        <div className="div_container G1_tela_atividades_container">
             <Modall atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)} showModal={showModal} setShowModal={setShowModal} />
             <Header />
             <main className="container_atividades">

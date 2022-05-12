@@ -105,7 +105,6 @@ export default function CadastrarAtividades() {
         console.log("id do gestor aqui em baixo");
 
         console.log(idGestorCadastro);
-
         await axios
             .post('http://apirhsenaigp1.azurewebsites.net/api/Atividades', {
                 idAtividade: idAtividade,
@@ -135,6 +134,8 @@ export default function CadastrarAtividades() {
                     setDescricaoAtividade('');
                     setNecessarioValidar(false);
                     setIsLoading(false);
+                    setEquipe(false);
+                    setObrigatorio(false);
                     // setListaSetores([]);
                     notify_cadastrar();
                 }
@@ -190,7 +191,6 @@ export default function CadastrarAtividades() {
                 })
                 .catch(erro => console.log(erro))
         })
-
     }
 
     function checkValidar() {
@@ -205,7 +205,7 @@ export default function CadastrarAtividades() {
         setEquipe(!equipe)
     }
 
-    // useEffect(notify_Logar, []);
+    // useEffect(notify_cadastrar, []);
     // useEffect(listarAtividades, cadastrarAtividade);
 
     return (

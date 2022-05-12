@@ -11,6 +11,10 @@
 
 /* ==============================   Cadastrar Atividades   ===============================================    */
 
+.div_container{
+    overflow-x: hidden;
+}
+
 .container_ {
     display: flex;
     height: 100vh;

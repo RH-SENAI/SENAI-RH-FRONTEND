@@ -26,7 +26,7 @@ export default function AlterarSenha(props) {
         }
 
         
-            axios.patch('http://localhost:5000/api/Usuarios/AlteraSenhaRec/' + email,{},{
+            axios.patch('http://apirhsenaigp1.azurewebsites.net/api/Usuarios/AlteraSenhaRec/' + email,{},{
                 headers:{
                     'Content-Type': 'application/json',
                     'senhaNova' : senhaNova,

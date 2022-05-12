@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState } from 'react';
+import React, { useRef, useCallback, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -13,6 +13,8 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
     const notify_validar = () => toast.success("Atividade Validada!");
 
     console.log(atividade)
+
+    
 
     let history = useHistory();
 
@@ -51,10 +53,13 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
         // listarAtividadesValidar()
     };
 
+    // useEffect(notify_validar, []);
+
+
     return (
         <>
             <ToastContainer
-                position="top-rigth"
+                position="top-right"
                 autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
@@ -81,7 +86,7 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
                 <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p> */}
                     <div className="organizar_btn">
                         <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
-                        <button className="btn_validar_atividades" onClick={() => {validarAtividades(atividade)}}>Validar</button>
+                        <button className="btn_validar_atividades" onClick={() => {validarAtividades(atividade); closeModal()}}>Validar</button>
                         {/* {atividade.necessarioValidar && (
                         <button className="btn_validar_modal" onClick={validarAtividades(atividade)}>Validar</button>
                     )} */}
