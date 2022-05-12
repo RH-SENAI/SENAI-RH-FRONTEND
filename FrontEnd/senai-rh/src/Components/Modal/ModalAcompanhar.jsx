@@ -3,17 +3,19 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {
-  VictoryLine, VictoryPie, VictoryChart, VictoryAxis,
+  VictoryLine, VictoryPie, VictoryChart, VictoryAxis, VictoryBar, VictoryLabel,
   VictoryTheme
 } from 'victory'
 // import Modal from 'react-modal';
 import '../../assets/css/modalAcompanhar.css'
 
-export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAvaliador }) => {
+export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAvaliador, sampleData, listaAtividades }) => {
   const modalRef = useRef();
   const [listaFuncionarios, setListaFuncionarios] = useState([]);
   const [avaliacao, setAvaliacao] = useState('');
   const [idUsuarioAvaliado, setIdUsuarioAvaliado] = useState(0);
+  // const [listaAtividades, setListaAtividades] = useState([]);
+  // const [sampleData, setSampleData] = useState([])
   let history = useHistory();
   console.log(idUsuarioAvaliador)
   console.log(avaliacao)
@@ -119,6 +121,8 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
 
   // useEffect(() => ListarUsuario(), [])
 
+  
+
   useEffect(
     () => {
       document.addEventListener('keydown', keyPress);
@@ -172,7 +176,7 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
                   </div>
                   <div className='g3_graficoProdutividadeModal'>
                     <span className='g3_spanGraficos'>Produtividade</span>
-                    <VictoryPie
+                    {/* <VictoryPie
                       events={[{
                         target: "data",
                         eventHandlers: {
@@ -200,7 +204,22 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
                       ]}
 
 
-                    />
+                    /> */}
+                    <VictoryChart
+                      domainPadding={{ x: 30 }}
+                      width={800}
+                      height={600}
+                    >
+                      <VictoryBar
+                        data={sampleData}
+                        labels={({ datum }) => datum.y}
+
+                        style={{
+                          data: { fill: "#c20004", width: 50 }, labels: { fill: 'white',  fontSize: 25}
+                        }}
+                        labelComponent={<VictoryLabel dy={40} />}
+                      />
+                    </VictoryChart>
                   </div>
                 </div>
                 {/* )
