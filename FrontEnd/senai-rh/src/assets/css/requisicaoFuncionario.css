@@ -8,7 +8,36 @@
 
 .h1_requisicaoFuncionario_g2 {
     font-size: 3em;
-    /* margin-left:  99px; */
     color: #000000;
     font-weight: bold;
+}
+
+
+
+.container_table_g2 {
+    border: 3px solid #b3b3b3 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6rem;
+    padding: 25px 250px 250px 250px;
+}
+
+.table_funcionariosPendentes_g2 {
+    border: 3px solid #b3b3b3 ;
+    /* display: flex; */
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.table_funcionariosPendentes_g2 th{
+    border: 3px solid #b3b3b3 ;
+}
+.table_funcionariosPendentes_g2 td{
+    border: 3px solid #b3b3b3 ;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
 }

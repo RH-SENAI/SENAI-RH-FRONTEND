@@ -15,6 +15,7 @@ import Footer from "../../components/footer";
 import axios from "axios";
 import { parseJwt } from "../../services/auth";
 import ReactStars from "react-rating-stars-component";
+import Heart from "react-heart"
 
 
 export default function ListaBeneficios() {
@@ -28,7 +29,7 @@ export default function ListaBeneficios() {
     const [value, setValue] = useState(0);
 
 
-
+    const [active, setActive] = useState(false)
 
     const OpenModal = () => {
         setShowModal(prev => !prev);
@@ -190,7 +191,8 @@ export default function ListaBeneficios() {
                                                                 <img className='coin_beneficio_g2' src={coin} alt="coin" />  {beneficio.valorDesconto}
                                                             </div>}
                                                             <div>
-                                                                <img src={coracao} alt="favorito" />
+                                                                {/* <img src={coracao} alt="favorito" />; */}
+                                                                <Heart isActive={active} onClick={() => setActive(!active)} />
                                                             </div>
                                                             {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
                                                         </div>
@@ -234,7 +236,10 @@ export default function ListaBeneficios() {
                                                                 <img className='coin_beneficio_g2' src={coin} alt="coin" />  {beneficio.valorDesconto}
                                                             </div>}
                                                             <div>
-                                                                <img src={coracao} alt="favorito" />
+                                                                {/* <img src={coracao} alt="favorito" /> */}
+                                                                <div>
+                                                                    <Heart isActive={active} onClick={() => setActive(!active)} /> 
+                                                                </div>
                                                             </div>
                                                             {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
                                                         </div>
