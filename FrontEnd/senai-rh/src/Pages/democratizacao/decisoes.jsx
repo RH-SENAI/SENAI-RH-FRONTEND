@@ -50,8 +50,8 @@ export default function Decisao() {
                 <div className='container g3_containerOrganizadorDecisao'>
                     <div className='g3_containerDecisao'>
                         <div className='g3_organizadorDecisao'>
-                            <span className='g3_boldDecisao'>Últimas</span>
-                            <span className='g3_nonBoldDecisao'>Decisões</span>
+                            <span className='g3_boldDecisao'>ÚLTIMAS</span>
+                            <span className='g3_nonBoldDecisao'>DECISÕES</span>
                             <div className='g3_containerDecisoes'>
                                 <div className='g3_boxCardsDecisao'>
                                     {

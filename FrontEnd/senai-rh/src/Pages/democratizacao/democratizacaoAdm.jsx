@@ -99,7 +99,7 @@ export default function Democratizacao() {
 
                     </div>
 
-                    <span className='g3_boldFeedback'>Ultimas Ideias</span>
+                    <span className='g3_boldFeedback'>ÚLTIMAS IDEIAS</span>
                     <div className='g3_containerFeedback'>
                         {
                             listaDecisao.map((decisao) => {

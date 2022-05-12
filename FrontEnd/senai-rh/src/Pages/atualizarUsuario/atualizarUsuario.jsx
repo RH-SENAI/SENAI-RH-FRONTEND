@@ -185,10 +185,10 @@ export default function AtualizarPerfil() {
 
                     <div className="g3_textoEFoto">
                         <span className="g3_boldCadastrar">
-                            Atualizar
+                            ATUALIZAR
                         </span>
                         <span className="g3_nonBoldCadastrar">
-                            Usuário
+                            USUÁRIO
                         </span>
                         <span className="g3_spanAtualizar" >Foto De Perfil</span>
                         <div className="g3_fotoPerfilVazia">

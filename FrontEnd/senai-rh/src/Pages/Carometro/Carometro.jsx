@@ -202,7 +202,7 @@ export default function Carometro() {
                         <div className='g3_conteudoCarometro'>
                             <div className='g3_topCarometro'>
                                 <div className='g3_headerCarometro'>
-                                    <h1 className="g3_tituloCarometro  ">Carômetro</h1>
+                                    <h1 className="g3_tituloCarometro  ">CARÔMETRO</h1>
                                     <img className="g3_topImgCarometro  " src={topCarometro} />
                                 </div>
                                 <div className='g3_navBarCarometro'>

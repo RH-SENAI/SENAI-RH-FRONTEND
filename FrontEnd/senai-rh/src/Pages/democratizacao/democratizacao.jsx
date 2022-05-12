@@ -111,8 +111,8 @@ export default function Democratizacao() {
                 <div className='container g3_containerOrganizador'>
                     <div className='g3_containerDecisao'>
                         <div className='g3_organizadorDecisao'>
-                            <span className='g3_boldDecisao'>Área de</span>
-                            <span className='g3_nonBoldDecisao'>Democratização</span>
+                            <span className='g3_boldDecisao'>ÁREA DE</span>
+                            <span className='g3_nonBoldDecisao'>DEMOCRATIZAÇÃO</span>
                             {
                                 listaDecisao.map((decisao) => {
                                     if (decisao.idDecisao == idDecisao.idDecisao) {
