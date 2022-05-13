@@ -20,6 +20,15 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
   console.log(idUsuarioAvaliador)
   console.log(avaliacao)
 
+
+  const [value, setValue] = useState(0);
+  const MAX = 5;
+  const getBackgroundSize = () => {
+    return {
+      backgroundSize: `${(value * 100) / MAX}% 100%`,
+    };
+  };
+
   // const [nivelSatisfacao, setNivelSatisfacao] = useState(usuario.nivelSatisfacao);
 
 
@@ -121,7 +130,7 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
 
   // useEffect(() => ListarUsuario(), [])
 
-  
+
 
   useEffect(
     () => {
@@ -215,7 +224,7 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
                         labels={({ datum }) => datum.y}
 
                         style={{
-                          data: { fill: "#c20004", width: 50 }, labels: { fill: 'white',  fontSize: 25}
+                          data: { fill: "#c20004", width: 50 }, labels: { fill: 'white', fontSize: 25 }
                         }}
                         labelComponent={<VictoryLabel dy={40} />}
                       />
@@ -230,8 +239,20 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
               <div className='g3_organizarBtn'>
                 {/* <label className='g3_labelModal'>Nota:</label> */}
                 <form className='g3_formModal' onSubmit={cadastrarAvaliacao}>
-                  <input type="text" className="g3_inputCadastroModal" placeholder='Insira uma nota' name="avaliacao" value={avaliacao} onChange={(event) => setAvaliacao(event.target.value)} />
-                  <button type="submit" className="btn_fechar_modal">Cadastrar</button>
+                  <input
+                    type="range"
+                    className="g3_inputRange"
+                    min="0"
+                    name="avaliacao"
+                    id="avaliacao"
+                    label={true}
+                    max={MAX}
+                    onChange={(e) => setAvaliacao(e.target.value)}
+                    style={getBackgroundSize()}
+                    value={avaliacao}
+                  />
+                  {/* <input type="text" className="g3_inputCadastroModal" placeholder='Insira uma nota' name="avaliacao" value={avaliacao} onChange={(event) => setAvaliacao(event.target.value)} /> */}
+                  <button type="submit" className="btn_fechar_modal">Avaliar</button>
                 </form>
                 <button className="btn_fechar_modal" onClick={() => history.push(`/atualizar/${usuario.idUsuario}`)}>Atualizar Perfil</button>
                 <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>

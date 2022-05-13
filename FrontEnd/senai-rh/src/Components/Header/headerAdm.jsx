@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../../assets/css/header.css'
 import logo from '../../assets/img/logo_senai.svg'
-import Perfil from '../../assets/img/Perfil.svg'
+import Perfil from '../../assets/img/perfil.png'
 import logout from '../../assets/img/logout.png'
 import setaBaixo from '../../assets/img/seta-para-baixo.png'
 import seta from '../../assets/img/seta.svg'
