@@ -9,6 +9,7 @@ import Footer from '../../components/footer';
 import PerfilCarometro from '../../assets/img/PerfilCarometro.png'
 import setaSelectLight from '../../assets/img/SetaSelectLight.png'
 import IconLogout from '../../assets/img/IconLogout.png'
+import imgPadrao from '../../assets/img/imgPadrao.png'
 import topCarometro from '../../assets/img/topCarometro.png'
 import { ModalAcompanhar } from '../../components/modal/modalAcompanhar';
 import {
@@ -299,7 +300,7 @@ export default function Carometro() {
                                             return (
                                                 <button className='g3_abrirModal' onClick={() => {OpenModal(); ListarMinhasAtividades();}} onClickCapture={() => setIdUsuarioModal(usuario.idUsuario)} type="button">
                                                     <div className='g3_cardUsuario'>
-                                                        <img className='g3_fotoCarometro' src={"https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples/" + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
+                                                        <img className='g3_fotoCarometro' src={imgPadrao} alt="fotoPerfilCarometro" />
                                                         <span className="g3_spanCarometro">{usuario.nome}</span>
                                                         <span className="g3_spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
                                                     </div>
@@ -312,7 +313,7 @@ export default function Carometro() {
                                             return (
                                                 <button className='g3_abrirModal' onClick={() => {OpenModal(); ListarMinhasAtividades();}} onClickCapture={() => setIdUsuarioModal(usuario.idUsuario)} type="button">
                                                     <div className='g3_cardUsuario'>
-                                                        <img className='g3_fotoCarometro' src={"https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples/" + usuario.caminhoFotoPerfil} alt="fotoPerfilCarometro" />
+                                                        <img className='g3_fotoCarometro' src={imgPadrao} alt="fotoPerfilCarometro" />
                                                         <span className="g3_spanCarometro">{usuario.nome}</span>
                                                         <span className="g3_spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
                                                     </div>

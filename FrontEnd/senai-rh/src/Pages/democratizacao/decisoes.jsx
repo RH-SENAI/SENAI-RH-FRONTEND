@@ -8,6 +8,7 @@ import "../../assets/css/democratizacaoAdm.css";
 import "../../assets/css/decisao.css";
 import Footer from '../../components/footer';
 import FotoPerfil from '../../assets/img/perfilVazio.svg'
+import imgPadrao from '../../assets/img/imgPadrao.png'
 import Header from '../../components/header/headerFuncionario'
 import ImgDemocratizacaoAdm from '../../assets/img/imgDecisao.svg'
 
@@ -59,7 +60,7 @@ export default function Decisao() {
                                             return (
                                                 <div className='g3_feedback'>
                                                     <div className='g3_fotoPerfilFeedback'>
-                                                        <img className='g3_imgFotoFeedback' src={"https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples/" + decisao.caminhoFotoPerfil} />
+                                                        <img className='g3_imgFotoFeedback' src={imgPadrao} />
                                                     </div>
                                                     <Link to={"Democratizacao/" + decisao.idDecisao} className='g3_btnRedirectDecisao'>
                                                         <div className='g3_boxDecisaoLista'>

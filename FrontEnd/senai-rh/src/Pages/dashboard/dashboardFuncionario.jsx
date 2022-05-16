@@ -182,6 +182,7 @@ export default function Dashboard() {
                                                     })} */}
                                                     <VictoryChart
                                                         domainPadding={{ x: 30 }}
+                                                        
                                                     >
                                                         <VictoryBar
                                                             data={sampleData}
@@ -314,7 +315,7 @@ export default function Dashboard() {
 
                                                         />
                                                     </div>
-                                                    <span>Avaliação Pessoal</span>
+                                                    <span>Funcionarios</span>
                                                 </div>
 
                                             </div>
@@ -322,19 +323,18 @@ export default function Dashboard() {
                                         <div className='g3_graficoDireita'>
                                             <div className='g3_graficoFuncionarios'>
                                                 <VictoryChart horizontal
-                                                    domainPadding={{ x: 0 }}
+                                                    domainPadding={{ x: 30 }}
+                                                    height={850}
                                                 >
                                                     <VictoryBar
                                                         data={sampleData}
-                                                        labels={({ datum }) => datum.y}
 
                                                         style={{
                                                             data: { fill: "#c20004", width: 50 }, labels: { fill: 'white' }
                                                         }}
-                                                        labelComponent={<VictoryLabel dy={20} />}
                                                     />
                                                 </VictoryChart>
-                                                <span className='g3_spanGraficoP'>Tarefas Pessoais</span>
+                                                <span className='g3_spanGraficoF'>Funcionarios Por Unidade</span>
                                             </div>
 
                                         </div>

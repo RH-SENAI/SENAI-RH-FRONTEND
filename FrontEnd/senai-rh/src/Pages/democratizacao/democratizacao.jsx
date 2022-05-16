@@ -7,6 +7,7 @@ import Footer from '../../components/footer';
 import FotoPerfil from '../../assets/img/perfilVazio.svg'
 import Header from '../../components/header/headerFuncionario'
 import ImgDemocratizacao from '../../assets/img/ImgDemocratizacao.svg'
+import imgPadrao from '../../assets/img/imgPadrao.png'
 import moment from 'moment';
 import { parseJwt } from '../../services/auth';
 
@@ -151,7 +152,7 @@ export default function Democratizacao() {
                                     return (
                                         <div key={feedback.idFeedBack} className='g3_feedback'>
                                             <div className='g3_fotoPerfilFeedback'>
-                                                <img className='g3_imgFotoFeedback' src={'http://localhost:5000/StaticFiles/Images/' + 'imagem-padrao.png'} />
+                                                <img className='g3_imgFotoFeedback' src={imgPadrao} />
                                             </div>
                                             <div className='g3_boxFeedback'>
                                                 <span className='g3_tituloDecisao'>{feedback.idUsuarioNavigation.nome} comentou:</span>

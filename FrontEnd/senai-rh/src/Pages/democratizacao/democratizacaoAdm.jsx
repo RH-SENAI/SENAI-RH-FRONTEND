@@ -7,6 +7,7 @@ import "../../assets/css/democratizacaoAdm.css";
 import Footer from '../../components/footer';
 import FotoPerfil from '../../assets/img/perfilVazio.svg'
 import Header from '../../components/header/headerFuncionario'
+import imgPadrao from '../../assets/img/imgPadrao.png'
 import ImgDemocratizacaoAdm from '../../assets/img/ImgDemocratizacao.svg'
 
 export default function Democratizacao() {
@@ -106,7 +107,7 @@ export default function Democratizacao() {
                                 return (
                                     <div className='g3_feedback'>
                                         <div className='g3_fotoPerfilFeedback'>
-                                            <img className='g3_imgFotoFeedback' src={"https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples/" + decisao.caminhoFotoPerfil} />
+                                            <img className='g3_imgFotoFeedback' src={imgPadrao} />
                                         </div>
                                         <div className='g3_boxFeedback'>
                                             <span className='g3_tituloDecisao'>Você tomou a seguinte decisão:</span>
