@@ -22,8 +22,8 @@ export default function Login() {
         event.preventDefault();
 
 
-        axios.post('http://localhost:5000/api/Login', {
-            CPF: cpfUsuario,
+        axios.post('https://apigrupo3.azurewebsites.net/api/Login', {
+            cpf: cpfUsuario,
             senha: senhaUsuario
         }
         )

@@ -152,8 +152,9 @@ export default function Dashboard() {
                                 return (
                                     <div className='g3_organizadorDashboard'>
                                         <div className="g3_boxGraficosLeft">
-                                            <div className="g3_graficoProdutividade">
-                                                {/* {
+                                            <div className='g3_containerProdutividade'>
+                                                <div className="g3_graficoProdutividade">
+                                                    {/* {
                                                     listaAtividades.map((atividade) => {
                                                         return (
                                                             <VictoryChart
@@ -179,23 +180,39 @@ export default function Dashboard() {
                                                             </VictoryChart>
                                                         )
                                                     })} */}
-                                                <VictoryChart
-                                                    domainPadding={{ x: 30 }}
-                                                >
-                                                    <VictoryBar
-                                                        data={sampleData}
-                                                        labels={({ datum }) => datum.y}
+                                                    <VictoryChart
+                                                        domainPadding={{ x: 30 }}
+                                                    >
+                                                        <VictoryBar
+                                                            data={sampleData}
+                                                            labels={({ datum }) => datum.y}
 
-                                                        style={{
-                                                                data: { fill: "#c20004", width: 50 }, labels: {fill: 'white'}
-                                                        }}
-                                                        labelComponent={<VictoryLabel dy={20} />}
-                                                    />
-                                                </VictoryChart>
+                                                            style={{
+                                                                data: { fill: "#c20004", width: 50 }, labels: { fill: 'white' }
+                                                            }}
+                                                            labelComponent={<VictoryLabel dy={20} />}
+                                                        />
+                                                    </VictoryChart>
+                                                    <span className='g3_spanGraficoP'>Tarefas Pessoais</span>
+                                                </div>
+                                                <div className='g3_graficoProdutividadeUni'>
+                                                    <VictoryChart
+                                                        domainPadding={{ x: 30 }}
+                                                    >
+                                                        <VictoryBar
+                                                            data={sampleData}
+                                                            labels={({ datum }) => datum.y}
 
+                                                            style={{
+                                                                data: { fill: "#c20004", width: 50 }, labels: { fill: 'white' }
+                                                            }}
+                                                            labelComponent={<VictoryLabel dy={20} />}
+                                                        />
+                                                    </VictoryChart>
+                                                    <span className='g3_spanGraficoP'>Tarefas Pessoais</span>
+                                                </div>
 
                                             </div>
-                                            <span>Tarefas Pessoais</span>
                                             <div className="g3_boxGraficosBaixo">
                                                 <div className="g3_containerGraficoLeft">
                                                     <div className="g3_graficoSatisfacaoPessoal">
@@ -232,7 +249,41 @@ export default function Dashboard() {
                                                     <span>Satisfação Pessoal</span>
                                                 </div>
                                                 <div className="g3_containerGraficoRight">
-                                                    <div className="g3_graficoProdutividadeUnidade">
+                                                    <div className="g3_graficoSatisfacaoPessoal">
+                                                        <VictoryPie
+                                                            events={[{
+                                                                target: "data",
+                                                                eventHandlers: {
+                                                                    onClick: () => {
+                                                                        return [
+                                                                            {
+                                                                                target: "data",
+                                                                                mutation: ({ style }) => {
+                                                                                    return style.fill === "#000000" ? null : { style: { fill: "#000000" } };
+                                                                                }
+                                                                            }, {
+                                                                                target: "labels",
+                                                                            }
+                                                                        ];
+                                                                    }
+                                                                }
+                                                            }]}
+                                                            innerRadius={100}
+                                                            colorScale={["#c20004", "#b3b3b3"]}
+                                                            data={[
+                                                                { x: usuario.mediaAvaliacao, y: usuario.mediaAvaliacao * 10 },
+                                                                { x: 10 - usuario.mediaAvaliacao, y: 100 - usuario.mediaAvaliacao * 10 },
+
+
+                                                            ]}
+
+
+                                                        />
+                                                    </div>
+                                                    <span>Avaliação Pessoal</span>
+                                                </div>
+                                                <div className='containerGraficoPizza'>
+                                                    <div className="g3_graficoSatisfacaoPessoal">
                                                         <VictoryPie
                                                             events={[{
                                                                 target: "data",
@@ -268,9 +319,28 @@ export default function Dashboard() {
 
                                             </div>
                                         </div>
-                                        <div className="g3_boxImg">
-                                            <img src={ImgDashboard} className='g3_imgDashboard' />
+                                        <div className='g3_graficoDireita'>
+                                            <div className='g3_graficoFuncionarios'>
+                                                <VictoryChart horizontal
+                                                    domainPadding={{ x: 0 }}
+                                                >
+                                                    <VictoryBar
+                                                        data={sampleData}
+                                                        labels={({ datum }) => datum.y}
+
+                                                        style={{
+                                                            data: { fill: "#c20004", width: 50 }, labels: { fill: 'white' }
+                                                        }}
+                                                        labelComponent={<VictoryLabel dy={20} />}
+                                                    />
+                                                </VictoryChart>
+                                                <span className='g3_spanGraficoP'>Tarefas Pessoais</span>
+                                            </div>
+
                                         </div>
+                                        {/* <div className="g3_boxImg">
+                                            <img src={ImgDashboard} className='g3_imgDashboard' />
+                                        </div> */}
                                     </div>
                                 )
                             }
