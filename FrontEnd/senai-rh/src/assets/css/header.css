@@ -151,3 +151,6 @@ div.select_header_g2 p:hover, div.select_header_g2:hover {
     margin-right: 20px;
     cursor: pointer;
 }
+table {
+    border-collapse: collapse;
+  }

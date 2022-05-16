@@ -14,10 +14,14 @@ import calendar from '../../assets/img/calendar.svg'
 import map from '../../assets/img/map.svg'
 import coracao from '../../assets/img/coracao.svg'
 import ReactStars from "react-rating-stars-component";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 
 export const ModallCursoFavorito = ({ showModal, setShowModal, cursos, comentarios }) => {
 
+    const notify_Logar_Failed = () => toast.error("Você esqueceu de algum campo, por favor tente novamente!")
+    const notify_cadastro_sucess = () => toast.success("Parabens! Em breve você recebera mais informações em seu e-mail.")
     const [listaComentarioCurso, setListaComentarioCurso] = useState([])
     const [idCurso, setIdCurso] = useState(0)
     const [avaliacaoComentario, setAvaliacaoComentario] = useState(0)
@@ -63,6 +67,34 @@ export const ModallCursoFavorito = ({ showModal, setShowModal, cursos, comentari
             .catch(erro => console.log(erro))
     }
 
+    function requisicaoCurso(event) {
+        event.preventDefault();
+
+        let requisicao = {
+            idUsuario: parseJwt().jti,
+            idCurso: cursos.idCurso,
+        }
+        console.log('curso.idCurso!')
+        console.log(cursos.idCurso)
+
+        api.post('/ComentarioCursos', requisicao, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        }
+
+        )
+            .then(function (response) {
+                console.log(response);
+                console.log('Requisição de curso feita!')
+                notify_cadastro_sucess();
+
+                // setListaComentarioCurso(response.data)
+            })
+            // .catch(resposta => notify_Logar_Failed())
+            .catch(erro => console.log(erro))
+    }
+
 
     const closeModal = e => {
         // console.log('showModal antes:' + showModal)
@@ -99,6 +131,18 @@ export const ModallCursoFavorito = ({ showModal, setShowModal, cursos, comentari
                     isOpen={showModal}
                     onRequestClose={closeModal}
                 >
+
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                    />
 
                     {/* Parte 1 */}
                     <div className='container_modal_beneficio_g2'>
@@ -192,7 +236,7 @@ export const ModallCursoFavorito = ({ showModal, setShowModal, cursos, comentari
 
                             <div>
                                 <form onSubmit={cadastrarComentario} className='input_modal_comentario_beneficio_g2'>
-                                    
+
 
                                     <div class="rating_g2">
 
@@ -234,7 +278,9 @@ export const ModallCursoFavorito = ({ showModal, setShowModal, cursos, comentari
 
                             <div className='btn_cadastrarComentario_beneficio_g2'>
                                 <img src={coracao} alt="" />
-                                <button type="submit" className="botaoCadastroComentarioBeneficio_g2">Inscrever-se</button>
+                                <form onSubmit={requisicaoCurso}>
+                                    <button type='submit' className="botaoCadastroComentarioBeneficio_g2">Inscrever-se</button>
+                                </form>
                             </div>
                         </div>
                     </div>

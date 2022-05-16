@@ -224,17 +224,17 @@ export default function CadastrarCursos() {
                                 </div>
 
 
-                                {/* <div>
-                                    <label htmlFor="cashes" ></label>
+                                <div className="input_g2_cadastro">
                                     <input
-                                        // onChange={(campo) => setDescricaoDesconto(campo.target.value)}
-                                        // value={}
+                                        onChange={(campo) => setValorCurso(campo.target.value)}
+                                        value={valorCurso}
                                         id='cashes'
                                         name="cashes"
                                         type="number"
                                         placeholder="$ Cashes"
                                     />
-                                </div> */}
+                                    <label htmlFor="cashes" >Cashes</label>
+                                </div>
 
                                 <div className="input_g2_cadastro">
                                     <input

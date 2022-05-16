@@ -37,6 +37,8 @@ export default function HeaderFuncionario() {
                         <Link className="text_link_header_g2" to='/BeneficiosCadastrar' >  <span> Cadastrar Vantagem </span> </Link>
                         <Link className="text_link_header_g2" to='/CadastrarCursos' > <span> Cadastrar Cursos </span>  </Link>
                         <Link className="text_link_header_g2" to='/cadastrarEmpresa' > <span> Cadastrar Empresa </span>  </Link>
+                        <Link className="text_link_header_g2" to='/requisicaoFuncionario' > <span> Requisições de Funcionarios  </span>  </Link>
+\
                     </div>
                 </div>
                 <div class='select_header_g2'>
@@ -59,7 +61,7 @@ export default function HeaderFuncionario() {
                 </div>
 
 
-                <img className='img_logout_header_g2' onClick={logOut} src={logout} alt="" />
+                <img className='img_logout_header_g2' onClick={logOut} src={logout} alt="logout" />
             </div>
         </header>
     )

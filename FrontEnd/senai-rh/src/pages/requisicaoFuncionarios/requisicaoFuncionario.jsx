@@ -27,6 +27,59 @@ export default function RequisicaoFuncionario() {
     useEffect(listarFuncionariosPendentes, [])
 
 
+
+    function enviarEmail(usuario) {
+        // usuario.preventDefault();
+
+        
+        console.log('curso.idCurso!')
+        // console.log(cursos.idCurso)
+
+        api.post('/Registroscursos/EnviaEmailDescricao/' + usuario, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        }
+
+        )
+            .then(function (response) {
+                console.log(response);
+                console.log('Enviado!')
+                // notify_cadastro_sucess();
+
+                // setListaComentarioCurso(response.data)
+            })
+            // .catch(resposta => notify_Logar_Failed())
+            .catch(erro => console.log(erro))
+    }
+
+    function alterarSituacao(idRegistroCursos) {
+        // idRegistroCursos.preventDefault();
+
+        
+        // console.log('curso.idCurso!')
+        // console.log(cursos.idCurso)
+
+        api.put('/Registroscursos/' + idRegistroCursos,  {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        }
+
+        )
+            .then(function (response) {
+                console.log(response);
+                console.log('Concluido!')
+                // notify_cadastro_sucess();
+
+                // setListaComentarioCurso(response.data)
+            })
+            // .catch(resposta => notify_Logar_Failed())
+            .catch(erro => console.log(erro))
+    }
+
+
+
     return (
         <div className="geral_g2">
 
@@ -46,8 +99,9 @@ export default function RequisicaoFuncionario() {
                                     <th>Nome</th>
                                     <th>CPF</th>
                                     <th>Cargo</th>
+                                    <th>E-mail</th>
+                                    <th>Curso</th>
                                     <th>Site do curso</th>
-                                    <th>Situação</th>
                                 </tr>
                             </thead>
                             <tbody >
@@ -58,11 +112,11 @@ export default function RequisicaoFuncionario() {
                                                 <td>{fp.idUsuarioNavigation.nome}</td>
                                                 <td>{fp.idUsuarioNavigation.cpf}</td>
                                                 <td>{fp.idUsuarioNavigation.idCargoNavigation.nomeCargo}</td>
+                                                <td>{fp.idUsuarioNavigation.email}</td>                                                
+                                                <td>{fp.idCursoNavigation.nomeCurso}</td>
                                                 <td>{fp.idCursoNavigation.siteCurso}</td>
-                                                <td>{fp.idSituacaoAtividadeNavigation.nomeSituacaoAtividade}</td>                                                
                                                 <td>
-                                                    <button className=''>Validar</button>
-                                                    {/* <button className='acoes_btn btn' onClick={() => this.deletarConsulta(consulta)}>Excluir</button> */}
+                                                    <button onClick={() => { alterarSituacao(fp.idRegistroCurso);enviarEmail(fp.idUsuarioNavigation.email)}} className=''>Validar</button>
                                                 </td>
 
                                             </tr>

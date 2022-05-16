@@ -10,8 +10,8 @@ import { parseJwt } from "../../services/auth";
 
 
 export default function Login() {
-    const [cpfUsuario, setCPFUsuario] = useState('0009886654');
-    const [senhaUsuario, setSenhaUsuario] = useState('AGORAVAI');
+    const [cpfUsuario, setCPFUsuario] = useState('74625176042');
+    const [senhaUsuario, setSenhaUsuario] = useState('Sesisenai@2022');
     const notify_Logar_Failed = () => toast.error("Email ou Senha inválidos!")
     const history = useHistory();
     
@@ -22,7 +22,7 @@ export default function Login() {
         event.preventDefault();
 
 
-        axios.post('http://apirhsenaigp1.azurewebsites.net/api/Login', {
+        axios.post('https://apirhsenaigp1.azurewebsites.net/api/Login', {
             CPF: cpfUsuario,
             senha: senhaUsuario
         }

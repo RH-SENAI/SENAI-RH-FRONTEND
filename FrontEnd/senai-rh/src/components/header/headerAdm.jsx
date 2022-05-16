@@ -28,11 +28,12 @@ export default function HeaderAdm() {
                     <p class='input_header_g2'>Vantagens <img src={setaBaixo} /></p>
                     <input type='hidden' name='some_name_tosetaBaixosetaBaixo_form' />
                     <div class='hidden_header_g2'>
+                        <Link className="text_link_header_g2" to='/Beneficios'> <span>Vantagens</span></Link>
+                        <Link className="text_link_header_g2" to='/CursosRapidos'> <span> Cursos</span></Link>
                         <Link className="text_link_header_g2" to='/BeneficiosCadastrar' >  <span> Cadastrar Vantagem </span> </Link>
                         <Link className="text_link_header_g2" to='/CadastrarCursos' > <span> Cadastrar Cursos </span>  </Link>
                         <Link className="text_link_header_g2" to='/cadastrarEmpresa' > <span> Cadastrar Empresa </span>  </Link>
-                        <Link className="text_link_header_g2" to='/Beneficios'> <span>Vantagens</span></Link>
-                        <Link className="text_link_header_g2" to='/CursosRapidos'> <span> Cursos</span></Link>
+                        <Link className="text_link_header_g2" to='/requisicaoFuncionario' > <span> Requisições de Funcionarios  </span>  </Link>
                     </div>
                 </div>
 
@@ -57,7 +58,7 @@ export default function HeaderAdm() {
                     <Link to="/perfil"> <img src={Perfil} alt="Meu Perfil" /> </Link>
                 </div>
 
-                <img className='img_logout' onClick={logOut} src={logout} alt="logout" />
+                <img className='img_logout_header_g2' onClick={logOut} src={logout} alt="logout" />
 
             </div>
 

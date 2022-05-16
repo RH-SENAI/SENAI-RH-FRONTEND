@@ -63,6 +63,31 @@ export default function CursosRapidos() {
 
     useEffect(listarCursos, []);
 
+    function requisicaoCurso(event) {
+        event.preventDefault();
+
+        let requisicao = {
+            idUsuario: parseJwt().jti,
+            idCurso: curso.idCurso,
+        }
+        // console.log('Requisição de curso feita!')
+        console.log('curso.idCurso!')
+        console.log(curso.idCurso)
+
+        api.post('/ComentarioCursos', requisicao, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        }
+
+        )
+            .then(function (response) {
+                console.log(response);
+                setListaComentarioCurso(response.data)
+            })
+            .catch(erro => console.log(erro))
+    }
+
 
     function Excluir(idCurso) {
 
