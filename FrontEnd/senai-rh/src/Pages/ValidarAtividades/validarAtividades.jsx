@@ -43,7 +43,7 @@ export default function TodasAtividades() {
         console.log(listaAtividadesValidar)
     };
 
-    useEffect(listarAtividadesValidar, []);
+    useEffect(listarAtividadesValidar,);
 
     return (
         <div className="div_container G1_tela_atividades_container">

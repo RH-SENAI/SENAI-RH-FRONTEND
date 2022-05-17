@@ -424,11 +424,11 @@
     transition: 0.3s;
 }
 
-input:checked+label {
+.active {
     background: #CB334B;
 }
 
-input:checked+label:after {
+.active:after {
     left: calc(100% - 5px);
     transform: translateX(-100%);
 }
@@ -439,6 +439,7 @@ input:checked+label:after {
     font-family: 'Montserrat', sans-serif;
     color: #000000;
     font-size: 10px;
+    text-align: center;
     /* margin-left: 6px; */
 }
 

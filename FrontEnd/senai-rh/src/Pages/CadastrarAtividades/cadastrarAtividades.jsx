@@ -195,8 +195,7 @@ export default function CadastrarAtividades() {
                     .catch(erro => console.log(erro))
             })
         }
-        else
-        {
+        else {
             setIsLoading(false);
 
             notify_erroCadastrar()
@@ -205,6 +204,7 @@ export default function CadastrarAtividades() {
 
     function checkValidar() {
         setNecessarioValidar(!necessarioValidar)
+
     }
 
     function checkObrigatorio() {
@@ -215,7 +215,7 @@ export default function CadastrarAtividades() {
         setEquipe(!equipe)
     }
 
-    // useEffect(notify_cadastrar, []);
+    // useEffect(limpar);
     // useEffect(listarAtividades, cadastrarAtividade);
 
     return (
@@ -287,16 +287,21 @@ export default function CadastrarAtividades() {
                                         value={necessarioValidar}
                                         onClick={checkValidar}
                                     />
-                                    <label className='label_switch' htmlFor="switch">Toggle</label>
                                     {necessarioValidar && (
-                                        <p className='text_switch'>
-                                            SIM
-                                        </p>
+                                        <div>
+                                            <label className='label_switch active' htmlFor="switch">Toggle</label>
+                                            <p className='text_switch'>
+                                                SIM
+                                            </p>
+                                        </div>
                                     )}
                                     {!necessarioValidar && (
+                                        <div>
+                                        <label className='label_switch' htmlFor="switch">Toggle</label>
                                         <p className='text_switch'>
                                             NÃO
                                         </p>
+                                    </div>
                                     )}
                                 </div>
                             </div>
@@ -310,16 +315,22 @@ export default function CadastrarAtividades() {
                                         value={obrigatorio}
                                         onClick={checkObrigatorio}
                                     />
-                                    <label className='label_switch' htmlFor="switch2">Toggle</label>
+                                    {/* <label className='label_switch' htmlFor="switch2">Toggle</label> */}
                                     {obrigatorio && (
-                                        <p className='text_switch'>
-                                            SIM
-                                        </p>
+                                        <div>
+                                            <label className='label_switch active' htmlFor="switch2">Toggle</label>
+                                            <p className='text_switch'>
+                                                SIM
+                                            </p>
+                                        </div>
                                     )}
                                     {!obrigatorio && (
+                                        <div>
+                                        <label className='label_switch' htmlFor="switch2">Toggle</label>
                                         <p className='text_switch'>
                                             NÃO
                                         </p>
+                                    </div>
                                     )}
                                 </div>
                             </div>
@@ -333,16 +344,22 @@ export default function CadastrarAtividades() {
                                         value={equipe}
                                         onClick={checkEquipe}
                                     />
-                                    <label className='label_switch' htmlFor="switch3">Toggle</label>
+                                    {/* <label className='label_switch' htmlFor="switch3">Toggle</label> */}
                                     {equipe && (
-                                        <p className='text_switch'>
-                                            SIM
-                                        </p>
+                                        <div>
+                                            <label className='label_switch active' htmlFor="switch3">Toggle</label>
+                                            <p className='text_switch'>
+                                                SIM
+                                            </p>
+                                        </div>
                                     )}
                                     {!equipe && (
+                                        <div>
+                                        <label className='label_switch' htmlFor="switch3">Toggle</label>
                                         <p className='text_switch'>
                                             NÃO
                                         </p>
+                                    </div>
                                     )}
                                 </div>
                             </div>
