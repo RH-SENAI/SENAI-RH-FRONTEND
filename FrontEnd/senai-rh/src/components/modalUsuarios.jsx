@@ -79,6 +79,14 @@ export const Modall = ({ showModal, setShowModal, usuarios, setProps, value }) =
                 <div class="modal_body_usuarios">
                     <h2 className="titulo_atividade_modal">Selecionar Usuário</h2>
                     <div className='organizar_sessao_modalUser style-gp1'>
+                        <div className='organiza_select_todos'>
+                            <label className="titulo_atividade" htmlFor="">Todos Usuarios</label>
+                            <input className="checkbox_usuario"
+                                type="checkbox"
+                                onClick={() => setProps(usuarios)}
+                            />
+                        </div>
+                        <hr className='linha_atividade' />
                         {usuarios.map((usuario) => {
                             return (
                                 <div key={usuario.idUsuario} className="div_map">
@@ -94,7 +102,7 @@ export const Modall = ({ showModal, setShowModal, usuarios, setProps, value }) =
                                     </div>
                                     <hr className='linha_atividade' />
                                 </div>
-                                
+
                             )
                         })}
                     </div>

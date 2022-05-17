@@ -205,6 +205,8 @@
 
 
 
+
+
 /* ==============================   Todas Atividades   ===============================================    */
 
 
@@ -764,6 +766,16 @@
     /* margin-bottom: 5vh; */
     cursor: pointer;
 }
+
+.organiza_select_todos {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    margin-bottom: 5vh;
+}
+
 
 /* .btn_fechar_modal:hover { */
     /* background-color: #f1f1f1; */
