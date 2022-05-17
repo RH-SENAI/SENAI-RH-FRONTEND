@@ -43,11 +43,11 @@ export default function TodasAtividades() {
         console.log(listaAtividadesValidar)
     };
 
-    useEffect(listarAtividadesValidar,);
+    useEffect(listarAtividadesValidar, []);
 
     return (
         <div className="div_container G1_tela_atividades_container">
-            <ModallValidar atividade={listaAtividadesValidar.find(atividade => atividade.idAtividade == idAtividadeModal)} showModalValidar={showModalValidar} setShowModalValidar={setShowModalValidar} />
+            <ModallValidar macete={setListaAtividadesValidar} atividade={listaAtividadesValidar.find(atividade => atividade.idAtividade == idAtividadeModal)} showModalValidar={showModalValidar} setShowModalValidar={setShowModalValidar} />
             <Header />
             <main className="container_validatividades">
                 <div className="G1_organizar_main">

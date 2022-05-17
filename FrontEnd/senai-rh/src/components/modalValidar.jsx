@@ -8,7 +8,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { listarAtividadesValidar } from '../Pages/CadastrarAtividades/cadastrarAtividades'
 
-export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade }) => {
+export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade, macete}) => {
+
+    const [listaAtividadesValidar, setListaAtividadesValidar] = useState([]);
+
     const modalRef = useRef();
     const notify_validar = () => toast.success("Atividade Validada!");
 
@@ -34,6 +37,24 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
         [setShowModalValidar, showModalValidar]
     );
 
+    function listarAtividadesValidar() {
+        debugger;
+        axios("http://apirhsenaigp1.azurewebsites.net/api/Atividades/ListaValidar"
+            , {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            })
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    console.log(resposta.data)
+                    macete(resposta.data)
+                }
+            })
+
+            .catch(erro => console.log(erro))
+    };
+
     async function validarAtividades(atividade) {
         console.log("validarAtividades chamouuuuu")
         let idAtividade = atividade.idAtividade;
@@ -50,8 +71,30 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
             .catch(erro => console.log(erro))
 
         notify_validar()
-        // listarAtividadesValidar()
+        
+        listarAtividadesValidar()
     };
+
+    // async function recusarAtividades(atividade) {
+    //     console.log("recusarAtividades chamouuuuu")
+    //     let idAtividade = atividade.idAtividade;
+    //     let idUsuario = atividade.idUsuario;
+    //     await axios.patch("http://apirhsenaigp1.azurewebsites.net/api/Atividades/ValidarAtividade/" + atividade.idAtividade + "/" + atividade.idUsuario, {
+    //         idAtividade: idAtividade,
+    //         idUsuario: idUsuario
+    //     }
+    //         , {
+    //             headers: {
+    //                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+    //             }
+    //         })
+    //         .catch(erro => console.log(erro))
+
+    //     notify_validar()
+        
+    //     listarAtividadesValidar()
+    // };
+
 
     // useEffect(notify_validar, []);
 

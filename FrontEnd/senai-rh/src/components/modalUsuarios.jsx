@@ -72,6 +72,7 @@ export const Modall = ({ showModal, setShowModal, usuarios, setProps, value }) =
         setProps(listaUsuarioSelecionados)
     }
 
+    
     return (
         <>
             {showModal ? (

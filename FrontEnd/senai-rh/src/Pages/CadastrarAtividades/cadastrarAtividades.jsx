@@ -218,6 +218,13 @@ export default function CadastrarAtividades() {
     // useEffect(limpar);
     // useEffect(listarAtividades, cadastrarAtividade);
 
+    const limparArray = () => {
+        while (listaUsuarioSelecionados.length) {
+            listaUsuarioSelecionados.pop()
+        }
+    };
+
+
     return (
         <div className="div_container">
             <Header />
@@ -273,7 +280,7 @@ export default function CadastrarAtividades() {
                                 </div>
                             </div>
                             <div className='G1_organizar_inputs'>
-                                <button className='G1_btn_modal' onClick={() => { OpenModal(); console.log(listaUsuarioSelecionados) }} type="button" >Selecione um Usuário</button>
+                                <button className='G1_btn_modal' onClick={() => {OpenModal(); console.log(listaUsuarioSelecionados); limparArray()}} type="button" >Selecione um Usuário</button>
                             </div>
                         </div>
                         <div className='G1_div_ToggleValidar'>
