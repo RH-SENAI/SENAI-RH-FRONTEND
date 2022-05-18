@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { listarAtividadesValidar } from '../Pages/CadastrarAtividades/cadastrarAtividades'
 
-export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade, macete}) => {
+export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade, macete }) => {
 
     const [listaAtividadesValidar, setListaAtividadesValidar] = useState([]);
 
@@ -17,7 +17,7 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
 
     console.log(atividade)
 
-    
+
 
     let history = useHistory();
 
@@ -71,29 +71,26 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
             .catch(erro => console.log(erro))
 
         notify_validar()
-        
+
         listarAtividadesValidar()
     };
 
-    // async function recusarAtividades(atividade) {
-    //     console.log("recusarAtividades chamouuuuu")
-    //     let idAtividade = atividade.idAtividade;
-    //     let idUsuario = atividade.idUsuario;
-    //     await axios.patch("http://apirhsenaigp1.azurewebsites.net/api/Atividades/ValidarAtividade/" + atividade.idAtividade + "/" + atividade.idUsuario, {
-    //         idAtividade: idAtividade,
-    //         idUsuario: idUsuario
-    //     }
-    //         , {
-    //             headers: {
-    //                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-    //             }
-    //         })
-    //         .catch(erro => console.log(erro))
+    async function recusarAtividades(atividade) {
+        console.log("recusarAtividades chamouuuuu")
+        let idMyAtividade = atividade.idMinhasAtividades;
+        await axios.patch("http://apirhsenaigp1.azurewebsites.net/api/Atividades/RecusarAtividade/" + idMyAtividade, {
+        }
+            , {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            })
+            .catch(erro => console.log(erro))
 
-    //     notify_validar()
-        
-    //     listarAtividadesValidar()
-    // };
+        notify_validar()
+
+        listarAtividadesValidar()
+    };
 
 
     // useEffect(notify_validar, []);
@@ -113,26 +110,29 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
                 pauseOnHover
             />
             {showModalValidar ? (
-                <div className="modal-body">
-                    <div className='G1_organizar_modal_titulo'>
-                        <div className="G1_header_atividade"></div>
-                        <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
-                    </div>
-                    <div className='organizar_sessao_modal'>
-                        <div>
-                            <label className='label_modal'>Descrição</label>
-                            <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                <div className="background_modal">
+                    <div className="modal-body">
+                        <div className='G1_organizar_modal_titulo'>
+                            <div className="G1_header_atividade"></div>
+                            <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
                         </div>
-                    </div>
-                    <img src={"https://armazenamentogrupo3.blob.core.windows.net/amazenamento-simples-grp1/" +  atividade.idAtividade} alt="" />
-                    {/* <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                        <div className='organizar_sessao_modal'>
+                            <div>
+                                <label className='label_modal'>Descrição</label>
+                                <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
+                            </div>
+                        </div>
+                        <img src={"https://armazenamentogrupo3.blob.core.windows.net/amazenamento-simples-grp1/" + atividade.idAtividade} alt="" />
+                        {/* <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
                 <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p> */}
-                    <div className="organizar_btn">
-                        <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
-                        <button className="btn_validar_atividades" onClick={() => {validarAtividades(atividade); closeModal()}}>Validar</button>
-                        {/* {atividade.necessarioValidar && (
-                        <button className="btn_validar_modal" onClick={validarAtividades(atividade)}>Validar</button>
-                    )} */}
+                        <div className="organizar_btn">
+                            <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
+                            <button className="btn_validar_atividades" onClick={() => { validarAtividades(atividade); closeModal() }}>Aprovar</button>
+                            <button className="btn_recusar_atividades" onClick={() => { recusarAtividades(atividade); closeModal() }}>Recusar</button>
+                            {/* {atividade.necessarioValidar && (
+                            <button className="btn_validar_modal" onClick={validarAtividades(atividade)}>Validar</button>
+                        )} */}
+                        </div>
                     </div>
                 </div>
             ) : null}

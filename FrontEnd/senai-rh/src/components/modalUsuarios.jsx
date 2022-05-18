@@ -72,46 +72,46 @@ export const Modall = ({ showModal, setShowModal, usuarios, setProps, value }) =
         setProps(listaUsuarioSelecionados)
     }
 
-    
+
     return (
         <>
             {showModal ? (
-                // <button className="background_modal" onClick={closeModal}>
-                <div class="modal_body_usuarios">
-                    <h2 className="titulo_atividade_modal">Selecionar Usuário</h2>
-                    <div className='organizar_sessao_modalUser style-gp1'>
-                        <div className='organiza_select_todos'>
-                            <label className="titulo_atividade" htmlFor="">Todos Usuarios</label>
-                            <input className="checkbox_usuario"
-                                type="checkbox"
-                                onClick={() => setProps(usuarios)}
-                            />
-                        </div>
-                        <hr className='linha_atividade' />
-                        {usuarios.map((usuario) => {
-                            return (
-                                <div key={usuario.idUsuario} className="div_map">
-                                    <div className='box_atividade'>
-                                        <div className='organizar_atividade'>
-                                            <h2 className='titulo_atividade'>{usuario.nome}</h2>
-                                            <input className="checkbox_usuario"
-                                                type="checkbox"
-                                                value={usuario.idUsuario}
-                                                onClick={() => AlimentarArray(usuario.idUsuario)}
-                                            />
+                // <div className="background_modal">
+                    <div class="modal_body_usuarios">
+                        <h2 className="titulo_atividade_modal">Selecionar Usuário</h2>
+                        <div className='organizar_sessao_modalUser style-gp1'>
+                            <div className='organiza_select_todos'>
+                                <label className="titulo_atividade" htmlFor="">Todos Usuarios</label>
+                                <input className="checkbox_usuario"
+                                    type="checkbox"
+                                    onClick={() => setProps(usuarios)}
+                                />
+                            </div>
+                            <hr className='linha_atividade' />
+                            {usuarios.map((usuario) => {
+                                return (
+                                    <div key={usuario.idUsuario} className="div_map">
+                                        <div className='box_atividade'>
+                                            <div className='organizar_atividade'>
+                                                <h2 className='titulo_atividade'>{usuario.nome}</h2>
+                                                <input className="checkbox_usuario"
+                                                    type="checkbox"
+                                                    value={usuario.idUsuario}
+                                                    onClick={() => AlimentarArray(usuario.idUsuario)}
+                                                />
+                                            </div>
                                         </div>
+                                        <hr className='linha_atividade' />
                                     </div>
-                                    <hr className='linha_atividade' />
-                                </div>
 
-                            )
-                        })}
+                                )
+                            })}
+                        </div>
+                        <div className="organizar_btn">
+                            <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
+                        </div>
                     </div>
-                    <div className="organizar_btn">
-                        <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
-                    </div>
-                </div>
-                // </button>
+                // </div>
             ) : null}
         </>
     );
