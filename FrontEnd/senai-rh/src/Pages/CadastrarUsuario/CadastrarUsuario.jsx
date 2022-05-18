@@ -28,7 +28,9 @@ export default function Cadastro() {
     const [dataNascimento, setDataNascimento] = useState(new Date())
     const [fotoPerfil, setFotoPerfil] = useState('')
     const [senha, setSenha] = useState('SesiSenai@2022')
+    
     const notify_cadastrar = () => toast.success("Usuario Cadastrado!");
+
     const notify_erroCadastrar = () => toast.error("Preencha todos os campos!");
 
 
@@ -36,7 +38,7 @@ export default function Cadastro() {
 
 
     function BuscarCargos() {
-        axios.get('http://localhost:5000/api/Cargos/Listar', {
+        axios.get('https://apigrupo3.azurewebsites.net/api/Cargos/Listar', {
             headers: {
 
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
@@ -55,7 +57,7 @@ export default function Cadastro() {
     }
 
     function BuscarUnidade() {
-        axios.get('http://localhost:5000/api/Unidadesenais/Listar', {
+        axios.get('https://apigrupo3.azurewebsites.net/api/Unidadesenais/Listar', {
             headers: {
 
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
@@ -74,7 +76,7 @@ export default function Cadastro() {
     }
 
     function BuscarTipoUsuario() {
-        axios.get('http://localhost:5000/api/idTipoUsuarios/Listar', {
+        axios.get('https://apigrupo3.azurewebsites.net/api/idTipoUsuarios/Listar', {
             headers: {
 
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
@@ -121,7 +123,7 @@ export default function Cadastro() {
 
         axios({
             method: "post",
-            url: "http://localhost:5000/api/Usuarios/Cadastrar",
+            url: "https://apigrupo3.azurewebsites.net/api/Usuarios/Cadastrar",
             data: formData,
             headers: { "Content-Type": "multipart/form-data" },
         })

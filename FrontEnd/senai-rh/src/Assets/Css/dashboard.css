@@ -59,6 +59,7 @@
 }
 .g3_graficoProdutividadeUni{
     border: 2px solid #b3b3b3;
+    background-color: #ffffff;
     height: 27.7vh;
     border-radius: 10px;
     margin-bottom: 1rem;
@@ -91,6 +92,7 @@
 }
 .g3_graficoProdutividadeUnidade{
     width: 100%;
+    
     border: #b3b3b3 2px solid;
     height: 22.7vh;
     border-radius: 10px;

@@ -4,9 +4,10 @@ import ReactDOM from 'react-dom';
 // import App from './Pages/Home/App';
 import {
   Route,
-  BrowserRouter as Router,
+  BrowserRouter as Router, Redirect, 
   Switch
 } from 'react-router-dom';
+import { parseJwt, usuarioAutenticado } from './services/auth';
 import './index.css';
 import cadastro from './pages/cadastrarUsuario/cadastrarUsuario';
 import TelaAcesso from './pages/acesso/telaAcesso'
@@ -23,23 +24,56 @@ import Login from './pages/login/login.jsx';
 import Dashboard from './pages/dashboard/dashboardFuncionario';
 // import reportWebVitals from './reportWebVitals';
 
+const Logado = ({ component: Component }) => (
+  <Route
+    render={(props) =>
+      usuarioAutenticado() ?  (
+        <Component {...props} />
+      ) : (
+        <Redirect to="Login" />
+      )
+    }
+  />
+);
+const PermissaoAdm = ({ component: Component }) => (
+  <Route
+    render={(props) =>
+      usuarioAutenticado() && parseJwt().role === '1' ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="Login" />
+      )
+    }
+  />
+);
+const PermissaoFuncionario = ({ component: Component }) => (
+ <Route
+   render={(props) =>
+     usuarioAutenticado() && parseJwt().role === '2' ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="Login" />
+     )
+   }
+  />
+);
 
 const routing = (
   <Router>
     <div>
       <Switch>
-      <Route path="/carometro" component={Carometro}/>
+      <PermissaoAdm path="/carometro" component={Carometro}/>
       <Route exact path="/" component={TelaAcesso}/>
       <Route path="/login" component={Login}/>
-      <Route path="/cadastro" component={cadastro}/> 
-      <Route path ="/atualizar" component={atualizarPerfil}/>
-      <Route exact path="/democratizacao/:iddecisao" component={democratizacao}/>
-      <Route exact path="/democratizacaoAdm" component={democratizacaoAdm}/>
-      <Route path="/redirecionar" component={redirecionar} />
-      <Route path="/dashboard" component={Dashboard} />
-      <Route path="/redirecionarADM" component={redirecionarADM} />
-      <Route path="/decisao" component={decisao} />
-      <Route path="/rankingAcompanhar" component={rankingAcompanhar} />
+      <PermissaoAdm path="/cadastro" component={cadastro}/> 
+      <PermissaoAdm path ="/atualizar" component={atualizarPerfil}/>
+      <PermissaoFuncionario exact path="/democratizacao/:iddecisao" component={democratizacao}/>
+      <PermissaoAdm exact path="/democratizacaoAdm" component={democratizacaoAdm}/>
+      <Logado path="/redirecionar" component={redirecionar} />
+      <Logado path="/dashboard" component={Dashboard} />
+      <Logado path="/redirecionarADM" component={redirecionarADM} />
+      <PermissaoFuncionario path="/decisao" component={decisao} />
+      <Logado path="/rankingAcompanhar" component={rankingAcompanhar} />
       </Switch>
     </div>
   </Router>
