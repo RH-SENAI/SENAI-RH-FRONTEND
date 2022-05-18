@@ -8,6 +8,8 @@ import fotoAtualizar from "../../assets/img/atualizarLight.svg"
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import HeaderFuncionario from "../../components/header/headerFuncionario";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Vai precisar da auth para puxar as informações do usuário pertencente do perfil
 // img perfil
@@ -34,6 +36,11 @@ export default function AtualizarPerfil() {
     const [idUnidade, setIdUnidade] = useState(0)
     const [dataNascimento, setDataNascimento] = useState(new Date())
     const [fotoPerfil, setFotoPerfil] = useState('')
+
+    const notify_atualizar = () => toast.success("Usuario Atualizado!");
+
+    const notify_erroAtualizar = () => toast.error("Preencha todos os campos!");
+
 
     //Função de Buscar funcionário por ID
     function BuscarFuncionarios() {
@@ -94,10 +101,11 @@ export default function AtualizarPerfil() {
                 if (resposta.status === 200) {
                     setListaCargo(resposta.data)
                     console.log(resposta)
+                    notify_atualizar();
                 }
             })
 
-            .catch(erro => console.log(erro))
+            .catch(erro => console.log(erro), notify_erroAtualizar())
     }
 
     function BuscarUnidade() {
@@ -177,8 +185,18 @@ export default function AtualizarPerfil() {
 
     return (
         <div>
-
-            <HeaderFuncionario/>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+            <HeaderFuncionario />
 
             <div className="main">
                 <div className="container containerResponsivo g3_boxOrganizar">

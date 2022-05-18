@@ -9,6 +9,8 @@ import FotoPerfil from '../../assets/img/perfilVazio.svg'
 import Header from '../../components/header/headerFuncionario'
 import imgPadrao from '../../assets/img/imgPadrao.png'
 import ImgDemocratizacaoAdm from '../../assets/img/ImgDemocratizacao.svg'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Democratizacao() {
 
@@ -20,6 +22,10 @@ export default function Democratizacao() {
     const [listaDecisao, setListaDecisao] = useState([]);
     const [dataValidade, setDataValidade] = useState(new Date())
     const [dataCadastroDecisao] = useState(moment().format("YYYY-MM-DD"));
+
+    const notify_decisao = () => toast.success("Decisão Cadastrada!");
+
+    const notify_erroDecisao = () => toast.error("Preencha todos os campos!");
 
     function ListarDecisao() {
         axios.get('https://apigrupo3.azurewebsites.net/api/Decisoes/Listar', {
@@ -69,9 +75,10 @@ export default function Democratizacao() {
                 if (response.status === 201) {
 
                     console.log('decisao cadastrada')
+                    notify_decisao();
                 }
             })
-            .catch(erro => console.log(erro))
+            .catch(erro => console.log(erro), notify_erroDecisao())
 
     }
     useEffect(ListarDecisao, [])
@@ -79,6 +86,17 @@ export default function Democratizacao() {
 
     return (
         <body>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <Header />
             <main>
                 <div className='container g3_containerOrganizador'>

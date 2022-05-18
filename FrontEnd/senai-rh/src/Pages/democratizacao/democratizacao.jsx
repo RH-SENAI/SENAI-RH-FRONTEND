@@ -10,6 +10,8 @@ import ImgDemocratizacao from '../../assets/img/ImgDemocratizacao.svg'
 import imgPadrao from '../../assets/img/imgPadrao.png'
 import moment from 'moment';
 import { parseJwt } from '../../services/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Democratizacao() {
 
@@ -25,6 +27,9 @@ export default function Democratizacao() {
     const [notaDecisao, setNotaDecisao] = useState(0);
     const [dataPublicacao] = useState(moment().format("YYYY-MM-DD"));
     const [nomeFuncionario, setNomeFuncionario] = useState('');
+    const notify_feedback = () => toast.success("FeedBack Cadastrado!");
+
+    const notify_erroFeedback = () => toast.error("Preencha todos os campos!");
 
 
     function cadastrarFeedback(event) {
@@ -56,9 +61,10 @@ export default function Democratizacao() {
                 if (response.status === 201) {
                     ListarFeedback();
                     console.log('feedback cadastrado')
+                    notify_feedback();
                 }
             })
-            .catch(erro => console.log(erro))
+            .catch(erro => console.log(erro), notify_erroFeedback())
 
     }
 
@@ -107,6 +113,17 @@ export default function Democratizacao() {
 
     return (
         <body>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <Header />
             <main>
                 <div className='container g3_containerOrganizador'>

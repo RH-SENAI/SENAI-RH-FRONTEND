@@ -2,13 +2,9 @@ import React, { useEffect } from 'react'
 
 import axios from 'axios'
 import { useState } from 'react';
-import { useParams, Link } from "react-router-dom";
 import "../../assets/css/carometro.css";
 import HeaderFuncionario from '../../components/header/headerFuncionario';
 import Footer from '../../components/footer';
-import PerfilCarometro from '../../assets/img/PerfilCarometro.png'
-import setaSelectLight from '../../assets/img/SetaSelectLight.png'
-import IconLogout from '../../assets/img/IconLogout.png'
 import imgPadrao from '../../assets/img/imgPadrao.png'
 import topCarometro from '../../assets/img/topCarometro.png'
 import { ModalAcompanhar } from '../../components/modal/modalAcompanhar';
@@ -27,18 +23,19 @@ export default function Carometro() {
 
     //States
 
-    const [idUsuarioAvaliador, setIdUsuarioAvaliador] = useState();
+    // const idUnidade = useParams();
+    // const [idUsuarioAvaliador, setIdUsuarioAvaliador] = useState();
     const [id, setId] = useState();
-    const [idCargo, setIdCargo] = useState(0);
-    const [nivelSatisfacao, setNivelSatisfacao] = useState(0);
+    const [idCargo] = useState(0);
+    // const [nivelSatisfacao, setNivelSatisfacao] = useState(0);
     const [listaFuncionarios, setListaFuncionarios] = useState([]);
-    const [listaCargo, setListaCargo] = useState([]);
-    const [nomeFuncionario, setNomeFuncionario] = useState('');
+    // const [listaCargo, setListaCargo] = useState([]);
+    // const [nomeFuncionario, setNomeFuncionario] = useState('');
     const [idUsuarioModal, setIdUsuarioModal] = useState([]);
     // const [idUsuarioAvaliado, setIdUsuarioAvaliado] = useState([]);
     const [listaAtividades, setListaAtividades] = useState([]);
     const [sampleData, setSampleData] = useState([])
-    const [active, setMode] = useState(false);
+    // const [active, setMode] = useState(false);
     const [showModal, setShowModal] = useState(false);
     // console.log(parseJwt.jti)
     const OpenModal = () => {
@@ -53,9 +50,9 @@ export default function Carometro() {
 
 
     }
-    const ToggleMode = () => {
-        setMode(!active)
-    }
+    // const ToggleMode = () => {
+    //     setMode(!active)
+    // }
     // const openModal = () => {
     //     setShowModal(prev => !prev);
     // }
@@ -120,24 +117,24 @@ export default function Carometro() {
     //         .catch(erro => console.log(erro))
     // }
 
-    function ExcluirPerfil(idUsuario) {
-        axios.delete('http://localhost:5000/api/Excluir/' + idUsuario, {
-            headers: {
+    // function ExcluirPerfil(idUsuario) {
+    //     axios.delete('http://localhost:5000/api/Excluir/' + idUsuario, {
+    //         headers: {
 
-                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        }
-        )
+    //             Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+    //         }
+    //     }
+    //     )
 
-            .then((resposta) => {
-                if (resposta.status === 200) {
-                    console.log('usuario deletado')
-                    alert("usuario excluido!");
-                }
-            })
+    //         .then((resposta) => {
+    //             if (resposta.status === 200) {
+    //                 console.log('usuario deletado')
+    //                 alert("usuario excluido!");
+    //             }
+    //         })
 
-            .catch(erro => console.log(erro))
-    }
+    //         .catch(erro => console.log(erro))
+    // }
 
     const [procurarUsuarios, setProcurarUsuarios] = useState([]);
     const [filteredResults, setFilteredResults] = useState([]);
@@ -255,7 +252,7 @@ export default function Carometro() {
                             <div className='g3_topCarometro'>
                                 <div className='g3_headerCarometro'>
                                     <h1 className="g3_tituloCarometro  ">CARÔMETRO</h1>
-                                    <img className="g3_topImgCarometro  " src={topCarometro} />
+                                    <img className="g3_topImgCarometro  " src={topCarometro} alt='imagemCarometro'/>
                                 </div>
                                 <div className='g3_navBarCarometro'>
                                     <label ></label>
@@ -297,6 +294,7 @@ export default function Carometro() {
 
 
                                         filteredResults.map((usuario) => {
+                                            // if(usuario.idUnidade == idUnidade.idUnidade) {
                                             return (
                                                 <button className='g3_abrirModal' onClick={() => {OpenModal(); ListarMinhasAtividades();}} onClickCapture={() => setIdUsuarioModal(usuario.idUsuario)} type="button">
                                                     <div className='g3_cardUsuario'>
@@ -306,10 +304,12 @@ export default function Carometro() {
                                                     </div>
                                                 </button>
                                             )
+                                            // }
                                         })
 
                                         :
                                         listaFuncionarios.map((usuario) => {
+                                            // if(usuario.idUnidade == idUnidade.idUnidade) {
                                             return (
                                                 <button className='g3_abrirModal' onClick={() => {OpenModal(); ListarMinhasAtividades();}} onClickCapture={() => setIdUsuarioModal(usuario.idUsuario)} type="button">
                                                     <div className='g3_cardUsuario'>
@@ -320,6 +320,7 @@ export default function Carometro() {
                                                 </button>
 
                                             )
+                                            // }
                                         }
 
                                         )

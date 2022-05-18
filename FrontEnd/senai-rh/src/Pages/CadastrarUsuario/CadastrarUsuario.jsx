@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react"
-import { Link } from 'react-router-dom';
 import axios from "axios";
 import CadastroLight from "../../assets/img/ImgCadastroLight.svg";
 import "../../assets/css/cadastro.css"
 import "../../assets/css/footer.css"
 import "../../assets/css/styleG3.css"
 import Footer from "../../components/footer";
-import Perfil from '../../assets/img/Perfil.svg';
 import HeaderFuncionario from "../../components/header/headerFuncionario";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function Cadastro() {
 
-    const [idUsuario, setIdUsuario] = useState(0)
+    const [idUsuario] = useState(0)
     const [listaCargo, setListaCargo] = useState([])
     const [listaUnidade, setListaUnidade] = useState([])
     const [listaTipoUsuario, setListaTipoUsuario] = useState([])
@@ -27,7 +25,7 @@ export default function Cadastro() {
     const [idUnidade, setIdUnidade] = useState(0)
     const [dataNascimento, setDataNascimento] = useState(new Date())
     const [fotoPerfil, setFotoPerfil] = useState('')
-    const [senha, setSenha] = useState('SesiSenai@2022')
+    const [senha] = useState('SesiSenai@2022')
     
     const notify_cadastrar = () => toast.success("Usuario Cadastrado!");
 
