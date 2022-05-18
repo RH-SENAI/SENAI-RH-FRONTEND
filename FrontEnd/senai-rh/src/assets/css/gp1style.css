@@ -741,7 +741,7 @@
 }
 
 .btn_fechar_modal {
-    background-color: #C20004;
+    background-color: #2a2e32;
     color: #ffffff;
     width: 10vw;
     height: 6vh;
@@ -756,6 +756,20 @@
 
 .btn_validar_atividades{
     background-color: #17d320;
+    color: #ffffff;
+    width: 10vw;
+    height: 6vh;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    /* margin-bottom: 5vh; */
+    cursor: pointer;
+}
+
+.btn_recusar_atividades{
+    background-color: #d31717;
     color: #ffffff;
     width: 10vw;
     height: 6vh;
