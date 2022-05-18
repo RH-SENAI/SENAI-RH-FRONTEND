@@ -16,15 +16,15 @@ export default function HeaderFuncionario() {
     let history = useHistory();
     function logOut() {
         localStorage.removeItem("usuario-login");
-    
+
         history.push("/");
-      }
+    }
 
     return (
         <header className="header_g2">
             <div className='container container_header_g2' >
                 <div className='logo_header_g2'>
-                    <Link to="/"> <img  src={logo} alt="Logo do Senai" /></Link>
+                    <Link to="/"> <img src={logo} alt="Logo do Senai" /></Link>
                 </div>
 
 
@@ -38,7 +38,7 @@ export default function HeaderFuncionario() {
                         <Link className="text_link_header_g2" to='/CadastrarCursos' > <span> Cadastrar Cursos </span>  </Link>
                         <Link className="text_link_header_g2" to='/cadastrarEmpresa' > <span> Cadastrar Empresa </span>  </Link>
                         <Link className="text_link_header_g2" to='/requisicaoFuncionario' > <span> Requisições de Funcionarios  </span>  </Link>
-\
+
                     </div>
                 </div>
                 <div class='select_header_g2'>
@@ -57,7 +57,7 @@ export default function HeaderFuncionario() {
                 </div>
 
                 <div className="img_perfil_g2" >
-                    <Link to="/perfil"> <img  src={Perfil}  alt="Meu Perfil" /> </Link> 
+                    <Link to="/perfil"> <img src={Perfil} alt="Meu Perfil" /> </Link>
                 </div>
 
 

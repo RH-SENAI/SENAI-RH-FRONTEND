@@ -216,7 +216,7 @@ export const ModallCurso = ({ showModal, setShowModal, curso, comentarios }) => 
                                                 <div className='box_lista_comentario_g2'>
                                                     <span>{c.idUsuarioNavigation.nome}:</span>
                                                     <p>{c.comentarioCurso1}</p>
-                                                    {/* <p>
+                                                    <ul>
                                                     <ReactStars
                                                             count={5}
                                                             size={15}
@@ -224,7 +224,7 @@ export const ModallCurso = ({ showModal, setShowModal, curso, comentarios }) => 
                                                             value={c.avaliacaoComentario}
                                                             activeColor="#C20004"
                                                         />
-                                                    </p> */}
+                                                    </ul>
                                                 </div>
                                             </div>
                                         )

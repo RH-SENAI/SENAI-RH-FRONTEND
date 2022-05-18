@@ -8,10 +8,19 @@
         box-sizing: border-box;
     }
 
-    .estrelas_g2{
+    /* .estrelas_g2{
         width: 100% !important;
         margin-left: 1rem !important;
         margin-top: 0 !important;
+    } */
+
+
+
+    div.estrelas_cursos_g2{
+        width: 100% !important;
+        margin-left: 3rem !important;
+        margin-top: -40px !important;
+        height: 5vh;
     }
 
     

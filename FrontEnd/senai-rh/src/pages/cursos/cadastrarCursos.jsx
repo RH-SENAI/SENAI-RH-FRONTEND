@@ -122,143 +122,163 @@ export default function CadastrarCursos() {
                         </div>
 
                         <div className="box_inputs_cadastroCurso_g2">
+
                             <div className="container_cadastroCurso_inputs_g2">
 
-                                <div className="input_g2_cadastro">
-                                    <input
-                                        id="nomeCurso"
-                                        onChange={(campo) => setNomeCurso(campo.target.value)}
-                                        value={nomeCurso}
-                                        type="text"
-                                        name="nomeCurso"
-                                        placeholder="Curso"
-                                    />
-                                    <label for="nomeCurso">Curso</label>
+                                <div className="div_input_1_g2">
+                                    <div className="input_g2_cadastro">
+                                        <input
+                                            id="nomeCurso"
+                                            onChange={(campo) => setNomeCurso(campo.target.value)}
+                                            value={nomeCurso}
+                                            type="text"
+                                            name="nomeCurso"
+                                            placeholder="Curso"
+                                        />
+                                        <label for="nomeCurso">Curso</label>
+                                    </div>
+
+
+
+                                    <div className="input_g2_cadastro">
+                                        <input
+                                            onChange={(campo) => setDataFinalizacao(campo.target.value)}
+                                            name="data"
+                                            value={dataFinalizacao}
+                                            type="date"
+                                            placeholder="Data de Finalização"
+                                        />
+                                        <label for="data">Data de Finalização</label>
+                                    </div>
+
                                 </div>
 
-                                <div className="input_g2_cadastro">
-                                    <input
-                                        onChange={(campo) => setDescricaoCurso(campo.target.value)}
-                                        value={descricaoCurso}
-                                        type="text"
-                                        name='descricao'
-                                        placeholder="Descrição"
-                                    />
-                                    <label for='descricao'>Descrição</label>
-                                </div>
-
-                                <div className="input_g2_cadastro">
-                                    <input
-                                        value={siteCurso}
-                                        name="siteCurso"
-                                        onChange={(campo) => setSiteCurso(campo.target.value)}
-                                        type="text"
-                                        placeholder="Site do Curso"
-                                    />
-                                    <label for="siteCurso">Site do Curso</label>
-                                </div>
 
 
 
                                 <div>
-                                    <label className="label_arquivo_cadastroCurso_g2" htmlFor="arquivo"> <img className="img_file_cadastro_curso_g2" src={iconeEnviarArquivo} alt="" /> Enviar arquivo</label>
-                                    <input
-                                        accept="image/png, image/jpeg"
-                                        id="arquivo"
-                                        name="arquivo"
-                                        className="input_file_cadastroCurso_g2 "
-                                        type="file"
-                                    />
+                                    <div className="input_g2_cadastro">
+                                        <input
+                                            className="descricao_g2"
+                                            onChange={(campo) => setDescricaoCurso(campo.target.value)}
+                                            value={descricaoCurso}
+                                            type="text"
+                                            name='descricao'
+                                            placeholder="Descrição"
+                                        />
+                                        <label for='descricao'>Descrição</label>
+                                    </div>
                                 </div>
 
+
+
+
+                                <div className="div_input_1_g2">
+                                    {/* 1 parte */}
+
+                                    <div>
+
+
+                                        <div className="input_g2_cadastro">
+                                            <input
+                                                onChange={(campo) => setCargaHoraria(campo.target.value)}
+                                                className="flex_co"
+                                                value={cargaHoraria}
+                                                name="cargaHoraria"
+                                                placeholder="Carga horária"
+                                                type="number"
+                                            />
+                                            <label for="cargaHoraria">Carga Horária</label>
+                                        </div>
+
+                                        <div className="input_g2_cadastro">
+                                            <input
+                                                value={siteCurso}
+                                                name="siteCurso"
+                                                onChange={(campo) => setSiteCurso(campo.target.value)}
+                                                type="text"
+                                                placeholder="Site do Curso"
+                                            />
+                                            <label for="siteCurso">Site do Curso</label>
+                                        </div>
+
+
+                                        <div>
+                                            <label className="label_arquivo_cadastroCurso_g2" htmlFor="arquivo"> <img className="img_file_cadastro_curso_g2" src={iconeEnviarArquivo} alt="" /> Enviar arquivo</label>
+                                            <input
+                                                accept="image/png, image/jpeg"
+                                                id="arquivo"
+                                                name="arquivo"
+                                                className="input_file_cadastroCurso_g2 "
+                                                type="file"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    {/* 2 parte */}
+                                    <div>
+
+                                        <div>
+                                            <label for="idEmpresa" ></label>
+                                            <select
+                                                className="inputCadastroCursoSelect_g2"
+                                                id="idEmpresa"
+                                                onChange={(campo) => setIdEmpresa(campo.target.value)}
+                                                value={idEmpresa}
+                                            >
+
+                                                <option value="0">Empresa</option>
+
+                                                {
+                                                    listaEmpresa.map((empresa) => {
+                                                        return (
+                                                            <option key={empresa.idEmpresa} value={empresa.idEmpresa}>
+                                                                {empresa.nomeEmpresa}
+                                                            </option>
+                                                        )
+                                                    })
+                                                }
+                                            </select>
+                                        </div>
+
+
+                                        <div >
+                                            <label for="modalidade"></label>
+                                            <select
+                                                className="inputCadastroCursoSelect_g2"
+                                                name="modalidade"
+                                                onChange={(campo) => setModalidadeCurso(campo.target.value)}
+                                            >
+
+                                                <option value={presencial}>Presencial</option>
+                                                <option value={modalidadeCurso}>EAD</option>
+                                            </select>
+                                        </div>
+
+
+                                        <div className="input_g2_cadastro">
+                                            <input
+                                                onChange={(campo) => setValorCurso(campo.target.value)}
+                                                value={valorCurso}
+                                                id='cashes'
+                                                name="cashes"
+                                                type="number"
+                                                placeholder="$ Cashes"
+                                            />
+                                            <label htmlFor="cashes" >Cashes</label>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
-
-
-                            <div>
-                                <div className="input_g2_cadastro">
-                                    <input
-                                        onChange={(campo) => setDataFinalizacao(campo.target.value)}
-                                        name="data"
-                                        value={dataFinalizacao}
-                                        type="date"
-                                        placeholder="Data de Finalização"
-                                    />
-                                    <label for="data">Data de Finalização</label>
-                                </div>
-
-                                <div className="input_g2_cadastro">
-                                    <label for="idEmpresa" ></label>
-                                    <select
-                                        className="inputCadastroCursoSelect_g2"
-                                        id="idEmpresa"
-                                        onChange={(campo) => setIdEmpresa(campo.target.value)}
-                                        value={idEmpresa}
-                                    >
-
-                                        <option value="0">Empresa</option>
-
-                                        {
-                                            listaEmpresa.map((empresa) => {
-                                                return (
-                                                    <option key={empresa.idEmpresa} value={empresa.idEmpresa}>
-                                                        {empresa.nomeEmpresa}
-                                                    </option>
-                                                )
-                                            })
-                                        }
-                                    </select>
-                                </div>
-
-
-                                <div >
-                                    <label for="modalidade"></label>
-                                    <select
-                                        className="inputCadastroCursoSelect_g2"
-                                        name="modalidade"
-                                        onChange={(campo) => setModalidadeCurso(campo.target.value)}
-                                    >
-
-                                        <option value={presencial}>Presencial</option>
-                                        <option value={modalidadeCurso}>EAD</option>
-                                    </select>
-                                </div>
-
-
-                                <div className="input_g2_cadastro">
-                                    <input
-                                        onChange={(campo) => setValorCurso(campo.target.value)}
-                                        value={valorCurso}
-                                        id='cashes'
-                                        name="cashes"
-                                        type="number"
-                                        placeholder="$ Cashes"
-                                    />
-                                    <label htmlFor="cashes" >Cashes</label>
-                                </div>
-
-                                <div className="input_g2_cadastro">
-                                    <input
-                                        onChange={(campo) => setCargaHoraria(campo.target.value)}
-                                        className="flex_co"
-                                        value={cargaHoraria}
-                                        name="cargaHoraria"
-                                        placeholder="Carga horária"
-                                        type="number"
-                                    />
-                                    <label for="cargaHoraria">Carga Horária</label>
-                                </div>
-
-
-                            </div>
-
                         </div>
                         <div className="btn_cadastroCurso_g2">
                             <button type="submit" className="botaoCadastroCurso_g2">Cadastrar</button>
                         </div>
                     </div>
                 </form>
-            </div>
+            </div >
             <Footer />
-        </div>
+        </div >
     )
 }

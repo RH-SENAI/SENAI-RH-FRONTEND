@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Footer from "../../components/footer";
 import HeaderAdm from "../../components/header/headerAdm";
+import carimbo from "../../assets/img/carimbo.svg";
 import api from "../../services/api";
 import '../../assets/css/requisicaoFuncionario.css'
 
@@ -9,7 +10,7 @@ export default function RequisicaoFuncionario() {
     const[listaFuncionariosPendentes, setListaFuncionariosPendentes] = useState([])
 
     function listarFuncionariosPendentes() {
-        api('/Registroscursos', {
+        api('/Registroscursos/RegistroCursos/2', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             },
@@ -115,8 +116,8 @@ export default function RequisicaoFuncionario() {
                                                 <td>{fp.idUsuarioNavigation.email}</td>                                                
                                                 <td>{fp.idCursoNavigation.nomeCurso}</td>
                                                 <td>{fp.idCursoNavigation.siteCurso}</td>
-                                                <td>
-                                                    <button onClick={() => { alterarSituacao(fp.idRegistroCurso);enviarEmail(fp.idUsuarioNavigation.email)}} className=''>Validar</button>
+                                                <td  className="img_carimbo_g2">
+                                                    <img onClick={() => { alterarSituacao(fp.idRegistroCurso);enviarEmail(fp.idUsuarioNavigation.email)}}  src={carimbo} alt="validar" />                                                    
                                                 </td>
 
                                             </tr>

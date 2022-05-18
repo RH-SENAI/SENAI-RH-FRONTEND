@@ -16,7 +16,7 @@ export default function CadastrarBeneficio() {
     const [idEmpresa, setIdEmpresa] = useState(0)
     const [nomeDesconto, setNomeDesconto] = useState('')
     const [descricaoDesconto, setDescricaoDesconto] = useState('')
-    const [numeroCupom, setNumeroCupom] = useState('abc123')
+    const [numeroCupom, setNumeroCupom] = useState('')
     const [valorDesconto, setValorDesconto] = useState(0)
     const [validadeDesconto, setValidadeDesconto] = useState(new Date())
     const [fotoDesconto, setFotoDesconto] = useState([])
@@ -112,7 +112,7 @@ export default function CadastrarBeneficio() {
                             <div className="container_cadastroBeneficio_inputs_g2 ">
 
                                 <div className="div_input_1_g2">
-                                    {/* <div className="input_g2_cadastro">
+                                    <div className="input_g2_cadastro">
                                         <input
                                             id="nomeDesconto"
                                             onChange={(campo) => setNomeDesconto(campo.target.value)}
@@ -122,11 +122,11 @@ export default function CadastrarBeneficio() {
                                             placeholder="Vantagem"
                                         />
                                         <label htmlFor="nomeDesconto" >Vantagem</label>
-                                    </div> */}
+                                    </div>
 
 
 
-                                    {/* <dv className="input_g2_cadastro">
+                                    <div className="input_g2_cadastro">
 
                                         <input
                                             id="validadeDesconto"
@@ -137,68 +137,41 @@ export default function CadastrarBeneficio() {
                                         />
                                         <label htmlFor="validadeDesconto">Validade</label>
 
-                                    </dv> */}
+                                    </div>
 
                                 </div>
 
                                 <div>
-
-
-
+                                    <div className="input_g2_cadastro">
+                                        <input
+                                            className="descricao_g2"
+                                            onChange={(campo) => setDescricaoDesconto(campo.target.value)}
+                                            value={descricaoDesconto}
+                                            id='descricaoDesconto'
+                                            name="descricaoDesconto"
+                                            type="text"
+                                            placeholder="Descrição"
+                                        />
+                                        <label htmlFor="descricaoDesconto" >Descrição</label>
+                                    </div>
 
                                 </div>
 
-                                {/* <div className="input_g2_cadastro">
-                                    <input
-                                        className="descricao_g2"
-                                        onChange={(campo) => setDescricaoDesconto(campo.target.value)}
-                                        value={descricaoDesconto}
-                                        id='descricaoDesconto'
-                                        name="descricaoDesconto"
-                                        type="text"
-                                        placeholder="Descrição"
-                                    />
-                                    <label htmlFor="descricaoDesconto" >Descrição</label>
-                                </div> */}
+
 
                                 <div className="div_input_1_g2">
                                     <div>
 
-
-                                        {/* <div className="input_g2_cadastro">
-                                            <input
-                                                // onChange={(campo) => setValorDesconto(campo.target.value)}
-                                                className="flex_co"
-                                                // value={valorDesconto}
-                                                id="valorDesconto"
-                                                placeholder="Desconto"
-                                                type="number"
-                                            />
-                                            <label htmlFor="valorDesconto">Desconto</label>
-                                        </div> */}
-
-
                                         <div className="input_g2_cadastro">
                                             <input
-                                                id="nomeDesconto"
-                                                onChange={(campo) => setNomeDesconto(campo.target.value)}
-                                                value={nomeDesconto}
+                                                onChange={(campo) => setNumeroCupom(campo.target.value)}
+                                                value={numeroCupom}
+                                                id='numeroCupom'
+                                                name="numeroCupom"
                                                 type="text"
-                                                name="nomeDesconto"
-                                                placeholder="Vantagem"
+                                                placeholder="Cupom"
                                             />
-                                            <label htmlFor="nomeDesconto" >Vantagem</label>
-                                        </div>
-                                        <div className="input_g2_cadastro">
-                                            <input
-                                                onChange={(campo) => setDescricaoDesconto(campo.target.value)}
-                                                value={descricaoDesconto}
-                                                id='descricaoDesconto'
-                                                name="descricaoDesconto"
-                                                type="text"
-                                                placeholder="Descrição"
-                                            />
-                                            <label htmlFor="descricaoDesconto" >Descrição</label>
+                                            <label htmlFor="numeroCupom" >Cupom</label>
                                         </div>
 
 
@@ -219,19 +192,6 @@ export default function CadastrarBeneficio() {
 
 
                                     <div>
-
-                                        <div className="input_g2_cadastro">
-
-                                            <input
-                                                id="validadeDesconto"
-                                                onChange={(campo) => setValidadeDesconto(campo.target.value)}
-                                                name="validadeDesconto"
-                                                value={validadeDesconto}
-                                                type="date"
-                                            />
-                                            <label htmlFor="validadeDesconto">Validade</label>
-
-                                        </div>
 
                                         <div>
                                             <label htmlFor="idEmpresaB"></label>

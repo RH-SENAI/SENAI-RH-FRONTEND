@@ -16,6 +16,8 @@ import { parseJwt } from '../../services/auth';
 import coin from "../../assets/img/coin 1.png"
 import axios from 'axios';
 import ReactStars from "react-rating-stars-component";
+// import './aparecer'
+
 
 export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario }) => {
 
@@ -23,7 +25,7 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
     const [idDesconto, setIdDesconto] = useState(0)
     const [avaliacaoDesconto, setAvaliacaoDesconto] = useState(0)
     const [comentarioDesconto1, setComentarioDesconto1] = useState('')
-    const [valorAvalicao, setValorAvalicao] = useState(1)
+    const [valorAvalicao, setValorAvalicao] = useState(1)    
 
     const avaliacao2 = () => {
         setValorAvalicao(2)
@@ -192,21 +194,24 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                                 <div>
                                     <form onSubmit={cadastrarComentario} className='input_modal_comentario_beneficio_g2'>
                                         <div class="rating_g2">
-                                            <input type="radio" value={valorAvalicao} onChange={(e) => setValorAvalicao(e.target.value)} name="rating" id="rating-1_cadastro_beneficio_Favoritos" />
-                                            <label for="rating-1_cadastro_beneficio_Favoritos"></label>
-
-                                            <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao2(e.target.value)} name="rating" id="rating-2_cadastro_beneficio_Favoritos" />
-                                            <label for="rating-2_cadastro_beneficio_Favoritos"></label>
-
-                                            <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao3(e.target.value)} name="rating" id="rating-3_cadastro_beneficio_Favoritos" />
-                                            <label for="rating-3_cadastro_beneficio_Favoritos"></label>
+                                            <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao5(e.target.value)} name="rating" id="rating-5_cadastro_beneficio_Favoritos" />
+                                            <label for="rating-5_cadastro_beneficio_Favoritos"></label>
 
                                             <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao4(e.target.value)} name="rating" id="rating-4_cadastro_beneficio_Favoritos" />
                                             <label for="rating-4_cadastro_beneficio_Favoritos"></label>
 
+                                            <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao3(e.target.value)} name="rating" id="rating-3_cadastro_beneficio_Favoritos" />
+                                            <label for="rating-3_cadastro_beneficio_Favoritos"></label>
 
-                                            <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao5(e.target.value)} name="rating" id="rating-5_cadastro_beneficio_Favoritos" />
-                                            <label for="rating-5_cadastro_beneficio_Favoritos"></label>
+                                            <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao2(e.target.value)} name="rating" id="rating-2_cadastro_beneficio_Favoritos" />
+                                            <label for="rating-2_cadastro_beneficio_Favoritos"></label>
+
+                                            <input type="radio" value={valorAvalicao} onChange={(e) => setValorAvalicao(e.target.value)} name="rating" id="rating-1_cadastro_beneficio_Favoritos" />
+                                            <label for="rating-1_cadastro_beneficio_Favoritos"></label>
+
+
+
+
 
                                         </div>
 
@@ -229,9 +234,13 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                                     {beneficio.descricaoDesconto}
                                 </div>
 
+                                <div className='numeroCupom_g2'>
+                                    <p> Seu cupom é:{beneficio.numeroCupom}</p>
+                                </div>
                                 <div className='btn_cadastrarComentario_beneficio_g2'>
+
                                     <img src={coracao} alt="" />
-                                    <button type="submit" className="botaoCadastroComentarioBeneficio_g2">Inscrever-se</button>
+                                    <button id='show-or-hide' type="submit" className="botaoCadastroComentarioBeneficio_g2">Pegue</button>
                                 </div>
                             </div>
                         </div>

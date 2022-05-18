@@ -244,6 +244,8 @@ export default function ListaBeneficios() {
                                                             {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
                                                         </div>
                                                     </div>
+
+                                                    
                                                 </section>
                                             </div>
                                         )

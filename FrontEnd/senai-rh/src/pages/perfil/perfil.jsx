@@ -67,7 +67,9 @@ export default function Perfil() {
                             <span>{listaUsuarios.nome}</span>
                             <span>{listaUsuarios.email} </span>
                             <span> {listaUsuarios.cpf} </span>
-                            <span>{listaUsuarios.localizacaoUsuario}</span>
+                            <span>                            
+                                {listaUsuarios.saldoMoeda}
+                            </span>
                         </div>
                     </div>
                 </div>

@@ -238,3 +238,10 @@
 .btn_cadastrarComentario_beneficio_g2 img {
     margin-right: 1rem;
 }
+
+.numeroCupom_g2{
+    /* height: 80vh; */
+    color: #000000;
+    font-size: 2em;
+    display: none;
+}

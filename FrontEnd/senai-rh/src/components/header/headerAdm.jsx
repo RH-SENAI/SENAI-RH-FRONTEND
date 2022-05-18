@@ -14,9 +14,9 @@ export default function HeaderAdm() {
     let history = useHistory();
     function logOut() {
         localStorage.removeItem("usuario-login");
-    
+
         history.push("/");
-      }
+    }
     return (
         <header className='header_g2'>
             <div className='container container_header_g2' >

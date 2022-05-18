@@ -236,6 +236,10 @@ export const ModallBeneficioFavoritos = ({ showModal, setShowModal, beneficios, 
                                     {beneficios.idDescontoNavigation.descricaoDesconto}
                                 </div>
 
+                                <div className='numeroCupom_g2'>
+                                    <p> Seu cupom é:{beneficios.idDescontoNavigation.numeroCupom}</p>
+                                </div>
+
                                 <div className='btn_cadastrarComentario_beneficio_g2'>
                                     <img src={coracao} alt="" />
                                     <button type="submit" className="botaoCadastroComentarioBeneficio_g2">Inscrever-se</button>
