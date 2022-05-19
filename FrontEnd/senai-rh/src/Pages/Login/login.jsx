@@ -31,7 +31,6 @@ export default function Login() {
             .then(resposta => {
                 if (resposta.status === 200) {
                     localStorage.setItem('usuario-login', resposta.data.token)
-                    
                     if(parseJwt().isActive === "False"){
                         history.push('/AlterarSenha')
                     }
