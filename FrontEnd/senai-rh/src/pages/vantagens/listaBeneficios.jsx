@@ -125,7 +125,7 @@ export default function ListaBeneficios() {
 
     return (
         <div className="geral_g2">
-            <ModallBeneficio comentario={listaComentarioBeneficio} beneficio={listaBeneficios.find(beneficio => beneficio.idDesconto == idDescontoModal)} showModal={showModal} setShowModal={setShowModal} />
+                <ModallBeneficio idDescontoModal={idDescontoModal} comentario={listaComentarioBeneficio} beneficio={listaBeneficios.find(beneficio => beneficio.idDesconto == idDescontoModal)} showModal={showModal} setShowModal={setShowModal} />
             <HeaderFuncionario />
 
             <div className="container">

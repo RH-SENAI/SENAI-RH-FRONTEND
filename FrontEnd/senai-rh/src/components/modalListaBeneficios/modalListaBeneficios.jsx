@@ -19,7 +19,7 @@ import ReactStars from "react-rating-stars-component";
 // import './aparecer'
 
 
-export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario }) => {
+export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario, idDescontoModal }) => {
 
     const [listaComentarioBeneficio, setListaComentarioBeneficio] = useState([])
     const [idDesconto, setIdDesconto] = useState(0)
@@ -69,6 +69,19 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
         [keyPress]
     );
 
+    function listarComentarioBeneficio() {
+        console.log(idDescontoModal)
+        api('/ComentarioDescontos/Comentario/' + idDescontoModal)
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    console.log('Lista comentario')
+                    console.log(resposta)
+                    setListaComentarioBeneficio(resposta.data)
+                }
+            })
+            .catch(erro => console.log(erro))
+    }
+
     function cadastrarComentario(event) {
         event.preventDefault();
 
@@ -89,7 +102,10 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
         )
             .then(function (response) {
                 console.log(response);
-                setListaComentarioBeneficio(response.data)
+                console.log("cheguei Aqui lau")
+                listarComentarioBeneficio(comentario)
+                // comentario(listaComentarioBeneficio)
+                
             })
             .catch(erro => console.log(erro))
     }

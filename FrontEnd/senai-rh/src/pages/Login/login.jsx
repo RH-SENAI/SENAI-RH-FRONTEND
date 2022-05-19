@@ -10,7 +10,7 @@ import { parseJwt } from "../../services/auth";
 
 
 export default function Login() {
-    const [cpfUsuario, setCPFUsuario] = useState('11100099954');
+    const [cpfUsuario, setCPFUsuario] = useState('71696553067');
     const [senhaUsuario, setSenhaUsuario] = useState('Sesisenai@2022');
     const notify_Logar_Failed = () => toast.error("Email ou Senha inválidos!")
     const history = useHistory();
