@@ -46,10 +46,21 @@ const PermissaoAdm = ({ component: Component }) => (
     }
   />
 );
+const PermissaoGestor = ({ component: Component }) => (
+  <Route
+    render={(props) =>
+      usuarioAutenticado() && parseJwt().role === '2' ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="Login" />
+      )
+    }
+  />
+);
 const PermissaoFuncionario = ({ component: Component }) => (
  <Route
    render={(props) =>
-     usuarioAutenticado() && parseJwt().role === '2' ? (
+     usuarioAutenticado() && parseJwt().role === '3' ? (
         <Component {...props} />
       ) : (
         <Redirect to="Login" />
@@ -62,13 +73,13 @@ const routing = (
   <Router>
     <div>
       <Switch>
-      <PermissaoAdm path="/carometro" component={Carometro}/>
+      <PermissaoGestor path="/carometro" component={Carometro}/>
       <Route exact path="/" component={TelaAcesso}/>
       <Route path="/login" component={Login}/>
       <PermissaoAdm path="/cadastro" component={cadastro}/> 
       <PermissaoAdm path ="/atualizar" component={atualizarPerfil}/>
       <PermissaoFuncionario exact path="/democratizacao/:iddecisao" component={democratizacao}/>
-      <PermissaoAdm exact path="/democratizacaoAdm" component={democratizacaoAdm}/>
+      <PermissaoGestor exact path="/democratizacaoAdm" component={democratizacaoAdm}/>
       <Logado path="/redirecionar" component={redirecionar} />
       <Logado path="/dashboard" component={Dashboard} />
       <Logado path="/redirecionarADM" component={redirecionarADM} />

@@ -230,7 +230,7 @@ export default function Cadastro() {
                                         <input type="text" className="g3_inputCadastro" name="nomeUsuario" placeholder="Nome Do Usuario" value={nomeUsuario} onChange={(event) => setNomeUsuario(event.target.value)} />
 
                                         {/* <label className="labelCadastro">Endereço</label> */}
-                                        <input type="text" className="g3_inputCadastro" name="endereco" placeholder="Endereço" value={endereco} onChange={(event) => setEndereco(event.target.value)} />
+                                        {/* <input type="text" className="g3_inputCadastro" name="endereco" placeholder="Endereço" value={endereco} onChange={(event) => setEndereco(event.target.value)} /> */}
 
                                         {/* <label className="labelCadastro">Email</label> */}
                                         <input type="text" className="g3_inputCadastro" name="email" placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} />

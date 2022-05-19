@@ -8,6 +8,12 @@ import {
 } from 'victory'
 // import Modal from 'react-modal';
 import '../../assets/css/modalAcompanhar.css'
+import imgPadrao from '../../assets/img/imgPadrao.png';
+import styled from 'styled-components';
+import Slider from '../slider/slider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAvaliador, sampleData, listaAtividades }) => {
   const modalRef = useRef();
@@ -16,18 +22,21 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
   const [idUsuarioAvaliado, setIdUsuarioAvaliado] = useState(0);
   // const [listaAtividades, setListaAtividades] = useState([]);
   // const [sampleData, setSampleData] = useState([])
+  const notify_avaliacao = () => toast.success("Usuario Cadastrado!");
+
+  const notify_erroAvaliacao = () => toast.error("Preencha todos os campos!");
   let history = useHistory();
   console.log(idUsuarioAvaliador)
   console.log(avaliacao)
 
 
-  const [value, setValue] = useState(0);
-  const MAX = 5;
-  const getBackgroundSize = () => {
-    return {
-      backgroundSize: `${(value * 100) / MAX}% 100%`,
-    };
-  };
+  // const [value, setValue] = useState(0);
+  // const MAX = 5;
+  // const getBackgroundSize = () => {
+  //   return {
+  //     backgroundSize: `${(value * 100) / MAX}% 100%`,
+  //   };
+  // };
 
   // const [nivelSatisfacao, setNivelSatisfacao] = useState(usuario.nivelSatisfacao);
 
@@ -76,10 +85,11 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
         if (response.status === 201) {
           console.log(response)
           console.log("foiiiiii")
+          notify_avaliacao();
 
         }
       })
-      .catch(erro => console.log(erro))
+      .catch(erro => console.log(erro), notify_erroAvaliacao())
   }
 
   const closeModal = e => {
@@ -143,11 +153,30 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       {showModal ? (
         <div className="background_modal"
         >
           <div className="g3_modal-body">
             <div className='g3_containerOrganizacaoModal'>
+              <div className='g3_infoModal'>
+                <img className='g3_fotoPerfilModal' src={imgPadrao} />
+                {/* <img className='g3_fotoPerfilModal' src={"https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples/" + usuario.caminhoFotoPerfil} /> */}
+                <div className='g3_perfilModal'>
+                  <span className='g3_spanInfoModal'>{usuario.nome}</span>
+                  <span className='g3_spanInfoModal'>{usuario.idCargoNavigation.nomeCargo}</span>
+                </div>
+              </div>
               <div className='g3_graficosModal'>
                 {/* {
                   listaFuncionarios.map((usuario) => {
@@ -239,7 +268,7 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
               <div className='g3_organizarBtn'>
                 {/* <label className='g3_labelModal'>Nota:</label> */}
                 <form className='g3_formModal' onSubmit={cadastrarAvaliacao}>
-                  <input
+                  {/* <input
                     type="range"
                     className="g3_inputRange"
                     min="0"
@@ -250,11 +279,12 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
                     onChange={(e) => setAvaliacao(e.target.value)}
                     style={getBackgroundSize()}
                     value={avaliacao}
-                  />
+                  /> */}
+                  <Slider macete={setAvaliacao} color="#c20004" />
                   {/* <input type="text" className="g3_inputCadastroModal" placeholder='Insira uma nota' name="avaliacao" value={avaliacao} onChange={(event) => setAvaliacao(event.target.value)} /> */}
-                  <button type="submit" className="btn_fechar_modal">Avaliar</button>
+                  <button type="submit" className="btn_avaliar_modal">Avaliar</button>
                 </form>
-                <button className="btn_fechar_modal" onClick={() => history.push(`/atualizar/${usuario.idUsuario}`)}>Atualizar Perfil</button>
+                <button className="btn_atualizar_modal" onClick={() => history.push(`/atualizar/${usuario.idUsuario}`)}>Atualizar Perfil</button>
                 <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
               </div>
 

@@ -153,8 +153,8 @@ input[type='range']::-webkit-slider-runnable-track {
     justify-content: space-between;
     top: 12%;
     border-radius: 5px;
-    height: 70vh;
-    width: 50vw;
+    height:75vh;
+    width: 43vw;
     padding: 4rem;
     /* padding: 10px 90px; */
     background: rgb(255, 255, 255);
@@ -190,7 +190,7 @@ input[type='range']::-webkit-slider-runnable-track {
 
 
 
-.btn_fechar_modal {
+.btn_atualizar_modal {
     background-color: #C20004;
     color: #ffffff;
     width: 10vw;
@@ -200,8 +200,52 @@ input[type='range']::-webkit-slider-runnable-track {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 1.3rem;
-    margin-bottom: 5vh;
     cursor: pointer;
+}
+.btn_fechar_modal {
+    background-color: #2a2e32;
+    color: #ffffff;
+    width: 10vw;
+    height: 6vh;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+.btn_avaliar_modal {
+    background-color: #00A32D;
+    color: #ffffff;
+    width: 10vw;
+    height: 6vh;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+.g3_infoModal{
+    display: flex;
+    margin-bottom: 2rem;
+
+}
+.g3_perfilModal{
+    display: flex;
+    flex-direction: column;
+}
+.g3_fotoPerfilModal{
+    height: 10vh;
+    width: 10vh;
+    border-radius: 10px;
+    margin-right: 2rem;
+}
+.g3_spanInfoModal{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.4em;
+    font-weight: 500;
 }
 .g3_containerOrganizacaoModal{
     display: flex;
@@ -218,7 +262,7 @@ input[type='range']::-webkit-slider-runnable-track {
     display: flex;
 }
 .g3_graficoSatisfacaoModal{
-    width: 40%;
+    width: 35%;
 }
 .g3_graficoProdutividadeModal{
     width: 40%;
@@ -230,11 +274,12 @@ input[type='range']::-webkit-slider-runnable-track {
 }
 .g3_spanGraficos{
     font-family: 'Quicksand', sans-serif;
-    font-size: 1.8em;
+    font-size: 1.4em;
     font-weight: 500;
 }
 .g3_formModal{
-    width: 30%;
+    display: flex;
+    flex-direction: column;
 }
 .g3_inputCadastroModal{
     box-sizing: border-box;

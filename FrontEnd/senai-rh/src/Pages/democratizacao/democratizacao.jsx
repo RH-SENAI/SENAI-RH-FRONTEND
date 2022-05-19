@@ -23,7 +23,7 @@ export default function Democratizacao() {
     const [listaDecisao, setListaDecisao] = useState([]);
     const [descricaoDecisao, setDescricaoDecisao] = useState('');
     const [comentarioFeedback, setComentarioFeedback] = useState('');
-    const [valorMoedas, setValorMoedas] = useState(0);
+    const [valorMoedas] = useState(0);
     const [notaDecisao, setNotaDecisao] = useState(0);
     const [dataPublicacao] = useState(moment().format("YYYY-MM-DD"));
     const [nomeFuncionario, setNomeFuncionario] = useState('');
@@ -44,7 +44,7 @@ export default function Democratizacao() {
             comentarioFeedBack: comentarioFeedback,
             dataPublicacao: dataPublicacao,
             valorMoedas: valorMoedas,
-            notaDecisao: notaDecisao,
+            // notaDecisao: notaDecisao,
         }
 
 
@@ -149,7 +149,7 @@ export default function Democratizacao() {
                             }
                             <form className='g3_formCadastroFeedback' onSubmit={cadastrarFeedback}>
                                 <input className='g3_inputCadastroFeedback' type='text' value={comentarioFeedback} onChange={(event) => setComentarioFeedback(event.target.value)} placeholder='Deseja adicionar alguma sugestão de melhora ou feedback?'></input>
-                                <input className='g3_inputCadastroFeedback' type='number' value={notaDecisao} onChange={(event) => setNotaDecisao(event.target.value)} placeholder='Insira uma nota para a decisão'></input>
+                                {/* <input className='g3_inputCadastroFeedback' type='number' value={notaDecisao} onChange={(event) => setNotaDecisao(event.target.value)} placeholder='Insira uma nota para a decisão'></input> */}
                                 <button className='g3_btnCadastroFeedback' type="submit">Cadastrar</button>
                             </form>
 
