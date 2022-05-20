@@ -48,14 +48,14 @@ const Styles = styled.div`
 `;
 
 export default function Slider({ macete }) {
-    const [avaliacao, setAvaliacao] = useState('');
     const [color] = useState();
-
+    const [avaliacao, setAvaliacao] = useState(0)
+     
 
     return (
       <Styles color={color}>
           
-        <input type="range" min={0} max={5} value={avaliacao} className="slider" onChange={(e) => {setAvaliacao(e.target.value); macete(avaliacao)}} />
+        <input type="range" min={0} max={10} value={avaliacao} className="slider" onChange={ (e) =>  { macete(e.target.value); setAvaliacao(e.target.value)}} />
         <div className="value">{avaliacao}</div>
       </Styles>
     )

@@ -7,7 +7,7 @@ import HeaderFuncionario from '../../components/header/headerFuncionario';
 import Footer from '../../components/footer';
 import imgPadrao from '../../assets/img/imgPadrao.png'
 import topCarometro from '../../assets/img/topCarometro.png'
-import { ModalAcompanhar } from '../../components/modal/modalAcompanhar';
+import { ModalAcompanhar } from '../../components/modal/ModalAcompanhar';
 import {
     parseJwt
     // usuarioAutenticado

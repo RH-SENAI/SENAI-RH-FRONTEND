@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import "../../assets/css/democratizacao.css";
 import Footer from '../../components/footer';
 import FotoPerfil from '../../assets/img/perfilVazio.svg'
@@ -16,8 +16,9 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function Democratizacao() {
 
     //States 
-    const idDecisao = useParams();
-    const [idUsuario, setIdUsuario] = useState(103);
+    let param  =  useParams();
+    
+    const [idUsuario, setIdUsuario] = useState(1);
     const [idFeedback, setIdFeedback] = useState(0);
     const [listaFeedbacks, setListaFeedbacks] = useState([]);
     const [listaDecisao, setListaDecisao] = useState([]);
@@ -31,6 +32,7 @@ export default function Democratizacao() {
 
     const notify_erroFeedback = () => toast.error("Preencha todos os campos!");
 
+    console.log(param)
 
     function cadastrarFeedback(event) {
         event.preventDefault();
@@ -47,6 +49,7 @@ export default function Democratizacao() {
             // notaDecisao: notaDecisao,
         }
 
+        console.log(cadastro)
 
         axios.post("https://apigrupo3.azurewebsites.net/api/Feedbacks/Cadastrar", cadastro, {
 
@@ -133,7 +136,7 @@ export default function Democratizacao() {
                             <span className='g3_nonBoldDecisao'>DEMOCRATIZAÇÃO</span>
                             {
                                 listaDecisao.map((decisao) => {
-                                    if (decisao.idDecisao == idDecisao.idDecisao) {
+                                    if (decisao.idDecisao == idDecisao) {
                                         return (
                                             <div key={decisao.idDecisao} className='g3_decisao'>
                                                 <div className='g3_boxDecisao'>
@@ -165,7 +168,7 @@ export default function Democratizacao() {
                         {
 
                             listaFeedbacks.map((feedback) => {
-                                if (feedback.idDecisao == idDecisao.idDecisao) {
+                                if (feedback.idDecisao == idDecisao) {
                                     return (
                                         <div key={feedback.idFeedBack} className='g3_feedback'>
                                             <div className='g3_fotoPerfilFeedback'>

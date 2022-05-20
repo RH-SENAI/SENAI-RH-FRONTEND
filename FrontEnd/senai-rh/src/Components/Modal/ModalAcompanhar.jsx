@@ -18,7 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAvaliador, sampleData, listaAtividades }) => {
   const modalRef = useRef();
   const [listaFuncionarios, setListaFuncionarios] = useState([]);
-  const [avaliacao, setAvaliacao] = useState('');
+  const [avaliacao, setAvaliacao] = useState(0);
   const [idUsuarioAvaliado, setIdUsuarioAvaliado] = useState(0);
   // const [listaAtividades, setListaAtividades] = useState([]);
   // const [sampleData, setSampleData] = useState([])
@@ -26,9 +26,7 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
 
   const notify_erroAvaliacao = () => toast.error("Preencha todos os campos!");
   let history = useHistory();
-  console.log(idUsuarioAvaliador)
-  console.log(avaliacao)
-
+  // console.log(idUsuarioAvaliador)
 
   // const [value, setValue] = useState(0);
   // const MAX = 5;
@@ -65,13 +63,15 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
   // useEffect( () => {listarGestor()}, []);
 
   function cadastrarAvaliacao(event) {
+    
     let idUsuarioAvaliados = usuario.idUsuario;
     console.log(idUsuarioAvaliados)
     event.preventDefault();
     axios.post("http://localhost:5000/api/AvaliacaoUsuarios/Cadastrar", {
       idUsuarioAvaliado: idUsuarioAvaliados,
       idUsuarioAvaliador: idUsuarioAvaliador,
-      avaliacao: avaliacao
+      avaliacaoUsuario1: avaliacao,
+      valorMoedass: 20
     }, {
 
       headers: {
@@ -280,7 +280,7 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
                     style={getBackgroundSize()}
                     value={avaliacao}
                   /> */}
-                  <Slider macete={setAvaliacao} color="#c20004" />
+                  <Slider macete={nota => setAvaliacao(nota)} color="#c20004" />
                   {/* <input type="text" className="g3_inputCadastroModal" placeholder='Insira uma nota' name="avaliacao" value={avaliacao} onChange={(event) => setAvaliacao(event.target.value)} /> */}
                   <button type="submit" className="btn_avaliar_modal">Avaliar</button>
                 </form>

@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 import { parseJwt, usuarioAutenticado } from './services/auth';
 import './index.css';
-import cadastro from './pages/cadastrarUsuario/cadastrarUsuario';
+import cadastro from './pages/cadastrarUsuario/CadastrarUsuario';
 import TelaAcesso from './pages/acesso/telaAcesso'
 import atualizarPerfil from './pages/atualizarUsuario/atualizarUsuario';
 import reportWebVitals from './reportWebVitals';
@@ -19,10 +19,11 @@ import redirecionar from './pages/redirecionar/redirecionar';
 import redirecionarADM from './pages/redirecionar/redirecionarADM';
 import decisao from './pages/democratizacao/decisoes';
 import rankingAcompanhar from './pages/ranking/rankingAcompanhar';
-import Carometro from './pages/carometro/carometro';
+import Carometro from './pages/carometro/Carometro';
 import Login from './pages/login/login.jsx';
 import Dashboard from './pages/dashboard/dashboardFuncionario';
 // import reportWebVitals from './reportWebVitals';
+
 
 const Logado = ({ component: Component }) => (
   <Route
@@ -38,7 +39,7 @@ const Logado = ({ component: Component }) => (
 const PermissaoAdm = ({ component: Component }) => (
   <Route
     render={(props) =>
-      usuarioAutenticado() && parseJwt().role === '1' ? (
+      usuarioAutenticado() && parseJwt().role === "1" ? (
         <Component {...props} />
       ) : (
         <Redirect to="Login" />
@@ -46,11 +47,13 @@ const PermissaoAdm = ({ component: Component }) => (
     }
   />
 );
+
+
 const PermissaoGestor = ({ component: Component }) => (
   <Route
-    render={(props) =>
-      usuarioAutenticado() && parseJwt().role === '2' ? (
-        <Component {...props} />
+  render={(props) =>
+    usuarioAutenticado() && parseJwt().role === "2"  ? (
+      <Component {...props} />
       ) : (
         <Redirect to="Login" />
       )
@@ -60,7 +63,7 @@ const PermissaoGestor = ({ component: Component }) => (
 const PermissaoFuncionario = ({ component: Component }) => (
  <Route
    render={(props) =>
-     usuarioAutenticado() && parseJwt().role === '3' ? (
+     usuarioAutenticado() && parseJwt().role === "3" ? (
         <Component {...props} />
       ) : (
         <Redirect to="Login" />
@@ -78,12 +81,12 @@ const routing = (
       <Route path="/login" component={Login}/>
       <PermissaoAdm path="/cadastro" component={cadastro}/> 
       <PermissaoAdm path ="/atualizar" component={atualizarPerfil}/>
-      <PermissaoFuncionario exact path="/democratizacao/:iddecisao" component={democratizacao}/>
+      <Logado path="/democratizacao/:idDecisao" component={democratizacao}/>
       <PermissaoGestor exact path="/democratizacaoAdm" component={democratizacaoAdm}/>
       <Logado path="/redirecionar" component={redirecionar} />
       <Logado path="/dashboard" component={Dashboard} />
       <Logado path="/redirecionarADM" component={redirecionarADM} />
-      <PermissaoFuncionario path="/decisao" component={decisao} />
+      <Logado path="/decisao" component={decisao} />
       <Logado path="/rankingAcompanhar" component={rankingAcompanhar} />
       </Switch>
     </div>

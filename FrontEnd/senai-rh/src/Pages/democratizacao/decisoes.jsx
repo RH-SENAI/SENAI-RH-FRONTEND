@@ -62,7 +62,7 @@ export default function Decisao() {
                                                     <div className='g3_fotoPerfilFeedback'>
                                                         <img className='g3_imgFotoFeedback' src={imgPadrao} />
                                                     </div>
-                                                    <Link to={"Democratizacao/" + decisao.idDecisao} className='g3_btnRedirectDecisao'>
+                                                    <Link to={`democratizacao/${decisao.idDecisao}`} className='g3_btnRedirectDecisao'>
                                                         <div className='g3_boxDecisaoLista'>
                                                             <span className='g3_tituloDecisao'>O gerente tomou a seguinte decisão:</span>
                                                             <p className='g3_paragrafoDecisao'>{decisao.descricaoDecisao}</p>

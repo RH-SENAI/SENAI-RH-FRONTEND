@@ -23,6 +23,8 @@ export default function Democratizacao() {
     const [dataValidade, setDataValidade] = useState(new Date())
     const [dataCadastroDecisao] = useState(moment().format("YYYY-MM-DD"));
 
+    console.log(idDecisao)
+
     const notify_decisao = () => toast.success("Decisão Cadastrada!");
 
     const notify_erroDecisao = () => toast.error("Preencha todos os campos!");
