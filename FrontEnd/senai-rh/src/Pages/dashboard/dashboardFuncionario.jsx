@@ -28,7 +28,7 @@ export default function Dashboard() {
 
     function ListarUsuario() {
 
-        axios.get(`http://apirhsenaigp1.azurewebsites.net/api/Usuarios/BuscarUsuario/${parseJwt().jti}`, {
+        axios.get(`https://apigrupo3.azurewebsites.net/api/Usuarios/Listar/${parseJwt().jti}`, {
 
             headers: {
 
@@ -51,53 +51,53 @@ export default function Dashboard() {
             .catch(erro => console.log(erro))
 
     }
-    function ListarMinhasAtividades() {
+    // function ListarMinhasAtividades() {
 
-        axios.get(`http://apirhsenaigp1.azurewebsites.net/api/Atividades/MinhasAtividade/${parseJwt().jti}`, {
+    //     axios.get(`http://apirhsenaigp1.azurewebsites.net/api/Atividades/MinhasAtividade/${parseJwt().jti}`, {
 
-            headers: {
+    //         headers: {
 
-                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
-            }
+    //             Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+    //         }
 
-        })
+    //     })
 
-            .then((resposta) => {
+    //         .then((resposta) => {
 
-                if (resposta.status === 200) {
-                    setListaAtividades(resposta.data)
+    //             if (resposta.status === 200) {
+    //                 setListaAtividades(resposta.data)
 
-                    console.log(resposta)
+    //                 console.log(resposta)
 
-                    const dataFinalizacao = resposta.data.filter(atividades => atividades.idSituacaoAtividade === 3)
-                        .map((p) => {
+    //                 const dataFinalizacao = resposta.data.filter(atividades => atividades.idSituacaoAtividade === 3)
+    //                     .map((p) => {
 
-                            return parseInt(p.dataConclusao.split('-')[2]);
-                        });
+    //                         return parseInt(p.dataConclusao.split('-')[2]);
+    //                     });
 
-                    const d1_5 = dataFinalizacao.filter(d => d <= 5).length
-                    // const d6_10 = dataFinalizacao.filter(d => d > 5 && d <= 10).length
-                    // const d11_15 = dataFinalizacao.filter(d => d > 10 && d <= 15).length
-                    // const d16_20 = dataFinalizacao.filter(d => d > 15 && d <= 20).length
-                    // const d21_25 = dataFinalizacao.filter(d => d > 20 && d <= 25).length
-                    // const d26_31 = dataFinalizacao.filter(d => d > 25 && d <= 31).length
-                    setSampleData(
-                        [
-                            { x: 1, y: d1_5 },
-                            { x: 2, y: 2 },
-                            { x: 3, y: 4 },
-                            { x: 4, y: 5 },
-                            { x: 5, y: 10 },
-                            { x: 6, y: 11 }
-                        ])
+    //                 const d1_5 = dataFinalizacao.filter(d => d <= 5).length
+    //                 // const d6_10 = dataFinalizacao.filter(d => d > 5 && d <= 10).length
+    //                 // const d11_15 = dataFinalizacao.filter(d => d > 10 && d <= 15).length
+    //                 // const d16_20 = dataFinalizacao.filter(d => d > 15 && d <= 20).length
+    //                 // const d21_25 = dataFinalizacao.filter(d => d > 20 && d <= 25).length
+    //                 // const d26_31 = dataFinalizacao.filter(d => d > 25 && d <= 31).length
+    //                 setSampleData(
+    //                     [
+    //                         { x: 1, y: d1_5 },
+    //                         { x: 2, y: 2 },
+    //                         { x: 3, y: 4 },
+    //                         { x: 4, y: 5 },
+    //                         { x: 5, y: 10 },
+    //                         { x: 6, y: 11 }
+    //                     ])
 
 
-                }
-            })
+    //             }
+    //         })
 
-            .catch(erro => console.log(erro))
+    //         .catch(erro => console.log(erro))
 
-    }
+    // }
     // function ListarMinhasAtividadesExtra() {
 
     //     axios.get(`http://apirhsenaigp1.azurewebsites.net/api/Atividades/MinhasAtividadeExtra/${idUsuario}`, {
@@ -125,7 +125,7 @@ export default function Dashboard() {
     // }
 
     useEffect(ListarUsuario, [])
-    useEffect(ListarMinhasAtividades, [])
+    // useEffect(ListarMinhasAtividades, [])
     // useEffect(ListarMinhasAtividadesExtra, [])
 
     // const sampleData = [
@@ -196,7 +196,8 @@ export default function Dashboard() {
                                                     </VictoryChart>
                                                     <span className='g3_spanGraficoP'>Tarefas Pessoais</span>
                                                 </div>
-                                                <div className='g3_graficoProdutividadeUni'>
+                                                {/* Grafico produtividade unidade */}
+                                                {/* <div className='g3_graficoProdutividadeUni'>
                                                     <VictoryChart
                                                         domainPadding={{ x: 30 }}
                                                     >
@@ -211,7 +212,7 @@ export default function Dashboard() {
                                                         />
                                                     </VictoryChart>
                                                     <span className='g3_spanGraficoP'>Tarefas Pessoais</span>
-                                                </div>
+                                                </div> */}
 
                                             </div>
                                             <div className="g3_boxGraficosBaixo">
@@ -283,7 +284,8 @@ export default function Dashboard() {
                                                     </div>
                                                     <span>Avaliação Pessoal</span>
                                                 </div>
-                                                <div className='containerGraficoPizza'>
+                                                {/* Grafico quantidade Funcionarios unidade */}
+                                                {/* <div className='containerGraficoPizza'>
                                                     <div className="g3_graficoSatisfacaoPessoal">
                                                         <VictoryPie
                                                             events={[{
@@ -316,11 +318,11 @@ export default function Dashboard() {
                                                         />
                                                     </div>
                                                     <span>Funcionarios</span>
-                                                </div>
+                                                </div> */}
 
                                             </div>
                                         </div>
-                                        <div className='g3_graficoDireita'>
+                                        {/* <div className='g3_graficoDireita'>
                                             <div className='g3_graficoFuncionarios'>
                                                 <VictoryChart horizontal
                                                     domainPadding={{ x: 30 }}
@@ -337,10 +339,10 @@ export default function Dashboard() {
                                                 <span className='g3_spanGraficoF'>Funcionarios Por Unidade</span>
                                             </div>
 
-                                        </div>
-                                        {/* <div className="g3_boxImg">
-                                            <img src={ImgDashboard} className='g3_imgDashboard' />
                                         </div> */}
+                                        <div className="g3_boxImg">
+                                            <img src={ImgDashboard} className='g3_imgDashboard' />
+                                        </div>
                                     </div>
                                 )
                             }
