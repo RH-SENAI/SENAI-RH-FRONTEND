@@ -68,7 +68,7 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
     let idUsuarioAvaliados = usuario.idUsuario;
     console.log(idUsuarioAvaliados)
     event.preventDefault();
-    axios.post("https://apigrupo3.azurewebsites.net/api/AvaliacaoUsuarios/Cadastrar", {
+    axios.post("http://localhost:5000/api/AvaliacaoUsuarios/Cadastrar", {
       idUsuarioAvaliado: idUsuarioAvaliados,
       idUsuarioAvaliador: idUsuarioAvaliador,
       avaliacao: avaliacao

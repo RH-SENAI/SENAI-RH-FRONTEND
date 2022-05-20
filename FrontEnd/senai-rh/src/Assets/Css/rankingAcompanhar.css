@@ -7,7 +7,57 @@
     word-wrap: normal;
     font-family: 'Montserrat', sans-serif;
 }
-.g3_boxOrganizadoraRanking{
+.container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+}
+.G1_usuario_card{
+    display: flex;
+    /* padding: 0 20px 0 20px; */
+    /* justify-content: space-between; */
+    align-items: center;
+    height: 60px;
+    max-width: 1440px;
+    width: 100%;
+    border: 3px solid #dfdfdf;
+    margin-bottom: 2.5vh;
+    border-radius: 10px;
+}
+.G3_organizar_main {
+    /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 4rem;
+    /* background-color: #08b810;     */
+}
+
+.G1_container_card{
+    margin: 0 10% 0 10%;
+}
+.G3_titulo_atividades {
+    /* text-transform: uppercase; */
+    font-size: 3.1em;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    color: #2A2E32;
+    margin-bottom: 3rem;
+}
+
+.G1_nome_usuario{
+    width: 16vw;
+}
+
+.G1_organizar_trofeus{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 5%;
+    margin-right: 10%;
+}
+
+/* .g3_boxOrganizadoraRanking{
     margin-top: 4rem;
 }
 .g3_boldRanking{
@@ -64,4 +114,4 @@
         padding: 1rem;
         margin-bottom: 3rem;
     }
-}
+} */

@@ -18,7 +18,7 @@ import {
 
 export default function Dashboard() {
     const [idUsuario, setIdUsuario] = useState(0);
-    const [nivelSatisfacao, setNivelSatisfacao] = useState(0);
+    const [medSatisfacaoGeral, setMedSatisfacaoGeral] = useState(0);
     const [listaUsuarios, setListaUsuarios] = useState([]);
     const [listaAtividades, setListaAtividades] = useState([]);
     const [usuario, setUsuario] = useState([])
@@ -238,8 +238,8 @@ export default function Dashboard() {
                                                             innerRadius={100}
                                                             colorScale={["#c20004", "#b3b3b3"]}
                                                             data={[
-                                                                { x: usuario.nivelSatisfacao * 100 + '%', y: usuario.nivelSatisfacao * 100 },
-                                                                { x: 100 - usuario.nivelSatisfacao * 100 + '%', y: 100 - usuario.nivelSatisfacao * 100 },
+                                                                { x: usuario.medSatisfacaoGeral * 100 + '%', y: usuario.medSatisfacaoGeral * 100 },
+                                                                { x: 100 - usuario.medSatisfacaoGeral * 100 + '%', y: 100 - usuario.medSatisfacaoGeral * 100 },
 
 
                                                             ]}
