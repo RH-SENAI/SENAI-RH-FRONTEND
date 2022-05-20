@@ -200,6 +200,7 @@
     border: none;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
+    cursor: pointer;
     color: white;
 }
 
@@ -219,7 +220,7 @@
 .container_atividades {
     display: flex;
     justify-content: center;
-    /* height: 100vh; */
+    height: 100vh;
 
 }
 
@@ -624,7 +625,7 @@
 .modal_body_usuarios {    
     display: flex;
     right: 0;
-    left: 25%;
+    left: 12%;
     bottom: 0;
     flex-direction: column;
     position: fixed;
@@ -632,8 +633,8 @@
     justify-content: space-between;
     top: 12%;
     border-radius: 5px;
-    height: 70vh;
-    width: 50vw;
+    height: 81vh;
+    width: 75vw;
     /* padding: 10px 90px; */
     background: rgb(255, 255, 255);
     border: 1px solid black;
@@ -709,12 +710,15 @@
 }
 
 .organizar_sessao_modalUser{
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center ;
     overflow-y: scroll;
     padding: 0 1vw;
-    width: 50%;
+    width: 65%;
+
     /* height: 29vh; */
 }
 
@@ -724,7 +728,7 @@
     font-size: 25px;
     font-weight: 500;
     color: #0E0E0E;
-    margin: 20px 0;
+    /* margin: 20px 0; */
 }
 
 .descricao_atividade_modal {
@@ -791,6 +795,16 @@
     margin-bottom: 5vh;
 }
 
+.anexo_validar{
+    width: 13vw;
+    object-fit: cover;
+}
+
+.text_modal_validar{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 
 /* .btn_fechar_modal:hover { */
     /* background-color: #f1f1f1; */

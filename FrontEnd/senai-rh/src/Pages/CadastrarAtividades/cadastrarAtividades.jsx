@@ -50,7 +50,8 @@ export default function CadastrarAtividades() {
     }
 
     function listarUsuarios() {
-        axios("http://apirhsenaigp1.azurewebsites.net/api/Usuarios/Funcionarios"
+        let idGestor = parseJwt().jti;
+        axios("http://apirhsenaigp1.azurewebsites.net/api/Usuarios/Funcionarios/" + idGestor
             , {
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -157,7 +158,7 @@ export default function CadastrarAtividades() {
                         setLastAtividade(resposta.data.idAtividade)
                         console.log(resposta.data.idAtividade)
                         console.log(lastAtividade)
-                        let id = lastAtividade
+                        let id = resposta.data.idAtividade
 
                         listaUsuarioSelecionados.map((usuario) => {
 
@@ -178,22 +179,22 @@ export default function CadastrarAtividades() {
                 })
                 .catch(erro => console.log(erro))
 
-            listaUsuarioSelecionados.map((usuario) => {
-                let id = lastAtividade
+            // listaUsuarioSelecionados.map((usuario) => {
+            //     let id = lastAtividade
 
-                console.log("id da atividade")
-                console.log(id)
-                console.log("usuario")
-                console.log(usuario)
-                axios.post("http://apirhsenaigp1.azurewebsites.net/api/Atividades/Associar/" +
-                    usuario + '/' + id
-                    , {
-                        headers: {
-                            'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-                        }
-                    })
-                    .catch(erro => console.log(erro))
-            })
+            //     console.log("id da atividade")
+            //     console.log(id)
+            //     console.log("usuario")
+            //     console.log(usuario)
+            //     axios.post("http://apirhsenaigp1.azurewebsites.net/api/Atividades/Associar/" +
+            //         usuario + '/' + id
+            //         , {
+            //             headers: {
+            //                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            //             }
+            //         })
+            //         .catch(erro => console.log(erro))
+            // })
         }
         else {
             setIsLoading(false);

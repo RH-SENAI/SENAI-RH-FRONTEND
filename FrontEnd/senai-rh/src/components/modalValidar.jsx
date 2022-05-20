@@ -117,12 +117,12 @@ export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade
                             <h2 className="titulo_atividade_modal">{atividade.nomeAtividade}</h2>
                         </div>
                         <div className='organizar_sessao_modal'>
-                            <div>
+                            <div className="text_modal_validar">
                                 <label className='label_modal'>Descrição</label>
                                 <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
                             </div>
+                            <img className="anexo_validar" src={"https://armazenamentogrupo3.blob.core.windows.net/amazenamento-simples-grp1/" + atividade.anotacoes} alt="" />
                         </div>
-                        <img src={"https://armazenamentogrupo3.blob.core.windows.net/amazenamento-simples-grp1/" + atividade.idAtividade} alt="" />
                         {/* <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p>
                 <p className="descricao_atividade_modal">{atividade.descricaoAtividade}</p> */}
                         <div className="organizar_btn">

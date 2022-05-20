@@ -33,7 +33,7 @@ const Logado = ({component: Component}) => (
 const PermissaoAdm = ({component: Component}) => (
   <Route
     render={(props) =>
-      usuarioAutenticado() && parseJwt().Role === '1' ? (
+      usuarioAutenticado() && parseJwt().role === '2' ? (
         <Component {...props}/>
       ) : (
         <Redirect to="/"/>
@@ -43,7 +43,7 @@ const PermissaoAdm = ({component: Component}) => (
 const PermissaoFuncionario = ({component: Component}) => (
   <Route
     render={(props) =>
-      usuarioAutenticado() && parseJwt().Role === '2' ? (
+      usuarioAutenticado() && parseJwt().role === '1' ? (
         <Component {...props}/>
       ) : (
         <Redirect to="/"/>

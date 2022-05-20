@@ -108,7 +108,7 @@ export const Modall = ({ showModal, setShowModal, usuarios, setProps, value }) =
                             })}
                         </div>
                         <div className="organizar_btn">
-                            <button className="btn_fechar_modal" onClick={closeModal}>Fechar</button>
+                            <button className="btn_fechar_modal" onClick={() => {closeModal(); console.log(listaUsuarioSelecionados)}}>Fechar</button>
                         </div>
                     </div>
                 // </div>
