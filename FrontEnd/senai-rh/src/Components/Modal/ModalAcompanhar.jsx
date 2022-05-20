@@ -174,7 +174,7 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
                 {/* <img className='g3_fotoPerfilModal' src={"https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples/" + usuario.caminhoFotoPerfil} /> */}
                 <div className='g3_perfilModal'>
                   <span className='g3_spanInfoModal'>{usuario.nome}</span>
-                  <span className='g3_spanInfoModal'>{usuario.idCargoNavigation.nomeCargo}</span>
+                  {/* <span className='g3_spanInfoModal'>{usuario.idCargoNavigation.nomeCargo}</span> */}
                 </div>
               </div>
               <div className='g3_graficosModal'>

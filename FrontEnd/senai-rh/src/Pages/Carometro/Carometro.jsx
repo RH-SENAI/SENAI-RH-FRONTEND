@@ -27,6 +27,7 @@ export default function Carometro() {
     // const [idUsuarioAvaliador, setIdUsuarioAvaliador] = useState();
     const [id, setId] = useState();
     const [idCargo] = useState(0);
+    const [idGrupo] = useState(0);
     // const [nivelSatisfacao, setNivelSatisfacao] = useState(0);
     const [listaFuncionarios, setListaFuncionarios] = useState([]);
     // const [listaCargo, setListaCargo] = useState([]);
@@ -73,7 +74,9 @@ export default function Carometro() {
         setId(idRonaldo)
         console.log(id)
 
-        axios.get('https://apigrupo3.azurewebsites.net//api/Usuarios/Listar', {
+        let idGestor = parseJwt().jti;
+        axios("http://apirhsenaigp1.azurewebsites.net/api/Usuarios/Funcionarios/" + idGestor , {
+        // axios.get('https://apigrupo3.azurewebsites.net/api/Usuarios/Listar', {
 
             headers: {
 
@@ -294,13 +297,13 @@ export default function Carometro() {
 
 
                                         filteredResults.map((usuario) => {
-                                            // if(usuario.idUnidade == idUnidade.idUnidade) {
+                                            // if(usuario.idGrupo == idGrupo.idGrupo) {
                                             return (
                                                 <button className='g3_abrirModal' onClick={() => {OpenModal(); ListarMinhasAtividades();}} onClickCapture={() => setIdUsuarioModal(usuario.idUsuario)} type="button">
                                                     <div className='g3_cardUsuario'>
                                                         <img className='g3_fotoCarometro' src={imgPadrao} alt="fotoPerfilCarometro" />
                                                         <span className="g3_spanCarometro">{usuario.nome}</span>
-                                                        <span className="g3_spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
+                                                        {/* <span className="g3_spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span> */}
                                                     </div>
                                                 </button>
                                             )
@@ -309,13 +312,13 @@ export default function Carometro() {
 
                                         :
                                         listaFuncionarios.map((usuario) => {
-                                            // if(usuario.idUnidade == idUnidade.idUnidade) {
+                                            // if(usuario.idGrupo == idGrupo.idGrupo) {
                                             return (
                                                 <button className='g3_abrirModal' onClick={() => {OpenModal(); ListarMinhasAtividades();}} onClickCapture={() => setIdUsuarioModal(usuario.idUsuario)} type="button">
                                                     <div className='g3_cardUsuario'>
                                                         <img className='g3_fotoCarometro' src={imgPadrao} alt="fotoPerfilCarometro" />
                                                         <span className="g3_spanCarometro">{usuario.nome}</span>
-                                                        <span className="g3_spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span>
+                                                        {/* <span className="g3_spanCarometro">{usuario.idCargoNavigation.nomeCargo}</span> */}
                                                     </div>
                                                 </button>
 
