@@ -18,6 +18,7 @@ export default function RankingAcompanhar() {
 
     const [listaUsuariosRanking, setListaUsuariosRanking] = useState([]);
     const [mediaAvaliacao, setMediaAvaliacao] = useState('');
+    const [medSatisfacaoGeral, setMedSatisfacaoGeral] = useState('');
 
 
     function RankingUsuarios() {
@@ -56,12 +57,12 @@ export default function RankingAcompanhar() {
                                 <div key={usuario.idUsuario}>
                                     <div className="G1_usuario_card">
                                         <p className="G1_posicao G1_container_card">{index++}</p>
-                                        <img className="G1_container_card" src={FotoRank} alt="Foto do Usuario" />
+                                        <img className="G1_container_card g3_fotoRanking" src={"https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples/" + usuario.caminhoFotoPerfil} alt="Foto do Usuario" />
                                         <p className="G1_nome_usuario G1_container_card">{usuario.nome}</p>
                                         <div className="G1_organizar_trofeus">
                                             {/* <Icons></Icons> */}
                                             <img src={estrela} alt="Trofeu" />
-                                            <p className="G1_num_trofeu" >{usuario.mediaAvaliacao}</p>
+                                            <p className="G1_num_trofeu" >{usuario.medSatisfacaoGeral}</p>
                                         </div>
                                     </div>
                                 </div>
