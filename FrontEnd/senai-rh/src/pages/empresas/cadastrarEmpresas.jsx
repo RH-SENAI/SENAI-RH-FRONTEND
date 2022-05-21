@@ -9,6 +9,7 @@ import api from "../../services/api";
 import axios from "axios";
 import PhoneInput from 'react-phone-number-input/input'
 import { useForm } from "react-hook-form";
+import { OpenInFull } from "@mui/icons-material";
 
 
 export default function CadastrarEmpresa() {
@@ -22,7 +23,7 @@ export default function CadastrarEmpresa() {
     const [nomeEmpresa, setNomeEmpresa] = useState('')
     const [emailEmpresa, setEmailEmpresa] = useState('')
     const [caminhoImagemEmpresa, setCaminhoImagemEmpresa] = useState('');
-    const [telefoneEmpresa, setTelefoneEmpresa] = useState()
+    const [telefoneEmpresa, setTelefoneEmpresa] = useState("")
     const [rua, setRua] = useState('')
     const { handleSubmit, setValue, setFocus, register } = useForm();
 
@@ -40,131 +41,68 @@ export default function CadastrarEmpresa() {
             });
     }
 
-
-    function buscarLocalizacao() {
-        api('/Localizacaos', {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    setLocalizacao(resposta.data)
-                    console.log('Aqui resposta')
-                    console.log(resposta)
-                }
-            })
-            .catch(erro => console.log(erro))
-    }
-    useEffect(buscarLocalizacao, [])
-
-    function buscarEstados() {
-        api('/Estados', {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        })
-
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    setEstados(resposta.data)
-                    console.log('Estados')
-                    console.log(resposta)
-                }
-            })
-            .catch(erro => console.log(erro))
-    }
-    useEffect(buscarEstados, [])
-
     const [nomeBairro, setNomeBairro] = useState('')
     const [nomeLogradouro, setNomeLogradouro] = useState('')
     const [nomeCidade, setNomeCidade] = useState('')
     const [nomeEstado, setNomeEstado] = useState('')
     const [cep1, setCep1] = useState('')
     const [numero, setNumero] = useState(0)
-
-
-    const efetuarCadastro = (event) => {
+    
+    function CadastrarLocalizacao(event) {
+        
         event.preventDefault();
 
-        //Testando
+        var inputNumero = document.getElementById('numero').value;
+        
+        let localizacao = {
+            "cep": cep1,
+            "bairro": nomeBairro,
+            "logradouro": nomeLogradouro,
+            "cidade": nomeCidade,
+            "estado": nomeEstado,
+            "numero": inputNumero
+        }
 
-        var inputNumero = document.getElementById('numero');
-        console.log('inputNumero:' + inputNumero.value)
+        axios.post('http://localhost:5000/api/Localizacaos/Cadastrar', localizacao)
+            .then((reposta) => {
+                if (reposta.status ==  201) {
+                    console.log('cadastrou')
+                    efetuarCadastro()
+                }
+            })
+            .catch(erro => console.log("Erro Cep" + erro))
 
-        //
-
-        // //Bairro
-        // api.post('/Bairros/Cadastrar', nomeBairro)
-        //     .then(function (response) {
-        //         console.log(response);
-        //         console.log("Cadastrou o Bairro")
-
-        //     })
-        //     .catch(erro => console.log("Erro Bairro" + erro))
-
-        // //logradouro
-        // api.post('/Lougradouros/Cadastrar', nomeLogradouro)
-        //     .then(function (response) {
-        //         console.log(response);
-        //         console.log("Cadastrou o Logradouro")
-
-        //     })
-        //     .catch(erro => console.log("Erro Logradouro" + erro))
-
-        // //Cidade
-        // api.post('/Cidades/Cadastrar', nomeCidade)
-        //     .then(function (response) {
-        //         console.log(response);
-        //         console.log("Cadastrou o Cidade")
-        //     })
-        //     .catch(erro => console.log("Erro Cidade" + erro))
-
-        // //Estado
-        // api.post('/Estados/Cadastrar', nomeEstado)
-        //     .then(function (response) {
-        //         console.log(response);
-        //         console.log("Cadastrou o Estado")
-
-        //     })
-        //     .catch(erro => console.log("Erro Estado" + erro))
-
-        // //Cep
-        // api.post('/Ceps/Cadastrar', cep1)
-        //     .then(function (response) {
-        //         console.log(response);
-        //         console.log("Cadastrou o Cep")
-
-        //     })
-        //     .catch(erro => console.log("Erro Cep" + erro))
+    }
 
 
+    const efetuarCadastro = () => {
+        
+        console.log('chega aqui')
 
+        var formData = new FormData();
 
-        // //Empresa
+        const element = document.getElementById('fotoEmpresa')
+        const file = element.files[0]
+        formData.append('fotoEmpresa', file, file.name)
+        formData.append('nomeEmpresa', nomeEmpresa);
+        formData.append('idLocalizacao', idLocalizacao);
+        formData.append('emailEmpresa', emailEmpresa);
+        formData.append('telefoneEmpresa', telefoneEmpresa);
+        formData.append('caminhoImagemEmpresa', caminhoImagemEmpresa);
+        formData.append('cep', cep1);
+        formData.append('numero',document.getElementById('numero').value  );
 
-        // var formData = new FormData();
-
-        // const element = document.getElementById('arquivo')
-        // const file = element.files[0]
-        // formData.append('fotoEmpresa', file, file.name)
-        // formData.append('nomeEmpresa', nomeEmpresa);
-        // formData.append('idLocalizacao', idLocalizacao);
-        // formData.append('emailEmpresa', emailEmpresa);
-        // formData.append('telefoneEmpresa', telefoneEmpresa);
-        // formData.append('caminhoImagemEmpresa', caminhoImagemEmpresa);
-
-        // api({
-        //     method: "post",
-        //     url: "/Empresa/Cadastrar",
-        //     data: formData,
-        //     headers: { "Content-Type": "multipart/form-data" },
-        // })
-        //     .then(function (response) {
-        //         console.log(response);
-        //         notify_cadastro_sucess();
-        //     })
-        //     .catch(resposta => notify_Logar_Failed())
+        axios({
+            method: "post",
+            url: "http://localhost:5000/api/Empresas/Cadastrar",
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data" },
+        })
+            .then(function (response) {
+                console.log(response);
+                notify_cadastro_sucess();
+            })
+            .catch(resposta => notify_Logar_Failed())
     }
 
     return (
@@ -177,7 +115,7 @@ export default function CadastrarEmpresa() {
                     <img src={cadastroEmpresa} alt="imagemCadastroEmpresa" />
                 </div>
 
-                <form onSubmit={efetuarCadastro}>
+                <form onSubmit={CadastrarLocalizacao}>
                     <div className="box_forms_cadastroEmpresa_g2">
                         <div className="title_cadastroEmpresa_g2">
                             <h1>Cadastrar Empresa</h1>
@@ -204,9 +142,9 @@ export default function CadastrarEmpresa() {
                                             id="telefoneEmpresa"
                                             onChange={(campo) => setTelefoneEmpresa(campo.target.value)}
                                             value={telefoneEmpresa}
-                                            type="tel"
+                                            type="text"
                                             name="telefoneEmpresa"
-                                            pattern="\([0-9]{2}\)[9]{1}[0-9]{3}-[0-9]{4}"
+                                            // pattern="\([0-9]{2}\)[9]{1}[0-9]{3}-[0-9]{4}"
                                             placeholder="(xx)9xxx-xxxx"
                                         />
                                         <label htmlFor="telefoneEmpresa" >Telefone</label>
@@ -280,11 +218,11 @@ export default function CadastrarEmpresa() {
 
                                 <div>
                                     <label></label>
-                                    <label className="label_arquivo_cadastroEmpresa_g2" htmlFor="fotoDesconto">  <img className="img_file_cadastro_empresa_g2" src={iconeEnviarArquivo} alt="iconeEnviarArquivo" />Enviar arquivo</label>
+                                    <label className="label_arquivo_cadastroEmpresa_g2" htmlFor="fotoEmpresa">  <img className="img_file_cadastro_empresa_g2" src={iconeEnviarArquivo} alt="iconeEnviarArquivo" />Enviar arquivo</label>
                                     <input
                                         accept="image/png, image/jpeg"
-                                        id="fotoDesconto"
-                                        name="arquivo"
+                                        id="fotoEmpresa"
+                                        name="fotoEmpresa"
                                         className="input_file_cadastroEmpresa_g2"
                                         type="file"
                                     />
