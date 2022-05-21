@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
 import "../../assets/css/democratizacao.css";
 import Footer from '../../components/footer';
 import FotoPerfil from '../../assets/img/perfilVazio.svg'
@@ -13,11 +12,13 @@ import { parseJwt } from '../../services/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function Democratizacao() {
 
-    //States 
-    let param  =  useParams();
+export default function Democratizacao(props) {
     
+    // Parâmetro
+    const idDecisao = props.location.pathname.split('/')[2]
+    
+    //States
     const [idUsuario, setIdUsuario] = useState(1);
     const [idFeedback, setIdFeedback] = useState(0);
     const [listaFeedbacks, setListaFeedbacks] = useState([]);
@@ -28,21 +29,17 @@ export default function Democratizacao() {
     const [notaDecisao, setNotaDecisao] = useState(0);
     const [dataPublicacao] = useState(moment().format("YYYY-MM-DD"));
     const [nomeFuncionario, setNomeFuncionario] = useState('');
+
     const notify_feedback = () => toast.success("FeedBack Cadastrado!");
 
     const notify_erroFeedback = () => toast.error("Preencha todos os campos!");
 
-    console.log(param)
-
     function cadastrarFeedback(event) {
         event.preventDefault();
 
-
-
-
         let cadastro = {
             idUsuario: parseJwt().jti,
-            idDecisao: idDecisao.idDecisao,
+            idDecisao: idDecisao,
             comentarioFeedBack: comentarioFeedback,
             dataPublicacao: dataPublicacao,
             valorMoedas: valorMoedas,
@@ -63,11 +60,10 @@ export default function Democratizacao() {
             .then(response => {
                 if (response.status === 201) {
                     ListarFeedback();
-                    console.log('feedback cadastrado')
                     notify_feedback();
                 }
             })
-            .catch(erro => console.log(erro), notify_erroFeedback())
+            .catch(erro => {notify_erroFeedback(); console.log(erro) })
 
     }
 

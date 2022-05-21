@@ -16,11 +16,13 @@ export default function Cadastro() {
     const [listaCargo, setListaCargo] = useState([])
     const [listaUnidade, setListaUnidade] = useState([])
     const [listaTipoUsuario, setListaTipoUsuario] = useState([])
+    const [listaGrupos, setListaGrupos] = useState([])
     const [idTipoUsuario, setIdTipoUsuario] = useState(0)
     const [nomeUsuario, setNomeUsuario] = useState('');
     const [endereco, setEndereco] = useState('')
     const [email, setEmail] = useState('')
     const [CPF, setCPF] = useState('')
+    const [idGrupo, setIdGrupo] = useState(0)
     const [idCargo, setIdCargo] = useState(0)
     const [idUnidade, setIdUnidade] = useState(0)
     const [dataNascimento, setDataNascimento] = useState(new Date())
@@ -34,6 +36,25 @@ export default function Cadastro() {
 
 
 
+    function CadastrarLotacao()
+    {
+        let lotacao = {
+
+            idGrupo : idGrupo,
+            cpf : CPF
+        }
+
+        axios.post('https://apigrupo3.azurewebsites.net/api/Lotacoes/Cadastrar', lotacao , {
+            headers: {
+
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        }
+        )
+        .then(console.log("Deu certo"))
+
+        .catch(erro => console.log(erro))
+    }
 
     function BuscarCargos() {
         axios.get('https://apigrupo3.azurewebsites.net/api/Cargos/Listar', {
@@ -73,6 +94,26 @@ export default function Cadastro() {
             .catch(erro => console.log(erro))
     }
 
+    function BuscarGrupos()
+    {
+        axios.get('https://apigrupo3.azurewebsites.net/api/Grupos/Listar', {
+            headers: {
+
+                Authorization: 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        }
+        )
+
+            .then((resposta) => {
+                if (resposta.status === 200) {
+                    setListaGrupos(resposta.data)
+                    console.log(resposta)
+                }
+            })
+
+            .catch(erro => console.log(erro))
+    }
+
     function BuscarTipoUsuario() {
         axios.get('https://apigrupo3.azurewebsites.net/api/idTipoUsuarios/Listar', {
             headers: {
@@ -101,7 +142,15 @@ export default function Cadastro() {
 
         const element = document.getElementById('fotoCadastro')
         const file = element.files[0]
-        formData.append('fotoPerfil', file, file.name)
+
+        if (element.value == "") {
+            formData.append('novaFotoPerfil', null)
+
+        } else {
+            formData.append('novaFotoPerfil', file, file.name)
+
+        }
+
         formData.append('idUsuario', idUsuario);
         formData.append('nome', nomeUsuario);
         formData.append('email', email);
@@ -113,24 +162,21 @@ export default function Cadastro() {
         formData.append('localizacaoUsuario', endereco);
         formData.append('senha', senha);
 
-        
-
-
-
-
-
         axios({
             method: "post",
             url: "https://apigrupo3.azurewebsites.net/api/Usuarios/Cadastrar",
             data: formData,
             headers: { "Content-Type": "multipart/form-data" },
         })
-            .then(function (response) {
-                console.log(response);
-                console.log('usuario cadastrado')
-                notify_cadastrar();
+            .then(async function (response) {
+
+                if(response.status == 201)
+                {
+                    notify_cadastrar();
+                    CadastrarLotacao();
+                }
             })
-            .catch(erro => console.log(erro), notify_erroCadastrar())
+            .catch(erro => { notify_erroCadastrar(); console.log(erro) })
             
     }
     // function CadastrarUsuario(usuario) {
@@ -177,6 +223,7 @@ export default function Cadastro() {
     useEffect(BuscarTipoUsuario, [])
     useEffect(BuscarCargos, [])
     useEffect(BuscarUnidade, [])
+    useEffect(BuscarGrupos, [])
 
 
     return (
@@ -212,7 +259,7 @@ export default function Cadastro() {
                                     <div className='g3_boxFotoCadastro'>
                                         {/* <img src={"https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples/Imagens/" + usuario.caminhoFotoPerfil}></img> */}
                                     </div>
-                                    <label htmlFor="fotoCadastro" className="labelCadastroFoto">Inserir Foto</label>
+                                    <label htmlFor="fotoCadastro" className="g3_labelCadastroFoto">Inserir Foto</label>
                                     <input
                                         type='file'
                                         className="g3_inputCadastroFile"
@@ -291,6 +338,24 @@ export default function Cadastro() {
                                                     return (
 
                                                         <option key={event.idUnidade} value={event.idUnidadeSenai}>{event.nomeUnidadeSenai}
+                                                        </option>
+                                                    );
+                                                })}
+
+                                        </select>
+
+                                        <select name="Lotacao"
+                                            value={idGrupo}
+                                            onChange={(event) => setIdGrupo(event.target.value)}
+                                            className="g3_inputCadastroSelect"
+
+                                        >
+                                            <option value="#">Grupos</option>
+                                            {
+                                                listaGrupos.map((grupo) => {
+                                                    return (
+
+                                                        <option key={grupo.idGrupo} value={grupo.idGrupo}>{grupo.nomeGrupo}
                                                         </option>
                                                     );
                                                 })}

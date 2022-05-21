@@ -22,7 +22,7 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
   const [idUsuarioAvaliado, setIdUsuarioAvaliado] = useState(0);
   // const [listaAtividades, setListaAtividades] = useState([]);
   // const [sampleData, setSampleData] = useState([])
-  const notify_avaliacao = () => toast.success("Usuario Cadastrado!");
+  const notify_avaliacao = () => toast.success("Avaliação Cadastrada!");
 
   const notify_erroAvaliacao = () => toast.error("Preencha todos os campos!");
   let history = useHistory();
@@ -67,7 +67,7 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
     let idUsuarioAvaliados = usuario.idUsuario;
     console.log(idUsuarioAvaliados)
     event.preventDefault();
-    axios.post("http://localhost:5000/api/AvaliacaoUsuarios/Cadastrar", {
+    axios.post("https://apigrupo3.azurewebsites.net/api/AvaliacaoUsuarios/Cadastrar", {
       idUsuarioAvaliado: idUsuarioAvaliados,
       idUsuarioAvaliador: idUsuarioAvaliador,
       avaliacaoUsuario1: avaliacao,
@@ -89,7 +89,7 @@ export const ModalAcompanhar = ({ showModal, setShowModal, usuario, idUsuarioAva
 
         }
       })
-      .catch(erro => console.log(erro), notify_erroAvaliacao())
+      .catch(erro => {notify_erroAvaliacao(); console.log(erro)})
   }
 
   const closeModal = e => {

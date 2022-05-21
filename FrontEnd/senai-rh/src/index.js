@@ -81,7 +81,7 @@ const routing = (
       <Route path="/login" component={Login}/>
       <PermissaoAdm path="/cadastro" component={cadastro}/> 
       <PermissaoAdm path ="/atualizar" component={atualizarPerfil}/>
-      <Logado path="/democratizacao/:idDecisao" component={democratizacao}/>
+      <Logado path="/democratizacao/:id" component={democratizacao}/>
       <PermissaoGestor exact path="/democratizacaoAdm" component={democratizacaoAdm}/>
       <Logado path="/redirecionar" component={redirecionar} />
       <Logado path="/dashboard" component={Dashboard} />

@@ -53,6 +53,11 @@ input[type="file"] {
     background-color: #B3B3B3;
     margin: 0.5rem;
 }
+
+.g3_labelCadastroFoto{
+    cursor: pointer;
+}
+
 .g3_boxCadastro{
     display: flex;
     margin-top: 1.5rem;
