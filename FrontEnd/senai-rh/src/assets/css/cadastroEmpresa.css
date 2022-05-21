@@ -67,13 +67,18 @@
 .label_arquivo_cadastroEmpresa_g2 {
     width: 13.5vw;
     height: 6vh;
+    margin-top: 1.3rem;
+    padding: 0 20px;
+    box-sizing: border-box;
     color: white;
     border-radius: 15px;
     background-color: #636466;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.1em;
     cursor: pointer;
+    margin-bottom: 2em !important;
 }
 
 .input_file_cadastroEmpresa_g2 {
@@ -84,7 +89,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 20vh;
+    height: 10vh;
 }
 
 .botaoCadastroEmpresa_g2{
