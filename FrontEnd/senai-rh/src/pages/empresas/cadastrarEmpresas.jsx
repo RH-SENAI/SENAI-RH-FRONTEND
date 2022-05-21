@@ -14,8 +14,8 @@ import { OpenInFull } from "@mui/icons-material";
 
 export default function CadastrarEmpresa() {
 
-    const notify_Logar_Failed = () => toast.error("Você esqueceu de algum campo, por favor tente novamente!")
-    const notify_cadastro_sucess = () => toast.success("Cadastro realizado com sucesso!")
+    const notify_Logar_Failed = () => toast.error("Algo deu errado, por favor tente novamente!")
+    const notify_cadastro_sucess = () => toast.success("Empresa cadastrada com sucesso!")
     const [idLocalizacao, setIdLocalizacao] = useState(0)
     const [localizacao, setLocalizacao] = useState([])
     const [estados, setEstados] = useState([])
@@ -63,15 +63,16 @@ export default function CadastrarEmpresa() {
             "numero": inputNumero
         }
 
-        axios.post('http://localhost:5000/api/Localizacaos/Cadastrar', localizacao)
+        api.post('/Localizacaos/Cadastrar', localizacao)
             .then((reposta) => {
                 if (reposta.status ==  201) {
                     console.log('cadastrou')
                     efetuarCadastro()
+                    // notify_cadastro_sucess();
+
                 }
             })
-            .catch(erro => console.log("Erro Cep" + erro))
-
+            .catch(erro => console.log(erro))
     }
 
 
@@ -91,10 +92,12 @@ export default function CadastrarEmpresa() {
         formData.append('caminhoImagemEmpresa', caminhoImagemEmpresa);
         formData.append('cep', cep1);
         formData.append('numero',document.getElementById('numero').value  );
+        console.log('idLocalizacao')
+        console.log(idLocalizacao)
 
-        axios({
+        api({
             method: "post",
-            url: "http://localhost:5000/api/Empresas/Cadastrar",
+            url: "/Empresas/Cadastrar",
             data: formData,
             headers: { "Content-Type": "multipart/form-data" },
         })
@@ -108,7 +111,19 @@ export default function CadastrarEmpresa() {
     return (
 
         <div className="geral_g2">
-            <HeaderAdm />
+            <HeaderAdm />            
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+
 
             <div className="container_empresa_g2 container_forms_cadastroEmpresa_g2">
                 <div className="box_img_cadastroEmpresa_g2">
