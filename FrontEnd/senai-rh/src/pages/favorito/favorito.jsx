@@ -11,6 +11,8 @@ import coin from '../../assets/img/coin 1.png'
 import { useEffect, useState } from 'react';
 import { ModallBeneficioFavoritos } from "../../components/modalListaBeneficiosFavoritos/modalListaBeneficiosFavoritos";
 import ReactStars from "react-rating-stars-component";
+import Heart from "react-heart"
+import { set } from 'react-hook-form';
 
 export default function MeusFavoritos() {
 
@@ -114,7 +116,24 @@ export default function MeusFavoritos() {
     // let avaliacao = {
     //     Math.e
     // }
+    //Desfavoritar
+    const [favoritoDesconto, setFavoritoDesconto] = useState([])
+    const [active, setActive] = useState(true)
 
+
+    function desfavoritar(idDesconto) {
+        api.delete('/FavoritosDescontos/deletar/' + idDesconto)
+
+            .then(resposta => {
+                if (resposta.status === 204) {
+                    console.log('Desfavoritado!')
+                    listarFavoritosDescontos()
+                }
+            })
+            .catch(erro => {
+                console.log(erro)
+            })
+    }
 
     return (
 
@@ -198,7 +217,7 @@ export default function MeusFavoritos() {
                                 listaFavoritosDesconto.map((beneficio) => {
                                     return (
                                         <div className='espacamento_beneficio_g2'>
-                                            <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_beneficio_g2'>
+                                            <section alt={beneficio.idDescontoFavorito} key={beneficio.idDescontoFavorito} id='imagem' className='box_beneficio_g2'>
                                                 <div className='banner_img_beneficio_g2'>
                                                     {<img onClick={() => { OpenModalDesconto(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.idDescontoNavigation.caminhoImagemDesconto} alt="imagem do desconto" />}
                                                 </div>
@@ -223,7 +242,10 @@ export default function MeusFavoritos() {
                                                             <img className='coin_beneficio_g2' src={coin} alt="coin" />  {beneficio.idDescontoNavigation.valorDesconto}
                                                         </div>}
                                                         <div>
-                                                            <img src={coracao} alt="favorito" />
+                                                            {/* <img src={coracao} alt="favorito" /> */}
+                                                            <div className="favoritar_beneficio_g2">
+                                                                <Heart isActive={active} onClick={() =>  desfavoritar(beneficio.idDescontoFavorito) } />
+                                                            </div>
                                                         </div>
                                                         {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
                                                     </div>

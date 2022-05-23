@@ -214,8 +214,17 @@
     padding-left: 10px !important;
 }
 
-/* estrela */
+/* Favoritar */
 
+.favoritar_beneficio_g2 svg{
+    width: 2vw;
+    height: 10vh;
+}
+
+
+
+
+/* estrela */
 
 
 

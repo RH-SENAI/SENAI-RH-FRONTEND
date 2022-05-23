@@ -28,7 +28,6 @@ export default function Perfil() {
                     setListaUsuario(resposta.data)
                     // setNome(resposta.data.nome)
                     // console.log('aqui' + resposta.data)
-
                 }
             })
             .catch(erro => console.log(erro))

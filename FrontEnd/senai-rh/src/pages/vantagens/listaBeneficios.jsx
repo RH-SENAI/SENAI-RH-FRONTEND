@@ -29,13 +29,153 @@ export default function ListaBeneficios() {
     const [value, setValue] = useState(0);
 
 
+
+    //Favoritar
     const [active, setActive] = useState(false)
+    const [favorito, setFavorito] = useState(false)
+    const [favoritoDesconto, setFavoritoDesconto] = useState([])
+    const [listaFavoritosDescontos, setListaFavoritosDescontos] = useState([])
+
+
+    // function verificarFavorito(idDesconto) {
+    //     console.log('Cheguei')
+    //     console.log(idDesconto)
+    //     listaFavoritosDescontos.map(desconto => {
+    //         if (desconto.idDesconto == idDesconto) {
+
+    //             return !active
+    //         }
+    //     })
+    // }
+
+
+
+
+    async function favoritar(favorite, id) {
+        try {
+            if (favorite == true) {
+                // this.ProcurarCurso(id);
+
+                //Requisição favoritos pelo id do usuário
+                const respostaFavoritos = await api('/FavoritosDescontos/Favorito/' + parseJwt().jti)
+                var dadosFavoritos = respostaFavoritos.data
+
+                //Tamanho do json do respostaFavoritos
+                var tamanhoJson = Object.keys(dadosFavoritos).length;
+                var p = 0;
+
+                do {
+                    let stringFavoritos = JSON.stringify(dadosFavoritos);
+                    var objFavoritos = JSON.parse(stringFavoritos);
+                    console.log(objFavoritos);
+
+                    if (objFavoritos != '') {
+                        var cursoId = objFavoritos[p]['idDesconto'];
+                        let favoritoId = objFavoritos[p]['idDescontoFavorito'];
+                        console.log(cursoId);
+
+                        if (cursoId == id) {
+                            const respostaExcluir = await api.delete(`/FavoritosDescontos/deletar/${favoritoId}`);
+                            var verifyDelete = respostaExcluir.status;
+
+                            if (respostaExcluir.status == 204) {
+                                setActive(!active);
+                                console.log('Desfavoritado');
+                                // window.location.reload(true);
+                                listarFavoritosDescontos();
+                                listarBeneficios();
+
+                            }
+                        }
+                        p++
+                    }
+                    else {
+                        console.log("Está vazio!")
+                    }
+                } while (p < tamanhoJson || objFavoritos != '');
+                if (verifyDelete != 204) {
+                    console.log("CHEGOU")
+                    if (cursoId != id) {
+                        favoritarDesconto(id)
+                        listarFavoritosDescontos();
+                        listarBeneficios();
+                    }
+                }
+            }
+
+            // window.location.reload(true);
+            listarFavoritosDescontos();
+            listarBeneficios();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+
+    function favoritarDesconto(idDesconto) {
+
+        let favo = {
+            idDesconto: idDesconto,
+            idUsuario: parseJwt().jti,
+        }
+
+        console.log(parseJwt().jti)
+        console.log(idDesconto)
+        api.post('/FavoritosDescontos', favo)
+            .then(function (response) {
+                console.log(response);
+                console.log("Favoritou o desconto" + idDesconto)
+                listarBeneficios()
+            })
+            .catch(erro => console.log(erro))
+    }
+
+
+    function listarFavoritosDescontos() {
+        api('/FavoritosDescontos/Favorito/' + parseJwt().jti)
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    console.log('Lista Favoritos de descontos')
+                    console.log(resposta)
+                    setListaFavoritosDescontos(resposta.data)
+
+                }
+            })
+            .catch(erro => console.log(erro))
+    }
+
+    useEffect(listarFavoritosDescontos, []);
+
+
+    function desfavoritar(idDesconto) {
+
+        api.delete('/FavoritosDescontos/deletar/' + idDesconto)
+
+            .then(resposta => {
+                if (resposta.status === 204) {
+                    console.log('Desfavoritado!')
+                    setFavoritoDesconto()
+                }
+            })
+            .catch(erro => {
+                console.log(erro)
+            })
+    }
+
+
+
+
+
+    //Abrir modal
 
     const OpenModal = () => {
         setShowModal(prev => !prev);
 
     }
 
+
+    //Listar todos os comentarios do beneficio conforme o id do beneficio
 
     function listarComentarioBeneficio() {
         console.log(idDescontoModal)
@@ -52,6 +192,10 @@ export default function ListaBeneficios() {
 
     useEffect(listarComentarioBeneficio, []);
 
+
+
+    //Listar todos os beneficios
+
     function listarBeneficios() {
         api('/Descontos')
             .then(resposta => {
@@ -66,6 +210,9 @@ export default function ListaBeneficios() {
 
     useEffect(listarBeneficios, []);
 
+
+
+    //Listar Usuario logado
 
     function listarUsuario() {
         axios('http://apirhsenaigp1.azurewebsites.net/api/Usuarios/BuscarUsuario/' + parseJwt().jti, {
@@ -88,6 +235,8 @@ export default function ListaBeneficios() {
     }
     useEffect(listarUsuario, [])
 
+
+    //Excluir Vantagem
     function Excluir(idDesconto) {
 
         api.delete('/Descontos/Deletar/' + idDesconto)
@@ -103,6 +252,8 @@ export default function ListaBeneficios() {
                 console.log(erro)
             })
     }
+
+    //Pesquisar
 
     const [searchInput, setSearchInput] = useState([]);
     const [filteredResults, setFilteredResults] = useState([]);
@@ -125,7 +276,7 @@ export default function ListaBeneficios() {
 
     return (
         <div className="geral_g2">
-                <ModallBeneficio idDescontoModal={idDescontoModal} comentario={listaComentarioBeneficio} beneficio={listaBeneficios.find(beneficio => beneficio.idDesconto == idDescontoModal)} showModal={showModal} setShowModal={setShowModal} />
+            <ModallBeneficio idDescontoModal={idDescontoModal} comentario={listaComentarioBeneficio} beneficio={listaBeneficios.find(beneficio => beneficio.idDesconto == idDescontoModal)} showModal={showModal} setShowModal={setShowModal} />
             <HeaderFuncionario />
 
             <div className="container">
@@ -237,15 +388,15 @@ export default function ListaBeneficios() {
                                                             </div>}
                                                             <div>
                                                                 {/* <img src={coracao} alt="favorito" /> */}
-                                                                <div>
-                                                                    <Heart isActive={active} onClick={() => setActive(!active)} /> 
+                                                                <div className="favoritar_beneficio_g2">
+                                                                    <Heart isActive={listaFavoritosDescontos.some(l => { if (l.idDesconto == beneficio.idDesconto) { return true } return false })} onClick={() => { favoritar(!favorito, beneficio.idDesconto) }} />
                                                                 </div>
                                                             </div>
                                                             {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
                                                         </div>
                                                     </div>
 
-                                                    
+
                                                 </section>
                                             </div>
                                         )
