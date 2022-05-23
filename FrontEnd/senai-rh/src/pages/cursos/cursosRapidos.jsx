@@ -54,6 +54,10 @@ export default function CursosRapidos() {
 
     // useEffect(listarComentarioCurso, []);
 
+    const apiMap = axios.create({
+        baseURL: 'https://maps.googleapis.com/maps/api/distancematrix'
+    });
+
     function closeModal() {
         setIsOpen(false);
     }
@@ -84,22 +88,24 @@ export default function CursosRapidos() {
             .then(resposta => {
                 if (resposta.status === 200) {
                     const dadosCurso = resposta.data;
-                    console.warn(dadosCurso)
+                    console.log(dadosCurso)
                     var tamanhoJson = Object.keys(dadosCurso).length;
-                    console.warn(tamanhoJson);
+                    console.log(tamanhoJson);
 
                     var i = 0
 
                     do {
                         let stringLocalCurso = JSON.stringify(dadosCurso);
                         let objLocalCurso = JSON.parse(stringLocalCurso);
-                        // console.warn(objLocalCurso);
+                        // console.log(objLocalCurso);
                         var localCurso = objLocalCurso[i]['idEmpresaNavigation']['idLocalizacaoNavigation']['idCepNavigation'].cep1
 
                         // ----> Localização 
 
                         var stringProblematica = `/json?origins=${longitude}, ${latitude}&destinations=${localCurso}&units=km&key=AIzaSyB7gPGvYozarJEWUaqmqLiV5rRYU37_TT0`
-                        console.warn(stringProblematica)
+                        console.log(stringProblematica)
+                        console.log('localCurso')
+                        console.log(localCurso)
 
                         const respostaLocal = apiMaps(stringProblematica, {
                             headers: {
@@ -112,34 +118,35 @@ export default function CursosRapidos() {
                         });
                         let string = JSON.stringify(respostaLocal.data);
                         let obj = JSON.parse(string);
-                        // console.warn(obj)
+                        // console.log(obj)
 
                         let distance = obj['rows'][0]['elements'][0]['distance'].value
                         // console.log(distance)
                         if (respostaLocal.status == 200) {
-                            // console.warn('Localização encontrada!');
+                            // console.log('Localização encontrada!');
                             if (distance <= distanceBase) {
-                                console.warn(distance);
+                                console.log(distance);
                                 //this.setState({ localizacaoCurso: dadosLocalizacao })
-                                // console.warn(distance);
-                                // console.warn('Localização está no alcance');
-                                // console.warn(this.state.listaCurso);
+                                // console.log(distance);
+                                // console.log('Localização está no alcance');
+                                // console.log(this.state.listaCurso);
 
                                 let stringCurso = JSON.stringify(dadosCurso);
                                 var objCurso = JSON.parse(stringCurso);
                                 //var lugarCurso = objCurso[u]['idEmpresaNavigation']['idLocalizacaoNavigation']['idCepNavigation'].cep1
 
                                 var curso = objCurso[i]
-                                // console.warn(curso)
+                                // console.log(curso)
                                 listaCursos.push(curso);
 
                             }
                             else if (distance > distanceBase) {
-                                console.warn(distance);
-                                console.warn('Localização fora do alcance');
+                                console.log('distance');
+                                console.log(distance);
+                                console.log('Localização fora do alcance');
                             }
                         }
-                        // console.warn('Curso encontrado');
+                        // console.log('Curso encontrado');
 
                         i++
                     } while (i < tamanhoJson);
@@ -152,7 +159,7 @@ export default function CursosRapidos() {
                     }
 
                     // this.setState({ contadorCurso: i })
-                    // console.warn(this.state.contadorCurso)
+                    // console.log(this.state.contadorCurso)
                     // console.log('Lista')
                     // console.log(resposta)
                     // setListaCursos(resposta.data)
@@ -232,6 +239,7 @@ export default function CursosRapidos() {
                     console.log('listarUsuario')
                     console.log(resposta)
                     setListaUsuario(resposta.data)
+                    console.log(resposta.data)
                     // setNome(resposta.data.nome)
                     // console.log('aqui' + resposta.data)
 

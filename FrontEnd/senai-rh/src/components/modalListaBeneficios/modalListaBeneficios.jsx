@@ -1,12 +1,12 @@
-import React, { useRef, useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Modal from 'react-modal';
 import coracao from '../../assets/img/coracao.svg'
-import relogio from '../../assets/img/relogio.svg'
-import local from '../../assets/img/local.svg'
-import data from '../../assets/img/data.svg'
-import estrelaSozinha from '../../assets/img/estrelaSozinha.svg'
-import modelo from '../../assets/img/modelo.svg'
+// import relogio from '../../assets/img/relogio.svg'
+// import local from '../../assets/img/local.svg'
+// import data from '../../assets/img/data.svg'
+// import estrelaSozinha from '../../assets/img/estrelaSozinha.svg'
+// import modelo from '../../assets/img/modelo.svg'
 import calendar from '../../assets/img/calendar.svg'
 import map from '../../assets/img/map.svg'
 import "../../assets/css/modalListaCursos.css"
@@ -14,7 +14,6 @@ import "../../assets/css/modalListaBeneficios.css"
 import api from '../../services/api';
 import { parseJwt } from '../../services/auth';
 import coin from "../../assets/img/coin 1.png"
-import axios from 'axios';
 import ReactStars from "react-rating-stars-component";
 // import './aparecer'
 
@@ -25,7 +24,7 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
     const [idDesconto, setIdDesconto] = useState(0)
     const [avaliacaoDesconto, setAvaliacaoDesconto] = useState(0)
     const [comentarioDesconto1, setComentarioDesconto1] = useState('')
-    const [valorAvalicao, setValorAvalicao] = useState(1)    
+    const [valorAvalicao, setValorAvalicao] = useState(1)
 
     const avaliacao2 = () => {
         setValorAvalicao(2)
@@ -105,7 +104,7 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                 console.log("cheguei Aqui lau")
                 listarComentarioBeneficio(comentario)
                 // comentario(listaComentarioBeneficio)
-                
+
             })
             .catch(erro => console.log(erro))
     }
@@ -249,14 +248,20 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                                 <div className='lista_descricao_beneficio_g2'>
                                     {beneficio.descricaoDesconto}
                                 </div>
+                                <div className='cupomBtn_g2'>
+                                    <div className='numeroCupom_g2'>
+                                        <div>
 
-                                <div className='numeroCupom_g2'>
-                                    <p> Seu cupom é:{beneficio.numeroCupom}</p>
-                                </div>
-                                <div className='btn_cadastrarComentario_beneficio_g2'>
+                                            <p> Seu cupom é:{beneficio.numeroCupom}</p>
+                                        </div>
+                                    </div>
 
-                                    <img src={coracao} alt="" />
-                                    <button id='show-or-hide' type="submit" className="botaoCadastroComentarioBeneficio_g2">Pegue</button>
+
+                                    <div className='btn_cadastrarComentario_beneficio_g2'>
+
+                                        {/* <img src={coracao} alt="" /> */}
+                                        <button id='show-or-hide' type="submit" className="botaoCadastroComentarioBeneficio_g2">Pegue</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
