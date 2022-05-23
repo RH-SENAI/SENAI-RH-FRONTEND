@@ -6,7 +6,7 @@ import '../../assets/css/login.css'
 import { useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { parseJwt } from "../../servicess/auth";
+import { parseJwt } from "../../services/auth";
 
 
 export default function Login() {

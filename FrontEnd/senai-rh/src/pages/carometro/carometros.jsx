@@ -3,15 +3,15 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
 import "../../assets/css/carometro.css";
-import HeaderFuncionario from '../../componentss/headers/headerFuncionario';
-import Footer from '../../componentss/footer';
+import HeaderFuncionario from '../../components/headers/headerFuncionario';
+import Footer from '../../components/footer';
 import imgPadrao from '../../assets/img/imgPadrao.png'
 import topCarometro from '../../assets/img/topCarometro.png'
-import { ModalAcompanhar } from '../../componentss/modals/modalAcompanhars';
+import { ModalAcompanhar } from '../../components/modal/modalAcompanhar';
 import {
     parseJwt
     // usuarioAutenticado
-} from '../../servicess/auth';
+} from '../../services/auth';
 
 //import Modal from 'react-modal';
 
