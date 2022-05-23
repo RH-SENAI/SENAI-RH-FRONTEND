@@ -7,7 +7,7 @@ import HeaderFuncionario from '../../components/header/headerFuncionario';
 import Footer from '../../components/footer';
 import imgPadrao from '../../assets/img/imgPadrao.png'
 import topCarometro from '../../assets/img/topCarometro.png'
-import { ModalAcompanhar } from '../../components/modal/ModalAcompanhar';
+import { ModalAcompanhar } from '../../components/modal/modalAcompanhar';
 import {
     parseJwt
     // usuarioAutenticado
@@ -120,7 +120,9 @@ export default function Carometro() {
     //         .catch(erro => console.log(erro))
     // }
 
-    // function ExcluirPerfil(idUsuario) {
+
+
+
     //     axios.delete('http://localhost:5000/api/Excluir/' + idUsuario, {
     //         headers: {
 
