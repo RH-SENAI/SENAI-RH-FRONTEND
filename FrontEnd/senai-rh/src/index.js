@@ -4,26 +4,33 @@ import ReactDOM from 'react-dom';
 // import App from './Pages/Home/App';
 import {
   Route,
-  BrowserRouter as Router, Redirect, 
+
+  BrowserRouter as Router, Redirect,
   Switch
 } from 'react-router-dom';
-import { parseJwt, usuarioAutenticado } from './services/auth';
 import './index.css';
-import cadastro from './pages/cadastrarUsuario/CadastrarUsuario';
+import cadastro from './pages/cadastrarUsuario/cadastrarUsuario';
 import TelaAcesso from './pages/acesso/telaAcesso'
 import atualizarPerfil from './pages/atualizarUsuario/atualizarUsuario';
-import reportWebVitals from './reportWebVitals';
 import democratizacao from './pages/democratizacao/democratizacao';
 import democratizacaoAdm from './pages/democratizacao/democratizacaoAdm';
 import redirecionar from './pages/redirecionar/redirecionar';
 import redirecionarADM from './pages/redirecionar/redirecionarADM';
 import decisao from './pages/democratizacao/decisoes';
 import rankingAcompanhar from './pages/ranking/rankingAcompanhar';
-import Carometro from './pages/carometro/Carometro';
+import Carometro from './pages/carometro/carometros';
 import Login from './pages/login/login.jsx';
 import Dashboard from './pages/dashboard/dashboardFuncionario';
-// import reportWebVitals from './reportWebVitals';
-
+import './assets/css/gp1style.css';
+import reportWebVitals from './reportWebVitals';
+import CadastrarAtividades from './pages/cadastrarAtividades/cadastrarAtividades';
+import ValidarAtividades from './pages/validarAtividades/validarAtividades';
+import AlterarSenha from './pages/alterarSenha/alterarSenha';
+import AlterarSenhaRec from './pages/alterarSenha/alterarSenhaRec';
+import esqueciMinhaSenha from './pages/esqueciMinhaSenha/esqueciMinhaSenha'
+import Ranking from './pages/ranking/rankingUsuarios'
+import Atividades from './pages/todasAtividades/todasAtividades.jsx';
+import { parseJwt, usuarioAutenticado } from './services/auth';
 
 const Logado = ({ component: Component }) => (
   <Route
@@ -76,18 +83,26 @@ const routing = (
   <Router>
     <div>
       <Switch>
-      <PermissaoGestor path="/carometro" component={Carometro}/>
-      <Route exact path="/" component={TelaAcesso}/>
-      <Route path="/login" component={Login}/>
-      <PermissaoAdm path="/cadastro" component={cadastro}/> 
-      <PermissaoAdm path ="/atualizar" component={atualizarPerfil}/>
-      <Logado path="/democratizacao/:id" component={democratizacao}/>
-      <PermissaoGestor exact path="/democratizacaoAdm" component={democratizacaoAdm}/>
-      <Logado path="/redirecionar" component={redirecionar} />
-      <Logado path="/dashboard" component={Dashboard} />
-      <Logado path="/redirecionarADM" component={redirecionarADM} />
-      <Logado path="/decisao" component={decisao} />
-      <Logado path="/rankingAcompanhar" component={rankingAcompanhar} />
+        <PermissaoGestor path="/carometro" component={Carometro} />
+        <Route exact path="/" component={TelaAcesso} />
+        <Route path="/login" component={Login} />
+        <PermissaoAdm path="/cadastro" component={cadastro} />
+        <PermissaoAdm path="/atualizar" component={atualizarPerfil} />
+        <Logado path="/democratizacao/:id" component={democratizacao} />
+        <PermissaoGestor exact path="/democratizacaoAdm" component={democratizacaoAdm} />
+        <Logado path="/dashboard" component={Dashboard} />
+        <Logado path="/redirecionarADM" component={redirecionarADM} />
+        <Logado path="/decisao" component={decisao} />
+        <Logado path="/rankingAcompanhar" component={rankingAcompanhar} />
+
+        <PermissaoGestor path="/CadastrarAtividades" component={CadastrarAtividades} />
+        <PermissaoGestor path="/ValidarAtividades" component={ValidarAtividades} />
+        <PermissaoGestor path="/TodasAtividades" component={Atividades} />
+        <PermissaoGestor path="/RankingUsuarios" component={Ranking} />
+        <Route path="/AlterarSenhaRec" component={AlterarSenhaRec} />
+        <Route path="/EsqueciMinhaSenha" component={esqueciMinhaSenha} />
+        <Logado path="/Redirecionamento" component={redirecionar} />
+        <Logado path="/AlterarSenha" component={AlterarSenha} />
       </Switch>
     </div>
   </Router>
@@ -98,7 +113,8 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
+ReactDOM.render(
+  routing, document.getElementById('root')
+);
 reportWebVitals();

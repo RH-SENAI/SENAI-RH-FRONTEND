@@ -4,7 +4,7 @@ import "../../assets/css/rankingAcompanhar.css"
 import FotoRank from '../../assets/img/fotoRank.svg'
 import Trofeu from '../../assets/img/Trofeus.svg'
 import 'animate.css';
-import HeaderFuncionario from "../../components/header/headerFuncionario";
+import HeaderFuncionario from "../../components/headers/headerFuncionario";
 import React from 'react';
 import { useEffect, useState } from "react"
 import axios from 'axios';

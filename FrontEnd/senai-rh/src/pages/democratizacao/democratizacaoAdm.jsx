@@ -6,7 +6,7 @@ import "../../assets/css/democratizacao.css";
 import "../../assets/css/democratizacaoAdm.css";
 import Footer from '../../components/footer';
 import FotoPerfil from '../../assets/img/perfilVazio.svg'
-import Header from '../../components/header/headerFuncionario'
+import Header from '../../components/headers/headerFuncionario'
 import imgPadrao from '../../assets/img/imgPadrao.png'
 import ImgDemocratizacaoAdm from '../../assets/img/ImgDemocratizacao.svg'
 import { ToastContainer, toast } from 'react-toastify';

@@ -13,6 +13,7 @@ export default function Login() {
     const [cpfUsuario, setCPFUsuario] = useState('');
     const [senhaUsuario, setSenhaUsuario] = useState('');
     const notify_Logar_Failed = () => toast.error("Email ou Senha inválidos!")
+//   nathalia novais guedes silva
     const history = useHistory();
     
     
@@ -22,8 +23,8 @@ export default function Login() {
         event.preventDefault();
 
 
-        axios.post('https://apigrupo3.azurewebsites.net/api/Login', {
-            cpf: cpfUsuario,
+        axios.post('http://apirhsenaigp1.azurewebsites.net/api/Login', {
+            CPF: cpfUsuario,
             senha: senhaUsuario
         }
         )
@@ -35,7 +36,7 @@ export default function Login() {
                         history.push('/AlterarSenha')
                     }
                     else                      
-                    history.push('/dashboard')
+                    history.push('/CadastrarAtividades')
                 }
 
             })

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "../../assets/css/dashboard.css"
-import Header from "../../components/header/headerFuncionario"
+import Header from "../../components/headers/headerFuncionario"
 import Footer from "../../components/footer"
 import grafico from "../../assets/img/grafico.png"
 import estrela from "../../assets/img/star.png"

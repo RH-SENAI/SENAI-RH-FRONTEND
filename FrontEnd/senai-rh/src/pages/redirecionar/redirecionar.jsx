@@ -6,7 +6,7 @@ import pig from '../../assets/img/Pig.png'
 import tag from '../../assets/img/tag.png'
 import '../../assets/css/redirecionar.css'
 import { Link } from 'react-router-dom';
-import HeaderFuncionario from '../../components/header/headerFuncionario';
+import HeaderFuncionario from '../../components/headers/headerFuncionario';
 
 export default function Redirect() {
 

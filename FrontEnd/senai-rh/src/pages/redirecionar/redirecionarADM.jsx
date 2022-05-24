@@ -4,7 +4,7 @@ import img2 from "../../assets/img/2.png"
 import img3 from "../../assets/img/3.png"
 import img4 from "../../assets/img/4.png"
 import Footer from "../../components/footer";
-import HeaderAdm from "../../components/header/headerAdm";
+import HeaderAdm from "../../components/headers/headerAdm";
 
 export const RedirecionarADM = () => {
 
