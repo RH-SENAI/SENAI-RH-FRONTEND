@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../assets/css/gp1style.css'
 import React from 'react';
+import Footer from "../../components/footer"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Logo from "../../assets/img/logo1.svg"
@@ -11,7 +12,7 @@ import {
     parseJwt
     // usuarioAutenticado
 } from '../../services/auth';
-import Header from '../../components/headers/headerAdm'
+import Header from '../../components/header/headerAdm'
 import { useHistory } from 'react-router-dom'
 
 
@@ -227,160 +228,163 @@ export default function CadastrarAtividades() {
 
 
     return (
-        <div className="div_container">
-            <Header />
-            <Modall usuarios={listaUsuarios} showModal={showModal} setShowModal={setShowModal} setProps={setListaUsuarioSelecionados} value={listaUsuarioSelecionados} />
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
-            <main className="container_">
-                <div className="G1_Left_CadastroAtividade">
-                    <div className="G1_banner_CadastroAtividade">
-                        {/* <img src={Logo} alt="Logo do senai" className="G1_logo_CadastroAtividade" /> */}
-                        <img src={bannerCadastrarAtividade} className="G1_bannerCadastroAtividade" alt="" />
-                        <p className="G1_p_senai">© 2022 Sesi Senai RH</p>
-                    </div>
-                </div>
-                <div className="G1_Right_CadastroAtividade">
-                    <div className="G1_textCadastrar">
-                        <h1>CADASTRO</h1>
-                        <h2>DE ATIVIDADE</h2>
-                    </div>
-                    <form className="G1_form_Cadastrar" onSubmit={CadastrarAtividade} >
-                        <div className='G1_organizar_form'>
-                            <div className='G1_organizar_inputs'>
-                                <div className="G1_inputLabel_Cadastrar">
-                                    <input value={nomeAtividade}
-                                        onChange={(campo) => setNomeAtividade(campo.target.value)} type="text" name="titulo" placeholder="Digite o título da atividade" />
-                                    <label htmlFor="titulo">Título da atividade</label>
-                                </div>
-                                <div className="G1_inputLabel_Cadastrar">
-                                    <input value={recompensaMoeda}
-                                        onChange={(campo) => setRecompensaMoeda(campo.target.value)} type="number" name="moedas" placeholder="Digite a premiação em moedas" />
-                                    <label htmlFor="moedas">Prêmio em moedas</label>
-                                </div>
-                            </div>
-                            <div className='G1_organizar_inputs'>
-                                <div className="G1_inputLabel_Cadastrar">
-                                    <input value={descricaoAtividade}
-                                        onChange={(campo) => setDescricaoAtividade(campo.target.value)} type="text" name="titulo" placeholder="Digite seu email" />
-                                    <label htmlFor="titulo">Descrição da atividade</label>
-                                </div>
-                                <div className="G1_inputLabel_Cadastrar">
-                                    <input value={recompensaTrofeu}
-                                        onChange={(campo) => setRecompensaTrofeu(campo.target.value)} type="number" name="moedas" placeholder="Digite sua senha" />
-                                    <label htmlFor="moedas">Prêmio em troféus</label>
-                                </div>
-                            </div>
-                            <div className='G1_organizar_inputs'>
-                                <button className='G1_btn_modal' onClick={() => {OpenModal(); console.log(listaUsuarioSelecionados); limparArray()}} type="button" >Selecione um Usuário</button>
-                            </div>
+        <div>
+            <div className="div_container">
+                <Header />
+                <Modall usuarios={listaUsuarios} showModal={showModal} setShowModal={setShowModal} setProps={setListaUsuarioSelecionados} value={listaUsuarioSelecionados} />
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
+                <main className="container_">
+                    <div className="G1_Left_CadastroAtividade">
+                        <div className="G1_banner_CadastroAtividade">
+                            {/* <img src={Logo} alt="Logo do senai" className="G1_logo_CadastroAtividade" /> */}
+                            <img src={bannerCadastrarAtividade} className="G1_bannerCadastroAtividade" alt="" />
+                            <p className="G1_p_senai">© 2022 Sesi Senai RH</p>
                         </div>
-                        <div className='G1_div_ToggleValidar'>
-                            <div className="G1_organizar_toggle">
-                                <label classname="G1_label_precisaValidar">Precisa Validar</label>
-                                <div className='G1_organizar_switchBtn'>
-                                    <input className="checkbox_switch"
-                                        type="checkbox"
-                                        id="switch"
-                                        name="validar"
-                                        value={necessarioValidar}
-                                        onClick={checkValidar}
-                                    />
-                                    {necessarioValidar && (
-                                        <div>
-                                            <label className='label_switch active' htmlFor="switch">Toggle</label>
-                                            <p className='text_switch'>
-                                                SIM
-                                            </p>
-                                        </div>
-                                    )}
-                                    {!necessarioValidar && (
-                                        <div>
-                                        <label className='label_switch' htmlFor="switch">Toggle</label>
-                                        <p className='text_switch'>
-                                            NÃO
-                                        </p>
-                                    </div>
-                                    )}
-                                </div>
-                            </div>
-                            <div className="G1_organizar_toggle">
-                                <label classname="G1_label_precisaValidar">Obrigatória</label>
-                                <div className='G1_organizar_switchBtn'>
-                                    <input className="checkbox_switch"
-                                        type="checkbox"
-                                        id="switch2"
-                                        name="obrigatorio"
-                                        value={obrigatorio}
-                                        onClick={checkObrigatorio}
-                                    />
-                                    {/* <label className='label_switch' htmlFor="switch2">Toggle</label> */}
-                                    {obrigatorio && (
-                                        <div>
-                                            <label className='label_switch active' htmlFor="switch2">Toggle</label>
-                                            <p className='text_switch'>
-                                                SIM
-                                            </p>
-                                        </div>
-                                    )}
-                                    {!obrigatorio && (
-                                        <div>
-                                        <label className='label_switch' htmlFor="switch2">Toggle</label>
-                                        <p className='text_switch'>
-                                            NÃO
-                                        </p>
-                                    </div>
-                                    )}
-                                </div>
-                            </div>
-                            <div className="G1_organizar_toggle">
-                                <label classname="G1_label_precisaValidar">Em equipe</label>
-                                <div className='G1_organizar_switchBtn'>
-                                    <input className="checkbox_switch"
-                                        type="checkbox"
-                                        id="switch3"
-                                        name="equipe"
-                                        value={equipe}
-                                        onClick={checkEquipe}
-                                    />
-                                    {/* <label className='label_switch' htmlFor="switch3">Toggle</label> */}
-                                    {equipe && (
-                                        <div>
-                                            <label className='label_switch active' htmlFor="switch3">Toggle</label>
-                                            <p className='text_switch'>
-                                                SIM
-                                            </p>
-                                        </div>
-                                    )}
-                                    {!equipe && (
-                                        <div>
-                                        <label className='label_switch' htmlFor="switch3">Toggle</label>
-                                        <p className='text_switch'>
-                                            NÃO
-                                        </p>
-                                    </div>
-                                    )}
-                                </div>
-                            </div>
+                    </div>
+                    <div className="G1_Right_CadastroAtividade">
+                        <div className="G1_textCadastrar">
+                            <h1>CADASTRO</h1>
+                            <h2>DE ATIVIDADE</h2>
                         </div>
-                        {isLoading && (
-                            <button className='G1_btn_Cadastrar' type="submit" >Carregando...</button>
-                        )}
-                        {!isLoading && (
-                            <button className='G1_btn_Cadastrar' type="submit" >Cadastrar</button>
-                        )}
-                    </form>
-                </div>
-            </main>
+                        <form className="G1_form_Cadastrar" onSubmit={CadastrarAtividade} >
+                            <div className='G1_organizar_form'>
+                                <div className='G1_organizar_inputs'>
+                                    <div className="G1_inputLabel_Cadastrar">
+                                        <input value={nomeAtividade}
+                                            onChange={(campo) => setNomeAtividade(campo.target.value)} type="text" name="titulo" placeholder="Digite o título da atividade" />
+                                        <label htmlFor="titulo">Título da atividade</label>
+                                    </div>
+                                    <div className="G1_inputLabel_Cadastrar">
+                                        <input value={recompensaMoeda}
+                                            onChange={(campo) => setRecompensaMoeda(campo.target.value)} type="number" name="moedas" placeholder="Digite a premiação em moedas" />
+                                        <label htmlFor="moedas">Prêmio em moedas</label>
+                                    </div>
+                                </div>
+                                <div className='G1_organizar_inputs'>
+                                    <div className="G1_inputLabel_Cadastrar">
+                                        <input value={descricaoAtividade}
+                                            onChange={(campo) => setDescricaoAtividade(campo.target.value)} type="text" name="titulo" placeholder="Digite seu email" />
+                                        <label htmlFor="titulo">Descrição da atividade</label>
+                                    </div>
+                                    <div className="G1_inputLabel_Cadastrar">
+                                        <input value={recompensaTrofeu}
+                                            onChange={(campo) => setRecompensaTrofeu(campo.target.value)} type="number" name="moedas" placeholder="Digite sua senha" />
+                                        <label htmlFor="moedas">Prêmio em troféus</label>
+                                    </div>
+                                </div>
+                                <div className='G1_organizar_inputs'>
+                                    <button className='G1_btn_modal' onClick={() => { OpenModal(); console.log(listaUsuarioSelecionados); limparArray() }} type="button" >Selecione um Usuário</button>
+                                </div>
+                            </div>
+                            <div className='G1_div_ToggleValidar'>
+                                <div className="G1_organizar_toggle">
+                                    <label classname="G1_label_precisaValidar">Precisa Validar</label>
+                                    <div className='G1_organizar_switchBtn'>
+                                        <input className="checkbox_switch"
+                                            type="checkbox"
+                                            id="switch"
+                                            name="validar"
+                                            value={necessarioValidar}
+                                            onClick={checkValidar}
+                                        />
+                                        {necessarioValidar && (
+                                            <div>
+                                                <label className='label_switch active' htmlFor="switch">Toggle</label>
+                                                <p className='text_switch'>
+                                                    SIM
+                                                </p>
+                                            </div>
+                                        )}
+                                        {!necessarioValidar && (
+                                            <div>
+                                                <label className='label_switch' htmlFor="switch">Toggle</label>
+                                                <p className='text_switch'>
+                                                    NÃO
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="G1_organizar_toggle">
+                                    <label classname="G1_label_precisaValidar">Obrigatória</label>
+                                    <div className='G1_organizar_switchBtn'>
+                                        <input className="checkbox_switch"
+                                            type="checkbox"
+                                            id="switch2"
+                                            name="obrigatorio"
+                                            value={obrigatorio}
+                                            onClick={checkObrigatorio}
+                                        />
+                                        {/* <label className='label_switch' htmlFor="switch2">Toggle</label> */}
+                                        {obrigatorio && (
+                                            <div>
+                                                <label className='label_switch active' htmlFor="switch2">Toggle</label>
+                                                <p className='text_switch'>
+                                                    SIM
+                                                </p>
+                                            </div>
+                                        )}
+                                        {!obrigatorio && (
+                                            <div>
+                                                <label className='label_switch' htmlFor="switch2">Toggle</label>
+                                                <p className='text_switch'>
+                                                    NÃO
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                                <div className="G1_organizar_toggle">
+                                    <label classname="G1_label_precisaValidar">Em equipe</label>
+                                    <div className='G1_organizar_switchBtn'>
+                                        <input className="checkbox_switch"
+                                            type="checkbox"
+                                            id="switch3"
+                                            name="equipe"
+                                            value={equipe}
+                                            onClick={checkEquipe}
+                                        />
+                                        {/* <label className='label_switch' htmlFor="switch3">Toggle</label> */}
+                                        {equipe && (
+                                            <div>
+                                                <label className='label_switch active' htmlFor="switch3">Toggle</label>
+                                                <p className='text_switch'>
+                                                    SIM
+                                                </p>
+                                            </div>
+                                        )}
+                                        {!equipe && (
+                                            <div>
+                                                <label className='label_switch' htmlFor="switch3">Toggle</label>
+                                                <p className='text_switch'>
+                                                    NÃO
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                            {isLoading && (
+                                <button className='G1_btn_Cadastrar' type="submit" >Carregando...</button>
+                            )}
+                            {!isLoading && (
+                                <button className='G1_btn_Cadastrar' type="submit" >Cadastrar</button>
+                            )}
+                        </form>
+                    </div>
+                </main>
+            </div>
+            <Footer />
         </div>
     );
 }

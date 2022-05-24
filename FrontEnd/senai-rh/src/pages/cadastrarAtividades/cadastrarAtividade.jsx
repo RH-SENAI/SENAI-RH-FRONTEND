@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../assets/css/gp1style.css'
 import Rodape from '../../components/Footer';
-import Header from '../../components/headers/headerFuncionario';
+import Header from '../../components/header/headerFuncionario';
 import { Link, useHistory } from 'react-router-dom'
-import { Modall } from '../../components/Modal'
+import { Modall } from '../../components/modal'
 import { ModallValidar } from '../../components/modalValidar'
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';

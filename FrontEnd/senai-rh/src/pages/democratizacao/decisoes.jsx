@@ -9,7 +9,7 @@ import "../../assets/css/decisao.css";
 import Footer from '../../components/footer';
 import FotoPerfil from '../../assets/img/perfilVazio.svg'
 import imgPadrao from '../../assets/img/imgPadrao.png'
-import Header from '../../components/headers/headerFuncionario'
+import Header from '../../components/header/headerFuncionario'
 import ImgDemocratizacaoAdm from '../../assets/img/imgDecisao.svg'
 
 export default function Decisao() {

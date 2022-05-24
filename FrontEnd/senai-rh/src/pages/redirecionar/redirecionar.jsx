@@ -6,7 +6,7 @@ import pig from '../../assets/img/Pig.png'
 import tag from '../../assets/img/tag.png'
 import '../../assets/css/redirecionar.css'
 import { Link } from 'react-router-dom';
-import HeaderFuncionario from '../../components/headers/headerFuncionario';
+import HeaderFuncionario from '../../components/header/headerFuncionario';
 
 export default function Redirect() {
 
@@ -29,7 +29,7 @@ export default function Redirect() {
                             <div className='G1_ArticleText'>
                                 <h3> Acompanhamento </h3>
                                 <p>Acesse aqui para acompanhar seus funcionários, vizualizando seus respectivos níveis de satifação e muito mais!</p>
-                                <Link to='/'><button className='G1_btn_Cadastrar' type="button"> Entrar </button></Link>
+                                <Link to='/dashboard'><button className='G1_btn_Cadastrar' type="button"> Entrar </button></Link>
                             </div>
                         </article>
                         <article className="G1_box_Article">
@@ -45,7 +45,7 @@ export default function Redirect() {
                             <div className='G1_ArticleText'>
                                 <h3> Minhas Vantagens </h3>
                                 <p> Acesse aqui para vizualizar suas vantagens disponíveis e garantir seus descotnos e vantagens!</p>
-                                <Link to='/'><button className='G1_btn_Cadastrar' type="button"> Entrar </button></Link>
+                                <Link to='/meusFavoritos'><button className='G1_btn_Cadastrar' type="button"> Entrar </button></Link>
                             </div>
                         </article>
                     </div>

@@ -2,7 +2,7 @@
 // import axios from 'axios';
 import '../../assets/css/gp1style.css'
 import Rodape from '../../components/Footer';
-import Header from '../../components/headers/headerFuncionario';
+import Header from '../../components/header/headerFuncionario';
 // import { Link } from 'react-router-dom'
 
 export default function ValidarAtividades() {

@@ -18,10 +18,18 @@ import redirecionar from './pages/redirecionar/redirecionar';
 import redirecionarADM from './pages/redirecionar/redirecionarADM';
 import decisao from './pages/democratizacao/decisoes';
 import rankingAcompanhar from './pages/ranking/rankingAcompanhar';
-import Carometro from './pages/carometro/carometros';
-import Login from './pages/login/login.jsx';
+import Carometro from './pages/carometro/carometro';
+import Login from './pages/login/login';
 import Dashboard from './pages/dashboard/dashboardFuncionario';
 import './assets/css/gp1style.css';
+import CursosRapidos from './pages/cursos/cursosRapidos';
+import CadastrarCursos from './pages/cursos/cadastrarCursos';
+import ListaBeneficios from './pages/vantagens/listaBeneficios';
+import CadastroBeneficios from './pages/vantagens/cadastroBeneficio';
+import CadastrarEmpresa from './pages/empresas/cadastrarEmpresas';
+import Perfil from './pages/perfil/perfil';
+import MeusFavoritos from './pages/favorito/favorito';
+import RequisicaoFuncionario from './pages/requisicaoFuncionarios/requisicaoFuncionario';
 import reportWebVitals from './reportWebVitals';
 import CadastrarAtividades from './pages/cadastrarAtividades/cadastrarAtividades';
 import ValidarAtividades from './pages/validarAtividades/validarAtividades';
@@ -31,6 +39,7 @@ import esqueciMinhaSenha from './pages/esqueciMinhaSenha/esqueciMinhaSenha'
 import Ranking from './pages/ranking/rankingUsuarios'
 import Atividades from './pages/todasAtividades/todasAtividades.jsx';
 import { parseJwt, usuarioAutenticado } from './services/auth';
+
 
 const Logado = ({ component: Component }) => (
   <Route
@@ -103,6 +112,14 @@ const routing = (
         <Route path="/EsqueciMinhaSenha" component={esqueciMinhaSenha} />
         <Logado path="/Redirecionamento" component={redirecionar} />
         <Logado path="/AlterarSenha" component={AlterarSenha} />
+        <Route  path="/cursosRapidos" component={CursosRapidos} />
+        <Route  path="/cadastrarCursos" component={CadastrarCursos} />
+        <Route  path="/beneficios" component={ListaBeneficios} />
+        <Route  path="/cadastrarEmpresa" component={CadastrarEmpresa} />
+        <Route  path="/perfil" component={Perfil} />
+        <Route  path="/meusFavoritos" component={MeusFavoritos} />
+        <Route  path="/requisicaoFuncionario" component={RequisicaoFuncionario} />
+        <Route  path="/beneficiosCadastrar" component={CadastroBeneficios} />
       </Switch>
     </div>
   </Router>

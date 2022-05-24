@@ -4,7 +4,7 @@ import { useState } from 'react';
 import "../../assets/css/democratizacao.css";
 import Footer from '../../components/footer';
 import FotoPerfil from '../../assets/img/perfilVazio.svg'
-import Header from '../../components/headers/headerFuncionario'
+import Header from '../../components/header/headerFuncionario'
 import ImgDemocratizacao from '../../assets/img/ImgDemocratizacao.svg'
 import imgPadrao from '../../assets/img/imgPadrao.png'
 import moment from 'moment';

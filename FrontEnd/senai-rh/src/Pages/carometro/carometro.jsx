@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react';
 import "../../assets/css/carometro.css";
-import HeaderFuncionario from '../../components/headers/headerFuncionario';
+import HeaderFuncionario from '../../components/header/headerFuncionario';
 import Footer from '../../components/footer';
 import imgPadrao from '../../assets/img/imgPadrao.png'
 import topCarometro from '../../assets/img/topCarometro.png'

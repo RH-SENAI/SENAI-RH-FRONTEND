@@ -220,6 +220,13 @@
 .container_atividades {
     display: flex;
     justify-content: center;
+    /* height: 100vh; */
+
+}
+
+.container_ranking {
+    display: flex;
+    justify-content: center;
     height: 100vh;
 
 }
@@ -235,7 +242,7 @@
     /* height: 100vh; */
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     width: 75vw;
     /* background-color: #08b810;     */
 }
@@ -250,7 +257,7 @@
     font-weight: 600;
     font-size: 50px;
     color: #2A2E32;
-    margin: 5vh 0;
+    margin: 4rem     0;
 }
 
 .G1_container_atividades {

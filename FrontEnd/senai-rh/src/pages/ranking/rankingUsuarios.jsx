@@ -6,10 +6,12 @@ import { Modall } from '../../components/Modal'
 import React from 'react';
 import { ToastContainer, toast, Icons } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Header from '../../components/headers/headerAdm'
+import Header from '../../components/header/headerAdm'
 import FotoRank from '../../assets/img/fotoRank.svg'
 import Trofeu from '../../assets/img/Trofeus.svg'
 import moedas from '../../assets/img/moedinha.svg'
+import Footer from "../../components/footer"
+
 
 
 export default function TodasAtividades() {
@@ -49,7 +51,7 @@ export default function TodasAtividades() {
         <div className="G1_tela_atividades_container">
             {/* <Modall atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)} showModal={showModal} setShowModal={setShowModal} /> */}
             <Header />
-            <main className="container_atividades">
+            <main className="container_ranking">
                 <div className="G1_organizar_main">
                     <h1 className="G1_titulo_atividades">Ranking</h1>
                     <div className="G1_container_ranking">
@@ -73,6 +75,7 @@ export default function TodasAtividades() {
                     </div>
                 </div>
             </main>
+            <Footer/>
         </div>
     );
 

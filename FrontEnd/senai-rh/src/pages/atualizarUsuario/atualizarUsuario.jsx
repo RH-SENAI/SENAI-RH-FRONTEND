@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import '../../assets/css/atualizarUsuario.css'
 import Footer from '../../components/footer';
-import Header from '../../components/headers/headerAdm'
+import Header from '../../components/header/headerAdm'
 import { Navigate, useNavigate } from 'react-router-dom';
 import fotoAtualizar from "../../assets/img/atualizarLight.svg"
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import HeaderFuncionario from "../../components/headers/headerFuncionario";
+import HeaderFuncionario from "../../components/header/headerFuncionario";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

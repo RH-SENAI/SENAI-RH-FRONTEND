@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom'
 import '../../assets/css/header.css'
 import logo from '../../assets/img/logo.svg'
 import Perfil from '../../assets/img/perfil.png'
+import { useHistory } from "react-router-dom";
 import logout from '../../assets/img/logout.png'
 import setaBaixo from '../../assets/img/seta-para-baixo.png'
-import { useState } from 'react'
 
 
 export default function HeaderFuncionario() {
@@ -12,11 +12,19 @@ export default function HeaderFuncionario() {
     // const ToggleMode = () => {
     //     setMode(!active)
     // }
+
+    let history = useHistory();
+    function logOut() {
+        localStorage.removeItem("usuario-login");
+
+        history.push("/");
+    }
+
     return (
         <header className="header_g2">
             <div className='container container_header_g2' >
                 <div className='logo_header_g2'>
-                    <Link to="/"> <img  src={logo} alt="Logo do Senai" /></Link>
+                    <Link to="/redirecionamento"> <img src={logo} alt="Logo do Senai" /></Link>
                 </div>
 
 
@@ -26,6 +34,10 @@ export default function HeaderFuncionario() {
                     <div class='hidden_header_g2'>
                         <Link className="text_link_header_g2" to='/Beneficios'> <span>Vantagens</span></Link>
                         <Link className="text_link_header_g2" to='/CursosRapidos'> <span> Cursos</span></Link>
+                        <Link className="text_link_header_g2" to='/BeneficiosCadastrar' >  <span> Cadastrar Vantagem </span> </Link>
+                        <Link className="text_link_header_g2" to='/CadastrarCursos' > <span> Cadastrar Cursos </span>  </Link>
+                        <Link className="text_link_header_g2" to='/cadastrarEmpresa' > <span> Cadastrar Empresa </span>  </Link>
+                        <Link className="text_link_header_g2" to='/requisicaoFuncionario' > <span> Requisições de Funcionarios  </span>  </Link>
 
                     </div>
                 </div>
@@ -33,11 +45,9 @@ export default function HeaderFuncionario() {
                     <p class='input_header_g2'>Acompanhar<img src={setaBaixo} /></p>
                     <input type='hidden' name='some_name_to_form' />
                     <div class='hidden_header_g2'>
-                        <Link className="text_link_header_g2" to='/carometro' ><span>Carômetro</span></Link>
-                        <Link className="text_link_header_g2" to='/dashboard'> <span>Dashboard</span></Link>
-                        <Link className="text_link_header_g2" to='/democratizacaoAdm'> <span>Democratização</span></Link>
-                        <Link className="text_link_header_g2" to='/decisao'> <span>Decisões</span></Link>
-                        <Link className="text_link_header_g2" to='/cadastro'> <span>Cadastro de Usuario</span></Link>
+                        <Link className="text_link_header_g2" to='/cadastrarCursos' ><span>Carômetro</span></Link>
+                        <Link className="text_link_header_g2" > <span>Dashboard</span></Link>
+                        <Link className="text_link_header_g2" > <span>Democratização</span></Link>
                     </div>
                 </div>
 
@@ -47,11 +57,11 @@ export default function HeaderFuncionario() {
                 </div>
 
                 <div className="img_perfil_g2" >
-                    <Link to="/perfil"> <img  src={Perfil}  alt="Meu Perfil" /> </Link> 
+                    <Link to="/perfil"> <img src={Perfil} alt="Meu Perfil" /> </Link>
                 </div>
 
 
-                <img className='img_logout_header_g2' src={logout} alt="" />
+                <img className='img_logout_header_g2' onClick={logOut} src={logout} alt="logout" />
             </div>
         </header>
     )

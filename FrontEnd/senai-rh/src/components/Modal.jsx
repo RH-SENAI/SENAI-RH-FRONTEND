@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 // import Modal from 'react-modal';
-import '../Assets/css/gp1style.css'
+import '../assets/css/gp1style.css'
 
 export const Modall = ({ showModal, setShowModal, atividade }) => {
     const modalRef = useRef();

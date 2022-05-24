@@ -6,8 +6,10 @@ import { Modall } from '../../components/Modal'
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Header from '../../components/headers/headerAdm'
+import Header from '../../components/header/headerAdm'
 import moedas from '../../assets/img/moedinha.svg'
+import Footer from "../../components/footer"
+
 
 
 export default function TodasAtividades() {
@@ -72,6 +74,7 @@ export default function TodasAtividades() {
                     </div>
                 </div>
             </main>
+            <Footer/>
         </div>
     );
 

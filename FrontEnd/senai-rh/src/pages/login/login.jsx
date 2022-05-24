@@ -1,8 +1,8 @@
 import React, { useState} from "react"
-import Logo from "../../assets/img/logo.svg"
+import Logo from "../../assets/img/logo1.svg"
 import bannerLogin from "../../assets/img/bannerLogin.svg"
 import axios from 'axios';
-import '../../assets/css/login.css'
+import '../../pages/login/login.css'
 import { useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,10 +10,9 @@ import { parseJwt } from "../../services/auth";
 
 
 export default function Login() {
-    const [cpfUsuario, setCPFUsuario] = useState('');
-    const [senhaUsuario, setSenhaUsuario] = useState('');
+    const [cpfUsuario, setCPFUsuario] = useState('71696553067');
+    const [senhaUsuario, setSenhaUsuario] = useState('Sesisenai@2022');
     const notify_Logar_Failed = () => toast.error("Email ou Senha inválidos!")
-//   nathalia novais guedes silva
     const history = useHistory();
     
     
@@ -23,7 +22,7 @@ export default function Login() {
         event.preventDefault();
 
 
-        axios.post('http://apirhsenaigp1.azurewebsites.net/api/Login', {
+        axios.post('https://apirhsenaigp1.azurewebsites.net/api/Login', {
             CPF: cpfUsuario,
             senha: senhaUsuario
         }
@@ -33,10 +32,10 @@ export default function Login() {
                     localStorage.setItem('usuario-login', resposta.data.token)
                     
                     if(parseJwt().isActive === "False"){
-                        history.push('/AlterarSenha')
+                        history.push('/redirecionamento')
                     }
                     else                      
-                    history.push('/CadastrarAtividades')
+                    history.push('/redirecionamento')
                 }
 
             })
@@ -60,7 +59,7 @@ export default function Login() {
                 draggable
                 pauseOnHover
             />
-            <main className="container_main">
+            <main className="container_main_G1">
                 <div className="G1_Left">
                     <div className="G1_banner">
                         <img src={Logo} alt="Logo do senai" className="G1_logo" />

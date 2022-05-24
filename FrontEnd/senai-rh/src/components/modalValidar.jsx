@@ -3,10 +3,10 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
-import '../Assets/css/gp1style.css'
+import '../assets/css/gp1style.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { listarAtividadesValidar } from '../Pages/CadastrarAtividades/cadastrarAtividades'
+import { listarAtividadesValidar } from '../pages/cadastrarAtividades/cadastrarAtividades'
 
 export const ModallValidar = ({ showModalValidar, setShowModalValidar, atividade, macete }) => {
 

@@ -5,7 +5,7 @@ import "../../assets/css/cadastro.css"
 import "../../assets/css/footer.css"
 import "../../assets/css/styleG3.css"
 import Footer from "../../components/footer";
-import HeaderFuncionario from "../../components/headers/headerFuncionario";
+import HeaderFuncionario from "../../components/header/headerFuncionario";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
