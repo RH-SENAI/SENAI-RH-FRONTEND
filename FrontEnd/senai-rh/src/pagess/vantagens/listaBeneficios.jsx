@@ -92,7 +92,7 @@ export default function ListaBeneficios() {
                     else {
                         console.log("Está vazio!")
                     }
-                } while (p < tamanhoJson || objFavoritos != '');
+                } while (p < tamanhoJson );
                 if (verifyDelete != 204) {
                     console.log("CHEGOU")
                     if (cursoId != id) {
@@ -106,6 +106,7 @@ export default function ListaBeneficios() {
             // window.location.reload(true);
             listarFavoritosDescontos();
             listarBeneficios();
+            
         } catch (error) {
             console.log(error);
         }

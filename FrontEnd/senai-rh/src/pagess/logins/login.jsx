@@ -2,7 +2,7 @@ import React, { useState} from "react"
 import Logo from "../../assets/img/logo1.svg"
 import bannerLogin from "../../assets/img/bannerLogin.svg"
 import axios from 'axios';
-import '../../pages/Login/login.css'
+import './login.css'
 import { useHistory } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,8 +14,7 @@ export default function Login() {
     const [senhaUsuario, setSenhaUsuario] = useState('Sesisenai@2022');
     const notify_Logar_Failed = () => toast.error("Email ou Senha inválidos!")
     const history = useHistory();
-    
-    
+        
 
 
     const FazerLogin = (event) => {
@@ -32,10 +31,10 @@ export default function Login() {
                     localStorage.setItem('usuario-login', resposta.data.token)
                     
                     if(parseJwt().isActive === "False"){
-                        history.push('/meusFavoritos')
+                        history.push('/redirecionamento')
                     }
                     else                      
-                    history.push('/meusFavoritos')
+                    history.push('/redirecionamento')
                 }
 
             })
