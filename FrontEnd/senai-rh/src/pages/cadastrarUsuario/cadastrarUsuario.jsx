@@ -284,6 +284,7 @@ export default function Cadastro() {
 
                                         {/* <label className="labelCadastro">CPF</label> */}
                                         <input type="text" className="g3_inputCadastro" name="CPF" placeholder="CPF" value={CPF} onChange={(event) => setCPF(event.target.value)} />
+                                        <input className="g3_inputCadastroData" value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} type="date" />
                                     </div>
                                     <div className='g3_bodyCadastroRight'>
                                         {/* <label className="labelCadastro">Setor</label> */}
@@ -362,7 +363,7 @@ export default function Cadastro() {
 
                                         </select>
                                         {/* <label className="labelCadastro">Data de nascimento</label> */}
-                                        <input className="g3_inputCadastroData" value={dataNascimento} onChange={(event) => setDataNascimento(event.target.value)} type="date" />
+                                       
                                     </div>
 
                                 </div>

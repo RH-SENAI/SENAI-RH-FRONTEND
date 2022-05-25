@@ -8,7 +8,7 @@
 
 .header_g2 {
     height: 80px;
-    background-color: #f2f2f2;
+    background-color: transparent;
     color: #000000;
     display: flex;
     justify-content: center;
@@ -25,7 +25,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f2f2f2;
+    background-color: transparent;
 }
 
 .logo_header_g2 {
@@ -52,7 +52,7 @@ div.select_header_g2 {
     display: inline-block;
     border-radius: 2px;
     position: relative;
-    background: #f2f2f2;
+    background: transparent;
     color: #000000;
     font-size: 1.2rem;
     font-weight: bold;
@@ -123,7 +123,7 @@ div.select_header_g2:hover .hidden_header_g2 {
 }
 
 div.select_header_g2 p:hover, div.select_header_g2:hover {
-    background-color: #f2f2f2 ;
+    background-color: transparent ;
 }
 
 .input_motivacao_header_g2 {
@@ -132,7 +132,7 @@ div.select_header_g2 p:hover, div.select_header_g2:hover {
 }
 
 .img_perfil_g2 {
-    background-color: #f2f2f2;
+    background-color: transparent;
 }
 
 .img_perfil_g2 img{
@@ -148,7 +148,7 @@ div.select_header_g2 p:hover, div.select_header_g2:hover {
 .img_logout_header_g2 {
     width: 30px;
     height: 30px;
-    background-color: #f2f2f2;
+    background-color: transparent;
     margin-right: 20px;
     cursor: pointer;
 }

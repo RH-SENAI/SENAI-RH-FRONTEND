@@ -111,10 +111,10 @@ flex-direction: column;
     margin-top: 15rem;
     font-family: 'Quicksand', sans-serif;
 }
-.g3_imagemAcessoResponsiva{
+/* .g3_imagemAcessoResponsiva{
     display: none;
-}
-@media screen and (max-width: 480px) {
+} */
+@media screen and (max-width: 960px) {
     .container {
       margin: 1rem 1.9rem;
     }
