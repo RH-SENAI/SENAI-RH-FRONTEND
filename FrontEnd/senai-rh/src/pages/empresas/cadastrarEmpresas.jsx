@@ -48,36 +48,13 @@ export default function CadastrarEmpresa() {
     const [cep1, setCep1] = useState('')
     const [numero, setNumero] = useState(0)
     
-    function CadastrarLocalizacao(event) {
+    
+
+
+    const efetuarCadastro = (event) => {
         
         event.preventDefault();
 
-        var inputNumero = document.getElementById('numero').value;
-        
-        let localizacao = {
-            "cep": cep1,
-            "bairro": nomeBairro,
-            "logradouro": nomeLogradouro,
-            "cidade": nomeCidade,
-            "estado": nomeEstado,
-            "numero": inputNumero
-        }
-
-        api.post('/Localizacaos/Cadastrar', localizacao)
-            .then((reposta) => {
-                if (reposta.status ==  201) {
-                    console.log('cadastrou')
-                    efetuarCadastro()
-                    // notify_cadastro_sucess();
-
-                }
-            })
-            .catch(erro => console.log(erro))
-    }
-
-
-    const efetuarCadastro = () => {
-        
         console.log('chega aqui')
 
         var formData = new FormData();
@@ -86,14 +63,15 @@ export default function CadastrarEmpresa() {
         const file = element.files[0]
         formData.append('fotoEmpresa', file, file.name)
         formData.append('nomeEmpresa', nomeEmpresa);
-        formData.append('idLocalizacao', idLocalizacao);
         formData.append('emailEmpresa', emailEmpresa);
         formData.append('telefoneEmpresa', telefoneEmpresa);
         formData.append('caminhoImagemEmpresa', caminhoImagemEmpresa);
         formData.append('cep', cep1);
         formData.append('numero',document.getElementById('numero').value  );
-        console.log('idLocalizacao')
-        console.log(idLocalizacao)
+        formData.append('cidade',document.getElementById('nomeCidade').value  );
+        formData.append('logradouro',document.getElementById('logradouro').value  );
+        formData.append('estado',document.getElementById('nomeEstado').value  );
+        formData.append('bairro',document.getElementById('bairro').value  );
 
         api({
             method: "post",
@@ -130,7 +108,7 @@ export default function CadastrarEmpresa() {
                     <img src={cadastroEmpresa} alt="imagemCadastroEmpresa" />
                 </div>
 
-                <form onSubmit={CadastrarLocalizacao}>
+                <form onSubmit={efetuarCadastro}>
                     <div className="box_forms_cadastroEmpresa_g2">
                         <div className="title_cadastroEmpresa_g2">
                             <h1>Cadastrar Empresa</h1>
@@ -201,7 +179,7 @@ export default function CadastrarEmpresa() {
                                         <input
                                             id="nomeCidade"
                                             onChange={(campo) => setNomeCidade(campo.target.value)}
-                                            value={nomeCidade}
+                                            // value={nomeCidade}
                                             type="text"
                                             name="nomeCidade"
                                             placeholder="CEP"
@@ -297,9 +275,7 @@ export default function CadastrarEmpresa() {
                                         onChange={(campo) => setIdLocalizacao(campo.target.value)}
                                         value={idLocalizacao}
                                     >
-
                                         <option value="0">Localizações</option>
-
                                         {
                                             localizacao.map((local) => {
                                                 return (
@@ -321,9 +297,7 @@ export default function CadastrarEmpresa() {
                                         onChange={(campo) => setIdEstado(campo.target.value)}
                                         value={idEstado}
                                     >
-
                                         <option value="0">Estados</option>
-
                                         {
                                             estados.map((estado) => {
                                                 return (

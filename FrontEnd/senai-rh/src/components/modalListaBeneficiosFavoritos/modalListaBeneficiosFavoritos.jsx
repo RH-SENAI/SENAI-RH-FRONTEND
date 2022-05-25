@@ -241,7 +241,7 @@ export const ModallBeneficioFavoritos = ({ showModal, setShowModal, beneficios, 
                                 </div>
 
                                 <div className='btn_cadastrarComentario_beneficio_g2'>
-                                    <img src={coracao} alt="" />
+                                    {/* <img src={coracao} alt="" /> */}
                                     <button type="submit" className="botaoCadastroComentarioBeneficio_g2">Inscrever-se</button>
                                 </div>
                             </div>
