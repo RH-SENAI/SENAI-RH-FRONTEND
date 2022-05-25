@@ -84,7 +84,7 @@ export default function CursosRapidos() {
             .then(resposta => {
                 if (resposta.status === 200) {
                     const dadosCurso = resposta.data;
-                    console.warn(dadosCurso)
+                    console.log(dadosCurso)
                     var tamanhoJson = Object.keys(dadosCurso).length;
                     console.warn(tamanhoJson);
 

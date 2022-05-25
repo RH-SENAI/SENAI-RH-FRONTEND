@@ -34,6 +34,7 @@ export default function HeaderFuncionario() {
                     <div class='hidden_header_g2'>
                         <Link className="text_link_header_g2" to='/Beneficios'> <span>Vantagens</span></Link>
                         <Link className="text_link_header_g2" to='/CursosRapidos'> <span> Cursos</span></Link>
+                        <Link className="text_link_header_g2" to='/meusFavoritos'> <span> Meus Favoritos</span></Link>
                         <Link className="text_link_header_g2" to='/BeneficiosCadastrar' >  <span> Cadastrar Vantagem </span> </Link>
                         <Link className="text_link_header_g2" to='/CadastrarCursos' > <span> Cadastrar Cursos </span>  </Link>
                         <Link className="text_link_header_g2" to='/cadastrarEmpresa' > <span> Cadastrar Empresa </span>  </Link>
@@ -52,8 +53,16 @@ export default function HeaderFuncionario() {
                 </div>
 
                 <div class='select_header_g2'>
-                    <Link class='input_header_g2 input_motivacao_header_g2'>Motivações</Link>
+                    <p class='input_header_g2'>Motivações<img src={setaBaixo} /> </p>
                     <input type='hidden' name='some_name_to_form' />
+                    <div class='hidden_header_g2'>
+                        <Link to='/TodasAtividades' className="text_link_header_g2" ><span>Todas Atividades</span> </Link>
+                        <Link to='/ValidarAtividades' className="text_link_header_g2" ><span>Validar Atividades</span> </Link>
+                        <Link to='/RankingUsuarios' className="text_link_header_g2" ><span>Ranking</span> </Link>
+                        <Link to='/CadastrarAtividades' className="text_link_header_g2" ><span>Cadastrar Atividades</span> </Link>
+                        <div class='select'>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="img_perfil_g2" >
