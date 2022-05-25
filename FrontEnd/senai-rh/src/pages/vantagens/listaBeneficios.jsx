@@ -70,11 +70,11 @@ export default function ListaBeneficios() {
                     console.log(objFavoritos);
 
                     if (objFavoritos != '') {
-                        var cursoId = objFavoritos[p]['idDesconto'];
+                        var descontoId = objFavoritos[p]['idDesconto'];
                         let favoritoId = objFavoritos[p]['idDescontoFavorito'];
-                        console.log(cursoId);
+                        console.log(descontoId);
 
-                        if (cursoId == id) {
+                        if (descontoId == id) {
                             const respostaExcluir = await api.delete(`/FavoritosDescontos/deletar/${favoritoId}`);
                             var verifyDelete = respostaExcluir.status;
 
@@ -92,10 +92,10 @@ export default function ListaBeneficios() {
                     else {
                         console.log("Está vazio!")
                     }
-                } while (p < tamanhoJson );
+                } while (p < tamanhoJson);
                 if (verifyDelete != 204) {
                     console.log("CHEGOU")
-                    if (cursoId != id) {
+                    if (descontoId != id) {
                         favoritarDesconto(id)
                         listarFavoritosDescontos();
                         listarBeneficios();
@@ -106,7 +106,6 @@ export default function ListaBeneficios() {
             // window.location.reload(true);
             listarFavoritosDescontos();
             listarBeneficios();
-            
         } catch (error) {
             console.log(error);
         }
@@ -175,7 +174,6 @@ export default function ListaBeneficios() {
 
     }
 
-
     //Listar todos os comentarios do beneficio conforme o id do beneficio
 
     function listarComentarioBeneficio() {
@@ -220,8 +218,7 @@ export default function ListaBeneficios() {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             },
-        }
-        )
+        })
             .then(resposta => {
                 if (resposta.status === 200) {
                     console.log('listarUsuario')
