@@ -33,7 +33,6 @@ export default function ListaBeneficios() {
     //Favoritar
     const [active, setActive] = useState(false)
     const [favorito, setFavorito] = useState(false)
-    const [favoritoDesconto, setFavoritoDesconto] = useState([])
     const [listaFavoritosDescontos, setListaFavoritosDescontos] = useState([])
 
 
@@ -147,26 +146,6 @@ export default function ListaBeneficios() {
 
     useEffect(listarFavoritosDescontos, []);
 
-
-    function desfavoritar(idDesconto) {
-
-        api.delete('/FavoritosDescontos/deletar/' + idDesconto)
-
-            .then(resposta => {
-                if (resposta.status === 204) {
-                    console.log('Desfavoritado!')
-                    setFavoritoDesconto()
-                }
-            })
-            .catch(erro => {
-                console.log(erro)
-            })
-    }
-
-
-
-
-
     //Abrir modal
 
     const OpenModal = () => {
@@ -174,7 +153,7 @@ export default function ListaBeneficios() {
 
     }
 
-    //Listar todos os comentarios do beneficio conforme o id do beneficio
+    //Listar todos os comentarios do beneficio conforme o id do beneficiob
 
     function listarComentarioBeneficio() {
         console.log(idDescontoModal)
@@ -224,8 +203,6 @@ export default function ListaBeneficios() {
                     console.log('listarUsuario')
                     console.log(resposta)
                     setListaUsuario(resposta.data)
-                    // setNome(resposta.data.nome)
-                    // console.log('aqui' + resposta.data)
 
                 }
             })
@@ -270,6 +247,7 @@ export default function ListaBeneficios() {
     }
 
 
+    
 
 
     return (
@@ -341,7 +319,11 @@ export default function ListaBeneficios() {
                                                             </div>}
                                                             <div>
                                                                 {/* <img src={coracao} alt="favorito" />; */}
-                                                                <Heart isActive={active} onClick={() => setActive(!active)} />
+                                                                <div>
+                                                                    <div className="favoritar_beneficio_g2">
+                                                                        <Heart isActive={listaFavoritosDescontos.some(l => { if (l.idDesconto == beneficio.idDesconto) { return true } return false })} onClick={() => { favoritar(!favorito, beneficio.idDesconto) }} />
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
                                                         </div>

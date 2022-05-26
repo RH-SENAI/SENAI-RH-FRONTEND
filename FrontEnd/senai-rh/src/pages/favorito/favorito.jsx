@@ -113,21 +113,38 @@ export default function MeusFavoritos() {
 
     useEffect(listarComentarioBeneficio, []);
 
-    // let avaliacao = {
-    //     Math.e
-    // }
-    //Desfavoritar
+    
+    //Desfavoritar Desconto
     const [favoritoDesconto, setFavoritoDesconto] = useState([])
     const [active, setActive] = useState(true)
 
 
-    function desfavoritar(idDesconto) {
+    function desfavoritarDesconto(idDesconto) {
         api.delete('/FavoritosDescontos/deletar/' + idDesconto)
 
             .then(resposta => {
                 if (resposta.status === 204) {
                     console.log('Desfavoritado!')
                     listarFavoritosDescontos()
+                }
+            })
+            .catch(erro => {
+                console.log(erro)
+            })
+    }
+
+    //Desfavoritar curso
+    const [favoritoCurso, setFavoritoCurso] = useState([])
+    // const [active, setActive] = useState(true)
+
+
+    function desfavoritarCurso(idCurso) {
+        api.delete('/FavoritosCursos/deletar/' + idCurso)
+
+            .then(resposta => {
+                if (resposta.status === 204) {
+                    console.log('Desfavoritado!')
+                    listarFavoritosCurso()
                 }
             })
             .catch(erro => {
@@ -161,7 +178,7 @@ export default function MeusFavoritos() {
 
                 <div className='wrap_curso_g2'>
                     {/* Curso */}
-                    <dv className='container_wrap_curso_g2' >
+                    <div className='container_wrap_curso_g2' >
 
 
                         {
@@ -198,7 +215,9 @@ export default function MeusFavoritos() {
                                                         <img className='coin_curso_g2' src={coin} alt="favorito" /> {curso.idCursoNavigation.valorCurso}
                                                     </div>}
                                                     <div className="media_beneficio_g2">
-                                                        <img src={coracao} alt="favoritar" />
+                                                        <div className="favoritar_beneficio_g2">
+                                                            <Heart isActive={active} onClick={() => desfavoritarCurso(curso.idCursoFavorito)} />
+                                                        </div>
                                                     </div>
                                                     {/* <div> <button onClick={ () => Excluir(curso.idCurso)} >Excluir</button></div> */}
                                                 </div>
@@ -212,51 +231,51 @@ export default function MeusFavoritos() {
 
 
                         {/* Desconto */}
-                        <div>
-                            {
-                                listaFavoritosDesconto.map((beneficio) => {
-                                    return (
-                                        <div className='espacamento_beneficio_g2'>
-                                            <section alt={beneficio.idDescontoFavorito} key={beneficio.idDescontoFavorito} id='imagem' className='box_beneficio_g2'>
-                                                <div className='banner_img_beneficio_g2'>
-                                                    {<img onClick={() => { OpenModalDesconto(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.idDescontoNavigation.caminhoImagemDesconto} alt="imagem do desconto" />}
+
+                        {
+                            listaFavoritosDesconto.map((beneficio) => {
+                                return (
+                                    <div className='espacamento_beneficio_g2'>
+                                        <section alt={beneficio.idDescontoFavorito} key={beneficio.idDescontoFavorito} id='imagem' className='box_beneficio_g2'>
+                                            <div className='banner_img_beneficio_g2'>
+                                                {<img onClick={() => { OpenModalDesconto(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.idDescontoNavigation.caminhoImagemDesconto} alt="imagem do desconto" />}
+                                            </div>
+
+                                            <div className="dados_beneficio_gp2">
+
+                                                <div className='title_estrelas_g2'>
+                                                    {<span onClick={() => { OpenModalDesconto(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className="title_beneficios_g2" > {beneficio.idDescontoNavigation.nomeDesconto}</span>}
+
+                                                    <ReactStars
+                                                        count={5}
+                                                        size={30}
+                                                        edit={false}
+                                                        value={beneficio.idDescontoNavigation.mediaAvaliacaoDesconto}
+                                                        activeColor="#C20004"
+                                                    />
                                                 </div>
 
-                                                <div className="dados_beneficio_gp2">
 
-                                                    <div className='title_estrelas_g2'>
-                                                        {<span onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className="title_beneficios_g2" > {beneficio.idDescontoNavigation.nomeDesconto}</span>}
-
-                                                        <ReactStars
-                                                            count={5}
-                                                            size={30}
-                                                            edit={false}
-                                                            value={beneficio.idDescontoNavigation.mediaAvaliacaoDesconto}
-                                                            activeColor="#C20004"
-                                                        />
-                                                    </div>
-
-
-                                                    <div className="box_baixo_section_beneficio_g2">
-                                                        {<div className='circulo_moeda_beneficio_g2'>
-                                                            <img className='coin_beneficio_g2' src={coin} alt="coin" />  {beneficio.idDescontoNavigation.valorDesconto}
-                                                        </div>}
-                                                        <div>
-                                                            {/* <img src={coracao} alt="favorito" /> */}
-                                                            <div className="favoritar_beneficio_g2">
-                                                                <Heart isActive={active} onClick={() =>  desfavoritar(beneficio.idDescontoFavorito) } />
-                                                            </div>
+                                                <div className="box_baixo_section_beneficio_g2">
+                                                    {<div className='circulo_moeda_beneficio_g2'>
+                                                        <img className='coin_beneficio_g2' src={coin} alt="coin" />  {beneficio.idDescontoNavigation.valorDesconto}
+                                                    </div>}
+                                                    <div>
+                                                        {/* <img src={coracao} alt="favorito" /> */}
+                                                        <div className="favoritar_beneficio_g2">
+                                                            <Heart isActive={active} onClick={() => desfavoritarDesconto(beneficio.idDescontoFavorito)} />
                                                         </div>
-                                                        {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
                                                     </div>
+                                                    {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
                                                 </div>
-                                            </section>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                    </dv>
+                                            </div>
+                                        </section>
+                                    </div>
+                                )
+                            })
+                        }
+
+                    </div>
 
 
                 </div>

@@ -15,17 +15,20 @@ import api from '../../services/api';
 import { parseJwt } from '../../services/auth';
 import coin from "../../assets/img/coin 1.png"
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 import ReactStars from "react-rating-stars-component";
 // import './aparecer'
 
 
 export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario, idDescontoModal }) => {
 
+    const notify_Logar_Failed = () => toast.error("Você esqueceu de algum campo, por favor tente novamente!")
+    const notify_cadastro_sucess = () => toast.success("Cadastro realizado com sucesso!")
     const [listaComentarioBeneficio, setListaComentarioBeneficio] = useState([])
     const [idDesconto, setIdDesconto] = useState(0)
     const [avaliacaoDesconto, setAvaliacaoDesconto] = useState(0)
     const [comentarioDesconto1, setComentarioDesconto1] = useState('')
-    const [valorAvalicao, setValorAvalicao] = useState(1)    
+    const [valorAvalicao, setValorAvalicao] = useState(1)
 
     const avaliacao2 = () => {
         setValorAvalicao(2)
@@ -105,11 +108,29 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                 console.log("cheguei Aqui lau")
                 listarComentarioBeneficio(comentario)
                 // comentario(listaComentarioBeneficio)
-                
+
             })
             .catch(erro => console.log(erro))
     }
 
+
+    //Solicitar o descontoCupom
+
+    function requisicaoDesconto() {
+        let requisitos = {
+            idUsuario: parseJwt().jti,
+            idDesconto: beneficio.idDesconto,
+        }
+
+        api.post('/Registrodescontos/Cadastrar', requisitos)
+            .then(function (response) {
+                console.log(response);
+                console.log("Você adquiriu o beneficio" + beneficio.idDesconto)
+                // listarBeneficios()
+                notify_cadastro_sucess();
+            })
+            .catch(resposta => notify_Logar_Failed())
+    }
 
     return (
         <>
@@ -120,6 +141,18 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                 >
 
                     <div>
+
+                        <ToastContainer
+                            position="top-right"
+                            autoClose={5000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                        />
                         {/* Parte 1 */}
                         <div className='container_modal_beneficio_g2'>
                             <div className='box_img_modal_beneficio_g2'>
@@ -224,11 +257,6 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
 
                                             <input type="radio" value={valorAvalicao} onChange={(e) => setValorAvalicao(e.target.value)} name="rating" id="rating-1_cadastro_beneficio_Favoritos" />
                                             <label for="rating-1_cadastro_beneficio_Favoritos"></label>
-
-
-
-
-
                                         </div>
 
                                         <input
@@ -255,7 +283,12 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                                 </div>
                                 <div className='btn_cadastrarComentario_beneficio_g2'>
 
-                                    <button id='show-or-hide' type="submit" className="botaoCadastroComentarioBeneficio_g2">Pegue</button>
+                                    <button
+                                        id='show-or-hide'
+                                        type="submit"
+                                        className="botaoCadastroComentarioBeneficio_g2"
+                                        onClick={requisicaoDesconto}
+                                    >Pegue</button>
                                 </div>
                             </div>
                         </div>

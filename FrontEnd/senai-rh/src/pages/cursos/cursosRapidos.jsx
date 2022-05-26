@@ -33,26 +33,132 @@ export default function CursosRapidos() {
     let subtitle;
     const delay = require('delay');
 
+
+    //Favoritar
+
+
+    const [active, setActive] = useState(false)
+    const [favorito, setFavorito] = useState(false);
+
+
+
+    function favoritarCurso(idCurso) {
+
+        let favo = {
+            idCurso: idCurso,
+            idUsuario: parseJwt().jti,
+        }
+
+        console.log(parseJwt().jti)
+        console.log(idCurso)
+        api.post('/FavoritosCursos', favo)
+        console.log("Id Curso modal aqui")
+        console.log(idCurso)
+            .then(function (response) {
+                console.log(response);
+                console.log("Favoritou o curso" + idCurso)
+                listarFavoritosCursos();
+                listarCursos();
+            })
+            .catch(erro => console.log(erro))
+    }
+
+    const [listaFavoritosCursos, setListaFavoritosCursos] = useState([]);
+
+    function listarFavoritosCursos() {
+        api('/FavoritosCursos/Favorito/' + parseJwt().jti)
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    console.log('Lista Favoritos de Cursos')
+                    console.log(resposta)
+                    setListaFavoritosCursos(resposta.data)
+
+                }
+            })
+            .catch(erro => console.log(erro))
+    }
+
+    useEffect(listarFavoritosCursos, []);
+
+    async function favoritar(favorite, id) {
+        try {
+            if (favorite == true) {
+                // this.ProcurarCurso(id);
+
+                //Requisição favoritos pelo id do usuário
+                const respostaFavoritos = await api('/FavoritosCursos/Favorito/' + parseJwt().jti)
+                var dadosFavoritos = respostaFavoritos.data
+
+                //Tamanho do json do respostaFavoritos
+                var tamanhoJson = Object.keys(dadosFavoritos).length;
+                var p = 0;
+
+                do {
+                    let stringFavoritos = JSON.stringify(dadosFavoritos);
+                    var objFavoritos = JSON.parse(stringFavoritos);
+                    console.log(objFavoritos);
+
+                    if (objFavoritos != '') {
+                        var cursoId = objFavoritos[p]['idCurso'];
+                        let favoritoId = objFavoritos[p]['idCursoFavorito'];
+                        console.log(cursoId);
+
+                        if (cursoId == id) {
+                            const respostaExcluir = await api.delete(`/FavoritosCursos/deletar/${favoritoId}`);
+                            var verifyDelete = respostaExcluir.status;
+
+                            if (respostaExcluir.status == 204) {
+                                setActive(!active);
+                                console.log('Desfavoritado');
+                                // window.location.reload(true);
+                                listarFavoritosCursos();
+                                listarCursos();
+                            }
+                        }
+                        p++
+                    }
+                    else {
+                        console.log("Está vazio!")
+                    }
+                } while (p < tamanhoJson);
+                if (verifyDelete != 204) {
+                    console.log("CHEGOU")
+                    if (cursoId != id) {
+                        favoritarCurso(id)
+                        listarFavoritosCursos();
+                        listarCursos();
+                    }
+                }
+            }
+
+            // window.location.reload(true);
+            listarFavoritosCursos();
+            listarCursos();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     // function geolocation() {
 
     // }
 
     // useEffect(geolocation, []);
 
-    // function listarComentarioCurso() {
-    //     console.log(idCursoModal)
-    //     api('/ComentarioCursos/Comentario/' + idCursoModal)
-    //         .then(resposta => {
-    //             if (resposta.status === 200) {
-    //                 console.log('Lista comentario')
-    //                 console.log(resposta)
-    //                 setListaComentarioCurso(resposta.data)
-    //             }
-    //         })
-    //         .catch(erro => console.log(erro))
-    // }
+    function listarComentarioCurso() {
+        console.log(idCursoModal)
+        api('/ComentarioCursos/Comentario/' + idCursoModal)
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    console.log('Lista comentario')
+                    console.log(resposta)
+                    setListaComentarioCurso(resposta.data)
+                }
+            })
+            .catch(erro => console.log(erro))
+    }
 
-    // useEffect(listarComentarioCurso, []);
+    useEffect(listarComentarioCurso, []);
 
     function closeModal() {
         setIsOpen(false);
@@ -67,97 +173,107 @@ export default function CursosRapidos() {
     }
 
     function listarCursos() {
-        var longitude;
-        var latitude
-        navigator.geolocation.getCurrentPosition(function (position) {
-            console.log("Latitude é :", position.coords.latitude);
-            console.log("Longitude é :", position.coords.longitude);
-            longitude = position.coords.longitude;
-            latitude = position.coords.latitude;
-        });
-        time();
-        var distanceBase = 150000;
-        if (userDistance != 0) {
-            distanceBase = userDistance * 1000
-        }
+        // var longitude;
+        // var latitude
+        // navigator.geolocation.getCurrentPosition(function (position) {
+        //     console.log("Latitude é :", position.coords.latitude);
+        //     console.log("Longitude é :", position.coords.longitude);
+        //     longitude = position.coords.longitude;
+        //     latitude = position.coords.latitude;
+        // });
+        // time();
+        // var distanceBase = 150000;
+        // if (userDistance != 0) {
+        //     distanceBase = userDistance * 1000
+        // }
         api('/Cursos')
             .then(resposta => {
                 if (resposta.status === 200) {
-                    const dadosCurso = resposta.data;
-                    console.log(dadosCurso)
-                    var tamanhoJson = Object.keys(dadosCurso).length;
-                    console.warn(tamanhoJson);
-
-                    var i = 0
-
-                    do {
-                        let stringLocalCurso = JSON.stringify(dadosCurso);
-                        let objLocalCurso = JSON.parse(stringLocalCurso);
-                        // console.warn(objLocalCurso);
-                        var localCurso = objLocalCurso[i]['idEmpresaNavigation']['idLocalizacaoNavigation']['idCepNavigation'].cep1
-
-                        // ----> Localização 
-
-                        var stringProblematica = `/json?origins=${longitude}, ${latitude}&destinations=${localCurso}&units=km&key=AIzaSyB7gPGvYozarJEWUaqmqLiV5rRYU37_TT0`
-                        console.warn(stringProblematica)
-
-                        const respostaLocal = apiMaps(stringProblematica, {
-                            headers: {
-                                "Access-Control-Allow-Credentials": 'true',
-                                "Access-Control-Allow-Origin": "*",
-                                "Access-Control-Allow-Headers": "Authorization",
-                                "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
-                                "Content-Type": "application/json;charset=UTF-8"
-                            },
-                        });
-                        let string = JSON.stringify(respostaLocal.data);
-                        let obj = JSON.parse(string);
-                        // console.warn(obj)
-
-                        let distance = obj['rows'][0]['elements'][0]['distance'].value
-                        // console.log(distance)
-                        if (respostaLocal.status == 200) {
-                            // console.warn('Localização encontrada!');
-                            if (distance <= distanceBase) {
-                                console.warn(distance);
-                                //this.setState({ localizacaoCurso: dadosLocalizacao })
-                                // console.warn(distance);
-                                // console.warn('Localização está no alcance');
-                                // console.warn(this.state.listaCurso);
-
-                                let stringCurso = JSON.stringify(dadosCurso);
-                                var objCurso = JSON.parse(stringCurso);
-                                //var lugarCurso = objCurso[u]['idEmpresaNavigation']['idLocalizacaoNavigation']['idCepNavigation'].cep1
-
-                                var curso = objCurso[i]
-                                // console.warn(curso)
-                                listaCursos.push(curso);
-
-                            }
-                            else if (distance > distanceBase) {
-                                console.warn(distance);
-                                console.warn('Localização fora do alcance');
-                            }
-                        }
-                        // console.warn('Curso encontrado');
-
-                        i++
-                    } while (i < tamanhoJson);
-
-                    if (listaCursos == '') {
-                        setSwitchAtive(true)
-                    }
-                    else {
-                        setSwitchAtive(false)
-                    }
-
-                    // this.setState({ contadorCurso: i })
-                    // console.warn(this.state.contadorCurso)
-                    // console.log('Lista')
-                    // console.log(resposta)
-                    // setListaCursos(resposta.data)
+                    console.log('Lista Cursos')
+                    console.log(resposta)
+                    setListaCursos(resposta.data)
                 }
             })
+
+
+            // .then(resposta => {
+            //     if (resposta.status === 200) {
+            //         const dadosCurso = resposta.data;
+            //         console.log(dadosCurso)
+            //         var tamanhoJson = Object.keys(dadosCurso).length;
+            //         console.warn(tamanhoJson);
+
+            //         var i = 0
+
+            //         do {
+            //             let stringLocalCurso = JSON.stringify(dadosCurso);
+            //             let objLocalCurso = JSON.parse(stringLocalCurso);
+            //             // console.warn(objLocalCurso);
+            //             var localCurso = objLocalCurso[i]['idEmpresaNavigation']['idLocalizacaoNavigation']['idCepNavigation'].cep1
+
+            //             // ----> Localização 
+
+            //             var stringProblematica = `/json?origins=${longitude}, ${latitude}&destinations=${localCurso}&units=km&key=AIzaSyB7gPGvYozarJEWUaqmqLiV5rRYU37_TT0`
+            //             console.warn(stringProblematica)
+
+            //             const respostaLocal = apiMaps(stringProblematica, {
+            //                 headers: {
+            //                     "Access-Control-Allow-Credentials": 'true',
+            //                     "Access-Control-Allow-Origin": "*",
+            //                     "Access-Control-Allow-Headers": "Authorization",
+            //                     "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+            //                     "Content-Type": "application/json;charset=UTF-8"
+            //                 },
+            //             });
+            //             let string = JSON.stringify(respostaLocal.data);
+            //             let obj = JSON.parse(string);
+            //             // console.warn(obj)
+
+            //             let distance = obj['rows'][0]['elements'][0]['distance'].value
+            //             // console.log(distance)
+            //             if (respostaLocal.status == 200) {
+            //                 // console.warn('Localização encontrada!');
+            //                 if (distance <= distanceBase) {
+            //                     console.warn(distance);
+            //                     //this.setState({ localizacaoCurso: dadosLocalizacao })
+            //                     // console.warn(distance);
+            //                     // console.warn('Localização está no alcance');
+            //                     // console.warn(this.state.listaCurso);
+
+            //                     let stringCurso = JSON.stringify(dadosCurso);
+            //                     var objCurso = JSON.parse(stringCurso);
+            //                     //var lugarCurso = objCurso[u]['idEmpresaNavigation']['idLocalizacaoNavigation']['idCepNavigation'].cep1
+
+            //                     var curso = objCurso[i]
+            //                     // console.warn(curso)
+            //                     listaCursos.push(curso);
+
+            //                 }
+            //                 else if (distance > distanceBase) {
+            //                     console.warn(distance);
+            //                     console.warn('Localização fora do alcance');
+            //                 }
+            //             }
+            //             // console.warn('Curso encontrado');
+
+            //             i++
+            //         } while (i < tamanhoJson);
+
+            //         if (listaCursos == '') {
+            //             setSwitchAtive(true)
+            //         }
+            //         else {
+            //             setSwitchAtive(false)
+            //         }
+
+            //         // this.setState({ contadorCurso: i })
+            //         // console.warn(this.state.contadorCurso)
+            //         // console.log('Lista')
+            //         // console.log(resposta)
+            //         // setListaCursos(resposta.data)
+            //     }
+            // }
+            // )
             .catch(erro => console.log(erro))
     }
 
@@ -253,32 +369,7 @@ export default function CursosRapidos() {
     // }
 
 
-    //Favoritos
-    const [active, setActive] = useState(false)
-    const [favorito, setFavorito] = useState([]);
-    // favorito = () => {
-    //     setFavorito(curso.idCurso)
-    // }
 
-
-    function favoritarCurso(curso) {
-
-        api.post('/FavoritosCursos', {
-            idCurso: curso.idCurso,
-            idUsuario: parseJwt().jti,
-        })
-        console.log("Id Curso modal aqui")
-        console.log(curso.idCurso)
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    // console.log('Lista de favoritos descontos')
-                    console.log(resposta)
-                    setFavorito(resposta.data)
-                    setActive(!active)
-                }
-            })
-            .catch(erro => console.log(erro))
-    }
 
     return (
         <div className="geral_g2">
@@ -327,12 +418,12 @@ export default function CursosRapidos() {
                                             <div className='espacamento_curso_g2'>
                                                 <section alt={curso.idCurso} key={curso.idCurso} id='imagem' className='box_curso_g2'>
                                                     <div className='banner_img_curso_g2'>
-                                                        {/* {<img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />} */}
+                                                        {<img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
                                                     </div>
 
                                                     <div className='dados_curso_gp2'>
 
-                                                        {/* {<span onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>} */}
+                                                        {<span onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
                                                         {/* <div className='estrelas_g2'>
                                                             <ReactStars
                                                                 count={5}
@@ -366,43 +457,42 @@ export default function CursosRapidos() {
                                             <div className='espacamento_curso_g2'>
                                                 <section alt={curso.idCurso} key={curso.idCurso} id='imagem' className='box_curso_g2'>
                                                     <div className='banner_img_curso_g2'>
-                                                        {/* {<img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />} */}
+                                                        {<img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
                                                     </div>
 
                                                     <div className='dados_curso_gp2'>
 
-                                                        {/* {<span onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>} */}
-                                                        {/* <div className='estrelas_cursos_g2'>
-                                                            <ReactStars
-                                                                count={5}
-                                                                size={20}
-                                                                edit={false}
-                                                                value={curso.mediaAvaliacaoCurso}
-                                                                activeColor="#C20004"
-                                                            />
-                                                        </div> */}
+                                                        {<span onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
+
+                                                        <div className='estrelas_cursos_g2'>
+                                                            <div >
+                                                                <ReactStars
+                                                                    count={5}
+                                                                    size={20}
+                                                                    edit={false}
+                                                                    value={curso.mediaAvaliacaoCurso}
+                                                                    activeColor="#C20004"
+                                                                />
+                                                            </div>
+                                                        </div>
                                                         <div>
-                                                            {/* {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>} */}
-                                                            {/* {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}   </p>} */}
+                                                            {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
+                                                            {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}   </p>}
                                                         </div>
                                                         <div className="box_baixo_section_curso_g2">
 
-                                                            {<div className='circulo_moeda_curso_g2'>
+                                                            <div className='circulo_moeda_curso_g2'>
                                                                 <img className='coin_curso_g2' src={coin} alt="favorito" /> {curso.valorCurso}
-                                                            </div>}
+                                                            </div>
                                                             <div className="media_beneficio_g2">
-                                                                <img src={coracao} alt="favoritar" />
+                                                                {/* <img src={coracao} alt="favoritar" />  */}
 
-                                                                <Heart
-                                                                    isActive={active}
-                                                                    onClick={() => { favorito(!active); favoritarCurso(curso) }}
-                                                                    animationTrigger="both"
-                                                                    inactiveColor="#C20004"
-                                                                    activeColor="#C20004"
-                                                                    className='favorito_g2'
-                                                                    animationDuration={0.1}
-                                                                    size={30}
-                                                                />
+                                                                <div className="favoritar_beneficio_g2">
+                                                                    <Heart
+                                                                        isActive={listaFavoritosCursos.some(l => { if (l.idCurso == curso.idCurso) { return true } return false })}
+                                                                        onClick={() => { favoritar(!favorito, curso.idCurso) }}
+                                                                    />
+                                                                </div>
                                                             </div>
                                                             {/* <div> <button onClick={ () => Excluir(curso.idCurso)} >Excluir</button></div> */}
                                                         </div>

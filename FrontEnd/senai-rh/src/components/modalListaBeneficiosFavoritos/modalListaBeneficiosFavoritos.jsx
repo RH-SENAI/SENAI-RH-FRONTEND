@@ -15,11 +15,15 @@ import api from '../../services/api';
 import { parseJwt } from '../../services/auth';
 import coin from "../../assets/img/coin 1.png"
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+
 import ReactStars from "react-rating-stars-component";
 
 
 export const ModallBeneficioFavoritos = ({ showModal, setShowModal, beneficios, comentario }) => {
 
+    const notify_Logar_Failed = () => toast.error("Você esqueceu de algum campo, por favor tente novamente!")
+    const notify_cadastro_sucess = () => toast.success("Cadastro realizado com sucesso!")
     const [listaComentarioBeneficio, setListaComentarioBeneficio] = useState([])
     const [idDesconto, setIdDesconto] = useState(0)
     const [avaliacaoDesconto, setAvaliacaoDesconto] = useState(0)
@@ -70,7 +74,7 @@ export const ModallBeneficioFavoritos = ({ showModal, setShowModal, beneficios, 
     );
 
     function cadastrarComentario(event) {
-        // event.preventDefault();
+        event.preventDefault();
         console.log('beneficios.idDesconto')
         console.log(beneficios.idDesconto)
         console.log(parseJwt().jti)
@@ -81,8 +85,8 @@ export const ModallBeneficioFavoritos = ({ showModal, setShowModal, beneficios, 
             comentarioDesconto1: comentarioDesconto1,
             idDesconto: beneficios.idDesconto
         }
-        console.log('Comentario idDesconto')
-        console.log(comentario)
+        // console.log('Comentario idDesconto')
+        // console.log(comentario)
 
         api.post('/ComentarioDescontos', comentarios, {
             headers: {
@@ -92,12 +96,31 @@ export const ModallBeneficioFavoritos = ({ showModal, setShowModal, beneficios, 
 
         )
             .then(function (response) {
-                console.log(response);
+                // console.log(response);
                 setListaComentarioBeneficio(response.data)
+                
             })
             .catch(erro => console.log(erro))
     }
 
+
+    //Solicitar o descontoCupom
+
+    function requisicaoDesconto() {
+        let requisitos = {
+            idUsuario: parseJwt().jti,
+            idDesconto: beneficios.idDesconto,
+        }
+
+        api.post('/Registrodescontos/Cadastrar', requisitos)
+            .then(function (response) {
+                console.log(response);
+                console.log("Você adquiriu o beneficio" + beneficios.idDesconto)
+                // listarBeneficios()
+                notify_cadastro_sucess();
+            })
+            .catch(resposta => notify_Logar_Failed())
+    }
 
     return (
         <>
@@ -106,8 +129,19 @@ export const ModallBeneficioFavoritos = ({ showModal, setShowModal, beneficios, 
                     isOpen={showModal}
                     onRequestClose={closeModal}
                 >
-
                     <div>
+
+                        <ToastContainer
+                            position="top-right"
+                            autoClose={5000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                        />
                         {/* Parte 1 */}
                         <div className='container_modal_beneficio_g2'>
                             <div className='box_img_modal_beneficio_g2'>
@@ -181,13 +215,13 @@ export const ModallBeneficioFavoritos = ({ showModal, setShowModal, beneficios, 
                                                         <span>{c.idUsuarioNavigation.nome}:</span>
                                                         <p>{c.comentarioDesconto1}</p>
                                                         <ul>
-                                                        <ReactStars
-                                                            count={5}
-                                                            size={15}
-                                                            edit={false}
-                                                            value={c.avaliacaoDesconto}
-                                                            activeColor="#C20004"
-                                                        />
+                                                            <ReactStars
+                                                                count={5}
+                                                                size={15}
+                                                                edit={false}
+                                                                value={c.avaliacaoDesconto}
+                                                                activeColor="#C20004"
+                                                            />
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -199,21 +233,20 @@ export const ModallBeneficioFavoritos = ({ showModal, setShowModal, beneficios, 
                                 <div>
                                     <form onSubmit={cadastrarComentario} className='input_modal_comentario_beneficio_g2'>
                                         <div class="rating_g2">
-                                            <input type="radio" value={valorAvalicao} onChange={(e) => setValorAvalicao(e.target.value)} name="rating" id="rating-1_cadastro_beneficio_Favoritos" />
-                                            <label for="rating-1_cadastro_beneficio_Favoritos"></label>
-
-                                            <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao2(e.target.value)} name="rating" id="rating-2_cadastro_beneficio_Favoritos" />
-                                            <label for="rating-2_cadastro_beneficio_Favoritos"></label>
-
-                                            <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao3(e.target.value)} name="rating" id="rating-3_cadastro_beneficio_Favoritos" />
-                                            <label for="rating-3_cadastro_beneficio_Favoritos"></label>
+                                        <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao5(e.target.value)} name="rating" id="rating-5_cadastro_beneficio_Favoritos" />
+                                            <label for="rating-5_cadastro_beneficio_Favoritos"></label>
 
                                             <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao4(e.target.value)} name="rating" id="rating-4_cadastro_beneficio_Favoritos" />
                                             <label for="rating-4_cadastro_beneficio_Favoritos"></label>
 
+                                            <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao3(e.target.value)} name="rating" id="rating-3_cadastro_beneficio_Favoritos" />
+                                            <label for="rating-3_cadastro_beneficio_Favoritos"></label>
 
-                                            <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao5(e.target.value)} name="rating" id="rating-5_cadastro_beneficio_Favoritos" />
-                                            <label for="rating-5_cadastro_beneficio_Favoritos"></label>
+                                            <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao2(e.target.value)} name="rating" id="rating-2_cadastro_beneficio_Favoritos" />
+                                            <label for="rating-2_cadastro_beneficio_Favoritos"></label>
+
+                                            <input type="radio" value={valorAvalicao} onChange={(e) => setValorAvalicao(e.target.value)} name="rating" id="rating-1_cadastro_beneficio_Favoritos" />
+                                            <label for="rating-1_cadastro_beneficio_Favoritos"></label>
 
                                         </div>
 
@@ -242,7 +275,12 @@ export const ModallBeneficioFavoritos = ({ showModal, setShowModal, beneficios, 
 
                                 <div className='btn_cadastrarComentario_beneficio_g2'>
                                     {/* <img src={coracao} alt="" /> */}
-                                    <button type="submit" className="botaoCadastroComentarioBeneficio_g2">Inscrever-se</button>
+                                    <button
+                                        onClick={requisicaoDesconto}
+                                        type="submit"
+                                        className="botaoCadastroComentarioBeneficio_g2"
+                                    >Pegue
+                                    </button>
                                 </div>
                             </div>
                         </div>
