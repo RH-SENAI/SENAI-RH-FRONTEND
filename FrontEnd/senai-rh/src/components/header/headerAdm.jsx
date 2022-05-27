@@ -39,15 +39,15 @@ export default function HeaderAdm() {
                 </div>
 
                 <div class='select_header_g2'>
-                    <p class='input_header_g2'>Acompanhar<img src={setaBaixo} /> </p>
+                    <p class='input_header_g2'>Acompanhar<img src={setaBaixo} /></p>
                     <input type='hidden' name='some_name_to_form' />
                     <div class='hidden_header_g2'>
-                        <Link className="text_link_header_g2" to='#' ><span>Carômetro</span> </Link>
-                        <Link className="text_link_header_g2" ><span>Dashboard</span> </Link>
-                        <Link className="text_link_header_g2" ><span>Democratização</span> </Link>
-                        <Link className="text_link_header_g2" ><span>Cadastrar Funcionário</span> </Link>
+                        <Link className="text_link_header_g2" to='/carometro' ><span>Carômetro</span></Link>
+                        <Link className="text_link_header_g2" to='/dashboard'> <span>Dashboard</span></Link>
+                        <Link className="text_link_header_g2" to='/democratizacaoAdm'> <span>Democratização</span></Link>
+                        <Link className="text_link_header_g2" to='/decisao'> <span>Decisões</span></Link>
+                        <Link className="text_link_header_g2" to='/cadastro'> <span>Cadastro de Usuario</span></Link>
                     </div>
-
                 </div>
 
                 <div class='select_header_g2'>

@@ -84,7 +84,8 @@
         margin-right: 50px;
         overflow-y: auto;
         direction: ltr;
-        height: 70vh;
+        height: 66vh;
+        width: 75vw;
     }
 
     .wrap_curso_g2::-webkit-scrollbar {
@@ -118,7 +119,7 @@
 
     .box_curso_g2 {
         display: flex;
-        margin-right: 20px;
+        margin-right: 0.8rem;
         background-color: #f2f2f2;
         width: 17vw;
         height: 40vh;

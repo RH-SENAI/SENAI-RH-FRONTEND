@@ -17,7 +17,7 @@ import coin from "../../assets/img/coin 1.png"
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import ReactStars from "react-rating-stars-component";
-// import './aparecer'
+// import './aparecer' 
 
 
 export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario, idDescontoModal }) => {
@@ -29,6 +29,8 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
     const [avaliacaoDesconto, setAvaliacaoDesconto] = useState(0)
     const [comentarioDesconto1, setComentarioDesconto1] = useState('')
     const [valorAvalicao, setValorAvalicao] = useState(1)
+    const [cupom, setCupom] = useState(true)
+
 
     const avaliacao2 = () => {
         setValorAvalicao(2)
@@ -42,8 +44,6 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
     const avaliacao5 = () => {
         setValorAvalicao(5)
     }
-
-
 
     const closeModal = e => {
         console.log('showModal antes:' + showModal)
@@ -101,14 +101,12 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
-        }
-        )
+        })
             .then(function (response) {
                 console.log(response);
                 console.log("cheguei Aqui lau")
                 listarComentarioBeneficio(comentario)
                 // comentario(listaComentarioBeneficio)
-
             })
             .catch(erro => console.log(erro))
     }
@@ -128,6 +126,7 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                 console.log("Você adquiriu o beneficio" + beneficio.idDesconto)
                 // listarBeneficios()
                 notify_cadastro_sucess();
+                // aparece();   
             })
             .catch(resposta => notify_Logar_Failed())
     }
@@ -141,7 +140,6 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                 >
 
                     <div>
-
                         <ToastContainer
                             position="top-right"
                             autoClose={5000}
@@ -167,7 +165,6 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                                 <div>
                                     <ReactStars
                                         count={5}
-                                        // onChange={ratingChanged}
                                         size={30}
                                         edit={false}
                                         value={beneficio.mediaAvaliacaoDesconto}
@@ -278,17 +275,29 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                                     {beneficio.descricaoDesconto}
                                 </div>
 
-                                <div className='numeroCupom_g2'>
-                                    <p> Seu cupom é:{beneficio.numeroCupom}</p>
-                                </div>
-                                <div className='btn_cadastrarComentario_beneficio_g2'>
 
-                                    <button
-                                        id='show-or-hide'
-                                        type="submit"
-                                        className="botaoCadastroComentarioBeneficio_g2"
-                                        onClick={requisicaoDesconto}
-                                    >Pegue</button>
+                                <div className='btn_cadastrarComentario_beneficio_g2'>
+                                    {
+                                        cupom && (
+                                            <div>
+                                                true
+                                                <p> Seu cupom é:{beneficio.numeroCupom}</p>
+                                            </div>
+                                        )
+                                    }{
+                                        !cupom && (
+                                            <div>
+                                                false
+                                                <button
+                                                    id='show-or-hide'
+                                                    type="submit"
+                                                    className="botaoCadastroComentarioBeneficio_g2"
+                                                // onClick={() => pegarCupomDesconto()}
+                                                // onClick={requisicaoDesconto}
+                                                >Pegue</button>
+                                            </div>
+                                        )
+                                    }
                                 </div>
                             </div>
                         </div>

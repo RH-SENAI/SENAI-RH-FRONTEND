@@ -36,17 +36,6 @@ export default function ListaBeneficios() {
     const [listaFavoritosDescontos, setListaFavoritosDescontos] = useState([])
 
 
-    // function verificarFavorito(idDesconto) {
-    //     console.log('Cheguei')
-    //     console.log(idDesconto)
-    //     listaFavoritosDescontos.map(desconto => {
-    //         if (desconto.idDesconto == idDesconto) {
-
-    //             return !active
-    //         }
-    //     })
-    // }
-
 
 
 

@@ -21,7 +21,7 @@ export const ModallCurso = ({ showModal, setShowModal, curso, comentarios }) => 
 
     const notify_Logar_Failed = () => toast.error("Você esqueceu de algum campo, por favor tente novamente!")
     const notify_cadastro_sucess = () => toast.success("Parabens! Em breve você recebera mais informações em seu e-mail.")
-    const [listaComentarioCurso, setListaComentarioCurso] = useState([])
+    const [listaComentarioCurso, setListaComentarioCurso] = useState(comentarios)
     const [idCurso, setIdCurso] = useState(0)
     const [comentarioCurso1, setComentarioCurso1] = useState('')
     const [valorAvalicao, setValorAvalicao] = useState(1)
@@ -110,12 +110,10 @@ export const ModallCurso = ({ showModal, setShowModal, curso, comentarios }) => 
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
-        }
-
-        )
+        })
             .then(function (response) {
                 console.log(response);
-                setListaComentarioCurso(response.data)
+                // setListaComentarioCurso(listaComentarioCurso)
             })
             .catch(erro => console.log(erro))
     }
@@ -217,7 +215,7 @@ export const ModallCurso = ({ showModal, setShowModal, curso, comentarios }) => 
                                                     <span>{c.idUsuarioNavigation.nome}:</span>
                                                     <p>{c.comentarioCurso1}</p>
                                                     <ul>
-                                                    <ReactStars
+                                                        <ReactStars
                                                             count={5}
                                                             size={15}
                                                             edit={false}
@@ -238,20 +236,20 @@ export const ModallCurso = ({ showModal, setShowModal, curso, comentarios }) => 
 
 
                                     <div class="rating_g2">
-                                        <input type="radio" value={valorAvalicao} onChange={(e) => setValorAvalicao(e.target.value)} name="rating" id="rating-1_cadastro_beneficio" />
-                                        <label for="rating-1_cadastro_beneficio"></label>
+                                        <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao5(e.target.value)} name="rating" id="rating-5_cadastro_beneficio_Favoritos" />
+                                        <label for="rating-5_cadastro_beneficio_Favoritos"></label>
 
-                                        <input type="radio" name="rating" value={valorAvalicao} onChange={(e) => avaliacao2(e.target.value)} id="rating-2_cadastro_beneficio" />
-                                        <label for="rating-2_cadastro_beneficio"></label>
+                                        <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao4(e.target.value)} name="rating" id="rating-4_cadastro_beneficio_Favoritos" />
+                                        <label for="rating-4_cadastro_beneficio_Favoritos"></label>
 
-                                        <input type="radio" name="rating" value={valorAvalicao} onChange={(e) => avaliacao3(e.target.value)} id="rating-3_cadastro_beneficio" />
-                                        <label for="rating-3_cadastro_beneficio"></label>
+                                        <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao3(e.target.value)} name="rating" id="rating-3_cadastro_beneficio_Favoritos" />
+                                        <label for="rating-3_cadastro_beneficio_Favoritos"></label>
 
-                                        <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao4(e.target.value)} name="rating" id="rating-4_cadastro_beneficio" />
-                                        <label for="rating-4_cadastro_beneficio"></label>
+                                        <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao2(e.target.value)} name="rating" id="rating-2_cadastro_beneficio_Favoritos" />
+                                        <label for="rating-2_cadastro_beneficio_Favoritos"></label>
 
-                                        <input type="radio" value={valorAvalicao} onChange={(e) => avaliacao5(e.target.value)} name="rating" id="rating-5_cadastro_beneficio" />
-                                        <label for="rating-5_cadastro_beneficio"></label>
+                                        <input type="radio" value={valorAvalicao} onChange={(e) => setValorAvalicao(e.target.value)} name="rating" id="rating-1_cadastro_beneficio_Favoritos" />
+                                        <label for="rating-1_cadastro_beneficio_Favoritos"></label>
                                     </div>
 
                                     <input

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     /* margin-right: 2.5rem; */
-    margin-top: 9rem;
+    margin-top: 5rem;
 }
 
 .container_empresa_g2{
@@ -34,10 +34,11 @@
     font-size: 1.1em;
     color: #B3B3B3;
     font-weight: bold;
+    background-position: 180px;
 }
 
 .box_forms_cadastroEmpresa_g2 {
-    height: 70vh;
+    height: 75vh;
 }
 
 .title_cadastroEmpresa_g2 {
