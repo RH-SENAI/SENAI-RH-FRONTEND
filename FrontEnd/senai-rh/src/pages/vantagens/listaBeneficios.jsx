@@ -135,11 +135,64 @@ export default function ListaBeneficios() {
 
     useEffect(listarFavoritosDescontos, []);
 
+    //Verificar
+    const [cupom, setCupom] = useState(false);
+
+
+    async function verifySituacao(id) {
+        try {
+            // const idUser = await AsyncStorage.getItem('idUsuario');
+            // console.log(idUser)
+            console.log('parseJwt().jti id usuario')
+            console.log(parseJwt().jti)
+
+            const respostaBuscar = await api(`/Registrodescontos/RegistroDescontos/IdUsuario/${parseJwt().jti}`);
+            console.log('Fiz a requisição')
+            var tamanhoJsonRegistro = Object.keys(respostaBuscar.data).length;
+
+            console.log('dados')
+            console.log(tamanhoJsonRegistro)
+
+            let stringRegistros = JSON.stringify(respostaBuscar.data);
+            var objRegistros = JSON.parse(stringRegistros);
+
+            var k = 0;
+            do {
+                console.log('entrei no do while')
+
+                if (objRegistros != '') {
+                    var registroId = objRegistros[k]['idDesconto'];
+
+                    console.log('idDesconto')
+                    console.log(registroId)
+                    console.log('id')
+                    console.log(id)
+
+                    if (registroId == id) {
+                        console.log('entrei e no state pra deixar true')
+                        setCupom(true)
+                        console.log('entrei e deixei true e comprado')
+                        console.log("Curso já comprado!");
+                    }
+                }
+                else {
+                    console.log('entrei no erro')
+                    console.log("Está vazio!")
+                }
+                k++
+            } while (k < tamanhoJsonRegistro);
+
+        } catch (error) {
+            console.log('error geral')
+            console.log(error)
+        }
+    }
+
     //Abrir modal
 
     const OpenModal = () => {
         setShowModal(prev => !prev);
-
+        verifySituacao(idDescontoModal)
     }
 
     //Listar todos os comentarios do beneficio conforme o id do beneficiob
@@ -241,7 +294,7 @@ export default function ListaBeneficios() {
 
     return (
         <div className="geral_g2">
-            <ModallBeneficio idDescontoModal={idDescontoModal} comentario={listaComentarioBeneficio} beneficio={listaBeneficios.find(beneficio => beneficio.idDesconto == idDescontoModal)} showModal={showModal} setShowModal={setShowModal} />
+            <ModallBeneficio cupom={cupom} idDescontoModal={idDescontoModal} comentario={listaComentarioBeneficio} beneficio={listaBeneficios.find(beneficio => beneficio.idDesconto == idDescontoModal)} showModal={showModal} setShowModal={setShowModal} />
             <HeaderFuncionario />
 
             <div className="container">
@@ -280,13 +333,13 @@ export default function ListaBeneficios() {
                                             <div className='espacamento_beneficio_g2'>
                                                 <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_beneficio_g2'>
                                                     <div className='banner_img_beneficio_g2'>
-                                                        {<img onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
+                                                        {<img onClick={() => { OpenModal(beneficio.idDesconto); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
                                                     </div>
 
                                                     <div className="dados_beneficio_gp2">
 
                                                         <div className="title_estrelas_g2">
-                                                            {<span className="title_beneficios_g2" onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
+                                                            {<span className="title_beneficios_g2" onClick={() => { OpenModal(beneficio.idDesconto); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
 
                                                             <div>
                                                                 <ReactStars

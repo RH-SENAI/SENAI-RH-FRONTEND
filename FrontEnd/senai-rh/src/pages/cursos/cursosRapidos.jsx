@@ -52,12 +52,9 @@ export default function CursosRapidos() {
         console.log(parseJwt().jti)
         console.log(idCurso)
         api.post('/FavoritosCursos', favo)
-        console.log("Id Curso modal aqui")
-        console.log(idCurso)
             .then(function (response) {
                 console.log(response);
                 console.log("Favoritou o curso" + idCurso)
-                listarFavoritosCursos();
                 listarCursos();
             })
             .catch(erro => console.log(erro))
@@ -72,7 +69,6 @@ export default function CursosRapidos() {
                     console.log('Lista Favoritos de Cursos')
                     console.log(resposta)
                     setListaFavoritosCursos(resposta.data)
-
                 }
             })
             .catch(erro => console.log(erro))
