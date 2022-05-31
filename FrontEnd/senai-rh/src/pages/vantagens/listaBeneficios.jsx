@@ -16,6 +16,7 @@ import axios from "axios";
 import { parseJwt } from "../../services/auth";
 import ReactStars from "react-rating-stars-component";
 import Heart from "react-heart"
+import { CompareArrowsOutlined } from "@mui/icons-material";
 
 
 export default function ListaBeneficios() {
@@ -135,55 +136,63 @@ export default function ListaBeneficios() {
 
     useEffect(listarFavoritosDescontos, []);
 
+    function setarCupom() {
+        setCupom(true)
+        console.log(cupom)
+    }
+
     //Verificar
     const [cupom, setCupom] = useState(false);
 
 
-    async function verifySituacao(id) {
+    async function  verifySituacao(id) {
+        // console.log("verifiquei!")
+        // debugger;
         try {
-            // const idUser = await AsyncStorage.getItem('idUsuario');
-            // console.log(idUser)
-            console.log('parseJwt().jti id usuario')
-            console.log(parseJwt().jti)
+            
+                // console.log('parseJwt().jti id usuario')
+                // console.log(parseJwt().jti)
 
-            const respostaBuscar = await api(`/Registrodescontos/RegistroDescontos/IdUsuario/${parseJwt().jti}`);
-            console.log('Fiz a requisição')
-            var tamanhoJsonRegistro = Object.keys(respostaBuscar.data).length;
+                const respostaBuscar = await api(`/Registrodescontos/RegistroDescontos/IdUsuario/${parseJwt().jti}`);
+                // console.log('Fiz a requisição')
+                var tamanhoJsonRegistro = Object.keys(respostaBuscar.data).length;
 
-            console.log('dados')
-            console.log(tamanhoJsonRegistro)
+                // console.log('dados')
+                // console.log(tamanhoJsonRegistro)
 
-            let stringRegistros = JSON.stringify(respostaBuscar.data);
-            var objRegistros = JSON.parse(stringRegistros);
+                let stringRegistros = JSON.stringify(respostaBuscar.data);
+                var objRegistros = JSON.parse(stringRegistros);
 
-            var k = 0;
-            do {
-                console.log('entrei no do while')
+                var k = 0;
+                do {
+                    console.log('entrei no do while')
 
-                if (objRegistros != '') {
-                    var registroId = objRegistros[k]['idDesconto'];
+                    if (objRegistros != 0) {
+                        var registroId = objRegistros[k]['idDesconto'];
 
-                    console.log('idDesconto')
-                    console.log(registroId)
-                    console.log('id')
-                    console.log(id)
+                        // console.log('idDesconto')
+                        // console.log(registroId)
+                        // console.log('id')
+                        // console.log(id)
 
-                    if (registroId == id) {
-                        console.log('entrei e no state pra deixar true')
-                        setCupom(true)
-                        console.log('entrei e deixei true e comprado')
-                        console.log("Curso já comprado!");
+                        if (registroId == id) {
+                            // console.log('entrei e no state pra deixar true')
+                            setarCupom()
+                            // console.log(cupom)
+                            // console.log('entrei e deixei true e comprado')
+                            // console.log("Curso já comprado!");
+                        }
                     }
-                }
-                else {
-                    console.log('entrei no erro')
-                    console.log("Está vazio!")
-                }
-                k++
-            } while (k < tamanhoJsonRegistro);
+                    else {
+                        // console.log('entrei no erro')
+                        console.log("Está vazio!")
+                    }
+                    k++
+                } while (k < tamanhoJsonRegistro);
 
+            
         } catch (error) {
-            console.log('error geral')
+            // console.log('error geral')
             console.log(error)
         }
     }
@@ -197,7 +206,8 @@ export default function ListaBeneficios() {
 
     //Listar todos os comentarios do beneficio conforme o id do beneficiob
 
-    function listarComentarioBeneficio() {
+    function listarComentarioBeneficio(event) {
+        // event.preventDefault()
         console.log(idDescontoModal)
         api('/ComentarioDescontos/Comentario/' + idDescontoModal)
             .then(resposta => {
@@ -210,7 +220,7 @@ export default function ListaBeneficios() {
             .catch(erro => console.log(erro))
     }
 
-    useEffect(listarComentarioBeneficio, []);
+    // useEffect(listarComentarioBeneficio, []);
 
 
 
@@ -289,12 +299,12 @@ export default function ListaBeneficios() {
     }
 
 
-    
+
 
 
     return (
         <div className="geral_g2">
-            <ModallBeneficio cupom={cupom} idDescontoModal={idDescontoModal} comentario={listaComentarioBeneficio} beneficio={listaBeneficios.find(beneficio => beneficio.idDesconto == idDescontoModal)} showModal={showModal} setShowModal={setShowModal} />
+            <ModallBeneficio setCupom={setCupom} cupom={cupom} idDescontoModal={idDescontoModal} comentario={listaComentarioBeneficio} beneficio={listaBeneficios.find(beneficio => beneficio.idDesconto == idDescontoModal)} showModal={showModal} setShowModal={setShowModal} />
             <HeaderFuncionario />
 
             <div className="container">
@@ -382,13 +392,13 @@ export default function ListaBeneficios() {
                                             <div className='espacamento_beneficio_g2'>
                                                 <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_beneficio_g2'>
                                                     <div className='banner_img_beneficio_g2'>
-                                                        {<img onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
+                                                        {<img onClick={() => { verifySituacao(cupom, idDescontoModal); OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
                                                     </div>
 
                                                     <div className="dados_beneficio_gp2">
 
                                                         <div className="title_estrelas_g2">
-                                                            {<span className="title_beneficios_g2" onClick={() => { OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
+                                                            {<span className="title_beneficios_g2" onClick={() => { verifySituacao(cupom, idDescontoModal) ; OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
 
                                                             <div>
                                                                 <ReactStars
