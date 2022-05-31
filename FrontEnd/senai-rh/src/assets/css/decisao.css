@@ -2,9 +2,9 @@
     .g3_bannerDemocratizacao{
         display: none;
     }
-    .container {
-        padding: 0 1.9rem;
-      }
+    .container{
+        margin: 1rem 1.9rem;
+    }
       .g3_boldDecisao{
         font-size: 2.1em;
         margin-bottom: 0;

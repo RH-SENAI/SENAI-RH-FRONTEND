@@ -15,6 +15,7 @@ import {
     parseJwt
     // usuarioAutenticado
 } from '../../services/auth';
+import ChartPie from "../../components/Graficos/Pizza";
 
 export default function Dashboard() {
     const [idUsuario, setIdUsuario] = useState(0);
@@ -124,6 +125,9 @@ export default function Dashboard() {
 
     // }
 
+
+
+
     useEffect(ListarUsuario, [])
     // useEffect(ListarMinhasAtividades, [])
     // useEffect(ListarMinhasAtividadesExtra, [])
@@ -218,7 +222,7 @@ export default function Dashboard() {
                                             <div className="g3_boxGraficosBaixo">
                                                 <div className="g3_containerGraficoLeft">
                                                     <div className="g3_graficoSatisfacaoPessoal">
-                                                        <VictoryPie
+                                                        {/* <VictoryPie
                                                             events={[{
                                                                 target: "data",
                                                                 eventHandlers: {
@@ -246,7 +250,8 @@ export default function Dashboard() {
                                                             ]}
 
 
-                                                        />
+                                                        /> */}
+                                                         <ChartPie />
                                                     </div>
                                                     <span>Satisfação Pessoal</span>
                                                 </div>

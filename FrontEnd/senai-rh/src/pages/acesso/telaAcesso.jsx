@@ -37,6 +37,7 @@ export default function Acesso() {
                                     <p className="g3_primeiroTextoResponsivo ">Pensando sempre no conforto dos funcionários!</p>
                                     <p className="g3_segundoTextoResponsivo ">Faça seu login para começar</p>
                                     {/* <p className="g3_segundoTexto">Acesse sua conta e veja todo seu Dashboard e o da sua equipe!</p> */}
+                                    
                                 </div>
                             </div>
                             <div className="g3_botao">
@@ -51,8 +52,8 @@ export default function Acesso() {
 
                 </div>
             </div>
-
-            <Footer />
+ 
+            <Footer/>
         </div>
     )
 }
