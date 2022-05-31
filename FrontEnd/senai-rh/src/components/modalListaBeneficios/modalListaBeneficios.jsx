@@ -20,70 +20,17 @@ import ReactStars from "react-rating-stars-component";
 // import './aparecer' 
 
 
-export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario, idDescontoModal, cupom }) => {
+export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario, idDescontoModal, cupom, setCupom }) => {
 
     const notify_Logar_Failed = () => toast.error("Você esqueceu de algum campo, por favor tente novamente!")
     const notify_cadastro_sucess = () => toast.success("Parabens, desconto resgatado com sucesso!")
     const [listaComentarioBeneficio, setListaComentarioBeneficio] = useState([])
-    const [idDesconto, setIdDesconto] = useState(0)
-    const [avaliacaoDesconto, setAvaliacaoDesconto] = useState(0)
     const [comentarioDesconto1, setComentarioDesconto1] = useState('')
     const [valorAvalicao, setValorAvalicao] = useState(1)
-    // const [cupom, setCupom] = useState(false);
 
 
-    // async function verifySituacao(id) {
-    //     try {
-    //         // const idUser = await AsyncStorage.getItem('idUsuario');
-    //         // console.log(idUser)
-    //         console.log('parseJwt().jti id usuario')
-    //         console.log(parseJwt().jti)
 
-    //         const respostaBuscar = await api(`/Registrodescontos/RegistroDescontos/IdUsuario/${parseJwt().jti}`);
-    //         console.log('Fiz a requisição')
-    //         var tamanhoJsonRegistro = Object.keys(respostaBuscar.data).length;
-
-    //         console.log('dados')
-    //         console.log(tamanhoJsonRegistro)
-
-    //         let stringRegistros = JSON.stringify(respostaBuscar.data);
-    //         var objRegistros = JSON.parse(stringRegistros);
-
-    //         var k = 0;
-    //         do {
-    //             console.log('entrei no do while')
-
-    //             if (objRegistros != '') {
-    //                 var registroId = objRegistros[k]['idDesconto'];
-
-    //                 console.log('idDesconto')
-    //                 console.log(registroId)
-    //                 console.log('id')
-    //                 console.log(id)
-
-    //                 if (registroId == id) {
-    //                     console.log('entrei e deixei true')
-    //                     setCupom(true)
-    //                     console.log('entrei e deixei true e comprado')
-    //                     console.log("Curso já comprado!");
-    //                 }
-
-
-    //             }
-    //             else {
-    //                 console.log('entrei no erro')
-    //                 console.log("Está vazio!")
-    //             }
-    //             k++
-    //         } while (k < tamanhoJsonRegistro);
-
-    //     } catch (error) {
-    //         console.log('error geral')
-    //         console.log(error)
-    //     }
-    // }
-
-    // useEffect(verifySituacao, [])
+    
 
     const avaliacao2 = () => {
         setValorAvalicao(2)
@@ -98,9 +45,13 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
         setValorAvalicao(5)
     }
 
+    
+
     const closeModal = e => {
+        setCupom(false);
         console.log('showModal antes:' + showModal)
         setShowModal(false);
+
 
         console.log('showModal depois:' + showModal)
     };
@@ -115,8 +66,6 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
         [setShowModal, showModal]
     );
 
-
-
     useEffect(
         () => {
             document.addEventListener('keydown', keyPress);
@@ -125,18 +74,19 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
         [keyPress]
     );
 
-    function listarComentarioBeneficio() {
-        console.log(idDescontoModal)
-        api('/ComentarioDescontos/Comentario/' + idDescontoModal)
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    console.log('Lista comentario')
-                    console.log(resposta)
-                    setListaComentarioBeneficio(resposta.data)
-                }
-            })
-            .catch(erro => console.log(erro))
-    }
+    // function listarComentarioBeneficio() {
+    //     console.log(idDescontoModal)
+    //     api('/ComentarioDescontos/Comentario/' + idDescontoModal)
+    //         .then(resposta => {
+    //             if (resposta.status === 200) {
+    //                 console.log('Lista comentario')
+    //                 console.log(resposta)
+    //                 setListaComentarioBeneficio(resposta.data)
+    //             }
+    //         })
+    //         .catch(erro => console.log(erro))
+    // }
+    // useEffect(listarComentarioBeneficio, [])
 
     function cadastrarComentario(event) {
         event.preventDefault();
@@ -158,7 +108,7 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
             .then(function (response) {
                 console.log(response);
                 console.log("cheguei Aqui lau")
-                listarComentarioBeneficio(comentario)
+                comentario()
                 // comentario(listaComentarioBeneficio)
             })
             .catch(erro => console.log(erro))
@@ -192,7 +142,7 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                     onRequestClose={closeModal}
                 >
 
-                    <div>
+                    <div id={beneficio.idDesconto}>
                         <ToastContainer
                             position="top-right"
                             autoClose={5000}
@@ -331,21 +281,21 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
 
                                 <div className='btn_cadastrarComentario_beneficio_g2'>
                                     {
-                                        cupom && (
+                                        cupom == true && (
                                             <div>
-                                                true
+                                                
                                                 <p> Seu cupom é:{beneficio.numeroCupom}</p>
                                             </div>
                                         )
                                     }{
-                                        !cupom && (
+                                        cupom == false && (
                                             <div>
-                                                false
+                                                
                                                 <button
                                                     id='show-or-hide'
                                                     type="submit"
                                                     className="botaoCadastroComentarioBeneficio_g2"
-                                                    onClick={requisicaoDesconto}
+                                                    onClick={() => { requisicaoDesconto() }}
                                                 >Pegue</button>
                                             </div>
                                         )
