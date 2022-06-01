@@ -33,14 +33,56 @@ export default function CursosRapidos() {
     let subtitle;
     const delay = require('delay');
 
+    //Verificar curso inscrito
+    const [inscricao, setInscricao] = useState(false);
+
+    function setarInscricao() {
+        setInscricao(true)
+    }
+
+    //VefificarSaldoCurso
+    const [btnInscricao, setBtnInscricao] = useState(false)
+
+    function verifySaldoCurso(saldoUser, saldoMoeda) {
+        if (saldoUser > saldoMoeda) {
+            setBtnInscricao(true)
+        }
+    }
+
+
+    //VerificarSituaçãoCurso
+    async function verifySituacao(id) {
+        try {
+            const respostaBuscar = await api(`/Registroscursos/RegistroCursos/IdUsuario/${parseJwt().jti}`);
+            var tamanhoJsonRegistro = Object.keys(respostaBuscar.data).length;
+            let stringRegistros = JSON.stringify(respostaBuscar.data);
+            var objRegistros = JSON.parse(stringRegistros);
+
+            var k = 0;
+            do {
+
+                if (objRegistros != 0) {
+                    var registroId = objRegistros[k]['idCurso'];
+                    if (registroId == id) {
+                        setarInscricao()
+                    }
+                }
+                else {
+                    console.log("Está vazio!")
+                }
+                k++
+            } while (k < tamanhoJsonRegistro);
+
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 
     //Favoritar
-
-
     const [active, setActive] = useState(false)
     const [favorito, setFavorito] = useState(false);
-
-
 
     function favoritarCurso(idCurso) {
 
@@ -66,8 +108,6 @@ export default function CursosRapidos() {
         api('/FavoritosCursos/Favorito/' + parseJwt().jti)
             .then(resposta => {
                 if (resposta.status === 200) {
-                    console.log('Lista Favoritos de Cursos')
-                    console.log(resposta)
                     setListaFavoritosCursos(resposta.data)
                 }
             })
@@ -79,7 +119,6 @@ export default function CursosRapidos() {
     async function favoritar(favorite, id) {
         try {
             if (favorite == true) {
-                // this.ProcurarCurso(id);
 
                 //Requisição favoritos pelo id do usuário
                 const respostaFavoritos = await api('/FavoritosCursos/Favorito/' + parseJwt().jti)
@@ -92,12 +131,10 @@ export default function CursosRapidos() {
                 do {
                     let stringFavoritos = JSON.stringify(dadosFavoritos);
                     var objFavoritos = JSON.parse(stringFavoritos);
-                    console.log(objFavoritos);
 
                     if (objFavoritos != '') {
                         var cursoId = objFavoritos[p]['idCurso'];
                         let favoritoId = objFavoritos[p]['idCursoFavorito'];
-                        console.log(cursoId);
 
                         if (cursoId == id) {
                             const respostaExcluir = await api.delete(`/FavoritosCursos/deletar/${favoritoId}`);
@@ -105,8 +142,6 @@ export default function CursosRapidos() {
 
                             if (respostaExcluir.status == 204) {
                                 setActive(!active);
-                                console.log('Desfavoritado');
-                                // window.location.reload(true);
                                 listarFavoritosCursos();
                                 listarCursos();
                             }
@@ -118,7 +153,6 @@ export default function CursosRapidos() {
                     }
                 } while (p < tamanhoJson);
                 if (verifyDelete != 204) {
-                    console.log("CHEGOU")
                     if (cursoId != id) {
                         favoritarCurso(id)
                         listarFavoritosCursos();
@@ -126,8 +160,6 @@ export default function CursosRapidos() {
                     }
                 }
             }
-
-            // window.location.reload(true);
             listarFavoritosCursos();
             listarCursos();
         } catch (error) {
@@ -142,22 +174,13 @@ export default function CursosRapidos() {
     // useEffect(geolocation, []);
 
     function listarComentarioCurso() {
-        console.log(idCursoModal)
         api('/ComentarioCursos/Comentario/' + idCursoModal)
             .then(resposta => {
                 if (resposta.status === 200) {
-                    console.log('Lista comentario')
-                    console.log(resposta)
                     setListaComentarioCurso(resposta.data)
                 }
             })
             .catch(erro => console.log(erro))
-    }
-
-    useEffect(listarComentarioCurso, []);
-
-    function closeModal() {
-        setIsOpen(false);
     }
 
     const time = async () => {
@@ -185,8 +208,6 @@ export default function CursosRapidos() {
         api('/Cursos')
             .then(resposta => {
                 if (resposta.status === 200) {
-                    console.log('Lista Cursos')
-                    console.log(resposta)
                     setListaCursos(resposta.data)
                 }
             })
@@ -275,39 +296,12 @@ export default function CursosRapidos() {
 
     useEffect(listarCursos, []);
 
-    function requisicaoCurso(event) {
-        event.preventDefault();
-
-        let requisicao = {
-            idUsuario: parseJwt().jti,
-            idCurso: curso.idCurso,
-        }
-        // console.log('Requisição de curso feita!')
-        console.log('curso.idCurso!')
-        console.log(curso.idCurso)
-
-        api.post('/ComentarioCursos', requisicao, {
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-            }
-        }
-
-        )
-            .then(function (response) {
-                console.log(response);
-                setListaComentarioCurso(response.data)
-            })
-            .catch(erro => console.log(erro))
-    }
-
-
     function Excluir(idCurso) {
 
         api.delete('/Cursos/Deletar/' + idCurso)
 
             .then(resposta => {
                 if (resposta.status === 204) {
-                    console.log('Curso Excluido')
                     listarCursos()
 
                 }
@@ -341,11 +335,7 @@ export default function CursosRapidos() {
         )
             .then(resposta => {
                 if (resposta.status === 200) {
-                    console.log('listarUsuario')
-                    console.log(resposta)
                     setListaUsuario(resposta.data)
-                    // setNome(resposta.data.nome)
-                    // console.log('aqui' + resposta.data)
 
                 }
             })
@@ -370,7 +360,7 @@ export default function CursosRapidos() {
     return (
         <div className="geral_g2">
 
-            <ModallCurso comentarios={listaComentarioCurso} curso={listaCursos.find(curso => curso.idCurso == idCursoModal)} showModal={showModal} setShowModal={setShowModal} />
+            <ModallCurso btnInscricao={btnInscricao} inscricao={inscricao} setInscricao={setInscricao} listarComentarioCurso={listarComentarioCurso} comentarios={listaComentarioCurso} curso={listaCursos.find(curso => curso.idCurso == idCursoModal)} showModal={showModal} setShowModal={setShowModal} />
             <HeaderFuncionario />
 
 
@@ -412,15 +402,17 @@ export default function CursosRapidos() {
                                     filteredResults.map((curso) => {
                                         return (
                                             <div className='espacamento_curso_g2'>
-                                                <section alt={curso.idCurso} key={curso.idCurso} id='imagem' className='box_curso_g2'>
-                                                    <div className='banner_img_curso_g2'>
-                                                        {<img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
-                                                    </div>
+                                            <section key={curso.idCurso} id='imagem' className='box_curso_g2'>
+                                                <div className='banner_img_curso_g2'>
+                                                    {<img onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
+                                                </div>
 
-                                                    <div className='dados_curso_gp2'>
+                                                <div className='dados_curso_gp2'>
 
-                                                        {<span onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
-                                                        {/* <div className='estrelas_g2'>
+                                                    {<span onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
+
+                                                    <div className='estrelas_cursos_g2'>
+                                                        <div >
                                                             <ReactStars
                                                                 count={5}
                                                                 size={20}
@@ -428,37 +420,44 @@ export default function CursosRapidos() {
                                                                 value={curso.mediaAvaliacaoCurso}
                                                                 activeColor="#C20004"
                                                             />
-                                                        </div> */}
-
-                                                        {/* {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>} */}
-                                                        {/* {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}   </p>} */}
-                                                        <div className="box_baixo_section_curso_g2">
-
-                                                            {<div className='circulo_moeda_curso_g2'>
-                                                                <img className='coin_curso_g2' src={coin} alt="favorito" /> {curso.valorCurso}
-                                                            </div>}
-                                                            <div className="media_beneficio_g2">
-                                                                <img src={coracao} alt="favoritar" />
-                                                            </div>
-                                                            {/* <div> <button onClick={ () => Excluir(curso.idCurso)} >Excluir</button></div> */}
                                                         </div>
                                                     </div>
-                                                </section>
-                                            </div>
+                                                    <div>
+                                                        {<p><img onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
+                                                        {<p><img onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}   </p>}
+                                                    </div>
+                                                    <div className="box_baixo_section_curso_g2">
+
+                                                        <div className='circulo_moeda_curso_g2'>
+                                                            <img className='coin_curso_g2' src={coin} alt="favorito" /> {curso.valorCurso}
+                                                        </div>
+                                                        <div className="media_beneficio_g2">
+                                                            <div className="favoritar_beneficio_g2">
+                                                                <Heart
+                                                                    isActive={listaFavoritosCursos.some(l => { if (l.idCurso == curso.idCurso) { return true } return false })}
+                                                                    onClick={() => { favoritar(!favorito, curso.idCurso) }}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        {/* <div> <button onClick={ () => Excluir(curso.idCurso)} >Excluir</button></div> */}
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
                                         )
                                     })
                                     :
                                     listaCursos.map((curso) => {
                                         return (
                                             <div className='espacamento_curso_g2'>
-                                                <section alt={curso.idCurso} key={curso.idCurso} id='imagem' className='box_curso_g2'>
+                                                <section key={curso.idCurso} id='imagem' className='box_curso_g2'>
                                                     <div className='banner_img_curso_g2'>
-                                                        {<img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
+                                                        {<img onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
                                                     </div>
 
                                                     <div className='dados_curso_gp2'>
 
-                                                        {<span onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
+                                                        {<span onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
 
                                                         <div className='estrelas_cursos_g2'>
                                                             <div >
@@ -472,8 +471,8 @@ export default function CursosRapidos() {
                                                             </div>
                                                         </div>
                                                         <div>
-                                                            {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
-                                                            {<p><img onClick={() => { OpenModal(); listarComentarioCurso() }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}   </p>}
+                                                            {<p><img onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
+                                                            {<p><img onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}   </p>}
                                                         </div>
                                                         <div className="box_baixo_section_curso_g2">
 
@@ -481,8 +480,6 @@ export default function CursosRapidos() {
                                                                 <img className='coin_curso_g2' src={coin} alt="favorito" /> {curso.valorCurso}
                                                             </div>
                                                             <div className="media_beneficio_g2">
-                                                                {/* <img src={coracao} alt="favoritar" />  */}
-
                                                                 <div className="favoritar_beneficio_g2">
                                                                     <Heart
                                                                         isActive={listaFavoritosCursos.some(l => { if (l.idCurso == curso.idCurso) { return true } return false })}

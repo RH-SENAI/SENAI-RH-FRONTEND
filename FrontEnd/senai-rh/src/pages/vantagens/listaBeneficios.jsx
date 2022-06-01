@@ -1,13 +1,7 @@
 import HeaderFuncionario from "../../components/header/headerFuncionario";
 import '../../assets/css/cursosRapidos.css'
 import '../../assets/css/listaBeneficios.css'
-import telaBeneficios from '../../assets/img/telaBeneficios.svg'
-import data from '../../assets/img/data.svg'
-import coracao from '../../assets/img/coracao.svg'
 import coin from '../../assets/img/coin 1.png'
-import relogio from '../../assets/img/relogio.png'
-import local from '../../assets/img/local.png'
-import estrelaSozinha from '../../assets/img/estrelaSozinha.svg'
 import React, { useEffect, useState } from 'react';
 import { ModallBeneficio } from "../../components/modalListaBeneficios/modalListaBeneficios";
 import api from "../../services/api";
@@ -16,34 +10,25 @@ import axios from "axios";
 import { parseJwt } from "../../services/auth";
 import ReactStars from "react-rating-stars-component";
 import Heart from "react-heart"
-import { CompareArrowsOutlined } from "@mui/icons-material";
-
 
 export default function ListaBeneficios() {
-    const [listaComentarioBeneficio, setListaComentarioBeneficio] = useState([])
+    
+    //VefificarSaldo
+    const [ btnCompra,setBtnCompra] =useState(false)
 
-    const [listaBeneficios, setListaBeneficios] = useState([]);
-    const [listaUsuario, setListaUsuario] = useState([]);
-    const [showModal, setShowModal] = useState(false);
-    const [idDescontoModal, setIdDescontoModal] = useState()
-    const [modalIsOpen, setIsOpen] = React.useState(false);
-    const [value, setValue] = useState(0);
-
-
+    function verifySaldo(saldoUser, saldoMoeda){
+        if(saldoUser > saldoMoeda  ){
+            setBtnCompra(true)
+        }
+    }
 
     //Favoritar
     const [active, setActive] = useState(false)
     const [favorito, setFavorito] = useState(false)
     const [listaFavoritosDescontos, setListaFavoritosDescontos] = useState([])
-
-
-
-
-
     async function favoritar(favorite, id) {
         try {
             if (favorite == true) {
-                // this.ProcurarCurso(id);
 
                 //Requisição favoritos pelo id do usuário
                 const respostaFavoritos = await api('/FavoritosDescontos/Favorito/' + parseJwt().jti)
@@ -52,28 +37,19 @@ export default function ListaBeneficios() {
                 //Tamanho do json do respostaFavoritos
                 var tamanhoJson = Object.keys(dadosFavoritos).length;
                 var p = 0;
-
                 do {
                     let stringFavoritos = JSON.stringify(dadosFavoritos);
                     var objFavoritos = JSON.parse(stringFavoritos);
-                    console.log(objFavoritos);
-
                     if (objFavoritos != '') {
                         var descontoId = objFavoritos[p]['idDesconto'];
                         let favoritoId = objFavoritos[p]['idDescontoFavorito'];
-                        console.log(descontoId);
-
                         if (descontoId == id) {
                             const respostaExcluir = await api.delete(`/FavoritosDescontos/deletar/${favoritoId}`);
                             var verifyDelete = respostaExcluir.status;
-
                             if (respostaExcluir.status == 204) {
-                                setActive(!active);
-                                console.log('Desfavoritado');
-                                // window.location.reload(true);
+                                setActive(!active);;
                                 listarFavoritosDescontos();
                                 listarBeneficios();
-
                             }
                         }
                         p++
@@ -83,7 +59,6 @@ export default function ListaBeneficios() {
                     }
                 } while (p < tamanhoJson);
                 if (verifyDelete != 204) {
-                    console.log("CHEGOU")
                     if (descontoId != id) {
                         favoritarDesconto(id)
                         listarFavoritosDescontos();
@@ -91,8 +66,6 @@ export default function ListaBeneficios() {
                     }
                 }
             }
-
-            // window.location.reload(true);
             listarFavoritosDescontos();
             listarBeneficios();
         } catch (error) {
@@ -100,104 +73,70 @@ export default function ListaBeneficios() {
         }
     }
 
-
-
     function favoritarDesconto(idDesconto) {
-
         let favo = {
             idDesconto: idDesconto,
             idUsuario: parseJwt().jti,
         }
-
-        console.log(parseJwt().jti)
-        console.log(idDesconto)
+        
         api.post('/FavoritosDescontos', favo)
             .then(function (response) {
-                console.log(response);
-                console.log("Favoritou o desconto" + idDesconto)
                 listarBeneficios()
             })
             .catch(erro => console.log(erro))
     }
 
-
     function listarFavoritosDescontos() {
         api('/FavoritosDescontos/Favorito/' + parseJwt().jti)
             .then(resposta => {
-                if (resposta.status === 200) {
-                    console.log('Lista Favoritos de descontos')
-                    console.log(resposta)
+                if (resposta.status === 200) {                    
                     setListaFavoritosDescontos(resposta.data)
-
                 }
             })
             .catch(erro => console.log(erro))
     }
-
     useEffect(listarFavoritosDescontos, []);
+
+
+    //Verificar cupom
+    const [cupom, setCupom] = useState(false);
 
     function setarCupom() {
         setCupom(true)
-        console.log(cupom)
     }
 
-    //Verificar
-    const [cupom, setCupom] = useState(false);
-
-
-    async function  verifySituacao(id) {
-        // console.log("verifiquei!")
-        // debugger;
+    async function verifySituacao(id) {    
         try {
-            
-                // console.log('parseJwt().jti id usuario')
-                // console.log(parseJwt().jti)
+            const respostaBuscar = await api(`/Registrodescontos/RegistroDescontos/IdUsuario/${parseJwt().jti}`);
+            var tamanhoJsonRegistro = Object.keys(respostaBuscar.data).length;
+            let stringRegistros = JSON.stringify(respostaBuscar.data);
+            var objRegistros = JSON.parse(stringRegistros);
 
-                const respostaBuscar = await api(`/Registrodescontos/RegistroDescontos/IdUsuario/${parseJwt().jti}`);
-                // console.log('Fiz a requisição')
-                var tamanhoJsonRegistro = Object.keys(respostaBuscar.data).length;
+            var k = 0;
+            do {
 
-                // console.log('dados')
-                // console.log(tamanhoJsonRegistro)
-
-                let stringRegistros = JSON.stringify(respostaBuscar.data);
-                var objRegistros = JSON.parse(stringRegistros);
-
-                var k = 0;
-                do {
-                    console.log('entrei no do while')
-
-                    if (objRegistros != 0) {
-                        var registroId = objRegistros[k]['idDesconto'];
-
-                        // console.log('idDesconto')
-                        // console.log(registroId)
-                        // console.log('id')
-                        // console.log(id)
-
-                        if (registroId == id) {
-                            // console.log('entrei e no state pra deixar true')
-                            setarCupom()
-                            // console.log(cupom)
-                            // console.log('entrei e deixei true e comprado')
-                            // console.log("Curso já comprado!");
-                        }
+                if (objRegistros != 0) {
+                    var registroId = objRegistros[k]['idDesconto'];
+                    if (registroId == id) {
+                        setarCupom()
                     }
-                    else {
-                        // console.log('entrei no erro')
-                        console.log("Está vazio!")
-                    }
-                    k++
-                } while (k < tamanhoJsonRegistro);
+                }
+                else {
+                    console.log("Está vazio!")
+                }
+                k++
+            } while (k < tamanhoJsonRegistro);
 
-            
+
         } catch (error) {
-            // console.log('error geral')
             console.log(error)
         }
     }
 
     //Abrir modal
+    const [idDescontoModal, setIdDescontoModal] = useState()
+    const [showModal, setShowModal] = useState(false);
+
 
     const OpenModal = () => {
         setShowModal(prev => !prev);
@@ -205,33 +144,28 @@ export default function ListaBeneficios() {
     }
 
     //Listar todos os comentarios do beneficio conforme o id do beneficiob
+    const [listaComentarioBeneficio, setListaComentarioBeneficio] = useState([])
 
-    function listarComentarioBeneficio(event) {
-        // event.preventDefault()
-        console.log(idDescontoModal)
+    function listarComentarioBeneficio() {
         api('/ComentarioDescontos/Comentario/' + idDescontoModal)
             .then(resposta => {
-                if (resposta.status === 200) {
-                    console.log('Lista comentario')
-                    console.log(resposta)
+                if (resposta.status === 200) {                    
                     setListaComentarioBeneficio(resposta.data)
                 }
             })
             .catch(erro => console.log(erro))
     }
 
-    // useEffect(listarComentarioBeneficio, []);
-
 
 
     //Listar todos os beneficios
+    const [listaBeneficios, setListaBeneficios] = useState([]);
+
 
     function listarBeneficios() {
         api('/Descontos')
             .then(resposta => {
                 if (resposta.status === 200) {
-                    console.log('Lista')
-                    console.log(resposta)
                     setListaBeneficios(resposta.data)
                 }
             })
@@ -243,6 +177,7 @@ export default function ListaBeneficios() {
 
 
     //Listar Usuario logado
+    const [listaUsuario, setListaUsuario] = useState([]);
 
     function listarUsuario() {
         axios('http://apirhsenaigp1.azurewebsites.net/api/Usuarios/BuscarUsuario/' + parseJwt().jti, {
@@ -251,9 +186,7 @@ export default function ListaBeneficios() {
             },
         })
             .then(resposta => {
-                if (resposta.status === 200) {
-                    console.log('listarUsuario')
-                    console.log(resposta)
+                if (resposta.status === 200) {                   
                     setListaUsuario(resposta.data)
 
                 }
@@ -299,12 +232,9 @@ export default function ListaBeneficios() {
     }
 
 
-
-
-
     return (
         <div className="geral_g2">
-            <ModallBeneficio setCupom={setCupom} cupom={cupom} idDescontoModal={idDescontoModal} comentario={listaComentarioBeneficio} beneficio={listaBeneficios.find(beneficio => beneficio.idDesconto == idDescontoModal)} showModal={showModal} setShowModal={setShowModal} />
+            <ModallBeneficio btnCompra={btnCompra} listarComentarioBeneficio={listarComentarioBeneficio} setCupom={setCupom} cupom={cupom} idDescontoModal={idDescontoModal} comentario={listaComentarioBeneficio} beneficio={listaBeneficios.find(beneficio => beneficio.idDesconto == idDescontoModal)} showModal={showModal} setShowModal={setShowModal} />
             <HeaderFuncionario />
 
             <div className="container">
@@ -319,9 +249,6 @@ export default function ListaBeneficios() {
                             list='curso'
                             onChange={(e) => searchItems(e.target.value)}
                         />
-
-
-
                     </div>
 
                     <div className=' moeda_cima_g2'>
@@ -340,65 +267,16 @@ export default function ListaBeneficios() {
 
                                     filteredResults.map((beneficio) => {
                                         return (
-                                            <div className='espacamento_beneficio_g2'>
+                                            <dv className='espacamento_beneficio_g2'>
                                                 <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_beneficio_g2'>
                                                     <div className='banner_img_beneficio_g2'>
-                                                        {<img onClick={() => { OpenModal(beneficio.idDesconto); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
+                                                        {<img onClick={() => { verifySituacao( cupom, idDescontoModal); OpenModal(); listarComentarioBeneficio(); verifySaldo(listaUsuario.saldoMoeda, beneficio.valorDesconto) }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
                                                     </div>
 
                                                     <div className="dados_beneficio_gp2">
 
                                                         <div className="title_estrelas_g2">
-                                                            {<span className="title_beneficios_g2" onClick={() => { OpenModal(beneficio.idDesconto); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
-
-                                                            <div>
-                                                                <ReactStars
-                                                                    count={5}
-                                                                    // onChange={ratingChanged}
-                                                                    size={30}
-                                                                    edit={false}
-                                                                    value={beneficio.mediaAvaliacaoDesconto}
-                                                                    activeColor="#C20004"
-                                                                />
-                                                            </div>
-                                                        </div>
-
-
-
-                                                        <div className="box_baixo_section_beneficio_g2">
-                                                            {<div className='circulo_moeda_beneficio_g2'>
-                                                                <img className='coin_beneficio_g2' src={coin} alt="coin" />  {beneficio.valorDesconto}
-                                                            </div>}
-                                                            <div>
-                                                                {/* <img src={coracao} alt="favorito" />; */}
-                                                                <div>
-                                                                    <div className="favoritar_beneficio_g2">
-                                                                        <Heart isActive={listaFavoritosDescontos.some(l => { if (l.idDesconto == beneficio.idDesconto) { return true } return false })} onClick={() => { favoritar(!favorito, beneficio.idDesconto) }} />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
-                                                        </div>
-                                                    </div>
-                                                </section>
-                                            </div>
-                                        )
-                                    })
-
-                                    :
-
-                                    listaBeneficios.map((beneficio) => {
-                                        return (
-                                            <div className='espacamento_beneficio_g2'>
-                                                <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_beneficio_g2'>
-                                                    <div className='banner_img_beneficio_g2'>
-                                                        {<img onClick={() => { verifySituacao(cupom, idDescontoModal); OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
-                                                    </div>
-
-                                                    <div className="dados_beneficio_gp2">
-
-                                                        <div className="title_estrelas_g2">
-                                                            {<span className="title_beneficios_g2" onClick={() => { verifySituacao(cupom, idDescontoModal) ; OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
+                                                            {<span className="title_beneficios_g2" onClick={() => { verifySituacao(cupom, idDescontoModal); OpenModal(); listarComentarioBeneficio() }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
 
                                                             <div>
                                                                 <ReactStars
@@ -420,6 +298,54 @@ export default function ListaBeneficios() {
                                                             </div>}
                                                             <div>
                                                                 {/* <img src={coracao} alt="favorito" /> */}
+                                                                <div className="favoritar_beneficio_g2">
+                                                                    <Heart isActive={listaFavoritosDescontos.some(l => { if (l.idDesconto == beneficio.idDesconto) { return true } return false })} onClick={() => { favoritar(!favorito, beneficio.idDesconto) }} />
+                                                                </div>
+                                                            </div>
+                                                            {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
+                                                        </div>
+                                                    </div>
+
+
+                                                </section>
+                                            </dv>
+                                        )
+                                    })
+
+                                    :
+
+                                    listaBeneficios.map((beneficio) => {
+                                        return (
+                                            <div className='espacamento_beneficio_g2'>
+                                                <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_beneficio_g2'>
+                                                    <div className='banner_img_beneficio_g2'>
+                                                        {<img onClick={() => { verifySituacao(cupom, idDescontoModal); OpenModal(); listarComentarioBeneficio(); verifySaldo(listaUsuario.saldoMoeda, beneficio.valorDesconto) }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
+                                                    </div>
+
+                                                    <div className="dados_beneficio_gp2">
+
+                                                        <div className="title_estrelas_g2">
+                                                            {<span className="title_beneficios_g2" onClick={() => { verifySituacao(cupom, idDescontoModal); OpenModal(); listarComentarioBeneficio(); verifySaldo(listaUsuario.saldoMoeda, beneficio.valorDesconto) }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)}> {beneficio.nomeDesconto}</span>}
+
+                                                            <div>
+                                                                <ReactStars
+                                                                    count={5}
+                                                                    // onChange={ratingChanged}
+                                                                    size={30}
+                                                                    edit={false}
+                                                                    value={beneficio.mediaAvaliacaoDesconto}
+                                                                    activeColor="#C20004"
+                                                                />
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div className="box_baixo_section_beneficio_g2">
+                                                            {<div className='circulo_moeda_beneficio_g2'>
+                                                                <img className='coin_beneficio_g2' src={coin} alt="coin" />  {beneficio.valorDesconto}
+                                                            </div>}
+                                                            <div>
                                                                 <div className="favoritar_beneficio_g2">
                                                                     <Heart isActive={listaFavoritosDescontos.some(l => { if (l.idDesconto == beneficio.idDesconto) { return true } return false })} onClick={() => { favoritar(!favorito, beneficio.idDesconto) }} />
                                                                 </div>
