@@ -18,9 +18,11 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
     background: url(../img/SetaSelectLight.png) no-repeat ;
+    background-position: right ;
+    /* background: 0 0 1rem 0; */
+    /* margin-right: 1rem; */
 }
 input[type="file"] {
-
     display: none;
 }
 

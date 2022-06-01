@@ -99,7 +99,7 @@ export default function CadastrarBeneficio() {
 
             <div className=" container_cadastrarBeneficio container_forms_cadastroBeneficio_g2">
                 <div className="box_img_cadastroBeneficio_g2">
-                    <img src={telaCadastroVantagens} alt="imagemCadastroBeneficio" />
+                    <img className="img_cadastroBeneficio_g2" src={telaCadastroVantagens} alt="imagemCadastroBeneficio" />
                 </div>
                 <form onSubmit={efetuarCadastroBeneficio} action="">
                     <div className="box_forms_cadastroBeneficio_g2">

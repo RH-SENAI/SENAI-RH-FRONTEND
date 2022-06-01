@@ -105,10 +105,10 @@ export default function CadastrarEmpresa() {
 
             <div className="container_empresa_g2 container_forms_cadastroEmpresa_g2">
                 <div className="box_img_cadastroEmpresa_g2">
-                    <img src={cadastroEmpresa} alt="imagemCadastroEmpresa" />
+                    <img className="img_cadastroEmpresa_g2" src={cadastroEmpresa} alt="imagemCadastroEmpresa" />
                 </div>
 
-                <form onSubmit={efetuarCadastro}>
+                <form className="container_empresa_g2_form" onSubmit={efetuarCadastro}>
                     <div className="box_forms_cadastroEmpresa_g2">
                         <div className="title_cadastroEmpresa_g2">
                             <h1>Cadastrar Empresa</h1>
@@ -127,7 +127,7 @@ export default function CadastrarEmpresa() {
                                             name="nomeEmpresa"
                                             placeholder="Nome da Empresa"
                                         />
-                                        <label htmlFor="nomeEmpresa">Nome da Empresa</label>
+                                        <label htmlFor="nomeEmpresa">Nome</label>
                                     </div>
 
                                     <div className="input_g2_cadastro">
@@ -222,13 +222,13 @@ export default function CadastrarEmpresa() {
                                 </div>
 
 
-                                <div className="input_g2_cadastro">
+                                <div className="input_g2_cadastro input_g2_cadastro_rua">
                                     <input
                                         id="logradouro"
                                         onChange={(campo) => setNomeLogradouro(campo.target.value)}
                                         value={nomeLogradouro}
                                         type="text"
-                                        {...register('logradouro')}
+                                          {...register('logradouro')}
                                         name="logradouro"
                                         placeholder="Rua"
                                     />
@@ -263,57 +263,6 @@ export default function CadastrarEmpresa() {
                                     />
                                     <label htmlFor="nomeEstado" >Estado</label>
                                 </div>
-
-
-
-
-                                {/* <div>
-                                    <label for="idLocalizacao" ></label>
-                                    <select
-                                        className="inputCadastroCursoSelect_g2"
-                                        id="idLocalizacao"
-                                        onChange={(campo) => setIdLocalizacao(campo.target.value)}
-                                        value={idLocalizacao}
-                                    >
-                                        <option value="0">Localizações</option>
-                                        {
-                                            localizacao.map((local) => {
-                                                return (
-                                                    <option key={local.idLocalizacao} value={local.idLocalizacao}>
-                                                        {local.idLocalizacao}
-                                                    </option>
-                                                )
-                                            })
-                                        }
-                                    </select>
-                                </div> */}
-
-
-                                {/* <div>
-                                    <label for="idEmpresa" ></label>
-                                    <select
-                                        className="inputCadastroCursoSelect_g2"
-                                        id="idEstado"
-                                        onChange={(campo) => setIdEstado(campo.target.value)}
-                                        value={idEstado}
-                                    >
-                                        <option value="0">Estados</option>
-                                        {
-                                            estados.map((estado) => {
-                                                return (
-                                                    <option key={estado.idEstado} value={estado.idEstado}>
-                                                        {estado.nomeEstado}
-                                                    </option>
-                                                )
-                                            })
-                                        }
-                                    </select>
-                                </div> */}
-
-
-
-
-
                             </div>
                         </div>
                         <div className="btn_cadastroEmpresa_g2">

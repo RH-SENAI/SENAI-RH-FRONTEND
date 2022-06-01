@@ -109,7 +109,7 @@ export default function CadastrarCursos() {
             <div className="container_lista_curso container_forms_cadastroCursos_g2">
 
                 <div className="box_img_cadastroCurso_g2">
-                    <img src={cadastroCurso} alt="imagemCadastroCurso" />
+                    <img className="img_cadastroCurso_g2" src={cadastroCurso} alt="imagemCadastroCurso" />
                 </div>
 
 

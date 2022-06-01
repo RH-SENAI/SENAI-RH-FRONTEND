@@ -27,8 +27,8 @@ export default function CursosRapidos() {
     const [switchAtive, setSwitchAtive] = useState(false);
     const [idCursoModal, setIdCursoModal] = useState()
     const [modalIsOpen, setIsOpen] = React.useState(false);
-    // const [UserLongitude, setLongitude] = useState(null)
-    // const [UserLatitude, setLatitude] = useState(null)
+    const [UserLongitude, setLongitude] = useState(null)
+    const [UserLatitude, setLatitude] = useState(null)
     const [userDistance, setUserDistance] = useState('');
     let subtitle;
     const delay = require('delay');
@@ -192,29 +192,30 @@ export default function CursosRapidos() {
     }
 
     function listarCursos() {
-        // var longitude;
-        // var latitude
-        // navigator.geolocation.getCurrentPosition(function (position) {
-        //     console.log("Latitude é :", position.coords.latitude);
-        //     console.log("Longitude é :", position.coords.longitude);
-        //     longitude = position.coords.longitude;
-        //     latitude = position.coords.latitude;
-        // });
-        // time();
-        // var distanceBase = 150000;
-        // if (userDistance != 0) {
-        //     distanceBase = userDistance * 1000
-        // }
+        // debugger;
+        var longitude;
+        var latitude
+        navigator.geolocation.getCurrentPosition(function (position) {
+            console.log("Latitude é :", position.coords.latitude);
+            console.log("Longitude é :", position.coords.longitude);
+            longitude = position.coords.longitude;
+            latitude = position.coords.latitude;
+        });
+        time();
+        var distanceBase = 150000;
+        if (userDistance != 0) {
+            distanceBase = userDistance * 1000
+        }
         api('/Cursos')
             .then(resposta => {
                 if (resposta.status === 200) {
                     setListaCursos(resposta.data)
                 }
             })
-
-
             // .then(resposta => {
+            //     console.log("entrei no ponto dem")
             //     if (resposta.status === 200) {
+            //         console.log("entrei no if")
             //         const dadosCurso = resposta.data;
             //         console.log(dadosCurso)
             //         var tamanhoJson = Object.keys(dadosCurso).length;
@@ -223,25 +224,22 @@ export default function CursosRapidos() {
             //         var i = 0
 
             //         do {
+            //             console.log("entrei no DO")
             //             let stringLocalCurso = JSON.stringify(dadosCurso);
             //             let objLocalCurso = JSON.parse(stringLocalCurso);
             //             // console.warn(objLocalCurso);
             //             var localCurso = objLocalCurso[i]['idEmpresaNavigation']['idLocalizacaoNavigation']['idCepNavigation'].cep1
+            //             console.log('localCurso')
+            //             console.log(localCurso)
 
             //             // ----> Localização 
 
-            //             var stringProblematica = `/json?origins=${longitude}, ${latitude}&destinations=${localCurso}&units=km&key=AIzaSyB7gPGvYozarJEWUaqmqLiV5rRYU37_TT0`
-            //             console.warn(stringProblematica)
+            //             var stringProblematica = `/json?origins=${latitude},${longitude}&destinations=${localCurso}&units=km&key=AIzaSyB7gPGvYozarJEWUaqmqLiV5rRYU37_TT0`
+            //             console.log(stringProblematica)
 
-            //             const respostaLocal = apiMaps(stringProblematica, {
-            //                 headers: {
-            //                     "Access-Control-Allow-Credentials": 'true',
-            //                     "Access-Control-Allow-Origin": "*",
-            //                     "Access-Control-Allow-Headers": "Authorization",
-            //                     "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
-            //                     "Content-Type": "application/json;charset=UTF-8"
-            //                 },
-            //             });
+            //             const respostaLocal = axios('https://maps.googleapis.com/maps/api/distancematrix' + stringProblematica);
+            //             console.log('respostaLocal')
+            //             console.log(respostaLocal)
             //             let string = JSON.stringify(respostaLocal.data);
             //             let obj = JSON.parse(string);
             //             // console.warn(obj)
@@ -249,9 +247,11 @@ export default function CursosRapidos() {
             //             let distance = obj['rows'][0]['elements'][0]['distance'].value
             //             // console.log(distance)
             //             if (respostaLocal.status == 200) {
+            //                 console.log("entrei no DO e no IF")
             //                 // console.warn('Localização encontrada!');
             //                 if (distance <= distanceBase) {
-            //                     console.warn(distance);
+            //                     console.log('distance');
+            //                     console.log(distance);
             //                     //this.setState({ localizacaoCurso: dadosLocalizacao })
             //                     // console.warn(distance);
             //                     // console.warn('Localização está no alcance');
@@ -267,8 +267,8 @@ export default function CursosRapidos() {
 
             //                 }
             //                 else if (distance > distanceBase) {
-            //                     console.warn(distance);
-            //                     console.warn('Localização fora do alcance');
+            //                     console.log(distance);
+            //                     console.log('Localização fora do alcance');
             //                 }
             //             }
             //             // console.warn('Curso encontrado');
@@ -287,10 +287,9 @@ export default function CursosRapidos() {
             //         // console.warn(this.state.contadorCurso)
             //         // console.log('Lista')
             //         // console.log(resposta)
-            //         // setListaCursos(resposta.data)
+            //         setListaCursos(resposta.data)
             //     }
-            // }
-            // )
+            // })
             .catch(erro => console.log(erro))
     }
 
@@ -343,16 +342,16 @@ export default function CursosRapidos() {
     }
     useEffect(listarUsuario, [])
 
-    // function limitaTotal (evt) {
-    //     var input = evt.target;
-    //     var value = input.value;
+    function limitaTotal(evt) {
+        var input = evt.target;
+        var value = input.value;
 
-    //     if (value.length <= 3) {
-    //         return;
-    //     }
+        if (value.length <= 3) {
+            return;
+        }
 
-    //     input.value = input.value.substr(0, 3); 
-    // }
+        input.value = input.value.substr(0, 3);
+    }
 
 
 
@@ -402,48 +401,48 @@ export default function CursosRapidos() {
                                     filteredResults.map((curso) => {
                                         return (
                                             <div className='espacamento_curso_g2'>
-                                            <section key={curso.idCurso} id='imagem' className='box_curso_g2'>
-                                                <div className='banner_img_curso_g2'>
-                                                    {<img onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
-                                                </div>
-
-                                                <div className='dados_curso_gp2'>
-
-                                                    {<span onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
-
-                                                    <div className='estrelas_cursos_g2'>
-                                                        <div >
-                                                            <ReactStars
-                                                                count={5}
-                                                                size={20}
-                                                                edit={false}
-                                                                value={curso.mediaAvaliacaoCurso}
-                                                                activeColor="#C20004"
-                                                            />
-                                                        </div>
+                                                <section key={curso.idCurso} id='imagem' className='box_curso_g2'>
+                                                    <div className='banner_img_curso_g2'>
+                                                        {<img onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='curso_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + curso.caminhoImagemCurso} alt="imagem do curso" />}
                                                     </div>
-                                                    <div>
-                                                        {<p><img onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
-                                                        {<p><img onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}   </p>}
-                                                    </div>
-                                                    <div className="box_baixo_section_curso_g2">
 
-                                                        <div className='circulo_moeda_curso_g2'>
-                                                            <img className='coin_curso_g2' src={coin} alt="favorito" /> {curso.valorCurso}
-                                                        </div>
-                                                        <div className="media_beneficio_g2">
-                                                            <div className="favoritar_beneficio_g2">
-                                                                <Heart
-                                                                    isActive={listaFavoritosCursos.some(l => { if (l.idCurso == curso.idCurso) { return true } return false })}
-                                                                    onClick={() => { favoritar(!favorito, curso.idCurso) }}
+                                                    <div className='dados_curso_gp2'>
+
+                                                        {<span onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)}> {curso.nomeCurso}</span>}
+
+                                                        <div className='estrelas_cursos_g2'>
+                                                            <div >
+                                                                <ReactStars
+                                                                    count={5}
+                                                                    size={20}
+                                                                    edit={false}
+                                                                    value={curso.mediaAvaliacaoCurso}
+                                                                    activeColor="#C20004"
                                                                 />
                                                             </div>
                                                         </div>
-                                                        {/* <div> <button onClick={ () => Excluir(curso.idCurso)} >Excluir</button></div> */}
+                                                        <div>
+                                                            {<p><img onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={relogio} alt="duracao" /> {curso.cargaHoraria} Horas </p>}
+                                                            {<p><img onClick={() => { verifySituacao(idCursoModal); OpenModal(); listarComentarioCurso(); verifySaldoCurso(listaUsuario.saldoMoeda, curso.valorCurso) }} onClickCapture={() => setIdCursoModal(curso.idCurso)} className='box_dados_curso_g2' src={local} alt="duracao" /> {curso.idEmpresaNavigation.idLocalizacaoNavigation.idLogradouroNavigation.nomeLogradouro}   </p>}
+                                                        </div>
+                                                        <div className="box_baixo_section_curso_g2">
+
+                                                            <div className='circulo_moeda_curso_g2'>
+                                                                <img className='coin_curso_g2' src={coin} alt="favorito" /> {curso.valorCurso}
+                                                            </div>
+                                                            <div className="media_beneficio_g2">
+                                                                <div className="favoritar_beneficio_g2">
+                                                                    <Heart
+                                                                        isActive={listaFavoritosCursos.some(l => { if (l.idCurso == curso.idCurso) { return true } return false })}
+                                                                        onClick={() => { favoritar(!favorito, curso.idCurso) }}
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                            {/* <div> <button onClick={ () => Excluir(curso.idCurso)} >Excluir</button></div> */}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </section>
-                                        </div>
+                                                </section>
+                                            </div>
                                         )
                                     })
                                     :
