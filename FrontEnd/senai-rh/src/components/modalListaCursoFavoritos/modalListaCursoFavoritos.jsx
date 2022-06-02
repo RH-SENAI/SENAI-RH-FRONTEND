@@ -10,7 +10,7 @@ import coracao from '../../assets/img/coracao.svg'
 import ReactStars from "react-rating-stars-component";
 import { ToastContainer, toast } from 'react-toastify';
 
-export const ModallCursoFavorito = ({ showModal, setShowModal, cursos, comentarios, listarComentarioCurso, inscricao, setInscricao, btnInscricao }) => {
+export const ModallCursoFavorito = ({ showModal, setShowModal, cursos, comentarios, listarComentarioCurso, inscricao, setInscricao, btnInscricao, setBtnInscricao }) => {
     const notify_Logar_Failed = () => toast.error("Algo deu errado, por favor tente novamente!")
     const notify_cadastro_sucess = () => toast.success("Parabens! Em breve você recebera mais informações em seu e-mail.")
 
@@ -73,6 +73,7 @@ export const ModallCursoFavorito = ({ showModal, setShowModal, cursos, comentari
 
     //Fechar modal
     const closeModal = e => {
+        setBtnInscricao(false);
         setInscricao(false);
         setShowModal(false);
     };
@@ -267,7 +268,7 @@ export const ModallCursoFavorito = ({ showModal, setShowModal, cursos, comentari
                                                             <button 
                                                             disabled 
                                                             type="submit" 
-                                                            // className="botaoCadastroComentarioBeneficio_g2"
+                                                            className="botaoCadastroComentarioBeneficio_desable_g2"
                                                             >Inscrever-se</button>
                                                         </form>
                                                     </div>

@@ -10,7 +10,7 @@ import coin from "../../assets/img/coin 1.png"
 import { ToastContainer, toast } from 'react-toastify';
 import ReactStars from "react-rating-stars-component";
 
-export const ModallBeneficioFavoritos = ({ showModal, setShowModal, beneficios, comentario, listarComentarioBeneficio, cupom, setCupom, btnCompra }) => {
+export const ModallBeneficioFavoritos = ({ showModal, setShowModal, beneficios, comentario, listarComentarioBeneficio, cupom, setCupom, btnCompra, setBtnCompra }) => {
     const notify_Logar_Failed = () => toast.error("Algo deu errado, por favor tente novamente!")
     const notify_cadastro_sucess = () => toast.success("Cadastro realizado com sucesso!")
     //Estrelas
@@ -30,6 +30,7 @@ export const ModallBeneficioFavoritos = ({ showModal, setShowModal, beneficios, 
 
     //Fechar modal
     const closeModal = e => {
+        setBtnCompra(false);
         setCupom(false);
         setShowModal(false);
     }
@@ -267,7 +268,7 @@ export const ModallBeneficioFavoritos = ({ showModal, setShowModal, beneficios, 
                                                                 disabled
                                                                 id='show-or-hide'
                                                                 type="submit"
-                                                            // className="botaoCadastroComentarioBeneficio_g2"
+                                                                className="botaoCadastroComentarioBeneficio_desable_g2"
                                                             // onClick={() => { requisicaoDesconto() }}
                                                             >Pegue</button>
                                                         </div>

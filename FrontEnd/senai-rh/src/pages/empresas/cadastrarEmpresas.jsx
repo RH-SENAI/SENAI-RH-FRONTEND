@@ -1,31 +1,24 @@
-import HeaderAdm from "../../components/header/headerAdm";
 import cadastroEmpresa from '../../assets/img/cadastroEmpresa.svg'
 import '../../assets/css/cadastroEmpresa.css'
 import iconeEnviarArquivo from '../../assets/img/iconeEnviarArquivo.png'
 import Footer from "../../components/footer";
 import { ToastContainer, toast } from 'react-toastify';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import api from "../../services/api";
-import axios from "axios";
-import PhoneInput from 'react-phone-number-input/input'
 import { useForm } from "react-hook-form";
-import { OpenInFull } from "@mui/icons-material";
+import HeaderFuncionario from '../../components/header/headerFuncionario';
+import Navbar from '../../components/MenuHamburguer/Nav';
 
 
 export default function CadastrarEmpresa() {
 
     const notify_Logar_Failed = () => toast.error("Algo deu errado, por favor tente novamente!")
     const notify_cadastro_sucess = () => toast.success("Empresa cadastrada com sucesso!")
-    const [idLocalizacao, setIdLocalizacao] = useState(0)
-    const [localizacao, setLocalizacao] = useState([])
-    const [estados, setEstados] = useState([])
-    const [idEstado, setIdEstado] = useState(0)
     const [nomeEmpresa, setNomeEmpresa] = useState('')
     const [emailEmpresa, setEmailEmpresa] = useState('')
     const [caminhoImagemEmpresa, setCaminhoImagemEmpresa] = useState('');
     const [telefoneEmpresa, setTelefoneEmpresa] = useState("")
-    const [rua, setRua] = useState('')
-    const { handleSubmit, setValue, setFocus, register } = useForm();
+    const { setValue, setFocus, register } = useForm();
 
     const checkCEP = (campo) => {
         const cep1 = campo.target.value.replace(/\D/g, '');
@@ -47,12 +40,12 @@ export default function CadastrarEmpresa() {
     const [nomeEstado, setNomeEstado] = useState('')
     const [cep1, setCep1] = useState('')
     const [numero, setNumero] = useState(0)
-    
-    
+
+
 
 
     const efetuarCadastro = (event) => {
-        
+
         event.preventDefault();
 
         console.log('chega aqui')
@@ -67,11 +60,11 @@ export default function CadastrarEmpresa() {
         formData.append('telefoneEmpresa', telefoneEmpresa);
         formData.append('caminhoImagemEmpresa', caminhoImagemEmpresa);
         formData.append('cep', cep1);
-        formData.append('numero',document.getElementById('numero').value  );
-        formData.append('cidade',document.getElementById('nomeCidade').value  );
-        formData.append('logradouro',document.getElementById('logradouro').value  );
-        formData.append('estado',document.getElementById('nomeEstado').value  );
-        formData.append('bairro',document.getElementById('bairro').value  );
+        formData.append('numero', document.getElementById('numero').value);
+        formData.append('cidade', document.getElementById('nomeCidade').value);
+        formData.append('logradouro', document.getElementById('logradouro').value);
+        formData.append('estado', document.getElementById('nomeEstado').value);
+        formData.append('bairro', document.getElementById('bairro').value);
 
         api({
             method: "post",
@@ -87,9 +80,15 @@ export default function CadastrarEmpresa() {
     }
 
     return (
-
         <div className="geral_g2">
-            <HeaderAdm />            
+            {/* <HeaderAdm />*/}
+            <div className='navbarF'>
+                <Navbar />
+            </div>
+            <div className='headerF'>
+                <HeaderFuncionario />
+            </div>
+
             <ToastContainer
                 position="top-right"
                 autoClose={5000}
@@ -228,7 +227,7 @@ export default function CadastrarEmpresa() {
                                         onChange={(campo) => setNomeLogradouro(campo.target.value)}
                                         value={nomeLogradouro}
                                         type="text"
-                                          {...register('logradouro')}
+                                        {...register('logradouro')}
                                         name="logradouro"
                                         placeholder="Rua"
                                     />

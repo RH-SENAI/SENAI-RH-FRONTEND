@@ -30,12 +30,10 @@ export default function CadastrarCursos() {
 
     function presencial() {
         setModalidadeCurso(true)
-        console.log('True')
     }
 
     function ead() {
         setModalidadeCurso(false)
-        console.log('False')
     }
 
     function buscarEmpresas() {

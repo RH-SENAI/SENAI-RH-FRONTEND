@@ -17,7 +17,7 @@ import ReactStars from "react-rating-stars-component";
 import { ToastContainer, toast } from 'react-toastify';
 
 
-export const ModallCurso = ({ showModal, setShowModal, curso, comentarios, listarComentarioCurso, inscricao, setInscricao, btnInscricao }) => {
+export const ModallCurso = ({ showModal, setShowModal, curso, comentarios, listarComentarioCurso, inscricao, setInscricao, btnInscricao, setBtnInscricao }) => {
 
     const notify_Logar_Failed = () => toast.error("Você esqueceu de algum campo, por favor tente novamente!")
     const notify_cadastro_sucess = () => toast.success("Parabens! Em breve você recebera mais informações em seu e-mail.")
@@ -45,7 +45,8 @@ export const ModallCurso = ({ showModal, setShowModal, curso, comentarios, lista
 
     //Fechar modal
     const closeModal = e => {
-        setInscricao(false)
+        setBtnInscricao(false);
+        setInscricao(false);
         setShowModal(false);
     };
 
@@ -290,7 +291,7 @@ export const ModallCurso = ({ showModal, setShowModal, curso, comentarios, lista
                                                             <button
                                                                 disabled
                                                                 type="submit"
-                                                            // className="botaoCadastroComentarioBeneficio_g2"
+                                                            className="botaoCadastroComentarioBeneficio_desable_g2"
                                                             >Inscrever-se</button>
                                                         </form>
                                                     </div>

@@ -12,13 +12,15 @@ import ReactStars from "react-rating-stars-component";
 import Heart from "react-heart"
 
 export default function ListaBeneficios() {
-    
-    //VefificarSaldo
-    const [ btnCompra,setBtnCompra] =useState(false)
 
-    function verifySaldo(saldoUser, saldoMoeda){
-        if(saldoUser > saldoMoeda  ){
+    //VefificarSaldo
+    const [btnCompra, setBtnCompra] = useState(false)
+
+    function verifySaldo(saldoUser, saldoMoeda) {
+        if (saldoUser > saldoMoeda) {
             setBtnCompra(true)
+        } else {
+            setBtnCompra(false)
         }
     }
 
@@ -78,7 +80,7 @@ export default function ListaBeneficios() {
             idDesconto: idDesconto,
             idUsuario: parseJwt().jti,
         }
-        
+
         api.post('/FavoritosDescontos', favo)
             .then(function (response) {
                 listarBeneficios()
@@ -89,7 +91,7 @@ export default function ListaBeneficios() {
     function listarFavoritosDescontos() {
         api('/FavoritosDescontos/Favorito/' + parseJwt().jti)
             .then(resposta => {
-                if (resposta.status === 200) {                    
+                if (resposta.status === 200) {
                     setListaFavoritosDescontos(resposta.data)
                 }
             })
@@ -105,7 +107,7 @@ export default function ListaBeneficios() {
         setCupom(true)
     }
 
-    async function verifySituacao(id) {    
+    async function verifySituacao(id) {
         try {
             const respostaBuscar = await api(`/Registrodescontos/RegistroDescontos/IdUsuario/${parseJwt().jti}`);
             var tamanhoJsonRegistro = Object.keys(respostaBuscar.data).length;
@@ -149,7 +151,7 @@ export default function ListaBeneficios() {
     function listarComentarioBeneficio() {
         api('/ComentarioDescontos/Comentario/' + idDescontoModal)
             .then(resposta => {
-                if (resposta.status === 200) {                    
+                if (resposta.status === 200) {
                     setListaComentarioBeneficio(resposta.data)
                 }
             })
@@ -186,9 +188,8 @@ export default function ListaBeneficios() {
             },
         })
             .then(resposta => {
-                if (resposta.status === 200) {                   
+                if (resposta.status === 200) {
                     setListaUsuario(resposta.data)
-
                 }
             })
             .catch(erro => console.log(erro))
@@ -198,14 +199,10 @@ export default function ListaBeneficios() {
 
     //Excluir Vantagem
     function Excluir(idDesconto) {
-
         api.delete('/Descontos/Deletar/' + idDesconto)
-
             .then(resposta => {
                 if (resposta.status === 204) {
-                    console.log('Vantagem Excluido!')
                     listarBeneficios()
-
                 }
             })
             .catch(erro => {
@@ -219,7 +216,6 @@ export default function ListaBeneficios() {
     const [filteredResults, setFilteredResults] = useState([]);
 
     const searchItems = (searchValue) => {
-        console.log(searchValue)
         setSearchInput(searchValue)
         if (searchInput !== '') {
             const filteredData = listaBeneficios.filter((item) => {
@@ -234,7 +230,7 @@ export default function ListaBeneficios() {
 
     return (
         <div className="geral_g2">
-            <ModallBeneficio btnCompra={btnCompra} listarComentarioBeneficio={listarComentarioBeneficio} setCupom={setCupom} cupom={cupom} idDescontoModal={idDescontoModal} comentario={listaComentarioBeneficio} beneficio={listaBeneficios.find(beneficio => beneficio.idDesconto == idDescontoModal)} showModal={showModal} setShowModal={setShowModal} />
+            <ModallBeneficio setBtnCompra={setBtnCompra} btnCompra={btnCompra} listarComentarioBeneficio={listarComentarioBeneficio} setCupom={setCupom} cupom={cupom} idDescontoModal={idDescontoModal} comentario={listaComentarioBeneficio} beneficio={listaBeneficios.find(beneficio => beneficio.idDesconto == idDescontoModal)} showModal={showModal} setShowModal={setShowModal} />
             <HeaderFuncionario />
 
             <div className="container">
@@ -270,7 +266,7 @@ export default function ListaBeneficios() {
                                             <dv className='espacamento_beneficio_g2'>
                                                 <section alt={beneficio.idDesconto} key={beneficio.idDesconto} id='imagem' className='box_beneficio_g2'>
                                                     <div className='banner_img_beneficio_g2'>
-                                                        {<img onClick={() => { verifySituacao( cupom, idDescontoModal); OpenModal(); listarComentarioBeneficio(); verifySaldo(listaUsuario.saldoMoeda, beneficio.valorDesconto) }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
+                                                        {<img onClick={() => { verifySituacao(cupom, idDescontoModal); OpenModal(); listarComentarioBeneficio(); verifySaldo(listaUsuario.saldoMoeda, beneficio.valorDesconto) }} onClickCapture={() => setIdDescontoModal(beneficio.idDesconto)} className='beneficio_banner_g2' src={'https://armazenamentogrupo3.blob.core.windows.net/armazenamento-simples-grp2/' + beneficio.caminhoImagemDesconto} alt="imagem do desconto" />}
                                                     </div>
 
                                                     <div className="dados_beneficio_gp2">
@@ -305,8 +301,6 @@ export default function ListaBeneficios() {
                                                             {/* <div> <button onClick={(b) => Excluir(beneficio.idDesconto)} >Excluir</button></div> */}
                                                         </div>
                                                     </div>
-
-
                                                 </section>
                                             </dv>
                                         )

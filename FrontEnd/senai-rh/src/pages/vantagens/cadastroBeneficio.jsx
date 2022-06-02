@@ -9,6 +9,8 @@ import Footer from "../../components/footer";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import api from "../../services/api";
+import HeaderFuncionario from '../../components/header/headerFuncionario';
+import Navbar from '../../components/MenuHamburguer/Nav';
 
 export default function CadastrarBeneficio() {
     const notify_Logar_Failed = () => toast.error("Você esqueceu de algum campo, por favor tente novamente!")
@@ -83,7 +85,13 @@ export default function CadastrarBeneficio() {
 
     return (
         <div className="geral_g2">
-            <HeaderAdm />
+            {/* <HeaderAdm /> */}
+            <div className='navbarF'>
+                <Navbar />
+            </div>
+            <div className='headerF'>
+                <HeaderFuncionario />
+            </div>
 
             <ToastContainer
                 position="top-right"

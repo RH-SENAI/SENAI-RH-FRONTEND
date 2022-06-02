@@ -11,7 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import ReactStars from "react-rating-stars-component";
 
 
-export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario, listarComentarioBeneficio, cupom, setCupom, btnCompra }) => {
+export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario, listarComentarioBeneficio, cupom, setCupom, btnCompra, setBtnCompra }) => {
 
     const notify_Logar_Failed = () => toast.error("Você esqueceu de algum campo, por favor tente novamente!")
     const notify_cadastro_sucess = () => toast.success("Parabens, desconto resgatado com sucesso!")
@@ -36,12 +36,9 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
 
     //Fechar modal    
     const closeModal = e => {
+        setBtnCompra(false)
         setCupom(false);
-        console.log('showModal antes:' + showModal)
         setShowModal(false);
-
-
-        console.log('showModal depois:' + showModal)
     };
 
     const keyPress = useCallback(
@@ -280,7 +277,7 @@ export const ModallBeneficio = ({ showModal, setShowModal, beneficio, comentario
                                                                 disabled
                                                                 id='show-or-hide'
                                                                 type="submit"
-                                                                // className="botaoCadastroComentarioBeneficio_g2"
+                                                                className="botaoCadastroComentarioBeneficio_desable_g2"
                                                             // onClick={() => { requisicaoDesconto() }}
                                                             >Pegue</button>
                                                         </div>
